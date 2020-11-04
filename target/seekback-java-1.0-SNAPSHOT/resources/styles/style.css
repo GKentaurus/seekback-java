@@ -1,0 +1,130 @@
+body {
+  background-color: #d5d5d5;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color .5s;
+}
+
+/* dark mode*/
+
+.dark-mode {
+  background-color: #3B3B3B !important;
+  color: white;
+}
+
+.wrapmoddark {
+  background-color: #121212 !important;
+  color: white !important;
+}
+
+/**/
+
+.logoimg {
+  height: 8em;
+}
+
+.pnav,
+.wnav {
+  background-color: #222222 !important;
+}
+
+.rnav {
+  margin-bottom: 20px;
+}
+
+#searxh {
+  color: white !important;
+}
+
+.wrap {
+  margin: 0 auto;
+  padding: 0 1%;
+  background: #FFF;
+  padding: 10px 0 0 0;
+  position: relative;
+}
+
+/*login*/
+
+.login {
+  display: initial;
+}
+
+.signup {
+  display: none;
+}
+
+.loginb {
+  background-color: #1D1F21;
+}
+
+.signupb {
+  background-color: #43423D;
+}
+
+.dropdown-menu>li {
+  width: 100%;
+}
+
+.opt {
+  font-size: 15px;
+}
+
+#dropdown1,
+#dropdown3 {
+  background-color: #222;
+  width: max-content !important;
+  z-index: 5;
+}
+
+#dropdown2 {
+  z-index: 1;
+}
+
+a:focus,
+a:hover {
+  color: #F8FFFF;
+  text-decoration: none;
+}
+
+.row {
+  margin-bottom: 0px;
+}
+
+.input-field {
+  margin-bottom: 0px;
+}
+
+#opais {
+  display: none;
+}
+
+/*index*/
+
+.opt {
+  font-size: 15px;
+}
+
+.card-title {
+  background-color: #22222280;
+  height: 50px;
+  padding: 7px 5px 0px 2px !important;
+}
+
+.table-of-contents a.active {
+  border-left: 2px solid teal;
+}
+
+/*calificacion*/
+
+.ca {
+  color: orange;
+}
+
+@media (max-width: 1000px) {
+  .logoimg {
+    height: 6em;
+  }
+  .scrosp {
+    display: none !important;
+  }
+}

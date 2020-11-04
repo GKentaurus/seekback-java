@@ -1,12 +1,296 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html">
   <h:head>
-    <title>Facelet Title</title>
+    <title>.:QPCOM | Seekback:.</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <h:outputStylesheet library="styles" name="style.css" />
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <h:outputScript library="scripts" name="index.js" />
   </h:head>
-  <h:body>
-    Hello from Facelets
+
+  <h:body id="ody">
+
+    <div class="pnav">
+      <div class="wrap wnav">
+        <div id="nav" class="container  scrollspy">
+          <div class="row"  style="margin-bottom:0px;">
+            <div class="col s2">
+              <h:commandLink>
+                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
+              </h:commandLink>
+            </div>
+            <div class="col s10">
+              <div class="row"  style="margin-bottom:0px;">
+                <h:form>
+                  <div class="col s12 m9">
+                    <div class="input-field">
+                      <h:outputLabel for="searxh">Buscar</h:outputLabel>
+                      <h:inputText  id="searxh" />
+                    </div>
+                  </div>
+                  <div class="col s12 m3 center-align" style="padding:0px;">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
+                      <i class="far fa-user" style="color:#fff"></i>
+                    </h:commandLink>
+                    <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></a>
+                  </div>
+                </h:form>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom:20px;">
+
+            <div class="col s12">
+              <ul id="dropdown1" class="dropdown-content z-depth-3">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
+              <ul id="dropdown2" class="dropdown-content">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
+
+              <nav style="background-color:#222222;" class="z-depth-0">
+                <div class="nav-wrapper">
+                  <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="fas fa-bars"></i>
+                  </h:commandLink>
+                  <ul class="left hide-on-med-and-down" style="display: inline-flex;">
+                    <h:form>
+                      <li><h:commandLink action="index" value="Inicio" /></li>
+                    </h:form>
+                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                    <h:form>
+                      <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                      <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
+                    </h:form>
+                  </ul>
+                </div>
+              </nav>
+
+              <ul class="sidenav" id="mobile-demo">
+                <div class="user-view">
+                  <div class="background">
+                    <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
+                  </div>
+                  <h:commandLink pt:href="">
+                    <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
+                  </h:commandLink>
+                </div>
+                <li><h:commandLink action="index">Inicio</h:commandLink></li>
+                <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                <li><h:commandLink pt:href="#contac">Contactenos</h:commandLink></li>
+                <li><h:commandLink pt:href="#qsomos">Nosotros</h:commandLink></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m10 l10 offset-l1 offset-m1">
+        <div class="wrap" id="inv">
+          <!--slider-->
+          <div id="slpro" class="container section scrollspy">
+            <div class="row">
+              <div class="col s12">
+                <div class="slider">
+                  <ul class="slides">
+                    <li>
+                      <h:graphicImage library="images" name="router.webp" alt="producto"/>
+                      <div class="caption left-align">
+                        <h3>Router</h3>
+                        <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
+                      </div>
+                    </li>
+                    <li>
+                      <h:graphicImage library="images" name="cableado1.webp" alt="producto"/>
+                      <div class="caption left-align">
+                        <h3>switch</h3>
+                        <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
+                      </div>
+                    </li>
+                    <li>
+                      <h:graphicImage library="images" name="cableado.webp" alt="producto"/>
+                      <div class="caption left-align">
+                        <h3>utp cat6</h3>
+                        <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr style="width:70%; border: 1px solid #b9b9b9;" />
+          <!--productos-->
+          <div id="prod" class="container section scrollspy">
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp1.webp" alt="producto" style="height:200px; width:100%;" />
+                    <span class="card-title">Producto 1</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="acc/acc2.webp" alt="producto" style="height:200px; width:100%;" />
+                    <span class="card-title">Producto 2</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="herra/herr5.webp" alt="producto" style="height:200px; width:100%;" />
+                    <span class="card-title">Producto 3</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section left-align division white" style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
+            <h:commandLink>Quienes somos</h:commandLink>
+          </div>
+          <!--Quienes somos-->
+          <div id="qsomos" class="container section scrollspy">
+            <div class="row">
+              <div class="col s12">
+                <div class="col m6">
+                  <div class="card white">
+                    <div class="card-image">
+                      <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%" />
+                      <span class="card-title">Q s</span>
+                    </div>
+                    <div class="card-content">
+                      <p>Lorem ipsun in dolorem.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col m6">
+                  <div class="card white">
+                    <div class="card-image">
+                      <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%" />
+                      <span class="card-title">Q s</span>
+                    </div>
+                    <div class="card-content">
+                      <p>Lorem ipsun in dolorem.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section left-align division white" style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
+            <h:commandLink>Contactenos</h:commandLink>
+          </div>
+          <!--Contactenos-->
+          <div id="contac" class="container section scrollspy">
+            <div class="row">
+              <div class="col s12">
+                <div class="input-field col s6">
+                  <h:inputText id="name" class="ingr validate black-text" />
+                  <h:outputLabel for="name">Nombre</h:outputLabel>
+                </div>
+                <div class="input-field col s6">
+                  <h:inputText id="email" pt:type="email" class="ingr validate black-text" />
+                  <h:outputLabel for="email">Email</h:outputLabel>
+                  <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
+                </div>
+                <div class="input-field col s12">
+                  <h:inputTextarea id="motivo" class="ingr materialize-textarea black-text" />
+                  <h:outputLabel for="motivo">Mensaje</h:outputLabel>
+                </div>
+              </div>
+              <h:commandLink class="modal-close waves-effect waves-green btn">Enviar</h:commandLink>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col m1 l1 hide-on-med-and-down scrosp">
+        <ul class="section table-of-contents fixed">
+          <li><h:commandLink pt:href="#slpro">Presentacion productos</h:commandLink></li>
+          <li><h:commandLink pt:href="#prod">productos</h:commandLink></li>
+          <li><h:commandLink pt:href="#qsomos">Quienes somos</h:commandLink></li>
+          <li><h:commandLink pt:href="#contac">Contactenos</h:commandLink></li>
+        </ul>
+      </div>
+    </div>
+    <br />
+
+    <footer class="page-footer" style="background-color: #222222;">
+      <div class="wrap transparent">
+        <div class="container">
+          <div class="row">
+            <div class="col s6" style="text-align:left">
+              <h4>Redes sociales </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> siguenos en facebook
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> siguenos en twitter
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> siguenos en instagram
+            </div>
+            <div class="col s6" style="text-align:left">
+              <h4>Informaciòn de contacto </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
+              <br />
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Copyright Seekback. todos los derechos reservados
+        </div>
+      </div>
+    </footer>
+
   </h:body>
 </html>
 

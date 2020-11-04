@@ -1,0 +1,222 @@
+body {
+    background-color: #3B3B3B;
+    color: white;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color .5s;
+}
+/* dark mode*/
+  .breadcrumb{
+    background-color: #222222;
+    color: white !important;
+  }
+
+  .panel-default{
+    background-color: #121212;
+    color: white !important;
+  }
+
+  .ings{
+    background-color: #121212;
+    color: white !important;
+  }
+/*barra de navegacion*/
+
+.nav-header {
+  background-color: #222222;
+}
+
+.containhead {
+  width: 78%;
+}
+
+.contimg {
+  height: 8em;
+}
+
+.logoimg {
+  height: 8em;
+}
+
+.contsear,
+.contnavbar {
+  height: 4em;
+}
+
+.inp {
+  background: #f0f8ff00;
+  color: #a2a2a2;
+  border-color: transparent;
+  transition: 0.3s ease-in-out;
+  width: 50%;
+  font-size: 15px;
+  margin: 1em 1px 1px 15%;
+}
+
+.inp:hover {
+  border-bottom: 1px solid gray;
+}
+
+.inp:focus {
+  border-bottom: 1px solid white;
+}
+
+.btnsearch {
+  color: #eaeaea;
+  background-color: #222;
+  border-color: #646464;
+  transition: 0.3s ease-in-out;
+}
+
+.btnuser {
+  color: #46b8da;
+  background-color: #222;
+  border-color: #46b8da;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-inverse {
+  z-index: 1;
+  border: none;
+}
+
+.opt {
+  transition: 0.3s ease-in-out;
+}
+
+.opt:hover {
+  background-color: #222 !important;
+  color: white !important;
+}
+
+/* wrap */
+
+.wrap {
+    background-color: #121212 !important;
+    color: white !important;
+  width: 78%;
+  margin: 0 auto;
+  padding: 0 1%;
+  padding: 10px 0 0 0;
+  z-index: 0;
+  position: relative;
+}
+
+.wrapmod {
+    background-color: #121212 !important;
+    color: white !important;
+  width: 98%;
+  margin: 0 auto;
+  padding: 0 1%;
+  padding: 10px 0 0 0;
+  z-index: 0;
+  position: relative;
+}
+
+/*  barra lateral y opciones*/
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  /*transition: margin-left .5s;*/
+  transition: 0.3s cubic-bezier(.65,.05,.36,1);
+}
+
+.ulm {
+  list-style: none;
+  padding: 0;
+}
+
+.ulm .lim a.toggle {
+  width: 100%;
+  display: block;
+  padding: 0.75em;
+  border-radius: 0.15em;
+  transition: background 0.3s ease;
+}
+
+.ulm .inner {
+  padding-left: 1em;
+  overflow: hidden;
+  display: none;
+}
+
+.ulm .lim {
+  margin: 0.5em 0;
+}
+
+/*ajustes*/
+
+@media (max-width: 768px) {
+  .inp {
+    margin: 1em 1px 1px 1px;
+    width: 80%;
+  }
+}
+
+@media (max-width: 380px) {
+  .inp {
+    margin: 1em 1px 1px 1px;
+    width: 60%;
+  }
+}
+
+/*
+
+  label{
+    color:gray;
+  }
+  input[type = "radio"]{ 
+    display:none;
+  }
+  .clasificacion{
+      direction: rtl;
+      unicode-bidi: bidi-override;
+  }
+  label:hover, label:hover ~ label{
+    color:orange;
+  }
+  input[type = "radio"]:checked ~ label{
+    color:orange;
+  }
+              <form>
+                <p class="clasificacion">
+                  <input id="radio1" type="radio" name="estrellas" value="5"><label for="radio1"><i class="fas fa-star"></i></label>
+                  <input id="radio2" type="radio" name="estrellas" value="4"><label for="radio2"><i class="fas fa-star"></i></label>
+                  <input id="radio3" type="radio" name="estrellas" value="3"><label for="radio3"><i class="fas fa-star"></i></label>
+                  <input id="radio4" type="radio" name="estrellas" value="2"><label for="radio4"><i class="fas fa-star"></i></label>
+                  <input id="radio5" type="radio" name="estrellas" value="1"><label for="radio5"><i class="fas fa-star"></i></label>
+                </p>
+              </form>
+*/
