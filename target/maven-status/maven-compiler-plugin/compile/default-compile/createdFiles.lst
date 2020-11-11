@@ -1,4 +1,11 @@
-tech\seekback\jdbc\Main.class
-tech\seekback\java\resources\JavaEE8Resource.class
+tech\seekback\models\Roles.class
+tech\seekback\models\templates\Timestamps.class
 tech\seekback\JAXRSConfiguration.class
+tech\seekback\exceptions\enums\FactoryExcepEnum.class
+tech\seekback\exceptions\enums\ConnectionExcepEnum.class
+tech\seekback\dao\Usuario.class
+tech\seekback\exceptions\FactoryExcep.class
+tech\seekback\exceptions\ConnectionExcep.class
+tech\seekback\java\resources\JavaEE8Resource.class
+testing\Main.class
 tech\seekback\jdbc\DBConnect.class

@@ -1,4 +1,11 @@
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\JAXRSConfiguration.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\ConnectionExcep.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\java\resources\JavaEE8Resource.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\dao\Usuario.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\FactoryExcep.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\jdbc\DBConnect.java
-D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\jdbc\Main.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\models\templates\Timestamps.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\testing\Main.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\enums\FactoryExcepEnum.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\enums\ConnectionExcepEnum.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\models\Roles.java
