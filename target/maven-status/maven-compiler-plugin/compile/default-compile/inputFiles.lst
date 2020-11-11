@@ -1,3 +1,4 @@
-D:\01 Projects\git\SENA\seekback-java\src\main\java\sena\seekback\java\resources\JavaEE8Resource.java
-D:\01 Projects\git\SENA\seekback-java\src\main\java\translations\GenerateTranslation.java
-D:\01 Projects\git\SENA\seekback-java\src\main\java\sena\seekback\java\JAXRSConfiguration.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\JAXRSConfiguration.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\java\resources\JavaEE8Resource.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\jdbc\DBConnect.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\jdbc\Main.java

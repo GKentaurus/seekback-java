@@ -1,2 +1,4 @@
-sena\seekback\java\JAXRSConfiguration.class
-sena\seekback\java\resources\JavaEE8Resource.class
+tech\seekback\jdbc\Main.class
+tech\seekback\java\resources\JavaEE8Resource.class
+tech\seekback\JAXRSConfiguration.class
+tech\seekback\jdbc\DBConnect.class

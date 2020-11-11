@@ -21,7 +21,7 @@ public class DBConnect {
     try {
       Properties propConnection = new Properties();
       propConnection.put(
-              "url", "jdbc:mysql://localhost:3306"
+              "url", "jdbc:mysql://localhost:3306/seekback"
       );
       propConnection.put(
               "user", "root"

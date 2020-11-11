@@ -1,4 +1,6 @@
-package tech.seekback.jdbc;
+package testing;
+
+import tech.seekback.jdbc.DBConnect;
 
 /**
  *
