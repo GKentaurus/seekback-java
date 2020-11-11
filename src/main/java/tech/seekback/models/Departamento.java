@@ -14,9 +14,10 @@ public class Departamento extends Timestamps{
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer idDepartamento;
   
-  // TODO: pendiente Llave foranea contabla pais
+  // TODO: Revisar relación con la tabla "Pais"
   @Column(name="idPais")
-  private Integer idPais;
+  @ManyToOne
+  private Pais idPais;
   
   @Column(name="nombreDepartamento", length = 30, nullable = false)//not null
   private String nombreDepartamento;
@@ -30,11 +31,11 @@ public class Departamento extends Timestamps{
     this.idDepartamento = idDepartamento;
   }
 
-  public Integer getIdPais() {
+  public Pais getIdPais() {
     return idPais;
   }
 
-  public void setIdPais(Integer idPais) {
+  public void setIdPais(Pais idPais) {
     this.idPais = idPais;
   }
 

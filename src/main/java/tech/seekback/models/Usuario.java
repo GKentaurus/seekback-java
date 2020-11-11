@@ -33,9 +33,9 @@ public class Usuario extends Timestamps {
   @Column(name = "sApellido", length = 50, nullable = true)
   private String sApellido;
   
-  // TODO: Pendiente llave foranea con la tabla "tipo_doc"
+  // TODO: Revisar relación con la tabla "tipo_doc"
   @Column(name = "tipoDoc", nullable = false)
-  private Integer tipoDoc;
+  private TipoDoc tipoDoc;
   
   @Column(name = "numeroDoc", length = 50, nullable = false)
   private String numeroDoc;
@@ -43,9 +43,10 @@ public class Usuario extends Timestamps {
   @Column(name = "contrasena", length = 50, nullable = false)
   private String contrasena;
   
-  // TODO: Pendiente llave foranea con la tabla "roles"
-  @Column(name = "rol", length = 50, nullable = false)
-  private String rol;
+  // TODO: Revisar relación con la tabla "roles"
+  @Column(name = "rol", nullable = false)
+  @ManyToOne
+  private Roles rol;
   
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdUsuario() {
@@ -88,11 +89,11 @@ public class Usuario extends Timestamps {
     this.sApellido = sApellido;
   }
 
-  public Integer getTipoDoc() {
+  public TipoDoc getTipoDoc() {
     return tipoDoc;
   }
 
-  public void setTipoDoc(Integer tipoDoc) {
+  public void setTipoDoc(TipoDoc tipoDoc) {
     this.tipoDoc = tipoDoc;
   }
 
@@ -104,11 +105,11 @@ public class Usuario extends Timestamps {
     this.numeroDoc = numeroDoc;
   }
 
-  public String getRol() {
+  public Roles getRol() {
     return rol;
   }
 
-  public void setRol(String rol) {
+  public void setRol(Roles rol) {
     this.rol = rol;
   }
   //</editor-fold>
@@ -123,9 +124,8 @@ public class Usuario extends Timestamps {
             + "sApellido = " + sApellido + ", "
             + "tipoDoc = " + tipoDoc + ", "
             + "numeroDoc = " + numeroDoc + ", "
+            + super.toString()
             + "rol = " + rol 
             + '}';
-  }
-  
-  
+  }  
 }
