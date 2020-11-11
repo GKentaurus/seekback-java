@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\JAXRSConfiguration.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\ConnectionExcep.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\java\resources\JavaEE8Resource.java
@@ -9,3 +10,16 @@ D:\01_Projects\git\SENA\seekback-java\src\main\java\testing\Main.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\enums\FactoryExcepEnum.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\exceptions\enums\ConnectionExcepEnum.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\models\Roles.java
+=======
+C:\git\seekback-java\src\main\java\tech\seekback\exceptions\enums\FactoryExcepEnum.java
+C:\git\seekback-java\src\main\java\tech\seekback\java\resources\JavaEE8Resource.java
+C:\git\seekback-java\src\main\java\tech\seekback\JAXRSConfiguration.java
+C:\git\seekback-java\src\main\java\tech\seekback\jdbc\DBConnect.java
+C:\git\seekback-java\src\main\java\tech\seekback\dao\Usuario.java
+C:\git\seekback-java\src\main\java\tech\seekback\exceptions\ConnectionExcep.java
+C:\git\seekback-java\src\main\java\tech\seekback\exceptions\enums\ConnectionExcepEnum.java
+C:\git\seekback-java\src\main\java\tech\seekback\models\Roles.java
+C:\git\seekback-java\src\main\java\tech\seekback\models\templates\Timestamps.java
+C:\git\seekback-java\src\main\java\tech\seekback\exceptions\FactoryExcep.java
+C:\git\seekback-java\src\main\java\testing\Main.java
+>>>>>>> Stashed changes
