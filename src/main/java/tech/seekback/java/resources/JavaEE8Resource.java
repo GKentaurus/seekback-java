@@ -1,4 +1,4 @@
-package sena.seekback.java.resources;
+package tech.seekback.java.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
