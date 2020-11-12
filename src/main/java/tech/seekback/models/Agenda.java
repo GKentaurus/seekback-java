@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.util.Date;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
 /**
@@ -21,7 +22,8 @@ public class Agenda extends Timestamps{
   private Integer idAgenda;
   
   @Column(name="fecha", nullable = false)
-  private String fecha;
+  @Temporal(javax.persistence.TemporalType.DATE)
+  private Date fecha;
   
   @Column(name="observaciones", nullable = false)
   private String observaciones;
@@ -29,7 +31,6 @@ public class Agenda extends Timestamps{
   // TODO: Revisar relación con la tabla "EstadoAgenda"
   @Column(name = "idEstado", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creacion de clase EstadoAgenda
   private EstadoAgenda idEstado; 
   
   // TODO: Revisar relación con la tabla "TipoServicio"
@@ -41,13 +42,11 @@ public class Agenda extends Timestamps{
   // TODO: Revisar relación con la tabla "Usuario"
   @Column(name = "idCliente", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creacion de clase Cliente
   private Cliente idCliente; 
   
   // TODO: Revisar relación con la tabla "Empleado"
   @Column(name = "idEmpleado", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creacion de clase Empleado
   private Empleado idEmpleado; 
   
   // TODO: Revisar relación con la tabla "Administrador"
@@ -65,11 +64,11 @@ public class Agenda extends Timestamps{
     this.idAgenda = idAgenda;
   }
 
-  public String getFecha() {
+  public Date getFecha() {
     return fecha;
   }
 
-  public void setFecha(String fecha) {
+  public void setFecha(Date fecha) {
     this.fecha = fecha;
   }
 
