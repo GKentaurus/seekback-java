@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Calificacion;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Calificacion;
  */
 public interface CalificacionDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Calificacion getOne(Integer id);
+  Calificacion getOne(Integer id) throws ConnectionExcep;
 
-  List<Calificacion> getAll();
+  List<Calificacion> getAll() throws ConnectionExcep;
 
-  void update(Calificacion obj);
+  void update(Calificacion obj) throws ConnectionExcep;
 
-  void delete(Calificacion obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

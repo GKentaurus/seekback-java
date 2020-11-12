@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Felicitacion;
  */
 public interface FelicitacionDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Felicitacion getOne(Integer id);
+  Felicitacion getOne(Integer id) throws ConnectionExcep;
 
-  List<Felicitacion> getAll();
+  List<Felicitacion> getAll() throws ConnectionExcep;
 
-  void update(Felicitacion obj);
+  void update(Felicitacion obj) throws ConnectionExcep;
 
-  void delete(Felicitacion obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosFidelizacion;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.EstadosFidelizacion;
  */
 public interface EstadosFidelizacionDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  EstadosFidelizacion getOne(Integer id);
+  EstadosFidelizacion getOne(Integer id) throws ConnectionExcep;
 
-  List<EstadosFidelizacion> getAll();
+  List<EstadosFidelizacion> getAll() throws ConnectionExcep;
 
-  void update(EstadosFidelizacion obj);
+  void update(EstadosFidelizacion obj) throws ConnectionExcep;
 
-  void delete(EstadosFidelizacion obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

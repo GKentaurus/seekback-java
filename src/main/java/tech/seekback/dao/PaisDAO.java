@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Pais;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Pais;
  */
 public interface PaisDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Pais getOne(Integer id);
+  Pais getOne(Integer id) throws ConnectionExcep;
 
-  List<Pais> getAll();
+  List<Pais> getAll() throws ConnectionExcep;
 
-  void update(Pais obj);
+  void update(Pais obj) throws ConnectionExcep;
 
-  void delete(Pais obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

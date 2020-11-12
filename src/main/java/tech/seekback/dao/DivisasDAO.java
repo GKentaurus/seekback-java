@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Divisas;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Divisas;
  */
 public interface DivisasDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Divisas getOne(Integer id);
+  Divisas getOne(Integer id) throws ConnectionExcep;
 
-  List<Divisas> getAll();
+  List<Divisas> getAll() throws ConnectionExcep;
 
-  void update(Divisas obj);
+  void update(Divisas obj) throws ConnectionExcep;
 
-  void delete(Divisas obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

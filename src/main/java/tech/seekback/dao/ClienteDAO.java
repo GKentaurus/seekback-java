@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cliente;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Cliente;
  */
 public interface ClienteDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Cliente getOne(Integer id);
+  Cliente getOne(Integer id) throws ConnectionExcep;
 
-  List<Cliente> getAll();
+  List<Cliente> getAll() throws ConnectionExcep;
 
-  void update(Cliente obj);
+  void update(Cliente obj) throws ConnectionExcep;
 
-  void delete(Cliente obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

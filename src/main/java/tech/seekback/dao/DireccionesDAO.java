@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Direcciones;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Direcciones;
  */
 public interface DireccionesDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Direcciones getOne(Integer id);
+  Direcciones getOne(Integer id) throws ConnectionExcep;
 
-  List<Direcciones> getAll();
+  List<Direcciones> getAll() throws ConnectionExcep;
 
-  void update(Direcciones obj);
+  void update(Direcciones obj) throws ConnectionExcep;
 
-  void delete(Direcciones obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

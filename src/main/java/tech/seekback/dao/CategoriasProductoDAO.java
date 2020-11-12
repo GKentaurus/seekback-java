@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.CategoriasProducto;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.CategoriasProducto;
  */
 public interface CategoriasProductoDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  CategoriasProducto getOne(Integer id);
+  CategoriasProducto getOne(Integer id) throws ConnectionExcep;
 
-  List<CategoriasProducto> getAll();
+  List<CategoriasProducto> getAll() throws ConnectionExcep;
 
-  void update(CategoriasProducto obj);
+  void update(CategoriasProducto obj) throws ConnectionExcep;
 
-  void delete(CategoriasProducto obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

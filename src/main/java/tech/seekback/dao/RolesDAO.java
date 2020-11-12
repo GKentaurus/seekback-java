@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Roles;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Roles;
  */
 public interface RolesDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Roles getOne(Integer id);
+  Roles getOne(Integer id) throws ConnectionExcep;
 
-  List<Roles> getAll();
+  List<Roles> getAll() throws ConnectionExcep;
 
-  void update(Roles obj);
+  void update(Roles obj) throws ConnectionExcep;
 
-  void delete(Roles obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

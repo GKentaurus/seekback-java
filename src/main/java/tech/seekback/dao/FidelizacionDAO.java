@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Fidelizacion;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Fidelizacion;
  */
 public interface FidelizacionDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Fidelizacion getOne(Integer id);
+  Fidelizacion getOne(Integer id) throws ConnectionExcep;
 
-  List<Fidelizacion> getAll();
+  List<Fidelizacion> getAll() throws ConnectionExcep;
 
-  void update(Fidelizacion obj);
+  void update(Fidelizacion obj) throws ConnectionExcep;
 
-  void delete(Fidelizacion obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

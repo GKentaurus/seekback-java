@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Agenda;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Agenda;
  */
 public interface AgendaDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Agenda getOne(Integer id);
+  Agenda getOne(Integer id) throws ConnectionExcep;
 
-  List<Agenda> getAll();
+  List<Agenda> getAll() throws ConnectionExcep;
 
-  void update(Agenda obj);
+  void update(Agenda obj) throws ConnectionExcep;
 
-  void delete(Agenda obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Administrador;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Administrador;
  */
 public interface AdministradorDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Administrador getOne(Integer id);
+  Administrador getOne(Integer id) throws ConnectionExcep;
 
-  List<Administrador> getAll();
+  List<Administrador> getAll() throws ConnectionExcep;
 
-  void update(Administrador obj);
+  void update(Administrador obj) throws ConnectionExcep;
 
-  void delete(Administrador obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

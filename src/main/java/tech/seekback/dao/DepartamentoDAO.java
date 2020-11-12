@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Departamento;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Departamento;
  */
 public interface DepartamentoDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Departamento getOne(Integer id);
+  Departamento getOne(Integer id) throws ConnectionExcep;
 
-  List<Departamento> getAll();
+  List<Departamento> getAll() throws ConnectionExcep;
 
-  void update(Departamento obj);
+  void update(Departamento obj) throws ConnectionExcep;
 
-  void delete(Departamento obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Ciudad;
  */
 public interface CiudadDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Ciudad getOne(Integer id);
+  Ciudad getOne(Integer id) throws ConnectionExcep;
 
-  List<Ciudad> getAll();
+  List<Ciudad> getAll() throws ConnectionExcep;
 
-  void update(Ciudad obj);
+  void update(Ciudad obj) throws ConnectionExcep;
 
-  void delete(Ciudad obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

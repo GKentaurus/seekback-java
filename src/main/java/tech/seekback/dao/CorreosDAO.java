@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correos;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.Correos;
  */
 public interface CorreosDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  Correos getOne(Integer id);
+  Correos getOne(Integer id) throws ConnectionExcep;
 
-  List<Correos> getAll();
+  List<Correos> getAll() throws ConnectionExcep;
 
-  void update(Correos obj);
+  void update(Correos obj) throws ConnectionExcep;
 
-  void delete(Correos obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

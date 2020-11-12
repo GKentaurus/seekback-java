@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoDoc;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.TipoDoc;
  */
 public interface TipoDocDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  TipoDoc getOne(Integer id);
+  TipoDoc getOne(Integer id) throws ConnectionExcep;
 
-  List<TipoDoc> getAll();
+  List<TipoDoc> getAll() throws ConnectionExcep;
 
-  void update(TipoDoc obj);
+  void update(TipoDoc obj) throws ConnectionExcep;
 
-  void delete(TipoDoc obj);
+  void delete(Integer id) throws ConnectionExcep;
 }

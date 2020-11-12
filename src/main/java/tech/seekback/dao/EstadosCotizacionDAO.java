@@ -6,6 +6,7 @@
 package tech.seekback.dao;
 
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosCotizacion;
 
 /**
@@ -14,16 +15,14 @@ import tech.seekback.models.EstadosCotizacion;
  */
 public interface EstadosCotizacionDAO {
 
-  /**
-   * CRUD Definition
-   */
-  void create();
+  // CRUD Definition
+  void create() throws ConnectionExcep;
 
-  EstadosCotizacion getOne(Integer id);
+  EstadosCotizacion getOne(Integer id) throws ConnectionExcep;
 
-  List<EstadosCotizacion> getAll();
+  List<EstadosCotizacion> getAll() throws ConnectionExcep;
 
-  void update(EstadosCotizacion obj);
+  void update(EstadosCotizacion obj) throws ConnectionExcep;
 
-  void delete(EstadosCotizacion obj);
+  void delete(Integer id) throws ConnectionExcep;
 }
