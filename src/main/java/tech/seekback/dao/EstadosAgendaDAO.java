@@ -12,7 +12,7 @@ import tech.seekback.models.EstadosAgenda;
  *
  * @author camorenoc
  */
-public interface EstadoAgendaDAO {
+public interface EstadosAgendaDAO {
 
   /**
    * CRUD Definition
