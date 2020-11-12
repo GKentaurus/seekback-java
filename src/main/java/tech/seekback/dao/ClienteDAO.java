@@ -5,12 +5,25 @@
  */
 package tech.seekback.dao;
 
+import java.util.List;
+import tech.seekback.models.Cliente;
+
 /**
  *
  * @author camorenoc
  */
-public interface Usuario {
+public interface ClienteDAO {
+
   /**
    * CRUD Definition
    */
+  void create();
+
+  Cliente getOne(Integer id);
+
+  List<Cliente> getAll();
+
+  void update(Cliente obj);
+
+  void delete(Cliente obj);
 }
