@@ -7,32 +7,33 @@ package tech.seekback.models;
 
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author camorenoc
  */
 @Entity
-@Table(name="direcciones")
-public class Direcciones extends Timestamps{
-  
+@Table(name = "direcciones")
+public class Direcciones extends Timestamps {
+
   @Id
-  @Column(name="idDirecciones")
+  @Column(name = "idDirecciones")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDirecciones;
-  
+
   // TODO: Revisar relacion con la tabla "Ciudad"
   @Column(name = "idRegistro", nullable = false)
   private Usuario idRegistro;
-  
-  @Column(name = "pseudonimo", nullable = false)
+
+  @Column(name = "pseudonimo", length = 30, nullable = false)
   private String pseudonimo;
-  
-  @Column(name = "direccion", nullable = false)
+
+  @Column(name = "direccion", length = 100, nullable = false)
   private String direccion;
-  
-  @Column(name = "telefono", nullable = false)
+
+  @Column(name = "telefono", length = 20, nullable = false)
   private String telefono;
-  
+
   @Column(name = "localizacion", nullable = false)
   @ManyToOne
   private Ciudad localizacion;
@@ -89,16 +90,15 @@ public class Direcciones extends Timestamps{
 
   @Override
   public String toString() {
-    return "Direcciones{" 
-            + "idDirecciones = " + idDirecciones + ", " 
+    return "Direcciones{"
+            + "idDirecciones = " + idDirecciones + ", "
             + "idRegistro = " + idRegistro + ", "
             + "pseudonimo = " + pseudonimo + ", "
             + "direccion = " + direccion + ", "
             + "telefono = " + telefono + ", "
-            + "localizacion=" + localizacion 
+            + "localizacion=" + localizacion
             + super.toString()
             + '}';
   }
-  
-  
+
 }

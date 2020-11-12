@@ -7,39 +7,39 @@ package tech.seekback.models;
 
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
-@Table(name = "correos")
-public class Correos extends Timestamps {
+@Table(name = "telefonos")
+public class Telefonos extends Timestamps {
 
   @Id
-  @Column(name = "idCorreo")
+  @Column(name = "idTelefono")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCorreo;
-  
+  private Integer idTelefono;
+
   // TODO: Revisar relación con la tabla "Usuario"
   @Column(name = "idUsuario", nullable = false)
   @ManyToOne
   private Usuario idUsuario;
-  
-  @Column(name = "correoElectronico", nullable = false)
-  private String correoElectronico;
-  
+
+  @Column(name = "numeroTelefono", length = 20, nullable = false)
+  private String numeroTelefono;
+
   @Column(name = "esPrincipal", nullable = false)
-  private Integer esPrincipal;
-  
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
+  private boolean esPrincipal;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCorreo() {
-    return idCorreo;
+    return idTelefono;
   }
 
   public void setIdCorreo(Integer idCorreo) {
-    this.idCorreo = idCorreo;
+    this.idTelefono = idCorreo;
   }
 
   public Usuario getIdUsuario() {
@@ -50,33 +50,32 @@ public class Correos extends Timestamps {
     this.idUsuario = idUsuario;
   }
 
-  public String getCorreoElectronico() {
-    return correoElectronico;
+  public String getNumeroTelefono() {
+    return numeroTelefono;
   }
 
-  public void setCorreoElectronico(String correoElectronico) {
-    this.correoElectronico = correoElectronico;
+  public void setNumeroTelefono(String numeroTelefono) {
+    this.numeroTelefono = numeroTelefono;
   }
 
-  public Integer getEsPrincipal() {
+  public boolean getEsPrincipal() {
     return esPrincipal;
   }
 
-  public void setEsPrincipal(Integer esPrincipal) {
+  public void setEsPrincipal(boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
   }
   //</editor-fold>
 
-  
   @Override
-  public String toString(){
+  public String toString() {
     return "Correos("
-            + "id = " + idCorreo + ", "
+            + "id = " + idTelefono + ", "
             + "idUsuario = " + idUsuario + ", "
-            + "Correo = " + correoElectronico + ", "
+            + "Telefono = " + numeroTelefono + ", "
             + "Principal = " + esPrincipal + ", "
-            + super.toString() 
+            + super.toString()
             + ")";
-  }    
-  
+  }
+
 }

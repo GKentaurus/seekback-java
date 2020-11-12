@@ -26,7 +26,7 @@ public class Ciudad extends Timestamps {
   @ManyToOne
   private Departamento idDepartamento;
 
-  @Column(name = "nombreCiudad", length = 30, nullable = false)
+  @Column(name = "nombreCiudad", length = 50, nullable = false)
   private String nombreCiudad;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

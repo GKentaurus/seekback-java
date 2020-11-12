@@ -7,6 +7,7 @@ package tech.seekback.models;
 
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
@@ -19,21 +20,20 @@ public class Correos extends Timestamps {
   @Column(name = "idCorreo")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCorreo;
-  
+
   // TODO: Revisar relación con la tabla "Usuario"
   @Column(name = "idUsuario", nullable = false)
   @ManyToOne
   private Usuario idUsuario;
-  
-  @Column(name = "correoElectronico", nullable = false)
+
+  @Column(name = "correoElectronico", nullable = false, unique = true)
   private String correoElectronico;
-  
+
   @Column(name = "esPrincipal", nullable = false)
-  private Integer esPrincipal;
-  
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
+  private boolean esPrincipal;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCorreo() {
     return idCorreo;
   }
@@ -58,25 +58,24 @@ public class Correos extends Timestamps {
     this.correoElectronico = correoElectronico;
   }
 
-  public Integer getEsPrincipal() {
+  public boolean getEsPrincipal() {
     return esPrincipal;
   }
 
-  public void setEsPrincipal(Integer esPrincipal) {
+  public void setEsPrincipal(boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
   }
   //</editor-fold>
 
-  
   @Override
-  public String toString(){
+  public String toString() {
     return "Correos("
             + "id = " + idCorreo + ", "
             + "idUsuario = " + idUsuario + ", "
             + "Correo = " + correoElectronico + ", "
             + "Principal = " + esPrincipal + ", "
-            + super.toString() 
+            + super.toString()
             + ")";
-  }    
-  
+  }
+
 }

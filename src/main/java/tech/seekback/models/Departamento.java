@@ -1,25 +1,28 @@
 package tech.seekback.models;
+
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author veron
  */
 
 @Entity
-@Table(name="depatamento")
-public class Departamento extends Timestamps{
+@Table(name = "depatamento")
+public class Departamento extends Timestamps {
+
   @Id //esto es como la PK
-  @Column(name="idDepartamento")
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  @Column(name = "idDepartamento")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDepartamento;
-  
+
   // TODO: Revisar relación con la tabla "Pais"
-  @Column(name="idPais")
+  @Column(name = "idPais")
   @ManyToOne
   private Pais idPais;
-  
-  @Column(name="nombreDepartamento", length = 30, nullable = false)//not null
+
+  @Column(name = "nombreDepartamento", length = 50, nullable = false)//not null
   private String nombreDepartamento;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -46,15 +49,14 @@ public class Departamento extends Timestamps{
   public void setNombreDepartamento(String nombreDepartamento) {
     this.nombreDepartamento = nombreDepartamento;
   }
-  
+
   //</editor-fold>
-  
   @Override
-  public String toString(){
+  public String toString() {
     return "Departamento("
             + "id = " + idDepartamento + ", "
             + "nombreDepartamento = " + nombreDepartamento + ", "
-            + super.toString() 
+            + super.toString()
             + ")";
   }
 }
