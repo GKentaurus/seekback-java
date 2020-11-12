@@ -7,26 +7,25 @@ package tech.seekback.models;
 
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
-@Table(name = "estado_agenda")
-public class EstadoAgenda extends Timestamps {
+@Table(name = "estados_agenda")
+public class EstadosAgenda extends Timestamps {
 
   @Id
   @Column(name = "idEstado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idEstado;
-  
+
   @Column(name = "nombreEstado", nullable = false)
   private String nombreEstado;
-  
-  
+
   //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  
   public Integer getIdEstado() {
     return idEstado;
   }
@@ -42,17 +41,15 @@ public class EstadoAgenda extends Timestamps {
   public void setNombreEstado(String nombreEstado) {
     this.nombreEstado = nombreEstado;
   }
-  
+
   //</editor-fold>
-
-
   @Override
   public String toString() {
     return "EstadoAgenda("
             + "id = " + idEstado + ", "
             + "nombreEstado = " + nombreEstado + ", "
-            + super.toString() 
+            + super.toString()
             + ")";
-  }    
-  
+  }
+
 }

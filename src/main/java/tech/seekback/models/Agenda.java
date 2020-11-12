@@ -28,10 +28,10 @@ public class Agenda extends Timestamps{
   @Column(name="observaciones", nullable = false)
   private String observaciones;
   
-  // TODO: Revisar relación con la tabla "EstadoAgenda"
+  // TODO: Revisar relación con la tabla "EstadosAgenda"
   @Column(name = "idEstado", nullable = false)
   @ManyToOne
-  private EstadoAgenda idEstado; 
+  private EstadosAgenda idEstado; 
   
   // TODO: Revisar relación con la tabla "TipoServicio"
   @Column(name = "idTipoServicio", nullable = false)
@@ -80,11 +80,11 @@ public class Agenda extends Timestamps{
     this.observaciones = observaciones;
   }
 
-  public EstadoAgenda getIdEstado() {
+  public EstadosAgenda getIdEstado() {
     return idEstado;
   }
 
-  public void setIdEstado(EstadoAgenda idEstado) {
+  public void setIdEstado(EstadosAgenda idEstado) {
     this.idEstado = idEstado;
   }
 
