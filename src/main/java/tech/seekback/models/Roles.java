@@ -44,7 +44,7 @@ public class Roles extends Timestamps {
 
   @Override
   public String toString() {
-    return "Rol("
+    return "Roles("
             + "id = " + idRol + ", "
             + "nombreRol = " + nombreRol + ", "
             + super.toString() 

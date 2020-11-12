@@ -36,7 +36,7 @@ public class Pais extends Timestamps {
  
   @Override
   public String toString(){
-    return "Rol("
+    return "Pais("
             + "id = " + idPais + ", "
             + "nombrePais = " + nombrePais + ", "
             + super.toString() 

@@ -47,7 +47,7 @@ public class TipoDoc extends Timestamps {
   
   @Override
   public String toString(){
-    return "Rol("
+    return "TipoDoc("
             + "id = " + idTipoDoc + ", "
             + "nombreDocumento = " + nombreDocumento + ", "
             + super.toString() 

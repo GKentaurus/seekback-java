@@ -51,7 +51,7 @@ public class Departamento extends Timestamps{
   
   @Override
   public String toString(){
-    return "Rol("
+    return "Departamento("
             + "id = " + idDepartamento + ", "
             + "nombreDepartamento = " + nombreDepartamento + ", "
             + super.toString() 
