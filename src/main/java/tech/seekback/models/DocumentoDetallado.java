@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class DocumentoDetallado extends Timestamps {
 
   @Id
-  @Column(name = "idDetalle")
+  @Column(name = "idDetalle",nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDetalle;
   

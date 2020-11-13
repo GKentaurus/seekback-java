@@ -12,7 +12,7 @@ import tech.seekback.models.templates.Timestamps;
 public class Felicitacion extends Timestamps {
   
   @Id
-  @Column(name = "idFelicitacion")
+  @Column(name = "idFelicitacion",nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idFelicitacion;
   

@@ -17,7 +17,7 @@ import tech.seekback.models.templates.Timestamps;
 public class Ciudad extends Timestamps {
 
   @Id
-  @Column(name = "idCiudad")
+  @Column(name = "idCiudad",nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCiudad;
 

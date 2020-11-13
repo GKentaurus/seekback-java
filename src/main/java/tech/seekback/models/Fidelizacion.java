@@ -92,19 +92,19 @@ public class Fidelizacion extends Timestamps {
     this.IdSoporte = IdSoporte;
   }
 
-  public String getFechaInicio() {
+  public Date getFechaInicio() {
     return fechaInicio;
   }
 
-  public void setFechaInicio(String fechaInicio) {
+  public void setFechaInicio(Date fechaInicio) {
     this.fechaInicio = fechaInicio;
   }
 
-  public String getFechaFin() {
+  public Date getFechaFin() {
     return fechaFin;
   }
 
-  public void setFechaFin(String fechaFin) {
+  public void setFechaFin(Date fechaFin) {
     this.fechaFin = fechaFin;
   }
 

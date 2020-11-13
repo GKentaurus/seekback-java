@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Direcciones extends Timestamps{
   
   @Id
-  @Column(name="idDirecciones")
+  @Column(name="idDirecciones",nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDirecciones;
   

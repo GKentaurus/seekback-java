@@ -10,12 +10,12 @@ import javax.persistence.*;
 @Table(name="depatamento")
 public class Departamento extends Timestamps{
   @Id //esto es como la PK
-  @Column(name="idDepartamento")
+  @Column(name="idDepartamento",nullable = false)
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer idDepartamento;
   
   // TODO: Revisar relación con la tabla "Pais"
-  @Column(name="idPais")
+  @Column(name="idPais",nullable = false)
   @ManyToOne
   private Pais idPais;
   
