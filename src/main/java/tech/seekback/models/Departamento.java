@@ -22,7 +22,7 @@ public class Departamento extends Timestamps {
   @ManyToOne
   private Pais idPais;
 
-  @Column(name = "nombreDepartamento", length = 50, nullable = false)//not null
+  @Column(name = "nombreDepartamento", nullable = false, length = 50)//not null
   private String nombreDepartamento;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

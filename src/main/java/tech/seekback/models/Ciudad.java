@@ -17,7 +17,7 @@ import tech.seekback.models.templates.Timestamps;
 public class Ciudad extends Timestamps {
 
   @Id
-  @Column(name = "idCiudad",nullable = false)
+  @Column(name = "idCiudad")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCiudad;
 
@@ -26,7 +26,7 @@ public class Ciudad extends Timestamps {
   @ManyToOne
   private Departamento idDepartamento;
 
-  @Column(name = "nombreCiudad", length = 50, nullable = false)
+  @Column(name = "nombreCiudad", nullable = false, length = 50)
   private String nombreCiudad;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

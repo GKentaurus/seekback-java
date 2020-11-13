@@ -8,7 +8,7 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "TipoServicio")
+@Table(name = "tipo_servicio")
 public class TipoServicio extends Timestamps {
 
   @Id
@@ -16,7 +16,7 @@ public class TipoServicio extends Timestamps {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTipoServicio;
 
-  @Column(name = "nombreServicio", length = 255, nullable = false)
+  @Column(name = "nombreServicio", nullable = false, length = 30)
   private String nombreServicio;
 
 //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -39,9 +39,10 @@ public class TipoServicio extends Timestamps {
 
   @Override
   public String toString() {
-    return "TipoServicio{" + "idTipoServicio=" 
-            + idTipoServicio + ", nombreServicio=" 
-            + nombreServicio 
+    return "TipoServicio{"
+            + "idTipoServicio=" +  idTipoServicio 
+            + ", nombreServicio=" + nombreServicio 
+            + super.toString() 
             + '}';
   }
 

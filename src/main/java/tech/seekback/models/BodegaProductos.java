@@ -29,10 +29,9 @@ public class BodegaProductos extends Timestamps {
   // TODO: revisar relacion con la tabla  Producto
   @Column(name = "idProducto", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creacion de la tabla Producto
   private Producto idProducto; 
   
-  @Column(name = "cantidad", nullable = false)
+  @Column(name = "cantidad", nullable = false, length = 11)
   private Integer cantidad;
   
  //TODO:  se debe revisar al crear las clases pendientes

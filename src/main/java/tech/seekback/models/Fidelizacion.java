@@ -18,16 +18,20 @@ public class Fidelizacion extends Timestamps {
   private Integer idFidelizacion;
 
   @Column(name = "idCalificacion", nullable = false)
-  private Integer idCalificacion;
+  @ManyToOne
+  private Calificacion idCalificacion;
 
   @Column(name = "idFelicitacion", nullable = false)
-  private Integer idFelicitacion;
+  @ManyToOne
+  private Felicitacion idFelicitacion;
 
   @Column(name = "idPQRS", nullable = false)
-  private Integer idPQRS;
+  @ManyToOne
+  private PQRS idPQRS;
 
   @Column(name = "IdSoporte", nullable = false)
-  private Integer IdSoporte;
+  @ManyToOne
+  private SoporteTecnico IdSoporte;
 
   //TODO: como nombrar datos tipo Date
   @Column(name = "fechaInicio", nullable = false)
@@ -39,19 +43,23 @@ public class Fidelizacion extends Timestamps {
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date fechaFin;
 
-  @Column(name = "comentario", length = 255, nullable = false)
+  @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
   @Column(name = "idCliente", nullable = false)
-  private Integer idCliente;
+  @ManyToOne
+  private Cliente idCliente;
 
   @Column(name = "idAdministrador", nullable = false)
-  private Integer idAdministrador;
+  @ManyToOne
+  private Administrador idAdministrador;
 
   @Column(name = "idEmpleado", nullable = false)
-  private Integer idEmpleado;
+  @ManyToOne
+  private Empleado idEmpleado;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+
   public Integer getIdFidelizacion() {
     return idFidelizacion;
   }
@@ -60,35 +68,35 @@ public class Fidelizacion extends Timestamps {
     this.idFidelizacion = idFidelizacion;
   }
 
-  public Integer getIdCalificacion() {
+  public Calificacion getIdCalificacion() {
     return idCalificacion;
   }
 
-  public void setIdCalificacion(Integer idCalificacion) {
+  public void setIdCalificacion(Calificacion idCalificacion) {
     this.idCalificacion = idCalificacion;
   }
 
-  public Integer getIdFelicitacion() {
+  public Felicitacion getIdFelicitacion() {
     return idFelicitacion;
   }
 
-  public void setIdFelicitacion(Integer idFelicitacion) {
+  public void setIdFelicitacion(Felicitacion idFelicitacion) {
     this.idFelicitacion = idFelicitacion;
   }
 
-  public Integer getIdPQRS() {
+  public PQRS getIdPQRS() {
     return idPQRS;
   }
 
-  public void setIdPQRS(Integer idPQRS) {
+  public void setIdPQRS(PQRS idPQRS) {
     this.idPQRS = idPQRS;
   }
 
-  public Integer getIdSoporte() {
+  public SoporteTecnico getIdSoporte() {
     return IdSoporte;
   }
 
-  public void setIdSoporte(Integer IdSoporte) {
+  public void setIdSoporte(SoporteTecnico IdSoporte) {
     this.IdSoporte = IdSoporte;
   }
 
@@ -116,31 +124,32 @@ public class Fidelizacion extends Timestamps {
     this.comentario = comentario;
   }
 
-  public Integer getIdCliente() {
+  public Cliente getIdCliente() {
     return idCliente;
   }
 
-  public void setIdCliente(Integer idCliente) {
+  public void setIdCliente(Cliente idCliente) {
     this.idCliente = idCliente;
   }
 
-  public Integer getIdAdministrador() {
+  public Administrador getIdAdministrador() {
     return idAdministrador;
   }
 
-  public void setIdAdministrador(Integer idAdministrador) {
+  public void setIdAdministrador(Administrador idAdministrador) {
     this.idAdministrador = idAdministrador;
   }
 
-  public Integer getIdEmpleado() {
+  public Empleado getIdEmpleado() {
     return idEmpleado;
   }
 
-  public void setIdEmpleado(Integer idEmpleado) {
+  public void setIdEmpleado(Empleado idEmpleado) {
     this.idEmpleado = idEmpleado;
   }
   //</editor-fold> 
-
+  
+  
   @Override
   public String toString() {
     return "Fidelizacion("
@@ -155,6 +164,7 @@ public class Fidelizacion extends Timestamps {
             + "idClient = " + idCliente + ", "
             + "idAdministrador = " + idAdministrador + ", "
             + "idEmpleado = " + idEmpleado + ", "
+            + super.toString()
             + ")";
   }
 }

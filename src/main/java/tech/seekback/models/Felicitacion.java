@@ -12,11 +12,11 @@ import tech.seekback.models.templates.Timestamps;
 public class Felicitacion extends Timestamps {
   
   @Id
-  @Column(name = "idFelicitacion",nullable = false)
+  @Column(name = "idFelicitacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idFelicitacion;
   
-  @Column(name = "dirigidoA", length = 255, nullable = false)
+  @Column(name = "dirigidoA", nullable = false, length = 100)
   private String dirigidoA;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

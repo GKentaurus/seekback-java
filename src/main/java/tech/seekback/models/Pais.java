@@ -8,12 +8,13 @@ import javax.persistence.*;
 @Entity
 @Table(name="pais")
 public class Pais extends Timestamps {
+  
   @Id //esto es como la PK
   @Column(name="idPais")
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer idPais;
   
-  @Column(name="nombrePais", length = 30, nullable = false)
+  @Column(name="nombrePais", nullable = false, length = 30)
   private String nombrePais;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

@@ -21,7 +21,7 @@ public class Roles extends Timestamps {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idRol;
 
-  @Column(name = "nombreRol", length = 50, nullable = false)
+  @Column(name = "nombreRol", nullable = false, length = 50)
   private String nombreRol;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

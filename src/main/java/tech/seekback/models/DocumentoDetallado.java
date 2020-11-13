@@ -16,25 +16,25 @@ import javax.persistence.*;
 public class DocumentoDetallado extends Timestamps {
 
   @Id
-  @Column(name = "idDetalle",nullable = false)
+  @Column(name = "idDetalle")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDetalle;
   
-  @Column(name = "prefijoDocumento", nullable = false)
+  @Column(name = "prefijoDocumento", nullable = false, length = 10)
   private String prefijoDocumento;
   
-  @Column(name = "consecutivo", nullable = false)
+  @Column(name = "consecutivo", nullable = false, length = 11)
   private Integer consecutivo;
   
   // TODO: Revisar relación con la tabla "Producto"
   @Column(name = "idProducto", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creaciond de clase Producto
   private Producto idProducto;
   
-  @Column(name = "cantidad", nullable = false)
+  @Column(name = "cantidad", nullable = false, length = 11)
   private Integer cantidad;
   
+  // TODO: establecer limete dato double
   @Column(name = "valorUnitario", nullable = false)
   private Double valorUnitario;
   

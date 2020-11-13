@@ -16,11 +16,11 @@ import javax.persistence.*;
 public class CategoriasProducto extends Timestamps {
 
   @Id
-  @Column(name = "idCategoria",nullable = false)
+  @Column(name = "idCategoria")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCategoria;
   
-  @Column(name = "nombreCategoria", nullable = false)
+  @Column(name = "nombreCategoria", nullable = false, length = 50)
   private String nombreCategoria;
   
   

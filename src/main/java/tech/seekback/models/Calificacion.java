@@ -16,17 +16,16 @@ import javax.persistence.*;
 public class Calificacion extends Timestamps {
 
   @Id
-  @Column(name = "idCalificacion", nullable = false)
+  @Column(name = "idCalificacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCalificacion;
 
   // TODO: revisar relacion con la tabla  Producto
   @Column(name = "idProducto", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creacion de la tabla Producto
   private Producto idProducto; 
   
-  @Column(name = "calificacion", nullable = false)
+  @Column(name = "calificacion", nullable = false, length = 1)
   private Integer calificacion; 
   
  //TODO:  se debe revisar al crear las clases pendientes

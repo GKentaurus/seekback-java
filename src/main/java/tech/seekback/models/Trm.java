@@ -9,7 +9,7 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "Trm")
+@Table(name = "trm")
 public class TRM extends Timestamps {
 
   @Id
@@ -18,7 +18,8 @@ public class TRM extends Timestamps {
   private Integer idTrm;
 
   @Column(name = "idDivisa", nullable = false)
-  private Integer idDivisa;
+  @ManyToOne
+  private Divisas idDivisa;
 
   @Column(name = "fechaTRM", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
@@ -36,11 +37,11 @@ public class TRM extends Timestamps {
     this.idTrm = idTrm;
   }
 
-  public Integer getIdDivisa() {
+  public Divisas getIdDivisa() {
     return idDivisa;
   }
 
-  public void setIdDivisa(Integer idDivisa) {
+  public void setIdDivisa(Divisas idDivisa) {
     this.idDivisa = idDivisa;
   }
 
@@ -67,6 +68,7 @@ public class TRM extends Timestamps {
             + ", idDivisa=" + idDivisa 
             + ", fechaTRM=" + fechaTRM 
             + ", tasaCambio=" + tasaCambio 
+            + super.toString()
             + '}';
   }
 }

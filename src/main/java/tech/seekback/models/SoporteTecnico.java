@@ -1,4 +1,5 @@
 package tech.seekback.models;
+
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 /**
@@ -6,7 +7,7 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "SoporteTecnico")
+@Table(name = "soporte_tecnico")
 public class SoporteTecnico extends Timestamps{
 
   @Id
@@ -15,10 +16,12 @@ public class SoporteTecnico extends Timestamps{
   private Integer idSoporteTecnico;
 
   @Column(name = "idProducto",nullable = false)
-  private Integer idProducto;
+  @ManyToOne
+  private Producto idProducto;
 
   @Column(name = "idEstado",nullable = false)
-  private String idEstado;
+  @ManyToOne
+  private EstadosFidelizacion idEstado;
 
   
 //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -30,19 +33,19 @@ public class SoporteTecnico extends Timestamps{
     this.idSoporteTecnico = idSoporteTecnico;
   }
 
-  public Integer getIdProducto() {
+  public Producto getIdProducto() {
     return idProducto;
   }
 
-  public void setIdProducto(Integer idProducto) {
+  public void setIdProducto(Producto idProducto) {
     this.idProducto = idProducto;
   }
 
-  public String getIdEstado() {
+  public EstadosFidelizacion getIdEstado() {
     return idEstado;
   }
 
-  public void setIdEstado(String idEstado) {
+  public void setIdEstado(EstadosFidelizacion idEstado) {
     this.idEstado = idEstado;
   }
  //</editor-fold>   
@@ -53,6 +56,7 @@ public class SoporteTecnico extends Timestamps{
             + "idSoporteTecnico=" + idSoporteTecnico 
             + ", idProducto=" + idProducto 
             + ", idEstado=" + idEstado 
+            + super.toString() 
             + '}';
   }
 }

@@ -21,17 +21,18 @@ public class Direcciones extends Timestamps {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDirecciones;
 
-  // TODO: Revisar relacion con la tabla "Ciudad"
+  // TODO: Revisar relacion con la tabla "Usuario"
   @Column(name = "idRegistro", nullable = false)
+  @ManyToOne
   private Usuario idRegistro;
 
-  @Column(name = "pseudonimo", length = 30, nullable = false)
+  @Column(name = "pseudonimo", nullable = false, length = 30)
   private String pseudonimo;
 
-  @Column(name = "direccion", length = 100, nullable = false)
+  @Column(name = "direccion", nullable = false, length = 100)
   private String direccion;
 
-  @Column(name = "telefono", length = 20, nullable = false)
+  @Column(name = "telefono", nullable = false, length = 20)
   private String telefono;
 
   @Column(name = "localizacion", nullable = false)

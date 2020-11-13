@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Correos extends Timestamps {
 
   @Id
-  @Column(name = "idCorreo",nullable = false)
+  @Column(name = "idCorreo")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCorreo;
 
@@ -26,7 +26,7 @@ public class Correos extends Timestamps {
   @ManyToOne
   private Usuario idUsuario;
 
-  @Column(name = "correoElectronico", nullable = false, unique = true)
+  @Column(name = "correoElectronico", nullable = false, unique = true, length = 255)
   private String correoElectronico;
 
   @Column(name = "esPrincipal", nullable = false)

@@ -22,10 +22,9 @@ public class Cliente extends Timestamps {
   
   @Column(name = "idUsuario", nullable = false)
   @ManyToOne
-  private Integer idUsuario;
+  private Usuario idUsuario;
   
   
- //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
 
   public Integer getIdCliente() {
@@ -36,11 +35,11 @@ public class Cliente extends Timestamps {
     this.idCliente = idCliente;
   }
 
-  public Integer getIdUsuario() {
+  public Usuario getIdUsuario() {
     return idUsuario;
   }
 
-  public void setIdUsuario(Integer idUsuario) {
+  public void setIdUsuario(Usuario idUsuario) {
     this.idUsuario = idUsuario;
   }
   //</editor-fold>

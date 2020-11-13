@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Agenda extends Timestamps{
 
   @Id
-  @Column(name="idAgenda",nullable = false)
+  @Column(name="idAgenda")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idAgenda;
   
@@ -25,7 +25,7 @@ public class Agenda extends Timestamps{
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date fecha;
   
-  @Column(name="observaciones", nullable = false)
+  @Column(name="observaciones", nullable = false, length = 255)
   private String observaciones;
   
   // TODO: Revisar relación con la tabla "EstadosAgenda"
@@ -36,7 +36,6 @@ public class Agenda extends Timestamps{
   // TODO: Revisar relación con la tabla "TipoServicio"
   @Column(name = "idTipoServicio", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creacion de clase TipoServicio
   private TipoServicio idTipoServicio; 
   
   // TODO: Revisar relación con la tabla "Usuario"

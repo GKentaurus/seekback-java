@@ -25,22 +25,23 @@ public class Proveedor extends Timestamps {
   @ManyToOne
   private TipoDoc tipoDoc;
 
-  @Column(name = "numeroDoc", length = 50, nullable = false)
+  @Column(name = "numeroDoc", nullable = false, length = 50)
   private String numeroDoc;
 
-  @Column(name = "digitoVerif", length = 1, nullable = false)
+  @Column(name = "digitoVerif", nullable = false, length = 1)
   private String digitoVerif;
 
-  @Column(name = "razonSocial", length = 100, nullable = false)
+  @Column(name = "razonSocial", nullable = false, length = 100)
   private String razonSocial;
 
-  @Column(name = "telefono", length = 20, nullable = false)
+  @Column(name = "telefono", nullable = false, length = 20)
   private String telefono;
 
-  @Column(name = "email", nullable = false)
+  @Column(name = "email", nullable = false, length = 255)
   private String email;
 
   @Column(name = "idCliente", nullable = false)
+  @ManyToOne
   private Cliente idCliente;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -119,8 +120,8 @@ public class Proveedor extends Timestamps {
             + "razonSocial = " + razonSocial + ", "
             + "telefono = " + telefono + ", "
             + "email = " + email + ", "
-            + super.toString()
             + "idCliente = " + idCliente
+            + super.toString()
             + '}';
   }
 }

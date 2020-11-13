@@ -17,11 +17,11 @@ import javax.persistence.*;
 public class EstadosCotizacion extends Timestamps {
 
   @Id
-  @Column(name = "idEstado",nullable = false)
+  @Column(name = "idEstado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idEstadoCotizacion;
 
-  @Column(name = "nombreEstado", nullable = false)
+  @Column(name = "nombreEstado", nullable = false, length = 30)
   private String nombreEstado;
 
   //TODO:  se debe revisar al crear las clases pendientes

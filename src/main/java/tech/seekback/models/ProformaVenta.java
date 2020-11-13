@@ -7,7 +7,7 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "ProformaVenta")
+@Table(name = "proforma_venta")
 public class ProformaVenta extends Timestamps{
  
   @Id
@@ -15,14 +15,15 @@ public class ProformaVenta extends Timestamps{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idProforma;
   
-  @Column(name="cotizacionAsociada")
-  private Integer cotizacionAsociada;
+  @Column(name="cotizacionAsociada", nullable = false)
+  @ManyToOne
+  private Cotizacion cotizacionAsociada;
   
-  @Column(name="fecha")
+  @Column(name="fecha", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date fecha;
   
-  @Column(name="vencimiento")
+  @Column(name="vencimiento", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date vencimiento;
   
@@ -35,11 +36,11 @@ public class ProformaVenta extends Timestamps{
     this.idProforma = idProforma;
   }
 
-  public Integer getCotizacionAsociada() {
+  public Cotizacion getCotizacionAsociada() {
     return cotizacionAsociada;
   }
 
-  public void setCotizacionAsociada(Integer cotizacionAsociada) {
+  public void setCotizacionAsociada(Cotizacion cotizacionAsociada) {
     this.cotizacionAsociada = cotizacionAsociada;
   }
 
@@ -67,6 +68,7 @@ public class ProformaVenta extends Timestamps{
             + ", cotizacionAsociada=" + cotizacionAsociada 
             + ", fecha=" + fecha 
             + ", vencimiento=" + vencimiento 
+            + super.toString()
             + '}';
   }
 }

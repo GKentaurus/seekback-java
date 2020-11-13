@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Empleado extends Timestamps {
 
   @Id
-  @Column(name = "idEmpleado",nullable = false)
+  @Column(name = "idEmpleado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idEmpleado;
   

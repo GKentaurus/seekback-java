@@ -13,10 +13,10 @@ public class TipoDoc extends Timestamps {
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer idTipoDoc;
   
-  @Column(name="sigla", length = 5, nullable = false)//relacion con las columnas
+  @Column(name="sigla", nullable = false, length = 5)//relacion con las columnas
   private String sigla;
   
-  @Column(name="nombreDocumento", length = 20, nullable = false)
+  @Column(name="nombreDocumento", nullable = false, length = 10)
   private String nombreDocumento;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

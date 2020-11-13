@@ -13,15 +13,15 @@ import javax.persistence.*;
  * @author danny
  */
 @Entity
-@Table(name = "correos")
+@Table(name = "cotizacion")
 public class Cotizacion extends Timestamps {
 
   @Id
-  @Column(name = "idCotizacion",nullable = false)
+  @Column(name = "idCotizacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCotizacion;
   
-  @Column(name = "requerimiento", nullable = false)
+  @Column(name = "requerimiento", nullable = false, length = 255)
   private String requerimiento;
   
   @Column(name = "fecha", nullable = false)
@@ -35,7 +35,6 @@ public class Cotizacion extends Timestamps {
   // TODO: Revisar relación con la tabla "TRM"
   @Column(name = "idTRM", nullable = false)
   @ManyToOne
-  // FIXME: a espera de creaciond de clase TRM
   private TRM idTRM;
   
   // TODO: Revisar relación con la tabla "EstadosCotizacion"

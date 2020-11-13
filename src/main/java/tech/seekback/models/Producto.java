@@ -8,7 +8,7 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "Producto")
+@Table(name = "producto")
 public class Producto extends Timestamps {
 
   @Id
@@ -16,26 +16,76 @@ public class Producto extends Timestamps {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idProducto;
 
-  @Column(name = "modeloProducto",length = 255, nullable = false)
+  @Column(name = "modeloProducto", nullable = false,length = 100)
   private String modeloProducto;
 
-  @Column(name = "descripcion",length = 255, nullable = false)
+  @Column(name = "descripcion", nullable = false, length = 255)
   private String descripcion;
   
-  @Column(name = "precioVenta",nullable = false)
+  @Column(name = "precioVenta",nullable = false, length = 11)
   private Double precioVenta;
   
   @Column(name = "idCategoria", nullable = false)
-  private Integer idCategoria;
+  @ManyToOne
+  private CategoriasProducto idCategoria;
   
-  @Column(name = "estado",nullable = false)
-  private Integer estado;
-    
-//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  @Column(name = "estado", nullable = false)
+  private Boolean estado;
+
   
-  //</editor-fold>  
+//<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
+  public Integer getIdProducto() {
+    return idProducto;
+  }
+
+  public void setIdProducto(Integer idProducto) {
+    this.idProducto = idProducto;
+  }
+
+  public String getModeloProducto() {
+    return modeloProducto;
+  }
+
+  public void setModeloProducto(String modeloProducto) {
+    this.modeloProducto = modeloProducto;
+  }
+
+  public String getDescripcion() {
+    return descripcion;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public Double getPrecioVenta() {
+    return precioVenta;
+  }
+
+  public void setPrecioVenta(Double precioVenta) {
+    this.precioVenta = precioVenta;
+  }
+
+  public CategoriasProducto getIdCategoria() {
+    return idCategoria;
+  }
+
+  public void setIdCategoria(CategoriasProducto idCategoria) {
+    this.idCategoria = idCategoria;
+  }
+
+  public Boolean getEstado() {
+    return estado;
+  }
+
+  public void setEstado(Boolean estado) {
+    this.estado = estado;
+  }
+
+  //</editor-fold>
   
-   @Override
+  
+  @Override
   public String toString() {
     return "Producto("
             + "id = " + idProducto + ", "
@@ -44,6 +94,7 @@ public class Producto extends Timestamps {
             + "precioVenta = " + precioVenta + ", "
             + "idCategoria = " + idCategoria + ", "
             + "estado = " + estado + ", "
+            + super.toString()
             + ")";
   }
 }

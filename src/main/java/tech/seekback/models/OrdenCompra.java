@@ -9,7 +9,7 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "OrdenCompra")
+@Table(name = "orden_compra")
 public class OrdenCompra extends Timestamps {
 
   @Id
@@ -18,24 +18,26 @@ public class OrdenCompra extends Timestamps {
   private Integer idOrdenCompra;
 
   @Column(name = "idProveedor", nullable = false)
-  private Integer idProveedor;
+  @ManyToOne
+  private Proveedor idProveedor;
 
   @Column(name = "fecha", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date fecha;
 
-  @Column(name = "docAsociado", length = 255, nullable = false)
+  @Column(name = "docAsociado", nullable = false, length = 255)
   private String docAsociado;
   
   @Column(name = "idTrm",  nullable = false)
-  private Integer idTrm;
+  @ManyToOne
+  private TRM idTrm;
   
-  //TODO: este valor es un double y hay que?
-  @Column(name = "factorImport",  nullable = false)
+  @Column(name = "factorImport",  nullable = false, length = 11)
   private Double factorImport;
   
   @Column(name = "idEmpleado", nullable = false)
-  private Integer idEmpleado;
+  @ManyToOne
+  private Empleado idEmpleado;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters"> 
   public Integer getidOrdenCompra() {
@@ -46,11 +48,11 @@ public class OrdenCompra extends Timestamps {
     this.idOrdenCompra = idOrdenCompra;
   }
 
-  public Integer getIdproveedor() {
+  public Proveedor getIdproveedor() {
     return idProveedor;
   }
 
-  public void setIdproveedor(Integer idProveedor) {
+  public void setIdproveedor(Proveedor idProveedor) {
     this.idProveedor = idProveedor;
   }
 
@@ -70,11 +72,11 @@ public class OrdenCompra extends Timestamps {
     this.docAsociado = docAsociado;
   }
 
-  public Integer getIdTrm() {
+  public TRM getIdTrm() {
     return idTrm;
   }
 
-  public void setIdTrm(Integer idTrm) {
+  public void setIdTrm(TRM idTrm) {
     this.idTrm = idTrm;
   }
 
@@ -86,14 +88,16 @@ public class OrdenCompra extends Timestamps {
     this.factorImport = factorImport;
   }
 
-  public Integer getIdEmpleado() {
+  public Empleado getIdEmpleado() {
     return idEmpleado;
   }
 
-  public void setIdEmpleado(Integer idEmpleado) {
+  public void setIdEmpleado(Empleado idEmpleado) {
     this.idEmpleado = idEmpleado;
   }
    //</editor-fold> 
+  
+  
     @Override
   public String toString() {
     return "OrdenCompra("
@@ -103,6 +107,7 @@ public class OrdenCompra extends Timestamps {
             + "idTrm = " + idTrm + ", "
             + "factorImport = " + factorImport + ", "
             + "idEmpleado = " + idEmpleado + ", "
+            + super.toString()
             + ")";
   }
   

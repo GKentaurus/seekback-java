@@ -6,6 +6,7 @@
 package tech.seekback.models;
 
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "pqrs")
-public class PQRS {
+public class PQRS  extends Timestamps {
   
   @Id
   @Column(name = "idPQRS")
@@ -24,10 +25,11 @@ public class PQRS {
   @ManyToOne
   private TipoSolicitud idTipoSolicitud;
   
-  @Column(name = "area")
+  @Column(name = "area", nullable = false, length = 100)
   private String area;
   
-  @Column(name = "idEstado")
+  @Column(name = "idEstado", nullable = false)
+  @ManyToOne
   private EstadosFidelizacion idEstado;
   
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

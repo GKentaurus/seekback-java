@@ -17,14 +17,14 @@ import javax.persistence.*;
 public class Divisas extends Timestamps {
 
   @Id
-  @Column(name = "idDivisa",nullable = false)
+  @Column(name = "idDivisa")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDivisa;
 
-  @Column(name = "nombre", length = 20, nullable = false)
+  @Column(name = "nombre", nullable = false, length = 20)
   private String nombre;
 
-  @Column(name = "sigla", length = 4, nullable = false, unique = true)
+  @Column(name = "sigla", nullable = false, unique = true, length = 4)
   private String sigla;
 
   //TODO:  se debe revisar al crear las clases pendientes

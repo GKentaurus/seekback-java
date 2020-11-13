@@ -21,27 +21,28 @@ public class Usuario extends Timestamps {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idUsuario;
 
-  @Column(name = "pNombre", length = 50, nullable = false)
+  @Column(name = "pNombre", nullable = false, length = 50)
   private String pNombre;
 
-  @Column(name = "sNombres", length = 50, nullable = true)
+  @Column(name = "sNombres", nullable = true, length = 50)
   private String sNombres;
 
-  @Column(name = "pApellido", length = 50, nullable = false)
+  @Column(name = "pApellido", nullable = false, length = 50)
   private String pApellido;
 
-  @Column(name = "sApellido", length = 50, nullable = true)
+  @Column(name = "sApellido", nullable = true, length = 50)
   private String sApellido;
 
   // TODO: Revisar relación con la tabla "tipo_doc"
   @Column(name = "tipoDoc", nullable = false)
+  @ManyToOne
   private TipoDoc tipoDoc;
 
-  @Column(name = "numeroDoc", length = 50, nullable = false)
+  @Column(name = "numeroDoc", nullable = false, length = 50)
   private String numeroDoc;
 
   // Campo VARCHAR sin límite (String largo al momento de encriptar)
-  @Column(name = "contrasena", nullable = false)
+  @Column(name = "contrasena", nullable = false, length = 255)
   private String contrasena;
 
   // TODO: Revisar relación con la tabla "roles"
