@@ -8,7 +8,6 @@ package tech.seekback.dao;
 import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.ProformaVenta;
-// FIXME: crear modelo ProformaVentaDAO
 
 /**
  *

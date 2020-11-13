@@ -8,7 +8,6 @@ package tech.seekback.dao;
 import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
-// FIXME: Crear modelo SoporteTecnico
 
 /**
  *

@@ -8,7 +8,6 @@ package tech.seekback.dao;
 import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.OrdenCompra;
-// FIXME: Crear modelo OrdenCompra
 
 /**
  *
