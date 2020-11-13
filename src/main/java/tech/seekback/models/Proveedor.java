@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tech.seekback.models;
 
 import javax.persistence.*;
@@ -5,10 +10,10 @@ import tech.seekback.models.templates.Timestamps;
 
 /**
  *
- * @author veron
+ * @author camorenoc
  */
 @Entity
-@Table(name = "Proveedor")
+@Table(name = "proveedor")
 public class Proveedor extends Timestamps {
 
   @Id
@@ -16,28 +21,29 @@ public class Proveedor extends Timestamps {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idProveedor;
 
-  @Column(name = "tipoDoc", length = 255, nullable = false)
-  private Integer tipoDoc;
+  @Column(name = "tipoDoc", nullable = false)
+  @ManyToOne
+  private TipoDoc tipoDoc;
 
-  @Column(name = "numeroDoc", length = 255, nullable = false)
+  @Column(name = "numeroDoc", length = 50, nullable = false)
   private String numeroDoc;
 
-  @Column(name = "digitoVerif", length = 255, nullable = false)
+  @Column(name = "digitoVerif", length = 1, nullable = false)
   private String digitoVerif;
 
-  @Column(name = "razonSocial", length = 255, nullable = false)
+  @Column(name = "razonSocial", length = 100, nullable = false)
   private String razonSocial;
 
-  @Column(name = "telefono", length = 255, nullable = false)
+  @Column(name = "telefono", length = 20, nullable = false)
   private String telefono;
 
   @Column(name = "email", nullable = false)
   private String email;
 
   @Column(name = "idCliente", nullable = false)
-  private String idCliente;
+  private Cliente idCliente;
 
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters"> 
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdProveedor() {
     return idProveedor;
   }
@@ -46,11 +52,11 @@ public class Proveedor extends Timestamps {
     this.idProveedor = idProveedor;
   }
 
-  public Integer getTipoDoc() {
+  public TipoDoc getTipoDoc() {
     return tipoDoc;
   }
 
-  public void setTipoDoc(Integer tipoDoc) {
+  public void setTipoDoc(TipoDoc tipoDoc) {
     this.tipoDoc = tipoDoc;
   }
 
@@ -94,26 +100,27 @@ public class Proveedor extends Timestamps {
     this.email = email;
   }
 
-  public String getIdCliente() {
+  public Cliente getIdCliente() {
     return idCliente;
   }
 
-  public void setIdCliente(String idCliente) {
+  public void setIdCliente(Cliente idCliente) {
     this.idCliente = idCliente;
   }
-  //</editor-fold> 
+  //</editor-fold>
 
   @Override
   public String toString() {
-    return "Proveedor{" + "idProveedor=" + idProveedor 
-            + ", tipoDoc=" + tipoDoc 
-            + ", numeroDoc=" + numeroDoc 
-            + ", digitoVerif=" + digitoVerif 
-            + ", razonSocial=" + razonSocial 
-            + ", telefono=" + telefono 
-            + ", email=" + email 
-            + ", idCliente=" + idCliente 
+    return "Proveedor{"
+            + "idProveedor = " + idProveedor + ", "
+            + "tipoDoc = " + tipoDoc + ", "
+            + "numeroDoc = " + numeroDoc + ", "
+            + "digitoVerif = " + digitoVerif + ", "
+            + "razonSocial = " + razonSocial + ", "
+            + "telefono = " + telefono + ", "
+            + "email = " + email + ", "
+            + super.toString()
+            + "idCliente = " + idCliente
             + '}';
   }
-
 }

@@ -15,39 +15,40 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "usuario")
 public class Usuario extends Timestamps {
-  
+
   @Id
   @Column(name = "idUsuario")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idUsuario;
-  
+
   @Column(name = "pNombre", length = 50, nullable = false)
   private String pNombre;
-  
+
   @Column(name = "sNombres", length = 50, nullable = true)
   private String sNombres;
-  
+
   @Column(name = "pApellido", length = 50, nullable = false)
   private String pApellido;
-  
+
   @Column(name = "sApellido", length = 50, nullable = true)
   private String sApellido;
-  
+
   // TODO: Revisar relación con la tabla "tipo_doc"
   @Column(name = "tipoDoc", nullable = false)
   private TipoDoc tipoDoc;
-  
+
   @Column(name = "numeroDoc", length = 50, nullable = false)
   private String numeroDoc;
-  
-  @Column(name = "contrasena", length = 50, nullable = false)
+
+  // Campo VARCHAR sin límite (String largo al momento de encriptar)
+  @Column(name = "contrasena", nullable = false)
   private String contrasena;
-  
+
   // TODO: Revisar relación con la tabla "roles"
   @Column(name = "rol", nullable = false)
   @ManyToOne
   private Roles rol;
-  
+
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdUsuario() {
     return idUsuario;
@@ -116,7 +117,7 @@ public class Usuario extends Timestamps {
 
   @Override
   public String toString() {
-    return "Usuario{" 
+    return "Usuario{"
             + "idUsuario = " + idUsuario + ", "
             + "pNombre = " + pNombre + ", "
             + "sNombres = " + sNombres + ", "
@@ -125,7 +126,7 @@ public class Usuario extends Timestamps {
             + "tipoDoc = " + tipoDoc + ", "
             + "numeroDoc = " + numeroDoc + ", "
             + super.toString()
-            + "rol = " + rol 
+            + "rol = " + rol
             + '}';
-  }  
+  }
 }

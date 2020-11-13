@@ -7,6 +7,7 @@ package tech.seekback.models;
 
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
@@ -19,17 +20,15 @@ public class Divisas extends Timestamps {
   @Column(name = "idDivisa",nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDivisa;
-  
-  @Column(name = "nombre", nullable = false)
-  private String nombre;
-  
-  @Column(name = "sigla", nullable = false)
-  private String sigla;
-  
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
 
+  @Column(name = "nombre", length = 20, nullable = false)
+  private String nombre;
+
+  @Column(name = "sigla", length = 4, nullable = false, unique = true)
+  private String sigla;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdDivisa() {
     return idDivisa;
   }
@@ -54,15 +53,15 @@ public class Divisas extends Timestamps {
     this.sigla = sigla;
   }
   //</editor-fold>
-  
+
   @Override
-  public String toString(){
+  public String toString() {
     return "Cotizacion("
             + "id = " + idDivisa + ", "
             + "Nombre = " + nombre + ", "
             + "Sigla = " + sigla + ", "
-            + super.toString() 
+            + super.toString()
             + ")";
-  }    
-  
+  }
+
 }
