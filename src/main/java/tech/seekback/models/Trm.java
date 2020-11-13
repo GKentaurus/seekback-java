@@ -10,7 +10,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "Trm")
-public class Trm extends Timestamps {
+public class TRM extends Timestamps {
 
   @Id
   @Column(name = "idTrm")
