@@ -1,5 +1,6 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
 
@@ -7,10 +8,9 @@ import javax.persistence.*;
  *
  * @author veron
  */
-
 @Entity
 @Table(name = "depatamento")
-public class Departamento extends Timestamps {
+public class Departamento implements Serializable {
 
   @Id //esto es como la PK
   @Column(name = "idDepartamento")
@@ -18,12 +18,15 @@ public class Departamento extends Timestamps {
   private Integer idDepartamento;
 
   // TODO: Revisar relación con la tabla "Pais"
-  @Column(name="idPais",nullable = false)
+  @Column(name = "idPais", nullable = false)
   @ManyToOne
   private Pais idPais;
 
   @Column(name = "nombreDepartamento", nullable = false, length = 50)//not null
   private String nombreDepartamento;
+
+  @Embedded
+  private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdDepartamento() {
@@ -50,13 +53,21 @@ public class Departamento extends Timestamps {
     this.nombreDepartamento = nombreDepartamento;
   }
 
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
+
   @Override
   public String toString() {
     return "Departamento("
             + "id = " + idDepartamento + ", "
             + "nombreDepartamento = " + nombreDepartamento + ", "
-            + super.toString()
+            + timestamps.toString()
             + ")";
   }
 }

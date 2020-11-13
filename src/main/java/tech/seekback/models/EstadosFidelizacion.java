@@ -5,28 +5,31 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
 @Table(name = "estados_fidelizacion")
-public class EstadosFidelizacion extends Timestamps {
+public class EstadosFidelizacion implements Serializable {
 
   @Id
   @Column(name = "idEstado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idEstado;
-  
+
   @Column(name = "nombreEstado", nullable = false, length = 30)
   private String nombreEstado;
-  
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
 
+  @Embedded
+  private Timestamps timestamps;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdEstado() {
     return idEstado;
   }
@@ -42,16 +45,23 @@ public class EstadosFidelizacion extends Timestamps {
   public void setNombreEstado(String nombreEstado) {
     this.nombreEstado = nombreEstado;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
-  
+
   @Override
-  public String toString(){
+  public String toString() {
     return "EstadosFidelizacion("
             + "id = " + idEstado + ", "
             + "nombreEstado = " + nombreEstado + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }    
-  
+  }
+
 }

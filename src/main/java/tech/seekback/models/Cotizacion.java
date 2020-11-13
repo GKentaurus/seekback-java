@@ -5,57 +5,60 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
 @Table(name = "cotizacion")
-public class Cotizacion extends Timestamps {
+public class Cotizacion implements Serializable {
 
   @Id
   @Column(name = "idCotizacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCotizacion;
-  
+
   @Column(name = "requerimiento", nullable = false, length = 255)
   private String requerimiento;
-  
+
   @Column(name = "fecha", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date fecha;
-  
+
   @Column(name = "vencimiento", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date vencimiento;
-  
+
   // TODO: Revisar relación con la tabla "TRM"
   @Column(name = "idTRM", nullable = false)
   @ManyToOne
   private TRM idTRM;
-  
+
   // TODO: Revisar relación con la tabla "EstadosCotizacion"
   @Column(name = "idEstado", nullable = false)
   @ManyToOne
   private EstadosCotizacion idEstado;
-  
+
   // TODO: Revisar relación con la tabla "Empleado"
   @Column(name = "idEmpleado", nullable = false)
   @ManyToOne
   private Empleado idEmpleado;
-  
+
   // TODO: Revisar relación con la tabla "Cliente"
   @Column(name = "idCliente", nullable = false)
   @ManyToOne
   private Cliente idCliente;
-  
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
 
+  @Embedded
+  private Timestamps timestamps;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCotizacion() {
     return idCotizacion;
   }
@@ -119,11 +122,18 @@ public class Cotizacion extends Timestamps {
   public void setIdCliente(Cliente idCliente) {
     this.idCliente = idCliente;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
-  
+
   @Override
-  public String toString(){
+  public String toString() {
     return "Cotizacion("
             + "id = " + idCotizacion + ", "
             + "Requerimiento = " + requerimiento + ", "
@@ -133,8 +143,8 @@ public class Cotizacion extends Timestamps {
             + "idEstado = " + idEstado + ", "
             + "idEmpleado = " + idEmpleado + ", "
             + "idCliente = " + idCliente + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }    
-  
+  }
+
 }

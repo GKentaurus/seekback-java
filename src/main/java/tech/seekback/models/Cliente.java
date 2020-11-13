@@ -5,28 +5,31 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
 @Table(name = "cliente")
-public class Cliente extends Timestamps {
+public class Cliente implements Serializable {
 
   @Id
   @Column(name = "idCliente")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCliente;
-  
+
   @Column(name = "idUsuario", nullable = false)
   @ManyToOne
   private Usuario idUsuario;
-  
-  
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
 
+  @Embedded
+  private Timestamps timestamps;
+
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCliente() {
     return idCliente;
   }
@@ -42,16 +45,23 @@ public class Cliente extends Timestamps {
   public void setIdUsuario(Usuario idUsuario) {
     this.idUsuario = idUsuario;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
-  
+
   @Override
-  public String toString(){
+  public String toString() {
     return "CategoriasProducto("
             + "id = " + idCliente + ", "
             + "idUsuario = " + idUsuario + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }  
-  
+  }
+
 }

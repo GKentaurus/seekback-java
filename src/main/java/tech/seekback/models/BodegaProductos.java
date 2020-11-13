@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
 
@@ -14,29 +15,31 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "bodega_productos")
-public class BodegaProductos extends Timestamps {
+public class BodegaProductos implements Serializable {
 
   @Id
-  @Column(name = "idRegistro",nullable = false)
+  @Column(name = "idRegistro", nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idRegistro;
 
   // TODO: revisar relacion con la tabla  Bodega
   @Column(name = "idBodega", nullable = false)
   @ManyToOne
-  private Bodega idBodega; 
+  private Bodega idBodega;
 
   // TODO: revisar relacion con la tabla  Producto
   @Column(name = "idProducto", nullable = false)
   @ManyToOne
-  private Producto idProducto; 
-  
+  private Producto idProducto;
+
   @Column(name = "cantidad", nullable = false, length = 11)
   private Integer cantidad;
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
 
+  @Embedded
+  private Timestamps timestamps;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdRegistro() {
     return idRegistro;
   }
@@ -68,17 +71,25 @@ public class BodegaProductos extends Timestamps {
   public void setCantidad(Integer cantidad) {
     this.cantidad = cantidad;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
+
   @Override
-  public String toString(){
+  public String toString() {
     return "BodegaProductos("
             + "id = " + idRegistro + ", "
             + "idBodega = " + idBodega + ", "
             + "idProducto = " + idProducto + ", "
             + "Cantidad = " + cantidad + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }  
-  
+  }
+
 }

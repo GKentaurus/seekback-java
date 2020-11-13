@@ -1,5 +1,6 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -9,31 +10,33 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "producto")
-public class Producto extends Timestamps {
+public class Producto implements Serializable {
 
   @Id
   @Column(name = "idProducto")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idProducto;
 
-  @Column(name = "modeloProducto", nullable = false,length = 100)
+  @Column(name = "modeloProducto", nullable = false, length = 100)
   private String modeloProducto;
 
   @Column(name = "descripcion", nullable = false, length = 255)
   private String descripcion;
-  
-  @Column(name = "precioVenta",nullable = false, length = 11)
+
+  @Column(name = "precioVenta", nullable = false, length = 11)
   private Double precioVenta;
-  
+
   @Column(name = "idCategoria", nullable = false)
   @ManyToOne
   private CategoriasProducto idCategoria;
-  
+
   @Column(name = "estado", nullable = false)
   private Boolean estado;
 
-  
-//<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
+  @Embedded
+  private Timestamps timestamps;
+
+//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdProducto() {
     return idProducto;
   }
@@ -82,9 +85,15 @@ public class Producto extends Timestamps {
     this.estado = estado;
   }
 
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
-  
+
   @Override
   public String toString() {
     return "Producto("
@@ -94,7 +103,7 @@ public class Producto extends Timestamps {
             + "precioVenta = " + precioVenta + ", "
             + "idCategoria = " + idCategoria + ", "
             + "estado = " + estado + ", "
-            + super.toString()
+            + timestamps.toString()
             + ")";
   }
 }

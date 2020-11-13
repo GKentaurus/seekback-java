@@ -1,5 +1,6 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
@@ -10,7 +11,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "orden_compra")
-public class OrdenCompra extends Timestamps {
+public class OrdenCompra implements Serializable {
 
   @Id
   @Column(name = "idOrdenCompra")
@@ -27,19 +28,22 @@ public class OrdenCompra extends Timestamps {
 
   @Column(name = "docAsociado", nullable = false, length = 255)
   private String docAsociado;
-  
-  @Column(name = "idTrm",  nullable = false)
+
+  @Column(name = "idTrm", nullable = false)
   @ManyToOne
   private TRM idTrm;
-  
-  @Column(name = "factorImport",  nullable = false, length = 11)
+
+  @Column(name = "factorImport", nullable = false, length = 11)
   private Double factorImport;
-  
+
   @Column(name = "idEmpleado", nullable = false)
   @ManyToOne
   private Empleado idEmpleado;
 
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters"> 
+  @Embedded
+  private Timestamps timestamps;
+
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getidOrdenCompra() {
     return idOrdenCompra;
   }
@@ -95,10 +99,17 @@ public class OrdenCompra extends Timestamps {
   public void setIdEmpleado(Empleado idEmpleado) {
     this.idEmpleado = idEmpleado;
   }
-   //</editor-fold> 
-  
-  
-    @Override
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
+  //</editor-fold>
+
+  @Override
   public String toString() {
     return "OrdenCompra("
             + "id = " + idOrdenCompra + ", "
@@ -107,8 +118,8 @@ public class OrdenCompra extends Timestamps {
             + "idTrm = " + idTrm + ", "
             + "factorImport = " + factorImport + ", "
             + "idEmpleado = " + idEmpleado + ", "
-            + super.toString()
+            + timestamps.toString()
             + ")";
   }
-  
+
 }

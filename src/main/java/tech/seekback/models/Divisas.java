@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
 
@@ -14,7 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "divisas")
-public class Divisas extends Timestamps {
+public class Divisas implements Serializable {
 
   @Id
   @Column(name = "idDivisa")
@@ -26,6 +27,9 @@ public class Divisas extends Timestamps {
 
   @Column(name = "sigla", nullable = false, unique = true, length = 4)
   private String sigla;
+
+  @Embedded
+  private Timestamps timestamps;
 
   //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -52,6 +56,14 @@ public class Divisas extends Timestamps {
   public void setSigla(String sigla) {
     this.sigla = sigla;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
 
   @Override
@@ -60,7 +72,7 @@ public class Divisas extends Timestamps {
             + "id = " + idDivisa + ", "
             + "Nombre = " + nombre + ", "
             + "Sigla = " + sigla + ", "
-            + super.toString()
+            + timestamps.toString()
             + ")";
   }
 

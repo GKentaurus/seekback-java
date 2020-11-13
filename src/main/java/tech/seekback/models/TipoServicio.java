@@ -1,5 +1,6 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -9,7 +10,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "tipo_servicio")
-public class TipoServicio extends Timestamps {
+public class TipoServicio implements Serializable {
 
   @Id
   @Column(name = "idTipoServicio")
@@ -19,7 +20,10 @@ public class TipoServicio extends Timestamps {
   @Column(name = "nombreServicio", nullable = false, length = 30)
   private String nombreServicio;
 
-//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  @Embedded
+  private Timestamps timestamps;
+
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdTipoServicio() {
     return idTipoServicio;
   }
@@ -35,14 +39,22 @@ public class TipoServicio extends Timestamps {
   public void setNombreServicio(String nombreServicio) {
     this.nombreServicio = nombreServicio;
   }
-  //</editor-fold>   
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
+  //</editor-fold>
 
   @Override
   public String toString() {
     return "TipoServicio{"
-            + "idTipoServicio=" +  idTipoServicio 
-            + ", nombreServicio=" + nombreServicio 
-            + super.toString() 
+            + "idTipoServicio=" + idTipoServicio
+            + ", nombreServicio=" + nombreServicio
+            + timestamps.toString()
             + '}';
   }
 

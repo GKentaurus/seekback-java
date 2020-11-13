@@ -5,27 +5,30 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
-@Table(name="bodega")
-public class Bodega extends Timestamps{
+@Table(name = "bodega")
+public class Bodega implements Serializable {
 
   @Id
-  @Column(name="idBodega")
+  @Column(name = "idBodega")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idBodega;
-  
-  @Column(name="nombreBodega", nullable = false, length = 50)
+
+  @Column(name = "nombreBodega", nullable = false, length = 50)
   private Integer nombreBodega;
-  
-  
+
+  @Embedded
+  private Timestamps timestamps;
+
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  
   public Integer getIdBodega() {
     return idBodega;
   }
@@ -41,16 +44,23 @@ public class Bodega extends Timestamps{
   public void setNombreBodega(Integer nombreBodega) {
     this.nombreBodega = nombreBodega;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
-  
+
   @Override
-  public String toString(){
+  public String toString() {
     return "Bodega("
             + "id = " + idBodega + ", "
             + "nombreBodega = " + nombreBodega + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }  
-  
+  }
+
 }

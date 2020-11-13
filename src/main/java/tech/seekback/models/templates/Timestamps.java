@@ -13,6 +13,7 @@ import javax.persistence.*;
  *
  * @author camorenoc
  */
+@Embeddable
 public class Timestamps implements Serializable {
 
   @Column(name = "created_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP")
@@ -47,7 +48,7 @@ public class Timestamps implements Serializable {
 
   public void setDeleted_at(Date deleted_at) {
     this.deleted_at = deleted_at;
-  }  
+  }
   //</editor-fold>
 
   @Override
@@ -56,5 +57,5 @@ public class Timestamps implements Serializable {
             + "updated_at = " + updated_at + ", "
             + "deleted at = " + deleted_at;
   }
-  
+
 }

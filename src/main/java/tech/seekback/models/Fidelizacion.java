@@ -1,5 +1,6 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
@@ -10,7 +11,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "fidelizacion")
-public class Fidelizacion extends Timestamps {
+public class Fidelizacion implements Serializable {
 
   @Id
   @Column(name = "idFidelizacion")
@@ -58,8 +59,10 @@ public class Fidelizacion extends Timestamps {
   @ManyToOne
   private Empleado idEmpleado;
 
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  @Embedded
+  private Timestamps timestamps;
 
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdFidelizacion() {
     return idFidelizacion;
   }
@@ -147,9 +150,16 @@ public class Fidelizacion extends Timestamps {
   public void setIdEmpleado(Empleado idEmpleado) {
     this.idEmpleado = idEmpleado;
   }
-  //</editor-fold> 
-  
-  
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
+  //</editor-fold>
+
   @Override
   public String toString() {
     return "Fidelizacion("
@@ -164,7 +174,7 @@ public class Fidelizacion extends Timestamps {
             + "idClient = " + idCliente + ", "
             + "idAdministrador = " + idAdministrador + ", "
             + "idEmpleado = " + idEmpleado + ", "
-            + super.toString()
+            + timestamps.toString()
             + ")";
   }
 }

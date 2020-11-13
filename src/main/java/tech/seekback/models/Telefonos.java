@@ -1,33 +1,37 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.swing.text.StyledEditorKit;
 import tech.seekback.models.templates.Timestamps;
+
 /**
  *
  * @author veron
  */
 @Entity
 @Table(name = "telefonos")
-public class Telefonos extends Timestamps {
+public class Telefonos implements Serializable {
 
   @Id
   @Column(name = "idTelefono")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTelefono;
-  
+
   @Column(name = "idUsuario", nullable = false)
   @ManyToOne
   private Usuario idUsuario;
-          
+
   @Column(name = "numeroTelefono", nullable = false, length = 20)
   private String numeroTelefono;
-  
+
   @Column(name = "esPrincipal", nullable = false)
   private Boolean esPrincipal;
-  
-//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
 
+  @Embedded
+  private Timestamps timestamps;
+
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdTelefono() {
     return idTelefono;
   }
@@ -59,17 +63,25 @@ public class Telefonos extends Timestamps {
   public void setEsPrincipal(Boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
 
   @Override
   public String toString() {
-    return "SoporteTecnico{" 
-            + "idTelefono=" + idTelefono 
-            + ", idUsuario=" + idUsuario 
-            + ", numeroTelefono=" + numeroTelefono 
-            + ", esPrincipal=" + esPrincipal 
-            + super.toString() 
+    return "SoporteTecnico{"
+            + "idTelefono=" + idTelefono
+            + ", idUsuario=" + idUsuario
+            + ", numeroTelefono=" + numeroTelefono
+            + ", esPrincipal=" + esPrincipal
+            + timestamps.toString()
             + '}';
   }
-  
+
 }

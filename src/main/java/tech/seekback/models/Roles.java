@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -14,7 +15,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "roles")
-public class Roles extends Timestamps {
+public class Roles implements Serializable {
 
   @Id
   @Column(name = "idRol")
@@ -23,6 +24,9 @@ public class Roles extends Timestamps {
 
   @Column(name = "nombreRol", nullable = false, length = 50)
   private String nombreRol;
+
+  @Embedded
+  private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdRol() {
@@ -40,6 +44,14 @@ public class Roles extends Timestamps {
   public void setNombreRol(String nombreRol) {
     this.nombreRol = nombreRol;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
 
   @Override
@@ -47,7 +59,7 @@ public class Roles extends Timestamps {
     return "Roles("
             + "id = " + idRol + ", "
             + "nombreRol = " + nombreRol + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
   }
 }

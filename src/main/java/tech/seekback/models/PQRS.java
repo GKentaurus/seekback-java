@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -14,26 +15,28 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "pqrs")
-public class PQRS  extends Timestamps {
-  
+public class PQRS implements Serializable {
+
   @Id
   @Column(name = "idPQRS")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idPQRS;
-  
+
   @Column(name = "idTipoSolicitud", nullable = false)
   @ManyToOne
   private TipoSolicitud idTipoSolicitud;
-  
+
   @Column(name = "area", nullable = false, length = 100)
   private String area;
-  
+
   @Column(name = "idEstado", nullable = false)
   @ManyToOne
   private EstadosFidelizacion idEstado;
-  
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
 
+  @Embedded
+  private Timestamps timestamps;
+
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdPQRS() {
     return idPQRS;
   }
@@ -65,16 +68,24 @@ public class PQRS  extends Timestamps {
   public void setIdEstado(EstadosFidelizacion idEstado) {
     this.idEstado = idEstado;
   }
-   //</editor-fold>
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
+  //</editor-fold>
 
   @Override
   public String toString() {
-    return "PQRS{" 
+    return "PQRS{"
             + "idPQRS = " + idPQRS + ", "
             + "idTipoSolicitud = " + idTipoSolicitud + ", "
             + "area = " + area + ", "
-            + "idEstado = " + idEstado 
-            + super.toString()
+            + "idEstado = " + idEstado
+            + timestamps.toString()
             + '}';
-  }  
+  }
 }

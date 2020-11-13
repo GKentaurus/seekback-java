@@ -5,55 +5,60 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
-@Table(name="agenda")
-public class Agenda extends Timestamps{
+@Table(name = "agenda")
+public class Agenda implements Serializable {
 
   @Id
-  @Column(name="idAgenda")
+  @Column(name = "idAgenda")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idAgenda;
-  
-  @Column(name="fecha", nullable = false)
+
+  @Column(name = "fecha", nullable = false)
   @Temporal(javax.persistence.TemporalType.DATE)
   private Date fecha;
-  
-  @Column(name="observaciones", nullable = false, length = 255)
+
+  @Column(name = "observaciones", nullable = false, length = 255)
   private String observaciones;
-  
+
   // TODO: Revisar relación con la tabla "EstadosAgenda"
   @Column(name = "idEstado", nullable = false)
   @ManyToOne
-  private EstadosAgenda idEstado; 
-  
+  private EstadosAgenda idEstado;
+
   // TODO: Revisar relación con la tabla "TipoServicio"
   @Column(name = "idTipoServicio", nullable = false)
   @ManyToOne
-  private TipoServicio idTipoServicio; 
-  
+  private TipoServicio idTipoServicio;
+
   // TODO: Revisar relación con la tabla "Usuario"
   @Column(name = "idCliente", nullable = false)
   @ManyToOne
-  private Cliente idCliente; 
-  
+  private Cliente idCliente;
+
   // TODO: Revisar relación con la tabla "Empleado"
   @Column(name = "idEmpleado", nullable = false)
   @ManyToOne
-  private Empleado idEmpleado; 
-  
+  private Empleado idEmpleado;
+
   // TODO: Revisar relación con la tabla "Administrador"
   @Column(name = "idAdministrador", nullable = false)
   @ManyToOne
-  private Administrador idAdministrador; 
+  private Administrador idAdministrador;
 
- //TODO:  se debe revisar al crear las clases pendientes
+  @Embedded
+  private Timestamps timestamps;
+
+  //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdAgenda() {
     return idAgenda;
@@ -118,11 +123,18 @@ public class Agenda extends Timestamps{
   public void setIdAdministrador(Administrador idAdministrador) {
     this.idAdministrador = idAdministrador;
   }
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
   //</editor-fold>
-  
-    
+
   @Override
-  public String toString(){
+  public String toString() {
     return "Agenda("
             + "id = " + idAgenda + ", "
             + "fecha = " + fecha + ", "
@@ -132,8 +144,8 @@ public class Agenda extends Timestamps{
             + "idCliente = " + idCliente + ", "
             + "idEmpleado = " + idEmpleado + ", "
             + "idAdministrador = " + idAdministrador + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }  
-  
+  }
+
 }

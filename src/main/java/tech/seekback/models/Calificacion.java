@@ -5,15 +5,17 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+
 /**
  *
  * @author danny
  */
 @Entity
 @Table(name = "calificacion")
-public class Calificacion extends Timestamps {
+public class Calificacion implements Serializable {
 
   @Id
   @Column(name = "idCalificacion")
@@ -23,14 +25,16 @@ public class Calificacion extends Timestamps {
   // TODO: revisar relacion con la tabla  Producto
   @Column(name = "idProducto", nullable = false)
   @ManyToOne
-  private Producto idProducto; 
-  
-  @Column(name = "calificacion", nullable = false, length = 1)
-  private Integer calificacion; 
-  
- //TODO:  se debe revisar al crear las clases pendientes
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">  
+  private Producto idProducto;
 
+  @Column(name = "calificacion", nullable = false, length = 1)
+  private Integer calificacion;
+
+  @Embedded
+  private Timestamps timestamps;
+
+  //TODO:  se debe revisar al crear las clases pendientes
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCalificacion() {
     return idCalificacion;
   }
@@ -54,16 +58,24 @@ public class Calificacion extends Timestamps {
   public void setCalificacion(Integer calificacion) {
     this.calificacion = calificacion;
   }
-  //</editor-fold>  
- 
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
+  //</editor-fold>
+
   @Override
-  public String toString(){
+  public String toString() {
     return "Calificacion("
             + "id = " + idCalificacion + ", "
             + "idProducto = " + idProducto + ", "
             + "calificacion = " + calificacion + ", "
-            + super.toString() 
+            + timestamps.toString()
             + ")";
-  }  
-  
+  }
+
 }

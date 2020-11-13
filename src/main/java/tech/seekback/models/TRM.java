@@ -1,5 +1,6 @@
 package tech.seekback.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
@@ -10,7 +11,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "trm")
-public class TRM extends Timestamps {
+public class TRM implements Serializable {
 
   @Id
   @Column(name = "idTrm")
@@ -28,8 +29,11 @@ public class TRM extends Timestamps {
   //comentario x o algo
   @Column(name = "tasaCambio", nullable = false)
   private Double tasaCambio;
-  
-//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+
+  @Embedded
+  private Timestamps timestamps;
+
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdTrm() {
     return idTrm;
   }
@@ -61,15 +65,23 @@ public class TRM extends Timestamps {
   public void setTasaCambio(Double tasaCambio) {
     this.tasaCambio = tasaCambio;
   }
-    //</editor-fold> 
+
+  public Timestamps getTimestamps() {
+    return timestamps;
+  }
+
+  public void setTimestamps(Timestamps timestamps) {
+    this.timestamps = timestamps;
+  }
+  //</editor-fold>
 
   @Override
   public String toString() {
-    return "Trm{" + "idTrm=" + idTrm 
-            + ", idDivisa=" + idDivisa 
-            + ", fechaTRM=" + fechaTRM 
-            + ", tasaCambio=" + tasaCambio 
-            + super.toString()
+    return "Trm{" + "idTrm=" + idTrm
+            + ", idDivisa=" + idDivisa
+            + ", fechaTRM=" + fechaTRM
+            + ", tasaCambio=" + tasaCambio
+            + timestamps.toString()
             + '}';
   }
 }
