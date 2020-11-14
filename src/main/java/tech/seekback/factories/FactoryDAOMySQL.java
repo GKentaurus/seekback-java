@@ -6,40 +6,7 @@
 package tech.seekback.factories;
 
 import tech.seekback.dao.*;
-import tech.seekback.dao.mysql.AdministradorDAOMySQL;
-import tech.seekback.dao.mysql.AgendaDAOMySQL;
-import tech.seekback.dao.mysql.BodegaDAOMySQL;
-import tech.seekback.dao.mysql.BodegaProductosDAOMySQL;
-import tech.seekback.dao.mysql.CalificacionDAOMySQL;
-import tech.seekback.dao.mysql.CategoriasProductoDAOMySQL;
-import tech.seekback.dao.mysql.CiudadDAOMySQL;
-import tech.seekback.dao.mysql.ClienteDAOMySQL;
-import tech.seekback.dao.mysql.CorreosDAOMySQL;
-import tech.seekback.dao.mysql.CotizacionDAOMySQL;
-import tech.seekback.dao.mysql.DepartamentoDAOMySQL;
-import tech.seekback.dao.mysql.DireccionesDAOMySQL;
-import tech.seekback.dao.mysql.DivisasDAOMySQL;
-import tech.seekback.dao.mysql.DocumentoDetalladoDAOMySQL;
-import tech.seekback.dao.mysql.EmpleadoDAOMySQL;
-import tech.seekback.dao.mysql.EstadosAgendaDAOMySQL;
-import tech.seekback.dao.mysql.EstadosCotizacionDAOMySQL;
-import tech.seekback.dao.mysql.EstadosFidelizacionDAOMySQL;
-import tech.seekback.dao.mysql.FelicitacionDAOMySQL;
-import tech.seekback.dao.mysql.FidelizacionDAOMySQL;
-import tech.seekback.dao.mysql.OrdenCompraDAOMySQL;
-import tech.seekback.dao.mysql.PQRSDAOMySQL;
-import tech.seekback.dao.mysql.PaisDAOMySQL;
-import tech.seekback.dao.mysql.ProductoDAOMySQL;
-import tech.seekback.dao.mysql.ProformaVentaDAOMySQL;
-import tech.seekback.dao.mysql.ProveedorDAOMySQL;
-import tech.seekback.dao.mysql.RolesDAOMySQL;
-import tech.seekback.dao.mysql.SoporteTecnicoDAOMySQL;
-import tech.seekback.dao.mysql.TRMDAOMySQL;
-import tech.seekback.dao.mysql.TelefonosDAOMySQL;
-import tech.seekback.dao.mysql.TipoDocDAOMySQL;
-import tech.seekback.dao.mysql.TipoServicioDAOMySQL;
-import tech.seekback.dao.mysql.TipoSolicitudDAOMySQL;
-import tech.seekback.dao.mysql.UsuarioDAOMySQL;
+import tech.seekback.dao.mysql.*;
 
 /**
  *
