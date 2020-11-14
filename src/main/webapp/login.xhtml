@@ -4,302 +4,308 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f = "http://java.sun.com/jsf/core">
-    <h:head>
-        <title>login / sign up</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <h:outputStylesheet library="styles" name="style.css" />
-        <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-        <h:outputScript library="" name="jquery.min.js" />
-        <h:outputScript library="materialize" name="js/materialize.min.js" />
-        <h:outputScript library="" name="fontawesome.js" />
-        <h:outputScript library="scripts" name="loginjs.js" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    </h:head>
+  <h:head>
+    <title>login / sign up</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="styles" name="style.css" />
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <h:outputScript library="scripts" name="loginjs.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  </h:head>
 
-    <h:body id="ody">
-        <div class="pnav">
-            <div class="wrap wnav">
-                <div id="nav" class="container  scrollspy">
-                    <div class="row" style="margin-bottom:0px;">
-                        <div class="col s2">
-                            <h:commandLink>
-                                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
-                            </h:commandLink>
-                        </div>
-                        <div class="col s10">
-                            <div class="row" style="margin-bottom:0px;">
-                                <h:form>
-                                    <div class="col s12 m9">
-                                        <div class="input-field">
-                                            <h:inputText id="searxh" />
-                                            <h:outputLabel for="searxh" value="Buscar" />
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m3 center-align" style="padding:0px;">
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
-                                            <i class="far fa-user" style="color:#fff"></i>
-                                        </h:commandLink>
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
-                                    </div>
-                                </h:form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col s12">
-                            <ul id="dropdown1" class="dropdown-content z-depth-3">
-                                <h:form>
-                                    <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                                </h:form>
-                            </ul>
-                            <ul id="dropdown2" class="dropdown-content">
-                                <h:form>
-                                    <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                                </h:form>
-                            </ul>
-
-                            <nav style="background-color:#222222;" class="z-depth-0">
-                                <div class="nav-wrapper">
-                                    <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
-                                        <i class="fas fa-bars"></i>
-                                    </h:commandLink>
-                                    <ul class="left hide-on-med-and-down" style="display: inline-flex;">
-                                        <h:form>
-                                            <li><h:commandLink action="index" value="Inicio" /></li>
-                                        </h:form>
-                                        <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
-                                        <h:form>
-                                            <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
-                                            <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
-                                        </h:form>
-                                    </ul>
-                                </div>
-                            </nav>
-
-                            <ul class="sidenav" id="mobile-demo">
-                                <div class="user-view">
-                                    <div class="background">
-                                        <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
-                                    </div>
-                                    <h:commandLink pt:href="">
-                                        <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
-                                    </h:commandLink>
-                                </div>
-                                <h:form>
-                                    <li><h:commandLink action="index" value="Inicio" /></li>
-                                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
-                                    <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
-                                    <li><h:commandLink pt:href="index#contac">Nosotros</h:commandLink></li>
-                                </h:form>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <h:body id="ody">
+    <div class="pnav">
+      <div class="wrap wnav">
+        <div id="nav" class="container  scrollspy">
+          <div class="row" style="margin-bottom:0px;">
+            <div class="col s2">
+              <h:commandLink>
+                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
+              </h:commandLink>
             </div>
-        </div>
+            <div class="col s10">
+              <div class="row" style="margin-bottom:0px;">
+                <h:form>
+                  <div class="col s12 m9">
+                    <div class="input-field">
+                      <h:inputText id="searxh" />
+                      <h:outputLabel for="searxh" value="Buscar" />
+                    </div>
+                  </div>
+                  <div class="col s12 m3 center-align" style="padding:0px;">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
+                      <i class="far fa-user" style="color:#fff"></i>
+                    </h:commandLink>
+                    <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></a>
+                  </div>
+                </h:form>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom:20px;">
+            <div class="col s12">
+              <ul id="dropdown1" class="dropdown-content z-depth-3">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
+              <ul id="dropdown2" class="dropdown-content">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
 
-        <div class="wrap" id="inv" style="margin-bottom:20px;">
-            <div class="container">
+              <nav style="background-color:#222222;" class="z-depth-0">
+                <div class="nav-wrapper">
+                  <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="fas fa-bars"></i>
+                  </h:commandLink>
+                  <ul class="left hide-on-med-and-down" style="display: inline-flex;">
+                    <h:form>
+                      <li><h:commandLink action="index" value="Inicio" /></li>
+                    </h:form>
+                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                    <h:form>
+                      <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                      <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
+                    </h:form>
+                  </ul>
+                </div>
+              </nav>
+
+              <ul class="sidenav" id="mobile-demo">
+                <div class="user-view">
+                  <div class="background">
+                    <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
+                  </div>
+                  <h:commandLink pt:href="">
+                    <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
+                  </h:commandLink>
+                </div>
+                <h:form>
+                  <li><h:commandLink action="index" value="Inicio" /></li>
+                  <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                  <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                  <li><h:commandLink pt:href="index#contac">Nosotros</h:commandLink></li>
+                </h:form>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap" id="inv" style="margin-bottom:20px;">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s6"><h:commandLink pt:href="#test1">Ingresar</h:commandLink></li>
+                <li class="tab col s6"><h:commandLink pt:href="#test2">Registrarse</h:commandLink></li>
+              </ul>
+            </div>
+            <div id="test1" class="col s12">
+              <div class="row">
+                <br />
+                <h3>Inicia sesion</h3>
+                <br />
+                <h:form>
+                  <div class="input-field s12">
+                    <input id="emaillog" type="email" class="ingre validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+" autocomplete="off" required="true" />
+                    <label for="emaillog">Email</label>
+                    <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
+                  </div>
+                  <div class="input-field s12">
+                    <h:inputSecret id="passwordlog" class="ingre" required="true" />
+                    <h:outputLabel for="passwordlog" value="Contraseña" />
+                  </div>
+                  <h:commandButton class="btn waves-effect waves-light blue" onclick="login();" value="ingresar" />
+                  <h:commandLink pt:data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</h:commandLink>
+                </h:form>
+                <br />
+                <br />
+              </div>
+            </div>
+            <div id="test2" class="col s12">
+              <form class="col s12" autocomplete="off">
+                <br />
+                <h3>Registrate</h3>
+                <br />
                 <div class="row">
-                    <div class="row">
-                        <div class="col s12">
-                            <ul class="tabs">
-                                <li class="tab col s6"><h:commandLink pt:href="#test1">Ingresar</h:commandLink></li>
-                                <li class="tab col s6"><h:commandLink pt:href="#test2">Registrarse</h:commandLink></li>
-                            </ul>
-                        </div>
-                        <div id="test1" class="col s12">
-                            <div class="row">
-                                <br />
-                                <h3>Inicia sesion</h3>
-                                <br />
-                                <h:form>
-                                    <div class="input-field s12">
-                                        <input id="emaillog" type="email" class="ingre validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+" autocomplete="off" required="true" />
-                                        <label for="emaillog">Email</label>
-                                        <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
-                                    </div>
-                                    <div class="input-field s12">
-                                        <h:inputSecret id="passwordlog" class="ingre" required="true" />
-                                        <h:outputLabel for="passwordlog" value="Contraseña" />
-                                    </div>
-                                    <h:commandButton class="btn waves-effect waves-light blue" onclick="login();" value="ingresar" />
-                                    <h:commandLink pt:data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</h:commandLink>
-                                </h:form>
-                                <br />
-                                <br />
-                            </div>
-                        </div>
-                        <div id="test2" class="col s12">
-                            <form class="col s12" autocomplete="off">
-                                <br />
-                                <h3>Registrate</h3>
-                                <br />
-                                <div class="row">
-                                        <h:form>
-                                    <div class="input-field col s12 m6">
-                                      <h:inputText>
-                                        <f:validateRegex></f:validateRegex>
-                                      </h:inputText>
-                                        <input id="fname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" />
-                                        <label for="fname">Nombres</label>
-                                        <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <input id="lname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" />
-                                        <label for="lname">Apellidos</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <input id="emailr" type="email" class="ingre validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+" autocomplete="off" required="true" />
-                                        <label for="emailr">Email</label>
-                                        <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <input id="tel" type="number" class="ingre validate" autocomplete="off" min="0" required="true" />
-                                        <label for="tel">Telefono</label>
-                                        <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <input id="fdir" type="text" class="ingre validate" autocomplete="off" required="true" />
-                                        <label for="fdir">Direccion 1</label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <input id="sdir" type="text" class="ingre validate" autocomplete="off"/>
-                                        <label for="sdir">Direccion 2</label>
-                                    </div>
-                                    <div class="input-field col s12" id="paiss">
-                                        <select class="oinps" id="pais" onchange="paiss();" required="true">
-                                            <option value="" disabled="disabled" selected="selected">Elije una opcion</option>
-                                            <option value="Colombia">Colombia</option>
-                                            <option value="Ecuador">Ecuador</option>
-                                            <option value="Bolivia">Bolivia</option>
-                                            <option value="El salvador">El salvador</option>
-                                            <option value="Estados Unidos">Estados Unidos</option>
-                                            <option value="Otro">Otro</option>
-                                        </select>
-                                        <label for="pais">Pais</label>
-                                    </div>
-                                    <div class="input-field col s10" id="opais">
-                                        <input id="oubi" type="text" class="ingre validate" />
-                                        <label for="oubi">Otra ubicacion </label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <input id="fcontra" type="password" onkeyup="passwo();" class="ingre validate" required="true" />
-                                        <label for="fcontra">Contraseña </label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <input id="scontra" type="password" onkeyup="passwo();" class="ingre validate" required="true" />
-                                        <label for="scontra">Confirmar Contraseña</label>
-                                    </div>
-                                    <div class="col s12 m6">
-                                        <button class=" btn waves-effect waves-light blue disabled" pt:data-target="modal2" type="submit" id="ing" name="action">Registrarse</button>
-                                    </div>
-                                        </h:form>
-                                    <div class="col s12 m6">
-                                        <ul class="collection">
-                                            <li class="collection-item">
-                                                <div id="bar" class="determinate teal" style="width:0%;height: 5px;border-radius: 10px;"></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div>Mas de 8 caracteres<h:commandLink class="secondary-content"><i id="lpass" class="material-icons red-text">close</i></h:commandLink></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div>Por lo menos un mayuscula<h:commandLink class="secondary-content"><i id="Mpass" class="material-icons red-text">close</i></h:commandLink></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div>Por lo menos un caracter especial<h:commandLink class="secondary-content"><i id="Cpass" class="material-icons red-text">close</i></h:commandLink></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div>Por lo menos un numero<h:commandLink class="secondary-content"><i id="Npass" class="material-icons red-text">close</i></h:commandLink></div>
-                                            </li>
-                                            <li class="collection-item">
-                                                <div>deben ser iguales<h:commandLink class="secondary-content"><i id="Ipass" class="material-icons red-text">close</i></h:commandLink></div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <br />
-                                <br />
-                            </form>
-                        </div>
+                  <h:form>
+                    <div class="input-field col s12 m6">
+                      <input id="fname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" />
+                      <label for="fname">1º Nombre</label>
+                      <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
-                </div>
-            </div>
-            <br />
-        </div>
-        <script>
-        </script>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer bottom-sheet modalp white">
-            <div class="modal-header">
-                <h4>Recuperar contraseña</h4>
-            </div>
-            <div class="modal-content">
-                <p>Para restaurar la contraseña de tu cuenta por favor ingresa el correo usado al momento de crear la cuenta y te enviaremos un link para restaurarla</p>
-                <div class="input-field col s6">
-                    <input id="remail" type="email" class="ingre validate" />
-                    <label for="remail">Email</label>
-                    <span class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
-                </div>
-                <h:commandLink class="waves-effect waves-light btn s12 blue">Recuperar</h:commandLink>
-            </div>
-            <div id="modalfo" class="modal-footer modalf grey lighten-3">
-                <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
-            </div>
-        </div>
-
-        <div id="modal2" class="modal modalp white">
-            <div class="modal-content">
-                <h4>Registro</h4>
-                <p><span id="nameee"></span> resistrado exitosamente</p>
-            </div>
-            <div class="modal-footer">
-                <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
-            </div>
-        </div>
-
-        <footer class="page-footer" style="background-color: #222222;">
-            <div class="wrap transparent">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m6" style="text-align:left">
-                            <h4>Redes sociales </h4>
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> siguenos en facebook
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> siguenos en twitter
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> siguenos en instagram
-                        </div>
-                        <div class="col s12 m6" style="text-align:left">
-                            <h4>Informaciòn de contacto </h4>
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
-                            <br />
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
-                        </div>
+                    <div class="input-field col s12 m6">
+                      <input id="fname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" />
+                      <label for="fname">2º Nombre</label>
+                      <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
+                    <div class="input-field col s12 m6">
+                      <input id="lname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" />
+                      <label for="lname">1º Apellido</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <input id="lname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" />
+                      <label for="lname">2º Apellido</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input id="emailr" type="email" class="ingre validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+" autocomplete="off" required="true" />
+                      <label for="emailr">Email</label>
+                      <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
+                    </div>
+                    <div class="input-field col s12">
+                      <input id="tel" type="number" class="ingre validate" autocomplete="off" min="0" required="true" />
+                      <label for="tel">Telefono</label>
+                      <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <input id="fdir" type="text" class="ingre validate" autocomplete="off" required="true" />
+                      <label for="fdir">Direccion 1</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <input id="sdir" type="text" class="ingre validate" autocomplete="off"/>
+                      <label for="sdir">Direccion 2</label>
+                    </div>
+                    <div class="input-field col s12" id="paiss">
+                      <select class="oinps" id="pais" onchange="paiss();" required="true">
+                        <option value="" disabled="disabled" selected="selected">Elije una opcion</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="El salvador">El salvador</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="Otro">Otro</option>
+                      </select>
+                      <label for="pais">Pais</label>
+                    </div>
+                    <div class="input-field col s10" id="opais">
+                      <input id="oubi" type="text" class="ingre validate" />
+                      <label for="oubi">Otra ubicacion </label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <input id="fcontra" type="password" onkeyup="passwo();" class="ingre validate" required="true" />
+                      <label for="fcontra">Contraseña </label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <input id="scontra" type="password" onkeyup="passwo();" class="ingre validate" required="true" />
+                      <label for="scontra">Confirmar Contraseña</label>
+                    </div>
+                    <div class="col s12 m6">
+                      <button class=" btn waves-effect waves-light blue disabled" pt:data-target="modal2" type="submit" id="ing" name="action">Registrarse</button>
+                    </div>
+                  </h:form>
+                  <div class="col s12 m6">
+                    <ul class="collection">
+                      <li class="collection-item">
+                        <div id="bar" class="determinate teal" style="width:0%;height: 5px;border-radius: 10px;"></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Mas de 8 caracteres<h:commandLink class="secondary-content"><i id="lpass" class="material-icons red-text">close</i></h:commandLink></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Por lo menos un mayuscula<h:commandLink class="secondary-content"><i id="Mpass" class="material-icons red-text">close</i></h:commandLink></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Por lo menos un caracter especial<h:commandLink class="secondary-content"><i id="Cpass" class="material-icons red-text">close</i></h:commandLink></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>Por lo menos un numero<h:commandLink class="secondary-content"><i id="Npass" class="material-icons red-text">close</i></h:commandLink></div>
+                      </li>
+                      <li class="collection-item">
+                        <div>deben ser iguales<h:commandLink class="secondary-content"><i id="Ipass" class="material-icons red-text">close</i></h:commandLink></div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+                <br />
+                <br />
+              </form>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Copyright Seekback. todos los derechos reservados
-                </div>
-            </div>
-        </footer>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+    <script>
+    </script>
 
-    </h:body>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer bottom-sheet modalp white">
+      <div class="modal-header">
+        <h4>Recuperar contraseña</h4>
+      </div>
+      <div class="modal-content">
+        <p>Para restaurar la contraseña de tu cuenta por favor ingresa el correo usado al momento de crear la cuenta y te enviaremos un link para restaurarla</p>
+        <div class="input-field col s6">
+          <input id="remail" type="email" class="ingre validate" />
+          <label for="remail">Email</label>
+          <span class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
+        </div>
+        <h:commandLink class="waves-effect waves-light btn s12 blue">Recuperar</h:commandLink>
+      </div>
+      <div id="modalfo" class="modal-footer modalf grey lighten-3">
+        <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal modalp white">
+      <div class="modal-content">
+        <h4>Registro</h4>
+        <p><span id="nameee"></span> resistrado exitosamente</p>
+      </div>
+      <div class="modal-footer">
+        <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
+      </div>
+    </div>
+
+    <footer class="page-footer" style="background-color: #222222;">
+      <div class="wrap transparent">
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m6" style="text-align:left">
+              <h4>Redes sociales </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> siguenos en facebook
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> siguenos en twitter
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> siguenos en instagram
+            </div>
+            <div class="col s12 m6" style="text-align:left">
+              <h4>Informaciòn de contacto </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
+              <br />
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Copyright Seekback. todos los derechos reservados
+        </div>
+      </div>
+    </footer>
+
+  </h:body>
 </html>
 

@@ -21,13 +21,13 @@ public class DBConnect {
     try {
       Properties propConnection = new Properties();
       propConnection.put(
-              "url", "jdbc:mysql://localhost:3306/seekback"
+              "url", "jdbc:mysql://sql158.main-hosting.eu/u925035511_seekback_test"
       );
       propConnection.put(
-              "user", "root"
+              "user", "u925035511_test"
       );
       propConnection.put(
-              "password", "root"
+              "password", "123PorMi"
       );
 
       connection = DriverManager.getConnection(
