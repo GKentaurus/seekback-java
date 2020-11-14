@@ -34,7 +34,7 @@ public class TipoDocDAOMySQL implements TipoDocDAO {
     try {
       PreparedStatement ps = DBConnect.getInstance().prepareStatement(
               "SELECT * FROM "
-              + TablesEnum.TIPO_DOC
+              + TablesEnum.TIPO_DOC.getNombreTabla()
               + " WHERE idTipoDoc = ?"
       );
       ps.setInt(1, id);
@@ -75,7 +75,7 @@ public class TipoDocDAOMySQL implements TipoDocDAO {
 
       PreparedStatement ps = DBConnect.getInstance().prepareStatement(
               "SELECT * FROM "
-              + TablesEnum.TIPO_DOC
+              + TablesEnum.TIPO_DOC.getNombreTabla()
       );
 
       ResultSet rs = ps.executeQuery();

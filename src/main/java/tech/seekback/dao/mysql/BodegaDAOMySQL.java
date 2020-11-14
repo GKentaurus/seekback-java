@@ -36,7 +36,7 @@ public class BodegaDAOMySQL implements BodegaDAO {
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.BODEGA
+                      + TablesEnum.BODEGA.getNombreTabla()
                       + " WHERE idBodega = ?"
               );
       ps.setInt(1, id);
@@ -65,8 +65,11 @@ public class BodegaDAOMySQL implements BodegaDAO {
   public List<Bodega> getAll() throws ConnectionExcep {
     List<Bodega> listaBodegas = new ArrayList<Bodega>();
     try {
-      PreparedStatement ps = DBConnect.getInstance()
-              .prepareStatement("SELECT * FROM " + TablesEnum.BODEGA);
+      PreparedStatement ps = DBConnect
+              .getInstance()
+              .prepareStatement(
+                      "SELECT * FROM "
+                      + TablesEnum.BODEGA.getNombreTabla());
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Bodega obj = new Bodega();
