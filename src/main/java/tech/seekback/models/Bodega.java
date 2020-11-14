@@ -6,8 +6,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Bodega implements Serializable {
   private Integer idBodega;
 
   @Column(name = "nombreBodega", nullable = false, length = 50)
-  private Integer nombreBodega;
+  private String nombreBodega;
 
   @Embedded
   private Timestamps timestamps;
@@ -37,11 +37,11 @@ public class Bodega implements Serializable {
     this.idBodega = idBodega;
   }
 
-  public Integer getNombreBodega() {
+  public String getNombreBodega() {
     return nombreBodega;
   }
 
-  public void setNombreBodega(Integer nombreBodega) {
+  public void setNombreBodega(String nombreBodega) {
     this.nombreBodega = nombreBodega;
   }
 

@@ -7,7 +7,7 @@ package tech.seekback.dao;
 
 import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Usuario;
+import tech.seekback.models.Bodega;
 
 /**
  *
@@ -18,11 +18,11 @@ public interface BodegaDAO {
   // CRUD Definition
   void create() throws ConnectionExcep;
 
-  Usuario getOne(Integer id) throws ConnectionExcep;
+  Bodega getOne(Integer id) throws ConnectionExcep;
 
-  List<Usuario> getAll() throws ConnectionExcep;
+  List<Bodega> getAll() throws ConnectionExcep;
 
-  void update(Usuario obj) throws ConnectionExcep;
+  void update(Bodega obj) throws ConnectionExcep;
 
   void delete(Integer id) throws ConnectionExcep;
 }

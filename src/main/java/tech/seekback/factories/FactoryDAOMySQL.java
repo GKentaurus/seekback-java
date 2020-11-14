@@ -6,6 +6,40 @@
 package tech.seekback.factories;
 
 import tech.seekback.dao.*;
+import tech.seekback.dao.mysql.AdministradorDAOMySQL;
+import tech.seekback.dao.mysql.AgendaDAOMySQL;
+import tech.seekback.dao.mysql.BodegaDAOMySQL;
+import tech.seekback.dao.mysql.BodegaProductosDAOMySQL;
+import tech.seekback.dao.mysql.CalificacionDAOMySQL;
+import tech.seekback.dao.mysql.CategoriasProductoDAOMySQL;
+import tech.seekback.dao.mysql.CiudadDAOMySQL;
+import tech.seekback.dao.mysql.ClienteDAOMySQL;
+import tech.seekback.dao.mysql.CorreosDAOMySQL;
+import tech.seekback.dao.mysql.CotizacionDAOMySQL;
+import tech.seekback.dao.mysql.DepartamentoDAOMySQL;
+import tech.seekback.dao.mysql.DireccionesDAOMySQL;
+import tech.seekback.dao.mysql.DivisasDAOMySQL;
+import tech.seekback.dao.mysql.DocumentoDetalladoDAOMySQL;
+import tech.seekback.dao.mysql.EmpleadoDAOMySQL;
+import tech.seekback.dao.mysql.EstadosAgendaDAOMySQL;
+import tech.seekback.dao.mysql.EstadosCotizacionDAOMySQL;
+import tech.seekback.dao.mysql.EstadosFidelizacionDAOMySQL;
+import tech.seekback.dao.mysql.FelicitacionDAOMySQL;
+import tech.seekback.dao.mysql.FidelizacionDAOMySQL;
+import tech.seekback.dao.mysql.OrdenCompraDAOMySQL;
+import tech.seekback.dao.mysql.PQRSDAOMySQL;
+import tech.seekback.dao.mysql.PaisDAOMySQL;
+import tech.seekback.dao.mysql.ProductoDAOMySQL;
+import tech.seekback.dao.mysql.ProformaVentaDAOMySQL;
+import tech.seekback.dao.mysql.ProveedorDAOMySQL;
+import tech.seekback.dao.mysql.RolesDAOMySQL;
+import tech.seekback.dao.mysql.SoporteTecnicoDAOMySQL;
+import tech.seekback.dao.mysql.TRMDAOMySQL;
+import tech.seekback.dao.mysql.TelefonosDAOMySQL;
+import tech.seekback.dao.mysql.TipoDocDAOMySQL;
+import tech.seekback.dao.mysql.TipoServicioDAOMySQL;
+import tech.seekback.dao.mysql.TipoSolicitudDAOMySQL;
+import tech.seekback.dao.mysql.UsuarioDAOMySQL;
 
 /**
  *
@@ -15,172 +49,172 @@ public class FactoryDAOMySQL implements FactoryDAO {
 
   @Override
   public AdministradorDAO getAdministradorDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new AdministradorDAOMySQL();
   }
 
   @Override
   public AgendaDAO getAgendaDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new AgendaDAOMySQL();
   }
 
   @Override
   public BodegaDAO getBodegaDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new BodegaDAOMySQL();
   }
 
   @Override
   public BodegaProductosDAO getBodegaProductosDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new BodegaProductosDAOMySQL();
   }
 
   @Override
   public CalificacionDAO getCalificacionDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new CalificacionDAOMySQL();
   }
 
   @Override
   public CategoriasProductoDAO getCategoriasProductoDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new CategoriasProductoDAOMySQL();
   }
 
   @Override
   public CiudadDAO getCiudadDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new CiudadDAOMySQL();
   }
 
   @Override
   public ClienteDAO getClienteDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new ClienteDAOMySQL();
   }
 
   @Override
   public CorreosDAO getCorreosDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new CorreosDAOMySQL();
   }
 
   @Override
   public CotizacionDAO getCotizacionDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new CotizacionDAOMySQL();
   }
 
   @Override
   public DepartamentoDAO getDepartamentoDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new DepartamentoDAOMySQL();
   }
 
   @Override
   public DireccionesDAO getDireccionesDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new DireccionesDAOMySQL();
   }
 
   @Override
   public DivisasDAO getDivisasDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new DivisasDAOMySQL();
   }
 
   @Override
   public DocumentoDetalladoDAO getDocumentoDetalladoDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new DocumentoDetalladoDAOMySQL();
   }
 
   @Override
   public EmpleadoDAO getEmpleadoDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new EmpleadoDAOMySQL();
   }
 
   @Override
   public EstadosAgendaDAO getEstadosAgendaDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new EstadosAgendaDAOMySQL();
   }
 
   @Override
   public EstadosCotizacionDAO getEstadosCotizacionDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new EstadosCotizacionDAOMySQL();
   }
 
   @Override
   public EstadosFidelizacionDAO getEstadosFidelizacionDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new EstadosFidelizacionDAOMySQL();
   }
 
   @Override
   public FelicitacionDAO getFelicitacionDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new FelicitacionDAOMySQL();
   }
 
   @Override
   public FidelizacionDAO getFidelizacionDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new FidelizacionDAOMySQL();
   }
 
   @Override
   public OrdenCompraDAO getOrdenCompraDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new OrdenCompraDAOMySQL();
   }
 
   @Override
   public PQRSDAO getPQRSDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new PQRSDAOMySQL();
   }
 
   @Override
   public PaisDAO getPaisDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new PaisDAOMySQL();
   }
 
   @Override
   public ProductoDAO getProductoDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new ProductoDAOMySQL();
   }
 
   @Override
   public ProformaVentaDAO getProformaVentaDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new ProformaVentaDAOMySQL();
   }
 
   @Override
   public ProveedorDAO getProveedorDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new ProveedorDAOMySQL();
   }
 
   @Override
   public RolesDAO getRolesDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new RolesDAOMySQL();
   }
 
   @Override
   public SoporteTecnicoDAO getSoporteTecnicoDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new SoporteTecnicoDAOMySQL();
   }
 
   @Override
   public TRMDAO getTRMDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new TRMDAOMySQL();
   }
 
   @Override
   public TelefonosDAO getTelefonosDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new TelefonosDAOMySQL();
   }
 
   @Override
   public TipoDocDAO getTipoDocDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new TipoDocDAOMySQL();
   }
 
   @Override
   public TipoServicioDAO getTipoServicioDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new TipoServicioDAOMySQL();
   }
 
   @Override
   public TipoSolicitudDAO getTipoSolicitudDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new TipoSolicitudDAOMySQL();
   }
 
   @Override
   public UsuarioDAO getUsuarioDAO() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return new UsuarioDAOMySQL();
   }
 
 }
