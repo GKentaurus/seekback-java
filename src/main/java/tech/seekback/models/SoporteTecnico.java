@@ -18,11 +18,13 @@ public class SoporteTecnico implements Serializable {
   private Integer idSoporteTecnico;
 
   @Column(name = "idProducto", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idProducto")
   private Producto idProducto;
 
   @Column(name = "idEstado", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEstado")
   private EstadosFidelizacion idEstado;
 
   @Embedded

@@ -15,6 +15,7 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
 
   @Id
@@ -34,21 +35,21 @@ public class Usuario implements Serializable {
   @Column(name = "sApellido", nullable = true, length = 50)
   private String sApellido;
 
-  // TODO: Revisar relación con la tabla "tipo_doc"
   @Column(name = "tipoDoc", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idTipoDoc")
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
   private String numeroDoc;
 
-  // Campo VARCHAR sin límite (String largo al momento de encriptar)
+  // TODO: Encriptar la contraseña al almacenarlo
   @Column(name = "contrasena", nullable = false, length = 255)
   private String contrasena;
 
-  // TODO: Revisar relación con la tabla "roles"
   @Column(name = "rol", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idRol")
   private Roles rol;
 
   @Embedded

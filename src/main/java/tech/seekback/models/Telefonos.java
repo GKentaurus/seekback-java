@@ -19,7 +19,8 @@ public class Telefonos implements Serializable {
   private Integer idTelefono;
 
   @Column(name = "idUsuario", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idUsuario")
   private Usuario idUsuario;
 
   @Column(name = "numeroTelefono", nullable = false, length = 20)

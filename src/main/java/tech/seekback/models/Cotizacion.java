@@ -7,8 +7,8 @@ package tech.seekback.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -27,37 +27,36 @@ public class Cotizacion implements Serializable {
   private String requerimiento;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date fecha;
 
   @Column(name = "vencimiento", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date vencimiento;
 
-  // TODO: Revisar relación con la tabla "TRM"
   @Column(name = "idTRM", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idTRM")
   private TRM idTRM;
 
-  // TODO: Revisar relación con la tabla "EstadosCotizacion"
   @Column(name = "idEstado", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEstado")
   private EstadosCotizacion idEstado;
 
-  // TODO: Revisar relación con la tabla "Empleado"
   @Column(name = "idEmpleado", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEmpleado")
   private Empleado idEmpleado;
 
-  // TODO: Revisar relación con la tabla "Cliente"
   @Column(name = "idCliente", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
   private Cliente idCliente;
 
   @Embedded
   private Timestamps timestamps;
 
-  //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCotizacion() {
     return idCotizacion;

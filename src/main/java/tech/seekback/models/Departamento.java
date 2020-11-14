@@ -1,8 +1,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -17,9 +17,9 @@ public class Departamento implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDepartamento;
 
-  // TODO: Revisar relación con la tabla "Pais"
   @Column(name = "idPais", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idPais ")
   private Pais idPais;
 
   @Column(name = "nombreDepartamento", nullable = false, length = 50)//not null

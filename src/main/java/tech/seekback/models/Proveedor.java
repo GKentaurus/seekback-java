@@ -23,7 +23,8 @@ public class Proveedor implements Serializable {
   private Integer idProveedor;
 
   @Column(name = "tipoDoc", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idTipoDoc")
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -42,7 +43,8 @@ public class Proveedor implements Serializable {
   private String email;
 
   @Column(name = "idCliente", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
   private Cliente idCliente;
 
   @Embedded

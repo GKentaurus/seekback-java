@@ -5,9 +5,8 @@
  */
 package tech.seekback.models;
 
-import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -15,22 +14,23 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "empleado")
-public class Empleado implements Serializable {
+// TODO: Confirmar si la herencia esta bien aplicada
+@PrimaryKeyJoinColumn(name = "idEmpleado")
+public class Empleado extends Usuario {
 
-  @Id
+//  @Id
   @Column(name = "idEmpleado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idEmpleado;
 
-  // TODO: Revisar relación con la tabla "Usuario"
   @Column(name = "idUsuario", nullable = false)
-  @ManyToOne
+//  @OneToOne(fetch = FetchType.EAGER)
+//  @JoinColumn(name = "idUsuario")
   private Usuario idUsuario;
 
   @Embedded
   private Timestamps timestamps;
 
-  //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdEmpleado() {
     return idEmpleado;
@@ -40,14 +40,13 @@ public class Empleado implements Serializable {
     this.idEmpleado = idEmpleado;
   }
 
-  public Usuario getIdUsuario() {
-    return idUsuario;
-  }
-
-  public void setIdUsuario(Usuario idUsuario) {
-    this.idUsuario = idUsuario;
-  }
-
+//  public Usuario getIdUsuario() {
+//    return idUsuario;
+//  }
+//
+//  public void setIdUsuario(Usuario idUsuario) {
+//    this.idUsuario = idUsuario;
+//  }
   public Timestamps getTimestamps() {
     return timestamps;
   }

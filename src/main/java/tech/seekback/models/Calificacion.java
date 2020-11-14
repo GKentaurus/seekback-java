@@ -6,8 +6,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -22,9 +22,9 @@ public class Calificacion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCalificacion;
 
-  // TODO: revisar relacion con la tabla  Producto
   @Column(name = "idProducto", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEstado")
   private Producto idProducto;
 
   @Column(name = "calificacion", nullable = false, length = 1)
@@ -33,7 +33,6 @@ public class Calificacion implements Serializable {
   @Embedded
   private Timestamps timestamps;
 
-  //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCalificacion() {
     return idCalificacion;

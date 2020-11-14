@@ -23,14 +23,16 @@ public class PQRS implements Serializable {
   private Integer idPQRS;
 
   @Column(name = "idTipoSolicitud", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idTipoSolicitud")
   private TipoSolicitud idTipoSolicitud;
 
   @Column(name = "area", nullable = false, length = 100)
   private String area;
 
   @Column(name = "idEstado", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEstado")
   private EstadosFidelizacion idEstado;
 
   @Embedded

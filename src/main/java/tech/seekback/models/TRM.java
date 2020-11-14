@@ -19,14 +19,14 @@ public class TRM implements Serializable {
   private Integer idTrm;
 
   @Column(name = "idDivisa", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idDivisas ")
   private Divisas idDivisa;
 
   @Column(name = "fechaTRM", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date fechaTRM;
 
-  //comentario x o algo
   @Column(name = "tasaCambio", nullable = false)
   private Double tasaCambio;
 

@@ -22,9 +22,9 @@ public class Ciudad implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCiudad;
 
-  // TODO: Revisar relacion con la tabla "Departamento"
   @Column(name = "idDepartamento", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idDepartamento")
   private Departamento idDepartamento;
 
   @Column(name = "nombreCiudad", nullable = false, length = 50)

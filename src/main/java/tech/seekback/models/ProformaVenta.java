@@ -19,15 +19,16 @@ public class ProformaVenta implements Serializable {
   private Integer idProforma;
 
   @Column(name = "cotizacionAsociada", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCotizacion")
   private Cotizacion cotizacionAsociada;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date fecha;
 
   @Column(name = "vencimiento", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date vencimiento;
 
   @Embedded

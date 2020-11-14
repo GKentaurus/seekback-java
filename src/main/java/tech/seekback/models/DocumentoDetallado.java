@@ -6,8 +6,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -28,22 +28,20 @@ public class DocumentoDetallado implements Serializable {
   @Column(name = "consecutivo", nullable = false, length = 11)
   private Integer consecutivo;
 
-  // TODO: Revisar relación con la tabla "Producto"
   @Column(name = "idProducto", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idProducto")
   private Producto idProducto;
 
   @Column(name = "cantidad", nullable = false, length = 11)
   private Integer cantidad;
 
-  // TODO: establecer limete dato double
   @Column(name = "valorUnitario", nullable = false)
   private Double valorUnitario;
 
   @Embedded
   private Timestamps timestamps;
 
-  //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdDetalle() {
     return idDetalle;

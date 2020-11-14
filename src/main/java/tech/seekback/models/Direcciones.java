@@ -6,8 +6,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -22,9 +22,9 @@ public class Direcciones implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDirecciones;
 
-  // TODO: Revisar relacion con la tabla "Usuario"
   @Column(name = "idRegistro", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idUsuario")
   private Usuario idRegistro;
 
   @Column(name = "pseudonimo", nullable = false, length = 30)
@@ -37,7 +37,8 @@ public class Direcciones implements Serializable {
   private String telefono;
 
   @Column(name = "localizacion", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCiudad")
   private Ciudad localizacion;
 
   @Embedded

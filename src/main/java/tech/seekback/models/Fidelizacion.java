@@ -18,45 +18,50 @@ public class Fidelizacion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idFidelizacion;
 
-  @Column(name = "idCalificacion", nullable = false)
-  @ManyToOne
+  @Column(name = "idCalificacion", nullable = true)
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCalificacion")
   private Calificacion idCalificacion;
 
-  @Column(name = "idFelicitacion", nullable = false)
-  @ManyToOne
+  @Column(name = "idFelicitacion", nullable = true)
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idFelicitacion")
   private Felicitacion idFelicitacion;
 
-  @Column(name = "idPQRS", nullable = false)
-  @ManyToOne
+  @Column(name = "idPQRS", nullable = true)
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idPQRS")
   private PQRS idPQRS;
 
-  @Column(name = "IdSoporte", nullable = false)
-  @ManyToOne
+  @Column(name = "IdSoporte", nullable = true)
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "IdSoporte")
   private SoporteTecnico IdSoporte;
 
-  //TODO: como nombrar datos tipo Date
   @Column(name = "fechaInicio", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date fechaInicio;
 
-  //TODO: como nombrar datos tipo Date
   @Column(name = "fechaFin", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.DATE)
   private Date fechaFin;
 
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
   @Column(name = "idCliente", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
   private Cliente idCliente;
 
-  @Column(name = "idAdministrador", nullable = false)
-  @ManyToOne
+  @Column(name = "idAdministrador", nullable = true)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idAdministrador")
   private Administrador idAdministrador;
 
-  @Column(name = "idEmpleado", nullable = false)
-  @ManyToOne
+  @Column(name = "idEmpleado", nullable = true)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEmpleado")
   private Empleado idEmpleado;
 
   @Embedded

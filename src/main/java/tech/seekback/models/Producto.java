@@ -27,7 +27,8 @@ public class Producto implements Serializable {
   private Double precioVenta;
 
   @Column(name = "idCategoria", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCategoria")
   private CategoriasProducto idCategoria;
 
   @Column(name = "estado", nullable = false)

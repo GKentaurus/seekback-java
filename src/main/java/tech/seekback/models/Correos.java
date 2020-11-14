@@ -6,8 +6,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -22,9 +22,9 @@ public class Correos implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCorreo;
 
-  // TODO: Revisar relación con la tabla "Usuario"
   @Column(name = "idUsuario", nullable = false)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idUsuario")
   private Usuario idUsuario;
 
   @Column(name = "correoElectronico", nullable = false, unique = true, length = 255)
@@ -36,7 +36,6 @@ public class Correos implements Serializable {
   @Embedded
   private Timestamps timestamps;
 
-  //TODO:  se debe revisar al crear las clases pendientes
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCorreo() {
     return idCorreo;
@@ -89,5 +88,4 @@ public class Correos implements Serializable {
             + timestamps.toString()
             + ")";
   }
-
 }
