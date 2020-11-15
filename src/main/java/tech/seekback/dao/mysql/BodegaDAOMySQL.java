@@ -41,18 +41,17 @@ public class BodegaDAOMySQL implements BodegaDAO {
               );
       ps.setInt(1, id);
       ResultSet rs = ps.executeQuery();
+
       Bodega obj = null;
       Timestamps ts = null;
+
       if (rs.next()) {
         obj = new Bodega();
         obj.setIdBodega(rs.getInt("idBodega"));
         obj.setNombreBodega(rs.getString("nombreBodega"));
 
         ts = new Timestamps();
-        ts.setCreated_at(rs.getDate("created_at"));
-        ts.setUpdated_at(rs.getDate("updated_at"));
-        ts.setDeleted_at(rs.getDate("deleted_at"));
-
+        ts.setDateData(rs);
         obj.setTimestamps(ts);
       }
       return obj;
@@ -74,13 +73,10 @@ public class BodegaDAOMySQL implements BodegaDAO {
       while (rs.next()) {
         Bodega obj = new Bodega();
         Timestamps ts = new Timestamps();
+
         obj.setIdBodega(rs.getInt("idBodega"));
         obj.setNombreBodega(rs.getString("nombreBodega"));
-
-        ts.setCreated_at(rs.getDate("created_at"));
-        ts.setUpdated_at(rs.getDate("updated_at"));
-        ts.setDeleted_at(rs.getDate("deleted_at"));
-
+        ts.setDateData(rs);
         obj.setTimestamps(ts);
         listaBodegas.add(obj);
       }

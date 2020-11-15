@@ -40,8 +40,8 @@ public class RolesDAOMySQL implements RolesDAO {
                       + " WHERE idRol = ?"
               );
       ps.setInt(1, id);
-
       ResultSet rs = ps.executeQuery();
+
       Roles obj = null;
       Timestamps ts = null;
 
@@ -51,10 +51,7 @@ public class RolesDAOMySQL implements RolesDAO {
         obj.setNombreRol(rs.getString("nombreRol"));
 
         ts = new Timestamps();
-        ts.setCreated_at(rs.getDate("created_at"));
-        ts.setUpdated_at(rs.getDate("updated_at"));
-        ts.setDeleted_at(rs.getDate("deleted_at"));
-
+        ts.setDateData(rs);
         obj.setTimestamps(ts);
       }
       return obj;
@@ -73,21 +70,16 @@ public class RolesDAOMySQL implements RolesDAO {
                       "SELECT * FROM "
                       + TablesEnum.ROLES.getNombreTabla()
               );
-
       ResultSet rs = ps.executeQuery();
 
       while (rs.next()) {
         Roles obj = new Roles();
         Timestamps ts = new Timestamps();
+
         obj.setIdRol(rs.getInt("idRol"));
         obj.setNombreRol(rs.getString("nombreRol"));
-
-        ts.setCreated_at(rs.getDate("created_at"));
-        ts.setUpdated_at(rs.getDate("updated_at"));
-        ts.setDeleted_at(rs.getDate("deleted_at"));
-
+        ts.setDateData(rs);
         obj.setTimestamps(ts);
-
         listaRoles.add(obj);
       }
       return listaRoles;
