@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tech.seekback.exceptions;
+
 import tech.seekback.exceptions.enums.FactoryExcepEnum;
 
 /**
