@@ -139,8 +139,8 @@ public class Usuario implements Serializable {
             + "sApellido = " + sApellido + ", "
             + "tipoDoc = " + tipoDoc + ", "
             + "numeroDoc = " + numeroDoc + ", "
+            + "rol = " + rol + ", "
             + timestamps.toString()
-            + "rol = " + rol
             + '}';
   }
 }
