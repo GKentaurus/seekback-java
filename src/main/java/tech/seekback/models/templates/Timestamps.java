@@ -6,6 +6,8 @@
 package tech.seekback.models.templates;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -17,12 +19,15 @@ import javax.persistence.*;
 public class Timestamps implements Serializable {
 
   @Column(name = "created_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP")
+  @Temporal(TemporalType.DATE)
   private Date created_at;
 
   @Column(name = "updated_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+  @Temporal(TemporalType.DATE)
   private Date updated_at;
 
   @Column(name = "deleted_at", nullable = true, columnDefinition = "NULL")
+  @Temporal(TemporalType.DATE)
   private Date deleted_at;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -48,6 +53,12 @@ public class Timestamps implements Serializable {
 
   public void setDeleted_at(Date deleted_at) {
     this.deleted_at = deleted_at;
+  }
+
+  public void setDateData(ResultSet rs) throws SQLException {
+    this.created_at = rs.getDate("created_at");
+    this.updated_at = rs.getDate("updated_at");
+    this.deleted_at = rs.getDate("deleted_at");
   }
   //</editor-fold>
 
