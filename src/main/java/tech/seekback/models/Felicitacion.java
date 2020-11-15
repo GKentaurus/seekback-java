@@ -17,8 +17,16 @@ public class Felicitacion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idFelicitacion;
 
+  @Column(name = "idCliente", nullable = false)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
+  private Cliente idCliente;
+
   @Column(name = "dirigidoA", nullable = false, length = 100)
   private String dirigidoA;
+
+  @Column(name = "comentario", nullable = true, length = 255)
+  private Integer comentario;
 
   @Embedded
   private Timestamps timestamps;
@@ -47,13 +55,31 @@ public class Felicitacion implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
+
+  public Cliente getIdCliente() {
+    return idCliente;
+  }
+
+  public void setIdCliente(Cliente idCliente) {
+    this.idCliente = idCliente;
+  }
+
+  public Integer getComentario() {
+    return comentario;
+  }
+
+  public void setComentario(Integer comentario) {
+    this.comentario = comentario;
+  }
   //</editor-fold>
 
   @Override
   public String toString() {
     return "Felicitacion("
             + "id = " + idFelicitacion + ", "
+            + "idCliente = " + idCliente + ", "
             + "dirigidoA = " + dirigidoA + ", "
+            + "comentario = " + comentario + ", "
             + timestamps.toString()
             + ")";
   }

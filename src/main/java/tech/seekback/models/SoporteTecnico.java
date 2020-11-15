@@ -1,6 +1,7 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -22,10 +23,26 @@ public class SoporteTecnico implements Serializable {
   @JoinColumn(name = "idProducto")
   private Producto idProducto;
 
+  @Column(name = "idCliente", nullable = false)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
+  private Cliente idCliente;
+
+  @Column(name = "idEmpleado", nullable = true)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idEmpleado")
+  private Empleado idEmpleado;
+
+  @Column(name = "comentario", nullable = false, length = 255)
+  private String comentario;
+
   @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "idEstado")
   private EstadosFidelizacion idEstado;
+
+  @Column(name = "fechaRespuesta", nullable = true)
+  private Date fechaRespuesta;
 
   @Embedded
   private Timestamps timestamps;
@@ -62,14 +79,50 @@ public class SoporteTecnico implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
+
+  public Cliente getIdCliente() {
+    return idCliente;
+  }
+
+  public void setIdCliente(Cliente idCliente) {
+    this.idCliente = idCliente;
+  }
+
+  public Empleado getIdEmpleado() {
+    return idEmpleado;
+  }
+
+  public void setIdEmpleado(Empleado idEmpleado) {
+    this.idEmpleado = idEmpleado;
+  }
+
+  public String getComentario() {
+    return comentario;
+  }
+
+  public void setComentario(String comentario) {
+    this.comentario = comentario;
+  }
+
+  public Date getFechaRespuesta() {
+    return fechaRespuesta;
+  }
+
+  public void setFechaRespuesta(Date fechaRespuesta) {
+    this.fechaRespuesta = fechaRespuesta;
+  }
   //</editor-fold>
 
   @Override
   public String toString() {
     return "SoporteTecnico{"
-            + "idSoporteTecnico=" + idSoporteTecnico
-            + ", idProducto=" + idProducto
-            + ", idEstado=" + idEstado
+            + "idSoporteTecnico = " + idSoporteTecnico + ", "
+            + ", idProducto = " + idProducto + ", "
+            + ", idCliente = " + idCliente + ", "
+            + ", idEmpleado = " + idEmpleado + ", "
+            + ", comentario = " + comentario + ", "
+            + ", idEstado = " + idEstado + ", "
+            + ", fechaRespuesta = " + fechaRespuesta + ", "
             + timestamps.toString()
             + '}';
   }

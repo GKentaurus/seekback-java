@@ -22,13 +22,24 @@ public class Calificacion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCalificacion;
 
+  @Column(name = "idCliente", nullable = false)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
+  private Cliente idCliente;
+
   @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado")
+  @JoinColumn(name = "idProducto")
   private Producto idProducto;
 
   @Column(name = "calificacion", nullable = false, length = 1)
   private Integer calificacion;
+
+  @Column(name = "comentario", nullable = true, length = 255)
+  private Integer comentario;
+
+  @Column(name = "esAprobado", nullable = true, length = 255)
+  private Boolean esAprobado;
 
   @Embedded
   private Timestamps timestamps;
@@ -65,14 +76,41 @@ public class Calificacion implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
+
+  public Cliente getIdCliente() {
+    return idCliente;
+  }
+
+  public void setIdCliente(Cliente idCliente) {
+    this.idCliente = idCliente;
+  }
+
+  public Integer getComentario() {
+    return comentario;
+  }
+
+  public void setComentario(Integer comentario) {
+    this.comentario = comentario;
+  }
+
+  public Boolean getEsAprobado() {
+    return esAprobado;
+  }
+
+  public void setEsAprobado(Boolean esAprobado) {
+    this.esAprobado = esAprobado;
+  }
   //</editor-fold>
 
   @Override
   public String toString() {
     return "Calificacion("
             + "id = " + idCalificacion + ", "
+            + "idCliente = " + idCliente + ", "
             + "idProducto = " + idProducto + ", "
             + "calificacion = " + calificacion + ", "
+            + "comentario = " + comentario + ", "
+            + "esAprobado = " + esAprobado + ", "
             + timestamps.toString()
             + ")";
   }
