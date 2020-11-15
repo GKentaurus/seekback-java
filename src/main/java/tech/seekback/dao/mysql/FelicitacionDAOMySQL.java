@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.FelicitacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class FelicitacionDAOMySQL implements FelicitacionDAO {
+
+  private static final String TABLE = TablesEnum.FELICITACION.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

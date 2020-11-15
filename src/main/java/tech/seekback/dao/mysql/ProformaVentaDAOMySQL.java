@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.ProformaVentaDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.ProformaVenta;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class ProformaVentaDAOMySQL implements ProformaVentaDAO {
+
+  private static final String TABLE = TablesEnum.PROFORMA_VENTA.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

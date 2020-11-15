@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.ProveedorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Proveedor;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class ProveedorDAOMySQL implements ProveedorDAO {
+
+  private static final String TABLE = TablesEnum.PROVEEDOR.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

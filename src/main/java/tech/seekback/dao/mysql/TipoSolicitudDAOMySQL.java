@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.TipoSolicitudDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoSolicitud;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class TipoSolicitudDAOMySQL implements TipoSolicitudDAO {
+
+  private static final String TABLE = TablesEnum.TIPO_SOLICITUD.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

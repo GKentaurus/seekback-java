@@ -24,6 +24,8 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class TipoDocDAOMySQL implements TipoDocDAO {
 
+  private static final String TABLE = TablesEnum.TIPO_DOC.getNombreTabla();
+
   @Override
   public void create() throws ConnectionExcep {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -36,7 +38,7 @@ public class TipoDocDAOMySQL implements TipoDocDAO {
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.TIPO_DOC.getNombreTabla()
+                      + TABLE
                       + " WHERE idTipoDoc = ?"
               );
       ps.setInt(1, id);
@@ -64,30 +66,28 @@ public class TipoDocDAOMySQL implements TipoDocDAO {
   @Override
   public List<TipoDoc> getAll() throws ConnectionExcep {
     try {
-      List<TipoDoc> listaTipoDoc = new ArrayList<TipoDoc>();
+      List<TipoDoc> list = new ArrayList<TipoDoc>();
 
       PreparedStatement ps = DBConnect
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.TIPO_DOC.getNombreTabla()
+                      + TABLE
               );
       ResultSet rs = ps.executeQuery();
 
       while (rs.next()) {
-        TipoDoc obj = null;
-        Timestamps ts = null;
-
-        obj = new TipoDoc();
+        TipoDoc obj = new TipoDoc();
         obj.setIdTipoDoc(rs.getInt("idTipoDoc"));
         obj.setNombreDocumento(rs.getString("nombreDocumento"));
         obj.setSigla(rs.getString("sigla"));
-        ts = new Timestamps();
+
+        Timestamps ts = new Timestamps();
         ts.setDateData(rs);
         obj.setTimestamps(ts);
-        listaTipoDoc.add(obj);
+        list.add(obj);
       }
-      return listaTipoDoc;
+      return list;
     } catch (SQLException ex) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONSULTA, ex);
     }

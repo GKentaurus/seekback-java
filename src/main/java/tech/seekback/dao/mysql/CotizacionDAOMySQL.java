@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.CotizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cotizacion;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class CotizacionDAOMySQL implements CotizacionDAO {
+
+  private static final String TABLE = TablesEnum.COTIZACION.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

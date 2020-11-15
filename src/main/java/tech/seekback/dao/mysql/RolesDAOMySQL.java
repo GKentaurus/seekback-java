@@ -24,6 +24,8 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class RolesDAOMySQL implements RolesDAO {
 
+  private static final String TABLE = TablesEnum.ROLES.getNombreTabla();
+
   @Override
   public void create() throws ConnectionExcep {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -36,7 +38,7 @@ public class RolesDAOMySQL implements RolesDAO {
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.ROLES.getNombreTabla()
+                      + TABLE
                       + " WHERE idRol = ?"
               );
       ps.setInt(1, id);
@@ -62,27 +64,27 @@ public class RolesDAOMySQL implements RolesDAO {
 
   @Override
   public List<Roles> getAll() throws ConnectionExcep {
-    List<Roles> listaRoles = new ArrayList<Roles>();
+    List<Roles> list = new ArrayList<Roles>();
     try {
       PreparedStatement ps = DBConnect
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.ROLES.getNombreTabla()
+                      + TABLE
               );
       ResultSet rs = ps.executeQuery();
 
       while (rs.next()) {
         Roles obj = new Roles();
-        Timestamps ts = new Timestamps();
-
         obj.setIdRol(rs.getInt("idRol"));
         obj.setNombreRol(rs.getString("nombreRol"));
+
+        Timestamps ts = new Timestamps();
         ts.setDateData(rs);
         obj.setTimestamps(ts);
-        listaRoles.add(obj);
+        list.add(obj);
       }
-      return listaRoles;
+      return list;
     } catch (SQLException ex) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONSULTA, ex);
     }

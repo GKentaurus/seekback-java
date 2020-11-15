@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.CategoriasProductoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.CategoriasProducto;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class CategoriasProductoDAOMySQL implements CategoriasProductoDAO {
+
+  private static final String TABLE = TablesEnum.CATEGORIAS_PRODUCTO.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

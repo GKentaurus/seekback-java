@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.PQRSDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.PQRS;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class PQRSDAOMySQL implements PQRSDAO {
+
+  private static final String TABLE = TablesEnum.PQRS.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

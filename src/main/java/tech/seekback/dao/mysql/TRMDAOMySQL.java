@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.TRMDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TRM;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class TRMDAOMySQL implements TRMDAO {
+
+  private static final String TABLE = TablesEnum.TRM.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

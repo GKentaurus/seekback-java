@@ -24,6 +24,8 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class UsuarioDAOMySQL implements UsuarioDAO {
 
+  private static final String TABLE = TablesEnum.USUARIO.getNombreTabla();
+
   @Override
   public void create() throws ConnectionExcep {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -36,7 +38,7 @@ public class UsuarioDAOMySQL implements UsuarioDAO {
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.USUARIO.getNombreTabla()
+                      + TABLE
                       + " WHERE idUsuario = ?"
               );
       ps.setInt(1, id);

@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.AdministradorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Administrador;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class AdministradorDAOMySQL implements AdministradorDAO {
+
+  private static final String TABLE = TablesEnum.ADMINISTRADOR.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

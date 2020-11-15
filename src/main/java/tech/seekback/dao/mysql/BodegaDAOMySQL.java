@@ -24,6 +24,8 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class BodegaDAOMySQL implements BodegaDAO {
 
+  private static final String TABLE = TablesEnum.BODEGA.getNombreTabla();
+
   @Override
   public void create() throws ConnectionExcep {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -36,7 +38,7 @@ public class BodegaDAOMySQL implements BodegaDAO {
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.BODEGA.getNombreTabla()
+                      + TABLE
                       + " WHERE idBodega = ?"
               );
       ps.setInt(1, id);
@@ -62,13 +64,14 @@ public class BodegaDAOMySQL implements BodegaDAO {
 
   @Override
   public List<Bodega> getAll() throws ConnectionExcep {
-    List<Bodega> listaBodegas = new ArrayList<Bodega>();
+    List<Bodega> list = new ArrayList<Bodega>();
     try {
       PreparedStatement ps = DBConnect
               .getInstance()
               .prepareStatement(
                       "SELECT * FROM "
-                      + TablesEnum.BODEGA.getNombreTabla());
+                      + TABLE
+              );
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Bodega obj = new Bodega();
@@ -78,9 +81,9 @@ public class BodegaDAOMySQL implements BodegaDAO {
         obj.setNombreBodega(rs.getString("nombreBodega"));
         ts.setDateData(rs);
         obj.setTimestamps(ts);
-        listaBodegas.add(obj);
+        list.add(obj);
       }
-      return listaBodegas;
+      return list;
     } catch (SQLException ex) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONSULTA, ex);
     }

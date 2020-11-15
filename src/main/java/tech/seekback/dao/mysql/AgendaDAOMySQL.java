@@ -9,6 +9,7 @@ import java.util.List;
 import tech.seekback.dao.AgendaDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Agenda;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
@@ -17,6 +18,8 @@ import tech.seekback.models.Agenda;
  *
  */
 public class AgendaDAOMySQL implements AgendaDAO {
+
+  private static final String TABLE = TablesEnum.AGENDA.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.CiudadDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class CiudadDAOMySQL implements CiudadDAO {
+
+  private static final String TABLE = TablesEnum.CIUDAD.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

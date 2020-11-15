@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.DireccionesDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Direcciones;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class DireccionesDAOMySQL implements DireccionesDAO {
+
+  private static final String TABLE = TablesEnum.DIRECCIONES.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

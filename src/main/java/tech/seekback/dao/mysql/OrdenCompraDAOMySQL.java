@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.OrdenCompraDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.OrdenCompra;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class OrdenCompraDAOMySQL implements OrdenCompraDAO {
+
+  private static final String TABLE = TablesEnum.ORDEN_COMPRA.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {

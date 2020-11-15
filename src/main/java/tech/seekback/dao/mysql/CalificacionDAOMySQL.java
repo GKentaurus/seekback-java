@@ -9,12 +9,15 @@ import java.util.List;
 import tech.seekback.dao.CalificacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Calificacion;
+import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
 public class CalificacionDAOMySQL implements CalificacionDAO {
+
+  private static final String TABLE = TablesEnum.CALIFICACION.getNombreTabla();
 
   @Override
   public void create() throws ConnectionExcep {
