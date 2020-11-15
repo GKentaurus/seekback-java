@@ -6,6 +6,7 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -27,13 +28,29 @@ public class PQRS implements Serializable {
   @JoinColumn(name = "idTipoSolicitud")
   private TipoSolicitud idTipoSolicitud;
 
+  @Column(name = "idCliente", nullable = false)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idCliente")
+  private Cliente idCliente;
+
+  @Column(name = "idAdministrador", nullable = false)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idAdministrador")
+  private Administrador idAdministrador;
+
   @Column(name = "area", nullable = false, length = 100)
   private String area;
+
+  @Column(name = "comentario", nullable = false, length = 255)
+  private String comentario;
 
   @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "idEstado")
   private EstadosFidelizacion idEstado;
+
+  @Column(name = "fechaRespuesta", nullable = true)
+  private Date fechaRespuesta;
 
   @Embedded
   private Timestamps timestamps;
@@ -78,6 +95,38 @@ public class PQRS implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
+
+  public Cliente getIdCliente() {
+    return idCliente;
+  }
+
+  public void setIdCliente(Cliente idCliente) {
+    this.idCliente = idCliente;
+  }
+
+  public Administrador getIdAdministrador() {
+    return idAdministrador;
+  }
+
+  public void setIdAdministrador(Administrador idAdministrador) {
+    this.idAdministrador = idAdministrador;
+  }
+
+  public String getComentario() {
+    return comentario;
+  }
+
+  public void setComentario(String comentario) {
+    this.comentario = comentario;
+  }
+
+  public Date getFechaRespuesta() {
+    return fechaRespuesta;
+  }
+
+  public void setFechaRespuesta(Date fechaRespuesta) {
+    this.fechaRespuesta = fechaRespuesta;
+  }
   //</editor-fold>
 
   @Override
@@ -85,8 +134,12 @@ public class PQRS implements Serializable {
     return "PQRS{"
             + "idPQRS = " + idPQRS + ", "
             + "idTipoSolicitud = " + idTipoSolicitud + ", "
+            + "idCliente = " + idCliente + ", "
+            + "idAdministrador = " + idAdministrador + ", "
             + "area = " + area + ", "
+            + "comentario = " + comentario + ", "
             + "idEstado = " + idEstado
+            + "fechaRespuesta = " + fechaRespuesta
             + timestamps.toString()
             + '}';
   }

@@ -51,8 +51,6 @@ public interface FactoryDAO {
 
   FelicitacionDAO getFelicitacionDAO();
 
-  FidelizacionDAO getFidelizacionDAO();
-
   OrdenCompraDAO getOrdenCompraDAO();
 
   PQRSDAO getPQRSDAO();

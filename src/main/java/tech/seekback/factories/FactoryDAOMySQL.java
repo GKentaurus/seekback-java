@@ -110,11 +110,6 @@ public class FactoryDAOMySQL implements FactoryDAO {
   }
 
   @Override
-  public FidelizacionDAO getFidelizacionDAO() {
-    return new FidelizacionDAOMySQL();
-  }
-
-  @Override
   public OrdenCompraDAO getOrdenCompraDAO() {
     return new OrdenCompraDAOMySQL();
   }
