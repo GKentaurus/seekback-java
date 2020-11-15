@@ -30,7 +30,7 @@ public class DocumentoDetallado implements Serializable {
 
   @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
   private Producto idProducto;
 
   @Column(name = "cantidad", nullable = false, length = 11)

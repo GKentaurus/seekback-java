@@ -28,7 +28,7 @@ public class Producto implements Serializable {
 
   @Column(name = "idCategoria", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCategoria")
+  @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
   private CategoriasProducto idCategoria;
 
   @Column(name = "estado", nullable = false)

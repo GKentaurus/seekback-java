@@ -24,7 +24,7 @@ public class Direcciones implements Serializable {
 
   @Column(name = "idRegistro", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario")
+  @JoinColumn(name = "idRegistro", referencedColumnName = "idUsuario")
   private Usuario idRegistro;
 
   @Column(name = "pseudonimo", nullable = false, length = 30)
@@ -38,7 +38,7 @@ public class Direcciones implements Serializable {
 
   @Column(name = "localizacion", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCiudad")
+  @JoinColumn(name = "localizacion", referencedColumnName = "idCiudad")
   private Ciudad localizacion;
 
   @Embedded

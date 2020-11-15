@@ -25,17 +25,17 @@ public class PQRS implements Serializable {
 
   @Column(name = "idTipoSolicitud", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoSolicitud")
+  @JoinColumn(name = "idTipoSolicitud", referencedColumnName = "idTipoSolicitud")
   private TipoSolicitud idTipoSolicitud;
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
   @Column(name = "idAdministrador", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idAdministrador")
+  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")
   private Administrador idAdministrador;
 
   @Column(name = "area", nullable = false, length = 100)
@@ -46,7 +46,7 @@ public class PQRS implements Serializable {
 
   @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
   private EstadosFidelizacion idEstado;
 
   @Column(name = "fechaRespuesta", nullable = true)

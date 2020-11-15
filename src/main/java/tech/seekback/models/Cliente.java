@@ -24,8 +24,8 @@ public class Cliente extends Usuario {
   private Integer idCliente;
 
   @Column(name = "idUsuario", nullable = false)
-//  @OneToOne(fetch = FetchType.EAGER)
-//  @JoinColumn(name = "idUsuario")
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
+  @OneToOne(fetch = FetchType.EAGER)
   private Usuario idUsuario;
 
   @Embedded

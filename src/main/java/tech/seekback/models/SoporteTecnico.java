@@ -20,17 +20,17 @@ public class SoporteTecnico implements Serializable {
 
   @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
   private Producto idProducto;
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
   @Column(name = "idEmpleado", nullable = true)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
   private Empleado idEmpleado;
 
   @Column(name = "comentario", nullable = false, length = 255)
@@ -38,7 +38,7 @@ public class SoporteTecnico implements Serializable {
 
   @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
   private EstadosFidelizacion idEstado;
 
   @Column(name = "fechaRespuesta", nullable = true)

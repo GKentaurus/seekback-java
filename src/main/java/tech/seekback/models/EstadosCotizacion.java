@@ -33,7 +33,7 @@ public class EstadosCotizacion implements Serializable {
     return idEstadoCotizacion;
   }
 
-  public void setIdEstadoCotizacion(Integer idEstadoCotizacion) {
+  public void setIdEstado(Integer idEstadoCotizacion) {
     this.idEstadoCotizacion = idEstadoCotizacion;
   }
 

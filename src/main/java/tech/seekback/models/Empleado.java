@@ -24,8 +24,8 @@ public class Empleado extends Usuario {
   private Integer idEmpleado;
 
   @Column(name = "idUsuario", nullable = false)
-//  @OneToOne(fetch = FetchType.EAGER)
-//  @JoinColumn(name = "idUsuario")
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
   private Usuario idUsuario;
 
   @Embedded
