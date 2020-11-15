@@ -13,7 +13,7 @@ import tech.seekback.models.templates.Timestamps;
  *
  * @author camorenoc
  */
-@Entity
+@MappedSuperclass
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {

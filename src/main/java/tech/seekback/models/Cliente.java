@@ -15,7 +15,6 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "cliente")
 // TODO: Confirmar si la herencia esta bien aplicada
-@PrimaryKeyJoinColumn(name = "idCliente")
 public class Cliente extends Usuario {
 
 //  @Id
