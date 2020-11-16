@@ -1,7 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-    <!-- Define Persistence Unit -->
-    <persistence-unit name="my_persistence_unit">
-        
-    </persistence-unit>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">   -->
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="Seekback_PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>tech.seekback.models.Administrador</class>
+    <class>tech.seekback.models.Agenda</class>
+    <class>tech.seekback.models.Bodega</class>
+    <class>tech.seekback.models.BodegaProductos</class>
+    <class>tech.seekback.models.Calificacion</class>
+    <class>tech.seekback.models.CategoriasProducto</class>
+    <class>tech.seekback.models.Ciudad</class>
+    <class>tech.seekback.models.Cliente</class>
+    <class>tech.seekback.models.Correos</class>
+    <class>tech.seekback.models.Cotizacion</class>
+    <class>tech.seekback.models.Departamento</class>
+    <class>tech.seekback.models.Direcciones</class>
+    <class>tech.seekback.models.Divisas</class>
+    <class>tech.seekback.models.DocumentoDetallado</class>
+    <class>tech.seekback.models.Empleado</class>
+    <class>tech.seekback.models.EstadosAgenda</class>
+    <class>tech.seekback.models.EstadosCotizacion</class>
+    <class>tech.seekback.models.EstadosFidelizacion</class>
+    <class>tech.seekback.models.Felicitacion</class>
+    <class>tech.seekback.models.OrdenCompra</class>
+    <class>tech.seekback.models.PQRS</class>
+    <class>tech.seekback.models.Pais</class>
+    <class>tech.seekback.models.Producto</class>
+    <class>tech.seekback.models.ProformaVenta</class>
+    <class>tech.seekback.models.Proveedor</class>
+    <class>tech.seekback.models.Roles</class>
+    <class>tech.seekback.models.SoporteTecnico</class>
+    <class>tech.seekback.models.TRM</class>
+    <class>tech.seekback.models.Telefonos</class>
+    <class>tech.seekback.models.TipoDoc</class>
+    <class>tech.seekback.models.TipoServicio</class>
+    <class>tech.seekback.models.TipoSolicitud</class>
+    <properties>
+      <property name="eclipselink.target-database" value="DERBY">
+        <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver">
+          <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/introduccionJPA_DB;create=true">
+            <property name="eclipselink.jdbc.user" value="APP">
+              <property name="eclipselink.jdbc.password" value="APP">
+                <property name="eclipselink.ddl-generation" value="create-tables">
+                </property>
+              </property>
+            </property>
+          </property>
+        </property>
+      </property>
+    </properties>
+  </persistence-unit>
 </persistence>
