@@ -20,7 +20,7 @@ public class OrdenCompra implements Serializable {
 
   @Column(name = "idProveedor", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProveedor")
+  @JoinColumn(name = "idProveedor", referencedColumnName = "idProveedor")
   private Proveedor idProveedor;
 
   @Column(name = "fecha", nullable = false)
@@ -32,7 +32,7 @@ public class OrdenCompra implements Serializable {
 
   @Column(name = "idTrm", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTRM")
+  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM")
   private TRM idTrm;
 
   @Column(name = "factorImport", nullable = false, length = 11)
@@ -40,7 +40,7 @@ public class OrdenCompra implements Serializable {
 
   @Column(name = "idEmpleado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
   private Empleado idEmpleado;
 
   @Embedded

@@ -15,7 +15,6 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "administrador")
 // TODO: Confirmar si la herencia esta bien aplicada
-@PrimaryKeyJoinColumn(name = "idAdministrador")
 public class Administrador extends Usuario {
 
 //  @Id
@@ -24,8 +23,8 @@ public class Administrador extends Usuario {
   private Integer idAdministrador;
 
   @Column(name = "idUsuario", nullable = false)
-//  @OneToOne(fetch = FetchType.EAGER)
-//  @JoinColumn(name = "idUsuario")
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
   private Usuario idUsuario;
 
   @Embedded

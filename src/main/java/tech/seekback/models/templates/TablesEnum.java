@@ -29,7 +29,6 @@ public enum TablesEnum {
   ESTADOS_COTIZACION("estados_cotizacion"),
   ESTADOS_FIDELIZACION("estados_fidelizacion"),
   FELICITACION("felicitacion"),
-  FIDELIZACION("fidelizacion"),
   ORDEN_COMPRA("orden_compra"),
   PQRS("pqrs"),
   PAIS("pais"),

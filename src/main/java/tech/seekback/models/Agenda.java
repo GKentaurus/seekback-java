@@ -32,27 +32,27 @@ public class Agenda implements Serializable {
 
   @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
   private EstadosAgenda idEstado;
 
   @Column(name = "idTipoServicio", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoServicio")
+  @JoinColumn(name = "idTipoServicio", referencedColumnName = "idTipoServicio")
   private TipoServicio idTipoServicio;
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
-  @Column(name = "idEmpleado", nullable = false)
+  @Column(name = "idEmpleado", nullable = true)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
   private Empleado idEmpleado;
 
-  @Column(name = "idAdministrador", nullable = false)
+  @Column(name = "idAdministrador", nullable = true)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idAdministrador")
+  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")
   private Administrador idAdministrador;
 
   @Embedded

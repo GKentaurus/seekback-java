@@ -13,7 +13,7 @@ import tech.seekback.models.templates.Timestamps;
  *
  * @author camorenoc
  */
-@Entity
+@MappedSuperclass
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
 
   @Column(name = "tipoDoc", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoDoc")
+  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc")
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -49,7 +49,7 @@ public class Usuario implements Serializable {
 
   @Column(name = "rol", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idRol")
+  @JoinColumn(name = "rol", referencedColumnName = "idRoles")
   private Roles rol;
 
   @Embedded

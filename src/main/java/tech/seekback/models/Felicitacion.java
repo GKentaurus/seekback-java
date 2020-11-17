@@ -19,7 +19,7 @@ public class Felicitacion implements Serializable {
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
   @Column(name = "dirigidoA", nullable = false, length = 100)

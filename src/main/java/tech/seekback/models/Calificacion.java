@@ -24,12 +24,12 @@ public class Calificacion implements Serializable {
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
   @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
   private Producto idProducto;
 
   @Column(name = "calificacion", nullable = false, length = 1)

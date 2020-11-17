@@ -2,7 +2,6 @@ package tech.seekback.models;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.swing.text.StyledEditorKit;
 import tech.seekback.models.templates.Timestamps;
 
 /**
@@ -20,7 +19,7 @@ public class Telefonos implements Serializable {
 
   @Column(name = "idUsuario", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario")
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
   private Usuario idUsuario;
 
   @Column(name = "numeroTelefono", nullable = false, length = 20)

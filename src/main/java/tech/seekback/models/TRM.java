@@ -20,7 +20,7 @@ public class TRM implements Serializable {
 
   @Column(name = "idDivisa", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDivisas ")
+  @JoinColumn(name = "idDivisas ", referencedColumnName = "idDivisa")
   private Divisas idDivisa;
 
   @Column(name = "fechaTRM", nullable = false)

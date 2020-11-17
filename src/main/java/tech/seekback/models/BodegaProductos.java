@@ -24,12 +24,12 @@ public class BodegaProductos implements Serializable {
 
   @Column(name = "idBodega", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idBodega")
+  @JoinColumn(name = "idBodega", referencedColumnName = "idBodega")
   private Bodega idBodega;
 
   @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
   private Producto idProducto;
 
   @Column(name = "cantidad", nullable = false, length = 11)

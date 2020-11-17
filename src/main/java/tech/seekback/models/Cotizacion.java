@@ -36,22 +36,22 @@ public class Cotizacion implements Serializable {
 
   @Column(name = "idTRM", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTRM")
+  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM")
   private TRM idTRM;
 
   @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
   private EstadosCotizacion idEstado;
 
   @Column(name = "idEmpleado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
   private Empleado idEmpleado;
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
   @Embedded

@@ -19,7 +19,7 @@ public class Departamento implements Serializable {
 
   @Column(name = "idPais", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idPais ")
+  @JoinColumn(name = "idPais ", referencedColumnName = "idPais")
   private Pais idPais;
 
   @Column(name = "nombreDepartamento", nullable = false, length = 50)//not null

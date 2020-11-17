@@ -24,7 +24,7 @@ public class Ciudad implements Serializable {
 
   @Column(name = "idDepartamento", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDepartamento")
+  @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento")
   private Departamento idDepartamento;
 
   @Column(name = "nombreCiudad", nullable = false, length = 50)

@@ -24,7 +24,7 @@ public class Proveedor implements Serializable {
 
   @Column(name = "tipoDoc", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoDoc")
+  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc")
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -44,7 +44,7 @@ public class Proveedor implements Serializable {
 
   @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
   private Cliente idCliente;
 
   @Embedded
