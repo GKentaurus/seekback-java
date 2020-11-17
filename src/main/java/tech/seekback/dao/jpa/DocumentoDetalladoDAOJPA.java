@@ -5,43 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.DocumentoDetalladoDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.DocumentoDetalladoDAO;
 import tech.seekback.models.DocumentoDetallado;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
-public class DocumentoDetalladoDAOJPA implements DocumentoDetalladoDAO {
+public class DocumentoDetalladoDAOJPA extends GenericDAO<DocumentoDetallado, Integer> implements DocumentoDetalladoDAO {
 
-  private static final String TABLE = TablesEnum.DOCUMENTO_DETALLADO.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public DocumentoDetalladoDAOJPA() {
+    super(DocumentoDetallado.class);
   }
-
-  @Override
-  public DocumentoDetallado getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<DocumentoDetallado> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(DocumentoDetallado obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }

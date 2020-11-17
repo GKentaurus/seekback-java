@@ -5,11 +5,9 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.AgendaDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.AgendaDAO;
 import tech.seekback.models.Agenda;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
@@ -17,32 +15,9 @@ import tech.seekback.models.templates.TablesEnum;
  *
  *
  */
-public class AgendaDAOJPA implements AgendaDAO {
+public class AgendaDAOJPA extends GenericDAO<Agenda, Integer> implements AgendaDAO {
 
-  private static final String TABLE = TablesEnum.AGENDA.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public Agenda getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<Agenda> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(Agenda obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public AgendaDAOJPA() {
+    super(Agenda.class);
   }
 }
