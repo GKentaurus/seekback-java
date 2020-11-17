@@ -18,7 +18,7 @@ public class TipoSolicitud implements Serializable {
   private Integer idTipoSolicitud;
 
   @Column(name = "nombreSolicitud", nullable = false, length = 20)
-  private String nombreServicio;
+  private String nombreSolicitud;
 
   @Embedded
   private Timestamps timestamps;
@@ -32,12 +32,12 @@ public class TipoSolicitud implements Serializable {
     this.idTipoSolicitud = idTipoSolicitud;
   }
 
-  public String getNombreServicio() {
-    return nombreServicio;
+  public String getNombreSolicitud() {
+    return nombreSolicitud;
   }
 
-  public void setNombreServicio(String nombreServicio) {
-    this.nombreServicio = nombreServicio;
+  public void setNombreSolicitud(String nombreSolicitud) {
+    this.nombreSolicitud = nombreSolicitud;
   }
 
   public Timestamps getTimestamps() {
@@ -53,7 +53,7 @@ public class TipoSolicitud implements Serializable {
   public String toString() {
     return "TipoSolicitud{"
             + "idTipoSolicitud=" + idTipoSolicitud
-            + ", nombreServicio=" + nombreServicio
+            + ", nombreServicio=" + nombreSolicitud
             + timestamps.toString()
             + '}';
   }
