@@ -1,6 +1,6 @@
 package testing;
 
-import tech.seekback.dao.RolesDAO;
+import tech.seekback.dao.interfaces.RolesDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.exceptions.FactoryExcep;
 import tech.seekback.exceptions.enums.ConnectionExcepEnum;
