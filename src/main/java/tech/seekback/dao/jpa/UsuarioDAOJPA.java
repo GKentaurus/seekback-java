@@ -5,43 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.UsuarioDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.UsuarioDAO;
 import tech.seekback.models.Usuario;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
-public class UsuarioDAOJPA implements UsuarioDAO {
+public class UsuarioDAOJPA extends GenericDAO<Usuario, Integer> implements UsuarioDAO {
 
-  private static final String TABLE = TablesEnum.USUARIO.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public UsuarioDAOJPA() {
+    super(Usuario.class);
   }
-
-  @Override
-  public Usuario getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<Usuario> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(Usuario obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }

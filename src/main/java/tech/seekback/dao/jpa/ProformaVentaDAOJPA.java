@@ -5,43 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.ProformaVentaDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.ProformaVentaDAO;
 import tech.seekback.models.ProformaVenta;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
-public class ProformaVentaDAOJPA implements ProformaVentaDAO {
+public class ProformaVentaDAOJPA extends GenericDAO<ProformaVenta, Integer> implements ProformaVentaDAO {
 
-  private static final String TABLE = TablesEnum.PROFORMA_VENTA.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public ProformaVentaDAOJPA() {
+    super(ProformaVenta.class);
   }
-
-  @Override
-  public ProformaVenta getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<ProformaVenta> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(ProformaVenta obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }

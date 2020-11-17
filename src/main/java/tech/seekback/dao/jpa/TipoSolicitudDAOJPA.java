@@ -5,43 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.TipoSolicitudDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.TipoSolicitudDAO;
 import tech.seekback.models.TipoSolicitud;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
-public class TipoSolicitudDAOJPA implements TipoSolicitudDAO {
+public class TipoSolicitudDAOJPA extends GenericDAO<TipoSolicitud, Integer> implements TipoSolicitudDAO {
 
-  private static final String TABLE = TablesEnum.TIPO_SOLICITUD.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public TipoSolicitudDAOJPA() {
+    super(TipoSolicitud.class);
   }
-
-  @Override
-  public TipoSolicitud getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<TipoSolicitud> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(TipoSolicitud obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }

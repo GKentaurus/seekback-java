@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+<<<<<<< HEAD
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,13 +23,19 @@ import tech.seekback.models.templates.Timestamps;
 =======
 import tech.seekback.models.templates.TablesEnum;
 >>>>>>> master:src/main/java/tech/seekback/dao/jpa/DivisasDAOJPA.java
+=======
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.DivisasDAO;
+import tech.seekback.models.Divisas;
+>>>>>>> master
 
 /**
  *
  * @author camorenoc
  */
-public class DivisasDAOJPA implements DivisasDAO {
+public class DivisasDAOJPA extends GenericDAO<Divisas, Integer> implements DivisasDAO {
 
+<<<<<<< HEAD
   private static final String TABLE = TablesEnum.DIVISAS.getNombreTabla();
 
   @Override
@@ -115,16 +122,9 @@ public class DivisasDAOJPA implements DivisasDAO {
     } catch (SQLException ex) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONSULTA, ex);
     }
+=======
+  public DivisasDAOJPA() {
+    super(Divisas.class);
+>>>>>>> master
   }
-
-  @Override
-  public void update(Divisas obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }

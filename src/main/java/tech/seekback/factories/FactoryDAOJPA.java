@@ -5,7 +5,7 @@
  */
 package tech.seekback.factories;
 
-import tech.seekback.dao.*;
+import tech.seekback.dao.interfaces.*;
 import tech.seekback.dao.jpa.*;
 
 /**

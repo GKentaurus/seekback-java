@@ -5,43 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.EmpleadoDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.EmpleadoDAO;
 import tech.seekback.models.Empleado;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
-public class EmpleadoDAOJPA implements EmpleadoDAO {
+public class EmpleadoDAOJPA extends GenericDAO<Empleado, Integer> implements EmpleadoDAO {
 
-  private static final String TABLE = TablesEnum.EMPLEADO.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public EmpleadoDAOJPA() {
+    super(Empleado.class);
   }
-
-  @Override
-  public Empleado getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<Empleado> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(Empleado obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }

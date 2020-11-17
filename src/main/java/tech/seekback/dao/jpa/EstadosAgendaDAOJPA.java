@@ -5,43 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import tech.seekback.dao.EstadosAgendaDAO;
-import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.EstadosAgendaDAO;
 import tech.seekback.models.EstadosAgenda;
-import tech.seekback.models.templates.TablesEnum;
 
 /**
  *
  * @author camorenoc
  */
-public class EstadosAgendaDAOJPA implements EstadosAgendaDAO {
+public class EstadosAgendaDAOJPA extends GenericDAO<EstadosAgenda, Integer> implements EstadosAgendaDAO {
 
-  private static final String TABLE = TablesEnum.ESTADOS_AGENDA.getNombreTabla();
-
-  @Override
-  public void create() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public EstadosAgendaDAOJPA() {
+    super(EstadosAgenda.class);
   }
-
-  @Override
-  public EstadosAgenda getOne(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public List<EstadosAgenda> getAll() throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void update(EstadosAgenda obj) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
-  @Override
-  public void delete(Integer id) throws ConnectionExcep {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
-
 }
