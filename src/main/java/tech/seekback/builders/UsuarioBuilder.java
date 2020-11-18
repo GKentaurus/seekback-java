@@ -19,7 +19,7 @@ public class UsuarioBuilder {
   private Usuario usuario;
 
   private UsuarioBuilder() {
-    usuario = new Usuario();
+    this.usuario = new Usuario();
   }
 
   public static UsuarioBuilder builder() {
@@ -78,6 +78,6 @@ public class UsuarioBuilder {
   }
 
   public Usuario build() {
-    return usuario;
+    return this.usuario;
   }
 }

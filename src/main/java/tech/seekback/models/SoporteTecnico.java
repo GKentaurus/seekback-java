@@ -42,6 +42,7 @@ public class SoporteTecnico implements Serializable {
   private EstadosFidelizacion idEstado;
 
   @Column(name = "fechaRespuesta", nullable = true)
+  @Temporal(TemporalType.DATE)
   private Date fechaRespuesta;
 
   @Embedded

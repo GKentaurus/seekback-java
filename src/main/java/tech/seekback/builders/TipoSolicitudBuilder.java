@@ -17,7 +17,7 @@ public class TipoSolicitudBuilder {
   private TipoSolicitud tipoSolicitud;
 
   private TipoSolicitudBuilder() {
-    tipoSolicitud = new TipoSolicitud();
+    this.tipoSolicitud = new TipoSolicitud();
   }
 
   public static TipoSolicitudBuilder builder() {
@@ -40,6 +40,6 @@ public class TipoSolicitudBuilder {
   }
 
   public TipoSolicitud build() {
-    return tipoSolicitud;
+    return this.tipoSolicitud;
   }
 }
