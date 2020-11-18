@@ -11,6 +11,7 @@ import javax.inject.Named;
 import tech.seekback.models.Correos;
 import tech.seekback.models.Direcciones;
 import tech.seekback.models.Telefonos;
+import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
 
 /**
@@ -28,33 +29,6 @@ public class RegistrerController implements Serializable {
 
   public RegistrerController() {
     usuario = new Usuario();
-    correo = new Correos();
-    telefono = new Telefonos();
-    direcciones = new Direcciones();
-  }
-
-  public Direcciones getDirecciones() {
-    return direcciones;
-  }
-
-  public void setDirecciones(Direcciones direcciones) {
-    this.direcciones = direcciones;
-  }
-
-  public Telefonos getTelefono() {
-    return telefono;
-  }
-
-  public void setTelefono(Telefonos telefono) {
-    this.telefono = telefono;
-  }
-
-  public Correos getCorreo() {
-    return correo;
-  }
-
-  public void setCorreo(Correos correo) {
-    this.correo = correo;
   }
 
   public Usuario getUsuario() {
@@ -65,8 +39,8 @@ public class RegistrerController implements Serializable {
     this.usuario = usuario;
   }
 
-  public void regitrer() {
-    System.out.println(usuario + " \n" + correo + " \n " + telefono + " \n " + direcciones);
+  public void registrer() {
+    System.out.println(usuario);
   }
 
 }

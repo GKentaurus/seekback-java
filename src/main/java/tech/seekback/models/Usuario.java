@@ -127,18 +127,6 @@ public class Usuario implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
-<<<<<<< Updated upstream
-
-  public String getContrasena() {
-    return contrasena;
-  }
-
-  public void setContrasena(String contrasena) {
-    this.contrasena = contrasena;
-  }
-  //</editor-fold>
-=======
->>>>>>> Stashed changes
 
   public String getContrasena() {
     return contrasena;
