@@ -127,14 +127,15 @@
                 <br />
                 <h:form>
                   <div class="input-field s12">
-                    <input id="emaillog" type="email" class="ingre validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+" autocomplete="off" required="true" />
-                    <label for="emaillog">Email</label>
+                    <h:inputText id="emaillog" class="ingre validate"  autocomplete="off" required="true"  value="#{loginController.email}"/>
+                    <h:outputLabel for="emaillog" value="Email"/>
                     <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
                   </div>
                   <div class="input-field s12">
-                    <h:inputSecret id="passwordlog" class="ingre" required="true" />
+                    <h:inputSecret id="passwordlog" class="ingre" required="true"  value="#{loginController.password}"/>
                     <h:outputLabel for="passwordlog" value="Contraseña" />
                   </div>
+                  <h:commandButton class="btn waves-effect waves-light blue"  value="ingresar t" actionListener="#{loginController.show()}" />
                   <h:commandButton class="btn waves-effect waves-light blue" onclick="login();" value="ingresar" />
                   <h:commandLink pt:data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</h:commandLink>
                 </h:form>
@@ -150,40 +151,50 @@
                 <div class="row">
                   <h:form>
                     <div class="input-field col s12 m6">
-                      <input id="fname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" />
-                      <label for="fname">1º Nombre</label>
+                      <h:inputText id="fname" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" value="#{registrerController.usuario.pNombre}" />
+                      <h:outputLabel for="fname" value="1º Nombre"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="fname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" />
-                      <label for="fname">2º Nombre</label>
+                      <h:inputText id="sname" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" value="#{registrerController.usuario.sNombres}" />
+                      <h:outputLabel for="sname" value="2º Nombre"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="lname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" />
-                      <label for="lname">1º Apellido</label>
+                      <h:inputText id="lname" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" value="#{registrerController.usuario.pApellido}" />
+                      <h:outputLabel for="lname" value="1º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="lname" type="text" pattern="[a-zA-Z]+" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" />
-                      <label for="lname">2º Apellido</label>
+                      <h:inputText id="lsname" title="solo se permiten letras" class="ingre validate" autocomplete="off"  value="#{registrerController.usuario.sApellido}" />
+                      <h:outputLabel for="lsname" value="2º Apellido"/>
                     </div>
-                    <div class="input-field col s12">
-                      <input id="emailr" type="email" class="ingre validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+" autocomplete="off" required="true" />
-                      <label for="emailr">Email</label>
+                    <div class="input-field col s12 m6">
+                      <select class="tdoc" id="tdoc"  required="true">
+                        <option value="" disabled="disabled" selected="selected">Elije una opcion</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Otro">Otro</option>
+                      </select>
+                      <label for="tdoc">Tipo documento</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <h:inputText  id="docu" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true" value="#{registrerController.usuario.numeroDoc}"/>
+                      <h:outputLabel for="docu" value="Documento"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
-                    <div class="input-field col s12">
-                      <input id="tel" type="number" class="ingre validate" autocomplete="off" min="0" required="true" />
-                      <label for="tel">Telefono</label>
+                    <div class="input-field col s12 m6">
+                      <h:inputText id="emailr" pt:type="email" class="ingre validate"  autocomplete="off" required="true"  value="#{registrerController.correo.correoElectronico}"/>
+                      <h:outputLabel for="emailr" value="Email"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="fdir" type="text" class="ingre validate" autocomplete="off" required="true" />
-                      <label for="fdir">Direccion 1</label>
+                      <h:inputText id="tel" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true" value="#{registrerController.telefono.numeroTelefono}" />
+                      <h:outputLabel for="tel" value="Telefono"/>
+                      <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="sdir" type="text" class="ingre validate" autocomplete="off"/>
-                      <label for="sdir">Direccion 2</label>
+                      <h:inputText id="fdir" class="ingre validate" autocomplete="off" required="true"  value="#{registrerController.direcciones.direccion}" />
+                      <h:outputLabel for="fdir" value="Direccion"/>
                     </div>
                     <div class="input-field col s12" id="paiss">
                       <select class="oinps" id="pais" onchange="paiss();" required="true">
@@ -202,15 +213,15 @@
                       <label for="oubi">Otra ubicacion </label>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="fcontra" type="password" onkeyup="passwo();" class="ingre validate" required="true" />
-                      <label for="fcontra">Contraseña </label>
+                      <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true" value="#{registrerController.usuario.contrasena}"/>
+                      <h:outputLabel for="fcontra" value="Contraseña "/>
                     </div>
                     <div class="input-field col s12 m6">
                       <input id="scontra" type="password" onkeyup="passwo();" class="ingre validate" required="true" />
                       <label for="scontra">Confirmar Contraseña</label>
                     </div>
                     <div class="col s12 m6">
-                      <button class=" btn waves-effect waves-light blue disabled" pt:data-target="modal2" type="submit" id="ing" name="action">Registrarse</button>
+                      <h:commandButton class=" btn waves-effect waves-light blue" pt:data-target="modal2" type="submit" id="ing" value="Registrarse" actionListener="#{registrerController.regitrer()}"/>
                     </div>
                   </h:form>
                   <div class="col s12 m6">
