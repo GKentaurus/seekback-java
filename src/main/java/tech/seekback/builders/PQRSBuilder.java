@@ -5,7 +5,13 @@
  */
 package tech.seekback.builders;
 
+import java.util.Date;
+import tech.seekback.models.Administrador;
+import tech.seekback.models.Cliente;
+import tech.seekback.models.EstadosFidelizacion;
 import tech.seekback.models.PQRS;
+import tech.seekback.models.TipoSolicitud;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -23,48 +29,43 @@ public class PQRSBuilder {
     return new PQRSBuilder();
   }
 
-  public PQRSBuilder idUsuario(Integer idUsuario) {
-    this.pqrs.setIdUsuario(idUsuario);
+  public PQRSBuilder idPQRS(Integer idPQRS) {
+    this.pqrs.setIdPQRS(idPQRS);
     return this;
   }
 
-  public PQRSBuilder pNombre(String pNombre) {
-    this.pqrs.setpNombre(pNombre);
+  public PQRSBuilder idTipoSolicitud(TipoSolicitud idTipoSolicitud) {
+    this.pqrs.setIdTipoSolicitud(idTipoSolicitud);
     return this;
   }
 
-  public PQRSBuilder sNombres(String sNombres) {
-    this.pqrs.setsNombres(sNombres);
+  public PQRSBuilder idcliente(Cliente idCliente) {
+    this.pqrs.setIdCliente(idCliente);
     return this;
   }
 
-  public PQRSBuilder pApellido(String pApellido) {
-    this.pqrs.setpApellido(pApellido);
+  public PQRSBuilder idAdministrador(Administrador idAdministrador) {
+    this.pqrs.setIdAdministrador(idAdministrador);
     return this;
   }
 
-  public PQRSBuilder sApellido(String sApellido) {
-    this.pqrs.setsApellido(sApellido);
+  public PQRSBuilder area(String area) {
+    this.pqrs.setArea(area);
     return this;
   }
 
-  public PQRSBuilder tipoDoc(TipoDoc tipoDoc) {
-    this.pqrs.setTipoDoc(tipoDoc);
+  public PQRSBuilder comentario(String comentario) {
+    this.pqrs.setComentario(comentario);
     return this;
   }
 
-  public PQRSBuilder numeroDoc(String numeroDoc) {
-    this.pqrs.setNumeroDoc(numeroDoc);
+  public PQRSBuilder idEstado(EstadosFidelizacion idEstado) {
+    this.pqrs.setIdEstado(idEstado);
     return this;
   }
 
-  public PQRSBuilder contrasena(String contrasena) {
-    this.pqrs.setContrasena(contrasena);
-    return this;
-  }
-
-  public PQRSBuilder rol(Roles rol) {
-    this.pqrs.setRol(rol);
+  public PQRSBuilder fechaRespuesta(Date fechaRespuesta) {
+    this.pqrs.setFechaRespuesta(fechaRespuesta);
     return this;
   }
 

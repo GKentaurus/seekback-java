@@ -22,6 +22,10 @@ public class BodegaProductosBuilder {
     this.bodegaProductos = new BodegaProductos();
   }
 
+  public static BodegaProductosBuilder builder() {
+    return new BodegaProductosBuilder();
+  }
+
   public BodegaProductosBuilder idRegistro(Integer idRegistro) {
     this.bodegaProductos.setIdRegistro(idRegistro);
     return this;
