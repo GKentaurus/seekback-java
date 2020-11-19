@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+    <title>QPCOM | Seekback</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style>
+      body {
+        background-image: url("#{resource['images/logob.png']}");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 700px;
+        background-position: 130% -300%;
+        background-blend-mode: difference;
+      }
+
+    </style>
+  </h:head>
+
+  <h:body>
+    <div class="col s12 center-align">
+      <p style="font-size:25px;"><i class="far fa-user"></i> Perfil <i class="fas fa-cog"></i></p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <center>
+          <div class="col s12" style="">
+            <div class="row">
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="fname"  class="validate" value="juan" autocomplete="off"/>
+                  <h:outputLabel for="fname" value="1º Nombre" />
+                </div>
+              </div>
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="sname" class="validate" value="camilo" autocomplete="off"/>
+                  <h:outputLabel for="sname" value="2º Nombre" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="flname" class="validate" value="roncancio" autocomplete="off"/>
+                  <h:outputLabel for="flname" value="1º Apellido"/>
+                </div>
+              </div>
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="slname" class="validate" value="lumino" autocomplete="off"/>
+                  <h:outputLabel for="slname" value="2º Apellido" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="tel" class="validate" value="300 000 0000"/>
+                  <h:outputLabel for="tel" value="Telefono" />
+                </div>
+              </div>
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="pais" class="validate" value="Colombia" autocomplete="off"/>
+                  <h:outputLabel for="pais" value="Pais" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="fdire" class="validate" value="calle52" autocomplete="off"/>
+                  <h:outputLabel for="fdire" value="1º Direccion" />
+                </div>
+              </div>
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="sdire" class="validate" value="carrera 32" autocomplete="off"/>
+                  <h:outputLabel for="sdire" value="2º Direccion"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="docu" pt:type="number" class="validate" value="124579248" autocomplete="off"/>
+                  <h:outputLabel for="docu" value="Documento"/>
+                </div>
+              </div>
+              <div class="col s6 col m6">
+                <div class="input-field">
+                  <h:inputText id="email" pt:type="email" class="validate" value="j@dasd.com" />
+                  <h:outputLabel for="email" value="Email" />
+                  <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <button class="waves-effect waves-light btn modal-trigger" href="#modal2">Guardar cambios</button>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">cambiar contraseña</a>
+          </div>
+        </center>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <p>Cambios Guardados satisfactoriamente</p>
+      </div>
+    </div>
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Recuperar contraseña</h4>
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field">
+                <h:inputSecret id="pass" class="validate" value="124579248" autocomplete="off" />
+                <h:outputLabel for="pass" value="Contraseña actual" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s6">
+              <div class="input-field">
+                <h:inputSecret id="fcontra" class="validate" autocomplete="off"/>
+                <h:outputLabel for="fcontra" value="Contraseña nueva" />
+              </div>
+            </div>
+            <div class="col s6">
+              <div class="input-field">
+                <h:inputSecret id="scontra" onkeyup="passwo();" class="validate" autocomplete="off"/>
+                <h:outputLabel for="scontra" value="Confirmar contraseña" />
+              </div>
+            </div>
+            <a class="waves-effect waves-light btn modal-trigger disabled" id="ing"  href="#modal2">cambiar contraseña</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      $(document).ready(function () {
+        $('.modal').modal();
+      });
+
+      /* verificacion de password */
+      function passwo() {
+        var pass = document.getElementById("fcontra");
+        var passa = document.getElementById("scontra");
+        var ing = document.getElementById("ing");
+
+        if (pass.value == passa.value) {
+
+          document.getElementById("ing").className = ing.className.replace("disabled", "enabled");
+          ing.disabled = false;
+        } else {
+          document.getElementById("ing").className = ing.className.replace("enabled", "disabled");
+          ing.disabled = true;
+        }
+      }
+    </script>
+
+  </h:body>
+</html>

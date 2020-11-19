@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+    <title>QPCOM | Seekback</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style>
+      body {
+        background-image: url("#{resource['images/logob.png']}");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 700px;
+        background-position: 130% -300%;
+        background-blend-mode: difference;
+      }
+
+    </style>
+  </h:head>
+
+  <h:body  onload="$('.tap-target').tapTarget('open')" onclick="$('.tap-target').tapTarget('close')">
+    <div class="container" onclick="$('.tap-target').tapTarget('close')">
+      <div class="row">
+        <div class="col s12">
+          <p class="center-align" style="font-size:25px;"><i class="far fa-edit"></i> modificar referencias nuevas <i class="fas fa-asterisk"></i></p>
+          <br/>
+          <div class="input-field">
+            <input class="form-control" id="myInput" type="text"/>
+            <label for="myInput">Buscar...</label>
+          </div>
+          <br/>
+          <table class="responsive-table" id="ttabla">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Referencia</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
+                <th>Editar</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              <tr>
+                <td>modem</td>
+                <td>sfd548s</td>
+                <td>20</td>
+                <td>$50.000</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Editar</a></td>
+              </tr>
+              <tr>
+                <td>usb wifi</td>
+                <td>css457s</td>
+                <td>15</td>
+                <td>$10.000</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Editar</a></td>
+              </tr>
+              <tr>
+                <td>switch</td>
+                <td>asas448</td>
+                <td>20</td>
+                <td>$500.000</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Editar</a></td>
+              </tr>
+              <tr>
+                <td>utp cat 6</td>
+                <td>cd111</td>
+                <td>30</td>
+                <td>$5.000</td>
+                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Editar</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="fixed-action-btn direction-top active">
+        <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
+      </div>
+      <div class="tap-target-wrapper">
+        <div class="tap-target teal" data-target="menu">
+          <div class="tap-target-content">
+            <h5>Bienvenido</h5>
+            <p>Aqui podras descargar el reporte que consultes en este modulo</p>
+          </div>
+        </div>
+
+        <script>
+          $(document).ready(function () {
+            $('.tap-target').tapTarget();
+          });
+        </script>
+      </div>
+    </div>
+
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <div class="section" style="padding-bottom:0px;">
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="input-field">
+                <input id="quien" type="text" value="modem" />
+                <label for="quien">Producto</label>
+              </div>
+            </div>
+            <div class="col s12 m6">
+              <div class="input-field">
+                <input id="ref" type="text" value="sfd548s" />
+                <label for="ref">Referencia</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="input-field">
+                <input id="cant" type="text" value="20" />
+                <label for="cant">Cantidad</label>
+              </div>
+            </div>
+            <div class="col s12 m6">
+              <div class="input-field">
+                <input id="cuni" type="text" value="$50.000" />
+                <label for="cuni">Costo unitario</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
+        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $('.tooltipped').tooltip();
+      });
+
+
+      $(document).ready(function () {
+        $('.modal').modal();
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
+  </h:body>
+</html>
