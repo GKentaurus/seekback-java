@@ -31,7 +31,7 @@ public class ClienteBuilder {
   }
 
   public ClienteBuilder idUsuario(Usuario idUsuario) {
-    this.cliente.setIdUsuario(Integer.MIN_VALUE);
+    this.cliente.setUsuario(idUsuario);
     return this;
   }
 

@@ -30,9 +30,8 @@ public class EmpleadoBuilder {
     return this;
   }
 
-  //TODO: Cuando llamo set queda asi el valor
   public EmpleadoBuilder idUsuario(Usuario idUsuario) {
-    this.empleado.setIdUsuario(Integer.MIN_VALUE);
+    this.empleado.setUsuario(idUsuario);
     return this;
   }
 

@@ -31,7 +31,7 @@ public class AdministradorBuilder {
   }
 
   public AdministradorBuilder idUsuario(Usuario idUsuario) {
-    this.administrador.setIdUsuario(Integer.MIN_VALUE);
+    this.administrador.setUsuario(idUsuario);
     return this;
   }
 
