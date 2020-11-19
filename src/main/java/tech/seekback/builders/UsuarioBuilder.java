@@ -26,9 +26,8 @@ public class UsuarioBuilder {
     return new UsuarioBuilder();
   }
 
-  public UsuarioBuilder idUsuario(Integer id) {
-    this.usuario.setIdUsuario(id);
-    System.out.println("\n sdasd");
+  public UsuarioBuilder idUsuario(Integer idUsuario) {
+    this.usuario.setIdUsuario(idUsuario);
     return this;
   }
 

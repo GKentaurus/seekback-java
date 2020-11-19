@@ -5,10 +5,41 @@
  */
 package tech.seekback.builders;
 
+import tech.seekback.models.CategoriasProducto;
+import tech.seekback.models.templates.Timestamps;
+
 /**
  *
  * @author camorenoc
  */
 public class CategoriasProductoBuilder {
 
+  private CategoriasProducto categoriasProducto;
+
+  private CategoriasProductoBuilder() {
+    this.categoriasProducto = new CategoriasProducto();
+  }
+
+  public static CategoriasProductoBuilder builder() {
+    return new CategoriasProductoBuilder();
+  }
+
+  public CategoriasProductoBuilder idCategoria(Integer idCategoria) {
+    this.categoriasProducto.setIdCategoria(idCategoria);
+    return this;
+  }
+
+  public CategoriasProductoBuilder nombreCategoria(String nombreCategoria) {
+    this.categoriasProducto.setNombreCategoria(nombreCategoria);
+    return this;
+  }
+
+  public CategoriasProductoBuilder timestamps(Timestamps timestamps) {
+    this.categoriasProducto.setTimestamps(timestamps);
+    return this;
+  }
+
+  public CategoriasProducto build() {
+    return this.categoriasProducto;
+  }
 }

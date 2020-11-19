@@ -5,10 +5,42 @@
  */
 package tech.seekback.builders;
 
+import tech.seekback.models.Cliente;
+import tech.seekback.models.Usuario;
+import tech.seekback.models.templates.Timestamps;
+
 /**
  *
  * @author camorenoc
  */
 public class ClienteBuilder {
 
+  private Cliente cliente;
+
+  private ClienteBuilder() {
+    this.cliente = new Cliente();
+  }
+
+  public static ClienteBuilder builder() {
+    return new ClienteBuilder();
+  }
+
+  public ClienteBuilder idCliente(Integer idCliente) {
+    this.cliente.setIdCliente(idCliente);
+    return this;
+  }
+
+  public ClienteBuilder idUsuario(Usuario idUsuario) {
+    this.cliente.setIdUsuario(Integer.MIN_VALUE);
+    return this;
+  }
+
+  public ClienteBuilder timestamps(Timestamps timestamps) {
+    this.cliente.setTimestamps(timestamps);
+    return this;
+  }
+
+  public Cliente build() {
+    return this.cliente;
+  }
 }
