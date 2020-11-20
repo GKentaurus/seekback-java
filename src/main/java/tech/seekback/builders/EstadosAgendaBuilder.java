@@ -5,10 +5,41 @@
  */
 package tech.seekback.builders;
 
+import tech.seekback.models.EstadosAgenda;
+import tech.seekback.models.templates.Timestamps;
+
 /**
  *
  * @author camorenoc
  */
 public class EstadosAgendaBuilder {
 
+  private EstadosAgenda estadosAgenda;
+
+  private EstadosAgendaBuilder() {
+    this.estadosAgenda = new EstadosAgenda();
+  }
+
+  public static EstadosAgendaBuilder builder() {
+    return new EstadosAgendaBuilder();
+  }
+
+  public EstadosAgendaBuilder idEstado(Integer idEstado) {
+    this.estadosAgenda.setIdEstado(idEstado);
+    return this;
+  }
+
+  public EstadosAgendaBuilder nombreEstado(String nombreEstado) {
+    this.estadosAgenda.setNombreEstado(nombreEstado);
+    return this;
+  }
+
+  public EstadosAgendaBuilder timestamps(Timestamps timestamps) {
+    this.estadosAgenda.setTimestamps(timestamps);
+    return this;
+  }
+
+  public EstadosAgenda build() {
+    return this.estadosAgenda;
+  }
 }

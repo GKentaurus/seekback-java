@@ -6,6 +6,13 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Arrays;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -43,7 +50,6 @@ public class Usuario implements Serializable {
   @Column(name = "numeroDoc", nullable = false, length = 50)
   private String numeroDoc;
 
-  // TODO: Encriptar la contraseña al almacenarlo
   @Column(name = "contrasena", nullable = false, length = 255)
   private String contrasena;
 
@@ -132,11 +138,20 @@ public class Usuario implements Serializable {
     return contrasena;
   }
 
-  public void setContrasena(String contrasena) {
-    this.contrasena = contrasena;
-  }
+  // TODO: Probar método de encriptación
+  public void setContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    SecureRandom random = new SecureRandom();
+    byte[] salt = new byte[16];
+    random.nextBytes(salt);
 
+    KeySpec ks = new PBEKeySpec(contrasena.toCharArray(), salt, 65536, 128);
+    SecretKeyFactory kf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+    byte[] hash = kf.generateSecret(ks).getEncoded();
+
+    this.contrasena = Arrays.toString(hash);
+  }
   //</editor-fold>
+
   @Override
   public String toString() {
     return "Usuario{"

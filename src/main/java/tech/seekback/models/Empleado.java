@@ -14,7 +14,6 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "empleado")
-// TODO: Confirmar si la herencia esta bien aplicada
 public class Empleado extends Usuario {
 
 //  @Id
@@ -39,13 +38,14 @@ public class Empleado extends Usuario {
     this.idEmpleado = idEmpleado;
   }
 
-//  public Usuario getIdUsuario() {
-//    return idUsuario;
-//  }
-//
-//  public void setIdUsuario(Usuario idUsuario) {
-//    this.idUsuario = idUsuario;
-//  }
+  public Usuario getUsuario() {
+    return idUsuario;
+  }
+
+  public void setUsuario(Usuario idUsuario) {
+    this.idUsuario = idUsuario;
+  }
+
   public Timestamps getTimestamps() {
     return timestamps;
   }

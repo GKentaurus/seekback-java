@@ -19,16 +19,15 @@ public class UsuarioBuilder {
   private Usuario usuario;
 
   private UsuarioBuilder() {
-    usuario = new Usuario();
+    this.usuario = new Usuario();
   }
 
   public static UsuarioBuilder builder() {
     return new UsuarioBuilder();
   }
 
-  public UsuarioBuilder idUsuario(Integer id) {
-    this.usuario.setIdUsuario(id);
-    System.out.println("\n sdasd");
+  public UsuarioBuilder idUsuario(Integer idUsuario) {
+    this.usuario.setIdUsuario(idUsuario);
     return this;
   }
 
@@ -78,6 +77,6 @@ public class UsuarioBuilder {
   }
 
   public Usuario build() {
-    return usuario;
+    return this.usuario;
   }
 }
