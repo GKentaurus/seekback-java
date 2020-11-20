@@ -7,14 +7,10 @@ package tech.seekback.models;
 
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
-import java.util.Arrays;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
+import static tech.seekback.tools.Encrypter.*;
 
 /**
  *
@@ -140,15 +136,11 @@ public class Usuario implements Serializable {
 
   // TODO: Probar método de encriptación
   public void setContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    SecureRandom random = new SecureRandom();
-    byte[] salt = new byte[16];
-    random.nextBytes(salt);
+    this.contrasena = cryptoGetHash(contrasena);
+  }
 
-    KeySpec ks = new PBEKeySpec(contrasena.toCharArray(), salt, 65536, 128);
-    SecretKeyFactory kf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-    byte[] hash = kf.generateSecret(ks).getEncoded();
-
-    this.contrasena = Arrays.toString(hash);
+  public Boolean compareContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    return this.contrasena.equals(cryptoGetHash(contrasena));
   }
   //</editor-fold>
 
