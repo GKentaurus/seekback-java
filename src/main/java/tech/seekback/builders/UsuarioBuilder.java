@@ -5,6 +5,8 @@
  */
 package tech.seekback.builders;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import tech.seekback.models.Roles;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
@@ -61,7 +63,7 @@ public class UsuarioBuilder {
     return this;
   }
 
-  public UsuarioBuilder contrasena(String contrasena) {
+  public UsuarioBuilder contrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
     this.usuario.setContrasena(contrasena);
     return this;
   }
