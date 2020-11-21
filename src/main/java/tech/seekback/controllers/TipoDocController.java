@@ -40,7 +40,7 @@ public class TipoDocController implements Serializable {
     }
   }
 
-  public List<TipoDoc> getAll() {
+  public List<TipoDoc> getTipoDocs() {
     return tipoDocs;
   }
 }

@@ -22,8 +22,8 @@ import tech.seekback.services.UsuarioService;
  *
  * @author camorenoc
  */
-@Named
 @ViewScoped
+@Named
 public class UsuarioController implements Serializable {
 
   @EJB
@@ -42,33 +42,33 @@ public class UsuarioController implements Serializable {
 
   }
 
-  public void setUsuario(Usuario usuario) {
-    this.usuario = usuario;
-  }
-
   public Usuario getUsuario() {
     return usuario;
   }
 
-  // ********************************************************
-  public void create() throws ConnectionExcep {
-    usuarioService.create(this.usuario);
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
-  public Usuario getOne(Integer id) throws ConnectionExcep {
-    this.usuario = usuarioService.getOne(id);
-    return usuario;
-  }
-
-  public List<Usuario> getAll() throws ConnectionExcep {
+  public List<Usuario> getUsuarios() throws ConnectionExcep {
     try {
       if (Objects.isNull(usuarios)) {
-        this.usuarios = usuarioService.getAll();
+        usuarios = usuarioService.getAll();
       }
     } catch (ConnectionExcep ex) {
       System.out.println("Error al consultar los usuarios.....");
       ex.printStackTrace();
     }
     return usuarios;
+  }
+
+  public void create() throws ConnectionExcep {
+    try {
+      usuarioService.create(usuario);
+    } catch (ConnectionExcep ex) {
+      System.out.println("Error al registrar usuario");
+      ex.printStackTrace();
+    }
+
   }
 }
