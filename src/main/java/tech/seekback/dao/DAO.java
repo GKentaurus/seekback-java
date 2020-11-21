@@ -16,13 +16,13 @@ import tech.seekback.exceptions.ConnectionExcep;
  */
 public interface DAO<T, PK> {
 
-  void create(T usuario) throws ConnectionExcep;
+  void create(T obj) throws ConnectionExcep;
 
   T getOne(PK id) throws ConnectionExcep;
 
   List<T> getAll() throws ConnectionExcep;
 
-  void update(T usuario) throws ConnectionExcep;
+  void update(T obj) throws ConnectionExcep;
 
   void delete(PK id) throws ConnectionExcep;
 
