@@ -71,7 +71,7 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   }
 
   @Override
-  public void update(T obj) throws ConnectionExcep {
+  public void update(PK id, T obj) throws ConnectionExcep {
     System.out.println(
             "########################################"
             + "\n# Actualizando el objeto " + this.classType.getSimpleName()

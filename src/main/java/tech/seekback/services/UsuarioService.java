@@ -24,6 +24,10 @@ public class UsuarioService {
     usuarioDAO.create(usuario);
   }
 
+  public Usuario getOne(Integer id) throws ConnectionExcep {
+    return usuarioDAO.getOne(id);
+  }
+
   public List<Usuario> getAll() throws ConnectionExcep {
     List<Usuario> usuarios = usuarioDAO.getAll();
     return usuarios;
