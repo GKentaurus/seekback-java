@@ -6,6 +6,7 @@ tech\seekback\dao\jpa\TipoServicioDAOJPA.class
 tech\seekback\dao\interfaces\AgendaDAO.class
 tech\seekback\builders\FelicitacionBuilder.class
 tech\seekback\dao\jpa\BodegaProductosDAOJPA.class
+tech\seekback\builders\ProformaVentaBuilder.class
 tech\seekback\dao\interfaces\BodegaDAO.class
 tech\seekback\dao\jpa\PQRSDAOJPA.class
 tech\seekback\models\Calificacion.class
@@ -30,7 +31,6 @@ tech\seekback\dao\interfaces\FelicitacionDAO.class
 tech\seekback\dao\jpa\CalificacionDAOJPA.class
 tech\seekback\java\resources\JavaEE8Resource.class
 tech\seekback\dao\interfaces\PQRSDAO.class
-tech\seekback\builders\AministradorBuilder.class
 tech\seekback\dao\interfaces\ProductoDAO.class
 tech\seekback\models\DocumentoDetallado.class
 tech\seekback\builders\ProveedorBuilder.class
@@ -74,7 +74,6 @@ tech\seekback\models\EstadosFidelizacion.class
 tech\seekback\builders\TipoDocBuilder.class
 tech\seekback\dao\jpa\RolesDAOJPA.class
 tech\seekback\models\PQRS.class
-tech\seekback\builders\ProformaBuilder.class
 tech\seekback\builders\UsuarioBuilder.class
 tech\seekback\models\Bodega.class
 tech\seekback\models\TipoServicio.class
@@ -107,6 +106,7 @@ tech\seekback\dao\jpa\TelefonosDAOJPA.class
 tech\seekback\dao\jpa\TipoDocDAOJPA.class
 tech\seekback\builders\CotizacionBuilder.class
 tech\seekback\models\TRM.class
+tech\seekback\builders\AdministradorBuilder.class
 tech\seekback\models\TipoSolicitud.class
 tech\seekback\models\Direcciones.class
 tech\seekback\dao\jpa\TRMDAOJPA.class

@@ -126,7 +126,7 @@
                 <br />
                 <h:form>
                   <div class="input-field s12">
-                    <h:inputText id="emaillog" class="ingre validate"  autocomplete="off" required="true"/>
+                    <h:inputText id="emaillog" class="ingre validate"  autocomplete="off" required="true" value="#{loginController.email}"/>
                     <h:outputLabel for="emaillog" value="Email"/>
                     <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
                   </div>
@@ -135,7 +135,9 @@
                     <h:outputLabel for="passwordlog" value="Contraseña" />
                   </div>
                   <h:commandButton class="btn waves-effect waves-light blue" onclick="login();" value="ingresar" actionListener="#{loginController.show()}" />
-                  <h:commandLink pt:data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</h:commandLink>
+                  <br/>
+                  <br/>
+                  <a data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</a>
                 </h:form>
                 <br />
                 <br />

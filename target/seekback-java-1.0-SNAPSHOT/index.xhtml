@@ -37,7 +37,7 @@
                   </div>
                   <div class="col s12 m3 center-align" style="padding:0px;">
                     <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login?faces-redirect = true">
                       <i class="far fa-user" style="color:#fff"></i>
                     </h:commandLink>
                     <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></a>
@@ -51,22 +51,22 @@
             <div class="col s12">
               <ul id="dropdown1" class="dropdown-content z-depth-3">
                 <h:form>
-                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="aproduct?faces-redirect = true"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct?faces-redirect = true"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct?faces-redirect = true"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct?faces-redirect = true"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct?faces-redirect = true"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct?faces-redirect = true"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
               </ul>
               <ul id="dropdown2" class="dropdown-content">
                 <h:form>
-                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="aproduct?faces-redirect = true"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct?faces-redirect = true"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct?faces-redirect = true"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct?faces-redirect = true"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct?faces-redirect = true"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct?faces-redirect = true"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
               </ul>
 
@@ -77,7 +77,7 @@
                   </h:commandLink>
                   <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                     <h:form>
-                      <li><h:commandLink action="index" value="Inicio" /></li>
+                      <li><h:commandLink action="index?faces-redirect = true" value="Inicio" /></li>
                     </h:form>
                     <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
                     <h:form>
@@ -97,7 +97,7 @@
                     <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
                   </h:commandLink>
                 </div>
-                <li><h:commandLink action="index">Inicio</h:commandLink></li>
+                <li><h:commandLink action="index?faces-redirect = true">Inicio</h:commandLink></li>
                 <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
                 <li><h:commandLink pt:href="#contac">Contactenos</h:commandLink></li>
                 <li><h:commandLink pt:href="#qsomos">Nosotros</h:commandLink></li>
@@ -156,7 +156,7 @@
                   </div>
                   <div class="card-action">
                     <h:form>
-                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                      <h:commandLink action="anyproduct?faces-redirect = true">Ver mas</h:commandLink>
                     </h:form>
                   </div>
                 </div>
@@ -170,7 +170,7 @@
                   </div>
                   <div class="card-action">
                     <h:form>
-                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                      <h:commandLink action="anyproduct?faces-redirect = true">Ver mas</h:commandLink>
                     </h:form>
                   </div>
                 </div>
@@ -184,7 +184,7 @@
                   </div>
                   <div class="card-action">
                     <h:form>
-                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                      <h:commandLink action="anyproduct?faces-redirect = true">Ver mas</h:commandLink>
                     </h:form>
                   </div>
                 </div>

@@ -8,219 +8,219 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>.:QPCOM | Seekback:.</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <h:outputScript library="" name="jquery.min.js" />
-        <h:outputScript library="scripts" name="anyp.js" />
-        <h:outputScript library="" name="fontawesome.js" />
-        <h:outputStylesheet library="styles" name="style.css" />
-        <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-        <h:outputScript library="materialize" name="js/materialize.min.js" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    </h:head>
+  <h:head>
+    <title>.:QPCOM | Seekback:.</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="scripts" name="anyp.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <h:outputStylesheet library="styles" name="style.css" />
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  </h:head>
 
-    <h:body id="ody">
-            
-        <div class="pnav">
-            <div class="wrap wnav">
-                <div id="nav" class="container  scrollspy">
-                    <div class="row" style="margin-bottom:0px;">
-                        <div class="col s2">
-                            <h:commandLink>
-                                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
-                            </h:commandLink>
-                        </div>
-                        <div class="col s10">
-                            <div class="row" style="margin-bottom:0px;">
-                                <form>
-                                    <div class="col s12 m9">
-                                        <div class="input-field">
-                                            <h:inputText id="searxh" />
-                                            <h:outputLabel for="searxh" value="Buscar" />
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m3 center-align" style="padding:0px;">
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
-                                            <i class="far fa-user" style="color:#fff"></i>
-                                        </h:commandLink>
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col s12">
-                            <ul id="dropdown1" class="dropdown-content z-depth-3">
-                                <h:form>
-                                    <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                                </h:form>
-                            </ul>
-                            <ul id="dropdown2" class="dropdown-content">
-                                <h:form>
-                                    <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                                </h:form>
-                            </ul>
+  <h:body id="ody">
 
-                            <nav style="background-color:#222222;" class="z-depth-0">
-                                <div class="nav-wrapper">
-                                    <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
-                                        <i class="fas fa-bars"></i>
-                                    </h:commandLink>
-                                    <ul class="left hide-on-med-and-down" style="display: inline-flex;">
-                                        <h:form>
-                                            <li><h:commandLink action="index" value="Inicio" /></li>
-                                        </h:form>
-                                            <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
-                                        <h:form>
-                                            <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
-                                            <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
-                                        </h:form>
-                                    </ul>
-                                </div>
-                            </nav>
-
-                            <ul class="sidenav" id="mobile-demo">
-                                <div class="user-view">
-                                    <div class="background">
-                                        <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
-                                    </div>
-                                    <h:commandLink pt:href="">
-                                        <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
-                                    </h:commandLink>
-                                </div>
-                                <h:form>
-                                    <li><h:commandLink action="index" value="Inicio" /></li>
-                                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
-                                    <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
-                                    <li><h:commandLink pt:href="index#contac">Nosotros</h:commandLink></li>
-                                </h:form>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <div class="pnav">
+      <div class="wrap wnav">
+        <div id="nav" class="container  scrollspy">
+          <div class="row" style="margin-bottom:0px;">
+            <div class="col s2">
+              <h:commandLink>
+                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
+              </h:commandLink>
             </div>
-        </div>
-
-        <div class="wrap" id="inv">
-            <nav class="breadcrumb-nav">
-                <div id="bread" class="nav-wrapper grey darken-1">
-                    <div class="col s12">
-                        <h:form>
-                            <h:commandLink action="index" value="Inicio" class="breadcrumb " />
-                            <h:commandLink class="breadcrumb ">Categoria</h:commandLink>
-                            <h:commandLink class="breadcrumb ">Producto</h:commandLink>
-                        </h:form>
+            <div class="col s10">
+              <div class="row" style="margin-bottom:0px;">
+                <form>
+                  <div class="col s12 m9">
+                    <div class="input-field">
+                      <h:inputText id="searxh" />
+                      <h:outputLabel for="searxh" value="Buscar" />
                     </div>
-                </div>
-            </nav>
-            <br />
-
-            <div class="center-align section">
-                <div class="row">
-                    <div class="col s12 col m5">
-                        <h:graphicImage library="images" name="router.webp" alt="prod" style="width:100%;" />
-                    </div>
-                    <div class="col s12 col m7">
-                        <div class="z-depth-3 card grey lighten-4">
-                            <div class="card-content black-text">
-                                <span class="card-title">Producto</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                            </div>
-                            <div class="card-action">
-                                <h:commandLink class="waves-effect waves-light btn modal-trigger" pt:href="#modal1"><i class="far fa-star"></i> Agreagr a favoritos</h:commandLink>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  </div>
+                  <div class="col s12 m3 center-align" style="padding:0px;">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login?faces-redirect = true">
+                      <i class="far fa-user" style="color:#fff"></i>
+                    </h:commandLink>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div class="col m6 s12">
-                <div class="row">
-                    <div class="col m6 s12">
-                        <table class="table-responsive">
-                            <tbody>
-                                <tr>
-                                    <th colspan="4" class="center-align">Calificaciones</th>
-                                </tr>
-                                <tr>
-                                    <td>Nombre</td>
-                                    <td>fecha</td>
-                                    <td>Comentario</td>
-                                    <td>Calificacion</td>
-                                </tr>
-                                <tr>
-                                    <td>camila gonzales</td>
-                                    <td>06/10/2019</td>
-                                    <td>Lorem ipsum in dolore</td>
-                                    <td><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>juanquin ulpinp</td>
-                                    <td>16/08/2019</td>
-                                    <td>Lorem ipsum in dolore</td>
-                                    <td><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
-
-
-        <div id="modal1" class="modal">
-            <div class="center-align modal-content grey lighten-4">
-                <p>Bienvenido</p>
-                <br />
-                <p>Para poder agregar a favoritos debes haber ingresado con tu cuenta</p>
+          </div>
+          <div class="row" style="margin-bottom:20px;">
+            <div class="col s12">
+              <ul id="dropdown1" class="dropdown-content z-depth-3">
                 <h:form>
-                    <h:commandLink class="waves-effect waves-light btn modal-trigger" action="login" value="ingresar / registrarse" />
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
-            </div>
-        </div>
+              </ul>
+              <ul id="dropdown2" class="dropdown-content">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
 
-        <footer class="page-footer" style="background-color: #222222;">
-            <div class="wrap transparent">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s6" style="text-align:left">
-                            <h4>Redes sociales </h4>
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> siguenos en facebook
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> siguenos en twitter
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> siguenos en instagram
-                        </div>
-                        <div class="col s6" style="text-align:left">
-                            <h4>Informaciòn de contacto </h4>
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
-                            <br />
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
-                        </div>
-                    </div>
+              <nav style="background-color:#222222;" class="z-depth-0">
+                <div class="nav-wrapper">
+                  <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="fas fa-bars"></i>
+                  </h:commandLink>
+                  <ul class="left hide-on-med-and-down" style="display: inline-flex;">
+                    <h:form>
+                      <li><h:commandLink action="index" value="Inicio" /></li>
+                    </h:form>
+                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                    <h:form>
+                      <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                      <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
+                    </h:form>
+                  </ul>
                 </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Copyright Seekback. todos los derechos reservados
+              </nav>
+
+              <ul class="sidenav" id="mobile-demo">
+                <div class="user-view">
+                  <div class="background">
+                    <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
+                  </div>
+                  <h:commandLink pt:href="">
+                    <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
+                  </h:commandLink>
                 </div>
+                <h:form>
+                  <li><h:commandLink action="index" value="Inicio" /></li>
+                  <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                  <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                  <li><h:commandLink pt:href="index#contac">Nosotros</h:commandLink></li>
+                </h:form>
+              </ul>
             </div>
-        </footer>
-    </h:body>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap" id="inv">
+      <nav class="breadcrumb-nav">
+        <div id="bread" class="nav-wrapper grey darken-1">
+          <div class="col s12">
+            <h:form>
+              <h:commandLink action="index" value="Inicio" class="breadcrumb " />
+              <h:commandLink class="breadcrumb ">Categoria</h:commandLink>
+              <h:commandLink class="breadcrumb ">Producto</h:commandLink>
+            </h:form>
+          </div>
+        </div>
+      </nav>
+      <br />
+
+      <div class="center-align section">
+        <div class="row">
+          <div class="col s12 col m5">
+            <h:graphicImage library="images" name="router.webp" alt="prod" style="width:100%;" />
+          </div>
+          <div class="col s12 col m7">
+            <div class="z-depth-3 card grey lighten-4">
+              <div class="card-content black-text">
+                <span class="card-title">Producto</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              </div>
+              <div class="card-action">
+                <h:commandLink class="waves-effect waves-light btn modal-trigger" pt:href="#modal1"><i class="far fa-star"></i> Agreagr a favoritos</h:commandLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col m6 s12">
+        <div class="row">
+          <div class="col m6 s12">
+            <table class="table-responsive">
+              <tbody>
+                <tr>
+                  <th colspan="4" class="center-align">Calificaciones</th>
+                </tr>
+                <tr>
+                  <td>Nombre</td>
+                  <td>fecha</td>
+                  <td>Comentario</td>
+                  <td>Calificacion</td>
+                </tr>
+                <tr>
+                  <td>camila gonzales</td>
+                  <td>06/10/2019</td>
+                  <td>Lorem ipsum in dolore</td>
+                  <td><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+                </tr>
+                <tr>
+                  <td>juanquin ulpinp</td>
+                  <td>16/08/2019</td>
+                  <td>Lorem ipsum in dolore</td>
+                  <td><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+
+    <div id="modal1" class="modal">
+      <div class="center-align modal-content grey lighten-4">
+        <p>Bienvenido</p>
+        <br />
+        <p>Para poder agregar a favoritos debes haber ingresado con tu cuenta</p>
+        <h:form>
+          <h:commandLink class="waves-effect waves-light btn modal-trigger" action="login" value="ingresar / registrarse" />
+        </h:form>
+      </div>
+    </div>
+
+    <footer class="page-footer" style="background-color: #222222;">
+      <div class="wrap transparent">
+        <div class="container">
+          <div class="row">
+            <div class="col s6" style="text-align:left">
+              <h4>Redes sociales </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> siguenos en facebook
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> siguenos en twitter
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> siguenos en instagram
+            </div>
+            <div class="col s6" style="text-align:left">
+              <h4>Informaciòn de contacto </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
+              <br />
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Copyright Seekback. todos los derechos reservados
+        </div>
+      </div>
+    </footer>
+  </h:body>
 </html>
