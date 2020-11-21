@@ -3,6 +3,7 @@ tech\seekback\JAXRSConfiguration.class
 tech\seekback\builders\CategoriasProductoBuilder.class
 tech\seekback\builders\OrdenCompraBuilder.class
 tech\seekback\dao\jpa\TipoServicioDAOJPA.class
+tech\seekback\controllers\TipoDocController.class
 tech\seekback\dao\interfaces\AgendaDAO.class
 tech\seekback\builders\FelicitacionBuilder.class
 tech\seekback\dao\jpa\BodegaProductosDAOJPA.class
@@ -39,6 +40,7 @@ tech\seekback\dao\interfaces\CotizacionDAO.class
 tech\seekback\dao\interfaces\TipoSolicitudDAO.class
 tech\seekback\models\OrdenCompra.class
 tech\seekback\models\Divisas.class
+tech\seekback\controllers\LoginController.class
 tech\seekback\dao\jpa\TipoSolicitudDAOJPA.class
 tech\seekback\builders\EstadosCotizacionBuilder.class
 tech\seekback\builders\ClienteBuilder.class
@@ -58,11 +60,13 @@ tech\seekback\models\EstadosAgenda.class
 tech\seekback\builders\CiudadBuilder.class
 tech\seekback\dao\interfaces\EstadosCotizacionDAO.class
 tech\seekback\exceptions\FactoryExcep.class
+tech\seekback\services\RolesService.class
 tech\seekback\models\Empleado.class
 tech\seekback\dao\jpa\DivisasDAOJPA.class
 tech\seekback\dao\interfaces\CiudadDAO.class
 tech\seekback\models\templates\TablesEnum.class
 tech\seekback\exceptions\enums\FactoryExcepEnum.class
+tech\seekback\controllers\UsuarioController.class
 tech\seekback\models\Proveedor.class
 tech\seekback\dao\interfaces\OrdenCompraDAO.class
 tech\seekback\models\Agenda.class
@@ -72,6 +76,7 @@ tech\seekback\models\templates\Timestamps.class
 tech\seekback\dao\interfaces\CalificacionDAO.class
 tech\seekback\models\EstadosFidelizacion.class
 tech\seekback\builders\TipoDocBuilder.class
+tech\seekback\controllers\RolesController.class
 tech\seekback\dao\jpa\RolesDAOJPA.class
 tech\seekback\models\PQRS.class
 tech\seekback\builders\UsuarioBuilder.class
@@ -118,7 +123,6 @@ tech\seekback\dao\interfaces\ClienteDAO.class
 tech\seekback\dao\jpa\CiudadDAOJPA.class
 tech\seekback\models\EstadosCotizacion.class
 tech\seekback\models\Producto.class
-tech\seekback\controller\RegistrerController.class
 tech\seekback\builders\DireccionesBuilder.class
 tech\seekback\dao\interfaces\PaisDAO.class
 tech\seekback\dao\DAO.class
@@ -130,6 +134,9 @@ tech\seekback\dao\jpa\CotizacionDAOJPA.class
 tech\seekback\dao\interfaces\DocumentoDetalladoDAO.class
 tech\seekback\builders\TelefonosBuilder.class
 tech\seekback\dao\jpa\CorreosDAOJPA.class
+tech\seekback\services\TipoDocService.class
+tech\seekback\services\UsuarioService.class
+tech\seekback\tools\Encrypter.class
 tech\seekback\dao\jpa\DocumentoDetalladoDAOJPA.class
 tech\seekback\builders\SoporteTecnicoBuilder.class
 tech\seekback\builders\TipoSolicitudBuilder.class
@@ -138,7 +145,7 @@ tech\seekback\dao\interfaces\EmpleadoDAO.class
 tech\seekback\dao\jpa\CategoriasProductoDAOJPA.class
 tech\seekback\models\BodegaProductos.class
 tech\seekback\builders\PQRSBuilder.class
-tech\seekback\controller\LoginController.class
+tech\seekback\controllers\RegistrerController.class
 tech\seekback\dao\interfaces\RolesDAO.class
 tech\seekback\dao\jpa\SoporteTecnicoDAOJPA.class
 tech\seekback\exceptions\enums\ConnectionExcepEnum.class

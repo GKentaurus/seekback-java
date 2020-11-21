@@ -10,6 +10,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\SoporteTecnicoDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\DepartamentoDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\ProductoDAOJPA.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\UsuarioController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\TipoDocDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Usuario.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\TipoSolicitudDAO.java
@@ -18,6 +19,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jp
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\EstadosFidelizacionBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\AdministradorDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\factories\FactoryDAO.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\services\TipoDocService.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\DocumentoDetalladoDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\CategoriasProducto.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\ClienteDAO.java
@@ -47,6 +49,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\AgendaDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\PaisBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\TipoDocBuilder.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\TipoDocController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\ProformaVentaDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\GenericDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\EstadosAgendaDAO.java
@@ -56,15 +59,18 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\java\r
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\ProformaVentaDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\BodegaDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\CorreosDAOJPA.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\tools\Encrypter.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\TRMDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Calificacion.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\PQRSDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Roles.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\services\UsuarioService.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\TipoSolicitudDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\EstadosCotizacionDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\RolesDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\AdministradorBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\PaisDAO.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\services\RolesService.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\OrdenCompraDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\JAXRSConfiguration.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Cotizacion.java
@@ -74,6 +80,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\ClienteDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\ProveedorDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\templates\Timestamps.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\RegistrerController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\ProductoDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Bodega.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\CorreosDAO.java
@@ -97,7 +104,6 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builde
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\TipoServicioDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\EstadosAgendaBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\TelefonosBuilder.java
-E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controller\RegistrerController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\DAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Proveedor.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\EmpleadoDAOJPA.java
@@ -120,8 +126,8 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builde
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\EmpleadoBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\PQRSDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\ProformaVenta.java
-E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controller\LoginController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\TipoSolicitud.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\RolesController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\PaisDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\CategoriasProductoDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\DocumentoDetalladoDAOJPA.java
@@ -131,6 +137,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jp
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\RolesBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\UsuarioBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\DivisasDAO.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\LoginController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\EstadosCotizacionBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\EstadosFidelizacionDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\AgendaDAO.java

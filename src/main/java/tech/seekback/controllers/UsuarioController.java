@@ -13,6 +13,8 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Roles;
+import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.UsuarioService;
 
@@ -30,7 +32,9 @@ public class UsuarioController implements Serializable {
   private List<Usuario> usuarios;
 
   public UsuarioController() {
-
+    usuario = new Usuario();
+    usuario.setTipoDoc(new TipoDoc());
+    usuario.setRol(new Roles());
   }
 
   @PostConstruct

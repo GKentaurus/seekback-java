@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
   <h:head>
     <title>login / sign up</title>
     <meta charset="utf-8"/>
@@ -169,6 +170,9 @@
                       <h:outputLabel for="lsname" value="2º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
+                      <h:selectOneMenu value="#{}">
+                        <f:selectItem />
+                      </h:selectOneMenu>
                       <select class="tdoc" id="tdoc"  >
                         <option value="" disabled="disabled" selected="selected">Elije una opcion</option>
                         <option value="Colombia">Colombia</option>
