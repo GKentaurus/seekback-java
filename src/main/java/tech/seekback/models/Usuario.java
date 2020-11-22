@@ -1,11 +1,9 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
-import static tech.seekback.tools.Encrypter.*;
+import tech.seekback.tools.Encrypter;
 
 /**
  *
@@ -45,6 +43,9 @@ public class Usuario implements Serializable {
 
   @Column(name = "contrasena", nullable = false, length = 255)
   private String contrasena;
+
+  @Column(name = "salt", nullable = false, length = 255)
+  private String salt;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "rol", referencedColumnName = "idRol", nullable = false)
@@ -110,6 +111,20 @@ public class Usuario implements Serializable {
     this.numeroDoc = numeroDoc;
   }
 
+  // TODO: Probar método de encriptación
+  public void setContrasena(String contrasena) {
+    this.salt = Encrypter.getSalt(100);
+    this.contrasena = Encrypter.generateSecurePassword(contrasena, this.salt);
+  }
+
+  public String getContrasena() {
+    return contrasena;
+  }
+
+  public String getSalt() {
+    return salt;
+  }
+
   public Roles getRol() {
     return rol;
   }
@@ -125,20 +140,11 @@ public class Usuario implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
-
-  public String getContrasena() {
-    return contrasena;
-  }
-
-  // TODO: Probar método de encriptación
-  public void setContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    this.contrasena = cryptoGetHash(contrasena);
-  }
-
-  public Boolean compareContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    return this.contrasena.equals(cryptoGetHash(contrasena));
-  }
   //</editor-fold>
+
+  public boolean verifyPassword(String contrasena) {
+    return Encrypter.verifyUserPassword(contrasena, this.contrasena, this.salt);
+  }
 
   @Override
   public String toString() {

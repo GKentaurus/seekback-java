@@ -22,7 +22,7 @@ public interface DAO<T, PK> {
 
   List<T> getAll() throws ConnectionExcep;
 
-  void update(PK id, T obj) throws ConnectionExcep;
+  void update(T obj) throws ConnectionExcep;
 
   void delete(PK id) throws ConnectionExcep;
 
