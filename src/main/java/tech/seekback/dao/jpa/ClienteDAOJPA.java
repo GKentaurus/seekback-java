@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.ClienteDAO;
 import tech.seekback.models.Cliente;
@@ -13,6 +14,7 @@ import tech.seekback.models.Cliente;
  *
  * @author camorenoc
  */
+@Stateless
 public class ClienteDAOJPA extends GenericDAO<Cliente, Integer> implements ClienteDAO {
 
   public ClienteDAOJPA() {

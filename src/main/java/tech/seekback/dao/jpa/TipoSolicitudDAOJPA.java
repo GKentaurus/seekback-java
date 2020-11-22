@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.TipoSolicitudDAO;
 import tech.seekback.models.TipoSolicitud;
@@ -13,6 +14,7 @@ import tech.seekback.models.TipoSolicitud;
  *
  * @author camorenoc
  */
+@Stateless
 public class TipoSolicitudDAOJPA extends GenericDAO<TipoSolicitud, Integer> implements TipoSolicitudDAO {
 
   public TipoSolicitudDAOJPA() {

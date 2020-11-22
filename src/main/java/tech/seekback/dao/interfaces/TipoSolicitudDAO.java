@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.TipoSolicitud;
 
@@ -12,5 +13,6 @@ import tech.seekback.models.TipoSolicitud;
  *
  * @author camorenoc
  */
+@Remote
 public interface TipoSolicitudDAO extends DAO<TipoSolicitud, Integer> {
 }

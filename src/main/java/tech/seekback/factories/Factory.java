@@ -20,7 +20,7 @@ public class Factory {
   public static FactoryDAO getFactoryDAO() throws FactoryExcep {
     try {
       FactoryDAO factoryDAO = (FactoryDAO) Class
-              .forName("tech.seekback.factories.FactoryDAOMySQL")
+              .forName("tech.seekback.factories.FactoryDAOJPA")
               .newInstance();
       return factoryDAO;
     } catch (Exception ex) {

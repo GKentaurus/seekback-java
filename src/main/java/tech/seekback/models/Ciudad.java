@@ -15,6 +15,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "ciudad")
+@NamedQueries(value = {
+  @NamedQuery(name = "Ciudad.getAll", query = "SELECT obj FROM Ciudad obj")
+})
 public class Ciudad implements Serializable {
 
   @Id
@@ -22,9 +25,8 @@ public class Ciudad implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCiudad;
 
-  @Column(name = "idDepartamento", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento")
+  @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento", nullable = false)
   private Departamento idDepartamento;
 
   @Column(name = "nombreCiudad", nullable = false, length = 50)

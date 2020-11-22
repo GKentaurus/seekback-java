@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.EstadosAgendaDAO;
 import tech.seekback.models.EstadosAgenda;
@@ -13,6 +14,7 @@ import tech.seekback.models.EstadosAgenda;
  *
  * @author camorenoc
  */
+@Stateless
 public class EstadosAgendaDAOJPA extends GenericDAO<EstadosAgenda, Integer> implements EstadosAgendaDAO {
 
   public EstadosAgendaDAOJPA() {

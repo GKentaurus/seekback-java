@@ -11,6 +11,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "soporte_tecnico")
+@NamedQueries(value = {
+  @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj")
+})
 public class SoporteTecnico implements Serializable {
 
   @Id
@@ -18,27 +21,23 @@ public class SoporteTecnico implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idSoporteTecnico;
 
-  @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
   private Producto idProducto;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
-  @Column(name = "idEmpleado", nullable = true)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = true)
   private Empleado idEmpleado;
 
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
-  @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
   private EstadosFidelizacion idEstado;
 
   @Column(name = "fechaRespuesta", nullable = true)

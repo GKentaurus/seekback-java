@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.Divisas;
 
@@ -12,5 +13,6 @@ import tech.seekback.models.Divisas;
  *
  * @author camorenoc
  */
+@Remote
 public interface DivisasDAO extends DAO<Divisas, Integer> {
 }

@@ -1,8 +1,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -10,6 +10,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "pais")
+@NamedQueries(value = {
+  @NamedQuery(name = "Pais.getAll", query = "SELECT obj FROM Pais obj")
+})
 public class Pais implements Serializable {
 
   @Id //esto es como la PK

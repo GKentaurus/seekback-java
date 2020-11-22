@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.ProformaVentaDAO;
 import tech.seekback.models.ProformaVenta;
@@ -13,6 +14,7 @@ import tech.seekback.models.ProformaVenta;
  *
  * @author camorenoc
  */
+@Stateless
 public class ProformaVentaDAOJPA extends GenericDAO<ProformaVenta, Integer> implements ProformaVentaDAO {
 
   public ProformaVentaDAOJPA() {

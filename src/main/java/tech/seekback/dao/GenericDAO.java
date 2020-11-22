@@ -33,9 +33,9 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public void create(T obj) throws ConnectionExcep {
     System.out.println(
-            "########################################"
-            + "\n# Creando Objeto " + obj.getClass().getSimpleName()
-            + "\n########################################"
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Creando Objeto " + obj.getClass().getSimpleName()
+            + "\n######################################################################\n"
     );
     EntityTransaction et = em.getTransaction();
     try {
@@ -50,21 +50,20 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public T getOne(PK id) throws ConnectionExcep {
     System.out.println(
-            "########################################"
-            + "\n# Consultando el objeto No. " + id
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Consultando el objeto No. " + id
             + " de " + this.classType.getSimpleName()
-            + "\n########################################"
+            + "\n######################################################################\n"
     );
-    System.out.println("Estamos consultando con JPA....");
     return em.find(this.classType, id);
   }
 
   @Override
   public List<T> getAll() throws ConnectionExcep {
     System.out.println(
-            "########################################"
-            + "\n# Consultando todos los objetos de " + this.classType.getSimpleName()
-            + "\n########################################"
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Consultando todos los objetos de " + this.classType.getSimpleName()
+            + "\n######################################################################\n"
     );
     TypedQuery<T> tq = em.createNamedQuery(classType.getSimpleName() + ".getAll", classType);
     return tq.getResultList();
@@ -73,9 +72,9 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public void update(T obj) throws ConnectionExcep {
     System.out.println(
-            "########################################"
-            + "\n# Actualizando el objeto " + this.classType.getSimpleName()
-            + "\n########################################"
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Actualizando el objeto " + this.classType.getSimpleName()
+            + "\n######################################################################\n"
     );
     create(obj);
   }
@@ -83,10 +82,10 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public void delete(PK id) throws ConnectionExcep {
     System.out.println(
-            "########################################"
-            + "\n# Eliminando el objeto No. " + id
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Eliminando el objeto No. " + id
             + " de " + this.classType.getSimpleName()
-            + "\n########################################"
+            + "\n######################################################################\n"
     );
     T obj = getOne(id);
     em.remove(obj);

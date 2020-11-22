@@ -19,15 +19,15 @@ import javax.persistence.*;
 public class Timestamps implements Serializable {
 
   @Column(name = "created_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP")
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date created_at;
 
   @Column(name = "updated_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date updated_at;
 
   @Column(name = "deleted_at", nullable = true, columnDefinition = "NULL")
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date deleted_at;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

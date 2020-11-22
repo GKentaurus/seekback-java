@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.TipoServicioDAO;
 import tech.seekback.models.TipoServicio;
@@ -13,6 +14,7 @@ import tech.seekback.models.TipoServicio;
  *
  * @author camorenoc
  */
+@Stateless
 public class TipoServicioDAOJPA extends GenericDAO<TipoServicio, Integer> implements TipoServicioDAO {
 
   public TipoServicioDAOJPA() {

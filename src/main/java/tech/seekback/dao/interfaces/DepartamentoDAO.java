@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.Departamento;
 
@@ -12,6 +13,7 @@ import tech.seekback.models.Departamento;
  *
  * @author camorenoc
  */
+@Remote
 public interface DepartamentoDAO extends DAO<Departamento, Integer> {
 
 }

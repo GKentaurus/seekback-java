@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.CotizacionDAO;
 import tech.seekback.models.Cotizacion;
@@ -13,6 +14,7 @@ import tech.seekback.models.Cotizacion;
  *
  * @author camorenoc
  */
+@Stateless
 public class CotizacionDAOJPA extends GenericDAO<Cotizacion, Integer> implements CotizacionDAO {
 
   public CotizacionDAOJPA() {

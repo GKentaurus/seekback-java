@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.AgendaDAO;
 import tech.seekback.models.Agenda;
@@ -12,9 +13,8 @@ import tech.seekback.models.Agenda;
 /**
  *
  * @author camorenoc
- *
- *
  */
+@Stateless
 public class AgendaDAOJPA extends GenericDAO<Agenda, Integer> implements AgendaDAO {
 
   public AgendaDAOJPA() {

@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.RolesDAO;
 import tech.seekback.models.Roles;
@@ -13,6 +14,7 @@ import tech.seekback.models.Roles;
  *
  * @author camorenoc
  */
+@Stateless
 public class RolesDAOJPA extends GenericDAO<Roles, Integer> implements RolesDAO {
 
   public RolesDAOJPA() {

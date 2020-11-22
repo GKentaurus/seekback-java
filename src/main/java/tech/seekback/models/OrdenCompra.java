@@ -11,6 +11,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "orden_compra")
+@NamedQueries(value = {
+  @NamedQuery(name = "OrdenCompra.getAll", query = "SELECT obj FROM OrdenCompra obj")
+})
 public class OrdenCompra implements Serializable {
 
   @Id
@@ -18,9 +21,8 @@ public class OrdenCompra implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idOrdenCompra;
 
-  @Column(name = "idProveedor", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProveedor", referencedColumnName = "idProveedor")
+  @JoinColumn(name = "idProveedor", referencedColumnName = "idProveedor", nullable = false)
   private Proveedor idProveedor;
 
   @Column(name = "fecha", nullable = false)
@@ -30,17 +32,15 @@ public class OrdenCompra implements Serializable {
   @Column(name = "docAsociado", nullable = false, length = 255)
   private String docAsociado;
 
-  @Column(name = "idTrm", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM")
+  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM", nullable = false)
   private TRM idTrm;
 
   @Column(name = "factorImport", nullable = false, length = 11)
   private Double factorImport;
 
-  @Column(name = "idEmpleado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = false)
   private Empleado idEmpleado;
 
   @Embedded

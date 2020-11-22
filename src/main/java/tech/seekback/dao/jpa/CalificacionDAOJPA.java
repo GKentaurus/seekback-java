@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.CalificacionDAO;
 import tech.seekback.models.Calificacion;
@@ -13,6 +14,7 @@ import tech.seekback.models.Calificacion;
  *
  * @author camorenoc
  */
+@Stateless
 public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implements CalificacionDAO {
 
   public CalificacionDAOJPA() {

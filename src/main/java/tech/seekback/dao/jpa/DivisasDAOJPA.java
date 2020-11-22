@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.DivisasDAO;
 import tech.seekback.models.Divisas;
@@ -13,6 +14,7 @@ import tech.seekback.models.Divisas;
  *
  * @author camorenoc
  */
+@Stateless
 public class DivisasDAOJPA extends GenericDAO<Divisas, Integer> implements DivisasDAO {
 
   public DivisasDAOJPA() {

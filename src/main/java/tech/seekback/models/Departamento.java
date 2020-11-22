@@ -9,20 +9,22 @@ import tech.seekback.models.templates.Timestamps;
  * @author veron
  */
 @Entity
-@Table(name = "depatamento")
+@Table(name = "departamento")
+@NamedQueries(value = {
+  @NamedQuery(name = "Departamento.getAll", query = "SELECT obj FROM Departamento obj")
+})
 public class Departamento implements Serializable {
 
-  @Id //esto es como la PK
+  @Id
   @Column(name = "idDepartamento")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDepartamento;
 
-  @Column(name = "idPais", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idPais ", referencedColumnName = "idPais")
+  @JoinColumn(name = "idPais ", referencedColumnName = "idPais", nullable = false)
   private Pais idPais;
 
-  @Column(name = "nombreDepartamento", nullable = false, length = 50)//not null
+  @Column(name = "nombreDepartamento", nullable = false, length = 50)
   private String nombreDepartamento;
 
   @Embedded

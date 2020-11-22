@@ -11,6 +11,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "trm")
+@NamedQueries(value = {
+  @NamedQuery(name = "TRM.getAll", query = "SELECT obj FROM TRM obj")
+})
 public class TRM implements Serializable {
 
   @Id
@@ -18,9 +21,8 @@ public class TRM implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTrm;
 
-  @Column(name = "idDivisa", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDivisas ", referencedColumnName = "idDivisa")
+  @JoinColumn(name = "idDivisas ", referencedColumnName = "idDivisa", nullable = false)
   private Divisas idDivisa;
 
   @Column(name = "fechaTRM", nullable = false)

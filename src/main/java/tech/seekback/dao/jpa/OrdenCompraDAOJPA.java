@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.OrdenCompraDAO;
 import tech.seekback.models.OrdenCompra;
@@ -13,6 +14,7 @@ import tech.seekback.models.OrdenCompra;
  *
  * @author camorenoc
  */
+@Stateless
 public class OrdenCompraDAOJPA extends GenericDAO<OrdenCompra, Integer> implements OrdenCompraDAO {
 
   public OrdenCompraDAOJPA() {

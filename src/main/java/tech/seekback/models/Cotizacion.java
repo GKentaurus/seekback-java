@@ -16,6 +16,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "cotizacion")
+@NamedQueries(value = {
+  @NamedQuery(name = "Cotizacion.getAll", query = "SELECT obj FROM Cotizacion obj")
+})
 public class Cotizacion implements Serializable {
 
   @Id
@@ -34,24 +37,20 @@ public class Cotizacion implements Serializable {
   @Temporal(TemporalType.DATE)
   private Date vencimiento;
 
-  @Column(name = "idTRM", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM")
+  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM", nullable = false)
   private TRM idTRM;
 
-  @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
   private EstadosCotizacion idEstado;
 
-  @Column(name = "idEmpleado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = false)
   private Empleado idEmpleado;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
   @Embedded

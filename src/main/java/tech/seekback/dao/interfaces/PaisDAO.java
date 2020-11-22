@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.Pais;
 
@@ -12,5 +13,6 @@ import tech.seekback.models.Pais;
  *
  * @author camorenoc
  */
+@Remote
 public interface PaisDAO extends DAO<Pais, Integer> {
 }

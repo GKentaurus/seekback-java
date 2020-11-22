@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.FelicitacionDAO;
 import tech.seekback.models.Felicitacion;
@@ -13,6 +14,7 @@ import tech.seekback.models.Felicitacion;
  *
  * @author camorenoc
  */
+@Stateless
 public class FelicitacionDAOJPA extends GenericDAO<Felicitacion, Integer> implements FelicitacionDAO {
 
   public FelicitacionDAOJPA() {

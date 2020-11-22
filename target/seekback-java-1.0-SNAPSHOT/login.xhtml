@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
   <h:head>
     <title>login / sign up</title>
     <meta charset="utf-8"/>
@@ -144,41 +145,63 @@
               </div>
             </div>
             <div id="test2" class="col s12">
-              <form class="col s12" autocomplete="off">
+              <h:form class="col s12" pt:autocomplete="off">
                 <br />
                 <h3>Registrate</h3>
                 <br />
                 <div class="row">
                   <h:form>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="fname" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" required="true" value="#{registrerController.usuario.pNombre}" />
+                      <h:inputText
+                        id="fname" title="solo se permiten letras"
+                        class="ingre validate" autocomplete="off"
+                        onkeyup="namesa();"
+                        required="true"
+                        value="#{usuarioController.usuario.primerNombre}"
+                        />
                       <h:outputLabel for="fname" value="1º Nombre"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="sname" title="solo se permiten letras" class="ingre validate" autocomplete="off" onkeyup="namesa();" value="#{registrerController.usuario.sNombres}" />
+                      <h:inputText
+                        id="sname" title="solo se permiten letras"
+                        class="ingre validate" autocomplete="off"
+                        onkeyup="namesa();"
+                        value="#{usuarioController.usuario.otrosNombres}" />
                       <h:outputLabel for="sname" value="2º Nombre"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="lname" title="solo se permiten letras" class="ingre validate" autocomplete="off" required="true" value="#{registrerController.usuario.pApellido}" />
+                      <h:inputText
+                        id="lname"
+                        title="solo se permiten letras"
+                        class="ingre validate"
+                        autocomplete="off"
+                        required="true"
+                        value="#{usuarioController.usuario.primerApellido}" />
                       <h:outputLabel for="lname" value="1º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="lsname" title="solo se permiten letras" class="ingre validate" autocomplete="off"  value="#{registrerController.usuario.sApellido}" />
+                      <h:inputText
+                        id="lsname"
+                        title="solo se permiten letras"
+                        class="ingre validate"
+                        autocomplete="off"
+                        value="#{usuarioController.usuario.otrosApellidos}" />
                       <h:outputLabel for="lsname" value="2º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <select class="tdoc" id="tdoc"  >
-                        <option value="" disabled="disabled" selected="selected">Elije una opcion</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Ecuador">Ecuador</option>
-                        <option value="Otro">Otro</option>
-                      </select>
-                      <label for="tdoc">Tipo documento</label>
+                      <h:selectOneMenu pt:placeholder=" " id="tdoc"
+                                       value="#{usuarioController.usuario.tipoDoc}">
+                        <f:selectItems value="#{tipoDocController.tipoDocs}"
+                                       var="td"
+                                       itemValue="#{td.idTipoDoc}"
+                                       itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
+                      </h:selectOneMenu>
+                      <h:outputLabel for="tdoc" value="Tipo documento:"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText  id="docu" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true" value="#{registrerController.usuario.numeroDoc}"/>
+                      <h:inputText  id="docu" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true"/>
                       <h:outputLabel for="docu" value="Documento"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
@@ -213,7 +236,7 @@
                       <label for="oubi">Otra ubicacion </label>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true" value="#{registrerController.usuario.contrasena}"/>
+                      <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true"/>
                       <h:outputLabel for="fcontra" value="Contraseña "/>
                     </div>
                     <div class="input-field col s12 m6">
@@ -221,7 +244,7 @@
                       <label for="scontra">Confirmar Contraseña</label>
                     </div>
                     <div class="col s12 m6">
-                      <h:commandButton class=" btn waves-effect waves-light blue" pt:data-target="modal2"  id="ing" value="Registrarse" actionListener="#{registrerController.registrer()}"/>
+                      <h:commandButton class=" btn waves-effect waves-light blue" pt:data-target="modal2"  id="ing" value="Registrarse"/>
                     </div>
                   </h:form>
                   <div class="col s12 m6">
@@ -249,7 +272,7 @@
                 </div>
                 <br />
                 <br />
-              </form>
+              </h:form>
             </div>
           </div>
         </div>

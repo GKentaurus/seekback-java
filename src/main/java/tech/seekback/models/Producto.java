@@ -10,6 +10,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "producto")
+@NamedQueries(value = {
+  @NamedQuery(name = "Producto.getAll", query = "SELECT obj FROM Producto obj")
+})
 public class Producto implements Serializable {
 
   @Id
@@ -26,9 +29,8 @@ public class Producto implements Serializable {
   @Column(name = "precioVenta", nullable = false, length = 11)
   private Double precioVenta;
 
-  @Column(name = "idCategoria", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria")
+  @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria", nullable = false)
   private CategoriasProducto idCategoria;
 
   @Column(name = "estado", nullable = false)

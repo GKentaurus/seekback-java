@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.SoporteTecnicoDAO;
 import tech.seekback.models.SoporteTecnico;
@@ -13,6 +14,7 @@ import tech.seekback.models.SoporteTecnico;
  *
  * @author camorenoc
  */
+@Stateless
 public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> implements SoporteTecnicoDAO {
 
   public SoporteTecnicoDAOJPA() {

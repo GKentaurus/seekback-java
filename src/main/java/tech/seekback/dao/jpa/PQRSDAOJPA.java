@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.PQRSDAO;
 import tech.seekback.models.PQRS;
@@ -13,6 +14,7 @@ import tech.seekback.models.PQRS;
  *
  * @author camorenoc
  */
+@Stateless
 public class PQRSDAOJPA extends GenericDAO<PQRS, Integer> implements PQRSDAO {
 
   public PQRSDAOJPA() {

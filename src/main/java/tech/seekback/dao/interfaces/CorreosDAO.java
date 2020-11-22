@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.Correos;
 
@@ -12,5 +13,6 @@ import tech.seekback.models.Correos;
  *
  * @author camorenoc
  */
+@Remote
 public interface CorreosDAO extends DAO<Correos, Integer> {
 }

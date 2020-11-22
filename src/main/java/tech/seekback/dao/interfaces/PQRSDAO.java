@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.PQRS;
 
@@ -12,6 +13,7 @@ import tech.seekback.models.PQRS;
  *
  * @author camorenoc
  */
+@Remote
 public interface PQRSDAO extends DAO<PQRS, Integer> {
 
 }

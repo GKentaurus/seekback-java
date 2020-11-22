@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -14,16 +15,18 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "administrador")
-public class Administrador extends Usuario {
+@NamedQueries(value = {
+  @NamedQuery(name = "Administrador.getAll", query = "SELECT obj FROM Administrador obj")
+})
+public class Administrador implements Serializable {
 
-//  @Id
+  @Id
   @Column(name = "idAdministrador")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idAdministrador;
 
-  @Column(name = "idUsuario", nullable = false)
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
   @OneToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
   private Usuario idUsuario;
 
   @Embedded

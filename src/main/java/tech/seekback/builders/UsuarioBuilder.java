@@ -33,23 +33,23 @@ public class UsuarioBuilder {
     return this;
   }
 
-  public UsuarioBuilder pNombre(String pNombre) {
-    this.usuario.setpNombre(pNombre);
+  public UsuarioBuilder primerNombre(String primerNombre) {
+    this.usuario.setPrimerNombre(primerNombre);
     return this;
   }
 
-  public UsuarioBuilder sNombres(String sNombres) {
-    this.usuario.setsNombres(sNombres);
+  public UsuarioBuilder otrosNombres(String otrosNombres) {
+    this.usuario.setOtrosNombres(otrosNombres);
     return this;
   }
 
-  public UsuarioBuilder pApellido(String pApellido) {
-    this.usuario.setpApellido(pApellido);
+  public UsuarioBuilder primerApellido(String primerApellido) {
+    this.usuario.setPrimerApellido(primerApellido);
     return this;
   }
 
-  public UsuarioBuilder sApellido(String sApellido) {
-    this.usuario.setsApellido(sApellido);
+  public UsuarioBuilder otrosApellidos(String otrosApellidos) {
+    this.usuario.setOtrosApellidos(otrosApellidos);
     return this;
   }
 

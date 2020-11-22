@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tech.seekback.models;
 
 import java.io.Serializable;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
-import static tech.seekback.tools.Encrypter.*;
+import tech.seekback.tools.Encrypter;
 
 /**
  *
  * @author camorenoc
  */
-@MappedSuperclass
+@Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQueries(value = {
+  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj")
+})
 public class Usuario implements Serializable {
 
   @Id
@@ -26,21 +22,20 @@ public class Usuario implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idUsuario;
 
-  @Column(name = "pNombre", nullable = false, length = 50)
-  private String pNombre;
+  @Column(name = "primerNombre", nullable = false, length = 50)
+  private String primerNombre;
 
-  @Column(name = "sNombres", nullable = true, length = 50)
-  private String sNombres;
+  @Column(name = "otrosNombres", nullable = true, length = 50)
+  private String otrosNombres;
 
-  @Column(name = "pApellido", nullable = false, length = 50)
-  private String pApellido;
+  @Column(name = "primerApellido", nullable = false, length = 50)
+  private String primerApellido;
 
-  @Column(name = "sApellido", nullable = true, length = 50)
-  private String sApellido;
+  @Column(name = "otrosApellidos", nullable = true, length = 50)
+  private String otrosApellidos;
 
-  @Column(name = "tipoDoc", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc")
+  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -49,9 +44,11 @@ public class Usuario implements Serializable {
   @Column(name = "contrasena", nullable = false, length = 255)
   private String contrasena;
 
-  @Column(name = "rol", nullable = false)
+  @Column(name = "salt", nullable = false, length = 255)
+  private String salt;
+
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "rol", referencedColumnName = "idRoles")
+  @JoinColumn(name = "rol", referencedColumnName = "idRol", nullable = false)
   private Roles rol;
 
   @Embedded
@@ -66,36 +63,36 @@ public class Usuario implements Serializable {
     this.idUsuario = idUsuario;
   }
 
-  public String getpNombre() {
-    return pNombre;
+  public String getPrimerNombre() {
+    return primerNombre;
   }
 
-  public void setpNombre(String pNombre) {
-    this.pNombre = pNombre;
+  public void setPrimerNombre(String primerNombre) {
+    this.primerNombre = primerNombre;
   }
 
-  public String getsNombres() {
-    return sNombres;
+  public String getOtrosNombres() {
+    return otrosNombres;
   }
 
-  public void setsNombres(String sNombres) {
-    this.sNombres = sNombres;
+  public void setOtrosNombres(String otrosNombres) {
+    this.otrosNombres = otrosNombres;
   }
 
-  public String getpApellido() {
-    return pApellido;
+  public String getPrimerApellido() {
+    return primerApellido;
   }
 
-  public void setpApellido(String pApellido) {
-    this.pApellido = pApellido;
+  public void setPrimerApellido(String primerApellido) {
+    this.primerApellido = primerApellido;
   }
 
-  public String getsApellido() {
-    return sApellido;
+  public String getOtrosApellidos() {
+    return otrosApellidos;
   }
 
-  public void setsApellido(String sApellido) {
-    this.sApellido = sApellido;
+  public void setOtrosApellidos(String otrosApellidos) {
+    this.otrosApellidos = otrosApellidos;
   }
 
   public TipoDoc getTipoDoc() {
@@ -114,6 +111,20 @@ public class Usuario implements Serializable {
     this.numeroDoc = numeroDoc;
   }
 
+  // TODO: Probar método de encriptación
+  public void setContrasena(String contrasena) {
+    this.salt = Encrypter.getSalt(100);
+    this.contrasena = Encrypter.generateSecurePassword(contrasena, this.salt);
+  }
+
+  public String getContrasena() {
+    return contrasena;
+  }
+
+  public String getSalt() {
+    return salt;
+  }
+
   public Roles getRol() {
     return rol;
   }
@@ -129,29 +140,20 @@ public class Usuario implements Serializable {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
-
-  public String getContrasena() {
-    return contrasena;
-  }
-
-  // TODO: Probar método de encriptación
-  public void setContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    this.contrasena = cryptoGetHash(contrasena);
-  }
-
-  public Boolean compareContrasena(String contrasena) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    return this.contrasena.equals(cryptoGetHash(contrasena));
-  }
   //</editor-fold>
+
+  public boolean verifyPassword(String contrasena) {
+    return Encrypter.verifyUserPassword(contrasena, this.contrasena, this.salt);
+  }
 
   @Override
   public String toString() {
     return "Usuario{"
             + "idUsuario = " + idUsuario + ", "
-            + "pNombre = " + pNombre + ", "
-            + "sNombres = " + sNombres + ", "
-            + "pApellido = " + pApellido + ", "
-            + "sApellido = " + sApellido + ", "
+            + "primerNombre = " + primerNombre + ", "
+            + "otrosNombres = " + otrosNombres + ", "
+            + "primerApellido = " + primerApellido + ", "
+            + "otrosApellidos = " + otrosApellidos + ", "
             + "tipoDoc = " + tipoDoc + ", "
             + "numeroDoc = " + numeroDoc + ", "
             + "rol = " + rol + ", "

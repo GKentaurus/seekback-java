@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.EstadosCotizacionDAO;
 import tech.seekback.models.EstadosCotizacion;
@@ -13,6 +14,7 @@ import tech.seekback.models.EstadosCotizacion;
  *
  * @author camorenoc
  */
+@Stateless
 public class EstadosCotizacionDAOJPA extends GenericDAO<EstadosCotizacion, Integer> implements EstadosCotizacionDAO {
 
   public EstadosCotizacionDAOJPA() {

@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.TipoDocDAO;
 import tech.seekback.models.TipoDoc;
@@ -13,6 +14,7 @@ import tech.seekback.models.TipoDoc;
  *
  * @author camorenoc
  */
+@Stateless
 public class TipoDocDAOJPA extends GenericDAO<TipoDoc, Integer> implements TipoDocDAO {
 
   public TipoDocDAOJPA() {

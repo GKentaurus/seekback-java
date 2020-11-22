@@ -10,6 +10,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "felicitacion")
+@NamedQueries(value = {
+  @NamedQuery(name = "Felicitacion.getAll", query = "SELECT obj FROM Felicitacion obj")
+})
 public class Felicitacion implements Serializable {
 
   @Id
@@ -17,16 +20,15 @@ public class Felicitacion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idFelicitacion;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
   @Column(name = "dirigidoA", nullable = false, length = 100)
   private String dirigidoA;
 
   @Column(name = "comentario", nullable = true, length = 255)
-  private Integer comentario;
+  private String comentario;
 
   @Embedded
   private Timestamps timestamps;
@@ -64,11 +66,11 @@ public class Felicitacion implements Serializable {
     this.idCliente = idCliente;
   }
 
-  public Integer getComentario() {
+  public String getComentario() {
     return comentario;
   }
 
-  public void setComentario(Integer comentario) {
+  public void setComentario(String comentario) {
     this.comentario = comentario;
   }
   //</editor-fold>

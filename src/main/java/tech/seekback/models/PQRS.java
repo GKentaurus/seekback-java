@@ -16,6 +16,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "pqrs")
+@NamedQueries(value = {
+  @NamedQuery(name = "PQRS.getAll", query = "SELECT obj FROM PQRS obj")
+})
 public class PQRS implements Serializable {
 
   @Id
@@ -23,19 +26,16 @@ public class PQRS implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idPQRS;
 
-  @Column(name = "idTipoSolicitud", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoSolicitud", referencedColumnName = "idTipoSolicitud")
+  @JoinColumn(name = "idTipoSolicitud", referencedColumnName = "idTipoSolicitud", nullable = false)
   private TipoSolicitud idTipoSolicitud;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
-  @Column(name = "idAdministrador", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")
+  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador", nullable = false)
   private Administrador idAdministrador;
 
   @Column(name = "area", nullable = false, length = 100)
@@ -44,9 +44,8 @@ public class PQRS implements Serializable {
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
-  @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
   private EstadosFidelizacion idEstado;
 
   @Column(name = "fechaRespuesta", nullable = true)
