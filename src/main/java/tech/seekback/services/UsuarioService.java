@@ -7,6 +7,7 @@ package tech.seekback.services;
 
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.UsuarioDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
@@ -15,6 +16,7 @@ import tech.seekback.models.Usuario;
  *
  * @author camorenoc
  */
+@Stateless
 public class UsuarioService {
 
   @EJB

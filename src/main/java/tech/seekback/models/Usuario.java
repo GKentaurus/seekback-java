@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tech.seekback.models;
 
 import java.io.Serializable;
@@ -16,9 +11,9 @@ import static tech.seekback.tools.Encrypter.*;
  *
  * @author camorenoc
  */
-@MappedSuperclass
+@Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Usuario implements Serializable {
 
   @Id
@@ -38,9 +33,8 @@ public class Usuario implements Serializable {
   @Column(name = "otrosApellidos", nullable = true, length = 50)
   private String otrosApellidos;
 
-  @Column(name = "tipoDoc", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc")
+  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -49,9 +43,8 @@ public class Usuario implements Serializable {
   @Column(name = "contrasena", nullable = false, length = 255)
   private String contrasena;
 
-  @Column(name = "rol", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "rol", referencedColumnName = "idRoles")
+  @JoinColumn(name = "rol", referencedColumnName = "idRol", nullable = false)
   private Roles rol;
 
   @Embedded
@@ -148,10 +141,10 @@ public class Usuario implements Serializable {
   public String toString() {
     return "Usuario{"
             + "idUsuario = " + idUsuario + ", "
-            + "pNombre = " + primerNombre + ", "
-            + "sNombres = " + otrosNombres + ", "
-            + "pApellido = " + primerApellido + ", "
-            + "sApellido = " + otrosApellidos + ", "
+            + "primerNombre = " + primerNombre + ", "
+            + "otrosNombres = " + otrosNombres + ", "
+            + "primerApellido = " + primerApellido + ", "
+            + "otrosApellidos = " + otrosApellidos + ", "
             + "tipoDoc = " + tipoDoc + ", "
             + "numeroDoc = " + numeroDoc + ", "
             + "rol = " + rol + ", "

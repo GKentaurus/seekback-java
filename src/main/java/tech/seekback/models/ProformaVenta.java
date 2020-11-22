@@ -18,9 +18,8 @@ public class ProformaVenta implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idProforma;
 
-  @Column(name = "cotizacionAsociada", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCotizacion", referencedColumnName = "idCotizacion")
+  @JoinColumn(name = "idCotizacion", referencedColumnName = "idCotizacion", nullable = false)
   private Cotizacion cotizacionAsociada;
 
   @Column(name = "fecha", nullable = false)

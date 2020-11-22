@@ -22,14 +22,12 @@ public class Calificacion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCalificacion;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
-  @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
   private Producto idProducto;
 
   @Column(name = "calificacion", nullable = false, length = 1)

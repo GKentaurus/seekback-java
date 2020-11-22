@@ -22,9 +22,8 @@ public class Direcciones implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idDirecciones;
 
-  @Column(name = "idRegistro", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idRegistro", referencedColumnName = "idUsuario")
+  @JoinColumn(name = "idRegistro", referencedColumnName = "idUsuario", nullable = false)
   private Usuario idRegistro;
 
   @Column(name = "pseudonimo", nullable = false, length = 30)
@@ -36,9 +35,8 @@ public class Direcciones implements Serializable {
   @Column(name = "telefono", nullable = false, length = 20)
   private String telefono;
 
-  @Column(name = "localizacion", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "localizacion", referencedColumnName = "idCiudad")
+  @JoinColumn(name = "localizacion", referencedColumnName = "idCiudad", nullable = false)
   private Ciudad localizacion;
 
   @Embedded

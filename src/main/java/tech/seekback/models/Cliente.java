@@ -5,6 +5,7 @@
  */
 package tech.seekback.models;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -14,15 +15,15 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "cliente")
-public class Cliente extends Usuario {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Cliente implements Serializable {
 
-//  @Id
+  @Id
   @Column(name = "idCliente")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCliente;
 
-  @Column(name = "idUsuario", nullable = false)
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
   @OneToOne(fetch = FetchType.EAGER)
   private Usuario idUsuario;
 

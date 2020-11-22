@@ -18,9 +18,8 @@ public class TRM implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTrm;
 
-  @Column(name = "idDivisa", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDivisas ", referencedColumnName = "idDivisa")
+  @JoinColumn(name = "idDivisas ", referencedColumnName = "idDivisa", nullable = false)
   private Divisas idDivisa;
 
   @Column(name = "fechaTRM", nullable = false)

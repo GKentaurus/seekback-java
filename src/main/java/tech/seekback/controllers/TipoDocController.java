@@ -28,7 +28,6 @@ public class TipoDocController implements Serializable {
   private List<TipoDoc> tipoDocs;
 
   public TipoDocController() {
-
   }
 
   @PostConstruct
@@ -37,6 +36,7 @@ public class TipoDocController implements Serializable {
       tipoDocs = tipoDocService.getAll();
     } catch (ConnectionExcep ex) {
       System.out.println("Error de la consulta 'TIPO DOC'.");
+      ex.printStackTrace();
     }
   }
 

@@ -17,9 +17,8 @@ public class Telefonos implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTelefono;
 
-  @Column(name = "idUsuario", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
   private Usuario idUsuario;
 
   @Column(name = "numeroTelefono", nullable = false, length = 20)

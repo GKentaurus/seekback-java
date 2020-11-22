@@ -30,29 +30,24 @@ public class Agenda implements Serializable {
   @Column(name = "observaciones", nullable = false, length = 255)
   private String observaciones;
 
-  @Column(name = "idEstado", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
+  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
   private EstadosAgenda idEstado;
 
-  @Column(name = "idTipoServicio", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoServicio", referencedColumnName = "idTipoServicio")
+  @JoinColumn(name = "idTipoServicio", referencedColumnName = "idTipoServicio", nullable = false)
   private TipoServicio idTipoServicio;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
-  @Column(name = "idEmpleado", nullable = true)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
+  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = true)
   private Empleado idEmpleado;
 
-  @Column(name = "idAdministrador", nullable = true)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")
+  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador", nullable = true)
   private Administrador idAdministrador;
 
   @Embedded

@@ -40,7 +40,7 @@ public class FelicitacionBuilder {
     return this;
   }
 
-  public FelicitacionBuilder comentario(Integer comentario) {
+  public FelicitacionBuilder comentario(String comentario) {
     this.felicitacion.setComentario(comentario);
     return this;
   }

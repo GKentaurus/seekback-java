@@ -36,12 +36,10 @@
     <class>tech.seekback.models.TipoDoc</class>
     <class>tech.seekback.models.TipoServicio</class>
     <class>tech.seekback.models.TipoSolicitud</class>
+    <class>tech.seekback.models.Usuario</class>
     <properties>
       <properties>
-        <property
-          name="javax.persistence.jdbc.url"
-          value="jdbc:mysql://185.201.11.128:3306/u925035511_seekback_test?zeroDateTimeBehavior=CONVERT_TO_NULL"
-        />
+        <property name="javax.persistence.jdbc.url" value="jdbc:mysql://185.201.11.128:3306/u925035511_seekback_test?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
         <property name="javax.persistence.jdbc.user" value="u925035511_test"/>
         <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
         <property name="javax.persistence.jdbc.password" value="123PorMi"/>

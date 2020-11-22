@@ -28,9 +28,8 @@ public class DocumentoDetallado implements Serializable {
   @Column(name = "consecutivo", nullable = false, length = 11)
   private Integer consecutivo;
 
-  @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
   private Producto idProducto;
 
   @Column(name = "cantidad", nullable = false, length = 11)

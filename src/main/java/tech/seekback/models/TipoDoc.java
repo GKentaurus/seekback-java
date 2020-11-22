@@ -1,8 +1,8 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
-import tech.seekback.models.templates.Timestamps;
 import javax.persistence.*;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  *
@@ -17,7 +17,7 @@ public class TipoDoc implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idTipoDoc;
 
-  @Column(name = "sigla", nullable = false, length = 5)//relacion con las columnas
+  @Column(name = "sigla", nullable = false, length = 5)
   private String sigla;
 
   @Column(name = "nombreDocumento", nullable = false, length = 10)

@@ -22,9 +22,8 @@ public class Proveedor implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idProveedor;
 
-  @Column(name = "tipoDoc", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc")
+  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -42,9 +41,8 @@ public class Proveedor implements Serializable {
   @Column(name = "email", nullable = false, length = 255)
   private String email;
 
-  @Column(name = "idCliente", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
   private Cliente idCliente;
 
   @Embedded

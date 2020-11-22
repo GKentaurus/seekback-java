@@ -22,14 +22,12 @@ public class BodegaProductos implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idRegistro;
 
-  @Column(name = "idBodega", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idBodega", referencedColumnName = "idBodega")
+  @JoinColumn(name = "idBodega", referencedColumnName = "idBodega", nullable = false)
   private Bodega idBodega;
 
-  @Column(name = "idProducto", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
+  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
   private Producto idProducto;
 
   @Column(name = "cantidad", nullable = false, length = 11)

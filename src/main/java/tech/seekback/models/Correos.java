@@ -22,9 +22,8 @@ public class Correos implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idCorreo;
 
-  @Column(name = "idUsuario", nullable = false)
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
+  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
   private Usuario idUsuario;
 
   @Column(name = "correoElectronico", nullable = false, unique = true, length = 255)

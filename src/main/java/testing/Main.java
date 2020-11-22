@@ -1,13 +1,11 @@
 package testing;
 
-import tech.seekback.dao.interfaces.RolesDAO;
+import tech.seekback.dao.interfaces.AdministradorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.exceptions.FactoryExcep;
-import tech.seekback.exceptions.enums.ConnectionExcepEnum;
-import tech.seekback.exceptions.enums.FactoryExcepEnum;
 import tech.seekback.factories.Factory;
 import tech.seekback.factories.FactoryDAO;
-import tech.seekback.models.Roles;
+import tech.seekback.models.Administrador;
 
 /**
  *
@@ -16,16 +14,12 @@ import tech.seekback.models.Roles;
 public class Main {
 
   public static void main(String[] args) throws FactoryExcep, ConnectionExcep {
-    try {
-      FactoryDAO f = Factory.getFactoryDAO();
-      RolesDAO dao = f.getRolesDAO();
+    FactoryDAO factoryDAO = Factory.getFactoryDAO();
+    AdministradorDAO dao = factoryDAO.getAdministradorDAO();
 
-      Roles obj = dao.getOne(1);
-      System.out.println(obj.toString());
-    } catch (ConnectionExcep ex) {
-      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONSULTA, ex);
-    } catch (FactoryExcep ex) {
-      throw new FactoryExcep(FactoryExcepEnum.ERROR_FABRICA_DAO, ex);
-    }
+    //Consultar por id
+    Administrador obj = dao.getOne(1);
+    System.out.println(obj.toString());
+    System.out.println("\n\n\n\n\nTodo bien....");
   }
 }
