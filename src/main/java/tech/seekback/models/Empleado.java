@@ -15,6 +15,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "empleado")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQueries(value = {
+  @NamedQuery(name = "Empleado.getAll", query = "SELECT obj FROM Empleado obj")
+})
 public class Empleado implements Serializable {
 
   @Id

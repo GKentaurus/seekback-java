@@ -10,6 +10,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "tipo_doc")
+@NamedQueries(value = {
+  @NamedQuery(name = "TipoDoc.getAll", query = "SELECT obj FROM TipoDoc obj")
+})
 public class TipoDoc implements Serializable {
 
   @Id //esto es como la PK

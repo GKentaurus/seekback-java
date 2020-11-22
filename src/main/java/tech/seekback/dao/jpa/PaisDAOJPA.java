@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.PaisDAO;
 import tech.seekback.models.Pais;
@@ -13,6 +14,7 @@ import tech.seekback.models.Pais;
  *
  * @author camorenoc
  */
+@Stateless
 public class PaisDAOJPA extends GenericDAO<Pais, Integer> implements PaisDAO {
 
   public PaisDAOJPA() {

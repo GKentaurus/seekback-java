@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.BodegaDAO;
 import tech.seekback.models.Bodega;
@@ -13,6 +14,7 @@ import tech.seekback.models.Bodega;
  *
  * @author camorenoc
  */
+@Stateless
 public class BodegaDAOJPA extends GenericDAO<Bodega, Integer> implements BodegaDAO {
 
   public BodegaDAOJPA() {

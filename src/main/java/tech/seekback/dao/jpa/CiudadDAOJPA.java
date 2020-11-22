@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.CiudadDAO;
 import tech.seekback.models.Ciudad;
@@ -13,6 +14,7 @@ import tech.seekback.models.Ciudad;
  *
  * @author camorenoc
  */
+@Stateless
 public class CiudadDAOJPA extends GenericDAO<Ciudad, Integer> implements CiudadDAO {
 
   public CiudadDAOJPA() {

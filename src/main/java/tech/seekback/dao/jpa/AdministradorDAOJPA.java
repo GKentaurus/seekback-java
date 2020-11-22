@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.AdministradorDAO;
 import tech.seekback.models.Administrador;
@@ -13,6 +14,7 @@ import tech.seekback.models.Administrador;
  *
  * @author camorenoc
  */
+@Stateless
 public class AdministradorDAOJPA extends GenericDAO<Administrador, Integer> implements AdministradorDAO {
 
   public AdministradorDAOJPA() {

@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.TelefonosDAO;
 import tech.seekback.models.Telefonos;
@@ -13,6 +14,7 @@ import tech.seekback.models.Telefonos;
  *
  * @author camorenoc
  */
+@Stateless
 public class TelefonosDAOJPA extends GenericDAO<Telefonos, Integer> implements TelefonosDAO {
 
   public TelefonosDAOJPA() {

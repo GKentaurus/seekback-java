@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.ProveedorDAO;
 import tech.seekback.models.Proveedor;
@@ -13,6 +14,7 @@ import tech.seekback.models.Proveedor;
  *
  * @author camorenoc
  */
+@Stateless
 public class ProveedorDAOJPA extends GenericDAO<Proveedor, Integer> implements ProveedorDAO {
 
   public ProveedorDAOJPA() {

@@ -14,6 +14,9 @@ import static tech.seekback.tools.Encrypter.*;
 @Entity
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQueries(value = {
+  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj")
+})
 public class Usuario implements Serializable {
 
   @Id

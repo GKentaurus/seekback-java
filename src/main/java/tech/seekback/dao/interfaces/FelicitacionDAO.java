@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.Felicitacion;
 
@@ -12,5 +13,6 @@ import tech.seekback.models.Felicitacion;
  *
  * @author camorenoc
  */
+@Remote
 public interface FelicitacionDAO extends DAO<Felicitacion, Integer> {
 }

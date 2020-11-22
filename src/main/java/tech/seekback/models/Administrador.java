@@ -15,6 +15,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "administrador")
+@NamedQueries(value = {
+  @NamedQuery(name = "Administrador.getAll", query = "SELECT obj FROM Administrador obj")
+})
 public class Administrador implements Serializable {
 
   @Id

@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.TRMDAO;
 import tech.seekback.models.TRM;
@@ -13,6 +14,7 @@ import tech.seekback.models.TRM;
  *
  * @author camorenoc
  */
+@Stateless
 public class TRMDAOJPA extends GenericDAO<TRM, Integer> implements TRMDAO {
 
   public TRMDAOJPA() {

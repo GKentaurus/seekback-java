@@ -70,6 +70,7 @@ D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\builders\Usuar
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\dao\interfaces\DocumentoDetalladoDAO.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\dao\interfaces\PQRSDAO.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\dao\jpa\SoporteTecnicoDAOJPA.java
+D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\services\EstadosFidelizacionService.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\builders\CategoriasProductoBuilder.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\dao\interfaces\PaisDAO.java
 D:\01_Projects\git\SENA\seekback-java\src\main\java\tech\seekback\dao\jpa\EmpleadoDAOJPA.java

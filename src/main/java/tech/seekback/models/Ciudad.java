@@ -15,6 +15,9 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "ciudad")
+@NamedQueries(value = {
+  @NamedQuery(name = "Ciudad.getAll", query = "SELECT obj FROM Ciudad obj")
+})
 public class Ciudad implements Serializable {
 
   @Id

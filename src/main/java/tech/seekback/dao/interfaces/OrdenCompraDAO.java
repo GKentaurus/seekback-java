@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.OrdenCompra;
 
@@ -12,6 +13,7 @@ import tech.seekback.models.OrdenCompra;
  *
  * @author camorenoc
  */
+@Remote
 public interface OrdenCompraDAO extends DAO<OrdenCompra, Integer> {
 
 }

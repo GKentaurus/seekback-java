@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.EmpleadoDAO;
 import tech.seekback.models.Empleado;
@@ -13,6 +14,7 @@ import tech.seekback.models.Empleado;
  *
  * @author camorenoc
  */
+@Stateless
 public class EmpleadoDAOJPA extends GenericDAO<Empleado, Integer> implements EmpleadoDAO {
 
   public EmpleadoDAOJPA() {

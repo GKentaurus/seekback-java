@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.DireccionesDAO;
 import tech.seekback.models.Direcciones;
@@ -13,6 +14,7 @@ import tech.seekback.models.Direcciones;
  *
  * @author camorenoc
  */
+@Stateless
 public class DireccionesDAOJPA extends GenericDAO<Direcciones, Integer> implements DireccionesDAO {
 
   public DireccionesDAOJPA() {

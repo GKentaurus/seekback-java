@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
+import javax.ejb.Remote;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.TRM;
 
@@ -12,5 +13,6 @@ import tech.seekback.models.TRM;
  *
  * @author camorenoc
  */
+@Remote
 public interface TRMDAO extends DAO<TRM, Integer> {
 }

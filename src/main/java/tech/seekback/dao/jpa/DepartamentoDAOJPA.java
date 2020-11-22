@@ -5,6 +5,7 @@
  */
 package tech.seekback.dao.jpa;
 
+import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.DepartamentoDAO;
 import tech.seekback.models.Departamento;
@@ -13,6 +14,7 @@ import tech.seekback.models.Departamento;
  *
  * @author camorenoc
  */
+@Stateless
 public class DepartamentoDAOJPA extends GenericDAO<Departamento, Integer> implements DepartamentoDAO {
 
   public DepartamentoDAOJPA() {
