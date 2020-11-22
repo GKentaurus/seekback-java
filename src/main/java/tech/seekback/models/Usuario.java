@@ -110,7 +110,6 @@ public class Usuario implements Serializable {
     this.numeroDoc = numeroDoc;
   }
 
-  // TODO: Probar método de encriptación
   public void setContrasena(String contrasena) {
     this.salt = Encrypter.getSalt(100);
     this.contrasena = Encrypter.generateSecurePassword(contrasena, this.salt);
@@ -118,6 +117,10 @@ public class Usuario implements Serializable {
 
   public String getContrasena() {
     return contrasena;
+  }
+
+  public boolean verificarContrasena(String contrasena) {
+    return Encrypter.verifyUserPassword(contrasena, this.contrasena, this.salt);
   }
 
   public String getSalt() {
@@ -140,10 +143,6 @@ public class Usuario implements Serializable {
     this.timestamps = timestamps;
   }
   //</editor-fold>
-
-  public boolean verifyPassword(String contrasena) {
-    return Encrypter.verifyUserPassword(contrasena, this.contrasena, this.salt);
-  }
 
   @Override
   public String toString() {

@@ -34,4 +34,6 @@ public class UsuarioService {
     List<Usuario> usuarios = usuarioDAO.getAll();
     return usuarios;
   }
+
+  // TODO: integrar metodos UPDATE y DELETE
 }
