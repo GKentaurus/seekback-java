@@ -191,17 +191,17 @@
                       <h:outputLabel for="lsname" value="2º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:outputLabel for="tdoc" value="Tipo documento:"/>
-                      <h:selectOneMenu id="tdoc"
+                      <h:selectOneMenu pt:placeholder=" " id="tdoc"
                                        value="#{usuarioController.usuario.tipoDoc}">
                         <f:selectItems value="#{tipoDocController.tipoDocs}"
-                                       var="obj"
-                                       itemValue="#{obj.idTipoDoc}"
-                                       itemLabel="#{obj.sigla} - #{obj.nombreDocumento}"/>
+                                       var="td"
+                                       itemValue="#{td.idTipoDoc}"
+                                       itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
                       </h:selectOneMenu>
+                      <h:outputLabel for="tdoc" value="Tipo documento:"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText  id="docu" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true" value="#{registrerController.usuario.numeroDoc}"/>
+                      <h:inputText  id="docu" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true"/>
                       <h:outputLabel for="docu" value="Documento"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
@@ -236,7 +236,7 @@
                       <label for="oubi">Otra ubicacion </label>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true" value="#{registrerController.usuario.contrasena}"/>
+                      <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true"/>
                       <h:outputLabel for="fcontra" value="Contraseña "/>
                     </div>
                     <div class="input-field col s12 m6">
@@ -244,7 +244,7 @@
                       <label for="scontra">Confirmar Contraseña</label>
                     </div>
                     <div class="col s12 m6">
-                      <h:commandButton class=" btn waves-effect waves-light blue" pt:data-target="modal2"  id="ing" value="Registrarse" actionListener="#{registrerController.registrer()}"/>
+                      <h:commandButton class=" btn waves-effect waves-light blue" pt:data-target="modal2"  id="ing" value="Registrarse"/>
                     </div>
                   </h:form>
                   <div class="col s12 m6">

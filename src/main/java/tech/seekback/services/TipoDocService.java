@@ -26,6 +26,10 @@ public class TipoDocService {
     tipoDocDAO.create(tipoDoc);
   }
 
+  public TipoDoc getOne(Integer id) throws ConnectionExcep {
+    return tipoDocDAO.getOne(id);
+  }
+
   public List<TipoDoc> getAll() throws ConnectionExcep {
     List<TipoDoc> tipoDoc = tipoDocDAO.getAll();
     return tipoDoc;
