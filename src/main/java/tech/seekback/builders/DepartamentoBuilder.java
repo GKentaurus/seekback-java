@@ -25,13 +25,13 @@ public class DepartamentoBuilder {
     return new DepartamentoBuilder();
   }
 
-  public DepartamentoBuilder idDepartamento(Integer idDepartamento) {
-    this.departamento.setIdDepartamento(idDepartamento);
+  public DepartamentoBuilder id(Integer id) {
+    this.departamento.setId(id);
     return this;
   }
 
-  public DepartamentoBuilder idPais(Pais idPais) {
-    this.departamento.setIdPais(idPais);
+  public DepartamentoBuilder pais(Pais pais) {
+    this.departamento.setPais(pais);
     return this;
   }
 

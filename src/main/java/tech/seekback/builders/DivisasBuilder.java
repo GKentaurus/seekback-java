@@ -24,8 +24,8 @@ public class DivisasBuilder {
     return new DivisasBuilder();
   }
 
-  public DivisasBuilder idDivisa(Integer idDivisa) {
-    this.divisas.setIdDivisa(idDivisa);
+  public DivisasBuilder id(Integer id) {
+    this.divisas.setId(id);
     return this;
   }
 

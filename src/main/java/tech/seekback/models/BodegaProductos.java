@@ -23,15 +23,15 @@ public class BodegaProductos implements Serializable {
   @Id
   @Column(name = "idRegistro", nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idRegistro;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idBodega", referencedColumnName = "idBodega", nullable = false)
-  private Bodega idBodega;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idBodega", nullable = false)
+  private Bodega bodega;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
-  private Producto idProducto;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idProducto", nullable = false)
+  private Producto producto;
 
   @Column(name = "cantidad", nullable = false, length = 11)
   private Integer cantidad;
@@ -40,28 +40,28 @@ public class BodegaProductos implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdRegistro() {
-    return idRegistro;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdRegistro(Integer idRegistro) {
-    this.idRegistro = idRegistro;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Bodega getIdBodega() {
-    return idBodega;
+  public Bodega getBodega() {
+    return bodega;
   }
 
-  public void setIdBodega(Bodega idBodega) {
-    this.idBodega = idBodega;
+  public void setBodega(Bodega bodega) {
+    this.bodega = bodega;
   }
 
-  public Producto getIdProducto() {
-    return idProducto;
+  public Producto getProducto() {
+    return producto;
   }
 
-  public void setIdProducto(Producto idProducto) {
-    this.idProducto = idProducto;
+  public void setProducto(Producto producto) {
+    this.producto = producto;
   }
 
   public Integer getCantidad() {
@@ -84,10 +84,10 @@ public class BodegaProductos implements Serializable {
   @Override
   public String toString() {
     return "BodegaProductos("
-            + "id = " + idRegistro + ", "
-            + "idBodega = " + idBodega + ", "
-            + "idProducto = " + idProducto + ", "
-            + "Cantidad = " + cantidad + ", "
+            + "id = " + id + ", "
+            + "bodega = " + bodega + ", "
+            + "producto = " + producto + ", "
+            + "cantidad = " + cantidad + ", "
             + timestamps.toString()
             + ")";
   }

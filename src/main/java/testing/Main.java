@@ -20,6 +20,6 @@ public class Main {
     //Consultar por id
     Administrador obj = dao.getOne(1);
     System.out.println(obj.toString());
-    System.out.println("\n\n\n\n\nTodo bien....");
+    System.out.println("\nTodo bien....");
   }
 }

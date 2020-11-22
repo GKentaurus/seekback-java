@@ -25,13 +25,13 @@ public class CiudadBuilder {
     return new CiudadBuilder();
   }
 
-  public CiudadBuilder idCiudad(Integer idCiudad) {
-    this.ciudad.setIdCiudad(idCiudad);
+  public CiudadBuilder id(Integer id) {
+    this.ciudad.setId(id);
     return this;
   }
 
-  public CiudadBuilder idDepartamento(Departamento idDepartamento) {
-    this.ciudad.setIdDepartamento(idDepartamento);
+  public CiudadBuilder departamento(Departamento departamento) {
+    this.ciudad.setDepartamento(departamento);
     return this;
   }
 

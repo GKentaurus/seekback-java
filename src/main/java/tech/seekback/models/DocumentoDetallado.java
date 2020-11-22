@@ -23,7 +23,7 @@ public class DocumentoDetallado implements Serializable {
   @Id
   @Column(name = "idDetalle")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idDetalle;
+  private Integer id;
 
   @Column(name = "prefijoDocumento", nullable = false, length = 10)
   private String prefijoDocumento;
@@ -31,9 +31,9 @@ public class DocumentoDetallado implements Serializable {
   @Column(name = "consecutivo", nullable = false, length = 11)
   private Integer consecutivo;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
-  private Producto idProducto;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idProducto", nullable = false)
+  private Producto producto;
 
   @Column(name = "cantidad", nullable = false, length = 11)
   private Integer cantidad;
@@ -45,12 +45,12 @@ public class DocumentoDetallado implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdDetalle() {
-    return idDetalle;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdDetalle(Integer idDetalle) {
-    this.idDetalle = idDetalle;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getPrefijoDocumento() {
@@ -69,12 +69,12 @@ public class DocumentoDetallado implements Serializable {
     this.consecutivo = consecutivo;
   }
 
-  public Producto getIdProducto() {
-    return idProducto;
+  public Producto getProducto() {
+    return producto;
   }
 
-  public void setIdProducto(Producto idProducto) {
-    this.idProducto = idProducto;
+  public void setProducto(Producto producto) {
+    this.producto = producto;
   }
 
   public Integer getCantidad() {
@@ -105,10 +105,10 @@ public class DocumentoDetallado implements Serializable {
   @Override
   public String toString() {
     return "DocumentoDetallado("
-            + "id = " + idDetalle + ", "
+            + "id = " + id + ", "
             + "prefijoDocumento = " + prefijoDocumento + ", "
             + "consecutivo = " + consecutivo + ", "
-            + "idProducto = " + idProducto + ", "
+            + "producto = " + producto + ", "
             + "cantidad = " + cantidad + ", "
             + "valorUnitario = " + valorUnitario + ", "
             + timestamps.toString()

@@ -23,11 +23,11 @@ public class Ciudad implements Serializable {
   @Id
   @Column(name = "idCiudad")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCiudad;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento", nullable = false)
-  private Departamento idDepartamento;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idDepartamento", nullable = false)
+  private Departamento departamento;
 
   @Column(name = "nombreCiudad", nullable = false, length = 50)
   private String nombreCiudad;
@@ -36,20 +36,20 @@ public class Ciudad implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCiudad() {
-    return idCiudad;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdCiudad(Integer idCiudad) {
-    this.idCiudad = idCiudad;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Departamento getIdDepartamento() {
-    return idDepartamento;
+  public Departamento getDepartamento() {
+    return departamento;
   }
 
-  public void setIdDepartamento(Departamento idDepartamento) {
-    this.idDepartamento = idDepartamento;
+  public void setDepartamento(Departamento departamento) {
+    this.departamento = departamento;
   }
 
   public String getNombreCiudad() {
@@ -71,8 +71,9 @@ public class Ciudad implements Serializable {
 
   @Override
   public String toString() {
-    return "Ciudad{" + "idCiudad = " + idCiudad + ", "
-            + "idDepartamento = " + idDepartamento + ", "
+    return "Ciudad{"
+            + "id = " + id + ", "
+            + "fepartamento = " + departamento + ", "
             + "nombreCiudad = " + nombreCiudad + ", "
             + timestamps.toString()
             + '}';

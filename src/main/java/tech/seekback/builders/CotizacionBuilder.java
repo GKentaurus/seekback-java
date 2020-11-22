@@ -29,8 +29,8 @@ public class CotizacionBuilder {
     return new CotizacionBuilder();
   }
 
-  public CotizacionBuilder idCotizacion(String requerimiento) {
-    this.cotizacion.setIdCotizacion(Integer.SIZE);
+  public CotizacionBuilder id(Integer id) {
+    this.cotizacion.setId(id);
     return this;
   }
 
@@ -44,23 +44,23 @@ public class CotizacionBuilder {
     return this;
   }
 
-  public CotizacionBuilder idTRM(TRM idTRM) {
-    this.cotizacion.setIdTRM(idTRM);
+  public CotizacionBuilder trm(TRM idTRM) {
+    this.cotizacion.setTrm(idTRM);
     return this;
   }
 
-  public CotizacionBuilder idEstado(EstadosCotizacion idEstado) {
-    this.cotizacion.setIdEstado(idEstado);
+  public CotizacionBuilder estado(EstadosCotizacion estado) {
+    this.cotizacion.setEstado(estado);
     return this;
   }
 
-  public CotizacionBuilder idEmpleado(Empleado idEmpleado) {
-    this.cotizacion.setIdEmpleado(idEmpleado);
+  public CotizacionBuilder empleado(Empleado empleado) {
+    this.cotizacion.setEmpleado(empleado);
     return this;
   }
 
-  public CotizacionBuilder idCliente(Cliente idCliente) {
-    this.cotizacion.setIdCliente(idCliente);
+  public CotizacionBuilder cliente(Cliente cliente) {
+    this.cotizacion.setCliente(cliente);
     return this;
   }
 

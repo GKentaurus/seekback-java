@@ -23,7 +23,7 @@ public class Bodega implements Serializable {
   @Id
   @Column(name = "idBodega")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idBodega;
+  private Integer id;
 
   @Column(name = "nombreBodega", nullable = false, length = 50)
   private String nombreBodega;
@@ -32,12 +32,12 @@ public class Bodega implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdBodega() {
-    return idBodega;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdBodega(Integer idBodega) {
-    this.idBodega = idBodega;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombreBodega() {
@@ -60,7 +60,7 @@ public class Bodega implements Serializable {
   @Override
   public String toString() {
     return "Bodega("
-            + "id = " + idBodega + ", "
+            + "id = " + id + ", "
             + "nombreBodega = " + nombreBodega + ", "
             + timestamps.toString()
             + ")";

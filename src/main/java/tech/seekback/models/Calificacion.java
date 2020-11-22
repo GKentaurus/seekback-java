@@ -23,15 +23,15 @@ public class Calificacion implements Serializable {
   @Id
   @Column(name = "idCalificacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCalificacion;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
-  private Cliente idCliente;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCliente", nullable = false)
+  private Cliente cliente;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = false)
-  private Producto idProducto;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idProducto", nullable = false)
+  private Producto producto;
 
   @Column(name = "calificacion", nullable = false, length = 1)
   private Integer calificacion;
@@ -46,20 +46,20 @@ public class Calificacion implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCalificacion() {
-    return idCalificacion;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdCalificacion(Integer idCalificacion) {
-    this.idCalificacion = idCalificacion;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Producto getIdProducto() {
-    return idProducto;
+  public Producto getProducto() {
+    return producto;
   }
 
-  public void setIdProducto(Producto idProducto) {
-    this.idProducto = idProducto;
+  public void setProducto(Producto producto) {
+    this.producto = producto;
   }
 
   public Integer getCalificacion() {
@@ -78,12 +78,12 @@ public class Calificacion implements Serializable {
     this.timestamps = timestamps;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
   public Integer getComentario() {
@@ -106,9 +106,9 @@ public class Calificacion implements Serializable {
   @Override
   public String toString() {
     return "Calificacion("
-            + "id = " + idCalificacion + ", "
-            + "idCliente = " + idCliente + ", "
-            + "idProducto = " + idProducto + ", "
+            + "id = " + id + ", "
+            + "cliente = " + cliente + ", "
+            + "producto = " + producto + ", "
             + "calificacion = " + calificacion + ", "
             + "comentario = " + comentario + ", "
             + "esAprobado = " + esAprobado + ", "

@@ -25,8 +25,8 @@ public class CorreosBuilder {
     return new CorreosBuilder();
   }
 
-  public CorreosBuilder idUsuario(Usuario idUsuario) {
-    this.correos.setIdUsuario(idUsuario);
+  public CorreosBuilder usuario(Usuario id) {
+    this.correos.setUsuario(id);
     return this;
   }
 
@@ -35,11 +35,11 @@ public class CorreosBuilder {
     return this;
   }
 
-  public CorreosBuilder esPrincipal(boolean esPrincipal) {
+  public CorreosBuilder esPrincipal(Boolean esPrincipal) {
     this.correos.setEsPrincipal(esPrincipal);
     return this;
   }
-  
+
   public CorreosBuilder timestamps(Timestamps timestamps) {
     this.correos.setTimestamps(timestamps);
     return this;

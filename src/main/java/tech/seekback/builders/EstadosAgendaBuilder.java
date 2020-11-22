@@ -24,8 +24,8 @@ public class EstadosAgendaBuilder {
     return new EstadosAgendaBuilder();
   }
 
-  public EstadosAgendaBuilder idEstado(Integer idEstado) {
-    this.estadosAgenda.setIdEstado(idEstado);
+  public EstadosAgendaBuilder id(Integer id) {
+    this.estadosAgenda.setId(id);
     return this;
   }
 

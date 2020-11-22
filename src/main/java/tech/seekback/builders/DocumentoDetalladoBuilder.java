@@ -25,8 +25,8 @@ public class DocumentoDetalladoBuilder {
     return new DocumentoDetalladoBuilder();
   }
 
-  public DocumentoDetalladoBuilder idDetalle(Integer idDetalle) {
-    this.documentoDetallado.setIdDetalle(idDetalle);
+  public DocumentoDetalladoBuilder id(Integer id) {
+    this.documentoDetallado.setId(id);
     return this;
   }
 
@@ -40,8 +40,8 @@ public class DocumentoDetalladoBuilder {
     return this;
   }
 
-  public DocumentoDetalladoBuilder idProducto(Producto idProducto) {
-    this.documentoDetallado.setIdProducto(idProducto);
+  public DocumentoDetalladoBuilder producto(Producto producto) {
+    this.documentoDetallado.setProducto(producto);
     return this;
   }
 

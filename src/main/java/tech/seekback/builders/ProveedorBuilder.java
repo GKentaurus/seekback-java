@@ -26,8 +26,8 @@ public class ProveedorBuilder {
     return new ProveedorBuilder();
   }
 
-  public ProveedorBuilder idProveedor(Integer idProveedor) {
-    this.proveedor.setIdProveedor(idProveedor);
+  public ProveedorBuilder id(Integer id) {
+    this.proveedor.setId(id);
     return this;
   }
 
@@ -61,8 +61,8 @@ public class ProveedorBuilder {
     return this;
   }
 
-  public ProveedorBuilder idcliente(Cliente idCliente) {
-    this.proveedor.setIdCliente(idCliente);
+  public ProveedorBuilder cliente(Cliente cliente) {
+    this.proveedor.setCliente(cliente);
     return this;
   }
 

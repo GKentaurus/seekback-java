@@ -18,7 +18,7 @@ public class Pais implements Serializable {
   @Id //esto es como la PK
   @Column(name = "idPais")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idPais;
+  private Integer id;
 
   @Column(name = "nombrePais", nullable = false, length = 30)
   private String nombrePais;
@@ -27,12 +27,12 @@ public class Pais implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdPais() {
-    return idPais;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdPais(Integer idPais) {
-    this.idPais = idPais;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombrePais() {
@@ -55,7 +55,7 @@ public class Pais implements Serializable {
   @Override
   public String toString() {
     return "Pais("
-            + "id = " + idPais + ", "
+            + "id = " + id + ", "
             + "nombrePais = " + nombrePais + ", "
             + timestamps.toString()
             + ")";

@@ -11,7 +11,6 @@ import tech.seekback.tools.Encrypter;
  */
 @Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries(value = {
   @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj")
 })
@@ -20,7 +19,7 @@ public class Usuario implements Serializable {
   @Id
   @Column(name = "idUsuario")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idUsuario;
+  private Integer id;
 
   @Column(name = "primerNombre", nullable = false, length = 50)
   private String primerNombre;
@@ -34,8 +33,8 @@ public class Usuario implements Serializable {
   @Column(name = "otrosApellidos", nullable = true, length = 50)
   private String otrosApellidos;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "tipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -47,20 +46,20 @@ public class Usuario implements Serializable {
   @Column(name = "salt", nullable = false, length = 255)
   private String salt;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "rol", referencedColumnName = "idRol", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "rol", nullable = false)
   private Roles rol;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdUsuario() {
-    return idUsuario;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdUsuario(Integer idUsuario) {
-    this.idUsuario = idUsuario;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getPrimerNombre() {
@@ -149,7 +148,7 @@ public class Usuario implements Serializable {
   @Override
   public String toString() {
     return "Usuario{"
-            + "idUsuario = " + idUsuario + ", "
+            + "idUsuario = " + id + ", "
             + "primerNombre = " + primerNombre + ", "
             + "otrosNombres = " + otrosNombres + ", "
             + "primerApellido = " + primerApellido + ", "

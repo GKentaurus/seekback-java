@@ -24,45 +24,45 @@ public class Cotizacion implements Serializable {
   @Id
   @Column(name = "idCotizacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCotizacion;
+  private Integer id;
 
   @Column(name = "requerimiento", nullable = false, length = 255)
   private String requerimiento;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date fecha;
 
   @Column(name = "vencimiento", nullable = false)
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date vencimiento;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM", nullable = false)
-  private TRM idTRM;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idTRM", nullable = false)
+  private TRM trm;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
-  private EstadosCotizacion idEstado;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idEstado", nullable = false)
+  private EstadosCotizacion estado;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = false)
-  private Empleado idEmpleado;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idEmpleado", nullable = false)
+  private Empleado empleado;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
-  private Cliente idCliente;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCliente", nullable = false)
+  private Cliente cliente;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCotizacion() {
-    return idCotizacion;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdCotizacion(Integer idCotizacion) {
-    this.idCotizacion = idCotizacion;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getRequerimiento() {
@@ -89,36 +89,36 @@ public class Cotizacion implements Serializable {
     this.vencimiento = vencimiento;
   }
 
-  public TRM getIdTRM() {
-    return idTRM;
+  public TRM getTrm() {
+    return trm;
   }
 
-  public void setIdTRM(TRM idTRM) {
-    this.idTRM = idTRM;
+  public void setTrm(TRM trm) {
+    this.trm = trm;
   }
 
-  public EstadosCotizacion getIdEstado() {
-    return idEstado;
+  public EstadosCotizacion getEstado() {
+    return estado;
   }
 
-  public void setIdEstado(EstadosCotizacion idEstado) {
-    this.idEstado = idEstado;
+  public void setEstado(EstadosCotizacion estado) {
+    this.estado = estado;
   }
 
-  public Empleado getIdEmpleado() {
-    return idEmpleado;
+  public Empleado getEmpleado() {
+    return empleado;
   }
 
-  public void setIdEmpleado(Empleado idEmpleado) {
-    this.idEmpleado = idEmpleado;
+  public void setEmpleado(Empleado empleado) {
+    this.empleado = empleado;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
   public Timestamps getTimestamps() {
@@ -133,14 +133,14 @@ public class Cotizacion implements Serializable {
   @Override
   public String toString() {
     return "Cotizacion("
-            + "id = " + idCotizacion + ", "
-            + "Requerimiento = " + requerimiento + ", "
-            + "Fecha = " + fecha + ", "
-            + "fVencimiento = " + vencimiento + ", "
-            + "idTRM = " + idTRM + ", "
-            + "idEstado = " + idEstado + ", "
-            + "idEmpleado = " + idEmpleado + ", "
-            + "idCliente = " + idCliente + ", "
+            + "id = " + id + ", "
+            + "requerimiento = " + requerimiento + ", "
+            + "fecha = " + fecha + ", "
+            + "fechaVencimiento = " + vencimiento + ", "
+            + "trm = " + trm + ", "
+            + "estado = " + estado + ", "
+            + "empleado = " + empleado + ", "
+            + "cliente = " + cliente + ", "
             + timestamps.toString()
             + ")";
   }

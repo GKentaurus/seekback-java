@@ -30,8 +30,8 @@ public class AgendaBuilder {
     return new AgendaBuilder();
   }
 
-  public AgendaBuilder idAgenda(Integer idAgenda) {
-    this.agenda.setIdAgenda(idAgenda);
+  public AgendaBuilder id(Integer id) {
+    this.agenda.setId(id);
     return this;
   }
 
@@ -45,28 +45,28 @@ public class AgendaBuilder {
     return this;
   }
 
-  public AgendaBuilder idEstado(EstadosAgenda idEstado) {
-    this.agenda.setIdEstado(idEstado);
+  public AgendaBuilder estado(EstadosAgenda idEstado) {
+    this.agenda.setEstado(idEstado);
     return this;
   }
 
-  public AgendaBuilder idTipoServicio(TipoServicio idTipoServicio) {
-    this.agenda.setIdTipoServicio(idTipoServicio);
+  public AgendaBuilder tipoServicio(TipoServicio tipoServicio) {
+    this.agenda.setTipoServicio(tipoServicio);
     return this;
   }
 
-  public AgendaBuilder idCliente(Cliente idCliente) {
-    this.agenda.setIdCliente(idCliente);
+  public AgendaBuilder cliente(Cliente cliente) {
+    this.agenda.setCliente(cliente);
     return this;
   }
 
-  public AgendaBuilder idEmpleado(Empleado idEmpleado) {
-    this.agenda.setIdEmpleado(idEmpleado);
+  public AgendaBuilder empleado(Empleado empleado) {
+    this.agenda.setEmpleado(empleado);
     return this;
   }
 
-  public AgendaBuilder idAdministrador(Administrador idAdministrador) {
-    this.agenda.setIdAdministrador(idAdministrador);
+  public AgendaBuilder administrador(Administrador administrador) {
+    this.agenda.setAdministrador(administrador);
     return this;
   }
 

@@ -26,18 +26,18 @@ public class CalificacionBuilder {
     return new CalificacionBuilder();
   }
 
-  public CalificacionBuilder idCalificacion(Integer idCalificacion) {
-    this.calificacion.setIdCalificacion(idCalificacion);
+  public CalificacionBuilder id(Integer id) {
+    this.calificacion.setId(id);
     return this;
   }
 
-  public CalificacionBuilder idCliente(Cliente idCliente) {
-    this.calificacion.setIdCliente(idCliente);
+  public CalificacionBuilder cliente(Cliente cliente) {
+    this.calificacion.setCliente(cliente);
     return this;
   }
 
-  public CalificacionBuilder idProducto(Producto idProducto) {
-    this.calificacion.setIdProducto(idProducto);
+  public CalificacionBuilder producto(Producto producto) {
+    this.calificacion.setProducto(producto);
     return this;
   }
 

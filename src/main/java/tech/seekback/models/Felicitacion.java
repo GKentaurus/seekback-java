@@ -18,11 +18,11 @@ public class Felicitacion implements Serializable {
   @Id
   @Column(name = "idFelicitacion")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idFelicitacion;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
-  private Cliente idCliente;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCliente", nullable = false)
+  private Cliente cliente;
 
   @Column(name = "dirigidoA", nullable = false, length = 100)
   private String dirigidoA;
@@ -34,12 +34,12 @@ public class Felicitacion implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdFelicitacion() {
-    return idFelicitacion;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdFelicitacion(Integer idFelicitacion) {
-    this.idFelicitacion = idFelicitacion;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getDirigidoA() {
@@ -58,12 +58,12 @@ public class Felicitacion implements Serializable {
     this.timestamps = timestamps;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
   public String getComentario() {
@@ -78,8 +78,8 @@ public class Felicitacion implements Serializable {
   @Override
   public String toString() {
     return "Felicitacion("
-            + "id = " + idFelicitacion + ", "
-            + "idCliente = " + idCliente + ", "
+            + "id = " + id + ", "
+            + "cliente = " + cliente + ", "
             + "dirigidoA = " + dirigidoA + ", "
             + "comentario = " + comentario + ", "
             + timestamps.toString()

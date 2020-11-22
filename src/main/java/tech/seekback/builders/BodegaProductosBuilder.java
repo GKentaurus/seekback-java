@@ -26,18 +26,18 @@ public class BodegaProductosBuilder {
     return new BodegaProductosBuilder();
   }
 
-  public BodegaProductosBuilder idRegistro(Integer idRegistro) {
-    this.bodegaProductos.setIdRegistro(idRegistro);
+  public BodegaProductosBuilder id(Integer id) {
+    this.bodegaProductos.setId(id);
     return this;
   }
 
-  public BodegaProductosBuilder idBodega(Bodega idBodega) {
-    this.bodegaProductos.setIdBodega(idBodega);
+  public BodegaProductosBuilder bodega(Bodega bodega) {
+    this.bodegaProductos.setBodega(bodega);
     return this;
   }
 
-  public BodegaProductosBuilder idProducto(Producto idProducto) {
-    this.bodegaProductos.setIdProducto(idProducto);
+  public BodegaProductosBuilder producto(Producto producto) {
+    this.bodegaProductos.setProducto(producto);
     return this;
   }
 

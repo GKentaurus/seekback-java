@@ -29,23 +29,23 @@ public class PQRSBuilder {
     return new PQRSBuilder();
   }
 
-  public PQRSBuilder idPQRS(Integer idPQRS) {
-    this.pqrs.setIdPQRS(idPQRS);
+  public PQRSBuilder id(Integer id) {
+    this.pqrs.setId(id);
     return this;
   }
 
-  public PQRSBuilder idTipoSolicitud(TipoSolicitud idTipoSolicitud) {
-    this.pqrs.setIdTipoSolicitud(idTipoSolicitud);
+  public PQRSBuilder tipoSolicitud(TipoSolicitud tipoSolicitud) {
+    this.pqrs.setTipoSolicitud(tipoSolicitud);
     return this;
   }
 
-  public PQRSBuilder idcliente(Cliente idCliente) {
-    this.pqrs.setIdCliente(idCliente);
+  public PQRSBuilder cliente(Cliente cliente) {
+    this.pqrs.setCliente(cliente);
     return this;
   }
 
-  public PQRSBuilder idAdministrador(Administrador idAdministrador) {
-    this.pqrs.setIdAdministrador(idAdministrador);
+  public PQRSBuilder administrador(Administrador administrador) {
+    this.pqrs.setAdministrador(administrador);
     return this;
   }
 
@@ -59,8 +59,8 @@ public class PQRSBuilder {
     return this;
   }
 
-  public PQRSBuilder idEstado(EstadosFidelizacion idEstado) {
-    this.pqrs.setIdEstado(idEstado);
+  public PQRSBuilder estado(EstadosFidelizacion estado) {
+    this.pqrs.setEstado(estado);
     return this;
   }
 

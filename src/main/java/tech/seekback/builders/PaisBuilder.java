@@ -24,8 +24,8 @@ public class PaisBuilder {
     return new PaisBuilder();
   }
 
-  public PaisBuilder idPais(Integer idPais) {
-    this.pais.setIdPais(idPais);
+  public PaisBuilder id(Integer id) {
+    this.pais.setId(id);
     return this;
   }
 

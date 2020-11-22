@@ -26,12 +26,12 @@ public class TelefonosBuilder {
   }
 
   public TelefonosBuilder idTelefono(Integer idTelefono) {
-    this.telefonos.setIdTelefono(idTelefono);
+    this.telefonos.setId(idTelefono);
     return this;
   }
 
   public TelefonosBuilder idUsuario(Usuario idUsuario) {
-    this.telefonos.setIdUsuario(idUsuario);
+    this.telefonos.setUsuario(idUsuario);
     return this;
   }
 

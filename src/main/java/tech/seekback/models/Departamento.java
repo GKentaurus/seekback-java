@@ -18,11 +18,11 @@ public class Departamento implements Serializable {
   @Id
   @Column(name = "idDepartamento")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idDepartamento;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idPais ", referencedColumnName = "idPais", nullable = false)
-  private Pais idPais;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idPais ", nullable = false)
+  private Pais pais;
 
   @Column(name = "nombreDepartamento", nullable = false, length = 50)
   private String nombreDepartamento;
@@ -31,20 +31,20 @@ public class Departamento implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdDepartamento() {
-    return idDepartamento;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdDepartamento(Integer idDepartamento) {
-    this.idDepartamento = idDepartamento;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Pais getIdPais() {
-    return idPais;
+  public Pais getPais() {
+    return pais;
   }
 
-  public void setIdPais(Pais idPais) {
-    this.idPais = idPais;
+  public void setPais(Pais pais) {
+    this.pais = pais;
   }
 
   public String getNombreDepartamento() {
@@ -67,7 +67,7 @@ public class Departamento implements Serializable {
   @Override
   public String toString() {
     return "Departamento("
-            + "id = " + idDepartamento + ", "
+            + "id = " + id + ", "
             + "nombreDepartamento = " + nombreDepartamento + ", "
             + timestamps.toString()
             + ")";

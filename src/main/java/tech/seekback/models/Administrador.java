@@ -23,30 +23,30 @@ public class Administrador implements Serializable {
   @Id
   @Column(name = "idAdministrador")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idAdministrador;
+  private Integer id;
 
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
-  @OneToOne(fetch = FetchType.EAGER)
-  private Usuario idUsuario;
+  @JoinColumn(name = "idUsuario", nullable = false)
+  @OneToOne(fetch = FetchType.LAZY)
+  private Usuario usuario;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdAdministrador() {
-    return idAdministrador;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdAdministrador(Integer idAdministrador) {
-    this.idAdministrador = idAdministrador;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Usuario getUsuario() {
-    return idUsuario;
+    return usuario;
   }
 
-  public void setUsuario(Usuario idUsuario) {
-    this.idUsuario = idUsuario;
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
   public Timestamps getTimestamps() {
@@ -61,8 +61,8 @@ public class Administrador implements Serializable {
   @Override
   public String toString() {
     return "Administrador("
-            + "id = " + idAdministrador + ", "
-            + "idUsuario = " + idUsuario + ", "
+            + "id = " + id + ", "
+            + "usuario = " + usuario + ", "
             + timestamps.toString()
             + ")";
   }

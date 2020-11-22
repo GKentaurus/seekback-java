@@ -24,45 +24,45 @@ public class Agenda implements Serializable {
   @Id
   @Column(name = "idAgenda")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idAgenda;
+  private Integer id;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date fecha;
 
   @Column(name = "observaciones", nullable = false, length = 255)
   private String observaciones;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
-  private EstadosAgenda idEstado;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idEstado", nullable = false)
+  private EstadosAgenda estado;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoServicio", referencedColumnName = "idTipoServicio", nullable = false)
-  private TipoServicio idTipoServicio;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idTipoServicio", nullable = false)
+  private TipoServicio tipoServicio;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
-  private Cliente idCliente;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCliente", nullable = false)
+  private Cliente cliente;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = true)
-  private Empleado idEmpleado;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idEmpleado", nullable = true)
+  private Empleado empleado;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador", nullable = true)
-  private Administrador idAdministrador;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idAdministrador", nullable = true)
+  private Administrador administrador;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdAgenda() {
-    return idAgenda;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdAgenda(Integer idAgenda) {
-    this.idAgenda = idAgenda;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Date getFecha() {
@@ -81,44 +81,44 @@ public class Agenda implements Serializable {
     this.observaciones = observaciones;
   }
 
-  public EstadosAgenda getIdEstado() {
-    return idEstado;
+  public EstadosAgenda getEstado() {
+    return estado;
   }
 
-  public void setIdEstado(EstadosAgenda idEstado) {
-    this.idEstado = idEstado;
+  public void setEstado(EstadosAgenda estado) {
+    this.estado = estado;
   }
 
-  public TipoServicio getIdTipoServicio() {
-    return idTipoServicio;
+  public TipoServicio getTipoServicio() {
+    return tipoServicio;
   }
 
-  public void setIdTipoServicio(TipoServicio idTipoServicio) {
-    this.idTipoServicio = idTipoServicio;
+  public void setTipoServicio(TipoServicio tipoServicio) {
+    this.tipoServicio = tipoServicio;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
-  public Empleado getIdEmpleado() {
-    return idEmpleado;
+  public Empleado getEmpleado() {
+    return empleado;
   }
 
-  public void setIdEmpleado(Empleado idEmpleado) {
-    this.idEmpleado = idEmpleado;
+  public void setEmpleado(Empleado empleado) {
+    this.empleado = empleado;
   }
 
-  public Administrador getIdAdministrador() {
-    return idAdministrador;
+  public Administrador getAdministrador() {
+    return administrador;
   }
 
-  public void setIdAdministrador(Administrador idAdministrador) {
-    this.idAdministrador = idAdministrador;
+  public void setAdministrador(Administrador administrador) {
+    this.administrador = administrador;
   }
 
   public Timestamps getTimestamps() {
@@ -133,14 +133,14 @@ public class Agenda implements Serializable {
   @Override
   public String toString() {
     return "Agenda("
-            + "id = " + idAgenda + ", "
+            + "id = " + id + ", "
             + "fecha = " + fecha + ", "
             + "observaciones = " + observaciones + ", "
-            + "idEstado = " + idEstado + ", "
-            + "idTipoServicio = " + idTipoServicio + ", "
-            + "idCliente = " + idCliente + ", "
-            + "idEmpleado = " + idEmpleado + ", "
-            + "idAdministrador = " + idAdministrador + ", "
+            + "estado = " + estado + ", "
+            + "tipoServicio = " + tipoServicio + ", "
+            + "cliente = " + cliente + ", "
+            + "empleado = " + empleado + ", "
+            + "administrador = " + administrador + ", "
             + timestamps.toString()
             + ")";
   }

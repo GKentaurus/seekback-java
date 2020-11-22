@@ -19,38 +19,38 @@ public class ProformaVenta implements Serializable {
   @Id
   @Column(name = "idProforma")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idProforma;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCotizacion", referencedColumnName = "idCotizacion", nullable = false)
-  private Cotizacion cotizacionAsociada;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCotizacion", nullable = false)
+  private Cotizacion cotizacion;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date fecha;
 
   @Column(name = "vencimiento", nullable = false)
-  @Temporal(TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date vencimiento;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdProforma() {
-    return idProforma;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdProforma(Integer idProforma) {
-    this.idProforma = idProforma;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Cotizacion getCotizacionAsociada() {
-    return cotizacionAsociada;
+  public Cotizacion getCotizacion() {
+    return cotizacion;
   }
 
-  public void setCotizacionAsociada(Cotizacion cotizacionAsociada) {
-    this.cotizacionAsociada = cotizacionAsociada;
+  public void setCotizacion(Cotizacion cotizacion) {
+    this.cotizacion = cotizacion;
   }
 
   public Date getFecha() {
@@ -80,10 +80,11 @@ public class ProformaVenta implements Serializable {
 
   @Override
   public String toString() {
-    return "ProformaVenta{" + "idProforma=" + idProforma
-            + ", cotizacionAsociada=" + cotizacionAsociada
-            + ", fecha=" + fecha
-            + ", vencimiento=" + vencimiento
+    return "ProformaVenta{"
+            + "idProforma = " + id + ", "
+            + "cotizacion = " + cotizacion + ", "
+            + "fecha = " + fecha + ", "
+            + "vencimiento = " + vencimiento + ", "
             + timestamps.toString()
             + '}';
   }

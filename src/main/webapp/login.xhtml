@@ -195,7 +195,7 @@
                                        value="#{usuarioController.usuario.tipoDoc}">
                         <f:selectItems value="#{tipoDocController.tipoDocs}"
                                        var="td"
-                                       itemValue="#{td.idTipoDoc}"
+                                       itemValue="#{td.id}"
                                        itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
                       </h:selectOneMenu>
                       <h:outputLabel for="tdoc" value="Tipo documento:"/>

@@ -19,15 +19,15 @@ public class TRM implements Serializable {
   @Id
   @Column(name = "idTrm")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idTrm;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idDivisas ", referencedColumnName = "idDivisa", nullable = false)
-  private Divisas idDivisa;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idDivisas ", nullable = false)
+  private Divisas divisa;
 
   @Column(name = "fechaTRM", nullable = false)
-  @Temporal(TemporalType.DATE)
-  private Date fechaTRM;
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date fecha;
 
   @Column(name = "tasaCambio", nullable = false)
   private Double tasaCambio;
@@ -36,28 +36,28 @@ public class TRM implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdTrm() {
-    return idTrm;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdTrm(Integer idTrm) {
-    this.idTrm = idTrm;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Divisas getIdDivisa() {
-    return idDivisa;
+  public Divisas getDivisa() {
+    return divisa;
   }
 
-  public void setIdDivisa(Divisas idDivisa) {
-    this.idDivisa = idDivisa;
+  public void setDivisa(Divisas divisa) {
+    this.divisa = divisa;
   }
 
-  public Date getFechaTRM() {
-    return fechaTRM;
+  public Date getFecha() {
+    return fecha;
   }
 
-  public void setFechaTRM(Date fechaTRM) {
-    this.fechaTRM = fechaTRM;
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
   }
 
   public Double getTasaCambio() {
@@ -79,9 +79,9 @@ public class TRM implements Serializable {
 
   @Override
   public String toString() {
-    return "Trm{" + "idTrm=" + idTrm
-            + ", idDivisa=" + idDivisa
-            + ", fechaTRM=" + fechaTRM
+    return "Trm{" + "idTrm=" + id
+            + ", idDivisa=" + divisa
+            + ", fecha=" + fecha
             + ", tasaCambio=" + tasaCambio
             + timestamps.toString()
             + '}';

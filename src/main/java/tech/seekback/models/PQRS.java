@@ -24,19 +24,19 @@ public class PQRS implements Serializable {
   @Id
   @Column(name = "idPQRS")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idPQRS;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTipoSolicitud", referencedColumnName = "idTipoSolicitud", nullable = false)
-  private TipoSolicitud idTipoSolicitud;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idTipoSolicitud", nullable = false)
+  private TipoSolicitud tipoSolicitud;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
-  private Cliente idCliente;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCliente", nullable = false)
+  private Cliente cliente;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador", nullable = false)
-  private Administrador idAdministrador;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idAdministrador", nullable = false)
+  private Administrador administrador;
 
   @Column(name = "area", nullable = false, length = 100)
   private String area;
@@ -44,31 +44,32 @@ public class PQRS implements Serializable {
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEstado", referencedColumnName = "idEstado", nullable = false)
-  private EstadosFidelizacion idEstado;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idEstado", nullable = false)
+  private EstadosFidelizacion estado;
 
   @Column(name = "fechaRespuesta", nullable = true)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date fechaRespuesta;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdPQRS() {
-    return idPQRS;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdPQRS(Integer idPQRS) {
-    this.idPQRS = idPQRS;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public TipoSolicitud getIdTipoSolicitud() {
-    return idTipoSolicitud;
+  public TipoSolicitud getTipoSolicitud() {
+    return tipoSolicitud;
   }
 
-  public void setIdTipoSolicitud(TipoSolicitud idTipoSolicitud) {
-    this.idTipoSolicitud = idTipoSolicitud;
+  public void setTipoSolicitud(TipoSolicitud tipoSolicitud) {
+    this.tipoSolicitud = tipoSolicitud;
   }
 
   public String getArea() {
@@ -79,12 +80,12 @@ public class PQRS implements Serializable {
     this.area = area;
   }
 
-  public EstadosFidelizacion getIdEstado() {
-    return idEstado;
+  public EstadosFidelizacion getEstado() {
+    return estado;
   }
 
-  public void setIdEstado(EstadosFidelizacion idEstado) {
-    this.idEstado = idEstado;
+  public void setEstado(EstadosFidelizacion estado) {
+    this.estado = estado;
   }
 
   public Timestamps getTimestamps() {
@@ -95,20 +96,20 @@ public class PQRS implements Serializable {
     this.timestamps = timestamps;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
-  public Administrador getIdAdministrador() {
-    return idAdministrador;
+  public Administrador getAdministrador() {
+    return administrador;
   }
 
-  public void setIdAdministrador(Administrador idAdministrador) {
-    this.idAdministrador = idAdministrador;
+  public void setAdministrador(Administrador administrador) {
+    this.administrador = administrador;
   }
 
   public String getComentario() {
@@ -131,13 +132,13 @@ public class PQRS implements Serializable {
   @Override
   public String toString() {
     return "PQRS{"
-            + "idPQRS = " + idPQRS + ", "
-            + "idTipoSolicitud = " + idTipoSolicitud + ", "
-            + "idCliente = " + idCliente + ", "
-            + "idAdministrador = " + idAdministrador + ", "
+            + "id = " + id + ", "
+            + "tipoSolicitud = " + tipoSolicitud + ", "
+            + "cliente = " + cliente + ", "
+            + "administrador = " + administrador + ", "
             + "area = " + area + ", "
             + "comentario = " + comentario + ", "
-            + "idEstado = " + idEstado
+            + "estado = " + estado
             + "fechaRespuesta = " + fechaRespuesta
             + timestamps.toString()
             + '}';

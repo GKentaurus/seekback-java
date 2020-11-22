@@ -25,13 +25,13 @@ public class EmpleadoBuilder {
     return new EmpleadoBuilder();
   }
 
-  public EmpleadoBuilder idEmpleado(Integer idEmpleado) {
-    this.empleado.setIdEmpleado(idEmpleado);
+  public EmpleadoBuilder empleado(Integer empleado) {
+    this.empleado.setId(empleado);
     return this;
   }
 
-  public EmpleadoBuilder idUsuario(Usuario idUsuario) {
-    this.empleado.setUsuario(idUsuario);
+  public EmpleadoBuilder usuario(Usuario usuario) {
+    this.empleado.setUsuario(usuario);
     return this;
   }
 

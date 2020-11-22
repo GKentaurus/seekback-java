@@ -32,7 +32,7 @@ public class EncrypPass {
         usuario.setContrasena(usuario.getContrasena());
         dao.update(usuario);
       } else {
-        System.out.println("La contraseña ya había sido encriptada para el usuario # " + usuario.getIdUsuario());
+        System.out.println("La contraseña ya había sido encriptada para el usuario # " + usuario.getId());
       }
     }
   }

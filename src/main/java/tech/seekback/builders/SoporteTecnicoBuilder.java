@@ -28,23 +28,23 @@ public class SoporteTecnicoBuilder {
     return new SoporteTecnicoBuilder();
   }
 
-  public SoporteTecnicoBuilder idSoporteTecnico(Integer idSoporteTecnico) {
-    this.soporteTecnico.setIdSoporteTecnico(idSoporteTecnico);
+  public SoporteTecnicoBuilder id(Integer id) {
+    this.soporteTecnico.setId(id);
     return this;
   }
 
-  public SoporteTecnicoBuilder idProducto(Producto idProducto) {
-    this.soporteTecnico.setIdProducto(idProducto);
+  public SoporteTecnicoBuilder producto(Producto producto) {
+    this.soporteTecnico.setProducto(producto);
     return this;
   }
 
-  public SoporteTecnicoBuilder idCliente(Cliente idCliente) {
-    this.soporteTecnico.setIdCliente(idCliente);
+  public SoporteTecnicoBuilder cliente(Cliente cliente) {
+    this.soporteTecnico.setCliente(cliente);
     return this;
   }
 
-  public SoporteTecnicoBuilder idEmpleado(Empleado idEmpleado) {
-    this.soporteTecnico.setIdEmpleado(idEmpleado);
+  public SoporteTecnicoBuilder empleado(Empleado empleado) {
+    this.soporteTecnico.setEmpleado(empleado);
     return this;
   }
 
@@ -53,8 +53,8 @@ public class SoporteTecnicoBuilder {
     return this;
   }
 
-  public SoporteTecnicoBuilder idEstado(EstadosFidelizacion idEstado) {
-    this.soporteTecnico.setIdEstado(idEstado);
+  public SoporteTecnicoBuilder idEstado(EstadosFidelizacion estado) {
+    this.soporteTecnico.setEstado(estado);
     return this;
   }
 

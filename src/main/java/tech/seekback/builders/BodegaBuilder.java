@@ -24,8 +24,8 @@ public class BodegaBuilder {
     return new BodegaBuilder();
   }
 
-  public BodegaBuilder idBodega(Integer idBodega) {
-    this.bodega.setIdBodega(idBodega);
+  public BodegaBuilder id(Integer id) {
+    this.bodega.setId(id);
     return this;
   }
 

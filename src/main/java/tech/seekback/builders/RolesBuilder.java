@@ -24,8 +24,8 @@ public class RolesBuilder {
     return new RolesBuilder();
   }
 
-  public RolesBuilder idRol(Integer idRol) {
-    this.roles.setIdRol(idRol);
+  public RolesBuilder id(Integer id) {
+    this.roles.setId(id);
     return this;
   }
 

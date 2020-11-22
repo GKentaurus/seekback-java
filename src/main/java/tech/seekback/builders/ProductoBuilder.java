@@ -25,8 +25,8 @@ public class ProductoBuilder {
     return new ProductoBuilder();
   }
 
-  public ProductoBuilder idProducto(Integer idProducto) {
-    this.producto.setIdProducto(idProducto);
+  public ProductoBuilder id(Integer id) {
+    this.producto.setId(id);
     return this;
   }
 
@@ -45,8 +45,8 @@ public class ProductoBuilder {
     return this;
   }
 
-  public ProductoBuilder idCategoria(CategoriasProducto idCategoria) {
-    this.producto.setIdCategoria(idCategoria);
+  public ProductoBuilder categoria(CategoriasProducto categoria) {
+    this.producto.setCategoria(categoria);
     return this;
   }
 

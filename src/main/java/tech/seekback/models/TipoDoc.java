@@ -18,7 +18,7 @@ public class TipoDoc implements Serializable {
   @Id //esto es como la PK
   @Column(name = "idTipoDoc")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idTipoDoc;
+  private Integer id;
 
   @Column(name = "sigla", nullable = false, length = 5)
   private String sigla;
@@ -30,12 +30,12 @@ public class TipoDoc implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdTipoDoc() {
-    return idTipoDoc;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdTipoDoc(Integer idTipoDoc) {
-    this.idTipoDoc = idTipoDoc;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getSigla() {
@@ -66,7 +66,7 @@ public class TipoDoc implements Serializable {
   @Override
   public String toString() {
     return "TipoDoc("
-            + "id = " + idTipoDoc + ", "
+            + "id = " + id + ", "
             + "nombreDocumento = " + nombreDocumento + ", "
             + timestamps.toString()
             + ")";

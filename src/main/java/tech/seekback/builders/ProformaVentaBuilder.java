@@ -26,13 +26,13 @@ public class ProformaVentaBuilder {
     return new ProformaVentaBuilder();
   }
 
-  public ProformaVentaBuilder idProforma(Integer idProforma) {
-    this.proformaVenta.setIdProforma(idProforma);
+  public ProformaVentaBuilder id(Integer id) {
+    this.proformaVenta.setId(id);
     return this;
   }
 
-  public ProformaVentaBuilder cotizacionAsociada(Cotizacion cotizacionAsociada) {
-    this.proformaVenta.setCotizacionAsociada(cotizacionAsociada);
+  public ProformaVentaBuilder cotizacion(Cotizacion cotizacion) {
+    this.proformaVenta.setCotizacion(cotizacion);
     return this;
   }
 

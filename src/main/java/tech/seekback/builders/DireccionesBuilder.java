@@ -26,13 +26,13 @@ public class DireccionesBuilder {
     return new DireccionesBuilder();
   }
 
-  public DireccionesBuilder idDirecciones(Integer idDirecciones) {
-    this.direcciones.setIdDirecciones(idDirecciones);
+  public DireccionesBuilder id(Integer id) {
+    this.direcciones.setId(id);
     return this;
   }
 
-  public DireccionesBuilder idRegistro(Usuario idRegistro) {
-    this.direcciones.setIdRegistro(idRegistro);
+  public DireccionesBuilder usuario(Usuario usuario) {
+    this.direcciones.setUsuario(usuario);
     return this;
   }
 
@@ -51,8 +51,8 @@ public class DireccionesBuilder {
     return this;
   }
 
-  public DireccionesBuilder localizacion(Ciudad localizacion) {
-    this.direcciones.setLocalizacion(localizacion);
+  public DireccionesBuilder ciudad(Ciudad ciudad) {
+    this.direcciones.setCiudad(ciudad);
     return this;
   }
 

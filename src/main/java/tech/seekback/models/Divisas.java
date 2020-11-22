@@ -23,7 +23,7 @@ public class Divisas implements Serializable {
   @Id
   @Column(name = "idDivisa")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idDivisa;
+  private Integer id;
 
   @Column(name = "nombre", nullable = false, length = 20)
   private String nombre;
@@ -35,12 +35,12 @@ public class Divisas implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdDivisa() {
-    return idDivisa;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdDivisa(Integer idDivisa) {
-    this.idDivisa = idDivisa;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombre() {
@@ -71,7 +71,7 @@ public class Divisas implements Serializable {
   @Override
   public String toString() {
     return "Cotizacion("
-            + "id = " + idDivisa + ", "
+            + "id = " + id + ", "
             + "Nombre = " + nombre + ", "
             + "Sigla = " + sigla + ", "
             + timestamps.toString()

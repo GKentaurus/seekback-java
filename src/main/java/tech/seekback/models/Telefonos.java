@@ -18,11 +18,11 @@ public class Telefonos implements Serializable {
   @Id
   @Column(name = "idTelefono")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idTelefono;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
-  private Usuario idUsuario;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idUsuario", nullable = false)
+  private Usuario usuario;
 
   @Column(name = "numeroTelefono", nullable = false, length = 20)
   private String numeroTelefono;
@@ -34,20 +34,20 @@ public class Telefonos implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdTelefono() {
-    return idTelefono;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdTelefono(Integer idTelefono) {
-    this.idTelefono = idTelefono;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Usuario getIdUsuario() {
-    return idUsuario;
+  public Usuario getUsuario() {
+    return usuario;
   }
 
-  public void setIdUsuario(Usuario idUsuario) {
-    this.idUsuario = idUsuario;
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
   public String getNumeroTelefono() {
@@ -78,10 +78,10 @@ public class Telefonos implements Serializable {
   @Override
   public String toString() {
     return "SoporteTecnico{"
-            + "idTelefono=" + idTelefono
-            + ", idUsuario=" + idUsuario
-            + ", numeroTelefono=" + numeroTelefono
-            + ", esPrincipal=" + esPrincipal
+            + "idTelefono=" + id + ", "
+            + "idUsuario=" + usuario + ", "
+            + "numeroTelefono=" + numeroTelefono + ", "
+            + "esPrincipal=" + esPrincipal + ", "
             + timestamps.toString()
             + '}';
   }

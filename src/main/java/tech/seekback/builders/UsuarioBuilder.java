@@ -29,7 +29,7 @@ public class UsuarioBuilder {
   }
 
   public UsuarioBuilder idUsuario(Integer idUsuario) {
-    this.usuario.setIdUsuario(idUsuario);
+    this.usuario.setId(idUsuario);
     return this;
   }
 

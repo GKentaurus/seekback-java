@@ -27,17 +27,17 @@ public class TRMBuilder {
   }
 
   public TRMBuilder idTrm(Integer idTrm) {
-    this.trm.setIdTrm(idTrm);
+    this.trm.setId(idTrm);
     return this;
   }
 
-  public TRMBuilder idDivisa(Divisas idDivisa) {
-    this.trm.setIdDivisa(idDivisa);
+  public TRMBuilder divisa(Divisas divisa) {
+    this.trm.setDivisa(divisa);
     return this;
   }
 
-  public TRMBuilder fechaTRM(Date fechaTRM) {
-    this.trm.setFechaTRM(fechaTRM);
+  public TRMBuilder fecha(Date fecha) {
+    this.trm.setFecha(fecha);
     return this;
   }
 

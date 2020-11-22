@@ -23,7 +23,7 @@ public class EstadosFidelizacion implements Serializable {
   @Id
   @Column(name = "idEstado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idEstado;
+  private Integer id;
 
   @Column(name = "nombreEstado", nullable = false, length = 30)
   private String nombreEstado;
@@ -32,12 +32,12 @@ public class EstadosFidelizacion implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdEstado() {
-    return idEstado;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdEstado(Integer idEstado) {
-    this.idEstado = idEstado;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombreEstado() {
@@ -60,7 +60,7 @@ public class EstadosFidelizacion implements Serializable {
   @Override
   public String toString() {
     return "EstadosFidelizacion("
-            + "id = " + idEstado + ", "
+            + "id = " + id + ", "
             + "nombreEstado = " + nombreEstado + ", "
             + timestamps.toString()
             + ")";

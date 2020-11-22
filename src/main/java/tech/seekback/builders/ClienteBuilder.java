@@ -25,13 +25,13 @@ public class ClienteBuilder {
     return new ClienteBuilder();
   }
 
-  public ClienteBuilder idCliente(Integer idCliente) {
-    this.cliente.setIdCliente(idCliente);
+  public ClienteBuilder id(Integer id) {
+    this.cliente.setId(id);
     return this;
   }
 
-  public ClienteBuilder idUsuario(Usuario idUsuario) {
-    this.cliente.setUsuario(idUsuario);
+  public ClienteBuilder usuario(Usuario usuario) {
+    this.cliente.setUsuario(usuario);
     return this;
   }
 

@@ -23,7 +23,7 @@ public class Roles implements Serializable {
   @Id
   @Column(name = "idRol")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idRol;
+  private Integer id;
 
   @Column(name = "nombreRol", nullable = false, length = 50)
   private String nombreRol;
@@ -32,12 +32,12 @@ public class Roles implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdRol() {
-    return idRol;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdRol(Integer idRol) {
-    this.idRol = idRol;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombreRol() {
@@ -60,7 +60,7 @@ public class Roles implements Serializable {
   @Override
   public String toString() {
     return "Roles("
-            + "id = " + idRol + ", "
+            + "id = " + id + ", "
             + "nombreRol = " + nombreRol + ", "
             + timestamps.toString()
             + ")";

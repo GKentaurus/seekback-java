@@ -25,13 +25,13 @@ public class AdministradorBuilder {
     return new AdministradorBuilder();
   }
 
-  public AdministradorBuilder idAdministrador(Integer idAdministrador) {
-    this.administrador.setIdAdministrador(idAdministrador);
+  public AdministradorBuilder id(Integer id) {
+    this.administrador.setId(id);
     return this;
   }
 
-  public AdministradorBuilder idUsuario(Usuario idUsuario) {
-    this.administrador.setUsuario(idUsuario);
+  public AdministradorBuilder usuario(Usuario usuario) {
+    this.administrador.setUsuario(usuario);
     return this;
   }
 

@@ -25,7 +25,7 @@ public class TipoDocBuilder {
   }
 
   public TipoDocBuilder idTipoDoc(Integer idTipoDoc) {
-    this.tipoDoc.setIdTipoDoc(idTipoDoc);
+    this.tipoDoc.setId(idTipoDoc);
     return this;
   }
 

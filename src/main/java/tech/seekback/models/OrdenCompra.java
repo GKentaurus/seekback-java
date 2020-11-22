@@ -19,48 +19,48 @@ public class OrdenCompra implements Serializable {
   @Id
   @Column(name = "idOrdenCompra")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idOrdenCompra;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "idProveedor", referencedColumnName = "idProveedor", nullable = false)
-  private Proveedor idProveedor;
+  private Proveedor proveedor;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(TemporalType.TIMESTAMP)
   private Date fecha;
 
   @Column(name = "docAsociado", nullable = false, length = 255)
   private String docAsociado;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idTRM", referencedColumnName = "idTRM", nullable = false)
-  private TRM idTrm;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idTRM", nullable = false)
+  private TRM trm;
 
   @Column(name = "factorImport", nullable = false, length = 11)
   private Double factorImport;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado", nullable = false)
-  private Empleado idEmpleado;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idEmpleado", nullable = false)
+  private Empleado empleado;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getidOrdenCompra() {
-    return idOrdenCompra;
+    return id;
   }
 
-  public void setIdOrdenCompra(Integer idordenCompra) {
-    this.idOrdenCompra = idOrdenCompra;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Proveedor getIdproveedor() {
-    return idProveedor;
+  public Proveedor getProveedor() {
+    return proveedor;
   }
 
-  public void setIdproveedor(Proveedor idProveedor) {
-    this.idProveedor = idProveedor;
+  public void setProveedor(Proveedor proveedor) {
+    this.proveedor = proveedor;
   }
 
   public Date getFecha() {
@@ -79,12 +79,12 @@ public class OrdenCompra implements Serializable {
     this.docAsociado = docAsociado;
   }
 
-  public TRM getIdTrm() {
-    return idTrm;
+  public TRM getTrm() {
+    return trm;
   }
 
-  public void setIdTrm(TRM idTrm) {
-    this.idTrm = idTrm;
+  public void setTrm(TRM trm) {
+    this.trm = trm;
   }
 
   public Double getFactorImport() {
@@ -95,12 +95,12 @@ public class OrdenCompra implements Serializable {
     this.factorImport = factorImport;
   }
 
-  public Empleado getIdEmpleado() {
-    return idEmpleado;
+  public Empleado getEmpleado() {
+    return empleado;
   }
 
-  public void setIdEmpleado(Empleado idEmpleado) {
-    this.idEmpleado = idEmpleado;
+  public void setEmpleado(Empleado empleado) {
+    this.empleado = empleado;
   }
 
   public Timestamps getTimestamps() {
@@ -115,12 +115,12 @@ public class OrdenCompra implements Serializable {
   @Override
   public String toString() {
     return "OrdenCompra("
-            + "id = " + idOrdenCompra + ", "
-            + "idProveedor = " + idProveedor + ", "
+            + "id = " + id + ", "
+            + "proveedor = " + proveedor + ", "
             + "docAsociado = " + docAsociado + ", "
-            + "idTrm = " + idTrm + ", "
+            + "trm = " + trm + ", "
             + "factorImport = " + factorImport + ", "
-            + "idEmpleado = " + idEmpleado + ", "
+            + "empleado = " + empleado + ", "
             + timestamps.toString()
             + ")";
   }

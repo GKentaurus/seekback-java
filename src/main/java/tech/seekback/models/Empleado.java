@@ -15,7 +15,6 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "empleado")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries(value = {
   @NamedQuery(name = "Empleado.getAll", query = "SELECT obj FROM Empleado obj")
 })
@@ -24,30 +23,30 @@ public class Empleado implements Serializable {
   @Id
   @Column(name = "idEmpleado")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idEmpleado;
+  private Integer id;
 
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
-  @OneToOne(fetch = FetchType.EAGER)
-  private Usuario idUsuario;
+  @JoinColumn(name = "idUsuario", nullable = false)
+  @OneToOne(fetch = FetchType.LAZY)
+  private Usuario usuario;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdEmpleado() {
-    return idEmpleado;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdEmpleado(Integer idEmpleado) {
-    this.idEmpleado = idEmpleado;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Usuario getUsuario() {
-    return idUsuario;
+    return usuario;
   }
 
-  public void setUsuario(Usuario idUsuario) {
-    this.idUsuario = idUsuario;
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
   public Timestamps getTimestamps() {
@@ -62,8 +61,8 @@ public class Empleado implements Serializable {
   @Override
   public String toString() {
     return "DocumentoDetallado("
-            + "id = " + idEmpleado + ", "
-            + "idUsuario = " + idUsuario + ", "
+            + "id = " + id + ", "
+            + "usuario = " + usuario + ", "
             + timestamps.toString()
             + ")";
   }

@@ -18,7 +18,7 @@ public class Producto implements Serializable {
   @Id
   @Column(name = "idProducto")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idProducto;
+  private Integer id;
 
   @Column(name = "modeloProducto", nullable = false, length = 100)
   private String modeloProducto;
@@ -29,9 +29,9 @@ public class Producto implements Serializable {
   @Column(name = "precioVenta", nullable = false, length = 11)
   private Double precioVenta;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCategoria", referencedColumnName = "idCategoria", nullable = false)
-  private CategoriasProducto idCategoria;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCategoria", nullable = false)
+  private CategoriasProducto categoria;
 
   @Column(name = "estado", nullable = false)
   private Boolean estado;
@@ -40,12 +40,12 @@ public class Producto implements Serializable {
   private Timestamps timestamps;
 
 //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdProducto() {
-    return idProducto;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdProducto(Integer idProducto) {
-    this.idProducto = idProducto;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getModeloProducto() {
@@ -72,12 +72,12 @@ public class Producto implements Serializable {
     this.precioVenta = precioVenta;
   }
 
-  public CategoriasProducto getIdCategoria() {
-    return idCategoria;
+  public CategoriasProducto getCategoria() {
+    return categoria;
   }
 
-  public void setIdCategoria(CategoriasProducto idCategoria) {
-    this.idCategoria = idCategoria;
+  public void setCategoria(CategoriasProducto categoria) {
+    this.categoria = categoria;
   }
 
   public Boolean getEstado() {
@@ -100,11 +100,11 @@ public class Producto implements Serializable {
   @Override
   public String toString() {
     return "Producto("
-            + "id = " + idProducto + ", "
+            + "id = " + id + ", "
             + "modeloProducto = " + modeloProducto + ", "
             + "descripcion = " + descripcion + ", "
             + "precioVenta = " + precioVenta + ", "
-            + "idCategoria = " + idCategoria + ", "
+            + "categoria = " + categoria + ", "
             + "estado = " + estado + ", "
             + timestamps.toString()
             + ")";

@@ -28,14 +28,13 @@ public class OrdenCompraBuilder {
     return new OrdenCompraBuilder();
   }
 
-  public OrdenCompraBuilder idOrdenCompra(Integer id) {
-    this.ordenCompra.setIdOrdenCompra(id);
-    System.out.println("\n sdasd");
+  public OrdenCompraBuilder id(Integer id) {
+    this.ordenCompra.setId(id);
     return this;
   }
 
-  public OrdenCompraBuilder idProveedor(Proveedor idproveedor) {
-    this.ordenCompra.setIdproveedor(idproveedor);
+  public OrdenCompraBuilder proveedor(Proveedor proveedor) {
+    this.ordenCompra.setProveedor(proveedor);
     return this;
   }
 
@@ -49,8 +48,8 @@ public class OrdenCompraBuilder {
     return this;
   }
 
-  public OrdenCompraBuilder idTrm(TRM idTrm) {
-    this.ordenCompra.setIdTrm(idTrm);
+  public OrdenCompraBuilder trm(TRM trm) {
+    this.ordenCompra.setTrm(trm);
     return this;
   }
 
@@ -59,8 +58,8 @@ public class OrdenCompraBuilder {
     return this;
   }
 
-  public OrdenCompraBuilder idEmpleado(Empleado idEmpleado) {
-    this.ordenCompra.setIdEmpleado(idEmpleado);
+  public OrdenCompraBuilder empleado(Empleado empleado) {
+    this.ordenCompra.setEmpleado(empleado);
     return this;
   }
 

@@ -24,8 +24,8 @@ public class CategoriasProductoBuilder {
     return new CategoriasProductoBuilder();
   }
 
-  public CategoriasProductoBuilder idCategoria(Integer idCategoria) {
-    this.categoriasProducto.setIdCategoria(idCategoria);
+  public CategoriasProductoBuilder id(Integer id) {
+    this.categoriasProducto.setId(id);
     return this;
   }
 

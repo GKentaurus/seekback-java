@@ -23,10 +23,10 @@ public class Proveedor implements Serializable {
   @Id
   @Column(name = "idProveedor")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idProveedor;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "tipoDoc", referencedColumnName = "idTipoDoc", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "tipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
   @Column(name = "numeroDoc", nullable = false, length = 50)
@@ -44,20 +44,20 @@ public class Proveedor implements Serializable {
   @Column(name = "email", nullable = false, length = 255)
   private String email;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idCliente", referencedColumnName = "idCliente", nullable = false)
-  private Cliente idCliente;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idCliente", nullable = false)
+  private Cliente cliente;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdProveedor() {
-    return idProveedor;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdProveedor(Integer idProveedor) {
-    this.idProveedor = idProveedor;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public TipoDoc getTipoDoc() {
@@ -108,12 +108,12 @@ public class Proveedor implements Serializable {
     this.email = email;
   }
 
-  public Cliente getIdCliente() {
-    return idCliente;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setIdCliente(Cliente idCliente) {
-    this.idCliente = idCliente;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
   public Timestamps getTimestamps() {
@@ -128,14 +128,14 @@ public class Proveedor implements Serializable {
   @Override
   public String toString() {
     return "Proveedor{"
-            + "idProveedor = " + idProveedor + ", "
+            + "id = " + id + ", "
             + "tipoDoc = " + tipoDoc + ", "
             + "numeroDoc = " + numeroDoc + ", "
             + "digitoVerif = " + digitoVerif + ", "
             + "razonSocial = " + razonSocial + ", "
             + "telefono = " + telefono + ", "
             + "email = " + email + ", "
-            + "idCliente = " + idCliente
+            + "cliente = " + cliente + ", "
             + timestamps.toString()
             + '}';
   }

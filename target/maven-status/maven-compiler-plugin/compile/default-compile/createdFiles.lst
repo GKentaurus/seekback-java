@@ -19,6 +19,7 @@ tech\seekback\dao\interfaces\TipoSolicitudDAO.class
 tech\seekback\dao\jpa\TipoSolicitudDAOJPA.class
 tech\seekback\dao\jpa\OrdenCompraDAOJPA.class
 tech\seekback\models\Administrador.class
+testing\EncrypPass.class
 tech\seekback\builders\CalificacionBuilder.class
 tech\seekback\builders\CiudadBuilder.class
 tech\seekback\exceptions\FactoryExcep.class

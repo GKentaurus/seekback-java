@@ -18,7 +18,7 @@ public class TipoSolicitud implements Serializable {
   @Id
   @Column(name = "idTipoSolicitud")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idTipoSolicitud;
+  private Integer id;
 
   @Column(name = "nombreSolicitud", nullable = false, length = 20)
   private String nombreSolicitud;
@@ -27,12 +27,12 @@ public class TipoSolicitud implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdTipoSolicitud() {
-    return idTipoSolicitud;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdTipoSolicitud(Integer idTipoSolicitud) {
-    this.idTipoSolicitud = idTipoSolicitud;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombreSolicitud() {
@@ -55,8 +55,8 @@ public class TipoSolicitud implements Serializable {
   @Override
   public String toString() {
     return "TipoSolicitud{"
-            + "idTipoSolicitud=" + idTipoSolicitud
-            + ", nombreServicio=" + nombreSolicitud
+            + "idTipoSolicitud=" + id + ", "
+            + "nombreServicio=" + nombreSolicitud + ", "
             + timestamps.toString()
             + '}';
   }

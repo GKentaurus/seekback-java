@@ -25,13 +25,13 @@ public class FelicitacionBuilder {
     return new FelicitacionBuilder();
   }
 
-  public FelicitacionBuilder idFelicitacion(Integer idFelicitacion) {
-    this.felicitacion.setIdFelicitacion(idFelicitacion);
+  public FelicitacionBuilder id(Integer id) {
+    this.felicitacion.setId(id);
     return this;
   }
 
-  public FelicitacionBuilder idCliente(Cliente idCliente) {
-    this.felicitacion.setIdCliente(idCliente);
+  public FelicitacionBuilder cliente(Cliente cliente) {
+    this.felicitacion.setCliente(cliente);
     return this;
   }
 

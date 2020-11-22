@@ -23,11 +23,11 @@ public class Direcciones implements Serializable {
   @Id
   @Column(name = "idDirecciones")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idDirecciones;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idRegistro", referencedColumnName = "idUsuario", nullable = false)
-  private Usuario idRegistro;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idRegistro", nullable = false)
+  private Usuario usuario;
 
   @Column(name = "pseudonimo", nullable = false, length = 30)
   private String pseudonimo;
@@ -38,28 +38,28 @@ public class Direcciones implements Serializable {
   @Column(name = "telefono", nullable = false, length = 20)
   private String telefono;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "localizacion", referencedColumnName = "idCiudad", nullable = false)
-  private Ciudad localizacion;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "localizacion", nullable = false)
+  private Ciudad ciudad;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdDirecciones() {
-    return idDirecciones;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdDirecciones(Integer idDirecciones) {
-    this.idDirecciones = idDirecciones;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Usuario getIdRegistro() {
-    return idRegistro;
+  public Usuario getUsuario() {
+    return usuario;
   }
 
-  public void setIdRegistro(Usuario idRegistro) {
-    this.idRegistro = idRegistro;
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
   public String getPseudonimo() {
@@ -86,12 +86,12 @@ public class Direcciones implements Serializable {
     this.telefono = telefono;
   }
 
-  public Ciudad getLocalizacion() {
-    return localizacion;
+  public Ciudad getCiudad() {
+    return ciudad;
   }
 
-  public void setLocalizacion(Ciudad localizacion) {
-    this.localizacion = localizacion;
+  public void setCiudad(Ciudad ciudad) {
+    this.ciudad = ciudad;
   }
 
   public Timestamps getTimestamps() {
@@ -106,12 +106,12 @@ public class Direcciones implements Serializable {
   @Override
   public String toString() {
     return "Direcciones{"
-            + "idDirecciones = " + idDirecciones + ", "
-            + "idRegistro = " + idRegistro + ", "
+            + "id = " + id + ", "
+            + "usuario = " + usuario + ", "
             + "pseudonimo = " + pseudonimo + ", "
             + "direccion = " + direccion + ", "
             + "telefono = " + telefono + ", "
-            + "localizacion=" + localizacion
+            + "ciudad = " + ciudad
             + timestamps.toString()
             + '}';
   }

@@ -23,7 +23,7 @@ public class CategoriasProducto implements Serializable {
   @Id
   @Column(name = "idCategoria")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCategoria;
+  private Integer id;
 
   @Column(name = "nombreCategoria", nullable = false, length = 50)
   private String nombreCategoria;
@@ -32,12 +32,12 @@ public class CategoriasProducto implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCategoria() {
-    return idCategoria;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdCategoria(Integer idCategoria) {
-    this.idCategoria = idCategoria;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getNombreCategoria() {
@@ -60,8 +60,8 @@ public class CategoriasProducto implements Serializable {
   @Override
   public String toString() {
     return "CategoriasProducto("
-            + "id = " + idCategoria + ", "
-            + "idProducto = " + nombreCategoria + ", "
+            + "id = " + id + ", "
+            + "producto = " + nombreCategoria + ", "
             + timestamps.toString()
             + ")";
   }

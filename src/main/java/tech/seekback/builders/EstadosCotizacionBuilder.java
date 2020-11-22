@@ -24,8 +24,8 @@ public class EstadosCotizacionBuilder {
     return new EstadosCotizacionBuilder();
   }
 
-  public EstadosCotizacionBuilder idEstado(Integer idEstadoCotizacion) {
-    this.estadosCotizacion.setIdEstado(idEstadoCotizacion);
+  public EstadosCotizacionBuilder id(Integer id) {
+    this.estadosCotizacion.setId(id);
     return this;
   }
 

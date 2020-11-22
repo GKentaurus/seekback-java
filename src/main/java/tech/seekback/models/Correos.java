@@ -23,11 +23,11 @@ public class Correos implements Serializable {
   @Id
   @Column(name = "idCorreo")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCorreo;
+  private Integer id;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
-  private Usuario idUsuario;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idUsuario", nullable = false)
+  private Usuario usuario;
 
   @Column(name = "correoElectronico", nullable = false, unique = true, length = 255)
   private String correoElectronico;
@@ -39,20 +39,20 @@ public class Correos implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCorreo() {
-    return idCorreo;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdCorreo(Integer idCorreo) {
-    this.idCorreo = idCorreo;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public Usuario getIdUsuario() {
-    return idUsuario;
+  public Usuario getUsuario() {
+    return usuario;
   }
 
-  public void setIdUsuario(Usuario idUsuario) {
-    this.idUsuario = idUsuario;
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
   public String getCorreoElectronico() {
@@ -67,7 +67,7 @@ public class Correos implements Serializable {
     return esPrincipal;
   }
 
-  public void setEsPrincipal(boolean esPrincipal) {
+  public void setEsPrincipal(Boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
   }
 
@@ -83,10 +83,10 @@ public class Correos implements Serializable {
   @Override
   public String toString() {
     return "Correos("
-            + "id = " + idCorreo + ", "
-            + "idUsuario = " + idUsuario + ", "
-            + "Correo = " + correoElectronico + ", "
-            + "Principal = " + esPrincipal + ", "
+            + "id = " + id + ", "
+            + "usuario = " + usuario + ", "
+            + "correo = " + correoElectronico + ", "
+            + "principal = " + esPrincipal + ", "
             + timestamps.toString()
             + ")";
   }

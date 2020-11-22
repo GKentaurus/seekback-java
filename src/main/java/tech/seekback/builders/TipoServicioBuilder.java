@@ -25,7 +25,7 @@ public class TipoServicioBuilder {
   }
 
   public TipoServicioBuilder idTipoServicio(Integer idTipoServicio) {
-    this.tipoServicio.setIdTipoServicio(idTipoServicio);
+    this.tipoServicio.setId(idTipoServicio);
     return this;
   }
 

@@ -24,8 +24,8 @@ public class EstadosFidelizacionBuilder {
     return new EstadosFidelizacionBuilder();
   }
 
-  public EstadosFidelizacionBuilder idEstado(Integer idEstado) {
-    this.estadosFidelizacion.setIdEstado(idEstado);
+  public EstadosFidelizacionBuilder id(Integer id) {
+    this.estadosFidelizacion.setId(id);
     return this;
   }
 

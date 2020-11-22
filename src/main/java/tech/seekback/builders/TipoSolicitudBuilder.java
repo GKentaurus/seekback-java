@@ -25,7 +25,7 @@ public class TipoSolicitudBuilder {
   }
 
   public TipoSolicitudBuilder idTipoSolicitud(Integer idTipoSolicitud) {
-    tipoSolicitud.setIdTipoSolicitud(idTipoSolicitud);
+    tipoSolicitud.setId(idTipoSolicitud);
     return this;
   }
 

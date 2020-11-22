@@ -15,7 +15,6 @@ import tech.seekback.models.templates.Timestamps;
  */
 @Entity
 @Table(name = "cliente")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries(value = {
   @NamedQuery(name = "Cliente.getAll", query = "SELECT obj FROM Cliente obj")
 })
@@ -24,30 +23,30 @@ public class Cliente implements Serializable {
   @Id
   @Column(name = "idCliente")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer idCliente;
+  private Integer id;
 
-  @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
-  @OneToOne(fetch = FetchType.EAGER)
-  private Usuario idUsuario;
+  @JoinColumn(name = "idUsuario", nullable = false)
+  @OneToOne(fetch = FetchType.LAZY)
+  private Usuario usuario;
 
   @Embedded
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCliente() {
-    return idCliente;
+  public Integer getId() {
+    return id;
   }
 
-  public void setIdCliente(Integer idCliente) {
-    this.idCliente = idCliente;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Usuario getUsuario() {
-    return idUsuario;
+    return usuario;
   }
 
-  public void setUsuario(Usuario idUsuario) {
-    this.idUsuario = idUsuario;
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 
   public Timestamps getTimestamps() {
@@ -62,8 +61,8 @@ public class Cliente implements Serializable {
   @Override
   public String toString() {
     return "CategoriasProducto("
-            + "id = " + idCliente + ", "
-            + "idUsuario = " + idUsuario + ", "
+            + "id = " + id + ", "
+            + "usuario = " + usuario + ", "
             + timestamps.toString()
             + ")";
   }
