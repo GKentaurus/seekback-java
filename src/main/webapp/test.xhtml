@@ -11,9 +11,26 @@
     <h:body>
       <h1>Pruebas</h1>
 
-      <ui:repeat value="#{testController.docs}" var="doc">
-        <div>#{doc.toString()}</div>
-      </ui:repeat>
+      <ui:component>
+
+        <h:selectOneMenu value="#{departamentoController.idPaisSeleccionado}">
+          <f:selectItems value="#{paisController.paises}"
+                         var="pais"
+                         itemValue="#{pais.id}"
+                         itemLabel="#{pais.nombrePais}"/>
+          <f:ajax execute="@this" render="basofia"/>
+        </h:selectOneMenu>
+        <h:outputLabel value="#{departamentoController.idPaisSeleccionado}" id="basofia"/>
+        <h:selectOneMenu id="departamento"
+                         value="#{ciudadController.idDepartamentoSeleccionado}">
+          <f:selectItems value="#{departamentoController.departamentoSeleccionado}"
+                         var="dep"
+                         itemValue="#{dep.id}"
+                         itemLabel="#{dep.nombreDepartamento}"/>
+          <!-- <f:ajax execute="@this" render="departamento"/>-->
+        </h:selectOneMenu>
+
+      </ui:component>
 
     </h:body>
   </f:view>

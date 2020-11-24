@@ -219,21 +219,27 @@
                       <h:inputText id="fdir" class="ingre validate" autocomplete="off"   />
                       <h:outputLabel for="fdir" value="Direccion"/>
                     </div>
-                    <div class="input-field col s12" id="paiss">
-                      <select class="oinps" id="pais" onchange="paiss();" >
-                        <option value="" disabled="disabled" selected="selected">Elije una opcion</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Ecuador">Ecuador</option>
-                        <option value="Bolivia">Bolivia</option>
-                        <option value="El salvador">El salvador</option>
-                        <option value="Estados Unidos">Estados Unidos</option>
-                        <option value="Otro">Otro</option>
-                      </select>
-                      <label for="pais">Pais</label>
+                    <div class="input-field col s12 m6">
+                      <h:selectOneMenu pt:placeholder=" " id="pais"
+                                       value="#{departamentoController.idPaisSeleccionado}">
+                        <f:selectItems value="#{paisController.paises}"
+                                       var="pa"
+                                       itemValue="#{pa.id}"
+                                       itemLabel="#{pa.nombrePais}"/>
+                        <f:ajax
+                          execute="@this" render="depto"/>
+                      </h:selectOneMenu>
+                      <h:outputLabel for="pais" value="Pais"/>
                     </div>
-                    <div class="input-field col s10" id="opais">
-                      <input id="oubi" type="text" class="ingre validate" />
-                      <label for="oubi">Otra ubicacion </label>
+                    <div class="input-field col s12 m6">
+                      <h:selectOneMenu pt:placeholder=" " id="depto"
+                                       value="#{ciudadController.idDepartamentoSeleccionado}">
+                        <f:selectItems value="#{departamentoController.departamentoSeleccionado}"
+                                       var="de"
+                                       itemValue="#{de.id}"
+                                       itemLabel="#{de.nombreDepartamento}"/>
+                      </h:selectOneMenu>
+                      <h:outputLabel for="depto" value="departamento"/>
                     </div>
                     <div class="input-field col s12 m6">
                       <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true"/>

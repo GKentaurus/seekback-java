@@ -1,11 +1,11 @@
 package testing;
 
-import tech.seekback.dao.interfaces.AdministradorDAO;
+import tech.seekback.dao.interfaces.DepartamentoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.exceptions.FactoryExcep;
 import tech.seekback.factories.Factory;
 import tech.seekback.factories.FactoryDAO;
-import tech.seekback.models.Administrador;
+import tech.seekback.models.Departamento;
 
 /**
  *
@@ -15,11 +15,11 @@ public class Main {
 
   public static void main(String[] args) throws FactoryExcep, ConnectionExcep {
     FactoryDAO factoryDAO = Factory.getFactoryDAO();
-    AdministradorDAO dao = factoryDAO.getAdministradorDAO();
+    DepartamentoDAO dao = factoryDAO.getDepartamentoDAO();
 
     //Consultar por id
-    Administrador obj = dao.getOne(1);
-    System.out.println(obj.toString());
+    Departamento obj = dao.getOne(1);
+    System.out.println(obj.getPais().toString());
     System.out.println("\nTodo bien....");
   }
 }

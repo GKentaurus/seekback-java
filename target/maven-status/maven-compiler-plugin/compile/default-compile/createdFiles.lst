@@ -21,8 +21,10 @@ tech\seekback\dao\jpa\OrdenCompraDAOJPA.class
 tech\seekback\models\Administrador.class
 testing\EncrypPass.class
 tech\seekback\builders\CalificacionBuilder.class
+tech\seekback\services\PaisService.class
 tech\seekback\builders\CiudadBuilder.class
 tech\seekback\exceptions\FactoryExcep.class
+tech\seekback\controllers\PaisController.class
 tech\seekback\services\RolesService.class
 tech\seekback\models\TRM_.class
 tech\seekback\dao\jpa\DivisasDAOJPA.class
@@ -73,6 +75,7 @@ tech\seekback\dao\jpa\CorreosDAOJPA.class
 tech\seekback\models\Administrador_.class
 tech\seekback\models\ProformaVenta_.class
 tech\seekback\builders\SoporteTecnicoBuilder.class
+tech\seekback\dao\interfaces\ConexionExcpetion.class
 tech\seekback\models\Calificacion_.class
 tech\seekback\dao\jpa\CategoriasProductoDAOJPA.class
 tech\seekback\models\BodegaProductos.class
@@ -92,9 +95,11 @@ tech\seekback\models\TipoServicio_.class
 tech\seekback\controllers\TipoDocController.class
 tech\seekback\dao\interfaces\AgendaDAO.class
 tech\seekback\builders\FelicitacionBuilder.class
+tech\seekback\controllers\DepartamentoController.class
 tech\seekback\builders\ProformaVentaBuilder.class
 tech\seekback\dao\jpa\UsuarioDAOJPA.class
 tech\seekback\models\TipoDoc_.class
+tech\seekback\controllers\CiudadController.class
 tech\seekback\models\Correos.class
 tech\seekback\dao\interfaces\CorreosDAO.class
 tech\seekback\models\Cliente.class
