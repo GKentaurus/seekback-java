@@ -7,6 +7,8 @@ tech\seekback\models\Calificacion.class
 tech\seekback\dao\jpa\BodegaDAOJPA.class
 tech\seekback\models\CategoriasProducto_.class
 tech\seekback\models\Empleado_.class
+tech\seekback\services\DireccionesService.class
+tech\seekback\controllers\DireccionesController.class
 testing\Main.class
 tech\seekback\builders\BodegaBuilder.class
 tech\seekback\dao\jpa\DireccionesDAOJPA.class
@@ -51,6 +53,7 @@ tech\seekback\builders\DepartamentoBuilder.class
 tech\seekback\dao\interfaces\SoporteTecnicoDAO.class
 tech\seekback\models\PQRS_.class
 tech\seekback\dao\jpa\TelefonosDAOJPA.class
+tech\seekback\services\CiudadService.class
 tech\seekback\dao\jpa\TipoDocDAOJPA.class
 tech\seekback\builders\CotizacionBuilder.class
 tech\seekback\models\TipoSolicitud.class
@@ -75,7 +78,6 @@ tech\seekback\dao\jpa\CorreosDAOJPA.class
 tech\seekback\models\Administrador_.class
 tech\seekback\models\ProformaVenta_.class
 tech\seekback\builders\SoporteTecnicoBuilder.class
-tech\seekback\dao\interfaces\ConexionExcpetion.class
 tech\seekback\models\Calificacion_.class
 tech\seekback\dao\jpa\CategoriasProductoDAOJPA.class
 tech\seekback\models\BodegaProductos.class
@@ -146,6 +148,7 @@ tech\seekback\dao\interfaces\CalificacionDAO.class
 tech\seekback\models\EstadosFidelizacion.class
 tech\seekback\builders\TipoDocBuilder.class
 tech\seekback\controllers\RolesController.class
+tech\seekback\services\DepartamentoService.class
 tech\seekback\dao\jpa\RolesDAOJPA.class
 tech\seekback\models\PQRS.class
 tech\seekback\services\EstadosFidelizacionService.class

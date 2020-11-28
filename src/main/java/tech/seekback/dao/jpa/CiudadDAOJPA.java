@@ -27,6 +27,7 @@ public class CiudadDAOJPA extends GenericDAO<Ciudad, Integer> implements CiudadD
 
   @Override
   public List<Ciudad> getByIdDepartamento(Integer idDepartamento) throws ConnectionExcep {
+    System.out.println("id ---- " + idDepartamento);
     try {
       TypedQuery<Ciudad> tq = em.createNamedQuery("Ciudad.getByIdDepartamento", classType);
       tq.setParameter("DepartamentoId", idDepartamento);

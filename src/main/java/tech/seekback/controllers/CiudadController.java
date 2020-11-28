@@ -26,7 +26,7 @@ public class CiudadController implements Serializable {
   @EJB
   private CiudadDAO ciudadDAO;
   private Integer idDepartamentoSeleccionado;
-  private List<Ciudad> departamentoSeleccionado;
+  private List<Ciudad> ciudadSeleccionada;
 
   public Integer getIdDepartamentoSeleccionado() {
     return idDepartamentoSeleccionado;
@@ -35,10 +35,10 @@ public class CiudadController implements Serializable {
   public void setIdDepartamentoSeleccionado(Integer idDepartamentoSeleccionado) {
     try {
       if (Objects.nonNull(idDepartamentoSeleccionado)) {
-        departamentoSeleccionado = ciudadDAO
+        ciudadSeleccionada = ciudadDAO
                 .getByIdDepartamento(idDepartamentoSeleccionado);
       } else {
-        departamentoSeleccionado = null;
+        ciudadSeleccionada = null;
       }
     } catch (ConnectionExcep ex) {
       ex.printStackTrace();
@@ -46,8 +46,8 @@ public class CiudadController implements Serializable {
     this.idDepartamentoSeleccionado = idDepartamentoSeleccionado;
   }
 
-  public List<Ciudad> getDepartamentoSeleccionado() {
-    return departamentoSeleccionado;
+  public List<Ciudad> getCiudadSeleccionada() {
+    return ciudadSeleccionada;
   }
 
 }

@@ -13,22 +13,16 @@
 
       <ui:component>
 
-        <h:selectOneMenu value="#{departamentoController.idPaisSeleccionado}">
-          <f:selectItems value="#{paisController.paises}"
-                         var="pais"
-                         itemValue="#{pais.id}"
-                         itemLabel="#{pais.nombrePais}"/>
-          <f:ajax execute="@this" render="basofia"/>
-        </h:selectOneMenu>
-        <h:outputLabel value="#{departamentoController.idPaisSeleccionado}" id="basofia"/>
-        <h:selectOneMenu id="departamento"
-                         value="#{ciudadController.idDepartamentoSeleccionado}">
-          <f:selectItems value="#{departamentoController.departamentoSeleccionado}"
-                         var="dep"
-                         itemValue="#{dep.id}"
-                         itemLabel="#{dep.nombreDepartamento}"/>
-          <!-- <f:ajax execute="@this" render="departamento"/>-->
-        </h:selectOneMenu>
+        <div class="input-field col s12 m6">
+          <h:selectOneMenu  id="tdoc"
+                            value="#{usuarioController.usuario.tipoDoc}">
+            <f:selectItems value="#{tipoDocController.tipoDocs}"
+                           var="td"
+                           itemValue="#{td.id}"
+                           itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
+          </h:selectOneMenu>
+          <h:outputLabel for="tdoc" value="Tipo documento:"/>
+        </div>
 
       </ui:component>
 

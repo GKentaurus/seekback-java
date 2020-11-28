@@ -220,26 +220,36 @@
                       <h:outputLabel for="fdir" value="Direccion"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:selectOneMenu pt:placeholder=" " id="pais"
+                      <h:outputLabel for="pais" value="Pais" style="margin-top: -30px;"/>
+                      <h:selectOneMenu pt:placeholder=" " id="pais"  class="browser-default"
                                        value="#{departamentoController.idPaisSeleccionado}">
                         <f:selectItems value="#{paisController.paises}"
                                        var="pa"
                                        itemValue="#{pa.id}"
                                        itemLabel="#{pa.nombrePais}"/>
-                        <f:ajax
-                          execute="@this" render="depto"/>
+                        <f:ajax execute="@this" render="depto"/>
                       </h:selectOneMenu>
-                      <h:outputLabel for="pais" value="Pais"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:selectOneMenu pt:placeholder=" " id="depto"
+                      <h:outputLabel for="depto" value="departamento" style="margin-top: -30px;"/>
+                      <h:selectOneMenu pt:placeholder=" " id="depto"  class="browser-default"
                                        value="#{ciudadController.idDepartamentoSeleccionado}">
                         <f:selectItems value="#{departamentoController.departamentoSeleccionado}"
                                        var="de"
                                        itemValue="#{de.id}"
                                        itemLabel="#{de.nombreDepartamento}"/>
+                        <f:ajax execute="@this" render="ciu"/>
                       </h:selectOneMenu>
-                      <h:outputLabel for="depto" value="departamento"/>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <h:outputLabel for="ciu" value="ciudad" style="margin-top: -30px;"/>
+                      <h:selectOneMenu pt:placeholder=" " id="ciu"  class="browser-default"
+                                       value="#{direccionesController.direccion.ciudad}">
+                        <f:selectItems value="#{ciudadController.ciudadSeleccionada}"
+                                       var="pa"
+                                       itemValue="#{pa.id}"
+                                       itemLabel="#{pa.nombreCiudad}"/>
+                      </h:selectOneMenu>
                     </div>
                     <div class="input-field col s12 m6">
                       <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true"/>
