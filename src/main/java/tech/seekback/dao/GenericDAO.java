@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import tech.seekback.exceptions.ConnectionExcep;
 
@@ -21,13 +22,14 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
   public static final String PU = "Seekback_PU";
 
+  @PersistenceContext(unitName = PU)
   protected EntityManager em;
   protected Class<T> classType;
 
-  public GenericDAO(Class<T> classs) {
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU);
-    em = emf.createEntityManager();
-    this.classType = classs;
+  public GenericDAO(Class<T> classType) {
+    //  EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU);
+    /// em = emf.createEntityManager();
+    this.classType = classType;
   }
 
   @Override
@@ -37,14 +39,16 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
             + "\n#\t Creando Objeto " + obj.getClass().getSimpleName()
             + "\n######################################################################\n"
     );
-    EntityTransaction et = em.getTransaction();
-    try {
-      et.begin();
-      em.persist(em.merge(obj));
-      et.commit();
-    } catch (Exception e) {
-      et.rollback();
-    }
+    em.persist(em.merge(obj));
+
+//    EntityTransaction et = em.getTransaction();
+//    try {
+//      et.begin();
+//      em.persist(em.merge(obj));
+//      et.commit();
+//    } catch (Exception e) {
+//      et.rollback();
+//    }
   }
 
   @Override

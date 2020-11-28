@@ -29,7 +29,7 @@ public class DireccionesController implements Serializable {
   @EJB
   private DireccionesService direccionesService;
   private Direcciones direccion;
-  public List<Direcciones> direcciones;
+  private List<Direcciones> direcciones;
 
   public DireccionesController() {
     direccion = new Direcciones();

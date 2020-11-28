@@ -244,7 +244,7 @@
                     <div class="input-field col s12 m6">
                       <h:outputLabel for="ciu" value="ciudad" style="margin-top: -30px;"/>
                       <h:selectOneMenu pt:placeholder=" " id="ciu"  class="browser-default"
-                                       value="#{direccionesController.direccion.ciudad}">
+                                       value="#{direccionesController.direccion.ciudad.id}">
                         <f:selectItems value="#{ciudadController.ciudadSeleccionada}"
                                        var="pa"
                                        itemValue="#{pa.id}"

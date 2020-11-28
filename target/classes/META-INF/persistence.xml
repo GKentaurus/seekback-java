@@ -2,8 +2,9 @@
 <persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <!-- <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">   -->
   <!-- Define Persistence Unit -->
-  <persistence-unit name="Seekback_PU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="Seekback_PU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>java:app/jdbc/seekback</jta-data-source>
     <class>tech.seekback.models.Administrador</class>
     <class>tech.seekback.models.Agenda</class>
     <class>tech.seekback.models.Bodega</class>
@@ -38,15 +39,15 @@
     <class>tech.seekback.models.TipoSolicitud</class>
     <class>tech.seekback.models.Usuario</class>
     <properties>
-      <properties>
-        <property name="javax.persistence.jdbc.url" value="jdbc:mysql://185.201.11.128:3306/u925035511_seekback_test?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
-        <property name="javax.persistence.jdbc.user" value="u925035511_test"/>
-        <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="javax.persistence.jdbc.password" value="123PorMi"/>
-        <property name="javax.persistence.schema-generation.database.action" value="none"/>
-        <property name="eclipselink.logging.level.sql" value="FINE"/>
-        <property name="eclipselink.logging.parameters" value="true"/>
-      </properties>
+      <!--
+  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://185.201.11.128:3306/u925035511_seekback_test?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+  <property name="javax.persistence.jdbc.user" value="u925035511_test"/>
+  <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+  <property name="javax.persistence.jdbc.password" value="123PorMi"/>
+      -->
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>
