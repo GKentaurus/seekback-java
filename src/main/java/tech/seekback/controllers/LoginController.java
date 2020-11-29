@@ -5,23 +5,43 @@
  */
 package tech.seekback.controllers;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import java.util.Objects;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import tech.seekback.models.Correos;
+import tech.seekback.models.Usuario;
+import tech.seekback.services.CorreosService;
+import tech.seekback.services.UsuarioService;
 
 /**
  *
  * @author danny
  */
-@RequestScoped
 @Named
-public class LoginController {
+@SessionScoped
+public class LoginController implements Serializable {
 
-  private String email;
+  @EJB
+  private UsuarioService usuarioService;
+
+  @EJB
+  private CorreosService correosService;
   private String password;
+  private String email;
+  private Usuario usuario;
+  private Correos correo;
+  private boolean checkLogin;
+  private String ruta;
 
-  public LoginController() {
-    email = "";
-    password = "";
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public String getEmail() {
@@ -32,16 +52,37 @@ public class LoginController {
     this.email = email;
   }
 
-  public String getPassword() {
-    return password;
-  }
+  public String login() {
+    FacesContext fc = FacesContext.getCurrentInstance();
+    try {
+      this.correo = correosService.getByCorreo(email);
+      if (Objects.isNull(email)) {
+        return "login.xhtml?faces-redirect=true";
+      }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+      if (!this.correo.getUsuario().verificarContrasena(this.password)) {
+        return "login.xhtml?faces-redirect=true";
+      }
 
-  public void show() {
-    System.out.println(email + " / " + password);
+      switch (this.correo.getUsuario().getRol().getNombreRol()) {
+        case "Administrador":
+          this.ruta = "frames/admin.xhtml";
+          break;
+        case "Empleado":
+          this.ruta = "";
+          break;
+        case "Cliente":
+          this.ruta = "";
+          break;
+        default:
+          this.ruta = "login.xhtml?faces-redirect=true";
+      }
+
+    } catch (Exception ex) {
+      System.out.println("Error de la consulta email.");
+      ex.printStackTrace();
+    }
+    return this.ruta;
   }
 
 }

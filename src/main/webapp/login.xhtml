@@ -135,7 +135,7 @@
                     <h:inputSecret id="passwordlog" class="ingre" required="true"  value="#{loginController.password}"/>
                     <h:outputLabel for="passwordlog" value="Contraseña" />
                   </div>
-                  <h:commandButton class="btn waves-effect waves-light blue" onclick="login();" value="ingresar" actionListener="#{loginController.show()}" />
+                  <h:commandButton class="btn waves-effect waves-light blue" onclick="login();" value="ingresar" actionListener="#{loginController.login()}" />
                   <br/>
                   <br/>
                   <a data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</a>

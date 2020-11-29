@@ -20,4 +20,5 @@ public class UsuarioDAOJPA extends GenericDAO<Usuario, Integer> implements Usuar
   public UsuarioDAOJPA() {
     super(Usuario.class);
   }
+
 }

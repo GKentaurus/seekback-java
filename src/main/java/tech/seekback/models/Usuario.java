@@ -12,7 +12,8 @@ import tech.seekback.tools.Encrypter;
 @Entity
 @Table(name = "usuario")
 @NamedQueries(value = {
-  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj")
+  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj"),
+  @NamedQuery(name = "Usuario.getByEmail", query = "SELECT obj.contrasena, co.correoElectronico FROM Usuario obj INNER JOIN Correos co ON obj.id = co.usuario WHERE co.esPrincipal = 1")
 })
 public class Usuario implements Serializable {
 

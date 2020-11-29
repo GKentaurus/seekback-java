@@ -7,6 +7,7 @@ package tech.seekback.dao.interfaces;
 
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
 
 /**
@@ -15,4 +16,5 @@ import tech.seekback.models.Usuario;
  */
 @Local
 public interface UsuarioDAO extends DAO<Usuario, Integer> {
+
 }

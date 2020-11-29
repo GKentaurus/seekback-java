@@ -124,6 +124,7 @@ tech\seekback\builders\CotizacionBuilder.class
 tech\seekback\models\TRM.class
 tech\seekback\builders\AdministradorBuilder.class
 tech\seekback\models\TipoSolicitud.class
+tech\seekback\services\CorreosService.class
 tech\seekback\models\Direcciones.class
 tech\seekback\dao\jpa\TRMDAOJPA.class
 tech\seekback\dao\interfaces\DepartamentoDAO.class

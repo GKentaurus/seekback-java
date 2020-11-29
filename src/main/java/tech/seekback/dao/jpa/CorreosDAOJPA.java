@@ -6,8 +6,11 @@
 package tech.seekback.dao.jpa;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.CorreosDAO;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.exceptions.enums.ConnectionExcepEnum;
 import tech.seekback.models.Correos;
 
 /**
@@ -20,4 +23,18 @@ public class CorreosDAOJPA extends GenericDAO<Correos, Integer> implements Corre
   public CorreosDAOJPA() {
     super(Correos.class);
   }
+
+  @Override
+  public Correos getByCorreo(String email) throws ConnectionExcep {
+
+    try {
+      TypedQuery<Correos> tq = em.createNamedQuery("Correos.getByCorreo", classType);
+      tq.setParameter("CorreoRec", email);
+      return tq.getSingleResult();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+
+  }
+
 }
