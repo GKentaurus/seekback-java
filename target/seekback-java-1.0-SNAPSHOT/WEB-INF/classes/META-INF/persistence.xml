@@ -5,46 +5,8 @@
   <persistence-unit name="Seekback_PU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/seekback</jta-data-source>
-    <class>tech.seekback.models.Administrador</class>
-    <class>tech.seekback.models.Agenda</class>
-    <class>tech.seekback.models.Bodega</class>
-    <class>tech.seekback.models.BodegaProductos</class>
-    <class>tech.seekback.models.Calificacion</class>
-    <class>tech.seekback.models.CategoriasProducto</class>
-    <class>tech.seekback.models.Ciudad</class>
-    <class>tech.seekback.models.Cliente</class>
-    <class>tech.seekback.models.Correos</class>
-    <class>tech.seekback.models.Cotizacion</class>
-    <class>tech.seekback.models.Departamento</class>
-    <class>tech.seekback.models.Direcciones</class>
-    <class>tech.seekback.models.Divisas</class>
-    <class>tech.seekback.models.DocumentoDetallado</class>
-    <class>tech.seekback.models.Empleado</class>
-    <class>tech.seekback.models.EstadosAgenda</class>
-    <class>tech.seekback.models.EstadosCotizacion</class>
-    <class>tech.seekback.models.EstadosFidelizacion</class>
-    <class>tech.seekback.models.Felicitacion</class>
-    <class>tech.seekback.models.OrdenCompra</class>
-    <class>tech.seekback.models.PQRS</class>
-    <class>tech.seekback.models.Pais</class>
-    <class>tech.seekback.models.Producto</class>
-    <class>tech.seekback.models.ProformaVenta</class>
-    <class>tech.seekback.models.Proveedor</class>
-    <class>tech.seekback.models.Roles</class>
-    <class>tech.seekback.models.SoporteTecnico</class>
-    <class>tech.seekback.models.TRM</class>
-    <class>tech.seekback.models.Telefonos</class>
-    <class>tech.seekback.models.TipoDoc</class>
-    <class>tech.seekback.models.TipoServicio</class>
-    <class>tech.seekback.models.TipoSolicitud</class>
-    <class>tech.seekback.models.Usuario</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <!--
-  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://185.201.11.128:3306/u925035511_seekback_test?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
-  <property name="javax.persistence.jdbc.user" value="u925035511_test"/>
-  <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-  <property name="javax.persistence.jdbc.password" value="123PorMi"/>
-      -->
       <property name="javax.persistence.schema-generation.database.action" value="none"/>
       <property name="eclipselink.logging.level.sql" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>

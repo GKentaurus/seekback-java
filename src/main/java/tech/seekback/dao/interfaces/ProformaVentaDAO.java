@@ -5,7 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.ProformaVenta;
 
@@ -13,6 +13,6 @@ import tech.seekback.models.ProformaVenta;
  *
  * @author camorenoc
  */
-@Remote
+@Local
 public interface ProformaVentaDAO extends DAO<ProformaVenta, Integer> {
 }

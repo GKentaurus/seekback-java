@@ -5,7 +5,7 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.models.BodegaProductos;
 
@@ -13,7 +13,7 @@ import tech.seekback.models.BodegaProductos;
  *
  * @author camorenoc
  */
-@Remote
+@Local
 public interface BodegaProductosDAO extends DAO<BodegaProductos, Integer> {
 
 }
