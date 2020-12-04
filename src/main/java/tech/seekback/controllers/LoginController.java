@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import tech.seekback.models.Correos;
@@ -66,7 +67,8 @@ public class LoginController implements Serializable {
 
       switch (this.correo.getUsuario().getRol().getNombreRol()) {
         case "Administrador":
-          this.ruta = "frames/admin.xhtml";
+          ExternalContext ec = fc.getExternalContext();
+          ec.redirect(ec.getRequestContextPath() + "/frames/admin.xhtml");
           break;
         case "Empleado":
           this.ruta = "";
@@ -82,7 +84,7 @@ public class LoginController implements Serializable {
       System.out.println("Error de la consulta email.");
       ex.printStackTrace();
     }
-    return this.ruta;
+    return ruta;
   }
 
 }

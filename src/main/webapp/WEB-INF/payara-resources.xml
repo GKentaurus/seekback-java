@@ -15,7 +15,8 @@
                         connection-leak-timeout-in-seconds="0"
                         connection-validation-method="auto-commit"
                         datasource-classname="com.mysql.cj.jdbc.MysqlDataSource"
-                        fail-all-connections="false" idle-timeout-in-seconds="300"
+                        fail-all-connections="false"
+                        idle-timeout-in-seconds="80000000"
                         is-connection-validation-required="false"
                         is-isolation-level-guaranteed="true"
                         lazy-connection-association="false"
@@ -23,7 +24,7 @@
                         match-connections="false"
                         max-connection-usage-count="0"
                         max-pool-size="32"
-                        max-wait-time-in-millis="60000"
+                        max-wait-time-in-millis="80000000"
                         name="appweb_Pool"
                         non-transactional-connections="false"
                         pool-resize-quantity="2"
@@ -32,8 +33,8 @@
                         steady-pool-size="8"
                         validate-atmost-once-period-in-seconds="0"
                         wrap-jdbc-objects="false">
-    <property name="URL" value="jdbc:mysql://sql158.main-hosting.eu:3306/u925035511_seekback_test?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;useSSL=false"/>
-    <property name="User" value="u925035511_test"/>
-    <property name="Password" value="123PorMi"/>
+    <property name="URL" value="jdbc:mysql://localhost:3306/u925035511_seekback_test?serverTimezone=UTC"/>
+    <property name="User" value="root"/>
+    <property name="Password" value="danny"/>
   </jdbc-connection-pool>
 </resources>
