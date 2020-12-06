@@ -5,6 +5,7 @@
  */
 package tech.seekback.controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.ejb.EJB;
@@ -53,8 +54,17 @@ public class LoginController implements Serializable {
     this.email = email;
   }
 
+  public Usuario getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
+  }
+
   public String login() {
     FacesContext fc = FacesContext.getCurrentInstance();
+    System.out.println("mire vea");
     try {
       this.correo = correosService.getByCorreo(email);
       if (Objects.isNull(email)) {
@@ -63,18 +73,23 @@ public class LoginController implements Serializable {
 
       if (!this.correo.getUsuario().verificarContrasena(this.password)) {
         return "login.xhtml?faces-redirect=true";
+      } else {
+        usuario = this.correo.getUsuario();
       }
 
       switch (this.correo.getUsuario().getRol().getNombreRol()) {
         case "Administrador":
-          ExternalContext ec = fc.getExternalContext();
-          ec.redirect(ec.getRequestContextPath() + "/frames/admin.xhtml");
+          ExternalContext ad = fc.getExternalContext();
+          ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
+          System.out.println(ad.getRequestContextPath() + " / pues eso");
           break;
         case "Empleado":
-          this.ruta = "";
+          ExternalContext em = fc.getExternalContext();
+          em.redirect(em.getRequestContextPath() + "/frames/empleado.xhtml");
           break;
         case "Cliente":
-          this.ruta = "";
+          ExternalContext cl = fc.getExternalContext();
+          cl.redirect(cl.getRequestContextPath() + "/frames/cliente.xhtml");
           break;
         default:
           this.ruta = "login.xhtml?faces-redirect=true";
@@ -84,7 +99,25 @@ public class LoginController implements Serializable {
       System.out.println("Error de la consulta email.");
       ex.printStackTrace();
     }
-    return ruta;
+    return "";
+  }
+
+  public void exit() throws IOException {
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.invalidateSession();
+    ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+    System.out.println(ec.getRequestContextPath() + " / pues eso");
+  }
+
+  public boolean isstarted() throws IOException {
+    return Objects.nonNull(this.email);
+  }
+
+  public void validate() throws IOException {
+    if (!isstarted()) {
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+    }
   }
 
 }
