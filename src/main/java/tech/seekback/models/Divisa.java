@@ -17,7 +17,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "divisas")
 @NamedQueries(value = {
-  @NamedQuery(name = "Divisas.getAll", query = "SELECT obj FROM Divisas obj")
+  @NamedQuery(name = "Divisas.getAll", query = "SELECT obj FROM Divisa obj")
 })
 public class Divisa implements Serializable {
 

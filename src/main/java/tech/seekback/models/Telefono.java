@@ -12,7 +12,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "telefonos")
 @NamedQueries(value = {
-  @NamedQuery(name = "Telefonos.getAll", query = "SELECT obj FROM Telefonos obj")
+  @NamedQuery(name = "Telefonos.getAll", query = "SELECT obj FROM Telefono obj")
 })
 public class Telefono implements Serializable {
 

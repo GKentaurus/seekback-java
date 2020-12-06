@@ -17,7 +17,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "direcciones")
 @NamedQueries(value = {
-  @NamedQuery(name = "Direcciones.getAll", query = "SELECT obj FROM Direcciones obj")
+  @NamedQuery(name = "Direcciones.getAll", query = "SELECT obj FROM Direccion obj")
 })
 public class Direccion implements Serializable {
 

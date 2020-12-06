@@ -81,7 +81,7 @@ public class LoginController implements Serializable {
         case "Administrador":
           ExternalContext ad = fc.getExternalContext();
           ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
-          System.out.println(ad.getRequestContextPath() + " / pues eso");
+          System.out.println(ad.getRequestContextPath() + " / pues eso 1");
           break;
         case "Empleado":
           ExternalContext em = fc.getExternalContext();
