@@ -7,12 +7,12 @@ package tech.seekback.dao.interfaces;
 
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
-import tech.seekback.models.Divisas;
+import tech.seekback.models.Direccion;
 
 /**
  *
  * @author camorenoc
  */
 @Local
-public interface DivisasDAO extends DAO<Divisas, Integer> {
+public interface DireccionDAO extends DAO<Direccion, Integer> {
 }

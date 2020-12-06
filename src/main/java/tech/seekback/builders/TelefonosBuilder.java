@@ -5,7 +5,7 @@
  */
 package tech.seekback.builders;
 
-import tech.seekback.models.Telefonos;
+import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 
@@ -15,10 +15,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class TelefonosBuilder {
 
-  private Telefonos telefonos;
+  private Telefono telefonos;
 
   private TelefonosBuilder() {
-    this.telefonos = new Telefonos();
+    this.telefonos = new Telefono();
   }
 
   public static TelefonosBuilder builder() {
@@ -50,7 +50,7 @@ public class TelefonosBuilder {
     return this;
   }
 
-  public Telefonos build() {
+  public Telefono build() {
     return this.telefonos;
   }
 

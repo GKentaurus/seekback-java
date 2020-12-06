@@ -7,6 +7,7 @@ package tech.seekback.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -126,6 +127,33 @@ public class PQRS implements Serializable {
 
   public void setFechaRespuesta(Date fechaRespuesta) {
     this.fechaRespuesta = fechaRespuesta;
+  }
+  //</editor-fold>
+
+  //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 37 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final PQRS other = (PQRS) obj;
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    return true;
   }
   //</editor-fold>
 

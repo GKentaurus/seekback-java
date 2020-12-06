@@ -7,17 +7,17 @@ package tech.seekback.dao.jpa;
 
 import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
-import tech.seekback.dao.interfaces.DireccionesDAO;
-import tech.seekback.models.Direcciones;
+import tech.seekback.models.Telefono;
+import tech.seekback.dao.interfaces.TelefonoDAO;
 
 /**
  *
  * @author camorenoc
  */
 @Stateless
-public class DireccionesDAOJPA extends GenericDAO<Direcciones, Integer> implements DireccionesDAO {
+public class TelefonoDAOJPA extends GenericDAO<Telefono, Integer> implements TelefonoDAO {
 
-  public DireccionesDAOJPA() {
-    super(Direcciones.class);
+  public TelefonoDAOJPA() {
+    super(Telefono.class);
   }
 }

@@ -7,7 +7,7 @@ package tech.seekback.builders;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import tech.seekback.models.Roles;
+import tech.seekback.models.Rol;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
@@ -68,7 +68,7 @@ public class UsuarioBuilder {
     return this;
   }
 
-  public UsuarioBuilder rol(Roles rol) {
+  public UsuarioBuilder rol(Rol rol) {
     this.usuario.setRol(rol);
     return this;
   }

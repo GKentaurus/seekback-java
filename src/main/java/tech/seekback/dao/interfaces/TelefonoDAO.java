@@ -7,13 +7,12 @@ package tech.seekback.dao.interfaces;
 
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
-import tech.seekback.models.BodegaProductos;
+import tech.seekback.models.Telefono;
 
 /**
  *
  * @author camorenoc
  */
 @Local
-public interface BodegaProductosDAO extends DAO<BodegaProductos, Integer> {
-
+public interface TelefonoDAO extends DAO<Telefono, Integer> {
 }

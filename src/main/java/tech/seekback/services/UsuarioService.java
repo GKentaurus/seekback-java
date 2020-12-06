@@ -6,8 +6,7 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import tech.seekback.dao.interfaces.UsuarioDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
@@ -35,5 +34,11 @@ public class UsuarioService {
     return usuarios;
   }
 
-  // TODO: integrar metodos UPDATE y DELETE
+  public void update(Usuario usuario) throws ConnectionExcep {
+    usuarioDAO.update(usuario);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    usuarioDAO.delete(id);
+  }
 }

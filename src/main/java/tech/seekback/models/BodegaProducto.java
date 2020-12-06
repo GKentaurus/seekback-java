@@ -6,6 +6,7 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -18,7 +19,7 @@ import tech.seekback.models.templates.Timestamps;
 @NamedQueries(value = {
   @NamedQuery(name = "BodegaProductos.getAll", query = "SELECT obj FROM BodegaProductos obj")
 })
-public class BodegaProductos implements Serializable {
+public class BodegaProducto implements Serializable {
 
   @Id
   @Column(name = "idRegistro", nullable = false)
@@ -78,6 +79,33 @@ public class BodegaProductos implements Serializable {
 
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
+  }
+  //</editor-fold>
+
+  //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 11 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final BodegaProducto other = (BodegaProducto) obj;
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    return true;
   }
   //</editor-fold>
 

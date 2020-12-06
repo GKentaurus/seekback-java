@@ -13,9 +13,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import tech.seekback.models.Correos;
+import tech.seekback.models.Correo;
 import tech.seekback.models.Usuario;
-import tech.seekback.services.CorreosService;
+import tech.seekback.services.CorreoService;
 import tech.seekback.services.UsuarioService;
 
 /**
@@ -30,11 +30,11 @@ public class LoginController implements Serializable {
   private UsuarioService usuarioService;
 
   @EJB
-  private CorreosService correosService;
+  private CorreoService correosService;
   private String password;
   private String email;
   private Usuario usuario;
-  private Correos correo;
+  private Correo correo;
   private boolean checkLogin;
   private String ruta;
 

@@ -6,6 +6,7 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -18,7 +19,7 @@ import tech.seekback.models.templates.Timestamps;
 @NamedQueries(value = {
   @NamedQuery(name = "Divisas.getAll", query = "SELECT obj FROM Divisas obj")
 })
-public class Divisas implements Serializable {
+public class Divisa implements Serializable {
 
   @Id
   @Column(name = "idDivisa")
@@ -68,6 +69,33 @@ public class Divisas implements Serializable {
   }
   //</editor-fold>
 
+  //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 53 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Divisa other = (Divisa) obj;
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    return true;
+  }
+
+  //</editor-fold>
   @Override
   public String toString() {
     return "Cotizacion("

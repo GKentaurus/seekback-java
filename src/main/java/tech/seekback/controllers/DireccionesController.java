@@ -14,9 +14,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
-import tech.seekback.models.Direcciones;
+import tech.seekback.models.Direccion;
 import tech.seekback.models.Usuario;
-import tech.seekback.services.DireccionesService;
+import tech.seekback.services.DireccionService;
 
 /**
  *
@@ -27,12 +27,12 @@ import tech.seekback.services.DireccionesService;
 public class DireccionesController implements Serializable {
 
   @EJB
-  private DireccionesService direccionesService;
-  private Direcciones direccion;
-  private List<Direcciones> direcciones;
+  private DireccionService direccionesService;
+  private Direccion direccion;
+  private List<Direccion> direcciones;
 
   public DireccionesController() {
-    direccion = new Direcciones();
+    direccion = new Direccion();
     direccion.setCiudad(new Ciudad());
     direccion.setUsuario(new Usuario());
   }
@@ -42,15 +42,15 @@ public class DireccionesController implements Serializable {
 
   }
 
-  public Direcciones getDireccion() {
+  public Direccion getDireccion() {
     return direccion;
   }
 
-  public void setDireccion(Direcciones direccion) {
+  public void setDireccion(Direccion direccion) {
     this.direccion = direccion;
   }
 
-  public List<Direcciones> getDirecciones() throws ConnectionExcep {
+  public List<Direccion> getDirecciones() throws ConnectionExcep {
     try {
       if (Objects.isNull(direcciones)) {
         direcciones = direccionesService.getAll();

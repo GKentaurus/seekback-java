@@ -2,6 +2,7 @@ package tech.seekback.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -23,7 +24,7 @@ public class TRM implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "idDivisas ", nullable = false)
-  private Divisas divisa;
+  private Divisa divisa;
 
   @Column(name = "fechaTRM", nullable = false)
   @Temporal(TemporalType.TIMESTAMP)
@@ -44,11 +45,11 @@ public class TRM implements Serializable {
     this.id = id;
   }
 
-  public Divisas getDivisa() {
+  public Divisa getDivisa() {
     return divisa;
   }
 
-  public void setDivisa(Divisas divisa) {
+  public void setDivisa(Divisa divisa) {
     this.divisa = divisa;
   }
 
@@ -74,6 +75,33 @@ public class TRM implements Serializable {
 
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
+  }
+  //</editor-fold>
+
+  //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 37 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final TRM other = (TRM) obj;
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    return true;
   }
   //</editor-fold>
 

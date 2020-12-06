@@ -6,6 +6,7 @@
 package tech.seekback.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
@@ -18,7 +19,7 @@ import tech.seekback.models.templates.Timestamps;
 @NamedQueries(value = {
   @NamedQuery(name = "Direcciones.getAll", query = "SELECT obj FROM Direcciones obj")
 })
-public class Direcciones implements Serializable {
+public class Direccion implements Serializable {
 
   @Id
   @Column(name = "idDirecciones")
@@ -100,6 +101,33 @@ public class Direcciones implements Serializable {
 
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
+  }
+  //</editor-fold>
+
+  //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 97 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Direccion other = (Direccion) obj;
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    return true;
   }
   //</editor-fold>
 
