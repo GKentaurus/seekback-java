@@ -8,26 +8,26 @@ package tech.seekback.services;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import tech.seekback.dao.interfaces.RolesDAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Roles;
+import tech.seekback.models.Rol;
+import tech.seekback.dao.interfaces.RolDAO;
 
 /**
  *
  * @author camorenoc
  */
 @Stateless
-public class RolesService {
+public class RolService {
 
   @EJB
-  private RolesDAO rolesDAO;
+  private RolDAO rolesDAO;
 
-  public void create(Roles rol) throws ConnectionExcep {
+  public void create(Rol rol) throws ConnectionExcep {
     rolesDAO.create(rol);
   }
 
-  public List<Roles> getAll() throws ConnectionExcep {
-    List<Roles> roles = rolesDAO.getAll();
+  public List<Rol> getAll() throws ConnectionExcep {
+    List<Rol> roles = rolesDAO.getAll();
     return roles;
   }
 }

@@ -8,9 +8,9 @@ package tech.seekback.controllers;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.models.Correos;
-import tech.seekback.models.Direcciones;
-import tech.seekback.models.Telefonos;
+import tech.seekback.models.Correo;
+import tech.seekback.models.Direccion;
+import tech.seekback.models.Telefono;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
 
@@ -23,9 +23,9 @@ import tech.seekback.models.Usuario;
 public class RegistrerController implements Serializable {
 
   private Usuario usuario;
-  private Correos correo;
-  private Telefonos telefono;
-  private Direcciones direcciones;
+  private Correo correo;
+  private Telefono telefono;
+  private Direccion direcciones;
 
   public RegistrerController() {
     usuario = new Usuario();

@@ -12,8 +12,8 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Roles;
-import tech.seekback.services.RolesService;
+import tech.seekback.models.Rol;
+import tech.seekback.services.RolService;
 
 /**
  *
@@ -24,8 +24,8 @@ import tech.seekback.services.RolesService;
 public class RolesController implements Serializable {
 
   @EJB
-  private RolesService rolesService;
-  private List<Roles> roles;
+  private RolService rolesService;
+  private List<Rol> roles;
 
   public RolesController() {
 
@@ -40,7 +40,7 @@ public class RolesController implements Serializable {
     }
   }
 
-  public List<Roles> getAll() {
+  public List<Rol> getAll() {
     return roles;
   }
 }

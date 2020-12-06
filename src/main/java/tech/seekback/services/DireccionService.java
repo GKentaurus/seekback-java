@@ -8,30 +8,30 @@ package tech.seekback.services;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import tech.seekback.dao.interfaces.DireccionesDAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Direcciones;
+import tech.seekback.models.Direccion;
+import tech.seekback.dao.interfaces.DireccionDAO;
 
 /**
  *
  * @author danny
  */
 @Stateless
-public class DireccionesService {
+public class DireccionService {
 
   @EJB
-  private DireccionesDAO direccionesDAO;
+  private DireccionDAO direccionesDAO;
 
-  public void create(Direcciones direciones) throws ConnectionExcep {
+  public void create(Direccion direciones) throws ConnectionExcep {
     direccionesDAO.create(direciones);
   }
 
-  public Direcciones getOne(Integer id) throws ConnectionExcep {
+  public Direccion getOne(Integer id) throws ConnectionExcep {
     return direccionesDAO.getOne(id);
   }
 
-  public List<Direcciones> getAll() throws ConnectionExcep {
-    List<Direcciones> direcciones = direccionesDAO.getAll();
+  public List<Direccion> getAll() throws ConnectionExcep {
+    List<Direccion> direcciones = direccionesDAO.getAll();
     return direcciones;
   }
 }
