@@ -19,7 +19,7 @@ public interface FactoryDAO {
 
   BodegaDAO getBodegaDAO();
 
-  BodegaProductosDAO getBodegaProductosDAO();
+  BodegaProductoDAO getBodegaProductosDAO();
 
   CalificacionDAO getCalificacionDAO();
 
@@ -29,15 +29,15 @@ public interface FactoryDAO {
 
   ClienteDAO getClienteDAO();
 
-  CorreosDAO getCorreosDAO();
+  CorreoDAO getCorreosDAO();
 
   CotizacionDAO getCotizacionDAO();
 
   DepartamentoDAO getDepartamentoDAO();
 
-  DireccionesDAO getDireccionesDAO();
+  DireccionDAO getDireccionesDAO();
 
-  DivisasDAO getDivisasDAO();
+  DivisaDAO getDivisasDAO();
 
   DocumentoDetalladoDAO getDocumentoDetalladoDAO();
 
@@ -63,13 +63,13 @@ public interface FactoryDAO {
 
   ProveedorDAO getProveedorDAO();
 
-  RolesDAO getRolesDAO();
+  RolDAO getRolesDAO();
 
   SoporteTecnicoDAO getSoporteTecnicoDAO();
 
   TRMDAO getTRMDAO();
 
-  TelefonosDAO getTelefonosDAO();
+  TelefonoDAO getTelefonosDAO();
 
   TipoDocDAO getTipoDocDAO();
 

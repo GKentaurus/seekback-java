@@ -19,7 +19,7 @@ import tech.seekback.models.templates.Timestamps;
 @NamedQueries(value = {
   @NamedQuery(name = "Divisas.getAll", query = "SELECT obj FROM Divisas obj")
 })
-public class Divisas implements Serializable {
+public class Divisa implements Serializable {
 
   @Id
   @Column(name = "idDivisa")
@@ -88,7 +88,7 @@ public class Divisas implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Divisas other = (Divisas) obj;
+    final Divisa other = (Divisa) obj;
     if (!Objects.equals(this.id, other.id)) {
       return false;
     }

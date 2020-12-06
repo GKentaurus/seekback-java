@@ -7,15 +7,13 @@ package tech.seekback.dao.interfaces;
 
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Correos;
+import tech.seekback.models.BodegaProducto;
 
 /**
  *
  * @author camorenoc
  */
 @Local
-public interface CorreosDAO extends DAO<Correos, Integer> {
+public interface BodegaProductoDAO extends DAO<BodegaProducto, Integer> {
 
-  Correos getByCorreo(String email) throws ConnectionExcep;
 }

@@ -13,8 +13,7 @@ import tech.seekback.tools.Encrypter;
 @Entity
 @Table(name = "usuario")
 @NamedQueries(value = {
-  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj"),
-  @NamedQuery(name = "Usuario.getByEmail", query = "SELECT obj.contrasena, co.correoElectronico FROM Usuario obj INNER JOIN Correos co ON obj.id = co.usuario WHERE co.esPrincipal = 1")
+  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj")
 })
 public class Usuario implements Serializable {
 
@@ -50,7 +49,7 @@ public class Usuario implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "rol", nullable = false)
-  private Roles rol;
+  private Rol rol;
 
   @Embedded
   private Timestamps timestamps;
@@ -129,11 +128,11 @@ public class Usuario implements Serializable {
     return salt;
   }
 
-  public Roles getRol() {
+  public Rol getRol() {
     return rol;
   }
 
-  public void setRol(Roles rol) {
+  public void setRol(Rol rol) {
     this.rol = rol;
   }
 
@@ -147,31 +146,31 @@ public class Usuario implements Serializable {
   //</editor-fold>
 
   //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 31 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
-    //</editor-fold>  
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Usuario other = (Usuario) obj;
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    return true;
+  }
+  //</editor-fold>
 
   @Override
   public String toString() {

@@ -7,17 +7,17 @@ package tech.seekback.dao.jpa;
 
 import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
-import tech.seekback.dao.interfaces.DivisasDAO;
-import tech.seekback.models.Divisas;
+import tech.seekback.models.Rol;
+import tech.seekback.dao.interfaces.RolDAO;
 
 /**
  *
  * @author camorenoc
  */
 @Stateless
-public class DivisasDAOJPA extends GenericDAO<Divisas, Integer> implements DivisasDAO {
+public class RolDAOJPA extends GenericDAO<Rol, Integer> implements RolDAO {
 
-  public DivisasDAOJPA() {
-    super(Divisas.class);
+  public RolDAOJPA() {
+    super(Rol.class);
   }
 }

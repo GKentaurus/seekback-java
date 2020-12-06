@@ -12,30 +12,36 @@ import tech.seekback.models.templates.Timestamps;
 
 /**
  *
- * @author danny
+ * @author camorenoc
  */
 @Entity
-@Table(name = "correos")
+@Table(name = "direcciones")
 @NamedQueries(value = {
-  @NamedQuery(name = "Correos.getAll", query = "SELECT obj FROM Correos obj"),
-  @NamedQuery(name = "Correos.getByCorreo", query = "SELECT obj FROM Correos obj WHERE obj.correoElectronico = :CorreoRec")
+  @NamedQuery(name = "Direcciones.getAll", query = "SELECT obj FROM Direcciones obj")
 })
-public class Correos implements Serializable {
+public class Direccion implements Serializable {
 
   @Id
-  @Column(name = "idCorreo")
+  @Column(name = "idDirecciones")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "idUsuario", nullable = false)
+  @JoinColumn(name = "idRegistro", nullable = false)
   private Usuario usuario;
 
-  @Column(name = "correoElectronico", nullable = false, unique = true, length = 255)
-  private String correoElectronico;
+  @Column(name = "pseudonimo", nullable = false, length = 30)
+  private String pseudonimo;
 
-  @Column(name = "esPrincipal", nullable = false)
-  private boolean esPrincipal;
+  @Column(name = "direccion", nullable = false, length = 100)
+  private String direccion;
+
+  @Column(name = "telefono", nullable = false, length = 20)
+  private String telefono;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "localizacion", nullable = false)
+  private Ciudad ciudad;
 
   @Embedded
   private Timestamps timestamps;
@@ -57,20 +63,36 @@ public class Correos implements Serializable {
     this.usuario = usuario;
   }
 
-  public String getCorreoElectronico() {
-    return correoElectronico;
+  public String getPseudonimo() {
+    return pseudonimo;
   }
 
-  public void setCorreoElectronico(String correoElectronico) {
-    this.correoElectronico = correoElectronico;
+  public void setPseudonimo(String pseudonimo) {
+    this.pseudonimo = pseudonimo;
   }
 
-  public boolean getEsPrincipal() {
-    return esPrincipal;
+  public String getDireccion() {
+    return direccion;
   }
 
-  public void setEsPrincipal(Boolean esPrincipal) {
-    this.esPrincipal = esPrincipal;
+  public void setDireccion(String direccion) {
+    this.direccion = direccion;
+  }
+
+  public String getTelefono() {
+    return telefono;
+  }
+
+  public void setTelefono(String telefono) {
+    this.telefono = telefono;
+  }
+
+  public Ciudad getCiudad() {
+    return ciudad;
+  }
+
+  public void setCiudad(Ciudad ciudad) {
+    this.ciudad = ciudad;
   }
 
   public Timestamps getTimestamps() {
@@ -86,7 +108,7 @@ public class Correos implements Serializable {
   @Override
   public int hashCode() {
     int hash = 7;
-    hash = 47 * hash + Objects.hashCode(this.id);
+    hash = 97 * hash + Objects.hashCode(this.id);
     return hash;
   }
 
@@ -101,7 +123,7 @@ public class Correos implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Correos other = (Correos) obj;
+    final Direccion other = (Direccion) obj;
     if (!Objects.equals(this.id, other.id)) {
       return false;
     }
@@ -111,12 +133,15 @@ public class Correos implements Serializable {
 
   @Override
   public String toString() {
-    return "Correos("
+    return "Direcciones{"
             + "id = " + id + ", "
             + "usuario = " + usuario + ", "
-            + "correo = " + correoElectronico + ", "
-            + "principal = " + esPrincipal + ", "
+            + "pseudonimo = " + pseudonimo + ", "
+            + "direccion = " + direccion + ", "
+            + "telefono = " + telefono + ", "
+            + "ciudad = " + ciudad
             + timestamps.toString()
-            + ")";
+            + '}';
   }
+
 }

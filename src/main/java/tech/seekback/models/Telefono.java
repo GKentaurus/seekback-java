@@ -14,7 +14,7 @@ import tech.seekback.models.templates.Timestamps;
 @NamedQueries(value = {
   @NamedQuery(name = "Telefonos.getAll", query = "SELECT obj FROM Telefonos obj")
 })
-public class Telefonos implements Serializable {
+public class Telefono implements Serializable {
 
   @Id
   @Column(name = "idTelefono")
@@ -95,7 +95,7 @@ public class Telefonos implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Telefonos other = (Telefonos) obj;
+    final Telefono other = (Telefono) obj;
     if (!Objects.equals(this.id, other.id)) {
       return false;
     }

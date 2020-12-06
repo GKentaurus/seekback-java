@@ -7,17 +7,17 @@ package tech.seekback.dao.jpa;
 
 import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
-import tech.seekback.dao.interfaces.TelefonosDAO;
-import tech.seekback.models.Telefonos;
+import tech.seekback.models.BodegaProducto;
+import tech.seekback.dao.interfaces.BodegaProductoDAO;
 
 /**
  *
  * @author camorenoc
  */
 @Stateless
-public class TelefonosDAOJPA extends GenericDAO<Telefonos, Integer> implements TelefonosDAO {
+public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> implements BodegaProductoDAO {
 
-  public TelefonosDAOJPA() {
-    super(Telefonos.class);
+  public BodegaProductoDAOJPA() {
+    super(BodegaProducto.class);
   }
 }

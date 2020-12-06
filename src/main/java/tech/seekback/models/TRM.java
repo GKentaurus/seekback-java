@@ -24,7 +24,7 @@ public class TRM implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "idDivisas ", nullable = false)
-  private Divisas divisa;
+  private Divisa divisa;
 
   @Column(name = "fechaTRM", nullable = false)
   @Temporal(TemporalType.TIMESTAMP)
@@ -45,11 +45,11 @@ public class TRM implements Serializable {
     this.id = id;
   }
 
-  public Divisas getDivisa() {
+  public Divisa getDivisa() {
     return divisa;
   }
 
-  public void setDivisa(Divisas divisa) {
+  public void setDivisa(Divisa divisa) {
     this.divisa = divisa;
   }
 
