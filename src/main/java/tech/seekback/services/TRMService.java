@@ -5,6 +5,7 @@
  */
 package tech.seekback.services;
 
+import java.util.List;
 import javax.ejb.*;
 import tech.seekback.dao.interfaces.TRMDAO;
 import tech.seekback.exceptions.ConnectionExcep;
@@ -29,7 +30,15 @@ public class TRMService {
   }
 
   public List<TRM> getAll() throws ConnectionExcep {
-    List<TRM> trms = TRMD
+    List<TRM> trms = trmDao.getAll();
+    return trms;
   }
 
+  public void update(TRM trm) throws ConnectionExcep {
+    trmDao.update(trm);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    trmDao.delete(id);
+  }
 }

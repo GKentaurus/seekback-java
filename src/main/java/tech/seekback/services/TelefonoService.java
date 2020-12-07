@@ -30,8 +30,8 @@ public class TelefonoService {
   }
 
   public List<Telefono> getAll() throws ConnectionExcep {
-    List<Telefono> correos = telefonoDAO.getAll();
-    return correos;
+    List<Telefono> telefonos = telefonoDAO.getAll();
+    return telefonos;
   }
 
   public void update(Telefono telefono) throws ConnectionExcep {
