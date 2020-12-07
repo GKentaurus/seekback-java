@@ -25,6 +25,10 @@ public class EstadosFidelizacionService {
     estadosFidelizacionDAO.create(rol);
   }
 
+  public EstadosFidelizacion getOne(Integer id) throws ConnectionExcep {
+    return estadosFidelizacionDAO.getOne(id);
+  }
+
   public List<EstadosFidelizacion> getAll() throws ConnectionExcep {
     List<EstadosFidelizacion> estadosFidelizaciones = estadosFidelizacionDAO.getAll();
     return estadosFidelizaciones;

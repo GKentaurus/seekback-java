@@ -29,6 +29,11 @@ public class CiudadService {
     return ciudadDAO.getOne(id);
   }
 
+  public List<Ciudad> getAll() throws ConnectionExcep {
+    List<Ciudad> ciudades = ciudadDAO.getAll();
+    return ciudades;
+  }
+
   public List<Ciudad> getByIdDepartamento(Integer idDepartamento) throws ConnectionExcep {
     System.out.println("pues eso " + idDepartamento);
     List<Ciudad> ciudades = ciudadDAO.getByIdDepartamento(idDepartamento);

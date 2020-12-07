@@ -22,12 +22,17 @@ public class DepartamentoService {
   @EJB
   private DepartamentoDAO departamentoDAO;
 
-  private void create(Departamento departamento) throws ConnectionExcep {
+  public void create(Departamento departamento) throws ConnectionExcep {
     departamentoDAO.create(departamento);
   }
 
   public Departamento getOne(Integer id) throws ConnectionExcep {
     return departamentoDAO.getOne(id);
+  }
+
+  public List<Departamento> getAll() throws ConnectionExcep {
+    List<Departamento> departamentos = departamentoDAO.getAll();
+    return departamentos;
   }
 
   public List<Departamento> getByIdPais(Integer idPais) throws ConnectionExcep {
