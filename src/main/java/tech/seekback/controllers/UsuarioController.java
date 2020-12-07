@@ -31,8 +31,8 @@ public class UsuarioController implements Serializable {
   @EJB
   private UsuarioService usuarioService;
   private Usuario usuario;
-  private Direccion direciones;
-  private Telefono telefonos;
+  private Direccion direcion;
+  private Telefono telefono;
   private List<Usuario> usuarios;
 
   public UsuarioController() {

@@ -168,7 +168,9 @@
           </li>
         </ul>
       </li>
-      <li><a class="waves-effect" actionListener="#{loginController.exit()}" ><i class="material-icons">exit_to_app</i>Salir</a></li>
+      <h:form>
+        <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.exit()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
+      </h:form>
     </ul>
 
 

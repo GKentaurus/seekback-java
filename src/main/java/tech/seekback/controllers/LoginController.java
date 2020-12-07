@@ -68,11 +68,11 @@ public class LoginController implements Serializable {
     try {
       this.correo = correosService.getByCorreo(email);
       if (Objects.isNull(email)) {
-        return "login.xhtml?faces-redirect=true";
+        FacesContext.getCurrentInstance().getPartialViewContext().getEvalScripts().add("alert('peek-a-boo');");
       }
 
       if (!this.correo.getUsuario().verificarContrasena(this.password)) {
-        return "login.xhtml?faces-redirect=true";
+        FacesContext.getCurrentInstance().getPartialViewContext().getEvalScripts().add("alert('peek-a-boo');");
       } else {
         usuario = this.correo.getUsuario();
       }
@@ -81,7 +81,6 @@ public class LoginController implements Serializable {
         case "Administrador":
           ExternalContext ad = fc.getExternalContext();
           ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
-          System.out.println(ad.getRequestContextPath() + " / pues eso 1");
           break;
         case "Empleado":
           ExternalContext em = fc.getExternalContext();
@@ -106,7 +105,6 @@ public class LoginController implements Serializable {
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
     ec.invalidateSession();
     ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
-    System.out.println(ec.getRequestContextPath() + " / pues eso");
   }
 
   public boolean isstarted() throws IOException {
@@ -117,6 +115,32 @@ public class LoginController implements Serializable {
     if (!isstarted()) {
       ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
       ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+    }
+  }
+
+  public void checkislogin() throws IOException {
+    System.out.println("iniciada " + isstarted());
+    if (isstarted()) {
+      FacesContext fc = FacesContext.getCurrentInstance();
+      System.out.println("pues eso");
+
+      switch (this.correo.getUsuario().getRol().getNombreRol()) {
+        case "Administrador":
+          ExternalContext ad = fc.getExternalContext();
+          ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
+          System.out.println(ad.getRequestContextPath() + " / pues eso 1");
+          break;
+        case "Empleado":
+          ExternalContext em = fc.getExternalContext();
+          em.redirect(em.getRequestContextPath() + "/frames/empleado.xhtml");
+          break;
+        case "Cliente":
+          ExternalContext cl = fc.getExternalContext();
+          cl.redirect(cl.getRequestContextPath() + "/frames/cliente.xhtml");
+          break;
+        default:
+          this.ruta = "login.xhtml?faces-redirect=true";
+      }
     }
   }
 
