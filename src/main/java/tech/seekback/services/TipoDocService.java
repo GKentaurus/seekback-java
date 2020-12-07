@@ -34,4 +34,12 @@ public class TipoDocService {
     List<TipoDoc> tipoDoc = tipoDocDAO.getAll();
     return tipoDoc;
   }
+
+  public void update(TipoDoc tipoDoc) throws ConnectionExcep {
+    tipoDocDAO.update(tipoDoc);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    tipoDocDAO.delete(id);
+  }
 }

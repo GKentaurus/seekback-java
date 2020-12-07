@@ -6,11 +6,10 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
+import tech.seekback.dao.interfaces.DireccionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Direccion;
-import tech.seekback.dao.interfaces.DireccionDAO;
 
 /**
  *
@@ -33,5 +32,13 @@ public class DireccionService {
   public List<Direccion> getAll() throws ConnectionExcep {
     List<Direccion> direcciones = direccionesDAO.getAll();
     return direcciones;
+  }
+
+  public void update(Direccion direccion) throws ConnectionExcep {
+    direccionesDAO.update(direccion);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    direccionesDAO.delete(id);
   }
 }

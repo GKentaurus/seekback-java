@@ -6,8 +6,7 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import tech.seekback.dao.interfaces.PaisDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Pais;
@@ -35,4 +34,11 @@ public class PaisService {
     return tipoDoc;
   }
 
+  public void update(Pais pais) throws ConnectionExcep {
+    paisDAO.update(pais);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    paisDAO.delete(id);
+  }
 }

@@ -6,8 +6,7 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import tech.seekback.dao.interfaces.CiudadDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
@@ -22,10 +21,25 @@ public class CiudadService {
   @EJB
   private CiudadDAO ciudadDAO;
 
+  public void create(Ciudad ciudad) throws ConnectionExcep {
+    ciudadDAO.create(ciudad);
+  }
+
+  public Ciudad getOne(Integer id) throws ConnectionExcep {
+    return ciudadDAO.getOne(id);
+  }
+
   public List<Ciudad> getByIdDepartamento(Integer idDepartamento) throws ConnectionExcep {
     System.out.println("pues eso " + idDepartamento);
     List<Ciudad> ciudades = ciudadDAO.getByIdDepartamento(idDepartamento);
     return ciudades;
   }
 
+  public void update(Ciudad ciudad) throws ConnectionExcep {
+    ciudadDAO.update(ciudad);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    ciudadDAO.delete(id);
+  }
 }

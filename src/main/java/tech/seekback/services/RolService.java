@@ -8,9 +8,9 @@ package tech.seekback.services;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import tech.seekback.dao.interfaces.RolDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Rol;
-import tech.seekback.dao.interfaces.RolDAO;
 
 /**
  *
@@ -29,5 +29,13 @@ public class RolService {
   public List<Rol> getAll() throws ConnectionExcep {
     List<Rol> roles = rolesDAO.getAll();
     return roles;
+  }
+
+  public void update(Rol rol) throws ConnectionExcep {
+    rolesDAO.update(rol);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    rolesDAO.delete(id);
   }
 }

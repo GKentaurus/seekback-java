@@ -6,11 +6,10 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
+import tech.seekback.dao.interfaces.CorreoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
-import tech.seekback.dao.interfaces.CorreoDAO;
 
 /**
  *

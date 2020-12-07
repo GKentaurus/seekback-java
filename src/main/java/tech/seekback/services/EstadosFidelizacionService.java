@@ -6,8 +6,7 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import tech.seekback.dao.interfaces.EstadosFidelizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosFidelizacion;
@@ -20,14 +19,22 @@ import tech.seekback.models.EstadosFidelizacion;
 public class EstadosFidelizacionService {
 
   @EJB
-  private EstadosFidelizacionDAO rolesDAO;
+  private EstadosFidelizacionDAO estadosFidelizacionDAO;
 
   public void create(EstadosFidelizacion rol) throws ConnectionExcep {
-    rolesDAO.create(rol);
+    estadosFidelizacionDAO.create(rol);
   }
 
   public List<EstadosFidelizacion> getAll() throws ConnectionExcep {
-    List<EstadosFidelizacion> roles = rolesDAO.getAll();
-    return roles;
+    List<EstadosFidelizacion> estadosFidelizaciones = estadosFidelizacionDAO.getAll();
+    return estadosFidelizaciones;
+  }
+
+  public void update(EstadosFidelizacion estadosFidelizacion) throws ConnectionExcep {
+    estadosFidelizacionDAO.update(estadosFidelizacion);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    estadosFidelizacionDAO.delete(id);
   }
 }

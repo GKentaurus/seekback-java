@@ -34,4 +34,11 @@ public class TipoServicioService {
     return tipoServicios;
   }
 
+  public void update(TipoServicio tipoServicio) throws ConnectionExcep {
+    tipoServicioDAO.update(tipoServicio);
+  }
+
+  public void delete(Integer id) throws ConnectionExcep {
+    tipoServicioDAO.delete(id);
+  }
 }
