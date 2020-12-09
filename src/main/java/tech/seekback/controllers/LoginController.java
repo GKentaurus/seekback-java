@@ -14,8 +14,10 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import tech.seekback.models.Correo;
+import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CorreoService;
+import tech.seekback.services.TelefonoService;
 import tech.seekback.services.UsuarioService;
 
 /**
@@ -27,7 +29,7 @@ import tech.seekback.services.UsuarioService;
 public class LoginController implements Serializable {
 
   @EJB
-  private UsuarioService usuarioService;
+  private TelefonoService telefonoService;
 
   @EJB
   private CorreoService correosService;
@@ -37,6 +39,7 @@ public class LoginController implements Serializable {
   private Correo correo;
   private boolean checkLogin;
   private String ruta;
+  private Telefono telefono;
 
   public String getPassword() {
     return password;
@@ -62,6 +65,14 @@ public class LoginController implements Serializable {
     this.usuario = usuario;
   }
 
+  public Telefono getTelefono() {
+    return telefono;
+  }
+
+  public void setTelefono(Telefono telefono) {
+    this.telefono = telefono;
+  }
+
   public String login() {
     FacesContext fc = FacesContext.getCurrentInstance();
     System.out.println("mire vea");
@@ -75,6 +86,7 @@ public class LoginController implements Serializable {
         FacesContext.getCurrentInstance().getPartialViewContext().getEvalScripts().add("alert('peek-a-boo');");
       } else {
         usuario = this.correo.getUsuario();
+        telefono = telefonoService.getByIdUsuario(this.correo.getUsuario().getId());
       }
 
       switch (this.correo.getUsuario().getRol().getNombreRol()) {

@@ -34,6 +34,10 @@ public class TelefonoService {
     return telefonos;
   }
 
+  public Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep {
+    return telefonoDAO.getByIdUsuario(IdUsuario);
+  }
+
   public void update(Telefono telefono) throws ConnectionExcep {
     telefonoDAO.update(telefono);
   }
@@ -41,4 +45,5 @@ public class TelefonoService {
   public void delete(Integer id) throws ConnectionExcep {
     telefonoDAO.delete(id);
   }
+
 }
