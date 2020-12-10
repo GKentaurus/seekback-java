@@ -18,7 +18,6 @@ import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CorreoService;
 import tech.seekback.services.TelefonoService;
-import tech.seekback.services.UsuarioService;
 
 /**
  *
@@ -131,7 +130,7 @@ public class LoginController implements Serializable {
   }
 
   public void checkislogin() throws IOException {
-    System.out.println("iniciada " + isstarted());
+    //System.out.println("iniciada " + isstarted());
     if (isstarted()) {
       FacesContext fc = FacesContext.getCurrentInstance();
       ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();

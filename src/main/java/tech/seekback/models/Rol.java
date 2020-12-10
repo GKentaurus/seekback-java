@@ -17,7 +17,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "roles")
 @NamedQueries(value = {
-  @NamedQuery(name = "Roles.getAll", query = "SELECT obj FROM Rol obj")
+  @NamedQuery(name = "Rol.getAll", query = "SELECT obj FROM Rol obj")
 })
 public class Rol implements Serializable {
 
