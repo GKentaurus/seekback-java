@@ -18,7 +18,6 @@ import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CorreoService;
 import tech.seekback.services.TelefonoService;
-import tech.seekback.services.UsuarioService;
 
 /**
  *
@@ -131,16 +130,16 @@ public class LoginController implements Serializable {
   }
 
   public void checkislogin() throws IOException {
-    System.out.println("iniciada " + isstarted());
+    //System.out.println("iniciada " + isstarted());
     if (isstarted()) {
       FacesContext fc = FacesContext.getCurrentInstance();
-      System.out.println("pues eso");
+      //System.out.println("pues eso");
 
       switch (this.correo.getUsuario().getRol().getNombreRol()) {
         case "Administrador":
           ExternalContext ad = fc.getExternalContext();
           ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
-          System.out.println(ad.getRequestContextPath() + " / pues eso 1");
+          // System.out.println(ad.getRequestContextPath() + " / pues eso 1");
           break;
         case "Empleado":
           ExternalContext em = fc.getExternalContext();
