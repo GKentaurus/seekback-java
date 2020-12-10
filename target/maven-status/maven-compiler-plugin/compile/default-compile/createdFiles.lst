@@ -80,6 +80,7 @@ tech\seekback\models\CategoriasProducto.class
 tech\seekback\builders\EmpleadoBuilder.class
 tech\seekback\dao\interfaces\DocumentoDetalladoDAO.class
 tech\seekback\builders\SoporteTecnicoBuilder.class
+tech\seekback\controllers\SoporteTecnicoController.class
 tech\seekback\dao\jpa\CategoriasProductoDAOJPA.class
 tech\seekback\controllers\RegistrerController.class
 tech\seekback\models\Correo.class

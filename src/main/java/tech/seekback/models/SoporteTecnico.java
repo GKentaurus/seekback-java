@@ -13,8 +13,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "soporte_tecnico")
 @NamedQueries(value = {
-  @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj"),
-  @NamedQuery(name = "SoporteTecnico.getAllData", query = "SELECT us.primerNombre, us.primerNombre, pr.modeloProducto, obj.timestamps.created_at, obj.comentario, ea.nombreEstado FROM SoporteTecnico obj INNER JOIN Usuario us ON obj.cliente.id = us.id INNER JOIN Producto pr ON obj.producto.id = pr.id INNER JOIN EstadosAgenda ea ON obj.estado.id = ea.id")
+  @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj")//,
+//@NamedQuery(name = "SoporteTecnico.getAllData", query = "SELECT us.primerNombre, us.primerNombre, pr.modeloProducto, obj.timestamps.created_at, obj.comentario, ea.nombreEstado FROM SoporteTecnico obj INNER JOIN obj.Usuario us ON obj.cliente.id = us.id INNER JOIN Producto pr ON obj.producto.id = pr.id INNER JOIN EstadosAgenda ea ON obj.estado.id = ea.id")
 })
 public class SoporteTecnico implements Serializable {
 

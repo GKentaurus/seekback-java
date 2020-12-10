@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
   <h:head>
     <title>QPCOM | Seekback</title>
     <meta charset="utf-8"/>
@@ -12,6 +13,11 @@
     <h:outputScript library="materialize" name="js/materialize.min.js" />
     <h:outputScript library="" name="fontawesome.js" />
     <h:outputStylesheet library="styles" name="table.css" />
+    <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <style>
       body {
@@ -47,163 +53,124 @@
     <div class="container" onclick="$('.tap-target').tapTarget('close')">
 
       <div class="row">
-        <div class="col s12">
-          <p class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
-          <div id="admin" class="col s12">
-            <div class="card material-table">
-              <div class="table-header">
-                <span class="table-title">Material Datatable</span>
-                <div class="actions">
-                  <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
-                </div>
+        <p class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
+        <div id="admin" class="col s12">
+          <div class="card material-table">
+            <div class="table-header">
+              <span class="table-title">Soportes Tecnicos</span>
+              <div class="actions">
+                <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
               </div>
-              <table id="datatable">
-                <thead>
-                  <tr>
-                    <th>remitida</th>
-                    <th>Producto</th>
-                    <th>Fecha</th>
-                    <th>Motivo</th>
-                    <th>Editar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>casimiro ramirez</td>
-                    <td>Modem</td>
-                    <td>2020/06/15 05:12</td>
-                    <td>Lorem ipsum dolor sit amet</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-                  </tr>
-                  <tr>
-                    <td>karina santa</td>
-                    <td>USB wifi</td>
-                    <td>2020/06/15 05:12</td>
-                    <td>consectetur adipiscing elit</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-                  </tr>
-                  <tr>
-                    <td>sebastian perez</td>
-                    <td>Router</td>
-                    <td>2020/06/15 05:12</td>
-                    <td>Donec euismod ex vitae neque sodales pretium</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-                  </tr>
-                  <tr>
-                    <td>valentina gomez</td>
-                    <td>Modem</td>
-                    <td>2020/06/15 05:12</td>
-                    <td>Etiam varius ac ipsum ut faucibus</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
+            <h:form>
+              <h:dataTable pt:id="datatable"
+                           value="#{soporteTecnicoController.soportes}"
+                           var="st">
+                <h:column>
+                  <f:facet name="header">Cliente</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Empleado</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres}  #{st.empleado.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres}  #{st.empleado.usuario.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Producto</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Fecha</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Motivo</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Estado</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}"  pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Editar</f:facet>
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}">Visualizar</a>
+                  <div id="modal#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <h4 class="center-align">Soporte tecnico</h4>
+                      <div class="section" style="padding-bottom:0px;">
+                        <div class="row">
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="quien" type="text" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" readonly="true"/>
+                              <label for="quien">Cliente</label>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="quien" type="text" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres}  #{st.empleado.usuario.primerApellido}" readonly="true"/>
+                              <label for="quien">Empleado</label>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="produc" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
+                              <label for="produc">Producto</label>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="datei" type="text" value="#{st.timestamps.created_at}" readonly="true"/>
+                              <label for="datei">Fecha</label>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="datei" type="text" value="#{st.estado.nombreEstado}" readonly="true"/>
+                              <label>Estado</label>
+                            </div>
+                          </div>
+                          <div class="col s12">
+                            <div class="input-field">
+                              <textarea id="motivo" class="menssage"></textarea>
+                              <label for="motivo">#{st.comentario}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                      </div>
+                    </div>
+                  </div>
+                </h:column>
+              </h:dataTable>
+            </h:form>
           </div>
         </div>
       </div>
+    </div>
+    <h:outputScript library="" name="table.js" />
 
-      <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
-      <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
-      <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
-      <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-      <h:outputScript library="" name="table.js" />
 
-      <div class="fixed-action-btn direction-top active">
-        <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
-      </div>
-      <div class="tap-target-wrapper">
-        <div class="tap-target teal" data-target="menu">
-          <div class="tap-target-content">
-            <h5>Bienvenido</h5>
-            <p>Aqui podras descargar el reporte que consultes en este modulo</p>
-          </div>
+    <div class="fixed-action-btn direction-top active">
+      <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
+    </div>
+    <div class="tap-target-wrapper">
+      <div class="tap-target teal" data-target="menu">
+        <div class="tap-target-content">
+          <h5>Bienvenido</h5>
+          <p>Aqui podras descargar el reporte que consultes en este modulo</p>
         </div>
-
-        <script>
-      $(document).ready(function () {
-        $('.tap-target').tapTarget();
-      });
-        </script>
       </div>
     </div>
 
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4 class="center-align">Soporte tecnico</h4>
-        <div class="section" style="padding-bottom:0px;">
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="input-field">
-                <input id="quien" type="text" value="sebastian perez" readonly="true"/>
-                <label for="quien">remitida</label>
-              </div>
-            </div>
-            <div class="col s12 m6">
-              <div class="input-field">
-                <input id="datei" type="text" value="2020/06/15 05:12" readonly="true"/>
-                <label for="datei">Fecha</label>
-              </div>
-            </div>
-            <div class="col s12 m6">
-              <div class="input-field">
-                <input id="produc" type="text" value="Modem" readonly="true"/>
-                <label for="produc">Producto</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12 m6">
-            <div class="input-field">
-              <input id="Arrea" type="text" value="soporte tecnico" />
-              <label for="Arrea">Area</label>
-            </div>
-          </div>
-          <div class="col s12 m6">
-            <div class="input-field">
-              <select id="optio" onchange="shmotivo();">
-                <option value="" disabled="true" selected="true">seleccione una opcion</option>
-                <option value="1">Por revisar</option>
-                <option value="3">En revision</option>
-                <option value="2">Resuelto</option>
-              </select>
-              <label>Estado</label>
-            </div>
-          </div>
-        </div>
-        <div id="mot" class="section" style="display:none; padding-top:0px;padding-bottom:0px;">
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field">
-                <textarea id="motivo" class="menssage"></textarea>
-                <label for="motivo">Mensaje</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
-        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-      </div>
-    </div>
 
     <script>
       $(document).ready(function () {
+        $('.tap-target').tapTarget();
         $('.tooltipped').tooltip();
-      });
-
-      $(document).ready(function () {
         $('select').formSelect();
-      });
-
-      $(document).ready(function () {
         $('.modal').modal();
-      });
-
-      $(document).ready(function () {
         $('.timepicker').timepicker({
           autoClose: true,
           twelveHour: true,
@@ -212,9 +179,6 @@
             done: 'Ok'
           }
         });
-      });
-
-      $(document).ready(function () {
         $('.datepicker').datepicker({
           autoClose: true,
           firstDay: 1,
@@ -229,9 +193,7 @@
           format: 'dd/mm/yyyy'
         });
       });
-    </script>
 
-    <script>
       function shmotivo() {
         var sta = document.getElementById("optio");
         var mot = document.getElementById("mot");
@@ -247,4 +209,5 @@
       }
     </script>
   </h:body>
+
 </html>

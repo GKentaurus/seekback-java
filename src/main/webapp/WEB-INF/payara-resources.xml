@@ -35,6 +35,6 @@
                         wrap-jdbc-objects="false">
     <property name="URL" value="jdbc:mysql://localhost:3306/u925035511_seekback_test?serverTimezone=UTC"/>
     <property name="User" value="root"/>
-    <property name="Password" value=""/>
+    <property name="Password" value="danny"/>
   </jdbc-connection-pool>
 </resources>
