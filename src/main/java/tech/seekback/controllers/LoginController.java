@@ -76,34 +76,34 @@ public class LoginController implements Serializable {
   public String login() {
     FacesContext fc = FacesContext.getCurrentInstance();
     System.out.println("mire vea");
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+
     try {
       this.correo = correosService.getByCorreo(email);
       if (Objects.isNull(email)) {
-        FacesContext.getCurrentInstance().getPartialViewContext().getEvalScripts().add("alert('peek-a-boo');");
+        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
       }
 
       if (!this.correo.getUsuario().verificarContrasena(this.password)) {
-        FacesContext.getCurrentInstance().getPartialViewContext().getEvalScripts().add("alert('peek-a-boo');");
+        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
       } else {
         usuario = this.correo.getUsuario();
         telefono = telefonoService.getByIdUsuario(this.correo.getUsuario().getId());
-      }
 
-      switch (this.correo.getUsuario().getRol().getNombreRol()) {
-        case "Administrador":
-          ExternalContext ad = fc.getExternalContext();
-          ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
-          break;
-        case "Empleado":
-          ExternalContext em = fc.getExternalContext();
-          em.redirect(em.getRequestContextPath() + "/frames/empleado.xhtml");
-          break;
-        case "Cliente":
-          ExternalContext cl = fc.getExternalContext();
-          cl.redirect(cl.getRequestContextPath() + "/frames/cliente.xhtml");
-          break;
-        default:
-          this.ruta = "login.xhtml?faces-redirect=true";
+        switch (this.correo.getUsuario().getRol().getNombreRol()) {
+          case "Administrador":
+            ec.redirect(ec.getRequestContextPath() + "/frames/admin.xhtml");
+            break;
+          case "Empleado":
+            ec.redirect(ec.getRequestContextPath() + "/frames/empleado.xhtml");
+            break;
+          case "Cliente":
+            ec.redirect(ec.getRequestContextPath() + "/frames/cliente.xhtml");
+            break;
+          default:
+            ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+        }
+
       }
 
     } catch (Exception ex) {
@@ -134,24 +134,28 @@ public class LoginController implements Serializable {
     System.out.println("iniciada " + isstarted());
     if (isstarted()) {
       FacesContext fc = FacesContext.getCurrentInstance();
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
       System.out.println("pues eso");
 
-      switch (this.correo.getUsuario().getRol().getNombreRol()) {
-        case "Administrador":
-          ExternalContext ad = fc.getExternalContext();
-          ad.redirect(ad.getRequestContextPath() + "/frames/admin.xhtml");
-          System.out.println(ad.getRequestContextPath() + " / pues eso 1");
-          break;
-        case "Empleado":
-          ExternalContext em = fc.getExternalContext();
-          em.redirect(em.getRequestContextPath() + "/frames/empleado.xhtml");
-          break;
-        case "Cliente":
-          ExternalContext cl = fc.getExternalContext();
-          cl.redirect(cl.getRequestContextPath() + "/frames/cliente.xhtml");
-          break;
-        default:
-          this.ruta = "login.xhtml?faces-redirect=true";
+      if (!this.correo.getUsuario().verificarContrasena(this.password)) {
+        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+        exit();
+      } else {
+
+        switch (this.correo.getUsuario().getRol().getNombreRol()) {
+          case "Administrador":
+            ec.redirect(ec.getRequestContextPath() + "/frames/admin.xhtml");
+            break;
+          case "Empleado":
+            ec.redirect(ec.getRequestContextPath() + "/frames/empleado.xhtml");
+            break;
+          case "Cliente":
+            ec.redirect(ec.getRequestContextPath() + "/frames/cliente.xhtml");
+            break;
+          default:
+            ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+        }
+
       }
     }
   }

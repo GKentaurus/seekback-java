@@ -11,6 +11,7 @@
     <h:outputScript library="" name="jquery.min.js" />
     <h:outputScript library="materialize" name="js/materialize.min.js" />
     <h:outputScript library="" name="fontawesome.js" />
+    <h:outputStylesheet library="styles" name="table.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <style>
       body {
@@ -44,58 +45,71 @@
 
   <h:body  onload="$('.tap-target').tapTarget('open')" onclick="$('.tap-target').tapTarget('close')">
     <div class="container" onclick="$('.tap-target').tapTarget('close')">
+
       <div class="row">
         <div class="col s12">
           <p class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
-          <br/>
-          <div class="input-field">
-            <input class="form-control" id="myInput" type="text"/>
-            <label for="myInput">Buscar...</label>
+          <div id="admin" class="col s12">
+            <div class="card material-table">
+              <div class="table-header">
+                <span class="table-title">Material Datatable</span>
+                <div class="actions">
+                  <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                </div>
+              </div>
+              <table id="datatable">
+                <thead>
+                  <tr>
+                    <th>remitida</th>
+                    <th>Producto</th>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
+                    <th>Editar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>casimiro ramirez</td>
+                    <td>Modem</td>
+                    <td>2020/06/15 05:12</td>
+                    <td>Lorem ipsum dolor sit amet</td>
+                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
+                  </tr>
+                  <tr>
+                    <td>karina santa</td>
+                    <td>USB wifi</td>
+                    <td>2020/06/15 05:12</td>
+                    <td>consectetur adipiscing elit</td>
+                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
+                  </tr>
+                  <tr>
+                    <td>sebastian perez</td>
+                    <td>Router</td>
+                    <td>2020/06/15 05:12</td>
+                    <td>Donec euismod ex vitae neque sodales pretium</td>
+                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
+                  </tr>
+                  <tr>
+                    <td>valentina gomez</td>
+                    <td>Modem</td>
+                    <td>2020/06/15 05:12</td>
+                    <td>Etiam varius ac ipsum ut faucibus</td>
+                    <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <br/>
-          <table class="responsive-table" id="ttabla">
-            <thead>
-              <tr>
-                <th>remitida</th>
-                <th>Producto</th>
-                <th>Fecha</th>
-                <th>Motivo</th>
-                <th>Editar</th>
-              </tr>
-            </thead>
-            <tbody id="myTable">
-              <tr>
-                <td>casimiro ramirez</td>
-                <td>Modem</td>
-                <td>2020/06/15 05:12</td>
-                <td>Lorem ipsum dolor sit amet</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-              <tr>
-                <td>karina santa</td>
-                <td>USB wifi</td>
-                <td>2020/06/15 05:12</td>
-                <td>consectetur adipiscing elit</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-              <tr>
-                <td>sebastian perez</td>
-                <td>Router</td>
-                <td>2020/06/15 05:12</td>
-                <td>Donec euismod ex vitae neque sodales pretium</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-              <tr>
-                <td>valentina gomez</td>
-                <td>Modem</td>
-                <td>2020/06/15 05:12</td>
-                <td>Etiam varius ac ipsum ut faucibus</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
+
+      <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+      <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
+      <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
+      <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+      <h:outputScript library="" name="table.js" />
+
       <div class="fixed-action-btn direction-top active">
         <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
       </div>
@@ -108,9 +122,9 @@
         </div>
 
         <script>
-          $(document).ready(function () {
-            $('.tap-target').tapTarget();
-          });
+      $(document).ready(function () {
+        $('.tap-target').tapTarget();
+      });
         </script>
       </div>
     </div>
@@ -231,17 +245,6 @@
           motivo.value = "";
         }
       }
-    </script>
-
-    <script>
-      $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-          });
-        });
-      });
     </script>
   </h:body>
 </html>

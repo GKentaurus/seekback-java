@@ -8,6 +8,7 @@ package tech.seekback.controllers;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -19,7 +20,7 @@ import tech.seekback.services.TelefonoService;
  *
  * @author danny
  */
-@ViewScoped
+@SessionScoped
 @Named
 public class TelefonoController implements Serializable {
 
