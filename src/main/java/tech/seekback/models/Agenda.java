@@ -12,6 +12,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Agenda"
  *
  * @author danny
  */
@@ -58,74 +59,176 @@ public class Agenda implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la agenda.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la agenda.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>fecha</code> del objeto.
+   *
+   * @return <code>fecha</code> de la agenda.
+   */
   public Date getFecha() {
     return fecha;
   }
 
+  /**
+   * Asigna el valor del atributo <code>fecha</code> del objeto.
+   *
+   * @param fecha de la agenda.
+   */
   public void setFecha(Date fecha) {
     this.fecha = fecha;
   }
 
+  /**
+   * Retorna el valor del atributo <code>observaciones</code> del objeto.
+   *
+   * @return <code>observaciones</code> de la agenda.
+   */
   public String getObservaciones() {
     return observaciones;
   }
 
+  /**
+   * Asigna el valor del atributo <code>observaciones</code> del objeto.
+   *
+   * @param observaciones de la agenda.
+   */
   public void setObservaciones(String observaciones) {
     this.observaciones = observaciones;
   }
 
+  /**
+   * Retorna el valor del atributo <code>estado</code> del objeto.
+   *
+   * @see EstadosAgenda
+   * @return <code>estado</code> de la agenda.
+   */
   public EstadosAgenda getEstado() {
     return estado;
   }
 
+  /**
+   * Asigna el valor del atributo <code>estado</code> del objeto.
+   *
+   * @see EstadosAgenda
+   * @param estado de la agenda.
+   */
   public void setEstado(EstadosAgenda estado) {
     this.estado = estado;
   }
 
+  /**
+   * Retorna el valor del atributo <code>tipoServicio</code> del objeto.
+   *
+   * @see TipoServicio
+   * @return <code>tipoServicio</code> de la agenda.
+   */
   public TipoServicio getTipoServicio() {
     return tipoServicio;
   }
 
+  /**
+   * Asigna el valor del atributo <code>tipoServicio</code> del objeto.
+   *
+   * @see TipoServicio
+   * @param tipoServicio de la agenda.
+   */
   public void setTipoServicio(TipoServicio tipoServicio) {
     this.tipoServicio = tipoServicio;
   }
 
+  /**
+   * Retorna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @see Cliente
+   * @return <code>cliente</code> de la agenda.
+   */
   public Cliente getCliente() {
     return cliente;
   }
 
+  /**
+   * Asigna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @see Cliente
+   * @param cliente de la agenda.
+   */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
   }
 
+  /**
+   * Retorna el valor del atributo <code>empleado</code> del objeto.
+   *
+   * @see Empleado
+   * @return <code>empleado</code> de la agenda.
+   */
   public Empleado getEmpleado() {
     return empleado;
   }
 
+  /**
+   * Asigna el valor del atributo <code>empleado</code> del objeto.
+   *
+   * @see Empleado
+   * @param empleado de la agenda.
+   */
   public void setEmpleado(Empleado empleado) {
     this.empleado = empleado;
   }
 
+  /**
+   * Retorna el valor del atributo <code>administrador</code> del objeto.
+   *
+   * @see Administrador
+   * @return <code>administrador</code> de la agenda.
+   */
   public Administrador getAdministrador() {
     return administrador;
   }
 
+  /**
+   * Asigna el valor del atributo <code>administrador</code> del objeto.
+   *
+   * @see Administrador
+   * @param administrador de la agenda.
+   */
   public void setAdministrador(Administrador administrador) {
     this.administrador = administrador;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la agenda.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la agenda.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -159,6 +262,12 @@ public class Agenda implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Agenda("
             + "id = " + id + ", "

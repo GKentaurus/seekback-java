@@ -11,8 +11,9 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Rol"
  *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Entity
 @Table(name = "roles")
@@ -33,26 +34,58 @@ public class Rol implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del rol.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del rol.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>nombreRol</code> del objeto.
+   *
+   * @return <code>nombreRol</code> del rol.
+   */
   public String getNombreRol() {
     return nombreRol;
   }
 
+  /**
+   * Asigna el valor del atributo <code>nombreRol</code> del objeto.
+   *
+   * @param nombreRol del rol.
+   */
   public void setNombreRol(String nombreRol) {
     this.nombreRol = nombreRol;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del rol.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del rol.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -86,6 +119,12 @@ public class Rol implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Roles("
             + "id = " + id + ", "

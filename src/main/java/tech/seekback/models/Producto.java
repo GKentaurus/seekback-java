@@ -6,6 +6,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Producto"
  *
  * @author veron
  */
@@ -41,58 +42,132 @@ public class Producto implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del producto.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del producto.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>modeloProducto</code> del objeto.
+   *
+   * @return <code>modeloProducto</code> del producto.
+   */
   public String getModeloProducto() {
     return modeloProducto;
   }
 
+  /**
+   * Asigna el valor del atributo <code>modeloProducto</code> del objeto.
+   *
+   * @param modeloProducto del producto.
+   */
   public void setModeloProducto(String modeloProducto) {
     this.modeloProducto = modeloProducto;
   }
 
+  /**
+   * Retorna el valor del atributo <code>descripcion</code> del objeto.
+   *
+   * @return <code>descripcion</code> del producto.
+   */
   public String getDescripcion() {
     return descripcion;
   }
 
+  /**
+   * Asigna el valor del atributo <code>descripcion</code> del objeto.
+   *
+   * @param descripcion del producto.
+   */
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
 
+  /**
+   * Retorna el valor del atributo <code>precioVenta</code> del objeto.
+   *
+   * @return <code>precioVenta</code> del producto.
+   */
   public Double getPrecioVenta() {
     return precioVenta;
   }
 
+  /**
+   * Asigna el valor del atributo <code>precioVenta</code> del objeto.
+   *
+   * @param precioVenta del producto.
+   */
   public void setPrecioVenta(Double precioVenta) {
     this.precioVenta = precioVenta;
   }
 
+  /**
+   * Retorna el valor del atributo <code>categoria</code> del objeto.
+   *
+   * @see CategoriasProducto
+   * @return <code>categoria</code> del producto.
+   */
   public CategoriasProducto getCategoria() {
     return categoria;
   }
 
+  /**
+   * Asigna el valor del atributo <code>categoria</code> del objeto.
+   *
+   * @see CategoriasProducto
+   * @param categoria del producto.
+   */
   public void setCategoria(CategoriasProducto categoria) {
     this.categoria = categoria;
   }
 
+  /**
+   * Retorna el valor del atributo <code>estado</code> del objeto.
+   *
+   * @return <code>estado</code> del producto.
+   */
   public Boolean getEstado() {
     return estado;
   }
 
+  /**
+   * Asigna el valor del atributo <code>estado</code> del objeto.
+   *
+   * @param estado del producto.
+   */
   public void setEstado(Boolean estado) {
     this.estado = estado;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del producto.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del producto.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -126,6 +201,12 @@ public class Producto implements Serializable {
 //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Producto("
             + "id = " + id + ", "

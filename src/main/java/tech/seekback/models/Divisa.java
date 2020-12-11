@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Divisa"
  *
  * @author danny
  */
@@ -36,34 +37,76 @@ public class Divisa implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la divisa.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la divisa.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>nombre</code> del objeto.
+   *
+   * @return <code>nombre</code> de la divisa.
+   */
   public String getNombre() {
     return nombre;
   }
 
+  /**
+   * Asigna el valor del atributo <code>nombre</code> del objeto.
+   *
+   * @param nombre de la divisa.
+   */
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
 
+  /**
+   * Retorna el valor del atributo <code>sigla</code> del objeto.
+   *
+   * @return <code>sigla</code> de la divisa.
+   */
   public String getSigla() {
     return sigla;
   }
 
+  /**
+   * Asigna el valor del atributo <code>sigla</code> del objeto.
+   *
+   * @param sigla de la divisa.
+   */
   public void setSigla(String sigla) {
     this.sigla = sigla;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la divisa.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la divisa.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -97,6 +140,12 @@ public class Divisa implements Serializable {
 
   //</editor-fold>
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Cotizacion("
             + "id = " + id + ", "

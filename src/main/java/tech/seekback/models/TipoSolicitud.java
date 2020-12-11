@@ -6,6 +6,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "TipoSolicitud"
  *
  * @author veron
  */
@@ -28,26 +29,58 @@ public class TipoSolicitud implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del tipo de solicitud.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del tipo de solicitud.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>nombreSolicitud</code> del objeto.
+   *
+   * @return <code>nombreSolicitud</code> del tipo de solicitud.
+   */
   public String getNombreSolicitud() {
     return nombreSolicitud;
   }
 
+  /**
+   * Asigna el valor del atributo <code>nombreSolicitud</code> del objeto.
+   *
+   * @param nombreSolicitud del tipo de solicitud.
+   */
   public void setNombreSolicitud(String nombreSolicitud) {
     this.nombreSolicitud = nombreSolicitud;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del tipo de solicitud.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del tipo de solicitud.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -81,6 +114,12 @@ public class TipoSolicitud implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "TipoSolicitud{"
             + "idTipoSolicitud=" + id + ", "

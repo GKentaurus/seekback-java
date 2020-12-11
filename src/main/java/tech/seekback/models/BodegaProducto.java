@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "BodegaProducto"
  *
  * @author danny
  */
@@ -41,42 +42,98 @@ public class BodegaProducto implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la bodega de productos.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la bodega de productos.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>bodega</code> del objeto.
+   *
+   * @see Bodega
+   * @return <code>bodega</code> de la bodega de productos.
+   */
   public Bodega getBodega() {
     return bodega;
   }
 
+  /**
+   * Asigna el valor del atributo <code>bodega</code> del objeto.
+   *
+   * @see Bodega
+   * @param bodega de la bodega de productos.
+   */
   public void setBodega(Bodega bodega) {
     this.bodega = bodega;
   }
 
+  /**
+   * Retorna el valor del atributo <code>producto</code> del objeto.
+   *
+   * @see Producto
+   * @return <code>producto</code> de la bodega de productos.
+   */
   public Producto getProducto() {
     return producto;
   }
 
+  /**
+   * Asigna el valor del atributo <code>producto</code> del objeto.
+   *
+   * @see Producto
+   * @param producto de la bodega de productos.
+   */
   public void setProducto(Producto producto) {
     this.producto = producto;
   }
 
+  /**
+   * Retorna el valor del atributo <code>cantidad</code> del objeto.
+   *
+   * @return <code>cantidad</code> de la bodega de productos.
+   */
   public Integer getCantidad() {
     return cantidad;
   }
 
+  /**
+   * Asigna el valor del atributo <code>cantidad</code> del objeto.
+   *
+   * @param cantidad de la bodega de productos.
+   */
   public void setCantidad(Integer cantidad) {
     this.cantidad = cantidad;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la bodega de productos.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la bodega de productos.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -110,6 +167,12 @@ public class BodegaProducto implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "BodegaProductos("
             + "id = " + id + ", "

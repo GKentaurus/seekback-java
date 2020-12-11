@@ -6,6 +6,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Felicitacion"
  *
  * @author veron
  */
@@ -35,42 +36,96 @@ public class Felicitacion implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la felicitación.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la felicitación.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>dirigidoA</code> del objeto.
+   *
+   * @return <code>dirigidoA</code> de la felicitación.
+   */
   public String getDirigidoA() {
     return dirigidoA;
   }
 
+  /**
+   * Asigna el valor del atributo <code>dirigidoA</code> del objeto.
+   *
+   * @param dirigidoA de la felicitación.
+   */
   public void setDirigidoA(String dirigidoA) {
     this.dirigidoA = dirigidoA;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la felicitación.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la felicitación.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
 
+  /**
+   * Retorna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @see Cliente
+   * @return <code>cliente</code> de la felicitación.
+   */
   public Cliente getCliente() {
     return cliente;
   }
 
+  /**
+   * Asigna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @see Cliente
+   * @param cliente de la felicitación.
+   */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
   }
 
+  /**
+   * Retorna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @return <code>comentario</code> de la felicitación.
+   */
   public String getComentario() {
     return comentario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @param comentario de la felicitación.
+   */
   public void setComentario(String comentario) {
     this.comentario = comentario;
   }
@@ -104,6 +159,12 @@ public class Felicitacion implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Felicitacion("
             + "id = " + id + ", "
