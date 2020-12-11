@@ -6,14 +6,26 @@
 package tech.seekback.controllers;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import tech.seekback.builders.UsuarioBuilder;
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Cliente;
+import tech.seekback.models.Correo;
+import tech.seekback.models.Direccion;
+import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.CiudadService;
+import tech.seekback.services.ClienteService;
+import tech.seekback.services.CorreoService;
+import tech.seekback.services.DireccionService;
 import tech.seekback.services.RolService;
+import tech.seekback.services.TelefonoService;
 import tech.seekback.services.TipoDocService;
 import tech.seekback.services.UsuarioService;
 
@@ -34,7 +46,27 @@ public class RegisterController implements Serializable {
   @EJB
   private RolService rolService;
 
+  @EJB
+  private CiudadService ciudadService;
+
+  @EJB
+  private DireccionService direccionService;
+
+  @EJB
+  private TelefonoService telefonoService;
+
+  @EJB
+  private CorreoService correoService;
+
+  @EJB
+  private ClienteService clienteService;
+
   private Usuario usuario;
+  private Direccion direccion;
+  private Correo correo;
+  private Telefono telefono;
+  private Cliente cliente;
+
   private Integer idTipoDoc;
   private Integer idCiudad;
   private String email;
@@ -45,8 +77,13 @@ public class RegisterController implements Serializable {
 
   public RegisterController() {
     usuario = new Usuario();
+    direccion = new Direccion();
+    correo = new Correo();
+    telefono = new Telefono();
+    cliente = new Cliente();
   }
 
+//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Usuario getUsuario() {
     return usuario;
   }
@@ -110,22 +147,64 @@ public class RegisterController implements Serializable {
   public void setPasswordConfirm(String passwordConfirm) {
     this.passwordConfirm = passwordConfirm;
   }
+  //</editor-fold>
 
-  public void register() throws ConnectionExcep {
+  /**
+   * Obtiene toda la información suministrada por el usuario al momento de
+   * diligenciar el formulario de registro, y asigna la información por defecto
+   * a los objetos correspondientes.
+   *
+   * @throws ConnectionExcep
+   * @throws NoSuchAlgorithmException
+   * @throws InvalidKeySpecException
+   */
+  public void register() throws ConnectionExcep, NoSuchAlgorithmException, InvalidKeySpecException {
     if (this.password.equals(this.passwordConfirm)) {
-      this.usuario.setTipoDoc(tipoDocService.getOne(this.idTipoDoc));
-      this.usuario.setContrasena(this.password);
-      this.usuario.setRol(rolService.getOne(3));
+      // Creación de Timestamp para todos los procesos
       Timestamps timestamps = new Timestamps();
       Date momentum = new Date();
       timestamps.setCreated_at(momentum);
       timestamps.setUpdated_at(momentum);
+
+      // Creación del objeto Usuario
+      this.usuario.setTipoDoc(tipoDocService.getOne(this.idTipoDoc));
+      this.usuario.setContrasena(password);
+      this.usuario.setRol(rolService.getOne(3));
       this.usuario.setTimestamps(timestamps);
 
       this.usuario = usuarioService.create(usuario);
 
-      System.out.print("El último ID es: ");
-      System.out.println(this.usuario.toString());
+      // Creación del objeto Direccion
+      this.direccion.setUsuario(usuario);
+      this.direccion.setPseudonimo("Principal");
+      this.direccion.setDireccion(address);
+      this.direccion.setTelefono(phoneNumber);
+      this.direccion.setCiudad(ciudadService.getOne(idCiudad));
+      this.direccion.setTimestamps(timestamps);
+
+      this.direccion = direccionService.create(direccion);
+
+      // Creación del objeto Telefono
+      this.telefono.setUsuario(usuario);
+      this.telefono.setNumeroTelefono(phoneNumber);
+      this.telefono.setEsPrincipal(true);
+      this.telefono.setTimestamps(timestamps);
+
+      this.telefono = telefonoService.create(telefono);
+
+      // Creación del objeto Correo
+      this.correo.setUsuario(usuario);
+      this.correo.setCorreoElectronico(email);
+      this.correo.setEsPrincipal(true);
+      this.correo.setTimestamps(timestamps);
+
+      this.correo = correoService.create(correo);
+
+      // Creación del objeto Cliente
+      this.cliente.setUsuario(usuario);
+      this.cliente.setTimestamps(timestamps);
+
+      this.cliente = clienteService.create(cliente);
     }
   }
 }
