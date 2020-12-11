@@ -31,6 +31,10 @@ public class RolService {
     return roles;
   }
 
+  public Rol getOne(Integer id) throws ConnectionExcep {
+    return rolesDAO.getOne(id);
+  }
+
   public void update(Rol rol) throws ConnectionExcep {
     rolesDAO.update(rol);
   }
