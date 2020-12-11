@@ -21,8 +21,8 @@ public class ProveedorService {
   @EJB
   private ProveedorDAO proveedorDAO;
 
-  public void create(Proveedor proveedor) throws ConnectionExcep {
-    proveedorDAO.create(proveedor);
+  public Proveedor create(Proveedor proveedor) throws ConnectionExcep {
+    return proveedorDAO.create(proveedor);
   }
 
   public Proveedor getOne(Integer id) throws ConnectionExcep {

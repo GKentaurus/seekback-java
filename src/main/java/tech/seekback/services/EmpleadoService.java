@@ -23,8 +23,8 @@ public class EmpleadoService {
 
   private EmpleadoDAO empleadoDAO;
 
-  public void create(Empleado empleado) throws ConnectionExcep {
-    empleadoDAO.create(empleado);
+  public Empleado create(Empleado empleado) throws ConnectionExcep {
+    return empleadoDAO.create(empleado);
   }
 
   public Empleado getOne(Integer id) throws ConnectionExcep {

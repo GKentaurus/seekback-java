@@ -22,8 +22,8 @@ public class TipoDocService {
   @EJB
   private TipoDocDAO tipoDocDAO;
 
-  public void create(TipoDoc tipoDoc) throws ConnectionExcep {
-    tipoDocDAO.create(tipoDoc);
+  public TipoDoc create(TipoDoc tipoDoc) throws ConnectionExcep {
+    return tipoDocDAO.create(tipoDoc);
   }
 
   public TipoDoc getOne(Integer id) throws ConnectionExcep {

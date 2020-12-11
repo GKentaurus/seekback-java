@@ -22,8 +22,8 @@ public class CalificacionService {
 
   private CalificacionDAO calificacionDAO;
 
-  public void create(Calificacion calificacion) throws ConnectionExcep {
-    calificacionDAO.create(calificacion);
+  public Calificacion create(Calificacion calificacion) throws ConnectionExcep {
+    return calificacionDAO.create(calificacion);
   }
 
   public Calificacion getOne(Integer id) throws ConnectionExcep {

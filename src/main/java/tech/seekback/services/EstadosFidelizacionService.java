@@ -21,8 +21,8 @@ public class EstadosFidelizacionService {
   @EJB
   private EstadosFidelizacionDAO estadosFidelizacionDAO;
 
-  public void create(EstadosFidelizacion rol) throws ConnectionExcep {
-    estadosFidelizacionDAO.create(rol);
+  public EstadosFidelizacion create(EstadosFidelizacion rol) throws ConnectionExcep {
+    return estadosFidelizacionDAO.create(rol);
   }
 
   public EstadosFidelizacion getOne(Integer id) throws ConnectionExcep {

@@ -22,8 +22,8 @@ public class FelicitacionService {
 
   private FelicitacionDAO felicitacionDAO;
 
-  public void create(Felicitacion felicitacion) throws ConnectionExcep {
-    felicitacionDAO.create(felicitacion);
+  public Felicitacion create(Felicitacion felicitacion) throws ConnectionExcep {
+    return felicitacionDAO.create(felicitacion);
   }
 
   public Felicitacion getOne(Integer id) throws ConnectionExcep {

@@ -22,8 +22,8 @@ public class EstadosAgendaService {
 
   private EstadosAgendaDAO estadosAgendaDAO;
 
-  public void create(EstadosAgenda estadosAgenda) throws ConnectionExcep {
-    estadosAgendaDAO.create(estadosAgenda);
+  public EstadosAgenda create(EstadosAgenda estadosAgenda) throws ConnectionExcep {
+    return estadosAgendaDAO.create(estadosAgenda);
   }
 
   public EstadosAgenda getOne(Integer id) throws ConnectionExcep {

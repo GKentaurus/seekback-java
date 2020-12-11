@@ -21,8 +21,8 @@ public class TRMService {
   @EJB
   private TRMDAO trmDao;
 
-  public void create(TRM trm) throws ConnectionExcep {
-    trmDao.create(trm);
+  public TRM create(TRM trm) throws ConnectionExcep {
+    return trmDao.create(trm);
   }
 
   public TRM getOne(Integer id) throws ConnectionExcep {

@@ -21,8 +21,8 @@ public class PaisService {
   @EJB
   private PaisDAO paisDAO;
 
-  public void create(Pais pais) throws ConnectionExcep {
-    paisDAO.create(pais);
+  public Pais create(Pais pais) throws ConnectionExcep {
+    return paisDAO.create(pais);
   }
 
   public Pais getOne(Integer id) throws ConnectionExcep {

@@ -22,8 +22,8 @@ public class CotizacionService {
 
   private CotizacionDAO cotizacionDAO;
 
-  public void create(Cotizacion cotizacion) throws ConnectionExcep {
-    cotizacionDAO.create(cotizacion);
+  public Cotizacion create(Cotizacion cotizacion) throws ConnectionExcep {
+    return cotizacionDAO.create(cotizacion);
   }
 
   public Cotizacion getOne(Integer id) throws ConnectionExcep {

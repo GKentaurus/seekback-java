@@ -21,8 +21,8 @@ public class PQRSService {
   @EJB
   private PQRSDAO pqrsDAO;
 
-  public void create(PQRS pqrs) throws ConnectionExcep {
-    pqrsDAO.create(pqrs);
+  public PQRS create(PQRS pqrs) throws ConnectionExcep {
+    return pqrsDAO.create(pqrs);
   }
 
   public PQRS getOne(Integer id) throws ConnectionExcep {

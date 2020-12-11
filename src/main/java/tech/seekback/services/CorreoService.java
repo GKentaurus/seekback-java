@@ -21,8 +21,8 @@ public class CorreoService {
   @EJB
   private CorreoDAO correosDAO;
 
-  public void create(Correo correos) throws ConnectionExcep {
-    correosDAO.create(correos);
+  public Correo create(Correo correos) throws ConnectionExcep {
+    return correosDAO.create(correos);
   }
 
   public Correo getOne(Integer id) throws ConnectionExcep {

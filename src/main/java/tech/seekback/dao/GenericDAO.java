@@ -24,28 +24,20 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   protected Class<T> classType;
 
   public GenericDAO(Class<T> classType) {
-    //  EntityManagerFactory emf = Persistence.createEntityManagerFactory(PU);
-    /// em = emf.createEntityManager();
     this.classType = classType;
   }
 
   @Override
-  public void create(T obj) throws ConnectionExcep {
+  public T create(T obj) throws ConnectionExcep {
     System.out.println(
             "\n\n\n\n\n######################################################################"
             + "\n#\t Creando Objeto " + obj.getClass().getSimpleName()
             + "\n######################################################################\n"
     );
-    em.persist(em.merge(obj));
 
-//    EntityTransaction et = em.getTransaction();
-//    try {
-//      et.begin();
-//      em.persist(em.merge(obj));
-//      et.commit();
-//    } catch (Exception e) {
-//      et.rollback();
-//    }
+    T newObj = em.merge(obj);
+    em.persist(newObj);
+    return newObj;
   }
 
   @Override

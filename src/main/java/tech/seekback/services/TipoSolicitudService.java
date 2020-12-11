@@ -21,8 +21,8 @@ public class TipoSolicitudService {
   @EJB
   private TipoSolicitudDAO tipoSolicitudDAO;
 
-  public void create(TipoSolicitud tipoSolicitud) throws ConnectionExcep {
-    tipoSolicitudDAO.create(tipoSolicitud);
+  public TipoSolicitud create(TipoSolicitud tipoSolicitud) throws ConnectionExcep {
+    return tipoSolicitudDAO.create(tipoSolicitud);
   }
 
   public TipoSolicitud getOne(Integer id) throws ConnectionExcep {

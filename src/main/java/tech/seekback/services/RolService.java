@@ -22,8 +22,8 @@ public class RolService {
   @EJB
   private RolDAO rolesDAO;
 
-  public void create(Rol rol) throws ConnectionExcep {
-    rolesDAO.create(rol);
+  public Rol create(Rol rol) throws ConnectionExcep {
+    return rolesDAO.create(rol);
   }
 
   public List<Rol> getAll() throws ConnectionExcep {

@@ -22,8 +22,8 @@ public class DocumentoDetalladoService {
 
   private DocumentoDetalladoDAO documentoDetalladoDAO;
 
-  public void create(DocumentoDetallado documentoDetallado) throws ConnectionExcep {
-    documentoDetalladoDAO.create(documentoDetallado);
+  public DocumentoDetallado create(DocumentoDetallado documentoDetallado) throws ConnectionExcep {
+    return documentoDetalladoDAO.create(documentoDetallado);
   }
 
   public DocumentoDetallado getOne(Integer id) throws ConnectionExcep {

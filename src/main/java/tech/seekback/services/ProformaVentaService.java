@@ -21,8 +21,8 @@ public class ProformaVentaService {
   @EJB
   private ProformaVentaDAO proformaVentaDAO;
 
-  public void create(ProformaVenta proformaVenta) throws ConnectionExcep {
-    proformaVentaDAO.create(proformaVenta);
+  public ProformaVenta create(ProformaVenta proformaVenta) throws ConnectionExcep {
+    return proformaVentaDAO.create(proformaVenta);
   }
 
   public ProformaVenta getOne(Integer id) throws ConnectionExcep {

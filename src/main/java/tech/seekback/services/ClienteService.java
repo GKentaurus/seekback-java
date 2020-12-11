@@ -22,8 +22,8 @@ public class ClienteService {
 
   private ClienteDAO clienteDAO;
 
-  public void create(Cliente cliente) throws ConnectionExcep {
-    clienteDAO.create(cliente);
+  public Cliente create(Cliente cliente) throws ConnectionExcep {
+    return clienteDAO.create(cliente);
   }
 
   public Cliente getOne(Integer id) throws ConnectionExcep {

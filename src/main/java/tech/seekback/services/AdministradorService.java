@@ -22,8 +22,8 @@ public class AdministradorService {
 
   private AdministradorDAO administradorDAO;
 
-  public void create(Administrador administrador) throws ConnectionExcep {
-    administradorDAO.create(administrador);
+  public Administrador create(Administrador administrador) throws ConnectionExcep {
+    return administradorDAO.create(administrador);
   }
 
   public Administrador getOne(Integer id) throws ConnectionExcep {

@@ -21,8 +21,8 @@ public class UsuarioService {
   @EJB
   private UsuarioDAO usuarioDAO;
 
-  public void create(Usuario usuario) throws ConnectionExcep {
-    usuarioDAO.create(usuario);
+  public Usuario create(Usuario usuario) throws ConnectionExcep {
+    return usuarioDAO.create(usuario);
   }
 
   public Usuario getOne(Integer id) throws ConnectionExcep {

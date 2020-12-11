@@ -21,8 +21,8 @@ public class TelefonoService {
   @EJB
   private TelefonoDAO telefonoDAO;
 
-  public void create(Telefono telefono) throws ConnectionExcep {
-    telefonoDAO.create(telefono);
+  public Telefono create(Telefono telefono) throws ConnectionExcep {
+    return telefonoDAO.create(telefono);
   }
 
   public Telefono getOne(Integer id) throws ConnectionExcep {

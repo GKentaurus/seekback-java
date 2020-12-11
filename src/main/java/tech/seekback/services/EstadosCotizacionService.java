@@ -21,8 +21,8 @@ public class EstadosCotizacionService {
   @EJB
   private EstadosCotizacionDAO estadosCotizacionDAO;
 
-  public void create(EstadosCotizacion estadosCotizacion) throws ConnectionExcep {
-    estadosCotizacionDAO.create(estadosCotizacion);
+  public EstadosCotizacion create(EstadosCotizacion estadosCotizacion) throws ConnectionExcep {
+    return estadosCotizacionDAO.create(estadosCotizacion);
   }
 
   public EstadosCotizacion getOne(Integer id) throws ConnectionExcep {

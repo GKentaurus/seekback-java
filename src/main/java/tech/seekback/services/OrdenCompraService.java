@@ -21,8 +21,8 @@ public class OrdenCompraService {
   @EJB
   private OrdenCompraDAO ordenCompraDAO;
 
-  public void create(OrdenCompra ordenCompra) throws ConnectionExcep {
-    ordenCompraDAO.create(ordenCompra);
+  public OrdenCompra create(OrdenCompra ordenCompra) throws ConnectionExcep {
+    return ordenCompraDAO.create(ordenCompra);
   }
 
   public OrdenCompra getOne(Integer id) throws ConnectionExcep {

@@ -122,10 +122,10 @@ public class RegisterController implements Serializable {
       timestamps.setUpdated_at(momentum);
       this.usuario.setTimestamps(timestamps);
 
-      usuarioService.create(usuario);
+      this.usuario = usuarioService.create(usuario);
 
       System.out.print("El último ID es: ");
-      System.out.println(usuario.getId());
+      System.out.println(this.usuario.toString());
     }
   }
 }

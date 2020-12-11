@@ -22,8 +22,8 @@ public class CategoriasProductoService {
 
   private CategoriasProductoDAO categoriasProductoDAO;
 
-  public void create(CategoriasProducto categoriasProducto) throws ConnectionExcep {
-    categoriasProductoDAO.create(categoriasProducto);
+  public CategoriasProducto create(CategoriasProducto categoriasProducto) throws ConnectionExcep {
+    return categoriasProductoDAO.create(categoriasProducto);
   }
 
   public CategoriasProducto getOne(Integer id) throws ConnectionExcep {

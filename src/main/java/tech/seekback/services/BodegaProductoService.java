@@ -22,8 +22,8 @@ public class BodegaProductoService {
 
   private BodegaProductoDAO bodegaProductoDAO;
 
-  public void create(BodegaProducto bodegaProducto) throws ConnectionExcep {
-    bodegaProductoDAO.create(bodegaProducto);
+  public BodegaProducto create(BodegaProducto bodegaProducto) throws ConnectionExcep {
+    return bodegaProductoDAO.create(bodegaProducto);
   }
 
   public BodegaProducto getOne(Integer id) throws ConnectionExcep {

@@ -21,8 +21,8 @@ public class SoporteTecnicoService {
   @EJB
   private SoporteTecnicoDAO soporteTecnicoDAO;
 
-  public void create(SoporteTecnico soporteTecnico) throws ConnectionExcep {
-    soporteTecnicoDAO.create(soporteTecnico);
+  public SoporteTecnico create(SoporteTecnico soporteTecnico) throws ConnectionExcep {
+    return soporteTecnicoDAO.create(soporteTecnico);
   }
 
   public SoporteTecnico getOne(Integer id) throws ConnectionExcep {

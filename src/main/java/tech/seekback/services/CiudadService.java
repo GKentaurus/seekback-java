@@ -21,8 +21,8 @@ public class CiudadService {
   @EJB
   private CiudadDAO ciudadDAO;
 
-  public void create(Ciudad ciudad) throws ConnectionExcep {
-    ciudadDAO.create(ciudad);
+  public Ciudad create(Ciudad ciudad) throws ConnectionExcep {
+    return ciudadDAO.create(ciudad);
   }
 
   public Ciudad getOne(Integer id) throws ConnectionExcep {

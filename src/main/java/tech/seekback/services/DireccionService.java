@@ -21,8 +21,8 @@ public class DireccionService {
   @EJB
   private DireccionDAO direccionesDAO;
 
-  public void create(Direccion direciones) throws ConnectionExcep {
-    direccionesDAO.create(direciones);
+  public Direccion create(Direccion direciones) throws ConnectionExcep {
+    return direccionesDAO.create(direciones);
   }
 
   public Direccion getOne(Integer id) throws ConnectionExcep {

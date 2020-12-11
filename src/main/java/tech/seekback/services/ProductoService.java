@@ -21,8 +21,8 @@ public class ProductoService {
   @EJB
   private ProductoDAO productoDAO;
 
-  public void create(Producto producto) throws ConnectionExcep {
-    productoDAO.create(producto);
+  public Producto create(Producto producto) throws ConnectionExcep {
+    return productoDAO.create(producto);
   }
 
   public Producto getOne(Integer id) throws ConnectionExcep {

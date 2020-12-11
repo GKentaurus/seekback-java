@@ -22,8 +22,8 @@ public class AgendaService {
 
   private AgendaDAO agendaDAO;
 
-  public void create(Agenda agenda) throws ConnectionExcep {
-    agendaDAO.create(agenda);
+  public Agenda create(Agenda agenda) throws ConnectionExcep {
+    return agendaDAO.create(agenda);
   }
 
   public Agenda getOne(Integer id) throws ConnectionExcep {

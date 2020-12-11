@@ -22,8 +22,8 @@ public class DepartamentoService {
   @EJB
   private DepartamentoDAO departamentoDAO;
 
-  public void create(Departamento departamento) throws ConnectionExcep {
-    departamentoDAO.create(departamento);
+  public Departamento create(Departamento departamento) throws ConnectionExcep {
+    return departamentoDAO.create(departamento);
   }
 
   public Departamento getOne(Integer id) throws ConnectionExcep {

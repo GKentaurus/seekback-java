@@ -16,7 +16,7 @@ import tech.seekback.exceptions.ConnectionExcep;
  */
 public interface DAO<T, PK> {
 
-  void create(T obj) throws ConnectionExcep;
+  T create(T obj) throws ConnectionExcep;
 
   T getOne(PK id) throws ConnectionExcep;
 

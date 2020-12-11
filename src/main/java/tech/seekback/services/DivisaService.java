@@ -22,8 +22,8 @@ public class DivisaService {
 
   private DivisaDAO divisaDAO;
 
-  public void create(Divisa divisa) throws ConnectionExcep {
-    divisaDAO.create(divisa);
+  public Divisa create(Divisa divisa) throws ConnectionExcep {
+    return divisaDAO.create(divisa);
   }
 
   public Divisa getOne(Integer id) throws ConnectionExcep {
