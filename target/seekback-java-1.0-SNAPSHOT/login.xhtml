@@ -159,8 +159,7 @@
                         class="ingre validate" autocomplete="off"
                         onkeyup="namesa();"
                         required="true"
-                        value="#{usuarioController.usuario.primerNombre}"
-                        />
+                        value="#{registerController.usuario.primerNombre}"/>
                       <h:outputLabel for="fname" value="1º Nombre"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
@@ -169,7 +168,7 @@
                         id="sname" title="solo se permiten letras"
                         class="ingre validate" autocomplete="off"
                         onkeyup="namesa();"
-                        value="#{usuarioController.usuario.otrosNombres}" />
+                        value="#{registerController.usuario.otrosNombres}" />
                       <h:outputLabel for="sname" value="2º Nombre"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
@@ -180,7 +179,7 @@
                         class="ingre validate"
                         autocomplete="off"
                         required="true"
-                        value="#{usuarioController.usuario.primerApellido}" />
+                        value="#{registerController.usuario.primerApellido}" />
                       <h:outputLabel for="lname" value="1º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
@@ -189,46 +188,69 @@
                         title="solo se permiten letras"
                         class="ingre validate"
                         autocomplete="off"
-                        value="#{usuarioController.usuario.otrosApellidos}" />
+                        value="#{registerController.usuario.otrosApellidos}" />
                       <h:outputLabel for="lsname" value="2º Apellido"/>
                     </div>
                     <div class="input-field col s12 m6">
                       <h:selectOneMenu pt:placeholder=" " id="tdoc"
-                                       value="#{usuarioController.usuario.tipoDoc}">
-                        <f:selectItems value="#{tipoDocController.tipoDocs}"
-                                       var="td"
-                                       itemValue="#{td.id}"
-                                       itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
+                                       value="#{registerController.idTipoDoc}">
+                        <f:selectItem itemLabel="-- Seleccione un tipo de documento --"/>
+                        <f:selectItems
+                          value="#{tipoDocController.tipoDocs}"
+                          var="td"
+                          itemValue="#{td.id}"
+                          itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
                       </h:selectOneMenu>
                       <h:outputLabel for="tdoc" value="Tipo documento:"/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText  id="docu" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0" required="true"/>
+                      <h:inputText
+                        id="docu"
+                        class="ingre validate"
+                        autocomplete="off" pt:min="0"
+                        required="true"
+                        value="#{registerController.usuario.numeroDoc}"/>
                       <h:outputLabel for="docu" value="Documento"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="emailr" pt:type="email" class="ingre validate"  autocomplete="off"   />
+                      <h:inputText
+                        id="emailr"
+                        pt:type="email"
+                        class="ingre validate"
+                        autocomplete="off"
+                        value="#{registerController.email}"/>
                       <h:outputLabel for="emailr" value="Email"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="tel" pt:type="number" class="ingre validate" autocomplete="off" pt:min="0"  />
+                      <h:inputText
+                        id="tel"
+                        class="ingre validate"
+                        autocomplete="off"
+                        pt:min="0"
+                        value="#{registerController.phoneNumber}"/>
                       <h:outputLabel for="tel" value="Telefono"/>
                       <span class="helper-text" data-error="Dato incorrecto" data-success=""></span>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputText id="fdir" class="ingre validate" autocomplete="off"   />
+                      <h:inputText
+                        id="fdir"
+                        class="ingre validate"
+                        autocomplete="off"
+                        value="#{registerController.address}"/>
                       <h:outputLabel for="fdir" value="Direccion"/>
                     </div>
                     <div class="input-field col s12 m6">
                       <h:outputLabel for="pais" value="Pais" style="margin-top: -30px;"/>
                       <h:selectOneMenu pt:placeholder=" " id="pais"  class="browser-default"
                                        value="#{departamentoController.idPaisSeleccionado}">
-                        <f:selectItems value="#{paisController.paises}"
-                                       var="pa"
-                                       itemValue="#{pa.id}"
-                                       itemLabel="#{pa.nombrePais}"/>
+                        <f:selectItem itemLabel="-- Seleccione un país --"/>
+                        <f:selectItems
+                          value="#{paisController.paises}"
+                          var="pa"
+                          itemValue="#{pa.id}"
+                          itemLabel="#{pa.nombrePais}"/>
                         <f:ajax execute="@this" render="depto"/>
                       </h:selectOneMenu>
                     </div>
@@ -236,33 +258,46 @@
                       <h:outputLabel for="depto" value="departamento" style="margin-top: -30px;"/>
                       <h:selectOneMenu pt:placeholder=" " id="depto"  class="browser-default"
                                        value="#{ciudadController.idDepartamentoSeleccionado}">
-                        <f:selectItems value="#{departamentoController.departamentoSeleccionado}"
-                                       var="de"
-                                       itemValue="#{de.id}"
-                                       itemLabel="#{de.nombreDepartamento}"/>
+                        <f:selectItem itemLabel="-- Seleccione un departamento --"/>
+                        <f:selectItems
+                          value="#{departamentoController.departamentoSeleccionado}"
+                          var="de"
+                          itemValue="#{de.id}"
+                          itemLabel="#{de.nombreDepartamento}"/>
                         <f:ajax execute="@this" render="ciu"/>
                       </h:selectOneMenu>
                     </div>
                     <div class="input-field col s12 m6">
                       <h:outputLabel for="ciu" value="ciudad" style="margin-top: -30px;"/>
                       <h:selectOneMenu pt:placeholder=" " id="ciu"  class="browser-default"
-                                       value="#{direccionesController.direccion.ciudad.id}">
-                        <f:selectItems value="#{ciudadController.ciudadSeleccionada}"
-                                       var="pa"
-                                       itemValue="#{pa.id}"
-                                       itemLabel="#{pa.nombreCiudad}"/>
+                                       value="#{registerController.idCiudad}">
+                        <f:selectItem itemLabel="-- Seleccione una ciudad --"/>
+                        <f:selectItems
+                          value="#{ciudadController.ciudadSeleccionada}"
+                          var="pa"
+                          itemValue="#{pa.id}"
+                          itemLabel="#{pa.nombreCiudad}"/>
                       </h:selectOneMenu>
                     </div>
                     <div class="input-field col s12 m6">
-                      <h:inputSecret id="fcontra"  onkeyup="passwo();" class="ingre validate" required="true"/>
+                      <h:inputSecret
+                        id="fcontra"
+                        onkeyup="passwo();"
+                        class="ingre validate"
+                        required="true"
+                        value="#{registerController.password}"/>
                       <h:outputLabel for="fcontra" value="Contraseña "/>
                     </div>
                     <div class="input-field col s12 m6">
-                      <input id="scontra" type="password" onkeyup="passwo();" class="ingre validate"  />
+                      <h:inputSecret
+                        id="scontra"
+                        onkeyup="passwo();"
+                        class="ingre validate"
+                        value="#{registerController.passwordConfirm}"/>
                       <label for="scontra">Confirmar Contraseña</label>
                     </div>
                     <div class="col s12 m6">
-                      <h:commandButton class=" btn waves-effect waves-light blue" pt:data-target="modal2"  id="ing" value="Registrarse"/>
+                      <h:commandButton class="btn waves-effect waves-light blue" value="ingresar" actionListener="#{registerController.register()}" />
                     </div>
                   </h:form>
                   <div class="col s12 m6">
