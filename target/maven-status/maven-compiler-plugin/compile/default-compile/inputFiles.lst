@@ -23,6 +23,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\FelicitacionDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\FelicitacionDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\exceptions\enums\ConnectionExcepEnum.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\FelicitacionController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\CalificacionDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\PQRSBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\CorreoDAOJPA.java
@@ -122,6 +123,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builde
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\BodegaProductoDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Pais.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\BodegaBuilder.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\PqrController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\factories\FactoryDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Departamento.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\exceptions\ConnectionExcep.java
@@ -151,6 +153,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\servic
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\testing\Main.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\ProveedorDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\CotizacionDAO.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\CalificacionController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Agenda.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\CiudadBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\TipoDocDAOJPA.java

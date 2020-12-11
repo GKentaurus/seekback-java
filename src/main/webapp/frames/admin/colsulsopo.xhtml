@@ -53,8 +53,8 @@
     <div class="container" onclick="$('.tap-target').tapTarget('close')">
 
       <div class="row">
-        <p class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
-        <div id="admin" class="col s12">
+        <p
+          <div id="admin" class="col s12">
           <div class="card material-table">
             <div class="table-header">
               <span class="table-title">Soportes Tecnicos</span>
@@ -80,7 +80,7 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
                 </h:column>
                 <h:column>
                   <f:facet name="header">Motivo</f:facet>
@@ -92,7 +92,7 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Editar</f:facet>
-                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}">Visualizar</a>
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}" onclick="document.getElementById('estado#{st.id}').selectedIndex = #{st.estado.id};">Visualizar</a>
                   <div id="modal#{st.id}" class="modal">
                     <div class="modal-content">
                       <h4 class="center-align">Soporte tecnico</h4>
@@ -118,20 +118,29 @@
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="datei" type="text" value="#{st.timestamps.created_at}" readonly="true"/>
                               <label for="datei">Fecha</label>
+                              <br/>
+                              <input id="datei" type="datetime"  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}"/>
                             </div>
                           </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="datei" type="text" value="#{st.estado.nombreEstado}" readonly="true"/>
-                              <label>Estado</label>
-                            </div>
+                          <input type="hidden" value="#{st.estado.id}" />
+                          <div class="input-field col s12 m6">
+                            <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
+                            <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
+                                             valueChangeListener="#{st.estado.id}">
+                              <f:selectItem itemValue="#{null}"
+                                            itemLabel="Seleccione una opcion"
+                                            noSelectionOption="true" />
+                              <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                             var="es"
+                                             itemValue="#{es.id}"
+                                             itemLabel="#{es.nombreEstado}"/>
+                            </h:selectOneMenu>
                           </div>
                           <div class="col s12">
                             <div class="input-field">
-                              <textarea id="motivo" class="menssage"></textarea>
-                              <label for="motivo">#{st.comentario}</label>
+                              <textarea id="motivo" class="menssage">#{st.comentario}</textarea>
+                              <label for="motivo">Motivo</label>
                             </div>
                           </div>
                         </div>
@@ -143,14 +152,17 @@
                     </div>
                   </div>
                 </h:column>
+                <h:column>
+                  <f:facet name="header">Eliminar</f:facet>
+                  <a class="waves-effect waves-light btn red" href="#modal#{st.id}">Eliminar</a>
+                </h:column>
               </h:dataTable>
             </h:form>
           </div>
-        </div>
       </div>
     </div>
-    <h:outputScript library="" name="table.js" />
-
+    </div>
+    <h:outputScript library="" name="table.js" />class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
 
     <div class="fixed-action-btn direction-top active">
       <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>

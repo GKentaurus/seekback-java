@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
   <h:head>
     <title>QPCOM | Seekback</title>
     <meta charset="utf-8"/>
@@ -11,6 +12,12 @@
     <h:outputScript library="" name="jquery.min.js" />
     <h:outputScript library="materialize" name="js/materialize.min.js" />
     <h:outputScript library="" name="fontawesome.js" />
+    <h:outputStylesheet library="styles" name="table.css" />
+    <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <style>
       body {
@@ -45,152 +52,130 @@
   <h:body  onload="$('.tap-target').tapTarget('open')" onclick="$('.tap-target').tapTarget('close')">
     <div class="container" onclick="$('.tap-target').tapTarget('close')">
       <div class="row">
-        <div class="col s12">
-          <p class="center-align" style="font-size:25px;"><i class="fas fa-exclamation-triangle"></i> PQRS <i class="fas fa-exclamation-triangle"></i></p>
-          <br/>
-          <div class="input-field">
-            <input class="form-control" id="myInput" type="text"/>
-            <label for="myInput">Buscar...</label>
+        <p class="center-align" style="font-size:25px;"><i class="fas fa-exclamation-triangle"></i> PQRS <i class="fas fa-exclamation-triangle"></i></p>
+        <div id="admin" class="col s12">
+          <div class="card material-table">
+            <div class="table-header">
+              <span class="table-title">PQRS</span>
+              <div class="actions">
+                <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+              </div>
+            </div>
+            <h:form>
+              <h:dataTable pt:id="datatable"
+                           value="#{pqrController.pqrses}"
+                           var="st">
+                <h:column>
+                  <f:facet name="header">Servicio</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.tipoSolicitud.nombreSolicitud}" pt:data-position="bottom" pt:data-tooltip="#{st.tipoSolicitud.nombreSolicitud}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Solicita</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Fecha</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Comentario</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Estado</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}"  pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Editar</f:facet>
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}" onclick="document.getElementById('estado#{st.id}').selectedIndex = #{st.estado.id};">Visualizar</a>
+                  <div id="modal#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <h4 class="center-align">#{st.tipoSolicitud.nombreSolicitud}</h4>
+                      <div class="section" style="padding-bottom:0px;">
+                        <div class="row">
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="quien" type="text" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" readonly="true"/>
+                              <label for="quien">Cliente</label>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <label for="datei">Fecha</label>
+                              <br/>
+                              <input id="datei" type="datetime"  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}"/>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="produc" type="text" value="#{st.area}" readonly="true"/>
+                              <label for="produc">Producto</label>
+                            </div>
+                          </div>
+                          <input type="hidden" value="#{st.estado.id}" />
+                          <div class="input-field col s12 m6">
+                            <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
+                            <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
+                                             valueChangeListener="#{st.estado.id}">
+                              <f:selectItem itemValue="#{null}"
+                                            itemLabel="Seleccione una opcion"
+                                            noSelectionOption="true" />
+                              <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                             var="es"
+                                             itemValue="#{es.id}"
+                                             itemLabel="#{es.nombreEstado}"/>
+                            </h:selectOneMenu>
+                          </div>
+                          <div class="col s12">
+                            <div class="input-field">
+                              <textarea id="motivo" class="menssage">#{st.comentario}</textarea>
+                              <label for="motivo">Motivo</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                      </div>
+                    </div>
+                  </div>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Eliminar</f:facet>
+                  <a class="waves-effect waves-light btn red" >Eliminar</a>
+                </h:column>
+              </h:dataTable>
+            </h:form>
           </div>
-          <br/>
-          <table class="responsive-table" id="ttabla">
-            <thead>
-              <tr>
-                <th>Servicios</th>
-                <th>Solicita</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-                <th>Editar</th>
-              </tr>
-            </thead>
-            <tbody id="myTable">
-              <tr>
-                <td>Peticion</td>
-                <td>casimiro ramirez</td>
-                <td>2020/06/15 05:12</td>
-                <td>Por revisar</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-              <tr>
-                <td>Queja</td>
-                <td>karina santa</td>
-                <td>2020/06/15 05:12</td>
-                <td>En revision</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-              <tr>
-                <td>Reclamo</td>
-                <td>sebastian perez</td>
-                <td>2020/06/15 05:12</td>
-                <td>Resuelto</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-              <tr>
-                <td>Peticion</td>
-                <td>valentina gomez</td>
-                <td>2020/06/15 05:12</td>
-                <td>En revision</td>
-                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Visualizar</a></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
-      </div>
-      <div class="fixed-action-btn direction-top active">
-        <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
-      </div>
-      <div class="tap-target-wrapper">
-        <div class="tap-target teal" data-target="menu">
-          <div class="tap-target-content">
-            <h5>Bienvenido</h5>
-            <p>Aqui podras descargar el reporte que consultes en este modulo</p>
-          </div>
-        </div>
-
-        <script>
-          $(document).ready(function () {
-            $('.tap-target').tapTarget();
-          });
-        </script>
       </div>
     </div>
+    <h:outputScript library="" name="table.js" />
 
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4 class="center-align">PQRS</h4>
-        <div class="section" style="padding-bottom:0px;">
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="input-field">
-                <input id="quien" type="text" value="sebastian perez" />
-                <label for="quien">Solicita</label>
-              </div>
-            </div>
-            <div class="col s12 m6">
-              <div class="col s6" style="padding: 0.1rem;">
-                <div class="input-field">
-                  <input id="datei" type="text" class="datepicker"/>
-                  <label for="datei">Fecha</label>
-                </div>
-              </div>
-              <div class="col s6" style="padding: 0.1rem;">
-                <div class="input-field">
-                  <input type="text" class="timepicker"/>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="input-field">
-                <input id="Arrea" type="text" value="soporte tecnico" />
-                <label for="Arrea">Area</label>
-              </div>
-            </div>
-            <div class="col s12 m6">
-              <div class="input-field">
-                <select id="optio" onchange="shmotivo();">
-                  <option value="" disabled="true" selected="true">seleccione una opcion</option>
-                  <option value="1">Por revisar</option>
-                  <option value="3">En revision</option>
-                  <option value="2">Resuelto</option>
-                </select>
-                <label>Estado</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="mot" class="section" style="display:none; padding-top:0px;padding-bottom:0px;">
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field">
-                <textarea id="motivo" class="menssage"></textarea>
-                <label for="motivo">Mensaje</label>
-              </div>
-            </div>
-          </div>
+    <div class="fixed-action-btn direction-top active">
+      <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
+    </div>
+    <div class="tap-target-wrapper">
+      <div class="tap-target teal" data-target="menu">
+        <div class="tap-target-content">
+          <h5>Bienvenido</h5>
+          <p>Aqui podras descargar el reporte que consultes en este modulo</p>
         </div>
       </div>
-      <div class="modal-footer">
-        <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
-        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-      </div>
+
+      <script>
+        $(document).ready(function () {
+          $('.tap-target').tapTarget();
+        });
+      </script>
     </div>
 
     <script>
       $(document).ready(function () {
         $('.tooltipped').tooltip();
-      });
-
-      $(document).ready(function () {
         $('select').formSelect();
-      });
-
-      $(document).ready(function () {
         $('.modal').modal();
-      });
-
-      $(document).ready(function () {
         $('.timepicker').timepicker({
           autoClose: true,
           twelveHour: true,
@@ -199,9 +184,6 @@
             done: 'Ok'
           }
         });
-      });
-
-      $(document).ready(function () {
         $('.datepicker').datepicker({
           autoClose: true,
           firstDay: 1,
@@ -216,30 +198,10 @@
           format: 'dd/mm/yyyy'
         });
       });
-    </script>
-
-    <script>
-      function shmotivo() {
-        var sta = document.getElementById("optio");
-        var mot = document.getElementById("mot");
-        var motivo = document.getElementById("motivo");
-
-
-        if (sta.value == "2") {
-          mot.style.display = "inherit";
-        } else {
-          mot.style.display = "none";
-          motivo.value = "";
-        }
-      }
-    </script>
-    <script>
-      $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-          });
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
     </script>

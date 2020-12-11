@@ -30,6 +30,7 @@ tech\seekback\controllers\TelefonoController.class
 tech\seekback\builders\CiudadBuilder.class
 tech\seekback\exceptions\FactoryExcep.class
 tech\seekback\controllers\PaisController.class
+tech\seekback\controllers\CalificacionController.class
 tech\seekback\dao\interfaces\DireccionDAO.class
 tech\seekback\models\templates\TablesEnum.class
 tech\seekback\controllers\UsuarioController.class
@@ -172,6 +173,7 @@ tech\seekback\factories\FactoryDAO.class
 tech\seekback\models\TRM.class
 tech\seekback\builders\AdministradorBuilder.class
 tech\seekback\dao\interfaces\ClienteDAO.class
+tech\seekback\controllers\PqrController.class
 tech\seekback\models\EstadosCotizacion.class
 tech\seekback\dao\GenericDAO.class
 tech\seekback\services\CorreoService.class
@@ -183,6 +185,7 @@ tech\seekback\services\ProductoService.class
 tech\seekback\services\UsuarioService.class
 tech\seekback\tools\Encrypter.class
 tech\seekback\dao\jpa\DocumentoDetalladoDAOJPA.class
+tech\seekback\controllers\FelicitacionController.class
 tech\seekback\builders\TipoSolicitudBuilder.class
 tech\seekback\services\TRMService.class
 tech\seekback\dao\interfaces\EstadosAgendaDAO.class

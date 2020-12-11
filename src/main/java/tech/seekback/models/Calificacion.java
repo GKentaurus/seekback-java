@@ -38,7 +38,7 @@ public class Calificacion implements Serializable {
   private Integer calificacion;
 
   @Column(name = "comentario", nullable = true, length = 255)
-  private Integer comentario;
+  private String comentario;
 
   @Column(name = "esAprobado", nullable = true, length = 255)
   private Boolean esAprobado;
@@ -87,11 +87,11 @@ public class Calificacion implements Serializable {
     this.cliente = cliente;
   }
 
-  public Integer getComentario() {
+  public String getComentario() {
     return comentario;
   }
 
-  public void setComentario(Integer comentario) {
+  public void setComentario(String comentario) {
     this.comentario = comentario;
   }
 

@@ -12,9 +12,11 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import tech.seekback.models.EstadosFidelizacion;
-import tech.seekback.models.SoporteTecnico;
+import tech.seekback.models.PQRS;
+import tech.seekback.models.TipoSolicitud;
 import tech.seekback.services.EstadosFidelizacionService;
-import tech.seekback.services.SoporteTecnicoService;
+import tech.seekback.services.PQRSService;
+import tech.seekback.services.TipoSolicitudService;
 
 /**
  *
@@ -22,27 +24,30 @@ import tech.seekback.services.SoporteTecnicoService;
  */
 @Named
 @ViewScoped
-public class SoporteTecnicoController implements Serializable {
+public class PqrController implements Serializable {
 
   @EJB
-  private SoporteTecnicoService soporteTecnicoService;
+  private PQRSService pQRSService;
 
   @EJB
   private EstadosFidelizacionService estadosFidelizacionService;
-  private SoporteTecnico soporteTecnico;
-  private List<SoporteTecnico> soportes;
-  private List<EstadosFidelizacion> estados;
 
-  public List<SoporteTecnico> getSoportes() {
+  @EJB
+  private TipoSolicitudService tipoSolicitudService;
+  private List<PQRS> pqrses;
+  private List<EstadosFidelizacion> estados;
+  private List<TipoSolicitud> tipoSolicitudes;
+
+  public List<PQRS> getPqrses() {
     try {
-      if (Objects.isNull(soportes)) {
-        soportes = soporteTecnicoService.getAll();
+      if (Objects.isNull(pqrses)) {
+        pqrses = pQRSService.getAll();
       }
     } catch (Exception ex) {
-      System.out.println("Error al consultar los soporteTecnico.....");
+      System.out.println("Error al consultar los pqrses.....");
       ex.printStackTrace();
     }
-    return soportes;
+    return pqrses;
   }
 
   public List<EstadosFidelizacion> getEstadosFidelizacion() {
@@ -55,6 +60,18 @@ public class SoporteTecnicoController implements Serializable {
       ex.printStackTrace();
     }
     return estados;
+  }
+
+  public List<TipoSolicitud> getTipoSolicitudes() {
+    try {
+      if (Objects.isNull(tipoSolicitudes)) {
+        tipoSolicitudes = tipoSolicitudService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los tipoSolicitudes.....");
+      ex.printStackTrace();
+    }
+    return tipoSolicitudes;
   }
 
 }
