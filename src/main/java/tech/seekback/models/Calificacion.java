@@ -41,7 +41,7 @@ public class Calificacion implements Serializable {
   @Column(name = "comentario", nullable = true, length = 255)
   private String comentario;
 
-  @Column(name = "esAprobado", nullable = true, length = 255)
+  @Column(name = "esAprobado", nullable = false)
   private Boolean esAprobado;
 
   @Embedded
@@ -210,8 +210,7 @@ public class Calificacion implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

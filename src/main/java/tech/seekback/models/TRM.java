@@ -28,7 +28,7 @@ public class TRM implements Serializable {
   private Divisa divisa;
 
   @Column(name = "fechaTRM", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date fecha;
 
   @Column(name = "tasaCambio", nullable = false)
@@ -162,8 +162,7 @@ public class TRM implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */
