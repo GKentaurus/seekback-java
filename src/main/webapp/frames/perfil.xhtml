@@ -36,13 +36,13 @@
             <div class="row">
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="fname"  class="validate" value="juan" autocomplete="off"/>
+                  <h:inputText id="fname"  class="validate" value="#{loginController.usuario.primerNombre}" autocomplete="off"/>
                   <h:outputLabel for="fname" value="1º Nombre" />
                 </div>
               </div>
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="sname" class="validate" value="camilo" autocomplete="off"/>
+                  <h:inputText id="sname" class="validate" value="#{loginController.usuario.otrosNombres}" autocomplete="off"/>
                   <h:outputLabel for="sname" value="2º Nombre" />
                 </div>
               </div>
@@ -50,13 +50,13 @@
             <div class="row">
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="flname" class="validate" value="roncancio" autocomplete="off"/>
+                  <h:inputText id="flname" class="validate" value="#{loginController.usuario.primerApellido}" autocomplete="off"/>
                   <h:outputLabel for="flname" value="1º Apellido"/>
                 </div>
               </div>
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="slname" class="validate" value="lumino" autocomplete="off"/>
+                  <h:inputText id="slname" class="validate" value="#{loginController.usuario.otrosApellidos}" autocomplete="off"/>
                   <h:outputLabel for="slname" value="2º Apellido" />
                 </div>
               </div>
@@ -64,7 +64,7 @@
             <div class="row">
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="tel" class="validate" value="300 000 0000"/>
+                  <h:inputText id="tel" class="validate" value="#{loginController.telefono.numeroTelefono}"/>
                   <h:outputLabel for="tel" value="Telefono" />
                 </div>
               </div>
@@ -78,7 +78,7 @@
             <div class="row">
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="fdire" class="validate" value="calle52" autocomplete="off"/>
+                  <h:inputText id="fdire" class="validate" value="#{direccionesController.direccion.direccion}" autocomplete="off"/>
                   <h:outputLabel for="fdire" value="1º Direccion" />
                 </div>
               </div>
@@ -92,13 +92,13 @@
             <div class="row">
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="docu" pt:type="number" class="validate" value="124579248" autocomplete="off"/>
+                  <h:inputText id="docu" pt:type="number" class="validate" value="#{loginController.usuario.numeroDoc}" autocomplete="off"/>
                   <h:outputLabel for="docu" value="Documento"/>
                 </div>
               </div>
               <div class="col s6 col m6">
                 <div class="input-field">
-                  <h:inputText id="email" pt:type="email" class="validate" value="j@dasd.com" />
+                  <h:inputText id="email" pt:type="email" class="validate" value="#{loginController.email}" />
                   <h:outputLabel for="email" value="Email" />
                   <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
                 </div>

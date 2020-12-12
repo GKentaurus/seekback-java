@@ -5,7 +5,7 @@
  */
 package tech.seekback.builders;
 
-import tech.seekback.models.Correos;
+import tech.seekback.models.Correo;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 
@@ -15,10 +15,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class CorreosBuilder {
 
-  private Correos correos;
+  private Correo correos;
 
   private CorreosBuilder() {
-    this.correos = new Correos();
+    this.correos = new Correo();
   }
 
   public static CorreosBuilder builder() {
@@ -45,7 +45,7 @@ public class CorreosBuilder {
     return this;
   }
 
-  public Correos build() {
+  public Correo build() {
     return this.correos;
   }
 }

@@ -6,7 +6,7 @@
 package tech.seekback.builders;
 
 import java.util.Date;
-import tech.seekback.models.Divisas;
+import tech.seekback.models.Divisa;
 import tech.seekback.models.TRM;
 import tech.seekback.models.templates.Timestamps;
 
@@ -31,7 +31,7 @@ public class TRMBuilder {
     return this;
   }
 
-  public TRMBuilder divisa(Divisas divisa) {
+  public TRMBuilder divisa(Divisa divisa) {
     this.trm.setDivisa(divisa);
     return this;
   }

@@ -5,7 +5,7 @@
  */
 package tech.seekback.builders;
 
-import tech.seekback.models.Divisas;
+import tech.seekback.models.Divisa;
 import tech.seekback.models.templates.Timestamps;
 
 /**
@@ -14,10 +14,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class DivisasBuilder {
 
-  private Divisas divisas;
+  private Divisa divisas;
 
   private DivisasBuilder() {
-    this.divisas = new Divisas();
+    this.divisas = new Divisa();
   }
 
   public static DivisasBuilder builder() {
@@ -44,7 +44,7 @@ public class DivisasBuilder {
     return this;
   }
 
-  public Divisas build() {
+  public Divisa build() {
     return this.divisas;
   }
 }

@@ -6,7 +6,7 @@
 package tech.seekback.builders;
 
 import tech.seekback.models.Bodega;
-import tech.seekback.models.BodegaProductos;
+import tech.seekback.models.BodegaProducto;
 import tech.seekback.models.Producto;
 import tech.seekback.models.templates.Timestamps;
 
@@ -16,10 +16,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class BodegaProductosBuilder {
 
-  private BodegaProductos bodegaProductos;
+  private BodegaProducto bodegaProductos;
 
   private BodegaProductosBuilder() {
-    this.bodegaProductos = new BodegaProductos();
+    this.bodegaProductos = new BodegaProducto();
   }
 
   public static BodegaProductosBuilder builder() {
@@ -51,7 +51,7 @@ public class BodegaProductosBuilder {
     return this;
   }
 
-  public BodegaProductos build() {
+  public BodegaProducto build() {
     return this.bodegaProductos;
   }
 }

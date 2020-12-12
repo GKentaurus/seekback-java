@@ -5,7 +5,7 @@
  */
 package tech.seekback.builders;
 
-import tech.seekback.models.Roles;
+import tech.seekback.models.Rol;
 import tech.seekback.models.templates.Timestamps;
 
 /**
@@ -14,10 +14,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class RolesBuilder {
 
-  private Roles roles;
+  private Rol roles;
 
   private RolesBuilder() {
-    this.roles = new Roles();
+    this.roles = new Rol();
   }
 
   public static RolesBuilder builder() {
@@ -39,7 +39,7 @@ public class RolesBuilder {
     return this;
   }
 
-  public Roles build() {
+  public Rol build() {
     return this.roles;
   }
 }

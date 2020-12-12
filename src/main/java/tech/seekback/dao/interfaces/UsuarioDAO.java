@@ -5,14 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
 
 /**
  *
  * @author camorenoc
  */
-@Remote
+@Local
 public interface UsuarioDAO extends DAO<Usuario, Integer> {
+
 }

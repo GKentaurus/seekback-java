@@ -30,8 +30,8 @@ public class FactoryDAOJPA implements FactoryDAO {
   }
 
   @Override
-  public BodegaProductosDAO getBodegaProductosDAO() {
-    return new BodegaProductosDAOJPA();
+  public BodegaProductoDAO getBodegaProductosDAO() {
+    return new BodegaProductoDAOJPA();
   }
 
   @Override
@@ -55,8 +55,8 @@ public class FactoryDAOJPA implements FactoryDAO {
   }
 
   @Override
-  public CorreosDAO getCorreosDAO() {
-    return new CorreosDAOJPA();
+  public CorreoDAO getCorreosDAO() {
+    return new CorreoDAOJPA();
   }
 
   @Override
@@ -70,13 +70,13 @@ public class FactoryDAOJPA implements FactoryDAO {
   }
 
   @Override
-  public DireccionesDAO getDireccionesDAO() {
-    return new DireccionesDAOJPA();
+  public DireccionDAO getDireccionesDAO() {
+    return new DireccionDAOJPA();
   }
 
   @Override
-  public DivisasDAO getDivisasDAO() {
-    return new DivisasDAOJPA();
+  public DivisaDAO getDivisasDAO() {
+    return new DivisaDAOJPA();
   }
 
   @Override
@@ -140,8 +140,8 @@ public class FactoryDAOJPA implements FactoryDAO {
   }
 
   @Override
-  public RolesDAO getRolesDAO() {
-    return new RolesDAOJPA();
+  public RolDAO getRolesDAO() {
+    return new RolDAOJPA();
   }
 
   @Override
@@ -155,8 +155,8 @@ public class FactoryDAOJPA implements FactoryDAO {
   }
 
   @Override
-  public TelefonosDAO getTelefonosDAO() {
-    return new TelefonosDAOJPA();
+  public TelefonoDAO getTelefonosDAO() {
+    return new TelefonoDAOJPA();
   }
 
   @Override
