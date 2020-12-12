@@ -12,18 +12,12 @@
       <h1>Pruebas</h1>
 
       <ui:component>
-
-        <div class="input-field col s12 m6">
-          <h:selectOneMenu  id="tdoc"
-                            value="#{usuarioController.usuario.tipoDoc}">
-            <f:selectItems value="#{tipoDocController.tipoDocs}"
-                           var="td"
-                           itemValue="#{td.id}"
-                           itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
-          </h:selectOneMenu>
-          <h:outputLabel for="tdoc" value="Tipo documento:"/>
+        <div class="col s6 col m6">
+          <div class="input-field">
+            <h:inputText id="flname" class="validate" value="#{testController.usuario}" autocomplete="off"/>
+            <h:outputLabel for="flname" value="1º Apellido"/>
+          </div>
         </div>
-
       </ui:component>
 
     </h:body>

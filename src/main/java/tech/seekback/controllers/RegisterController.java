@@ -5,14 +5,16 @@
  */
 package tech.seekback.controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.builders.UsuarioBuilder;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cliente;
 import tech.seekback.models.Correo;
@@ -150,15 +152,14 @@ public class RegisterController implements Serializable {
   //</editor-fold>
 
   /**
-   * Obtiene toda la información suministrada por el usuario al momento de
-   * diligenciar el formulario de registro, y asigna la información por defecto
-   * a los objetos correspondientes.
+   * Obtiene toda la información suministrada por el usuario al momento de diligenciar el formulario de registro, y
+   * asigna la información por defecto a los objetos correspondientes.
    *
    * @throws ConnectionExcep
    * @throws NoSuchAlgorithmException
    * @throws InvalidKeySpecException
    */
-  public void register() throws ConnectionExcep, NoSuchAlgorithmException, InvalidKeySpecException {
+  public void register() throws ConnectionExcep, NoSuchAlgorithmException, InvalidKeySpecException, IOException {
     if (this.password.equals(this.passwordConfirm)) {
       // Creación de Timestamp para todos los procesos
       Timestamps timestamps = new Timestamps();
@@ -205,6 +206,9 @@ public class RegisterController implements Serializable {
       this.cliente.setTimestamps(timestamps);
 
       this.cliente = clienteService.create(cliente);
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
     }
   }
 }

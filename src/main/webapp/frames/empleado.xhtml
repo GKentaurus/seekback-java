@@ -4,7 +4,7 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-  <f:event type="preRenderView" listener="#{loginController.validate()}"/>
+  <f:event type="preRenderView" listener="#{loginController.validate(2)}"/>
 
   <h:head>
     <title>QPCOM | Seekback</title>
@@ -179,7 +179,7 @@
         </ul>
       </li>
       <h:form>
-        <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.exit()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
+        <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.logout()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
       </h:form>
     </ul>
 

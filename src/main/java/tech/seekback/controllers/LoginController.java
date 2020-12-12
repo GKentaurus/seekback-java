@@ -13,11 +13,13 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
 import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CorreoService;
 import tech.seekback.services.TelefonoService;
+import tech.seekback.services.UsuarioService;
 
 /**
  *
@@ -28,18 +30,23 @@ import tech.seekback.services.TelefonoService;
 public class LoginController implements Serializable {
 
   @EJB
+  private UsuarioService usuarioService;
+
+  @EJB
   private TelefonoService telefonoService;
 
   @EJB
   private CorreoService correosService;
-  private String password;
-  private String email;
+
   private Usuario usuario;
   private Correo correo;
-  private boolean checkLogin;
-  private String ruta;
   private Telefono telefono;
 
+  private String password;
+  private String email;
+  private String ruta;
+
+//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public String getPassword() {
     return password;
   }
@@ -71,91 +78,87 @@ public class LoginController implements Serializable {
   public void setTelefono(Telefono telefono) {
     this.telefono = telefono;
   }
+//</editor-fold>
 
-  public String login() {
+  public void login() throws ConnectionExcep, IOException {
     FacesContext fc = FacesContext.getCurrentInstance();
-    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    // TODO: Enviar los mensajes de error o confirmación a través de addMessage()
 
-    try {
-      this.correo = correosService.getByCorreo(email);
-      if (Objects.isNull(email)) {
-        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
-      }
-
-      if (!this.correo.getUsuario().verificarContrasena(this.password)) {
-        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
-      } else {
-        usuario = this.correo.getUsuario();
-        telefono = telefonoService.getByIdUsuario(this.correo.getUsuario().getId());
-
-        switch (this.correo.getUsuario().getRol().getNombreRol()) {
-          case "Administrador":
-            ec.redirect(ec.getRequestContextPath() + "/frames/admin.xhtml");
-            break;
-          case "Empleado":
-            ec.redirect(ec.getRequestContextPath() + "/frames/empleado.xhtml");
-            break;
-          case "Cliente":
-            ec.redirect(ec.getRequestContextPath() + "/frames/cliente.xhtml");
-            break;
-          default:
-            ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+    // Validar si el correo existe
+    this.correo = new Correo();
+    this.correo = correosService.getByCorreo(email);
+    if (Objects.nonNull(correo)) {
+      this.usuario = new Usuario();
+      this.usuario = usuarioService.getOne(correo.getUsuario().getId());
+      if (Objects.nonNull(usuario)) {
+        if (usuario.verificarContrasena(password)) {
+          redirectTo(usuario.getRol().getId());
+        } else {
+          this.usuario = null;
+          redirectTo("/index.xhtml");
         }
-
+      } else {
+        this.usuario = null;
+        System.out.println("!!! Usuario no existente !!!");
       }
 
-    } catch (Exception ex) {
-      System.out.println("Error de la consulta email.");
-      ex.printStackTrace();
+    } else {
+      this.correo = null;
+      System.out.println("!!! Correo no existente !!!");
     }
-    return "";
   }
 
-  public void exit() throws IOException {
-    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+  public void logout() throws IOException {
+    FacesContext fc = FacesContext.getCurrentInstance();
+    ExternalContext ec = fc.getExternalContext();
     ec.invalidateSession();
     ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+
   }
 
-  public boolean isstarted() throws IOException {
-    return Objects.nonNull(this.email);
+  public boolean isLogged() throws IOException {
+    return Objects.nonNull(usuario);
   }
 
   public void validate() throws IOException {
-    if (!isstarted()) {
-      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-      ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
+    if (isLogged()) {
+      redirectTo(usuario.getRol().getId());
     }
   }
 
-  public void checkislogin() throws IOException {
-    //System.out.println("iniciada " + isstarted());
-    if (isstarted()) {
-      FacesContext fc = FacesContext.getCurrentInstance();
-      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-      System.out.println("pues eso");
-
-      if (!this.correo.getUsuario().verificarContrasena(this.password)) {
-        ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
-        exit();
-      } else {
-
-        switch (this.correo.getUsuario().getRol().getNombreRol()) {
-          case "Administrador":
-            ec.redirect(ec.getRequestContextPath() + "/frames/admin.xhtml");
-            break;
-          case "Empleado":
-            ec.redirect(ec.getRequestContextPath() + "/frames/empleado.xhtml");
-            break;
-          case "Cliente":
-            ec.redirect(ec.getRequestContextPath() + "/frames/cliente.xhtml");
-            break;
-          default:
-            ec.redirect(ec.getRequestContextPath() + "/login.xhtml");
-        }
-
+  public void validate(Integer rol) throws IOException {
+    if (isLogged()) {
+      if (!Objects.equals(rol, usuario.getRol().getId())) {
+        redirectTo("/index.xhtml");
       }
+    } else {
+      redirectTo("/login.xhtml");
     }
+  }
+
+  public void redirectTo(String ruta) throws IOException {
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + ruta);
+  }
+
+  public void redirectTo(Integer rol) throws IOException {
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+
+    switch (rol) {
+      case 1: // Administrador
+        this.ruta = "/frames/admin.xhtml";
+        break;
+      case 2: // Empleado
+        this.ruta = "/frames/empleado.xhtml";
+        break;
+      case 3: // Cliente
+        this.ruta = "/frames/cliente.xhtml";
+        break;
+      default:
+        this.ruta = "/index.xhtml";
+        break;
+    }
+    ec.redirect(ec.getRequestContextPath() + ruta);
   }
 
 }
