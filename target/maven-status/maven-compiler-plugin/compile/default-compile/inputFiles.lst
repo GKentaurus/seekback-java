@@ -7,6 +7,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\jpa\ProductoDAOJPA.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\TipoDocDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Usuario.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\ClienteController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\EstadosFidelizacionBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\AdministradorDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\services\BodegaService.java
@@ -120,6 +121,7 @@ E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\servic
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\ClienteDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\BodegaProductosBuilder.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\RegisterController.java
+E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\controllers\AgendaController.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\dao\interfaces\BodegaProductoDAO.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\models\Pais.java
 E:\Users\danny\Documents\GitHub\seekback-java\src\main\java\tech\seekback\builders\BodegaBuilder.java

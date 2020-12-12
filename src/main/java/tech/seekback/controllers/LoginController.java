@@ -74,7 +74,6 @@ public class LoginController implements Serializable {
 
   public String login() {
     FacesContext fc = FacesContext.getCurrentInstance();
-    System.out.println("mire vea");
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 
     try {

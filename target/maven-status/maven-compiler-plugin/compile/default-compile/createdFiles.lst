@@ -24,6 +24,7 @@ tech\seekback\services\OrdenCompraService.class
 tech\seekback\dao\jpa\OrdenCompraDAOJPA.class
 tech\seekback\models\Administrador.class
 tech\seekback\builders\CalificacionBuilder.class
+tech\seekback\controllers\ClienteController.class
 tech\seekback\services\PaisService.class
 tech\seekback\controllers\TelefonoController.class
 tech\seekback\builders\CiudadBuilder.class
@@ -170,6 +171,7 @@ tech\seekback\builders\EstadosAgendaBuilder.class
 tech\seekback\factories\FactoryDAO.class
 tech\seekback\models\TRM.class
 tech\seekback\builders\AdministradorBuilder.class
+tech\seekback\controllers\AgendaController.class
 tech\seekback\dao\interfaces\ClienteDAO.class
 tech\seekback\controllers\PqrController.class
 tech\seekback\models\EstadosCotizacion.class
