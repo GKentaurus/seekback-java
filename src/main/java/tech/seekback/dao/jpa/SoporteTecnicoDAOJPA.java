@@ -24,14 +24,4 @@ public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> im
   public SoporteTecnicoDAOJPA() {
     super(SoporteTecnico.class);
   }
-
-//  @Override
-//  public List<SoporteTecnico> getAllData() throws ConnectionExcep {
-//    try {
-//      TypedQuery<SoporteTecnico> tq = em.createNamedQuery("SoporteTecnico.getAllData", classType);
-//      return tq.getResultList();
-//    } catch (Exception e) {
-//      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
-//    }
-//  }
 }

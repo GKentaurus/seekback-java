@@ -17,7 +17,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "administrador")
 @NamedQueries(value = {
-  @NamedQuery(name = "Administrador.getAll", query = "SELECT obj FROM Administrador obj")
+  @NamedQuery(name = "Administrador.getAll", query = "SELECT obj FROM Administrador obj WHERE obj.timestamps.deleted_at IS NULL")
 })
 public class Administrador implements Serializable {
 

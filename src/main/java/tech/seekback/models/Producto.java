@@ -12,7 +12,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "producto")
 @NamedQueries(value = {
-  @NamedQuery(name = "Producto.getAll", query = "SELECT obj FROM Producto obj")
+  @NamedQuery(name = "Producto.getAll", query = "SELECT obj FROM Producto obj WHERE obj.timestamps.deleted_at IS NULL")
 })
 public class Producto implements Serializable {
 
@@ -26,6 +26,9 @@ public class Producto implements Serializable {
 
   @Column(name = "descripcion", nullable = false, length = 255)
   private String descripcion;
+
+  @Column(name = "serial", nullable = false, length = 255)
+  private String serial;
 
   @Column(name = "precioVenta", nullable = false, length = 11)
   private Double precioVenta;
@@ -63,6 +66,14 @@ public class Producto implements Serializable {
 
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
+  }
+
+  public String getSerial() {
+    return serial;
+  }
+
+  public void setSerial(String serial) {
+    this.serial = serial;
   }
 
   public Double getPrecioVenta() {
@@ -131,6 +142,7 @@ public class Producto implements Serializable {
             + "id = " + id + ", "
             + "modeloProducto = " + modeloProducto + ", "
             + "descripcion = " + descripcion + ", "
+            + "serial = " + serial + ", "
             + "precioVenta = " + precioVenta + ", "
             + "categoria = " + categoria + ", "
             + "estado = " + estado + ", "

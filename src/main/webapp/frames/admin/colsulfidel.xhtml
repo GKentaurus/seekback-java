@@ -19,6 +19,41 @@
     <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <script>
+      $(document).ready(function () {
+        $('.tooltipped').tooltip();
+        $('select').formSelect();
+        $('.modal').modal();
+        $('.timepicker').timepicker({
+          autoClose: true,
+          twelveHour: true,
+          i18n: {
+            cancel: 'Cancelar',
+            done: 'Ok'
+          }
+        });
+        $('.datepicker').datepicker({
+          autoClose: true,
+          firstDay: 1,
+          i18n: {
+            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
+            cancel: 'Cancelar'
+          },
+          format: 'dd/mm/yyyy'
+        });
+      });
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    </script>
     <style>
       body {
         background-image: url("#{resource['images/logob.png']}");
@@ -143,7 +178,18 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red" >Eliminar</a>
+                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                  <div id="modaldel#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <div class="section" style="padding-bottom:0px;">
+                        <h4 class="center-align">Desea eliminar el PQR de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                      </div>
+                    </div>
+                  </div>
                 </h:column>
               </h:dataTable>
             </h:form>
@@ -170,40 +216,5 @@
         });
       </script>
     </div>
-
-    <script>
-      $(document).ready(function () {
-        $('.tooltipped').tooltip();
-        $('select').formSelect();
-        $('.modal').modal();
-        $('.timepicker').timepicker({
-          autoClose: true,
-          twelveHour: true,
-          i18n: {
-            cancel: 'Cancelar',
-            done: 'Ok'
-          }
-        });
-        $('.datepicker').datepicker({
-          autoClose: true,
-          firstDay: 1,
-          i18n: {
-            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
-            cancel: 'Cancelar'
-          },
-          format: 'dd/mm/yyyy'
-        });
-      });
-      $("#myInput").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    </script>
   </h:body>
 </html>

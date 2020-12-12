@@ -114,7 +114,18 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red" >Eliminar</a>
+                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                  <div id="modaldel#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <div class="section" style="padding-bottom:0px;">
+                        <h4 class="center-align">Desea eliminar la felicitacion de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                      </div>
+                    </div>
+                  </div>
                 </h:column>
               </h:dataTable>
             </h:form>

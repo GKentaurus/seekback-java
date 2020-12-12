@@ -34,10 +34,6 @@ public class SoporteTecnicoService {
     return seportesTecnicos;
   }
 
-//  public List<SoporteTecnico> getAllData() throws ConnectionExcep {
-//    List<SoporteTecnico> seportesTecnicos = soporteTecnicoDAO.getAllData();
-//    return seportesTecnicos;
-//  }
   public void update(SoporteTecnico soporteTecnico) throws ConnectionExcep {
     soporteTecnicoDAO.update(soporteTecnico);
   }

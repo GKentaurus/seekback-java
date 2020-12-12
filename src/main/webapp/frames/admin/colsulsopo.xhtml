@@ -49,12 +49,11 @@
     </style>
   </h:head>
 
-  <h:body  onload="$('.tap-target').tapTarget('open')" onclick="$('.tap-target').tapTarget('close')">
-    <div class="container" onclick="$('.tap-target').tapTarget('close')">
-
+  <h:body>
+    <div class="container">
       <div class="row">
-        <p
-          <div id="admin" class="col s12">
+        <p class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
+        <div id="admin" class="col s12">
           <div class="card material-table">
             <div class="table-header">
               <span class="table-title">Soportes Tecnicos</span>
@@ -106,8 +105,8 @@
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="quien" type="text" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres}  #{st.empleado.usuario.primerApellido}" readonly="true"/>
-                              <label for="quien">Empleado</label>
+                              <input id="empke" type="text" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres}  #{st.empleado.usuario.primerApellido}" readonly="true"/>
+                              <label for="empke">Empleado</label>
                             </div>
                           </div>
                           <div class="col s12 m6">
@@ -119,23 +118,24 @@
                           <div class="col s12 m6">
                             <div class="input-field">
                               <label for="datei">Fecha</label>
-                              <br/>
                               <input id="datei" type="datetime"  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}"/>
                             </div>
                           </div>
-                          <input type="hidden" value="#{st.estado.id}" />
-                          <div class="input-field col s12 m6">
-                            <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
-                            <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                             valueChangeListener="#{st.estado.id}">
-                              <f:selectItem itemValue="#{null}"
-                                            itemLabel="Seleccione una opcion"
-                                            noSelectionOption="true" />
-                              <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
-                                             var="es"
-                                             itemValue="#{es.id}"
-                                             itemLabel="#{es.nombreEstado}"/>
-                            </h:selectOneMenu>
+                          <div class="col s12 m6">
+                            <input type="hidden" value="#{st.estado.id}" />
+                            <div class="input-field">
+                              <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
+                              <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
+                                               valueChangeListener="#{st.estado.id}">
+                                <f:selectItem itemValue="#{null}"
+                                              itemLabel="Seleccione una opcion"
+                                              noSelectionOption="true" />
+                                <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                               var="es"
+                                               itemValue="#{es.id}"
+                                               itemLabel="#{es.nombreEstado}"/>
+                              </h:selectOneMenu>
+                            </div>
                           </div>
                           <div class="col s12">
                             <div class="input-field">
@@ -154,28 +154,27 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red" href="#modal#{st.id}">Eliminar</a>
+                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                  <div id="modaldel#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <div class="section" style="padding-bottom:0px;">
+                        <h4 class="center-align">Desea eliminar el soporte tecnico de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                      </div>
+                    </div>
+                  </div>
                 </h:column>
               </h:dataTable>
             </h:form>
           </div>
-      </div>
-    </div>
-    </div>
-    <h:outputScript library="" name="table.js" />class="center-align" style="font-size:25px;"><i class="fas fa-tools"></i> Soportes tecnicos <i class="fas fa-tools"></i></p>
-
-    <div class="fixed-action-btn direction-top active">
-      <a id="menu" class="btn btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="top" data-tooltip="Descargar reporte"><i class="material-icons">cloud_download</i></a>
-    </div>
-    <div class="tap-target-wrapper">
-      <div class="tap-target teal" data-target="menu">
-        <div class="tap-target-content">
-          <h5>Bienvenido</h5>
-          <p>Aqui podras descargar el reporte que consultes en este modulo</p>
         </div>
       </div>
     </div>
 
+    <h:outputScript library="" name="table.js" />
 
     <script>
       $(document).ready(function () {

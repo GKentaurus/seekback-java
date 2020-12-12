@@ -12,7 +12,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "felicitacion")
 @NamedQueries(value = {
-  @NamedQuery(name = "Felicitacion.getAll", query = "SELECT obj FROM Felicitacion obj")
+  @NamedQuery(name = "Felicitacion.getAll", query = "SELECT obj FROM Felicitacion obj WHERE obj.timestamps.deleted_at IS NULL")
 })
 public class Felicitacion implements Serializable {
 

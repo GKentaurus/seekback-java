@@ -13,7 +13,7 @@ import tech.seekback.tools.Encrypter;
 @Entity
 @Table(name = "usuario")
 @NamedQueries(value = {
-  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj")
+  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted_at IS NULL")
 })
 public class Usuario implements Serializable {
 

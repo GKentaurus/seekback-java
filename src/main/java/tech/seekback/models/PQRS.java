@@ -18,7 +18,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "pqrs")
 @NamedQueries(value = {
-  @NamedQuery(name = "PQRS.getAll", query = "SELECT obj FROM PQRS obj")
+  @NamedQuery(name = "PQRS.getAll", query = "SELECT obj FROM PQRS obj WHERE obj.timestamps.deleted_at IS NULL")
 })
 public class PQRS implements Serializable {
 

@@ -18,5 +18,4 @@ import tech.seekback.models.SoporteTecnico;
 @Local
 public interface SoporteTecnicoDAO extends DAO<SoporteTecnico, Integer> {
 
-//  List<SoporteTecnico> getAllData() throws ConnectionExcep;
 }
