@@ -34,7 +34,26 @@ public class TelefonoDAOJPA extends GenericDAO<Telefono, Integer> implements Tel
   public Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep {
 
     try {
-      TypedQuery<Telefono> tq = em.createNamedQuery("Telefonos.getByIdUsuario", classType);
+      TypedQuery<Telefono> tq = em.createNamedQuery("Telefono.getByIdUsuario", classType);
+      tq.setParameter("idUsuario", IdUsuario);
+      return tq.getSingleResult();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+
+  }
+
+  /**
+   *
+   * @param IdUsuario
+   * @return Un objeto de tipo Telefono consultado por idUsuario
+   * @throws ConnectionExcep
+   */
+  @Override
+  public Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep {
+
+    try {
+      TypedQuery<Telefono> tq = em.createNamedQuery("Telefono.getByIdPrincipal", classType);
       tq.setParameter("idUsuario", IdUsuario);
       return tq.getSingleResult();
     } catch (Exception e) {

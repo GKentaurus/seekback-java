@@ -18,4 +18,10 @@ import tech.seekback.models.SoporteTecnico;
 @Local
 public interface SoporteTecnicoDAO extends DAO<SoporteTecnico, Integer> {
 
+  /**
+   *
+   * @return @throws ConnectionExcep
+   */
+  Integer getAllCount() throws ConnectionExcep;
+
 }

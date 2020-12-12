@@ -43,12 +43,24 @@ public class SoporteTecnicoService {
 
   /**
    *
-   * @return Una colección de objetos de tipo Rol (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Rol (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<SoporteTecnico> getAll() throws ConnectionExcep {
     List<SoporteTecnico> seportesTecnicos = soporteTecnicoDAO.getAll();
     return seportesTecnicos;
+  }
+
+  /**
+   *
+   * @return Un entero de la consulta a soporteTecnico (referente al Dao que lo
+   * implementa)
+   * @throws ConnectionExcep
+   */
+  public Integer getAllCount() throws ConnectionExcep {
+    Integer countpqrs = soporteTecnicoDAO.getAllCount();
+    return countpqrs;
   }
 
   /**

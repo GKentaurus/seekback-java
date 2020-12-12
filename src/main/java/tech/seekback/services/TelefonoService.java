@@ -43,7 +43,8 @@ public class TelefonoService {
 
   /**
    *
-   * @return Una colección de objetos de tipo Telefono (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Telefono (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Telefono> getAll() throws ConnectionExcep {
@@ -58,6 +59,16 @@ public class TelefonoService {
    * @throws ConnectionExcep
    */
   public Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep {
+    return telefonoDAO.getByIdUsuario(IdUsuario);
+  }
+
+  /**
+   *
+   * @param IdUsuario
+   * @return Una colección de objetos de tipo Telefono consultados por IdUsuario
+   * @throws ConnectionExcep
+   */
+  public Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep {
     return telefonoDAO.getByIdUsuario(IdUsuario);
   }
 

@@ -44,12 +44,24 @@ public class PQRSService {
 
   /**
    *
-   * @return Una colección de objetos de tipo PQRS (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo PQRS (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<PQRS> getAll() throws ConnectionExcep {
-    List<PQRS> usuarios = pqrsDAO.getAll();
-    return usuarios;
+    List<PQRS> pqrs = pqrsDAO.getAll();
+    return pqrs;
+  }
+
+  /**
+   *
+   * @return Un entero de la consulta a PQRS (referente al Dao que lo
+   * implementa)
+   * @throws ConnectionExcep
+   */
+  public Integer getAllCount() throws ConnectionExcep {
+    Integer countpqrs = pqrsDAO.getAllCount();
+    return countpqrs;
   }
 
   /**

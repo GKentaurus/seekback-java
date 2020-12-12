@@ -25,6 +25,19 @@ public class FelicitacionController implements Serializable {
   @EJB
   private FelicitacionService felicitacionService;
   private List<Felicitacion> felicitaciones;
+  private Integer count;
+
+  public Integer getCount() {
+    try {
+      if (count == null) {
+        count = felicitacionService.getAllCount();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return count;
+  }
 
   public List<Felicitacion> getFelicitaciones() {
     try {

@@ -17,6 +17,8 @@ import tech.seekback.models.TipoSolicitud;
 import tech.seekback.services.EstadosFidelizacionService;
 import tech.seekback.services.PQRSService;
 import tech.seekback.services.TipoSolicitudService;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -37,6 +39,20 @@ public class PqrController implements Serializable {
   private List<PQRS> pqrses;
   private List<EstadosFidelizacion> estados;
   private List<TipoSolicitud> tipoSolicitudes;
+  private PQRS pqrs;
+  private Integer count;
+
+  public Integer getCount() {
+    try {
+      if (count == null) {
+        count = pQRSService.getAllCount();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return count;
+  }
 
   public List<PQRS> getPqrses() {
     try {

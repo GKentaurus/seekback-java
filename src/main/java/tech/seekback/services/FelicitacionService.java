@@ -44,11 +44,23 @@ public class FelicitacionService {
 
   /**
    *
-   * @return Una colección de objetos de tipo Felicitacion (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Felicitacion (referente al Dao que
+   * lo implementa)
    * @throws ConnectionExcep
    */
   public List<Felicitacion> getAll() throws ConnectionExcep {
     return felicitacionDAO.getAll();
+  }
+
+  /**
+   *
+   * @return Un entero de la consulta a felicitacion (referente al Dao que lo
+   * implementa)
+   * @throws ConnectionExcep
+   */
+  public Integer getAllCount() throws ConnectionExcep {
+    Integer countfeli = felicitacionDAO.getAllCount();
+    return countfeli;
   }
 
   /**

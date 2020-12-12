@@ -93,6 +93,8 @@ public class LoginController implements Serializable {
       if (Objects.nonNull(usuario)) {
         if (usuario.verificarContrasena(password)) {
           redirectTo(usuario.getRol().getId());
+          //redirectTo("/test.xhtml");
+
         } else {
           this.usuario = null;
           redirectTo("/index.xhtml");

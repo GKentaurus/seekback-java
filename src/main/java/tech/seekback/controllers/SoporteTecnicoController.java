@@ -32,6 +32,19 @@ public class SoporteTecnicoController implements Serializable {
   private SoporteTecnico soporteTecnico;
   private List<SoporteTecnico> soportes;
   private List<EstadosFidelizacion> estados;
+  private Integer count;
+
+  public Integer getCount() {
+    try {
+      if (count == null) {
+        count = soporteTecnicoService.getAllCount();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return count;
+  }
 
   public List<SoporteTecnico> getSoportes() {
     try {

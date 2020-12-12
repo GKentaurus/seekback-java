@@ -49,4 +49,28 @@ public class CorreoDAOJPA extends GenericDAO<Correo, Integer> implements CorreoD
 
   }
 
+  /**
+   *
+   * @param idUsuario
+   * @return Un objeto tipo Correo consultado por el correo electronico
+   * @throws ConnectionExcep
+   */
+  @Override
+  public Correo getByIdPrincipal(Integer idUsuario) throws ConnectionExcep {
+    try {
+      TypedQuery<Correo> tq = em.createNamedQuery("Correo.getByIdPrincipal", classType);
+      tq.setParameter("idUsuario", idUsuario);
+      try {
+        Correo correo = tq.getSingleResult();
+        return correo;
+      } catch (NoResultException ex) {
+        return null;
+      }
+
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+
+  }
+
 }

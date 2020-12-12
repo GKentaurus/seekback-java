@@ -24,4 +24,21 @@ public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> im
   public SoporteTecnicoDAOJPA() {
     super(SoporteTecnico.class);
   }
+
+  /**
+   *
+   * @return Un entero de la consulta COUNT de SoporteTecnico
+   * @throws ConnectionExcep
+   */
+  @Override
+  public Integer getAllCount() throws ConnectionExcep {
+
+    try {
+      Integer cont = ((Number) em.createNamedQuery("SoporteTecnico.getAllCount").getSingleResult()).intValue();
+      return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+
+  }
 }

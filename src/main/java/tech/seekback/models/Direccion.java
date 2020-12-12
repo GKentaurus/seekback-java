@@ -18,7 +18,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "direcciones")
 @NamedQueries(value = {
-  @NamedQuery(name = "Direcciones.getAll", query = "SELECT obj FROM Direccion obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "Direccion.getAll", query = "SELECT obj FROM Direccion obj WHERE obj.timestamps.deleted_at IS NULL"),
+  @NamedQuery(name = "Direccion.getByIdPrincipal", query = "SELECT obj FROM Direccion obj WHERE obj.usuario.id = :idUsuario AND obj.esPrincipal = 1")
 })
 public class Direccion implements Serializable {
 
@@ -39,6 +40,9 @@ public class Direccion implements Serializable {
 
   @Column(name = "telefono", nullable = false, length = 20)
   private String telefono;
+
+  @Column(name = "esPrincipal", nullable = false)
+  private boolean esPrincipal;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "localizacion", nullable = false)
@@ -138,6 +142,24 @@ public class Direccion implements Serializable {
    */
   public void setTelefono(String telefono) {
     this.telefono = telefono;
+  }
+
+  /**
+   * Retorna si la direccion es principal
+   *
+   * @return <code>true</code> si esta direccion es principal
+   */
+  public boolean isEsPrincipal() {
+    return esPrincipal;
+  }
+
+  /**
+   * Asigna a la direccion si es principal
+   *
+   * @param esPrincipal si esta direccion es principal
+   */
+  public void setEsPrincipal(boolean esPrincipal) {
+    this.esPrincipal = esPrincipal;
   }
 
   /**

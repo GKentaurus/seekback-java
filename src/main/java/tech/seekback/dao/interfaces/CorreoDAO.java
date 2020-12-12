@@ -18,4 +18,6 @@ import tech.seekback.models.Correo;
 public interface CorreoDAO extends DAO<Correo, Integer> {
 
   Correo getByCorreo(String email) throws ConnectionExcep;
+
+  Correo getByIdPrincipal(Integer idUsuario) throws ConnectionExcep;
 }

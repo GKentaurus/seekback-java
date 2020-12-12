@@ -14,7 +14,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "soporte_tecnico")
 @NamedQueries(value = {
-  @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.timestamps.deleted_at IS NULL"),
+  @NamedQuery(name = "SoporteTecnico.getAllCount", query = "SELECT COUNT(obj) FROM SoporteTecnico obj WHERE obj.timestamps.deleted_at IS NULL")
 })
 public class SoporteTecnico implements Serializable {
 

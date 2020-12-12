@@ -43,7 +43,8 @@ public class CorreoService {
 
   /**
    *
-   * @return Una colección de objetos de tipo Correo (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Correo (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Correo> getAll() throws ConnectionExcep {
@@ -59,6 +60,16 @@ public class CorreoService {
    */
   public Correo getByCorreo(String correo) throws ConnectionExcep {
     return correosDAO.getByCorreo(correo);
+  }
+
+  /**
+   *
+   * @param idUsuario
+   * @return Una colección de objetos de tipo Correo consultados por correo
+   * @throws ConnectionExcep
+   */
+  public Correo getByIdPrincipal(Integer idUsuario) throws ConnectionExcep {
+    return correosDAO.getByIdPrincipal(idUsuario);
   }
 
   /**

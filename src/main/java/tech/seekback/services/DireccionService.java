@@ -43,12 +43,23 @@ public class DireccionService {
 
   /**
    *
-   * @return Una colección de objetos de tipo Dirección (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Dirección (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Direccion> getAll() throws ConnectionExcep {
     List<Direccion> direcciones = direccionesDAO.getAll();
     return direcciones;
+  }
+
+  /**
+   *
+   * @param idUsuario
+   * @return Una colección de objetos de tipo Correo consultados por correo
+   * @throws ConnectionExcep
+   */
+  public Direccion getByIdPrincipal(Integer idUsuario) throws ConnectionExcep {
+    return direccionesDAO.getByIdPrincipal(idUsuario);
   }
 
   /**

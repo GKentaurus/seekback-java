@@ -7,6 +7,7 @@ package tech.seekback.dao.interfaces;
 
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 
 /**
@@ -15,4 +16,10 @@ import tech.seekback.models.Felicitacion;
  */
 @Local
 public interface FelicitacionDAO extends DAO<Felicitacion, Integer> {
+
+  /**
+   *
+   * @return @throws ConnectionExcep
+   */
+  Integer getAllCount() throws ConnectionExcep;
 }

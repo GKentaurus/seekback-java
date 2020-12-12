@@ -18,4 +18,7 @@ import tech.seekback.models.Telefono;
 public interface TelefonoDAO extends DAO<Telefono, Integer> {
 
   Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep;
+
+  Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep;
+
 }
