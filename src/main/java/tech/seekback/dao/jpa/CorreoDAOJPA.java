@@ -8,10 +8,10 @@ package tech.seekback.dao.jpa;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import tech.seekback.dao.GenericDAO;
+import tech.seekback.dao.interfaces.CorreoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.exceptions.enums.ConnectionExcepEnum;
 import tech.seekback.models.Correo;
-import tech.seekback.dao.interfaces.CorreoDAO;
 
 /**
  *
@@ -24,6 +24,12 @@ public class CorreoDAOJPA extends GenericDAO<Correo, Integer> implements CorreoD
     super(Correo.class);
   }
 
+  /**
+   *
+   * @param email
+   * @return Un objeto tipo Correo consultado por el correo electronico
+   * @throws ConnectionExcep
+   */
   @Override
   public Correo getByCorreo(String email) throws ConnectionExcep {
 

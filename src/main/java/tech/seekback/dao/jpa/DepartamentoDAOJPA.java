@@ -5,7 +5,6 @@
  */
 package tech.seekback.dao.jpa;
 
-import com.sun.mail.iap.ConnectionException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
@@ -26,6 +25,12 @@ public class DepartamentoDAOJPA extends GenericDAO<Departamento, Integer> implem
     super(Departamento.class);
   }
 
+  /**
+   *
+   * @param idPais
+   * @return Un objeto de tipo departamento consultado por idPais
+   * @throws ConnectionExcep
+   */
   @Override
   public List<Departamento> getByIdPais(Integer idPais) throws ConnectionExcep {
     try {

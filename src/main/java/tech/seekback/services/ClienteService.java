@@ -22,22 +22,51 @@ public class ClienteService {
 
   private ClienteDAO clienteDAO;
 
+  /**
+   *
+   * @param cliente
+   * @return Un objeto de tipo Cliente
+   * @throws ConnectionExcep
+   */
   public Cliente create(Cliente cliente) throws ConnectionExcep {
     return clienteDAO.create(cliente);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo Cliente consultado por id
+   * @throws ConnectionExcep
+   */
   public Cliente getOne(Integer id) throws ConnectionExcep {
     return clienteDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo Cliente (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<Cliente> getAll() throws ConnectionExcep {
     return clienteDAO.getAll();
   }
 
+  /**
+   * Actualiza un objeto de tipo Cliente
+   *
+   * @param cliente
+   * @throws ConnectionExcep
+   */
   public void update(Cliente cliente) throws ConnectionExcep {
     clienteDAO.update(cliente);
   }
 
+  /**
+   * Elimina un objeto de tipo Cliente
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     clienteDAO.delete(id);
   }

@@ -27,6 +27,13 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     this.classType = classType;
   }
 
+  /**
+   * Por medio de la unidad de persistencia, almacena el objeto recibido por el argumento
+   *
+   * @param obj
+   * @return un objeto de tipo T (referente al DAO que lo implemente)
+   * @throws ConnectionExcep
+   */
   @Override
   public T create(T obj) throws ConnectionExcep {
     System.out.println(
@@ -40,6 +47,12 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     return newObj;
   }
 
+  /**
+   *
+   * @param id
+   * @return un objeto de tipo T (referente al DAO que lo implemente)
+   * @throws ConnectionExcep
+   */
   @Override
   public T getOne(PK id) throws ConnectionExcep {
     System.out.println(
@@ -51,6 +64,11 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     return em.find(this.classType, id);
   }
 
+  /**
+   *
+   * @return una colección de objetos de tipo T (referente al DAO que lo implemente)
+   * @throws ConnectionExcep
+   */
   @Override
   public List<T> getAll() throws ConnectionExcep {
     System.out.println(
@@ -62,6 +80,12 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     return tq.getResultList();
   }
 
+  /**
+   * Actualiza un objeto de tipo T
+   *
+   * @param obj
+   * @throws ConnectionExcep
+   */
   @Override
   public void update(T obj) throws ConnectionExcep {
     System.out.println(
@@ -72,6 +96,12 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     create(obj);
   }
 
+  /**
+   * Elimina un objeto de tipo T
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   @Override
   public void delete(PK id) throws ConnectionExcep {
     System.out.println(

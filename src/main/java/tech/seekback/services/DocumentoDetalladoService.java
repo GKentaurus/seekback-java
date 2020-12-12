@@ -22,22 +22,51 @@ public class DocumentoDetalladoService {
 
   private DocumentoDetalladoDAO documentoDetalladoDAO;
 
+  /**
+   *
+   * @param documentoDetallado
+   * @return Un objeto de tipo DocumentoDetallado
+   * @throws ConnectionExcep
+   */
   public DocumentoDetallado create(DocumentoDetallado documentoDetallado) throws ConnectionExcep {
     return documentoDetalladoDAO.create(documentoDetallado);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo DocumentoDetallado consultado por id
+   * @throws ConnectionExcep
+   */
   public DocumentoDetallado getOne(Integer id) throws ConnectionExcep {
     return documentoDetalladoDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo DocumentoDetallado (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<DocumentoDetallado> getAll() throws ConnectionExcep {
     return documentoDetalladoDAO.getAll();
   }
 
+  /**
+   * Actualiza un objeto de tipo DocumentoDetallado
+   *
+   * @param documentoDetallado
+   * @throws ConnectionExcep
+   */
   public void update(DocumentoDetallado documentoDetallado) throws ConnectionExcep {
     documentoDetalladoDAO.update(documentoDetallado);
   }
 
+  /**
+   * Elimina un objeto de tipo DocumentoDetallado
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     documentoDetalladoDAO.delete(id);
   }
