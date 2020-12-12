@@ -28,11 +28,11 @@ public class ProformaVenta implements Serializable {
   private Cotizacion cotizacion;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date fecha;
 
   @Column(name = "vencimiento", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date vencimiento;
 
   @Embedded
@@ -163,8 +163,7 @@ public class ProformaVenta implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

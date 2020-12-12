@@ -28,9 +28,6 @@ public class Producto implements Serializable {
   @Column(name = "descripcion", nullable = false, length = 255)
   private String descripcion;
 
-  @Column(name = "serial", nullable = false, length = 255)
-  private String serial;
-
   @Column(name = "precioVenta", nullable = false, length = 11)
   private Double precioVenta;
 
@@ -97,14 +94,6 @@ public class Producto implements Serializable {
    */
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
-  }
-
-  public String getSerial() {
-    return serial;
-  }
-
-  public void setSerial(String serial) {
-    this.serial = serial;
   }
 
   /**
@@ -213,8 +202,7 @@ public class Producto implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */
@@ -223,7 +211,6 @@ public class Producto implements Serializable {
             + "id = " + id + ", "
             + "modeloProducto = " + modeloProducto + ", "
             + "descripcion = " + descripcion + ", "
-            + "serial = " + serial + ", "
             + "precioVenta = " + precioVenta + ", "
             + "categoria = " + categoria + ", "
             + "estado = " + estado + ", "

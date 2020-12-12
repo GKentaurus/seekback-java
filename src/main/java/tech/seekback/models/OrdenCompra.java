@@ -24,14 +24,14 @@ public class OrdenCompra implements Serializable {
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "idProveedor", referencedColumnName = "idProveedor", nullable = false)
+  @JoinColumn(name = "idProveedor", nullable = false)
   private Proveedor proveedor;
 
   @Column(name = "fecha", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date fecha;
 
-  @Column(name = "docAsociado", nullable = false, length = 255)
+  @Column(name = "docAsociado", nullable = false, length = 50)
   private String docAsociado;
 
   @ManyToOne(fetch = FetchType.LAZY)
@@ -231,8 +231,7 @@ public class OrdenCompra implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */
