@@ -127,6 +127,11 @@
                 <br />
                 <h3>Inicia sesión</h3>
                 <br />
+                <h:messages id="msgGlobal" class="messages-global"
+                            infoClass="message alert alert-primary"
+                            errorClass="message alert alert-danger"
+                            globalOnly="true"
+                            showDetail="true" showSummary="true"/>
                 <h:form>
                   <div class="input-field s12">
                     <h:inputText id="emaillog" class="ingre validate"  autocomplete="off" required="true" value="#{loginController.email}" />

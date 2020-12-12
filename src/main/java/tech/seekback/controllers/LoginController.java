@@ -5,11 +5,13 @@
  */
 package tech.seekback.controllers;
 
+import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -97,7 +99,9 @@ public class LoginController implements Serializable {
 
         } else {
           this.usuario = null;
-          redirectTo("/index.xhtml");
+          FacesMessage message = new FacesMessage("Contraseña invalida");
+          fc.addMessage(null, message);
+          //redirectTo("/index.xhtml");
         }
       } else {
         this.usuario = null;
@@ -134,7 +138,7 @@ public class LoginController implements Serializable {
         redirectTo("/index.xhtml");
       }
     } else {
-      redirectTo("/login.xhtml");
+      redirectTo("/errorPages/403.xhtml");
     }
   }
 

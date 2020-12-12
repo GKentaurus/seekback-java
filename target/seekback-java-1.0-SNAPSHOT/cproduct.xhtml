@@ -6,126 +6,126 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:body id="ody">
+  <h:body id="ody">
 
-        <ui:composition template="/WEB-INF/templates/handf.xhtml" >
-            <ui:define name="content">
+    <ui:composition template="/WEB-INF/templates/handf.xhtml" >
+      <ui:define name="content">
 
-                <div class="wrap" id="inv">
+        <div class="wrap" id="inv">
+          <h:form>
+            <ul id="dropdown3" class="dropdown-content z-depth-3" style="z-index: 8;">
+              <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+              <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+              <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
+              <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+              <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+            </ul>
+          </h:form>
+          <nav class="breadcrumb-nav">
+            <div id="bread" class="nav-wrapper grey darken-1">
+              <div class="col s12" style="display: inline-flex;">
+                <h:form>
+                  <h:commandLink action="index" class="breadcrumb ">Inicio</h:commandLink>
+                </h:form>
+                <h:commandLink class="dropdown-trigger breadcrumb " pt:data-target="dropdown3">Productos</h:commandLink>
+                <h:commandLink class="breadcrumb ">Cables</h:commandLink>
+              </div>
+            </div>
+          </nav>
+
+          <div class="container section">
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp1.webp" alt="cards" style="height:200px; width:100%;"/>
+                    <span class="card-title">Producto 1</span>
+                  </div>
+                  <div class="card-action">
                     <h:form>
-                        <ul id="dropdown3" class="dropdown-content z-depth-3" style="z-index: 8;">
-                            <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                            <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                            <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                            <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                            <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                        </ul>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
                     </h:form>
-                    <nav class="breadcrumb-nav">
-                        <div id="bread" class="nav-wrapper grey darken-1">
-                            <div class="col s12" style="display: inline-flex;">
-                                <h:form>
-                                    <h:commandLink action="index" class="breadcrumb ">Inicio</h:commandLink>
-                                </h:form>
-                                <h:commandLink class="dropdown-trigger breadcrumb " pt:data-target="dropdown3">Productos</h:commandLink>
-                                <h:commandLink class="breadcrumb ">Cables</h:commandLink>
-                            </div>
-                        </div>
-                    </nav>
-
-                    <div class="container section">
-                        <div class="row">
-                            <div class="col s12 m4">
-                                <div class="card white">
-                                    <div class="card-image">
-                                        <h:graphicImage library="images" name="cable/utp1.webp" alt="cards" style="height:200px; width:100%;"/>
-                                        <span class="card-title">Producto 1</span>
-                                    </div>
-                                    <div class="card-action">
-                                        <h:form>
-                                            <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m4">
-                                <div class="card white">
-                                    <div class="card-image">
-                                        <h:graphicImage library="images" name="cable/utp2.webp" alt="cards" style="height:200px; width:100%;"/>
-                                        <span class="card-title">Producto 2</span>
-                                    </div>
-                                    <div class="card-action">
-                                        <h:form>
-                                            <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m4">
-                                <div class="card white">
-                                    <div class="card-image">
-                                        <h:graphicImage library="images" name="cable/utp3.webp" alt="cards" style="height:200px; width:100%;"/>
-                                        <span class="card-title">Producto 3</span>
-                                    </div>
-                                    <div class="card-action">
-                                        <h:form>
-                                            <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m4">
-                                <div class="card white">
-                                    <div class="card-image">
-                                        <h:graphicImage library="images" name="cable/utp4.webp" alt="cards" style="height:200px; width:100%;"/>
-                                        <span class="card-title">Producto 1</span>
-                                    </div>
-                                    <div class="card-action">
-                                        <h:form>
-                                            <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m4">
-                                <div class="card white">
-                                    <div class="card-image">
-                                        <h:graphicImage library="images" name="cable/utp5.webp" alt="cards" style="height:200px; width:100%;"/>
-                                        <span class="card-title">Producto 2</span>
-                                    </div>
-                                    <div class="card-action">
-                                        <h:form>
-                                            <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m4">
-                                <div class="card white">
-                                    <div class="card-image">
-                                        <h:graphicImage library="images" name="cable/utp6.webp" alt="cards" style="height:200px; width:100%;"/>
-                                        <span class="card-title">Producto 3</span>
-                                    </div>
-                                    <div class="card-action">
-                                        <h:form>
-                                            <h:commandLink action="anyproduct">Ver mas</h:commandLink>                                            
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-                <br />
+              </div>
 
-            </ui:define>
-        </ui:composition>
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp2.webp" alt="cards" style="height:200px; width:100%;"/>
+                    <span class="card-title">Producto 2</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                    </h:form>
+                  </div>
+                </div>
+              </div>
 
-    </h:body>
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp3.webp" alt="cards" style="height:200px; width:100%;"/>
+                    <span class="card-title">Producto 3</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp4.webp" alt="cards" style="height:200px; width:100%;"/>
+                    <span class="card-title">Producto 1</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp5.webp" alt="cards" style="height:200px; width:100%;"/>
+                    <span class="card-title">Producto 2</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="card white">
+                  <div class="card-image">
+                    <h:graphicImage library="images" name="cable/utp6.webp" alt="cards" style="height:200px; width:100%;"/>
+                    <span class="card-title">Producto 3</span>
+                  </div>
+                  <div class="card-action">
+                    <h:form>
+                      <h:commandLink action="anyproduct">Ver mas</h:commandLink>
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+
+      </ui:define>
+    </ui:composition>
+
+  </h:body>
 </html>

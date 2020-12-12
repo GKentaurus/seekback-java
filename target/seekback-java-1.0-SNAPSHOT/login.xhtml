@@ -56,7 +56,7 @@
                   <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
                   <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
                   <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
                   <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
                   <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
@@ -66,7 +66,7 @@
                   <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
                   <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
                   <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
                   <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
                   <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
@@ -125,8 +125,13 @@
             <div id="test1" class="col s12">
               <div class="row">
                 <br />
-                <h3>Inicia sesion</h3>
+                <h3>Inicia sesión</h3>
                 <br />
+                <h:messages id="msgGlobal" class="messages-global"
+                            infoClass="message alert alert-primary"
+                            errorClass="message alert alert-danger"
+                            globalOnly="true"
+                            showDetail="true" showSummary="true"/>
                 <h:form>
                   <div class="input-field s12">
                     <h:inputText id="emaillog" class="ingre validate"  autocomplete="off" required="true" value="#{loginController.email}" />
@@ -140,7 +145,7 @@
                   <h:commandButton class="btn waves-effect waves-light blue" value="ingresar" actionListener="#{loginController.login()}" />
                   <br/>
                   <br/>
-                  <a data-target="modal1" class="modal-trigger">¿Olvido la contraseña?</a>
+                  <a data-target="modal1" class="modal-trigger">¿Olvido su contraseña?</a>
                 </h:form>
                 <br />
                 <br />
@@ -149,7 +154,7 @@
             <div id="test2" class="col s12">
               <h:form class="col s12" pt:autocomplete="off">
                 <br />
-                <h3>Registrate</h3>
+                <h3>Regístrate</h3>
                 <br />
                 <div class="row">
                   <h:form>
@@ -306,19 +311,19 @@
                         <div id="bar" class="determinate teal" style="width:0%;height: 5px;border-radius: 10px;"></div>
                       </li>
                       <li class="collection-item">
-                        <div>Mas de 8 caracteres<h:commandLink class="secondary-content"><i id="lpass" class="material-icons red-text">close</i></h:commandLink></div>
+                        <div>Mas de 8 carácteres<h:commandLink class="secondary-content"><i id="lpass" class="material-icons red-text">close</i></h:commandLink></div>
                       </li>
                       <li class="collection-item">
-                        <div>Por lo menos un mayuscula<h:commandLink class="secondary-content"><i id="Mpass" class="material-icons red-text">close</i></h:commandLink></div>
+                        <div>Por lo menos una mayúscula<h:commandLink class="secondary-content"><i id="Mpass" class="material-icons red-text">close</i></h:commandLink></div>
                       </li>
                       <li class="collection-item">
-                        <div>Por lo menos un caracter especial<h:commandLink class="secondary-content"><i id="Cpass" class="material-icons red-text">close</i></h:commandLink></div>
+                        <div>Por lo menos un carácter especial<h:commandLink class="secondary-content"><i id="Cpass" class="material-icons red-text">close</i></h:commandLink></div>
                       </li>
                       <li class="collection-item">
-                        <div>Por lo menos un numero<h:commandLink class="secondary-content"><i id="Npass" class="material-icons red-text">close</i></h:commandLink></div>
+                        <div>Por lo menos un número<h:commandLink class="secondary-content"><i id="Npass" class="material-icons red-text">close</i></h:commandLink></div>
                       </li>
                       <li class="collection-item">
-                        <div>deben ser iguales<h:commandLink class="secondary-content"><i id="Ipass" class="material-icons red-text">close</i></h:commandLink></div>
+                        <div>Deben ser iguales<h:commandLink class="secondary-content"><i id="Ipass" class="material-icons red-text">close</i></h:commandLink></div>
                       </li>
                     </ul>
                   </div>
@@ -357,10 +362,10 @@
     <div id="modal2" class="modal modalp white">
       <div class="modal-content">
         <h4>Registro</h4>
-        <p><span id="nameee"></span> resistrado exitosamente</p>
+        <p><span id="nameee"></span> Resistrado exitosamente</p>
       </div>
       <div class="modal-footer">
-        <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
+        <h:commandLink class="modal-close waves-effect waves-green btn-flat">Aceptar</h:commandLink>
       </div>
     </div>
 
@@ -370,11 +375,11 @@
           <div class="row">
             <div class="col s12 m6" style="text-align:left">
               <h4>Redes sociales </h4>
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> siguenos en facebook
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> Siguenos en facebook
               <br />
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> siguenos en twitter
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> Siguenos en twitter
               <br />
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> siguenos en instagram
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> Siguenos en Instagram
             </div>
             <div class="col s12 m6" style="text-align:left">
               <h4>Informaciòn de contacto </h4>
@@ -388,7 +393,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-          Copyright Seekback. todos los derechos reservados
+          Copyright Seekback. Todos los derechos reservados.
         </div>
       </div>
     </footer>
