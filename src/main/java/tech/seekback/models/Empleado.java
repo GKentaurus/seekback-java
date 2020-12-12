@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Empleado"
  *
  * @author danny
  */
@@ -34,26 +35,60 @@ public class Empleado implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del empleado.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del empleado.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @return <code>usuario</code> del empleado.
+   */
   public Usuario getUsuario() {
     return usuario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @param usuario del empleado.
+   */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del empleado.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del empleado.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -87,6 +122,12 @@ public class Empleado implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "DocumentoDetallado("
             + "id = " + id + ", "

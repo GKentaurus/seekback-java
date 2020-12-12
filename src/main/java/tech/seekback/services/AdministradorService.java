@@ -22,22 +22,51 @@ public class AdministradorService {
 
   private AdministradorDAO administradorDAO;
 
+  /**
+   *
+   * @param administrador
+   * @return Retorna un objeto de tipo Administrador
+   * @throws ConnectionExcep
+   */
   public Administrador create(Administrador administrador) throws ConnectionExcep {
     return administradorDAO.create(administrador);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo Administrador consultado por el id
+   * @throws ConnectionExcep
+   */
   public Administrador getOne(Integer id) throws ConnectionExcep {
     return administradorDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo Administrador (referente al DAO que lo implemente)
+   * @throws ConnectionExcep
+   */
   public List<Administrador> getAll() throws ConnectionExcep {
     return administradorDAO.getAll();
   }
 
+  /**
+   * Actualiza un objeto de tipo Administrador
+   *
+   * @param administrador
+   * @throws ConnectionExcep
+   */
   public void update(Administrador administrador) throws ConnectionExcep {
     administradorDAO.update(administrador);
   }
 
+  /**
+   * Elimina un objeto de tipo Administrador consultado por el id
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     administradorDAO.delete(id);
   }

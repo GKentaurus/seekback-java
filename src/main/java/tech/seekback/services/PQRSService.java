@@ -21,23 +21,53 @@ public class PQRSService {
   @EJB
   private PQRSDAO pqrsDAO;
 
+  /**
+   *
+   *
+   * @param pqrs
+   * @return Un objeto de tipo de tipo PQRS
+   * @throws ConnectionExcep
+   */
   public PQRS create(PQRS pqrs) throws ConnectionExcep {
     return pqrsDAO.create(pqrs);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo de tipo PQRS consultdo por el id
+   * @throws ConnectionExcep
+   */
   public PQRS getOne(Integer id) throws ConnectionExcep {
     return pqrsDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo PQRS (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<PQRS> getAll() throws ConnectionExcep {
     List<PQRS> usuarios = pqrsDAO.getAll();
     return usuarios;
   }
 
+  /**
+   * Actualiza un objeto de tipo PQRS
+   *
+   * @param pqrs
+   * @throws ConnectionExcep
+   */
   public void update(PQRS pqrs) throws ConnectionExcep {
     pqrsDAO.update(pqrs);
   }
 
+  /**
+   * Elimina un objeto de tipo PQRS
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     pqrsDAO.delete(id);
   }

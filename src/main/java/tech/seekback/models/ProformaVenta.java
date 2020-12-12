@@ -7,6 +7,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "ProformaVenta"
  *
  * @author veron
  */
@@ -38,42 +39,96 @@ public class ProformaVenta implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la proforma de venta.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la proforma de venta.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>cotizacion</code> del objeto.
+   *
+   * @see Cotizacion
+   * @return <code>cotizacion</code> de la proforma de venta.
+   */
   public Cotizacion getCotizacion() {
     return cotizacion;
   }
 
+  /**
+   * Asigna el valor del atributo <code>cotizacion</code> del objeto.
+   *
+   * @see Cotizacion
+   * @param cotizacion de la proforma de venta.
+   */
   public void setCotizacion(Cotizacion cotizacion) {
     this.cotizacion = cotizacion;
   }
 
+  /**
+   * Retorna el valor del atributo <code>fecha</code> del objeto.
+   *
+   * @return <code>fecha</code> de la proforma de venta.
+   */
   public Date getFecha() {
     return fecha;
   }
 
+  /**
+   * Asigna el valor del atributo <code>fecha</code> del objeto.
+   *
+   * @param fecha de la proforma de venta.
+   */
   public void setFecha(Date fecha) {
     this.fecha = fecha;
   }
 
+  /**
+   * Retorna el valor del atributo <code>vencimiento</code> del objeto.
+   *
+   * @return <code>vencimiento</code> de la proforma de venta.
+   */
   public Date getVencimiento() {
     return vencimiento;
   }
 
+  /**
+   * Asigna el valor del atributo <code>vencimiento</code> del objeto.
+   *
+   * @param vencimiento de la proforma de venta.
+   */
   public void setVencimiento(Date vencimiento) {
     this.vencimiento = vencimiento;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la proforma de venta.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la proforma de venta.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -107,6 +162,12 @@ public class ProformaVenta implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "ProformaVenta{"
             + "idProforma = " + id + ", "

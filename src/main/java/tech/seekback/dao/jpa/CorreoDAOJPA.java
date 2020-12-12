@@ -25,6 +25,12 @@ public class CorreoDAOJPA extends GenericDAO<Correo, Integer> implements CorreoD
     super(Correo.class);
   }
 
+  /**
+   *
+   * @param email
+   * @return Un objeto tipo Correo consultado por el correo electronico
+   * @throws ConnectionExcep
+   */
   @Override
   public Correo getByCorreo(String email) throws ConnectionExcep {
     try {

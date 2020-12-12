@@ -21,23 +21,52 @@ public class TRMService {
   @EJB
   private TRMDAO trmDao;
 
+  /**
+   *
+   * @param trm
+   * @return Un objeto de tipo TRM
+   * @throws ConnectionExcep
+   */
   public TRM create(TRM trm) throws ConnectionExcep {
     return trmDao.create(trm);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo TRM consultado por id
+   * @throws ConnectionExcep
+   */
   public TRM getOne(Integer id) throws ConnectionExcep {
     return trmDao.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo TRM (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<TRM> getAll() throws ConnectionExcep {
     List<TRM> trms = trmDao.getAll();
     return trms;
   }
 
+  /**
+   * Actualiza un objeto de tipo TRM
+   *
+   * @param trm
+   * @throws ConnectionExcep
+   */
   public void update(TRM trm) throws ConnectionExcep {
     trmDao.update(trm);
   }
 
+  /**
+   * Elimina un objeto de tipo TRM
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     trmDao.delete(id);
   }

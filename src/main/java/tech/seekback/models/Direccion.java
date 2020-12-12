@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Direccion"
  *
  * @author camorenoc
  */
@@ -47,58 +48,134 @@ public class Direccion implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la dirección.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la dirección.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @return <code>usuario</code> de la dirección.
+   */
   public Usuario getUsuario() {
     return usuario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @param usuario de la dirección.
+   */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
   }
 
+  /**
+   * Retorna el valor del atributo <code>pseudonimo</code> del objeto.
+   *
+   * @return <code>pseudonimo</code> de la dirección.
+   */
   public String getPseudonimo() {
     return pseudonimo;
   }
 
+  /**
+   * Asigna el valor del atributo <code>pseudonimo</code> del objeto.
+   *
+   * @param pseudonimo de la dirección.
+   */
   public void setPseudonimo(String pseudonimo) {
     this.pseudonimo = pseudonimo;
   }
 
+  /**
+   * Retorna el valor del atributo <code>direccion</code> del objeto.
+   *
+   * @return <code>direccion</code> de la dirección.
+   */
   public String getDireccion() {
     return direccion;
   }
 
+  /**
+   * Asigna el valor del atributo <code>direccion</code> del objeto.
+   *
+   * @param direccion de la dirección.
+   */
   public void setDireccion(String direccion) {
     this.direccion = direccion;
   }
 
+  /**
+   * Retorna el valor del atributo <code>telefono</code> del objeto.
+   *
+   * @return <code>telefono</code> de la dirección.
+   */
   public String getTelefono() {
     return telefono;
   }
 
+  /**
+   * Asigna el valor del atributo <code>telefono</code> del objeto.
+   *
+   * @param telefono de la dirección.
+   */
   public void setTelefono(String telefono) {
     this.telefono = telefono;
   }
 
+  /**
+   * Retorna el valor del atributo <code>ciudad</code> del objeto.
+   *
+   * @see Ciudad
+   * @return <code>ciudad</code> de la dirección.
+   */
   public Ciudad getCiudad() {
     return ciudad;
   }
 
+  /**
+   * Asigna el valor del atributo <code>ciudad</code> del objeto.
+   *
+   * @see Ciudad
+   * @param ciudad de la dirección.
+   */
   public void setCiudad(Ciudad ciudad) {
     this.ciudad = ciudad;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la dirección.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la dirección.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -132,6 +209,12 @@ public class Direccion implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Direcciones{"
             + "id = " + id + ", "

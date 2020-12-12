@@ -21,23 +21,52 @@ public class SoporteTecnicoService {
   @EJB
   private SoporteTecnicoDAO soporteTecnicoDAO;
 
+  /**
+   *
+   * @param soporteTecnico
+   * @return Un objeto de tipo SoporteTecnico
+   * @throws ConnectionExcep
+   */
   public SoporteTecnico create(SoporteTecnico soporteTecnico) throws ConnectionExcep {
     return soporteTecnicoDAO.create(soporteTecnico);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo SoporteTecnico consultado por id
+   * @throws ConnectionExcep
+   */
   public SoporteTecnico getOne(Integer id) throws ConnectionExcep {
     return soporteTecnicoDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo Rol (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<SoporteTecnico> getAll() throws ConnectionExcep {
     List<SoporteTecnico> seportesTecnicos = soporteTecnicoDAO.getAll();
     return seportesTecnicos;
   }
 
+  /**
+   * Actualiza un objeto de tipo soporteTecnico
+   *
+   * @param soporteTecnico
+   * @throws ConnectionExcep
+   */
   public void update(SoporteTecnico soporteTecnico) throws ConnectionExcep {
     soporteTecnicoDAO.update(soporteTecnico);
   }
 
+  /**
+   * Elimina un objeto de tipo soporteTecnico
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     soporteTecnicoDAO.delete(id);
   }

@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "DocumentoDetallado"
  *
  * @author danny
  */
@@ -46,58 +47,132 @@ public class DocumentoDetallado implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del documento detallado.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del documento detallado.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>prefijoDocumento</code> del objeto.
+   *
+   * @return <code>prefijoDocumento</code> del documento detallado.
+   */
   public String getPrefijoDocumento() {
     return prefijoDocumento;
   }
 
+  /**
+   * Asigna el valor del atributo <code>prefijoDocumento</code> del objeto.
+   *
+   * @param prefijoDocumento del documento detallado.
+   */
   public void setPrefijoDocumento(String prefijoDocumento) {
     this.prefijoDocumento = prefijoDocumento;
   }
 
+  /**
+   * Retorna el valor del atributo <code>consecutivo</code> del objeto.
+   *
+   * @return <code>consecutivo</code> del documento detallado.
+   */
   public Integer getConsecutivo() {
     return consecutivo;
   }
 
+  /**
+   * Asigna el valor del atributo <code>consecutivo</code> del objeto.
+   *
+   * @param consecutivo del documento detallado.
+   */
   public void setConsecutivo(Integer consecutivo) {
     this.consecutivo = consecutivo;
   }
 
+  /**
+   * Retorna el valor del atributo <code>producto</code> del objeto.
+   *
+   * @see Producto
+   * @return <code>producto</code> del documento detallado.
+   */
   public Producto getProducto() {
     return producto;
   }
 
+  /**
+   * Asigna el valor del atributo <code>producto</code> del objeto.
+   *
+   * @see Producto
+   * @param producto del documento detallado.
+   */
   public void setProducto(Producto producto) {
     this.producto = producto;
   }
 
+  /**
+   * Retorna el valor del atributo <code>cantidad</code> del objeto.
+   *
+   * @return <code>cantidad</code> del documento detallado.
+   */
   public Integer getCantidad() {
     return cantidad;
   }
 
+  /**
+   * Asigna el valor del atributo <code>cantidad</code> del objeto.
+   *
+   * @param cantidad del documento detallado.
+   */
   public void setCantidad(Integer cantidad) {
     this.cantidad = cantidad;
   }
 
+  /**
+   * Retorna el valor del atributo <code>valorUnitario</code> del objeto.
+   *
+   * @return <code>valorUnitario</code> del documento detallado.
+   */
   public Double getValorUnitario() {
     return valorUnitario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>valorUnitario</code> del objeto.
+   *
+   * @param valorUnitario del documento detallado.
+   */
   public void setValorUnitario(Double valorUnitario) {
     this.valorUnitario = valorUnitario;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del documento detallado.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del documento detallado.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -131,6 +206,12 @@ public class DocumentoDetallado implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "DocumentoDetallado("
             + "id = " + id + ", "

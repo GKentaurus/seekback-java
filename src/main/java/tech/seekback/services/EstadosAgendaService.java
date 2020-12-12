@@ -22,22 +22,51 @@ public class EstadosAgendaService {
 
   private EstadosAgendaDAO estadosAgendaDAO;
 
+  /**
+   *
+   * @param estadosAgenda
+   * @return Un objeto de tipo EstadosAgenda
+   * @throws ConnectionExcep
+   */
   public EstadosAgenda create(EstadosAgenda estadosAgenda) throws ConnectionExcep {
     return estadosAgendaDAO.create(estadosAgenda);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo EstadosAgenda consultado por id
+   * @throws ConnectionExcep
+   */
   public EstadosAgenda getOne(Integer id) throws ConnectionExcep {
     return estadosAgendaDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo EstadosAgenda (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<EstadosAgenda> getAll() throws ConnectionExcep {
     return estadosAgendaDAO.getAll();
   }
 
+  /**
+   * Actualiza un objeto de tipo EstadosAgenda
+   *
+   * @param estadosAgenda
+   * @throws ConnectionExcep
+   */
   public void update(EstadosAgenda estadosAgenda) throws ConnectionExcep {
     estadosAgendaDAO.update(estadosAgenda);
   }
 
+  /**
+   * Elimina un objeto de tipo EstadosAgenda
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     estadosAgendaDAO.delete(id);
   }

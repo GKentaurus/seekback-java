@@ -6,6 +6,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Telefono"
  *
  * @author veron
  */
@@ -36,42 +37,96 @@ public class Telefono implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del telefono.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del telefono.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @return <code>usuario</code> relacionado con el telefono.
+   */
   public Usuario getUsuario() {
     return usuario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @param usuario del telefono.
+   */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
   }
 
+  /**
+   * Retorna el valor del atributo <code>numeroTelefono</code> del objeto.
+   *
+   * @return <code>numeroTelefono</code> del telefono.
+   */
   public String getNumeroTelefono() {
     return numeroTelefono;
   }
 
+  /**
+   * Asigna el valor del atributo <code>numeroTelefono</code> del objeto.
+   *
+   * @param numeroTelefono del telefono.
+   */
   public void setNumeroTelefono(String numeroTelefono) {
     this.numeroTelefono = numeroTelefono;
   }
 
+  /**
+   * Retorna el valor del atributo <code>numeroTelefono</code> del objeto.
+   *
+   * @return <code>numeroTelefono</code> del telefono.
+   */
   public Boolean getEsPrincipal() {
     return esPrincipal;
   }
 
+  /**
+   * Asigna el valor del atributo <code>numeroTelefono</code> del objeto.
+   *
+   * @param numeroTelefono del telefono.
+   */
   public void setEsPrincipal(Boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del telefono.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del telefono.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -105,8 +160,13 @@ public class Telefono implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres que resume toda la información relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
-    return "SoporteTecnico{"
+    return "Telefono{"
             + "idTelefono=" + id + ", "
             + "idUsuario=" + usuario + ", "
             + "numeroTelefono=" + numeroTelefono + ", "

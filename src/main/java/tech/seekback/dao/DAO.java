@@ -9,8 +9,9 @@ import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
 
 /**
+ * Se declaran los métodos del CRUD
  *
- * @author camorenoc
+ * @author gkentaurus
  * @param <T>
  * @param <PK>
  */

@@ -22,23 +22,52 @@ public class RolService {
   @EJB
   private RolDAO rolesDAO;
 
+  /**
+   *
+   * @param rol
+   * @return Un objeto de tipo Rol
+   * @throws ConnectionExcep
+   */
   public Rol create(Rol rol) throws ConnectionExcep {
     return rolesDAO.create(rol);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo Rol consultado por id
+   * @throws ConnectionExcep
+   */
+  public Rol getOne(Integer id) throws ConnectionExcep {
+    return rolesDAO.getOne(id);
+  }
+
+  /**
+   *
+   * @return Una colección de objetos de tipo Rol (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<Rol> getAll() throws ConnectionExcep {
     List<Rol> roles = rolesDAO.getAll();
     return roles;
   }
 
-  public Rol getOne(Integer id) throws ConnectionExcep {
-    return rolesDAO.getOne(id);
-  }
-
+  /**
+   * Actualiza un objeto de tipo Rol
+   *
+   * @param rol
+   * @throws ConnectionExcep
+   */
   public void update(Rol rol) throws ConnectionExcep {
     rolesDAO.update(rol);
   }
 
+  /**
+   * Elimina un objeto de tipo Rol
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     rolesDAO.delete(id);
   }

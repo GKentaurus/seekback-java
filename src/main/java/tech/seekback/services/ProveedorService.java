@@ -21,23 +21,52 @@ public class ProveedorService {
   @EJB
   private ProveedorDAO proveedorDAO;
 
+  /**
+   *
+   * @param proveedor
+   * @return Un objeto de tipo de tipo Proveedor
+   * @throws ConnectionExcep
+   */
   public Proveedor create(Proveedor proveedor) throws ConnectionExcep {
     return proveedorDAO.create(proveedor);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo de tipo Proveedor consultado por id
+   * @throws ConnectionExcep
+   */
   public Proveedor getOne(Integer id) throws ConnectionExcep {
     return proveedorDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo Proveedor (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<Proveedor> getAll() throws ConnectionExcep {
     List<Proveedor> proveedores = proveedorDAO.getAll();
     return proveedores;
   }
 
+  /**
+   * Actualiza un objeto de tipo Proveedor
+   *
+   * @param proveedor
+   * @throws ConnectionExcep
+   */
   public void update(Proveedor proveedor) throws ConnectionExcep {
     proveedorDAO.update(proveedor);
   }
 
+  /**
+   * Elimina un objeto de tipo Proveedor
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     proveedorDAO.delete(id);
   }

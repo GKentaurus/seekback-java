@@ -22,22 +22,51 @@ public class CotizacionService {
 
   private CotizacionDAO cotizacionDAO;
 
+  /**
+   *
+   * @param cotizacion
+   * @return Un objeto de tipo cotizacion
+   * @throws ConnectionExcep
+   */
   public Cotizacion create(Cotizacion cotizacion) throws ConnectionExcep {
     return cotizacionDAO.create(cotizacion);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo Cotizacion consultado por el id
+   * @throws ConnectionExcep
+   */
   public Cotizacion getOne(Integer id) throws ConnectionExcep {
     return cotizacionDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo Cotizacion (referente al Dao que lo implementa)
+   * @throws ConnectionExcep
+   */
   public List<Cotizacion> getAll() throws ConnectionExcep {
     return cotizacionDAO.getAll();
   }
 
+  /**
+   * Actualiza un objeto de tipo Cotizacion
+   *
+   * @param cotizacion
+   * @throws ConnectionExcep
+   */
   public void update(Cotizacion cotizacion) throws ConnectionExcep {
     cotizacionDAO.update(cotizacion);
   }
 
+  /**
+   * Elimina un objeto de tipo Cotizacion
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     cotizacionDAO.delete(id);
   }

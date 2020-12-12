@@ -7,8 +7,9 @@ import tech.seekback.models.templates.Timestamps;
 import tech.seekback.tools.Encrypter;
 
 /**
+ * Definición del modelo "Usuario"
  *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Entity
 @Table(name = "usuario")
@@ -55,91 +56,199 @@ public class Usuario implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del usuario.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del usuario.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>primerNombre</code> del objeto.
+   *
+   * @return <code>primerNombre</code> del usuario
+   */
   public String getPrimerNombre() {
     return primerNombre;
   }
 
+  /**
+   * Asigna el valor del atributo <code>primerNombre</code> del objeto.
+   *
+   * @param primerNombre del usuario
+   */
   public void setPrimerNombre(String primerNombre) {
     this.primerNombre = primerNombre;
   }
 
+  /**
+   * Retorna el valor del atributo <code>oitrosNombres</code> del objeto.
+   *
+   * @return <code>oitrosNombres</code> del usuario
+   */
   public String getOtrosNombres() {
     return otrosNombres;
   }
 
+  /**
+   * Asigna el valor del atributo <code>otrosNombres</code> del objeto.
+   *
+   * @param otrosNombres del usuario
+   */
   public void setOtrosNombres(String otrosNombres) {
     this.otrosNombres = otrosNombres;
   }
 
+  /**
+   * Retorna el valor del atributo <code>primerApellido</code> del objeto.
+   *
+   * @return <code>primerApellido</code> del usuario
+   */
   public String getPrimerApellido() {
     return primerApellido;
   }
 
+  /**
+   * Asigna el valor del atributo <code>primerApellido</code> del objeto.
+   *
+   * @param primerApellido del usuario
+   */
   public void setPrimerApellido(String primerApellido) {
     this.primerApellido = primerApellido;
   }
 
+  /**
+   * Retorna el valor del atributo <code>otrosApellidos</code> del objeto.
+   *
+   * @return <code>otrosApellidos</code> del usuario
+   */
   public String getOtrosApellidos() {
     return otrosApellidos;
   }
 
+  /**
+   * Asigna el valor del atributo <code>otrosApellidos</code> del objeto.
+   *
+   * @param otrosApellidos del usuario
+   */
   public void setOtrosApellidos(String otrosApellidos) {
     this.otrosApellidos = otrosApellidos;
   }
 
+  /**
+   * Retorna el valor del atributo <code>tipoDoc</code> del objeto.
+   *
+   * @see TipoDoc
+   * @return <code>tipoDoc</code> del usuario
+   */
   public TipoDoc getTipoDoc() {
     return tipoDoc;
   }
 
+  /**
+   * Asigna el valor del atributo <code>tipoDoc</code> del objeto.
+   *
+   * @see TipoDoc
+   * @param tipoDoc del usuario
+   */
   public void setTipoDoc(TipoDoc tipoDoc) {
     this.tipoDoc = tipoDoc;
   }
 
+  /**
+   * Retorna el valor del atributo <code>numeroDoc</code> del objeto.
+   *
+   * @return <code>numeroDoc</code> del usuario
+   */
   public String getNumeroDoc() {
     return numeroDoc;
   }
 
+  /**
+   * Asigna el valor del atributo <code>numeroDoc</code> del objeto.
+   *
+   * @param numeroDoc del usuario
+   */
   public void setNumeroDoc(String numeroDoc) {
     this.numeroDoc = numeroDoc;
   }
 
+  /**
+   * Retorna el valor del atributo <code>contraseña</code> del objeto.
+   *
+   * @return <code>contrasena</code> del usuario
+   */
+  public String getContrasena() {
+    return contrasena;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>contraseña</code> del objeto.
+   *
+   * @param contrasena del usuario
+   */
   public void setContrasena(String contrasena) {
     this.salt = Encrypter.getSalt(100);
     this.contrasena = Encrypter.generateSecurePassword(contrasena, this.salt);
   }
 
-  public String getContrasena() {
-    return contrasena;
-  }
-
+  /**
+   * Comprueba si la contraseña almacenada coincide con la proveida.
+   *
+   * @param contrasena del usuario
+   * @return <code>true</code> si las contraseñas coinciden.
+   */
   public boolean verificarContrasena(String contrasena) {
     return Encrypter.verifyUserPassword(contrasena, this.contrasena, this.salt);
   }
 
-  public String getSalt() {
-    return salt;
-  }
-
+  /**
+   * Retorna el valor del atributo <code>rol</code> del objeto.
+   *
+   * @see Rol
+   * @return <code>rol</code> del usuario
+   */
   public Rol getRol() {
     return rol;
   }
 
+  /**
+   * Asigna el valor del atributo <code>rol</code> del objeto.
+   *
+   * @see Rol
+   * @param rol del usuario
+   */
   public void setRol(Rol rol) {
     this.rol = rol;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del usuario
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del usuario
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -173,6 +282,12 @@ public class Usuario implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Usuario{"
             + "idUsuario = " + id + ", "

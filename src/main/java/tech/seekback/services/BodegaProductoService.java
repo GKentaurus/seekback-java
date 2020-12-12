@@ -22,22 +22,51 @@ public class BodegaProductoService {
 
   private BodegaProductoDAO bodegaProductoDAO;
 
+  /**
+   *
+   * @param bodegaProducto
+   * @return Un objeto de tipo BodegaProducto
+   * @throws ConnectionExcep
+   */
   public BodegaProducto create(BodegaProducto bodegaProducto) throws ConnectionExcep {
     return bodegaProductoDAO.create(bodegaProducto);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo BodegaProducto consultado por el id
+   * @throws ConnectionExcep
+   */
   public BodegaProducto getOne(Integer id) throws ConnectionExcep {
     return bodegaProductoDAO.getOne(id);
   }
 
+  /**
+   *
+   * @return Una colección de objetos de tipo BodegaProducto (referente al DAO que lo implemente)
+   * @throws ConnectionExcep
+   */
   public List<BodegaProducto> getAll() throws ConnectionExcep {
     return bodegaProductoDAO.getAll();
   }
 
+  /**
+   * Actualiza un objeto tipo BodegaProducto
+   *
+   * @param bodegaProducto
+   * @throws ConnectionExcep
+   */
   public void update(BodegaProducto bodegaProducto) throws ConnectionExcep {
     bodegaProductoDAO.update(bodegaProducto);
   }
 
+  /**
+   * Elimina un objeto tipo BodegaProducto
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
   public void delete(Integer id) throws ConnectionExcep {
     bodegaProductoDAO.delete(id);
   }

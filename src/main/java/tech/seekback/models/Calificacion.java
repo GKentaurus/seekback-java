@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Calificacion"
  *
  * @author danny
  */
@@ -47,58 +48,134 @@ public class Calificacion implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> de la calificación.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id de la calificación.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>producto</code> del objeto.
+   *
+   * @see Producto
+   * @return <code>producto</code> de la calificación.
+   */
   public Producto getProducto() {
     return producto;
   }
 
+  /**
+   * Asigna el valor del atributo <code>producto</code> del objeto.
+   *
+   * @see Producto
+   * @param producto de la calificación.
+   */
   public void setProducto(Producto producto) {
     this.producto = producto;
   }
 
+  /**
+   * Retorna el valor del atributo <code>calificacion</code> del objeto.
+   *
+   * @return <code>calificacion</code> de la calificación.
+   */
   public Integer getCalificacion() {
     return calificacion;
   }
 
+  /**
+   * Asigna el valor del atributo <code>calificacion</code> del objeto.
+   *
+   * @param calificacion de la calificación.
+   */
   public void setCalificacion(Integer calificacion) {
     this.calificacion = calificacion;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> de la calificación.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps de la calificación.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
 
+  /**
+   * Retorna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @see Cliente
+   * @return <code>cliente</code> de la calificación.
+   */
   public Cliente getCliente() {
     return cliente;
   }
 
+  /**
+   * Asigna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @see Cliente
+   * @param cliente de la calificación.
+   */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
   }
 
+  /**
+   * Retorna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @return <code>comentario</code> de la calificación.
+   */
   public String getComentario() {
     return comentario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @param comentario de la calificación.
+   */
   public void setComentario(String comentario) {
     this.comentario = comentario;
   }
 
+  /**
+   * Retorna el valor del atributo <code>esAprobado</code> del objeto.
+   *
+   * @return <code>esAprobado</code> de la calificación.
+   */
   public Boolean getEsAprobado() {
     return esAprobado;
   }
 
+  /**
+   * Asigna el valor del atributo <code>esAprobado</code> del objeto.
+   *
+   * @param esAprobado de la calificación.
+   */
   public void setEsAprobado(Boolean esAprobado) {
     this.esAprobado = esAprobado;
   }
@@ -132,6 +209,12 @@ public class Calificacion implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Calificacion("
             + "id = " + id + ", "

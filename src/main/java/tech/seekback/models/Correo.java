@@ -11,6 +11,7 @@ import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
+ * Definición del modelo "Correo"
  *
  * @author danny
  */
@@ -41,42 +42,96 @@ public class Correo implements Serializable {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  /**
+   * Retorna el valor del atributo <code>id</code> del objeto.
+   *
+   * @return <code>id</code> del correo.
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   * Asigna el valor del atributo <code>id</code> del objeto.
+   *
+   * @param id del correo.
+   */
   public void setId(Integer id) {
     this.id = id;
   }
 
+  /**
+   * Retorna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @return <code>usuario</code> del correo.
+   */
   public Usuario getUsuario() {
     return usuario;
   }
 
+  /**
+   * Asigna el valor del atributo <code>usuario</code> del objeto.
+   *
+   * @see Usuario
+   * @param usuario del correo.
+   */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
   }
 
+  /**
+   * Retorna el valor del atributo <code>correoElectronico</code> del objeto.
+   *
+   * @return <code>correoElectronico</code> del correo.
+   */
   public String getCorreoElectronico() {
     return correoElectronico;
   }
 
+  /**
+   * Asigna el valor del atributo <code>correoElectronico</code> del objeto.
+   *
+   * @param correoElectronico del correo.
+   */
   public void setCorreoElectronico(String correoElectronico) {
     this.correoElectronico = correoElectronico;
   }
 
+  /**
+   * Retorna el valor del atributo <code>esPrincipal</code> del objeto.
+   *
+   * @return <code>esPrincipal</code> del correo.
+   */
   public boolean getEsPrincipal() {
     return esPrincipal;
   }
 
+  /**
+   * Asigna el valor del atributo <code>esPrincipal</code> del objeto.
+   *
+   * @param esPrincipal del correo.
+   */
   public void setEsPrincipal(Boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
   }
 
+  /**
+   * Retorna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @return <code>timestamps</code> del correo.
+   */
   public Timestamps getTimestamps() {
     return timestamps;
   }
 
+  /**
+   * Asigna el valor del atributo <code>timestamps</code> del objeto.
+   *
+   * @see Timestamps
+   * @param timestamps del correo.
+   */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
@@ -110,6 +165,12 @@ public class Correo implements Serializable {
   //</editor-fold>
 
   @Override
+  /**
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
+   *
+   * @return <code>String compilado</code> del objeto.
+   */
   public String toString() {
     return "Correos("
             + "id = " + id + ", "
