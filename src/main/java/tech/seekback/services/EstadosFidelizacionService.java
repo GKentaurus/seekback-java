@@ -6,8 +6,7 @@
 package tech.seekback.services;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import tech.seekback.dao.interfaces.EstadosFidelizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosFidelizacion;
@@ -20,14 +19,55 @@ import tech.seekback.models.EstadosFidelizacion;
 public class EstadosFidelizacionService {
 
   @EJB
-  private EstadosFidelizacionDAO rolesDAO;
+  private EstadosFidelizacionDAO estadosFidelizacionDAO;
 
-  public void create(EstadosFidelizacion rol) throws ConnectionExcep {
-    rolesDAO.create(rol);
+  /**
+   *
+   * @param obj
+   * @return Un objeto de tipo EstadosFidelizacion
+   * @throws ConnectionExcep
+   */
+  public EstadosFidelizacion create(EstadosFidelizacion obj) throws ConnectionExcep {
+    return estadosFidelizacionDAO.create(obj);
   }
 
+  /**
+   *
+   * @param id
+   * @return Un objeto de tipo EstadosFidelizacion consultado por id
+   * @throws ConnectionExcep
+   */
+  public EstadosFidelizacion getOne(Integer id) throws ConnectionExcep {
+    return estadosFidelizacionDAO.getOne(id);
+  }
+
+  /**
+   * Una colección de objetos de tipo EstadosFidelizacion (referente al Dao que lo implementa)
+   *
+   * @return @throws ConnectionExcep
+   */
   public List<EstadosFidelizacion> getAll() throws ConnectionExcep {
-    List<EstadosFidelizacion> roles = rolesDAO.getAll();
-    return roles;
+    List<EstadosFidelizacion> estadosFidelizaciones = estadosFidelizacionDAO.getAll();
+    return estadosFidelizaciones;
+  }
+
+  /**
+   * Actualiza un objeto de tipo EstadosFidelizacion
+   *
+   * @param estadosFidelizacion
+   * @throws ConnectionExcep
+   */
+  public void update(EstadosFidelizacion estadosFidelizacion) throws ConnectionExcep {
+    estadosFidelizacionDAO.update(estadosFidelizacion);
+  }
+
+  /**
+   * Elimina un objeto de tipo EstadosFidelizacion
+   *
+   * @param id
+   * @throws ConnectionExcep
+   */
+  public void delete(Integer id) throws ConnectionExcep {
+    estadosFidelizacionDAO.delete(id);
   }
 }

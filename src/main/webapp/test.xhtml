@@ -11,9 +11,14 @@
     <h:body>
       <h1>Pruebas</h1>
 
-      <ui:repeat value="#{testController.docs}" var="doc">
-        <div>#{doc.toString()}</div>
-      </ui:repeat>
+      <ui:component>
+        <div class="col s6 col m6">
+          <div class="input-field">
+            <h:inputText id="flname" class="validate" value="#{testController.usuario}" autocomplete="off"/>
+            <h:outputLabel for="flname" value="1º Apellido"/>
+          </div>
+        </div>
+      </ui:component>
 
     </h:body>
   </f:view>

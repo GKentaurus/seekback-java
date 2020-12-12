@@ -5,14 +5,17 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Remote;
+import java.util.List;
+import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
 
 /**
  *
  * @author camorenoc
  */
-@Remote
+@Local
 public interface SoporteTecnicoDAO extends DAO<SoporteTecnico, Integer> {
+
 }

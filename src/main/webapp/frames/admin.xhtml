@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <f:event type="preRenderView" listener="#{loginController.validate(1)}"/>
 
   <h:head>
     <title>QPCOM | Seekback</title>
@@ -39,9 +40,9 @@
                   </div>
                   <div class="col s12 m3 center-align" style="padding:0px;">
                     <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login?faces-redirect=true">
+                    <a class="waves-effect waves-purple btn-flat btnuser" href="../login.xhtml">
                       <i class="far fa-user" style="color:#fff"></i>
-                    </h:commandLink>
+                    </a>
                     <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></a>
                   </div>
                 </h:form>
@@ -52,22 +53,22 @@
             <div class="col s12">
               <ul id="dropdown1" class="dropdown-content z-depth-3">
                 <h:form>
-                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                  <li><a class="opt" href="../aproduct.xhtml"><i class="fab fa-usb"></i> Accesorios</a></li>
+                  <li><a class="opt" href="../cproduct.xhtml"><i class="fas fa-network-wired"></i> Cables</a></li>
+                  <li><a class="opt" href="../hproduct.xhtml"><i class="fas fa-tools"></i> Herramientas</a></li>
+                  <li><a class="opt" href="../wproduct.xhtml"><i class="fas fa-wifi"></i> Inalambrico</a></li>
+                  <li><a class="opt" href="../sproduct.xhtml"><i class="fas fa-server"></i> Switches</a></li>
+                  <li><a class="opt" href="../saproduct.xhtml"><i class="fas fa-desktop"></i> Switches administrables</a></li>
                 </h:form>
               </ul>
               <ul id="dropdown2" class="dropdown-content">
                 <h:form>
-                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                  <li><a class="opt" href="../aproduct.xhtml"><i class="fab fa-usb"></i> Accesorios</a></li>
+                  <li><a class="opt" href="../cproduct.xhtml"><i class="fas fa-network-wired"></i> Cables</a></li>
+                  <li><a class="opt" href="../hproduct.xhtml"><i class="fas fa-tools"></i> Herramientas</a></li>
+                  <li><a class="opt" href="../wproduct.xhtml"><i class="fas fa-wifi"></i> Inalambrico</a></li>
+                  <li><a class="opt" href="../sproduct.xhtml"><i class="fas fa-server"></i> Switches</a></li>
+                  <li><a class="opt" href="../saproduct.xhtml"><i class="fas fa-desktop"></i> Switches administrables</a></li>
                 </h:form>
               </ul>
 
@@ -78,7 +79,7 @@
                   </h:commandLink>
                   <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                     <h:form>
-                      <li><h:commandLink action="index" value="Inicio" /></li>
+                      <li><a href="../index.xhtml">Inicio</a></li>
                     </h:form>
                     <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
                     <h:form>
@@ -118,7 +119,7 @@
             <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
           </div>
           <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo"/></a>
-          <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">user name Administrador</span></a>
+          <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido} #{loginController.usuario.id}</span></a>
         </div>
       </li>
       <li><a class="waves-effect sidenav-close" href="admin/reporta.xhtml" target="iframe_a"><i class="fas fa-chart-line"></i>Dashboard</a></li>
@@ -167,6 +168,9 @@
           </li>
         </ul>
       </li>
+      <h:form>
+        <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.logout()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
+      </h:form>
     </ul>
 
 

@@ -9,14 +9,15 @@ import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
 
 /**
+ * Se declaran los métodos del CRUD
  *
- * @author camorenoc
+ * @author gkentaurus
  * @param <T>
  * @param <PK>
  */
 public interface DAO<T, PK> {
 
-  void create(T obj) throws ConnectionExcep;
+  T create(T obj) throws ConnectionExcep;
 
   T getOne(PK id) throws ConnectionExcep;
 

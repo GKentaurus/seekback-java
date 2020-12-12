@@ -5,15 +5,18 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Remote;
+import java.util.List;
+import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Departamento;
 
 /**
  *
  * @author camorenoc
  */
-@Remote
+@Local
 public interface DepartamentoDAO extends DAO<Departamento, Integer> {
 
+  List<Departamento> getByIdPais(Integer idPais) throws ConnectionExcep;
 }

@@ -6,7 +6,7 @@
 package tech.seekback.builders;
 
 import tech.seekback.models.Ciudad;
-import tech.seekback.models.Direcciones;
+import tech.seekback.models.Direccion;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 
@@ -16,10 +16,10 @@ import tech.seekback.models.templates.Timestamps;
  */
 public class DireccionesBuilder {
 
-  private Direcciones direcciones;
+  private Direccion direcciones;
 
   private DireccionesBuilder() {
-    this.direcciones = new Direcciones();
+    this.direcciones = new Direccion();
   }
 
   public static DireccionesBuilder builder() {
@@ -61,7 +61,7 @@ public class DireccionesBuilder {
     return this;
   }
 
-  public Direcciones build() {
+  public Direccion build() {
     return this.direcciones;
   }
 }

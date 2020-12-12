@@ -13,7 +13,9 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Roles;
+import tech.seekback.models.Direccion;
+import tech.seekback.models.Rol;
+import tech.seekback.models.Telefono;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.UsuarioService;
@@ -29,12 +31,14 @@ public class UsuarioController implements Serializable {
   @EJB
   private UsuarioService usuarioService;
   private Usuario usuario;
+  private Direccion direcion;
+  private Telefono telefono;
   private List<Usuario> usuarios;
 
   public UsuarioController() {
     usuario = new Usuario();
     usuario.setTipoDoc(new TipoDoc());
-    usuario.setRol(new Roles());
+    usuario.setRol(new Rol());
   }
 
   @PostConstruct
@@ -71,4 +75,5 @@ public class UsuarioController implements Serializable {
     }
 
   }
+
 }

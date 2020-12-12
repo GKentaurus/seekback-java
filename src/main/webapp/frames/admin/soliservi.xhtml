@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
   <h:head>
     <title>QPCOM | Seekback</title>
     <meta charset="utf-8"/>
@@ -30,58 +31,53 @@
       <div class="row">
         <div class="col s12">
           <p style="font-size:25px;" class="center-align"><i class="fas fa-headset"></i> Solicitar servicio <i class="far fa-calendar-alt"></i></p>
-          <h:form>
-            <div class="row">
-              <div class="col s6">
-                <p>
-                  <h:outputLabel>
-                    <input name="group1" type="radio"/>
-                    <span>Capacitaciòn</span>
-                  </h:outputLabel>
-                </p>
-              </div>
-              <div class="col s6">
-                <p>
-                  <h:outputLabel>
-                    <input name="group1" type="radio"/>
-                    <span>Asesoría técnica</span>
-                  </h:outputLabel>
-                </p>
-              </div>
-              <div class="col s12 m6">
-                <div class="input-field col s12">
-                  <select>
-                    <option value="" disabled="true" selected="true">seleccione una opcion</option>
-                    <option value="1">opcion 1</option>
-                    <option value="2">opcion 2</option>
-                    <option value="3">opcion 3</option>
-                  </select>
-                  <label>Area</label>
-                </div>
-                <br/>
-                <div class="input-field col s12">
-                  <select>
-                    <option value=""  disabled="true" selected="true">seleccione una opcion</option>
-                    <option value="1">opcion 1</option>
-                    <option value="2">opcion 2</option>
-                    <option value="3">opcion 3</option>
-                  </select>
-                  <label>Nombre</label>
-                </div>
-              </div>
-              <div class="col s12 m6">
-                <div class="input-field">
-                  <input id="datee" type="text" class="datepicker"/>
-                  <h:outputLabel for="datee" value="Fecha" />
-                </div>
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="input-field">
+                <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
+                <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default">
+                  <f:selectItem itemValue="#{null}"
+                                itemLabel="Seleccione una opcion"
+                                noSelectionOption="true" />
+                  <f:selectItems value="#{clienteController.clientes}"
+                                 var="cl"
+                                 itemValue="#{cl.id}"
+                                 itemLabel="#{cl.usuario.primerNombre} #{cl.usuario.otrosNombres} #{cl.usuario.primerApellido} #{cl.usuario.otrosApellidos}"/>
+                </h:selectOneMenu>
               </div>
             </div>
-            <div class="row">
-              <div class="col s12">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
+            <div class="col s12 m6">
+              <div class="input-field">
+                <h:outputLabel for="estado" value="Tipo Servicio" style="margin-top: -30px;"/>
+                <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default">
+                  <f:selectItem itemValue="#{null}"
+                                itemLabel="Seleccione una opcion"
+                                noSelectionOption="true" />
+                  <f:selectItems value="#{agendaController.tipoServicio}"
+                                 var="da"
+                                 itemValue="#{da.id}"
+                                 itemLabel="#{da.nombreServicio}"/>
+                </h:selectOneMenu>
               </div>
             </div>
-          </h:form>
+            <div class="col s12 m6">
+              <div class="input-field">
+                <input id="datee" type="text" class="datepicker"/>
+                <h:outputLabel for="datee" value="Fecha" />
+              </div>
+            </div>
+            <div class="col s12 m6">
+              <div class="input-field">
+                <textarea id="motivo" class="materialize-textarea"></textarea>
+                <label for="motivo">Motivo</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -105,13 +101,7 @@
             cancel: 'Cancelar'},
           format: 'mmmm dd, yyyy'
         });
-      });
-
-      $(document).ready(function () {
         $('select').formSelect();
-      });
-
-      $(document).ready(function () {
         $('.modal').modal();
       });
     </script>
