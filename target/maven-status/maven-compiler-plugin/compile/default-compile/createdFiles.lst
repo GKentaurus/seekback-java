@@ -37,6 +37,7 @@ tech\seekback\controllers\UsuarioController.class
 tech\seekback\models\Proveedor.class
 tech\seekback\models\Agenda.class
 tech\seekback\models\templates\Timestamps.class
+tech\seekback\controllers\BodegaProductoController.class
 tech\seekback\services\RolService.class
 tech\seekback\services\BodegaProductoService.class
 tech\seekback\models\Bodega.class
