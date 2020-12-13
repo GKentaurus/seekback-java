@@ -43,12 +43,25 @@ public class CalificacionService {
   }
 
   /**
-   * Una coleccion de objetos de tipo Calificación (referente al DAO que lo implemente)
+   * Una coleccion de objetos de tipo Calificación (referente al DAO que lo
+   * implemente)
    *
    * @return @throws ConnectionExcep
    */
   public List<Calificacion> getAll() throws ConnectionExcep {
     return calificacionDAO.getAll();
+  }
+
+  /**
+   *
+   * @param idProducto
+   * @return Una colección de objetos de tipo Calificacion consultado por
+   * idProducto
+   * @throws ConnectionExcep
+   */
+  public List<Calificacion> getByIdProducto(int idProducto) throws ConnectionExcep {
+    List<Calificacion> calificacions = calificacionDAO.getByIdProducto(idProducto);
+    return calificacions;
   }
 
   /**

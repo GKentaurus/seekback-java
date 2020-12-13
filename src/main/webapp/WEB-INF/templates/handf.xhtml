@@ -10,142 +10,141 @@ and open the template in the editor.
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html">
 
-    <h:head>
-        <title>.:QPCOM | Seekback:.</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <h:outputScript library="" name="jquery.min.js" />
-        <h:outputScript library="" name="fontawesome.js" />
-        <h:outputScript library="scripts" name="setThemeMode.js" />
-        <h:outputStylesheet library="styles" name="style.css" />
-        <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-        <h:outputScript library="materialize" name="js/materialize.min.js" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    </h:head>
+  <h:head>
+    <title>.:QPCOM | Seekback:.</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <h:outputScript library="scripts" name="setThemeMode.js" />
+    <h:outputStylesheet library="styles" name="style.css" />
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  </h:head>
 
-    <h:body id="ody">
-        <div class="pnav">
-            <div class="wrap wnav">
-                <div id="nav" class="container  scrollspy">
-                    <div class="row" style="margin-bottom:0px;">
-                        <div class="col s2">
-                            <h:commandLink>
-                                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
-                            </h:commandLink>
-                        </div>
-                        <div class="col s10">
-                            <div class="row" style="margin-bottom:0px;">
-                                <div class="col s12 m9">
-                                    <div class="input-field">
-                                        <h:inputText id="searxh" />
-                                        <h:outputLabel for="searxh" value="Buscar" />
-                                    </div>
-                                </div>
-                                <div class="col s12 m3 center-align" style="padding:0px; display: inline-flex">
-                                    <h:form>
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                                        <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
-                                            <i class="far fa-user" style="color:#fff"></i>
-                                        </h:commandLink>
-                                    </h:form>
-                                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col s12">
-                            <ul id="dropdown1" class="dropdown-content z-depth-3">
-                                <h:form>
-                                    <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                                </h:form>
-                            </ul>
-                            <ul id="dropdown2" class="dropdown-content">
-                                <h:form>
-                                    <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                                    <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-                                </h:form>
-                            </ul>
-
-                            <nav style="background-color:#222222;" class="z-depth-0">
-                                <div class="nav-wrapper">
-                                    <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
-                                        <i class="fas fa-bars"></i>
-                                    </h:commandLink>
-                                    <ul class="left hide-on-med-and-down" style="display: inline-flex;">
-                                        <h:form>
-                                            <li><h:commandLink action="index" value="Inicio" /></li>
-                                        </h:form>
-                                        <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
-                                        <h:form>
-                                            <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
-                                            <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
-                                        </h:form>
-                                    </ul>
-                                </div>
-                            </nav>
-
-                            <ul class="sidenav" id="mobile-demo">
-                                <div class="user-view">
-                                    <div class="background">
-                                        <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
-                                    </div>
-                                    <h:commandLink pt:href="">
-                                        <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
-                                    </h:commandLink>
-                                </div>
-                                <h:form>
-                                    <li><h:commandLink action="index" value="Inicio" /></li>
-                                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
-                                    <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
-                                    <li><h:commandLink pt:href="index#contac">Nosotros</h:commandLink></li>
-                                </h:form>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <h:body id="ody">
+    <div class="pnav">
+      <div class="wrap wnav">
+        <div id="nav" class="container  scrollspy">
+          <div class="row" style="margin-bottom:0px;">
+            <div class="col s2">
+              <h:commandLink>
+                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg" />
+              </h:commandLink>
             </div>
+            <div class="col s10">
+              <div class="row" style="margin-bottom:0px;">
+                <div class="col s12 m9">
+                  <div class="input-field">
+                    <h:inputText id="searxh" />
+                    <h:outputLabel for="searxh" value="Buscar" />
+                  </div>
+                </div>
+                <div class="col s12 m3 center-align" style="padding:0px; display: inline-flex">
+                  <h:form>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
+                      <i class="far fa-user" style="color:#fff"></i>
+                    </h:commandLink>
+                  </h:form>
+                  <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom:20px;">
+            <div class="col s12">
+              <ul id="dropdown1" class="dropdown-content z-depth-3">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct.xhtml?id=1 faces-redirect=true"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
+              <ul id="dropdown2" class="dropdown-content">
+                <h:form>
+                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                </h:form>
+              </ul>
+
+              <nav style="background-color:#222222;" class="z-depth-0">
+                <div class="nav-wrapper">
+                  <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="fas fa-bars"></i>
+                  </h:commandLink>
+                  <ul class="left hide-on-med-and-down" style="display: inline-flex;">
+                    <h:form>
+                      <li><h:commandLink action="index" value="Inicio" /></li>
+                    </h:form>
+                    <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                    <h:form>
+                      <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                      <li><h:commandLink pt:href="index#qsomos">Nosotros</h:commandLink></li>
+                    </h:form>
+                  </ul>
+                </div>
+              </nav>
+
+              <ul class="sidenav" id="mobile-demo">
+                <div class="user-view">
+                  <div class="background">
+                    <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img" />
+                  </div>
+                  <h:commandLink pt:href="">
+                    <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;" />
+                  </h:commandLink>
+                </div>
+                <h:form>
+                  <li><h:commandLink action="index" value="Inicio" /></li>
+                  <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
+                  <li><h:commandLink pt:href="index#contac">Contactenos</h:commandLink></li>
+                  <li><h:commandLink pt:href="index#contac">Nosotros</h:commandLink></li>
+                </h:form>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <ui:insert name="content">paginas</ui:insert>
+    <ui:insert name="content">paginas</ui:insert>
 
-        <footer class="page-footer" style="background-color: #222222;">
-            <div class="wrap transparent">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s6" style="text-align:left">
-                            <h4>Redes sociales </h4>
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i> siguenos en facebook</h:commandLink> 
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i> siguenos en twitter</h:commandLink>
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i> siguenos en instagram</h:commandLink>
-                        </div>
-                        <div class="col s6" style="text-align:left">
-                            <h4>Informaciòn de contacto </h4>
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i> +57 300 000 0000</h:commandLink>
-                            <br />
-                            <br />
-                            <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
-                        </div>
-                    </div>
-                </div>
+    <footer class="page-footer" style="background-color: #222222;">
+      <div class="wrap transparent">
+        <div class="container">
+          <div class="row">
+            <div class="col s6" style="text-align:left">
+              <h4>Redes sociales </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i> siguenos en facebook</h:commandLink>
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i> siguenos en twitter</h:commandLink>
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i> siguenos en instagram</h:commandLink>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Copyright Seekback. todos los derechos reservados
-                </div>
+            <div class="col s6" style="text-align:left">
+              <h4>Informaciòn de contacto </h4>
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i> +57 300 000 0000</h:commandLink>
+              <br />
+              <br />
+              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
             </div>
-        </footer>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Copyright Seekback. todos los derechos reservados
+        </div>
+      </div>
+    </footer>
 
-    </h:body>
+  </h:body>
 </html>

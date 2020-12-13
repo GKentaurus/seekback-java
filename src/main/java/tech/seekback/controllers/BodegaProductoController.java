@@ -11,8 +11,11 @@ import java.util.Objects;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.BodegaProducto;
+import tech.seekback.models.Producto;
 import tech.seekback.services.BodegaProductoService;
+import tech.seekback.services.ProductoService;
 
 /**
  *
@@ -24,7 +27,12 @@ public class BodegaProductoController implements Serializable {
 
   @EJB
   private BodegaProductoService bodegaProductoService;
+  @EJB
+  private ProductoService productoService;
   private List<BodegaProducto> bodegaProductos;
+  private List<BodegaProducto> productosporcategoria;
+  private BodegaProducto bodegaProducto;
+  private Producto producto;
 
   public List<BodegaProducto> getBodegaProductos() {
     try {
@@ -36,6 +44,32 @@ public class BodegaProductoController implements Serializable {
       ex.printStackTrace();
     }
     return bodegaProductos;
+  }
+
+  public void getOne(int idProducto) throws ConnectionExcep {
+    this.producto = productoService.getOne(idProducto);
+  }
+
+  public Producto getProducto() {
+    try {
+      if (Objects.isNull(producto)) {
+        System.out.println("vacio esto");
+      }
+    } catch (Exception e) {
+    }
+    return producto;
+  }
+
+  public List<BodegaProducto> getProductosporcategoria(int idProducto) {
+    try {
+      if (Objects.isNull(productosporcategoria)) {
+        productosporcategoria = bodegaProductoService.getByIdCategoria(idProducto);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los bodegaProductos.....");
+      ex.printStackTrace();
+    }
+    return productosporcategoria;
   }
 
 }

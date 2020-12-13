@@ -58,7 +58,7 @@
             <div class="table-header">
               <span class="table-title">Felicitaciones</span>
               <div class="actions">
-                <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">Search</i></a>
+                <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
               </div>
             </div>
             <h:form>
@@ -68,6 +68,10 @@
                 <h:column>
                   <f:facet name="header">Remitida</f:facet>
                   <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Dirigida a</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.dirigidoA}" pt:data-position="bottom" pt:data-tooltip="#{st.dirigidoA}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
@@ -88,6 +92,12 @@
                           <div class="col s12 m6">
                             <div class="input-field">
                               <input id="quien" type="text" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" readonly="true"/>
+                              <label for="quien">Cliente</label>
+                            </div>
+                          </div>
+                          <div class="col s12 m6">
+                            <div class="input-field">
+                              <input id="quien" type="text" value="#{st.dirigidoA}" readonly="true"/>
                               <label for="quien">Cliente</label>
                             </div>
                           </div>
@@ -121,7 +131,9 @@
                         <h4 class="center-align">Desea eliminar la felicitación de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
                       </div>
                       <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        <h:commandLink  pt:href=""
+                                        actionListener="#{felicitacionController.delete(st.id.intValue())}"
+                                        class="modal-close waves-effect waves-green btn-flat" value="Aceptar"/>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>

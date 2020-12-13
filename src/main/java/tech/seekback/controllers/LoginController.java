@@ -103,6 +103,8 @@ public class LoginController implements Serializable {
           //redirectTo("/index.xhtml");
         }
       } else {
+        FacesMessage message = new FacesMessage("El  no esta registrado");
+        fc.addMessage("messs:mesag", message);
         this.usuario = null;
       }
 

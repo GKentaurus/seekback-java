@@ -18,7 +18,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "bodega_productos")
 @NamedQueries(value = {
-  @NamedQuery(name = "BodegaProducto.getAll", query = "SELECT obj FROM BodegaProducto obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "BodegaProducto.getAll", query = "SELECT obj FROM BodegaProducto obj WHERE obj.timestamps.deleted_at IS NULL"),
+  @NamedQuery(name = "BodegaProducto.getByIdCategoria", query = "SELECT obj FROM BodegaProducto obj WHERE obj.timestamps.deleted_at IS NULL and obj.producto.categoria.id = :idCategoria")
 })
 public class BodegaProducto implements Serializable {
 

@@ -5,8 +5,10 @@
  */
 package tech.seekback.dao.interfaces;
 
+import java.util.List;
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Calificacion;
 
 /**
@@ -16,4 +18,5 @@ import tech.seekback.models.Calificacion;
 @Local
 public interface CalificacionDAO extends DAO<Calificacion, Integer> {
 
+  List<Calificacion> getByIdProducto(int idProducto) throws ConnectionExcep;
 }

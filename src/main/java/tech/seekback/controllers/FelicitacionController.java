@@ -11,6 +11,7 @@ import java.util.Objects;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 import tech.seekback.services.FelicitacionService;
 
@@ -49,6 +50,10 @@ public class FelicitacionController implements Serializable {
       ex.printStackTrace();
     }
     return felicitaciones;
+  }
+
+  public void delete(int idfel) throws ConnectionExcep {
+    felicitacionService.delete(idfel);
   }
 
 }

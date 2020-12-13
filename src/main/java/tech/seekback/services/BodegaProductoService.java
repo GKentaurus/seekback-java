@@ -44,11 +44,24 @@ public class BodegaProductoService {
 
   /**
    *
-   * @return Una colección de objetos de tipo BodegaProducto (referente al DAO que lo implemente)
+   * @return Una colección de objetos de tipo BodegaProducto (referente al DAO
+   * que lo implemente)
    * @throws ConnectionExcep
    */
   public List<BodegaProducto> getAll() throws ConnectionExcep {
     return bodegaProductoDAO.getAll();
+  }
+
+  /**
+   *
+   * @param idProducto
+   * @return Una colección de objetos de tipo Calificacion consultado por
+   * idProducto
+   * @throws ConnectionExcep
+   */
+  public List<BodegaProducto> getByIdCategoria(int idProducto) throws ConnectionExcep {
+    List<BodegaProducto> bodegaProductos = bodegaProductoDAO.getByIdCategoria(idProducto);
+    return bodegaProductos;
   }
 
   /**

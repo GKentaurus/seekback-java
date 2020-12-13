@@ -7,7 +7,9 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
   <h:head>
     <title>.:QPCOM | Seekback:.</title>
     <meta charset="utf-8" />
@@ -22,6 +24,7 @@ and open the template in the editor.
   </h:head>
 
   <h:body id="ody">
+    <h:outputText value="#{bodegaProductoController.getOne(param['id'])}" />
 
     <div class="pnav">
       <div class="wrap wnav">
@@ -34,7 +37,7 @@ and open the template in the editor.
             </div>
             <div class="col s10">
               <div class="row" style="margin-bottom:0px;">
-                <form>
+                <h:form>
                   <div class="col s12 m9">
                     <div class="input-field">
                       <h:inputText id="searxh" />
@@ -43,12 +46,12 @@ and open the template in the editor.
                   </div>
                   <div class="col s12 m3 center-align" style="padding:0px;">
                     <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login?faces-redirect = true">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
                       <i class="far fa-user" style="color:#fff"></i>
                     </h:commandLink>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
+                    <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></a>
                   </div>
-                </form>
+                </h:form>
               </div>
             </div>
           </div>
@@ -82,7 +85,7 @@ and open the template in the editor.
                   </h:commandLink>
                   <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                     <h:form>
-                      <li><h:commandLink action="index" value="Inicio" /></li>
+                      <li><h:commandLink action="index.xhtml" value="Inicio" /></li>
                     </h:form>
                     <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
                     <h:form>
@@ -121,8 +124,8 @@ and open the template in the editor.
           <div class="col s12">
             <h:form>
               <h:commandLink action="index" value="Inicio" class="breadcrumb " />
-              <h:commandLink class="breadcrumb ">Categoria</h:commandLink>
-              <h:commandLink class="breadcrumb ">Producto</h:commandLink>
+              <h:commandLink class="breadcrumb" action="aproduct?id=1 faces-redirect=true" value="#{bodegaProductoController.producto.categoria.nombreCategoria}" />
+              <h:outputLabel class="breadcrumb "  value="#{bodegaProductoController.producto.modeloProducto}" />
             </h:form>
           </div>
         </div>
@@ -137,9 +140,8 @@ and open the template in the editor.
           <div class="col s12 col m7">
             <div class="z-depth-3 card grey lighten-4">
               <div class="card-content black-text">
-                <span class="card-title">Producto</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <span class="card-title">#{bodegaProductoController.producto.modeloProducto}</span>
+                <p>#{bodegaProductoController.producto.descripcion}</p>
               </div>
             </div>
           </div>
@@ -148,31 +150,30 @@ and open the template in the editor.
       <div class="col m6 s12">
         <div class="row">
           <div class="col m6 s12">
-            <table class="table-responsive">
-              <tbody>
-                <tr>
-                  <th colspan="4" class="center-align">Calificaciones</th>
-                </tr>
-                <tr>
-                  <td>Nombre</td>
-                  <td>fecha</td>
-                  <td>Comentario</td>
-                  <td>Calificación</td>
-                </tr>
-                <tr>
-                  <td>Camila Gonzales</td>
-                  <td>06/10/2019</td>
-                  <td>Lorem ipsum in dolore</td>
-                  <td><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
-                </tr>
-                <tr>
-                  <td>Juanquin Ulpinp</td>
-                  <td>16/08/2019</td>
-                  <td>Lorem ipsum in dolore</td>
-                  <td><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star ca"></i><i class="fas fa-star"></i></td>
-                </tr>
-              </tbody>
-            </table>
+
+            <h:form>
+              <h:dataTable pt:id="datatable" class="highlight"
+                           value="#{calificacionController.getCalificaciondelproducto(param['id'])}"
+                           var="st">
+                <h:column>
+                  <f:facet name="header">Califica</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Fecha</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Comentario</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Calificacion</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.calificacion}" pt:data-position="bottom" pt:data-tooltip="#{st.calificacion}"/>
+                </h:column>
+              </h:dataTable>
+            </h:form>
+            <br/>
           </div>
         </div>
       </div>

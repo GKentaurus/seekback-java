@@ -25,6 +25,7 @@ public class CalificacionController implements Serializable {
   @EJB
   private CalificacionService calificacionService;
   private List<Calificacion> calificaciones;
+  private List<Calificacion> calificaciondelproducto;
 
   public List<Calificacion> getCalificaciones() {
     try {
@@ -36,6 +37,18 @@ public class CalificacionController implements Serializable {
       ex.printStackTrace();
     }
     return calificaciones;
+  }
+
+  public List<Calificacion> getCalificaciondelproducto(int idProducto) {
+    try {
+      if (Objects.isNull(calificaciondelproducto)) {
+        calificaciondelproducto = calificacionService.getByIdProducto(idProducto);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los calificaciones.....");
+      ex.printStackTrace();
+    }
+    return calificaciondelproducto;
   }
 
 }

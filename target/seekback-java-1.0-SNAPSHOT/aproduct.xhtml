@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
   <h:body id="ody">
+    <h:outputText value="#{bodegaProductoController.getOne(param['id'])}" />
 
     <ui:composition template="/WEB-INF/templates/handf.xhtml" >
       <ui:define name="content">
@@ -33,6 +36,23 @@
             </div>
           </nav>
 
+          <h:form>
+            <h:dataTable pt:id="datatable"
+                         style="display: block;"
+                         class="container"
+                         value="#{bodegaProductoController.getProductosporcategoria(param['id'])}"
+                         var="st">
+              <h:column pt:id="dataasdftable">
+                <f:facet name="header"></f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header"></f:facet>
+                <a class='btn-large waves-effect waves-light' href="anyproduct.xhtml?id=#{st.id}" >visualizar</a>
+              </h:column>
+            </h:dataTable>
+          </h:form>
+          <!--
           <div class="container section">
             <div class="row">
               <div class="col s12 m4">
@@ -121,6 +141,7 @@
               </div>
             </div>
           </div>
+          -->
         </div>
         <br />
 
