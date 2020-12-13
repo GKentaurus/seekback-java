@@ -95,18 +95,18 @@ public class Telefono implements Serializable {
   }
 
   /**
-   * Retorna el valor del atributo <code>numeroTelefono</code> del objeto.
+   * Retorna el valor del atributo <code>esPrincipal</code> del objeto.
    *
-   * @return <code>numeroTelefono</code> del telefono.
+   * @return <code>esPrincipal</code> del telefono.
    */
   public Boolean getEsPrincipal() {
     return esPrincipal;
   }
 
   /**
-   * Asigna el valor del atributo <code>numeroTelefono</code> del objeto.
+   * Asigna el valor del atributo <code>esPrincipal</code> del objeto.
    *
-   * @param numeroTelefono del telefono.
+   * @param esPrincipal del telefono.
    */
   public void setEsPrincipal(Boolean esPrincipal) {
     this.esPrincipal = esPrincipal;
