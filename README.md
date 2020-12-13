@@ -1,4 +1,4 @@
-![Seekback logo](https://qpcom.seekback.tech/logo2.png)
+<div style="text-align:center"><img src="https://qpcom.seekback.tech/logo2.png" /></div>
 
 # Sistema de Información SeekBack
 
