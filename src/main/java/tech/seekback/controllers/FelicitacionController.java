@@ -53,6 +53,7 @@ public class FelicitacionController implements Serializable {
   }
 
   public void delete(int idfel) throws ConnectionExcep {
+    System.out.println("del " + idfel);
     felicitacionService.delete(idfel);
   }
 

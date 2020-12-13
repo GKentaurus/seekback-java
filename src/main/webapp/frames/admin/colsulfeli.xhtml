@@ -128,11 +128,14 @@
                   <div id="modaldel#{st.id}" class="modal">
                     <div class="modal-content">
                       <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar la felicitación de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
+                        <h4 class="center-align">Desea eliminar la felicitación de #{st.id} #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
                       </div>
                       <div class="modal-footer">
                         <h:form>
-                          <h:commandButton actionListener="#{felicitacionController.delete(st.id.intValue())}" class="modal-close waves-effect waves-green btn-flat" value="Aceptar"/>
+                          <h:commandLink pt:href=""
+                                         actionListener="#{felicitacionController.delete(st.id.intValue())}"
+                                         class="modal-close waves-effect waves-green btn-flat"
+                                         value="Aceptar #{st.id}"/>
                         </h:form>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>

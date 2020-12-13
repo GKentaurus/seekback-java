@@ -48,7 +48,7 @@
                   </div>
                   <div class="col s12 m3 center-align" style="padding:0px;">
                     <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"><i class="fas fa-search" style="color:#fff"></i></h:commandLink>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login?faces-redirect=true">
                       <i class="far fa-user" style="color:#fff"></i>
                     </h:commandLink>
                     <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></a>
@@ -61,22 +61,22 @@
             <div class="col s12">
               <ul id="dropdown1" class="dropdown-content z-depth-3">
                 <h:form>
-                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="aproduct.xhtml?id=1 faces-redirect=true"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct.xhtml?id=2 faces-redirect=true"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct.xhtml?id=3 faces-redirect=true"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct.xhtml?id=4 faces-redirect=true"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct.xhtml?id=5 faces-redirect=true"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct.xhtml?id=6 faces-redirect=true"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
               </ul>
               <ul id="dropdown2" class="dropdown-content">
                 <h:form>
-                  <li><h:commandLink class="opt" action="aproduct"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="cproduct"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="hproduct"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="wproduct"><i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="sproduct"><i class="fas fa-server"></i> Switches</h:commandLink></li>
-                  <li><h:commandLink class="opt" action="saproduct"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="aproduct.xhtml?id=1 faces-redirect=true"><i class="fab fa-usb"></i> Accesorios</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="cproduct.xhtml?id=2 faces-redirect=true"><i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="hproduct.xhtml?id=3 faces-redirect=true"><i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="wproduct.xhtml?id=4 faces-redirect=true"><i class="fas fa-wifi"></i> Inalambrico</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="sproduct.xhtml?id=5 faces-redirect=true"><i class="fas fa-server"></i> Switches</h:commandLink></li>
+                  <li><h:commandLink class="opt" action="saproduct.xhtml?id=6 faces-redirect=true"><i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
                 </h:form>
               </ul>
 
@@ -87,7 +87,7 @@
                   </h:commandLink>
                   <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                     <h:form>
-                      <li><h:commandLink action="index" value="Inicio" /></li>
+                      <li><h:commandLink action="index?faces-redirect=true" value="Inicio" /></li>
                     </h:form>
                     <li><h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i class="fas fa-caret-down right"></i></h:commandLink></li>
                     <h:form>

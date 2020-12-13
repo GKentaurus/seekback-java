@@ -79,7 +79,7 @@ public class FelicitacionService {
    * @param id
    * @throws ConnectionExcep
    */
-  public void delete(int id) throws ConnectionExcep {
-    felicitacionDAO.delete(id);
+  public void delete(int idfel) throws ConnectionExcep {
+    felicitacionDAO.delete(idfel);
   }
 }
