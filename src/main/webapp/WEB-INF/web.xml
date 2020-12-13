@@ -25,4 +25,9 @@
     <extension>webp</extension>
     <mime-type>image/webp</mime-type>
   </mime-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/404.xhtml</location>
+  </error-page>
+
 </web-app>
