@@ -7,6 +7,7 @@ package tech.seekback.dao.interfaces;
 
 import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Administrador;
 
 /**
@@ -15,4 +16,6 @@ import tech.seekback.models.Administrador;
  */
 @Local
 public interface AdministradorDAO extends DAO<Administrador, Integer> {
+
+  Administrador getByIdUsuario(Integer id) throws ConnectionExcep;
 }

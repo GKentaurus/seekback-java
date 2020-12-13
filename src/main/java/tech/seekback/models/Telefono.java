@@ -24,7 +24,7 @@ public class Telefono implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idUsuario", nullable = false)
   private Usuario usuario;
 
@@ -162,8 +162,7 @@ public class Telefono implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres que resume toda la información relevante
-   * del objeto.
+   * Retorna una cadena de caracteres que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

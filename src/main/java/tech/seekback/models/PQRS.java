@@ -29,15 +29,15 @@ public class PQRS implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idTipoSolicitud", nullable = false)
   private TipoSolicitud tipoSolicitud;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
   private Cliente cliente;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idAdministrador", nullable = false)
   private Administrador administrador;
 
@@ -47,7 +47,7 @@ public class PQRS implements Serializable {
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEstado", nullable = false)
   private EstadosFidelizacion estado;
 
@@ -261,8 +261,7 @@ public class PQRS implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

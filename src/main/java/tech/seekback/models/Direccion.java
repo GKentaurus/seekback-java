@@ -29,7 +29,7 @@ public class Direccion implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idRegistro", nullable = false)
   private Usuario usuario;
 
@@ -45,7 +45,7 @@ public class Direccion implements Serializable {
   @Column(name = "esPrincipal", nullable = false)
   private boolean esPrincipal;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "localizacion", nullable = false)
   private Ciudad ciudad;
 

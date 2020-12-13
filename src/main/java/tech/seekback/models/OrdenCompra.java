@@ -23,7 +23,7 @@ public class OrdenCompra implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idProveedor", nullable = false)
   private Proveedor proveedor;
 
@@ -34,14 +34,14 @@ public class OrdenCompra implements Serializable {
   @Column(name = "docAsociado", nullable = false, length = 50)
   private String docAsociado;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idTRM", nullable = false)
   private TRM trm;
 
   @Column(name = "factorImport", nullable = false, length = 11)
   private Double factorImport;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEmpleado", nullable = false)
   private Empleado empleado;
 
