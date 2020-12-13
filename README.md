@@ -18,8 +18,8 @@ Los desarrolladores nombrados a continuación, pertenecen al **GAES 1**:
 | Nombres                 | Perfíl GitHub                                  | Ficha           |
 | ----------------------- | ---------------------------------------------- | --------------- |
 | Carlos Moreno Cifuentes | [@GKentaurus](https://github.com/GKentaurus)   | _Ficha 2025342_ |
-| Veronica Ortiz Rocha    | [@Dannychan94](https://github.com/dannychan94) | _Ficha 2025342_ |
-| Danniela Riaño Huertas  | [@VeRock87](https://github.com/VeRock87)       | _Ficha 2025316_ |
+| Veronica Ortiz Rocha    | [@VeRock87](https://github.com/VeRock87)       | _Ficha 2025342_ |
+| Danniela Riaño Huertas  | [@Dannychan94](https://github.com/dannychan94) | _Ficha 2025316_ |
 
 ## Acerca del proyecto
 
