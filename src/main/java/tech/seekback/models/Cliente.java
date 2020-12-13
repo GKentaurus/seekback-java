@@ -18,8 +18,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "cliente")
 @NamedQueries(value = {
-  @NamedQuery(name = "Cliente.getAll", query = "SELECT obj FROM Cliente obj WHERE obj.timestamps.deleted_at IS NULL")
-})
+  @NamedQuery(name = "Cliente.getAll", query = "SELECT obj FROM Cliente obj WHERE obj.timestamps.deleted_at IS NULL"),
+  @NamedQuery(name = "Cliente.getByIdUsuario", query = "SELECT obj FROM Cliente obj WHERE obj.usuario.id = :idUsuario AND obj.timestamps.deleted_at IS NULL"),})
 public class Cliente implements Serializable {
 
   @Id
@@ -28,7 +28,7 @@ public class Cliente implements Serializable {
   private Integer id;
 
   @JoinColumn(name = "idUsuario", nullable = false)
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private Usuario usuario;
 
   @Embedded
@@ -123,8 +123,7 @@ public class Cliente implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

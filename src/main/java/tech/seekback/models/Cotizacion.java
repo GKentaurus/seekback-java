@@ -39,19 +39,19 @@ public class Cotizacion implements Serializable {
   @Temporal(TemporalType.DATE)
   private Date vencimiento;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idTRM", nullable = false)
   private TRM trm;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEstado", nullable = false)
   private EstadosCotizacion estado;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEmpleado", nullable = false)
   private Empleado empleado;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
   private Cliente cliente;
 

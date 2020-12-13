@@ -6,8 +6,11 @@
 package tech.seekback.dao.jpa;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.AdministradorDAO;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.exceptions.enums.ConnectionExcepEnum;
 import tech.seekback.models.Administrador;
 
 /**
@@ -19,5 +22,23 @@ public class AdministradorDAOJPA extends GenericDAO<Administrador, Integer> impl
 
   public AdministradorDAOJPA() {
     super(Administrador.class);
+  }
+
+  /**
+   *
+   * @param id del Usuario
+   * @return Un objeto de tipo Administrador
+   * @throws ConnectionExcep
+   */
+  @Override
+  public Administrador getByIdUsuario(Integer id) throws ConnectionExcep {
+
+    try {
+      TypedQuery<Administrador> tq = em.createNamedQuery("Empleado.getByIdUsuario", classType);
+      tq.setParameter("idUsuario", id);
+      return tq.getSingleResult();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
   }
 }

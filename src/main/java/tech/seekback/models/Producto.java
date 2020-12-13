@@ -31,7 +31,7 @@ public class Producto implements Serializable {
   @Column(name = "precioVenta", nullable = false, length = 11)
   private Double precioVenta;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCategoria", nullable = false)
   private CategoriasProducto categoria;
 

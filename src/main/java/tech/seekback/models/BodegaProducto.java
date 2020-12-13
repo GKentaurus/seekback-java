@@ -28,11 +28,11 @@ public class BodegaProducto implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idBodega", nullable = false)
   private Bodega bodega;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idProducto", nullable = false)
   private Producto producto;
 
@@ -169,8 +169,7 @@ public class BodegaProducto implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

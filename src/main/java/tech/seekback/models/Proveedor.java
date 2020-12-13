@@ -27,7 +27,7 @@ public class Proveedor implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "tipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
@@ -46,7 +46,7 @@ public class Proveedor implements Serializable {
   @Column(name = "email", nullable = false, length = 255)
   private String email;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
   private Cliente cliente;
 
@@ -252,8 +252,7 @@ public class Proveedor implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

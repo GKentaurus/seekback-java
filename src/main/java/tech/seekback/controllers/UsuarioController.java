@@ -20,8 +20,11 @@ import tech.seekback.models.Direccion;
 import tech.seekback.models.Telefono;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
+import tech.seekback.services.AdministradorService;
+import tech.seekback.services.ClienteService;
 import tech.seekback.services.CorreoService;
 import tech.seekback.services.DireccionService;
+import tech.seekback.services.EmpleadoService;
 import tech.seekback.services.TelefonoService;
 import tech.seekback.services.TipoDocService;
 import tech.seekback.services.UsuarioService;
@@ -39,6 +42,15 @@ public class UsuarioController implements Serializable {
 
   @EJB
   private UsuarioService usuarioService;
+
+  @EJB
+  private AdministradorService administradorService;
+
+  @EJB
+  private EmpleadoService empleadoService;
+
+  @EJB
+  private ClienteService clienteService;
 
   @EJB
   private DireccionService direccionService;
@@ -133,7 +145,6 @@ public class UsuarioController implements Serializable {
     }
     return tipoDocs;
   }
-  //</editor-fold>
 
   public String getOldPassword() {
     return oldPassword;
@@ -158,6 +169,7 @@ public class UsuarioController implements Serializable {
   public void setConfirmPassword(String confirmPassword) {
     this.confirmPassword = confirmPassword;
   }
+  //</editor-fold>
 
   public void updatePassword() throws ConnectionExcep {
     if (usuario.verificarContrasena(oldPassword)) {
@@ -166,7 +178,6 @@ public class UsuarioController implements Serializable {
         usuarioService.update(usuario);
       }
     }
-
   }
 
   public void update() throws ConnectionExcep {
@@ -176,11 +187,25 @@ public class UsuarioController implements Serializable {
       System.out.println("Error al registrar usuario");
       ex.printStackTrace();
     }
-
   }
 
   public void delete() throws ConnectionExcep, IOException {
     try {
+      switch (usuario.getRol().getId()) {
+        case 1:
+          administradorService.delete(administradorService.getByIdUsuario(usuario.getId()).getId());
+          break;
+        case 2:
+          empleadoService.delete(empleadoService.getByIdUsuario(usuario.getId()).getId());
+          break;
+        case 3:
+          clienteService.delete(clienteService.getByIdUsuario(usuario.getId()).getId());
+          break;
+        default:
+          System.out.println("Opción de ROL inválido");
+          break;
+      }
+
       usuarioService.delete(loginController.getUsuario().getId());
       loginController.logout();
     } catch (ConnectionExcep ex) {

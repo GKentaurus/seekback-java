@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
   @Column(name = "otrosApellidos", nullable = true, length = 50)
   private String otrosApellidos;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "tipoDoc", nullable = false)
   private TipoDoc tipoDoc;
 
@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
   @Column(name = "salt", nullable = false, length = 255)
   private String salt;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "rol", nullable = false)
   private Rol rol;
 
@@ -283,8 +283,7 @@ public class Usuario implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

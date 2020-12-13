@@ -20,7 +20,7 @@ import tech.seekback.models.templates.Timestamps;
 @NamedQueries(value = {
   @NamedQuery(name = "Correo.getAll", query = "SELECT obj FROM Correo obj WHERE obj.timestamps.deleted_at IS NULL"),
   @NamedQuery(name = "Correo.getByCorreo", query = "SELECT obj FROM Correo obj WHERE obj.correoElectronico = :CorreoRec"),
-  @NamedQuery(name = "Correo.getByIdPrincipal", query = "SELECT obj FROM Correo obj WHERE obj.usuario.id = :idUsuario AND obj.esPrincipal = 1")
+  @NamedQuery(name = "Correo.getByIdPrincipal", query = "SELECT obj FROM Correo obj WHERE obj.usuario.id = :idUsuario AND obj.esPrincipal = TRUE")
 })
 public class Correo implements Serializable {
 
@@ -29,7 +29,7 @@ public class Correo implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idUsuario", nullable = false)
   private Usuario usuario;
 
@@ -167,8 +167,7 @@ public class Correo implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */
