@@ -5,7 +5,6 @@
  */
 package tech.seekback.controllers;
 
-import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
@@ -100,16 +99,17 @@ public class LoginController implements Serializable {
         } else {
           this.usuario = null;
           FacesMessage message = new FacesMessage("Contraseña invalida");
-          fc.addMessage(null, message);
+          fc.addMessage("messs:mesag", message);
           //redirectTo("/index.xhtml");
         }
       } else {
         this.usuario = null;
-        System.out.println("!!! Usuario no existente !!!");
       }
 
     } else {
       this.correo = null;
+      FacesMessage message = new FacesMessage("El correo no esta registrado");
+      fc.addMessage("messs:mesag", message);
       System.out.println("!!! Correo no existente !!!");
     }
   }

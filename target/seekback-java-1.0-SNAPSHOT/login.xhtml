@@ -17,6 +17,14 @@
     <h:outputScript library="" name="fontawesome.js" />
     <h:outputScript library="scripts" name="loginjs.js" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style>
+      .mssa{
+        width: 12em;
+        border-left: 5px solid #0188bd;
+        border-radius: 0px;
+      }
+    </style>
+
   </h:head>
 
   <h:body id="ody">
@@ -126,12 +134,13 @@
               <div class="row">
                 <br />
                 <h3>Inicia sesión</h3>
+                <blockquote class="z-depth-2 mssa">
+                  <h:form id="messs">
+                    <h:commandLink id="mesag"/>
+                    <h:message for="mesag"/>
+                  </h:form>
+                </blockquote>
                 <br />
-                <h:messages id="msgGlobal" class="messages-global"
-                            infoClass="message alert alert-primary"
-                            errorClass="message alert alert-danger"
-                            globalOnly="true"
-                            showDetail="true" showSummary="true"/>
                 <h:form>
                   <div class="input-field s12">
                     <h:inputText id="emaillog" class="ingre validate"  autocomplete="off" required="true" value="#{loginController.email}" />
