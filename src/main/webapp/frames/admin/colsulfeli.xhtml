@@ -131,9 +131,9 @@
                         <h4 class="center-align">Desea eliminar la felicitación de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
                       </div>
                       <div class="modal-footer">
-                        <h:commandLink  pt:href=""
-                                        actionListener="#{felicitacionController.delete(st.id.intValue())}"
-                                        class="modal-close waves-effect waves-green btn-flat" value="Aceptar"/>
+                        <h:form>
+                          <h:commandButton actionListener="#{felicitacionController.delete(st.id.intValue())}" class="modal-close waves-effect waves-green btn-flat" value="Aceptar"/>
+                        </h:form>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>

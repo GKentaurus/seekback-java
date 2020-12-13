@@ -6,9 +6,14 @@
 package tech.seekback.controllers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Usuario;
+import tech.seekback.services.UsuarioService;
 
 /**
  *
@@ -18,10 +23,17 @@ import javax.inject.Named;
 @ViewScoped
 public class TestController implements Serializable {
 
-  @Inject
-  private LoginController loginController;
+  @EJB
+  private UsuarioService usuarioService;
 
-  public Integer getUsuario() {
-    return loginController.getUsuario().getId();
+  public void encryptar() throws ConnectionExcep {
+    List<Usuario> users = new ArrayList<>();
+    users = usuarioService.getAll();
+
+    for (Usuario user : users) {
+      String pass = user.getContrasena();
+      user.setContrasena(pass);
+      usuarioService.update(user);
+    }
   }
 }

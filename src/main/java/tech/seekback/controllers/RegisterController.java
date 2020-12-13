@@ -181,6 +181,7 @@ public class RegisterController implements Serializable {
       this.direccion.setDireccion(address);
       this.direccion.setTelefono(phoneNumber);
       this.direccion.setCiudad(ciudadService.getOne(idCiudad));
+      this.direccion.setEsPrincipal(true);
       this.direccion.setTimestamps(timestamps);
 
       this.direccion = direccionService.create(direccion);
