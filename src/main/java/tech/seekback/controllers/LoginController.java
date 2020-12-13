@@ -16,10 +16,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
-import tech.seekback.models.Telefono;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CorreoService;
-import tech.seekback.services.TelefonoService;
 import tech.seekback.services.UsuarioService;
 
 /**
@@ -34,14 +32,10 @@ public class LoginController implements Serializable {
   private UsuarioService usuarioService;
 
   @EJB
-  private TelefonoService telefonoService;
-
-  @EJB
   private CorreoService correosService;
 
   private Usuario usuario;
   private Correo correo;
-  private Telefono telefono;
 
   private String password;
   private String email;
@@ -72,12 +66,12 @@ public class LoginController implements Serializable {
     this.usuario = usuario;
   }
 
-  public Telefono getTelefono() {
-    return telefono;
+  public Correo getCorreo() {
+    return correo;
   }
 
-  public void setTelefono(Telefono telefono) {
-    this.telefono = telefono;
+  public void setCorreo(Correo correo) {
+    this.correo = correo;
   }
 //</editor-fold>
 

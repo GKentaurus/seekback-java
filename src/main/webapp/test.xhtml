@@ -12,12 +12,9 @@
       <h1>Pruebas</h1>
 
       <ui:component>
-        <div class="col s6 col m6">
-          <div class="input-field">
-            <h:inputText id="flname" class="validate" value="#{testController.usuario}" autocomplete="off"/>
-            <h:outputLabel for="flname" value="1º Apellido"/>
-          </div>
-        </div>
+        <h:form>
+          <h:commandButton actionListener="#{testController.encryptar()}" value="Encriptar"/>
+        </h:form>
       </ui:component>
 
     </h:body>

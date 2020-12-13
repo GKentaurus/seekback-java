@@ -5,6 +5,7 @@
  */
 package tech.seekback.controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,6 @@ import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
 import tech.seekback.models.Direccion;
-import tech.seekback.models.Rol;
 import tech.seekback.models.Telefono;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
@@ -59,22 +59,16 @@ public class UsuarioController implements Serializable {
   private List<Usuario> usuarios;
   private List<TipoDoc> tipoDocs;
   private Integer idTipoDoc;
+  private String oldPassword;
+  private String newPassword;
+  private String confirmPassword;
 
-  public UsuarioController() throws ConnectionExcep {
-    this.usuario = new Usuario();
-    this.telefono = new Telefono();
-    this.correo = new Correo();
-    this.direccion = new Direccion();
+  @PostConstruct
+  public void init() {
     this.usuario = loginController.getUsuario();
-    this.telefono = telefonoService.getByIdPrincipal(usuario.getId());
-    this.correo = correoService.getByIdPrincipal(usuario.getId());
-    this.direccion = direccionService.getByIdPrincipal(usuario.getId());
   }
-//
-//  @PostConstruct
-//  public void init() {
-//  }
 
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Usuario getUsuario() {
     return usuario;
   }
@@ -83,24 +77,25 @@ public class UsuarioController implements Serializable {
     this.usuario = usuario;
   }
 
-  public Correo getCorreo() {
-    return correo;
+  public Correo getCorreo() throws ConnectionExcep {
+    return correoService.getByIdPrincipal(usuario.getId());
   }
 
   public void setCorreo(Correo correo) {
     this.correo = correo;
   }
 
-  public Direccion getDireccion() {
-    return direccion;
+  public Direccion getDireccion() throws ConnectionExcep {
+    Direccion temp = direccionService.getByIdPrincipal(usuario.getId());
+    return temp;
   }
 
   public void setDireccion(Direccion direccion) {
     this.direccion = direccion;
   }
 
-  public Telefono getTelefono() {
-    return telefono;
+  public Telefono getTelefono() throws ConnectionExcep {
+    return telefonoService.getByIdPrincipal(usuario.getId());
   }
 
   public void setTelefono(Telefono telefono) {
@@ -138,15 +133,60 @@ public class UsuarioController implements Serializable {
     }
     return tipoDocs;
   }
+  //</editor-fold>
 
-  public void create() throws ConnectionExcep {
+  public String getOldPassword() {
+    return oldPassword;
+  }
+
+  public void setOldPassword(String oldPassword) {
+    this.oldPassword = oldPassword;
+  }
+
+  public String getNewPassword() {
+    return newPassword;
+  }
+
+  public void setNewPassword(String newPassword) {
+    this.newPassword = newPassword;
+  }
+
+  public String getConfirmPassword() {
+    return confirmPassword;
+  }
+
+  public void setConfirmPassword(String confirmPassword) {
+    this.confirmPassword = confirmPassword;
+  }
+
+  public void updatePassword() throws ConnectionExcep {
+    if (usuario.verificarContrasena(oldPassword)) {
+      if (newPassword.equals(confirmPassword) && !oldPassword.equals(newPassword)) {
+        usuario.setContrasena(newPassword);
+        usuarioService.update(usuario);
+      }
+    }
+
+  }
+
+  public void update() throws ConnectionExcep {
     try {
-      usuarioService.create(usuario);
+      usuarioService.update(usuario);
     } catch (ConnectionExcep ex) {
       System.out.println("Error al registrar usuario");
       ex.printStackTrace();
     }
 
+  }
+
+  public void delete() throws ConnectionExcep, IOException {
+    try {
+      usuarioService.delete(loginController.getUsuario().getId());
+      loginController.logout();
+    } catch (ConnectionExcep ex) {
+      System.out.println("Error al registrar usuario");
+      ex.printStackTrace();
+    }
   }
 
 }

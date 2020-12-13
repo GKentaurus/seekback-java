@@ -49,7 +49,7 @@
     </style>
   </h:head>
 
-  <h:body  onclick="document.getElementById('estado#{loginController.usuario.id}').selectedIndex = #{td.id};">
+  <h:body  onclick="document.getElementById('estado#{usuarioController.usuario.id}').selectedIndex = #{td.id};">
     <div class="container">
       <div class="row">
         <div class="col s12 center-align">
@@ -58,71 +58,72 @@
         <h:form>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="fname"  class="validate" value="#{loginController.usuario.primerNombre}" autocomplete="off"/>
+              <h:inputText id="fname"  class="validate" value="#{usuarioController.usuario.primerNombre}" autocomplete="off"/>
               <h:outputLabel for="fname" value="1º Nombre" />
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="sname" class="validate" value="#{loginController.usuario.otrosNombres}" autocomplete="off"/>
+              <h:inputText id="sname" class="validate" value="#{usuarioController.usuario.otrosNombres}" autocomplete="off"/>
               <h:outputLabel for="sname" value="2º Nombre" />
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="flname" class="validate" value="#{loginController.usuario.primerApellido}" autocomplete="off"/>
+              <h:inputText id="flname" class="validate" value="#{usuarioController.usuario.primerApellido}" autocomplete="off"/>
               <h:outputLabel for="flname" value="1º Apellido"/>
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="slname" class="validate" value="#{loginController.usuario.otrosApellidos}" autocomplete="off"/>
+              <h:inputText id="slname" class="validate" value="#{usuarioController.usuario.otrosApellidos}" autocomplete="off"/>
               <h:outputLabel for="slname" value="2º Apellido" />
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="tel" class="validate" value=""/>
+              <h:inputText id="tel" class="validate" value="#{usuarioController.telefono.numeroTelefono}"/>
               <h:outputLabel for="tel" value="Telefono" />
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="pais" class="validate" value="Colombia" autocomplete="off"/>
+              <h:inputText id="pais" class="validate" value="#{usuarioController.direccion.ciudad.departamento.pais.nombrePais}" autocomplete="off"/>
               <h:outputLabel for="pais" value="Pais" />
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="fdire" class="validate" value="" autocomplete="off"/>
+              <h:inputText id="fdire" class="validate" value="#{usuarioController.direccion.direccion}" autocomplete="off"/>
               <h:outputLabel for="fdire" value="1º Direccion" />
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="sdire" class="validate" value="" autocomplete="off"/>
+              <h:inputText id="sdire" class="validate" value="#{usuarioController.direccion.pseudonimo}" autocomplete="off"/>
               <h:outputLabel for="sdire" value="Pseudonimo"/>
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="docu" pt:type="number" class="validate" value="#{loginController.usuario.numeroDoc}" autocomplete="off"/>
+              <h:inputText id="docu" pt:type="number" class="validate" value="#{usuarioController.usuario.numeroDoc}" autocomplete="off"/>
               <h:outputLabel for="docu" value="Documento"/>
             </div>
           </div>
           <div class="col s6 col m6">
             <div class="input-field">
-              <h:inputText id="email" pt:type="email" class="validate" value="#{loginController.email}" />
+              <h:inputText id="email" pt:type="email" class="validate" value="#{usuarioController.correo.correoElectronico}" />
               <h:outputLabel for="email" value="Email" />
               <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
             </div>
           </div>
+          <div class="col s12 center-align">
+            <h:commandButton class="waves-effect waves-light btn modal-trigger" actionListener="#{usuarioController.update()}" value="Actualizar información"/>
+            <!--<h:commandButton class="waves-effect waves-light btn modal-trigger" value="Eliminar cuenta"/>-->
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cambiar contraseña</a>
+          </div>
         </h:form>
 
-        <div class="col s12 center-align">
-          <button class="waves-effect waves-light btn modal-trigger" href="#modal2">Guardar cambios</button>
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cambiar contraseña</a>
-        </div>
       </div>
     </div>
 
@@ -137,25 +138,50 @@
         <h4>Recuperar contraseña</h4>
         <div class="container">
           <div class="row">
-            <div class="col s12">
-              <div class="input-field">
-                <h:inputSecret id="pass" class="validate" value="124579248" autocomplete="off" />
-                <h:outputLabel for="pass" value="Contraseña actual" />
+            <h:form>
+              <div class="col s12">
+                <div class="input-field">
+                  <h:inputSecret
+                    id="pass"
+                    class="validate"
+                    autocomplete="off"
+                    value="#{usuarioController.oldPassword}"
+                    />
+                  <h:outputLabel for="pass" value="Contraseña actual" />
+                </div>
               </div>
-            </div>
-            <div class="col s6">
-              <div class="input-field">
-                <h:inputSecret id="fcontra" class="validate" autocomplete="off"/>
-                <h:outputLabel for="fcontra" value="Contraseña nueva" />
+              <div class="col s6">
+                <div class="input-field">
+                  <h:inputSecret
+                    id="fcontra"
+                    class="validate"
+                    autocomplete="off"
+                    value="#{usuarioController.newPassword}"
+                    />
+                  <h:outputLabel for="fcontra" value="Contraseña nueva" />
+                </div>
               </div>
-            </div>
-            <div class="col s6">
-              <div class="input-field">
-                <h:inputSecret id="scontra" onkeyup="passwo();" class="validate" autocomplete="off"/>
-                <h:outputLabel for="scontra" value="Confirmar contraseña" />
+              <div class="col s6">
+                <div class="input-field">
+                  <h:inputSecret
+                    id="scontra"
+                    onkeyup="passwo();"
+                    class="validate"
+                    autocomplete="off"
+                    value="#{usuarioController.confirmPassword}"
+                    />
+                  <h:outputLabel for="scontra" value="Confirmar contraseña" />
+                </div>
               </div>
-            </div>
-            <a class="waves-effect waves-light btn modal-trigger disabled" id="ing"  href="#modal2">Cambiar contraseña</a>
+              <h:commandButton
+                id="ing"
+                class="waves-effect waves-light btn modal-trigger"
+                pt:data-target="modal2"
+                actionListener="#{usuarioController.updatePassword()}"
+                value="Cambiar contraseña"
+                />
+
+            </h:form>
           </div>
         </div>
       </div>
