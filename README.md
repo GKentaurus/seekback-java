@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="https://qpcom.seekback.tech/logo2.png" /></div>
+<p align="center"><img src="https://qpcom.seekback.tech/logo2.png"></p>
 
 # Sistema de Información SeekBack
 
