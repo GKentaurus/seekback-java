@@ -19,7 +19,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "agenda")
 @NamedQueries(value = {
-  @NamedQuery(name = "Agenda.getAll", query = "SELECT obj FROM Agenda obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "Agenda.getAll", query = "SELECT obj FROM Agenda obj WHERE obj.timestamps.deleted = false")
 })
 public class Agenda implements Serializable {
 

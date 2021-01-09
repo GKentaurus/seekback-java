@@ -5,14 +5,17 @@
  */
 package tech.seekback.dao.jpa;
 
-import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.TypedQuery;
 import tech.seekback.dao.GenericDAO;
-import tech.seekback.models.BodegaProducto;
 import tech.seekback.dao.interfaces.BodegaProductoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.exceptions.enums.ConnectionExcepEnum;
+import tech.seekback.models.BodegaProducto;
+import tech.seekback.models.templates.Timestamps;
+
+import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -42,4 +45,22 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
     }
   }
 
+  /**
+   * Elimina un objeto de tipo BodegaProducto
+   *
+   * @param obj
+   * @throws ConnectionExcep
+   */
+  public void delete(BodegaProducto obj) throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
+    );
+    Timestamps tt = obj.getTimestamps();
+    tt.setDeleted(true);
+    tt.setDeleted_at(new Date());
+    obj.setTimestamps(tt);
+    create(obj);
+  }
 }

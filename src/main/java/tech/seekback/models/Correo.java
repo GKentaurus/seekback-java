@@ -18,9 +18,9 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "correos")
 @NamedQueries(value = {
-  @NamedQuery(name = "Correo.getAll", query = "SELECT obj FROM Correo obj WHERE obj.timestamps.deleted_at IS NULL"),
-  @NamedQuery(name = "Correo.getByCorreo", query = "SELECT obj FROM Correo obj WHERE obj.correoElectronico = :CorreoRec"),
-  @NamedQuery(name = "Correo.getByIdPrincipal", query = "SELECT obj FROM Correo obj WHERE obj.usuario.id = :idUsuario AND obj.esPrincipal = TRUE")
+  @NamedQuery(name = "Correo.getAll", query = "SELECT obj FROM Correo obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Correo.getByCorreo", query = "SELECT obj FROM Correo obj WHERE obj.correoElectronico = :CorreoRec AND obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Correo.getByIdPrincipal", query = "SELECT obj FROM Correo obj WHERE obj.usuario.id = :idUsuario AND obj.esPrincipal = TRUE AND obj.timestamps.deleted = false")
 })
 public class Correo implements Serializable {
 

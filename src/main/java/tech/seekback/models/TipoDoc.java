@@ -13,7 +13,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "tipo_doc")
 @NamedQueries(value = {
-  @NamedQuery(name = "TipoDoc.getAll", query = "SELECT obj FROM TipoDoc obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "TipoDoc.getAll", query = "SELECT obj FROM TipoDoc obj WHERE obj.timestamps.deleted = false")
 })
 public class TipoDoc implements Serializable {
 
