@@ -26,6 +26,9 @@ public class Timestamps implements Serializable {
   @Temporal(TemporalType.TIMESTAMP)
   private Date updated_at;
 
+  @Column(name = "deleted", nullable = true, columnDefinition = "NULL")
+  private boolean deleted;
+
   @Column(name = "deleted_at", nullable = true, columnDefinition = "NULL")
   @Temporal(TemporalType.TIMESTAMP)
   private Date deleted_at;
@@ -68,6 +71,20 @@ public class Timestamps implements Serializable {
   }
 
   /**
+   * Retorna el valor del atributo <code>deleted</code> del objeto.
+   *
+   * @return <code>deleted</code> de los timestamps del respectivo objeto.
+   */
+  public boolean getDeleted() { return deleted; }
+
+  /**
+   * Asigna el valor del atributo <code>deleted</code> del objeto.
+   *
+   * @param deleted de los timestamps del respectivo objeto.
+   */
+  public void setDeleted(boolean deleted) { this.deleted = deleted; }
+
+  /**
    * Retorna el valor del atributo <code>deleted_at</code> del objeto.
    *
    * @return <code>deleted_at</code> de los timestamps del respectivo objeto.
@@ -95,6 +112,7 @@ public class Timestamps implements Serializable {
   public void setDateData(ResultSet rs) throws SQLException {
     this.created_at = rs.getDate("created_at");
     this.updated_at = rs.getDate("updated_at");
+    this.deleted = rs.getBoolean("deleted");
     this.deleted_at = rs.getDate("deleted_at");
   }
 
@@ -108,6 +126,7 @@ public class Timestamps implements Serializable {
   public String toString() {
     return "created_at = " + created_at + ", "
             + "updated_at = " + updated_at + ", "
+            + "deleted = " + deleted + ", "
             + "deleted at = " + deleted_at;
   }
 

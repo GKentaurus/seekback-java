@@ -14,7 +14,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "trm")
 @NamedQueries(value = {
-  @NamedQuery(name = "TRM.getAll", query = "SELECT obj FROM TRM obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "TRM.getAll", query = "SELECT obj FROM TRM obj WHERE obj.timestamps.deleted = false")
 })
 public class TRM implements Serializable {
 
@@ -24,7 +24,7 @@ public class TRM implements Serializable {
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "idDivisas ", nullable = false)
+  @JoinColumn(name = "idDivisas", nullable = false)
   private Divisa divisa;
 
   @Column(name = "fechaTRM", nullable = false)

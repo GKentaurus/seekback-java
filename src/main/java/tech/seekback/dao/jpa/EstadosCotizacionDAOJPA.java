@@ -5,10 +5,14 @@
  */
 package tech.seekback.dao.jpa;
 
-import javax.ejb.Stateless;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.EstadosCotizacionDAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosCotizacion;
+import tech.seekback.models.templates.Timestamps;
+
+import javax.ejb.Stateless;
+import java.util.Date;
 
 /**
  *
@@ -19,5 +23,24 @@ public class EstadosCotizacionDAOJPA extends GenericDAO<EstadosCotizacion, Integ
 
   public EstadosCotizacionDAOJPA() {
     super(EstadosCotizacion.class);
+  }
+
+  /**
+   * Elimina un objeto de tipo EstadosCotizacion
+   *
+   * @param obj
+   * @throws ConnectionExcep
+   */
+  public void delete(EstadosCotizacion obj) throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
+    );
+    Timestamps tt = obj.getTimestamps();
+    tt.setDeleted(true);
+    tt.setDeleted_at(new Date());
+    obj.setTimestamps(tt);
+    create(obj);
   }
 }

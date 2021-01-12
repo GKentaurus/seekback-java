@@ -14,7 +14,7 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "proforma_venta")
 @NamedQueries(value = {
-  @NamedQuery(name = "ProformaVenta.getAll", query = "SELECT obj FROM ProformaVenta obj WHERE obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "ProformaVenta.getAll", query = "SELECT obj FROM ProformaVenta obj WHERE obj.timestamps.deleted = false")
 })
 public class ProformaVenta implements Serializable {
 

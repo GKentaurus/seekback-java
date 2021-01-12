@@ -18,8 +18,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "administrador")
 @NamedQueries(value = {
-  @NamedQuery(name = "Administrador.getAll", query = "SELECT obj FROM Administrador obj WHERE obj.timestamps.deleted_at IS NULL"),
-  @NamedQuery(name = "Administrador.getByIdUsuario", query = "SELECT obj FROM Administrador obj WHERE obj.usuario.id = :idUsuario AND obj.timestamps.deleted_at IS NULL")
+  @NamedQuery(name = "Administrador.getAll", query = "SELECT obj FROM Administrador obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Administrador.getByIdUsuario", query = "SELECT obj FROM Administrador obj WHERE obj.usuario.id = :idUsuario AND obj.timestamps.deleted = false")
 })
 public class Administrador implements Serializable {
 

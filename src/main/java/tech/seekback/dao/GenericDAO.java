@@ -95,22 +95,4 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     );
     create(obj);
   }
-
-  /**
-   * Elimina un objeto de tipo T
-   *
-   * @param id
-   * @throws ConnectionExcep
-   */
-  @Override
-  public void delete(PK id) throws ConnectionExcep {
-    System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Eliminando el objeto No. " + id
-            + " de " + this.classType.getSimpleName()
-            + "\n######################################################################\n"
-    );
-    T obj = getOne(id);
-    em.remove(obj);
-  }
 }
