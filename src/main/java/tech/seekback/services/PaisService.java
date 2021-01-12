@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.PaisDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Pais;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author danny
  */
 @Stateless
@@ -22,7 +23,6 @@ public class PaisService {
   private PaisDAO paisDAO;
 
   /**
-   *
    * @param pais
    * @return Un objeto de tipo de tipo Pais
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class PaisService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo de tipo Pais consultado por el id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class PaisService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Pais (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class PaisService {
   /**
    * Elimina un objeto de tipo Pais
    *
-   * @param id
+   * @param pais
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    paisDAO.delete(id);
+  public void delete(Pais pais) throws ConnectionExcep {
+    paisDAO.delete(pais);
   }
 }

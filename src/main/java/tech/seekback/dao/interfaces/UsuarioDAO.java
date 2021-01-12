@@ -5,16 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface UsuarioDAO extends DAO<Usuario, Integer> {
-
+  void delete(Usuario usuario) throws ConnectionExcep;
 }

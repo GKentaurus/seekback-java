@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.CalificacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Calificacion;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class CalificacionService {
   private CalificacionDAO calificacionDAO;
 
   /**
-   *
    * @param calificacion
    * @return Un objeto de tipo Calificacion
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class CalificacionService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto tipo Calificación consultado por od
    * @throws ConnectionExcep
@@ -53,7 +52,6 @@ public class CalificacionService {
   }
 
   /**
-   *
    * @param idProducto
    * @return Una colección de objetos de tipo Calificacion consultado por
    * idProducto
@@ -77,10 +75,10 @@ public class CalificacionService {
   /**
    * Elimina un objeto de tipo Calificación
    *
-   * @param id
+   * @param calificacion
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    calificacionDAO.delete(id);
+  public void delete(Calificacion calificacion) throws ConnectionExcep {
+    calificacionDAO.delete(calificacion);
   }
 }

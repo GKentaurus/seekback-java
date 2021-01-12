@@ -5,20 +5,18 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Telefono;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface TelefonoDAO extends DAO<Telefono, Integer> {
-
   Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep;
-
   Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep;
-
+  void delete(Telefono telefono) throws ConnectionExcep;
 }

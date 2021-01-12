@@ -5,15 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.TipoDocDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoDoc;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +23,6 @@ public class TipoDocService {
   private TipoDocDAO tipoDocDAO;
 
   /**
-   *
    * @param tipoDoc
    * @return Un objeto de tipo TipoDoc consultado por id
    * @throws ConnectionExcep
@@ -33,7 +32,6 @@ public class TipoDocService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo TipoDoc consultado por id
    * @throws ConnectionExcep
@@ -43,7 +41,6 @@ public class TipoDocService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo TipoDoc (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -65,10 +62,10 @@ public class TipoDocService {
   /**
    * Elimina un objeto de tipo TipoDoc
    *
-   * @param id
+   * @param tipoDoc
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    tipoDocDAO.delete(id);
+  public void delete(TipoDoc tipoDoc) throws ConnectionExcep {
+    tipoDocDAO.delete(tipoDoc);
   }
 }

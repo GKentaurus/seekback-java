@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.FelicitacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class FelicitacionService {
   private FelicitacionDAO felicitacionDAO;
 
   /**
-   *
    * @param felicitacion
    * @return Un objeto de tipo Felicitación
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class FelicitacionService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Felicitación consultado por el id
    * @throws ConnectionExcep
@@ -43,7 +42,6 @@ public class FelicitacionService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Felicitacion (referente al Dao que
    * lo implementa)
    * @throws ConnectionExcep
@@ -53,7 +51,6 @@ public class FelicitacionService {
   }
 
   /**
-   *
    * @return Un entero de la consulta a felicitacion (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -76,10 +73,10 @@ public class FelicitacionService {
   /**
    * Elimina un objeto de tipo Felicitacion
    *
-   * @param id
+   * @param felicitacion
    * @throws ConnectionExcep
    */
-  public void delete(int idfel) throws ConnectionExcep {
-    felicitacionDAO.delete(idfel);
+  public void delete(Felicitacion felicitacion) throws ConnectionExcep {
+    felicitacionDAO.delete(felicitacion);
   }
 }

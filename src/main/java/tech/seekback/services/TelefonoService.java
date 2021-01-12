@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.TelefonoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Telefono;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class TelefonoService {
   private TelefonoDAO telefonoDAO;
 
   /**
-   *
    * @param telefono
    * @return Un objeto de tipo Telefono
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class TelefonoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Telefono consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class TelefonoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Telefono (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -53,7 +51,6 @@ public class TelefonoService {
   }
 
   /**
-   *
    * @param IdUsuario
    * @return Una colección de objetos de tipo Telefono consultados por IdUsuario
    * @throws ConnectionExcep
@@ -63,7 +60,6 @@ public class TelefonoService {
   }
 
   /**
-   *
    * @param IdUsuario
    * @return Una colección de objetos de tipo Telefono consultados por IdUsuario
    * @throws ConnectionExcep
@@ -85,11 +81,11 @@ public class TelefonoService {
   /**
    * Elimina un objeto de tipo Telefono
    *
-   * @param id
+   * @param telefono
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    telefonoDAO.delete(id);
+  public void delete(Telefono telefono) throws ConnectionExcep {
+    telefonoDAO.delete(telefono);
   }
 
 }

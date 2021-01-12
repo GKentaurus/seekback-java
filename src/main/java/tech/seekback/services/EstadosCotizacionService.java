@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.EstadosCotizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosCotizacion;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class EstadosCotizacionService {
   private EstadosCotizacionDAO estadosCotizacionDAO;
 
   /**
-   *
    * @param estadosCotizacion
    * @return Un objeto de tipo EstadosCotizacion
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class EstadosCotizacionService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo EstadosCotizacion consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class EstadosCotizacionService {
   }
 
   /**
-   *
    * @param id
    * @return Una colección de objetos de tipo EstadosCotizacion consultado por id (referente al Dao que lo implementa)
    * @throws ConnectionExcep
@@ -64,10 +62,10 @@ public class EstadosCotizacionService {
   /**
    * Elimina un objeto de tipo EstadosCotizacion
    *
-   * @param id
+   * @param estadosCotizacion
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    estadosCotizacionDAO.delete(id);
+  public void delete(EstadosCotizacion estadosCotizacion) throws ConnectionExcep {
+    estadosCotizacionDAO.delete(estadosCotizacion);
   }
 }

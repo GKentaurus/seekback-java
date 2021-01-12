@@ -5,19 +5,18 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface CorreoDAO extends DAO<Correo, Integer> {
-
   Correo getByCorreo(String email) throws ConnectionExcep;
-
   Correo getByIdPrincipal(Integer idUsuario) throws ConnectionExcep;
+  void delete(Correo correo) throws ConnectionExcep;
 }

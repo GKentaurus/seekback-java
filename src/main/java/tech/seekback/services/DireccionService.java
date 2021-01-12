@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.DireccionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Direccion;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author danny
  */
 @Stateless
@@ -22,7 +23,6 @@ public class DireccionService {
   private DireccionDAO direccionesDAO;
 
   /**
-   *
    * @param direciones
    * @return Un objeto de tipo Dirección
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class DireccionService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Dirección consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class DireccionService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Dirección (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -53,7 +51,6 @@ public class DireccionService {
   }
 
   /**
-   *
    * @param idUsuario
    * @return Una colección de objetos de tipo Correo consultados por correo
    * @throws ConnectionExcep
@@ -75,10 +72,10 @@ public class DireccionService {
   /**
    * Elimina un objeto de tipo Dirección
    *
-   * @param id
+   * @param direccion
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    direccionesDAO.delete(id);
+  public void delete(Direccion direccion) throws ConnectionExcep {
+    direccionesDAO.delete(direccion);
   }
 }

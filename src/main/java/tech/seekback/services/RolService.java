@@ -5,15 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.RolDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Rol;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +23,6 @@ public class RolService {
   private RolDAO rolesDAO;
 
   /**
-   *
    * @param rol
    * @return Un objeto de tipo Rol
    * @throws ConnectionExcep
@@ -33,7 +32,6 @@ public class RolService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Rol consultado por id
    * @throws ConnectionExcep
@@ -43,7 +41,6 @@ public class RolService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Rol (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -65,10 +62,10 @@ public class RolService {
   /**
    * Elimina un objeto de tipo Rol
    *
-   * @param id
+   * @param rol
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    rolesDAO.delete(id);
+  public void delete(Rol rol) throws ConnectionExcep {
+    rolesDAO.delete(rol);
   }
 }

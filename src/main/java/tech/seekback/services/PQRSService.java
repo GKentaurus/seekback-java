@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.PQRSDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.PQRS;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,8 +23,6 @@ public class PQRSService {
   private PQRSDAO pqrsDAO;
 
   /**
-   *
-   *
    * @param pqrs
    * @return Un objeto de tipo de tipo PQRS
    * @throws ConnectionExcep
@@ -33,7 +32,6 @@ public class PQRSService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo de tipo PQRS consultdo por el id
    * @throws ConnectionExcep
@@ -43,7 +41,6 @@ public class PQRSService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo PQRS (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -54,7 +51,6 @@ public class PQRSService {
   }
 
   /**
-   *
    * @return Un entero de la consulta a PQRS (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -77,10 +73,10 @@ public class PQRSService {
   /**
    * Elimina un objeto de tipo PQRS
    *
-   * @param id
+   * @param pqrs
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    pqrsDAO.delete(id);
+  public void delete(PQRS pqrs) throws ConnectionExcep {
+    pqrsDAO.delete(pqrs);
   }
 }

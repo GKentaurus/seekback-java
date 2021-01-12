@@ -74,10 +74,10 @@ public class AdministradorService {
   /**
    * Elimina un objeto de tipo Administrador consultado por el id
    *
-   * @param id
+   * @param administrador
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    administradorDAO.delete(id);
+  public void delete(Administrador administrador) throws ConnectionExcep {
+    administradorDAO.delete(administrador);
   }
 }

@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.EstadosFidelizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosFidelizacion;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class EstadosFidelizacionService {
   private EstadosFidelizacionDAO estadosFidelizacionDAO;
 
   /**
-   *
    * @param obj
    * @return Un objeto de tipo EstadosFidelizacion
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class EstadosFidelizacionService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo EstadosFidelizacion consultado por id
    * @throws ConnectionExcep
@@ -64,10 +63,10 @@ public class EstadosFidelizacionService {
   /**
    * Elimina un objeto de tipo EstadosFidelizacion
    *
-   * @param id
+   * @param estadosFidelizacion
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    estadosFidelizacionDAO.delete(id);
+  public void delete(EstadosFidelizacion estadosFidelizacion) throws ConnectionExcep {
+    estadosFidelizacionDAO.delete(estadosFidelizacion);
   }
 }

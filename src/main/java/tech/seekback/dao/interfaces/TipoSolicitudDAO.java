@@ -5,14 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoSolicitud;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface TipoSolicitudDAO extends DAO<TipoSolicitud, Integer> {
+  void delete(TipoSolicitud tipoSolicitud) throws ConnectionExcep;
 }

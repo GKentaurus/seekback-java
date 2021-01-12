@@ -5,32 +5,21 @@
  */
 package tech.seekback.controllers;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.*;
+import tech.seekback.services.*;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Correo;
-import tech.seekback.models.Direccion;
-import tech.seekback.models.Telefono;
-import tech.seekback.models.TipoDoc;
-import tech.seekback.models.Usuario;
-import tech.seekback.services.AdministradorService;
-import tech.seekback.services.ClienteService;
-import tech.seekback.services.CorreoService;
-import tech.seekback.services.DireccionService;
-import tech.seekback.services.EmpleadoService;
-import tech.seekback.services.TelefonoService;
-import tech.seekback.services.TipoDocService;
-import tech.seekback.services.UsuarioService;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
- *
  * @author camorenoc
  */
 @Named
@@ -193,20 +182,20 @@ public class UsuarioController implements Serializable {
     try {
       switch (usuario.getRol().getId()) {
         case 1:
-          administradorService.delete(administradorService.getByIdUsuario(usuario.getId()).getId());
+          administradorService.delete(administradorService.getByIdUsuario(usuario.getId()));
           break;
         case 2:
-          empleadoService.delete(empleadoService.getByIdUsuario(usuario.getId()).getId());
+          empleadoService.delete(empleadoService.getByIdUsuario(usuario.getId()));
           break;
         case 3:
-          clienteService.delete(clienteService.getByIdUsuario(usuario.getId()).getId());
+          clienteService.delete(clienteService.getByIdUsuario(usuario.getId()));
           break;
         default:
           System.out.println("Opción de ROL inválido");
           break;
       }
 
-      usuarioService.delete(loginController.getUsuario().getId());
+      usuarioService.delete(loginController.getUsuario());
       loginController.logout();
     } catch (ConnectionExcep ex) {
       System.out.println("Error al registrar usuario");

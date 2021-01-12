@@ -5,23 +5,17 @@
  */
 package tech.seekback.dao.interfaces;
 
-import java.util.List;
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface SoporteTecnicoDAO extends DAO<SoporteTecnico, Integer> {
-
-  /**
-   *
-   * @return @throws ConnectionExcep
-   */
   Integer getAllCount() throws ConnectionExcep;
-
+  void delete(SoporteTecnico soporteTecnico) throws ConnectionExcep;
 }

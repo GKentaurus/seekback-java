@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.CorreoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author danny
  */
 @Stateless
@@ -22,7 +23,6 @@ public class CorreoService {
   private CorreoDAO correosDAO;
 
   /**
-   *
    * @param correos
    * @return Un objeto de tipo Correo
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class CorreoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Correo consultado por el id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class CorreoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Correo (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -53,7 +51,6 @@ public class CorreoService {
   }
 
   /**
-   *
    * @param correo
    * @return Una colección de objetos de tipo Correo consultados por correo
    * @throws ConnectionExcep
@@ -63,7 +60,6 @@ public class CorreoService {
   }
 
   /**
-   *
    * @param idUsuario
    * @return Una colección de objetos de tipo Correo consultados por correo
    * @throws ConnectionExcep
@@ -85,10 +81,10 @@ public class CorreoService {
   /**
    * Elimina un objeto de tipo Correo
    *
-   * @param id
+   * @param correo
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    correosDAO.delete(id);
+  public void delete(Correo correo) throws ConnectionExcep {
+    correosDAO.delete(correo);
   }
 }

@@ -5,15 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.DepartamentoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Departamento;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author danny
  */
 @Stateless
@@ -23,7 +23,6 @@ public class DepartamentoService {
   private DepartamentoDAO departamentoDAO;
 
   /**
-   *
    * @param departamento
    * @return Un objeto de tipo departamento
    * @throws ConnectionExcep
@@ -33,7 +32,6 @@ public class DepartamentoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo departamento consultado por id
    * @throws ConnectionExcep
@@ -43,7 +41,6 @@ public class DepartamentoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Departamento (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -53,7 +50,6 @@ public class DepartamentoService {
   }
 
   /**
-   *
    * @param idPais
    * @return Una colección de objetos de tipo Departamento consultado por idPais
    * @throws ConnectionExcep
@@ -76,10 +72,10 @@ public class DepartamentoService {
   /**
    * Elimina un objeto de tipo Departamento
    *
-   * @param id
+   * @param departamento
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    departamentoDAO.delete(id);
+  public void delete(Departamento departamento) throws ConnectionExcep {
+    departamentoDAO.delete(departamento);
   }
 }

@@ -5,17 +5,17 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Direccion;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface DireccionDAO extends DAO<Direccion, Integer> {
-
   Direccion getByIdPrincipal(Integer idUsuario) throws ConnectionExcep;
+  void delete(Direccion direccion) throws ConnectionExcep;
 }

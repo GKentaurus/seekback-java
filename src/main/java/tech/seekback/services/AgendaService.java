@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.AgendaDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Agenda;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class AgendaService {
   private AgendaDAO agendaDAO;
 
   /**
-   *
    * @param agenda
    * @return Retorna un objeto de tipo Agenda
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class AgendaService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Agenda consultado por el id
    * @throws ConnectionExcep
@@ -43,7 +42,6 @@ public class AgendaService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Agenda (referente al DAO que lo implemente)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class AgendaService {
   /**
    * Elimina un objeto de tipo Agenda
    *
-   * @param id
+   * @param agenda
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    agendaDAO.delete(id);
+  public void delete(Agenda agenda) throws ConnectionExcep {
+    agendaDAO.delete(agenda);
   }
 }

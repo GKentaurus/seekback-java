@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.TipoSolicitudDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoSolicitud;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class TipoSolicitudService {
   private TipoSolicitudDAO tipoSolicitudDAO;
 
   /**
-   *
    * @param tipoSolicitud
    * @return Un objeto de tipo TipoSolicitud
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class TipoSolicitudService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo TipoSolicitud consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class TipoSolicitudService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo TipoSolicitud (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class TipoSolicitudService {
   /**
    * Elimina un objeto de tipo TipoSolicitud
    *
-   * @param id
+   * @param tipoSolicitud
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    tipoSolicitudDAO.delete(id);
+  public void delete(TipoSolicitud tipoSolicitud) throws ConnectionExcep {
+    tipoSolicitudDAO.delete(tipoSolicitud);
   }
 }

@@ -5,14 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoServicio;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface TipoServicioDAO extends DAO<TipoServicio, Integer> {
+  void delete(TipoServicio tipoServicio) throws ConnectionExcep;
 }

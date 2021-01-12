@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.DivisaDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Divisa;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class DivisaService {
   private DivisaDAO divisaDAO;
 
   /**
-   *
    * @param divisa
    * @return Un objeto de tipo Divisa
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class DivisaService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Divisa consultado por id
    * @throws ConnectionExcep
@@ -43,7 +42,6 @@ public class DivisaService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Divisa (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class DivisaService {
   /**
    * Elimina un objeto de tipo Divisa
    *
-   * @param id
+   * @param divisa
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    divisaDAO.delete(id);
+  public void delete(Divisa divisa) throws ConnectionExcep {
+    divisaDAO.delete(divisa);
   }
 }

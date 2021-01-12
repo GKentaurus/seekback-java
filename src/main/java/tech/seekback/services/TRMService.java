@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.TRMDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TRM;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class TRMService {
   private TRMDAO trmDao;
 
   /**
-   *
    * @param trm
    * @return Un objeto de tipo TRM
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class TRMService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo TRM consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class TRMService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo TRM (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class TRMService {
   /**
    * Elimina un objeto de tipo TRM
    *
-   * @param id
+   * @param trm
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    trmDao.delete(id);
+  public void delete(TRM trm) throws ConnectionExcep {
+    trmDao.delete(trm);
   }
 }

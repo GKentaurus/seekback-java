@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.ClienteDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cliente;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class ClienteService {
   private ClienteDAO clienteDAO;
 
   /**
-   *
    * @param cliente
    * @return Un objeto de tipo Cliente
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class ClienteService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Cliente consultado por id
    * @throws ConnectionExcep
@@ -43,7 +42,6 @@ public class ClienteService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Cliente (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -52,7 +50,6 @@ public class ClienteService {
   }
 
   /**
-   *
    * @param id del Usuario
    * @return Un objeto de tipo Cliente
    * @throws ConnectionExcep
@@ -74,10 +71,10 @@ public class ClienteService {
   /**
    * Elimina un objeto de tipo Cliente
    *
-   * @param id
+   * @param cliente
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    clienteDAO.delete(id);
+  public void delete(Cliente cliente) throws ConnectionExcep {
+    clienteDAO.delete(cliente);
   }
 }

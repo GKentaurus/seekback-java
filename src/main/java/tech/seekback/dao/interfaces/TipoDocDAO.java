@@ -5,14 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoDoc;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface TipoDocDAO extends DAO<TipoDoc, Integer> {
+  void delete(TipoDoc tipoDoc) throws ConnectionExcep;
 }

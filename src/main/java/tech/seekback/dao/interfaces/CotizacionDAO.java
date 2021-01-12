@@ -5,9 +5,11 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cotizacion;
+
+import javax.ejb.Local;
 
 /**
  *
@@ -15,5 +17,5 @@ import tech.seekback.models.Cotizacion;
  */
 @Local
 public interface CotizacionDAO extends DAO<Cotizacion, Integer> {
-
+  void delete(Cotizacion cotizacion) throws ConnectionExcep;
 }

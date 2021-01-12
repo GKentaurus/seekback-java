@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.UsuarioDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class UsuarioService {
   private UsuarioDAO usuarioDAO;
 
   /**
-   *
    * @param usuario
    * @return Un objeto de tipo Usuario
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class UsuarioService {
   }
 
   /**
-   *
    * @param id
    * @return Un ojeto de tipo Usuario consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class UsuarioService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Usuario (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class UsuarioService {
   /**
    * Elimina un objeto de tipo Usuario
    *
-   * @param id
+   * @param usuario
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    usuarioDAO.delete(id);
+  public void delete(Usuario usuario) throws ConnectionExcep {
+    usuarioDAO.delete(usuario);
   }
 }

@@ -5,15 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.EmpleadoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Empleado;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -24,7 +24,6 @@ public class EmpleadoService {
   private EmpleadoDAO empleadoDAO;
 
   /**
-   *
    * @param empleado
    * @return Un objeto de tipo Empleado
    * @throws ConnectionExcep
@@ -34,7 +33,6 @@ public class EmpleadoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Empleado consultado por id
    * @throws ConnectionExcep
@@ -44,7 +42,6 @@ public class EmpleadoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Empleado (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -53,7 +50,6 @@ public class EmpleadoService {
   }
 
   /**
-   *
    * @param id del Usuario
    * @return Un objeto de tipo Cliente
    * @throws ConnectionExcep
@@ -75,10 +71,10 @@ public class EmpleadoService {
   /**
    * Elimina un objeto de tipo Empleado
    *
-   * @param id
+   * @param empleado
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    empleadoDAO.delete(id);
+  public void delete(Empleado empleado) throws ConnectionExcep {
+    empleadoDAO.delete(empleado);
   }
 }

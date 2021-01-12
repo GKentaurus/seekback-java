@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.CotizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cotizacion;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class CotizacionService {
   private CotizacionDAO cotizacionDAO;
 
   /**
-   *
    * @param cotizacion
    * @return Un objeto de tipo cotizacion
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class CotizacionService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Cotizacion consultado por el id
    * @throws ConnectionExcep
@@ -43,7 +42,6 @@ public class CotizacionService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Cotizacion (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class CotizacionService {
   /**
    * Elimina un objeto de tipo Cotizacion
    *
-   * @param id
+   * @param cotizacion
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    cotizacionDAO.delete(id);
+  public void delete(Cotizacion cotizacion) throws ConnectionExcep {
+    cotizacionDAO.delete(cotizacion);
   }
 }

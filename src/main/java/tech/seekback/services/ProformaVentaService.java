@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.ProformaVentaDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.ProformaVenta;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class ProformaVentaService {
   private ProformaVentaDAO proformaVentaDAO;
 
   /**
-   *
    * @param proformaVenta
    * @return Un objeto de tipo de tipo ProformaVenta
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class ProformaVentaService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo de tipo ProformaVenta consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class ProformaVentaService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo ProformaVenta (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class ProformaVentaService {
   /**
    * Elimina un objeto de tipo ProformaVenta
    *
-   * @param id
+   * @param proformaVenta
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    proformaVentaDAO.delete(id);
+  public void delete(ProformaVenta proformaVenta) throws ConnectionExcep {
+    proformaVentaDAO.delete(proformaVenta);
   }
 }

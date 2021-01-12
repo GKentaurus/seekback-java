@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.CiudadDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author danny
  */
 @Stateless
@@ -22,7 +23,6 @@ public class CiudadService {
   private CiudadDAO ciudadDAO;
 
   /**
-   *
    * @param ciudad
    * @return Un objeto de tipo Ciudad
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class CiudadService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Ciudad consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class CiudadService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Ciudad (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -52,7 +50,6 @@ public class CiudadService {
   }
 
   /**
-   *
    * @param idDepartamento
    * @return Una colección de objetos de tipo Ciudad consultados por idDepartamento
    * @throws ConnectionExcep
@@ -76,10 +73,10 @@ public class CiudadService {
   /**
    * Elimina un objeto de tipo Ciudad
    *
-   * @param id
+   * @param ciudad
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    ciudadDAO.delete(id);
+  public void delete(Ciudad ciudad) throws ConnectionExcep {
+    ciudadDAO.delete(ciudad);
   }
 }

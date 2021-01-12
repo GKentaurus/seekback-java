@@ -5,11 +5,12 @@
  */
 package tech.seekback.dao.interfaces;
 
-import java.util.List;
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.BodegaProducto;
+
+import javax.ejb.Local;
+import java.util.List;
 
 /**
  *
@@ -17,7 +18,6 @@ import tech.seekback.models.BodegaProducto;
  */
 @Local
 public interface BodegaProductoDAO extends DAO<BodegaProducto, Integer> {
-
   List<BodegaProducto> getByIdCategoria(int idCategoria) throws ConnectionExcep;
-
+  void delete(BodegaProducto bodegaProducto) throws ConnectionExcep;
 }

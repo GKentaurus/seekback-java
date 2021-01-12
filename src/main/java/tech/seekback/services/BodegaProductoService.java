@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.BodegaProductoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.BodegaProducto;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -23,7 +24,6 @@ public class BodegaProductoService {
   private BodegaProductoDAO bodegaProductoDAO;
 
   /**
-   *
    * @param bodegaProducto
    * @return Un objeto de tipo BodegaProducto
    * @throws ConnectionExcep
@@ -33,7 +33,6 @@ public class BodegaProductoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo BodegaProducto consultado por el id
    * @throws ConnectionExcep
@@ -43,7 +42,6 @@ public class BodegaProductoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo BodegaProducto (referente al DAO
    * que lo implemente)
    * @throws ConnectionExcep
@@ -53,7 +51,6 @@ public class BodegaProductoService {
   }
 
   /**
-   *
    * @param idProducto
    * @return Una colección de objetos de tipo Calificacion consultado por
    * idProducto
@@ -77,10 +74,10 @@ public class BodegaProductoService {
   /**
    * Elimina un objeto tipo BodegaProducto
    *
-   * @param id
+   * @param bodegaProducto
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    bodegaProductoDAO.delete(id);
+  public void delete(BodegaProducto bodegaProducto) throws ConnectionExcep {
+    bodegaProductoDAO.delete(bodegaProducto);
   }
 }

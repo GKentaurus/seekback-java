@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.SoporteTecnicoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class SoporteTecnicoService {
   private SoporteTecnicoDAO soporteTecnicoDAO;
 
   /**
-   *
    * @param soporteTecnico
    * @return Un objeto de tipo SoporteTecnico
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class SoporteTecnicoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo SoporteTecnico consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class SoporteTecnicoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Rol (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -53,7 +51,6 @@ public class SoporteTecnicoService {
   }
 
   /**
-   *
    * @return Un entero de la consulta a soporteTecnico (referente al Dao que lo
    * implementa)
    * @throws ConnectionExcep
@@ -76,10 +73,10 @@ public class SoporteTecnicoService {
   /**
    * Elimina un objeto de tipo soporteTecnico
    *
-   * @param id
+   * @param soporteTecnico
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    soporteTecnicoDAO.delete(id);
+  public void delete(SoporteTecnico soporteTecnico) throws ConnectionExcep {
+    soporteTecnicoDAO.delete(soporteTecnico);
   }
 }

@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.ProductoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class ProductoService {
   private ProductoDAO productoDAO;
 
   /**
-   *
    * @param producto
    * @return Un objeto de tipo de tipo Producto
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class ProductoService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo de tipo Producto consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class ProductoService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Producto (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class ProductoService {
   /**
    * Elimina un objeto de tipo Producto
    *
-   * @param id
+   * @param producto
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    productoDAO.delete(id);
+  public void delete(Producto producto) throws ConnectionExcep {
+    productoDAO.delete(producto);
   }
 }

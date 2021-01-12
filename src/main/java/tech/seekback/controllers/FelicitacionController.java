@@ -5,18 +5,18 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 import tech.seekback.services.FelicitacionService;
 
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+
 /**
- *
  * @author danny
  */
 @Named
@@ -52,9 +52,8 @@ public class FelicitacionController implements Serializable {
     return felicitaciones;
   }
 
-  public void delete(int idfel) throws ConnectionExcep {
-    System.out.println("del " + idfel);
-    felicitacionService.delete(idfel);
+  public void delete(Felicitacion felicitacion) throws ConnectionExcep {
+    felicitacionService.delete(felicitacion);
   }
 
 }

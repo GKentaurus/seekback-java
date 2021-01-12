@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.OrdenCompraDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.OrdenCompra;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class OrdenCompraService {
   private OrdenCompraDAO ordenCompraDAO;
 
   /**
-   *
    * @param ordenCompra
    * @return Un objeto de tipo de tipo OrdenCompra
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class OrdenCompraService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo OrdenCompra consultado por el id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class OrdenCompraService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo OrdenCompra (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class OrdenCompraService {
   /**
    * Elimina un objeto de tipo OrdenCompra
    *
-   * @param id
+   * @param ordenCompra
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    ordenCompraDAO.delete(id);
+  public void delete(OrdenCompra ordenCompra) throws ConnectionExcep {
+    ordenCompraDAO.delete(ordenCompra);
   }
 }

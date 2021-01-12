@@ -5,15 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.OrdenCompra;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface OrdenCompraDAO extends DAO<OrdenCompra, Integer> {
-
+  void delete(OrdenCompra ordenCompra) throws ConnectionExcep;
 }

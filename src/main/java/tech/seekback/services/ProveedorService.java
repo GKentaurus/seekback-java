@@ -5,14 +5,15 @@
  */
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.ProveedorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Proveedor;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
  * @author camorenoc
  */
 @Stateless
@@ -22,7 +23,6 @@ public class ProveedorService {
   private ProveedorDAO proveedorDAO;
 
   /**
-   *
    * @param proveedor
    * @return Un objeto de tipo de tipo Proveedor
    * @throws ConnectionExcep
@@ -32,7 +32,6 @@ public class ProveedorService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo de tipo Proveedor consultado por id
    * @throws ConnectionExcep
@@ -42,7 +41,6 @@ public class ProveedorService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Proveedor (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
@@ -64,10 +62,10 @@ public class ProveedorService {
   /**
    * Elimina un objeto de tipo Proveedor
    *
-   * @param id
+   * @param proveedor
    * @throws ConnectionExcep
    */
-  public void delete(Integer id) throws ConnectionExcep {
-    proveedorDAO.delete(id);
+  public void delete(Proveedor proveedor) throws ConnectionExcep {
+    proveedorDAO.delete(proveedor);
   }
 }

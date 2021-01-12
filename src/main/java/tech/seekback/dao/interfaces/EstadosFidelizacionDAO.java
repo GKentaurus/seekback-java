@@ -5,14 +5,16 @@
  */
 package tech.seekback.dao.interfaces;
 
-import javax.ejb.Local;
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosFidelizacion;
 
+import javax.ejb.Local;
+
 /**
- *
  * @author camorenoc
  */
 @Local
 public interface EstadosFidelizacionDAO extends DAO<EstadosFidelizacion, Integer> {
+  void delete(EstadosFidelizacion estadosFidelizacion) throws ConnectionExcep;
 }
