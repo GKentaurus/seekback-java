@@ -22,8 +22,8 @@
     /* Default class modification */
     $.extend(DataTable.ext.classes, {
       sWrapper: "dataTables_wrapper",
-      sFilterInput: "form-control input-sm",
-      sLengthSelect: "form-control input-sm"
+      sFilterInput: "form-control input-sm black-text",
+      sLengthSelect: "form-control input-sm black-text"
     });
 
     /* Bootstrap paging button renderer */
