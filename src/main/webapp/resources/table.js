@@ -22,8 +22,8 @@
     /* Default class modification */
     $.extend(DataTable.ext.classes, {
       sWrapper: "dataTables_wrapper",
-      sFilterInput: "form-control input-sm black-text",
-      sLengthSelect: "form-control input-sm black-text"
+      sFilterInput: "filtable form-control input-sm",
+      sLengthSelect: "form-control input-sm "
     });
 
     /* Bootstrap paging button renderer */
@@ -189,7 +189,7 @@ $(document).ready(function () {
     "oLanguage": {
       "sSearch": "",
       "sSearchPlaceholder": "Buscar",
-      "sInfo": "_START_ -_END_ of _TOTAL_",
+      "sInfo": "_START_ -_END_ de _TOTAL_",
       "sLengthMenu": '<span>Filas por pagina:</span><select class="browser-default">' +
               '<option value="10">10</option>' +
               '<option value="20">20</option>' +

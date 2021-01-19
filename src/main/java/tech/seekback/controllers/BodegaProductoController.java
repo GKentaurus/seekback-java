@@ -31,6 +31,7 @@ public class BodegaProductoController implements Serializable {
   private ProductoService productoService;
   private List<BodegaProducto> bodegaProductos;
   private List<BodegaProducto> productosporcategoria;
+  private List<BodegaProducto> pornombre;
   private BodegaProducto bodegaProducto;
   private Producto producto;
 
@@ -70,6 +71,18 @@ public class BodegaProductoController implements Serializable {
       ex.printStackTrace();
     }
     return productosporcategoria;
+  }
+
+  public List<BodegaProducto> getPornombre(String parteNombre) {
+    try {
+      if (Objects.isNull(pornombre)) {
+        pornombre = bodegaProductoService.getLikeName(parteNombre);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los bodegaProductos.....");
+      ex.printStackTrace();
+    }
+    return pornombre;
   }
 
 }

@@ -19,6 +19,7 @@ import tech.seekback.models.templates.Timestamps;
 @Table(name = "bodega_productos")
 @NamedQueries(value = {
   @NamedQuery(name = "BodegaProducto.getAll", query = "SELECT obj FROM BodegaProducto obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "BodegaProducto.getLikeName", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.modeloProducto like CONCAT('%', :parteNombre, '%') AND obj.timestamps.deleted = false"),
   @NamedQuery(name = "BodegaProducto.getByIdCategoria", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.categoria.id = :idCategoria AND obj.timestamps.deleted = false")
 })
 public class BodegaProducto implements Serializable {
@@ -169,7 +170,8 @@ public class BodegaProducto implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */

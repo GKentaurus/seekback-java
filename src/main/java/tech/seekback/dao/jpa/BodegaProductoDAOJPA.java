@@ -45,6 +45,17 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
     }
   }
 
+  @Override
+  public List<BodegaProducto> getLikeName(String parteNombre) throws ConnectionExcep {
+    try {
+      TypedQuery<BodegaProducto> tq = em.createNamedQuery("BodegaProducto.getLikeName", classType);
+      tq.setParameter("parteNombre", parteNombre);
+      return tq.getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
   /**
    * Elimina un objeto de tipo BodegaProducto
    *
@@ -53,9 +64,9 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
    */
   public void delete(BodegaProducto obj) throws ConnectionExcep {
     System.out.println(
-      "\n\n\n\n\n######################################################################"
-        + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
-        + "\n######################################################################\n"
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
+            + "\n######################################################################\n"
     );
     Timestamps tt = obj.getTimestamps();
     tt.setDeleted(true);
