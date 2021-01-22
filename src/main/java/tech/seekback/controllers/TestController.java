@@ -26,8 +26,8 @@ public class TestController implements Serializable {
   @EJB
   private UsuarioService usuarioService;
 
-  public void encryptar() throws ConnectionExcep {
-    List<Usuario> users = new ArrayList<>();
+  public void encrypt() throws ConnectionExcep {
+    List<Usuario> users = null;
     users = usuarioService.getAll();
 
     for (Usuario user : users) {
