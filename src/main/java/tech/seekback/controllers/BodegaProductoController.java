@@ -61,6 +61,11 @@ public class BodegaProductoController implements Serializable {
     return producto;
   }
 
+  /**
+   *
+   * @param idProducto
+   * @return
+   */
   public List<BodegaProducto> getProductosporcategoria(int idProducto) {
     try {
       if (Objects.isNull(productosporcategoria)) {
@@ -73,6 +78,11 @@ public class BodegaProductoController implements Serializable {
     return productosporcategoria;
   }
 
+  /**
+   *
+   * @param parteNombre
+   * @return
+   */
   public List<BodegaProducto> getPornombre(String parteNombre) {
     try {
       if (Objects.isNull(pornombre)) {

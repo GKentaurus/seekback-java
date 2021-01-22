@@ -52,99 +52,76 @@
   <h:body>
     <div class="container">
       <div class="row">
-        <p class="center-align" style="font-size:25px;"><i class="far fa-thumbs-up"></i> Calificaciones de productos <i class="far fa-thumbs-down"></i></p>
+        <p class="center-align" style="font-size:25px;"><i class="fas fa-search"></i> Consultar Inventario  <i class="fas fa-warehouse"></i></p>
         <div id="admin" class="col s12">
           <div class="card material-table">
             <div class="table-header">
-              <span class="table-title">Calificaciones de productos</span>
+              <span class="table-title">Consultar Inventario </span>
               <div class="actions">
                 <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
               </div>
             </div>
             <h:form>
               <h:dataTable pt:id="datatable"
-                           value="#{calificacionController.calificaciones}"
+                           value="#{bodegaProductoController.bodegaProductos}"
                            var="st">
-                <h:column>
-                  <f:facet name="header">Califica</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
-                </h:column>
                 <h:column>
                   <f:facet name="header">Producto</f:facet>
                   <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}"/>
                 </h:column>
                 <h:column>
-                  <f:facet name="header">Fecha</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                  <f:facet name="header">Descripciòn</f:facet>
+                  <h:outputText pt:class="tooltipped truncate" value="#{st.producto.descripcion}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.descripcion}"/>
                 </h:column>
                 <h:column>
-                  <f:facet name="header">Calificacion</f:facet>
-                  <h:outputText pt:class="tooltipped #{st.calificacion}" value="#{st.calificacion}" pt:data-position="bottom" pt:data-tooltip="#{st.calificacion}"/>
+                  <f:facet name="header">Cantidad</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cantidad}" pt:data-position="bottom" pt:data-tooltip="#{st.cantidad}"/>
                 </h:column>
                 <h:column>
-                  <f:facet name="header">Comentario</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                  <f:facet name="header">Costo unitario</f:facet>
+                  <h:outputText pt:class="tooltipped" value="$#{st.producto.precioVenta}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.precioVenta}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Categoria</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.producto.categoria.nombreCategoria}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.categoria.nombreCategoria}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Editar</f:facet>
-                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}">Visualizar</a>
-                  <div id="modal#{st.id}" class="modal">
+                  <a class="waves-effect waves-light btn modal-trigger"
+                     href="#modal#{st.producto.id}">Visualizar</a>
+                  <div id="modal#{st.producto.id}" class="modal">
                     <div class="modal-content">
-                      <h4 class="center-align">Calificación</h4>
+                      <h4 class="center-align">#{st.producto.modeloProducto}</h4>
                       <div class="section" style="padding-bottom:0px;">
                         <div class="row">
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="quien" type="text" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" readonly="true"/>
-                              <label for="quien">Califica</label>
+                              <input id="quien" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
+                              <label for="quien">Producto</label>
                             </div>
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <label for="datei">Fecha</label>
-                              <br/>
-                              <input id="datei" type="datetime"  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" readonly="true"/>
+                              <input id="quien" type="text" value="#{st.producto.descripcion}" readonly="true"/>
+                              <label for="quien">Descripciòn</label>
                             </div>
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="produc" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
-                              <label for="produc">Producto</label>
+                              <input id="datei" type="text"  value="#{st.cantidad}"/>
+                              <label for="datei">Cantidad</label>
                             </div>
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <label for="produc">Calificación</label>
-                              <br/>
-                              <br/>
-                              <h:outputText id="produc" pt:class="#{st.calificacion}" value="#{st.calificacion}" />
-                            </div>
-                          </div>
-                          <div class="col s12">
-                            <div class="input-field">
-                              <textarea id="motivo" class="menssage">#{st.comentario}</textarea>
-                              <label for="motivo">Motivo</label>
+                              <input id="datei" type="text"  value="#{st.producto.categoria.nombreCategoria}"/>
+                              <label for="datei">Categoria</label>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="modal-footer">
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                      </div>
-                    </div>
-                  </div>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                  <div id="modaldel#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar la calificación de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>
                   </div>
@@ -157,18 +134,6 @@
     </div>
     <h:outputScript library="" name="table.js" />
 
-
-    <script>
-
-      $(document).ready(function () {
-        $('.1').html('<i class="fas fa-star"></i>');
-        $('.2').html('<i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.3').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.4').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.5').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.fa-star').addClass("orange-text");
-      })
-    </script>
     <script>
       $(document).ready(function () {
         $('.tooltipped').tooltip();

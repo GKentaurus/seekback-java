@@ -3,22 +3,54 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:body id="ody">
+  <h:body id="ody">
     <h:outputText value="#{bodegaProductoController.getOne(param['id'])}" />
 
     <ui:composition template="/WEB-INF/templates/handf.xhtml">
       <ui:define name="content">
 
 
-            <h:outputStylesheet library="styles" name="table.css" />
-            <h:outputScript library="scripts" name="jquery.dataTables.min.js" />
-            <h:outputScript library="scripts" name="buttons.html5.min.js" />
-            <h:outputScript library="scripts" name="buttons.print.min.js" />
-            <h:outputScript library="scripts" name="dataTables.buttons.min.js" />
-            <h:outputScript library="scripts" name="jszip.min.js" />
+        <h:outputStylesheet library="styles" name="table.css" />
+        <h:outputScript library="scripts" name="jquery.dataTables.min.js" />
+        <h:outputScript library="scripts" name="buttons.html5.min.js" />
+        <h:outputScript library="scripts" name="buttons.print.min.js" />
+        <h:outputScript library="scripts" name="dataTables.buttons.min.js" />
+        <h:outputScript library="scripts" name="jszip.min.js" />
 
         <div class="container wrap" id="inv">
           <div class="row">
+<<<<<<< Updated upstream:src/main/webapp/searchproduct.xhtml
+
+            <div class="col s12">
+              <div class="material-table">
+                <div class="table-header">
+                  <span class="table-title " id="namet">Resultados para " #{param['pr']} "</span>
+                  <div class="actions">
+                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i
+                        class="material-icons" id="bsea">search</i></a>
+                  </div>
+                </div>
+                <h:form>
+                  <h:dataTable pt:id="datatable" value="#{bodegaProductoController.getPornombre(param['pr'])}" var="st">
+                    <h:column>
+
+                      <f:facet name="header" pt:style="display:none;">Productos</f:facet>
+                      <div class="col m12 cont">
+                        <div class="col s12 m6 l3 childimg" style="display: flex;">
+                          <h:graphicImage class="materialboxed" library="images" name="acc/acc1.webp" alt="cards" style="height:200px; width:200px;" />
+                        </div>
+                        <div class="col s12 m6 l9 childesc">
+                          <span class="crdt truncate">#{st.producto.modeloProducto} </span><span> #{st.producto.categoria.nombreCategoria}</span>
+                          <p class=" hide-on-small-only">#{st.producto.descripcion}</p>
+                          <div class="col s12 m9 childbtn">
+                            <h:form>
+                              <a class='btn light-blue darken-4 waves-effect waves-light white-text hoverable' href="anyproduct.xhtml?id=#{st.id}">visualizar</a>
+                            </h:form>
+                          </div>
+                        </div>
+                      </div>
+
+=======
             <div class="col m3 hide-on-small-only">
               <div class="">
                 <ul class="section table-of-contents fixed">
@@ -79,6 +111,7 @@
                         </div>
                       </div>
 
+>>>>>>> Stashed changes:target/seekback-java-1.0-SNAPSHOT/aproduct.xhtml
                     </h:column>
                   </h:dataTable>
                 </h:form>

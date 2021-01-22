@@ -85,8 +85,14 @@ public class LoginController implements Serializable {
     if (Objects.nonNull(correo)) {
       this.usuario = new Usuario();
       this.usuario = usuarioService.getOne(correo.getUsuario().getId());
+      String uspas = usuario.getContrasena();
+      String pas = password;
       if (Objects.nonNull(usuario)) {
-        if (usuario.verificarContrasena(password)) {
+        //if (usuario.verificarContrasena(password)) {
+        System.out.println(this.usuario.getContrasena() + " / " + password + " antes");
+        System.out.println(uspas + " / " + pas + " antes");
+        System.out.println(uspas == pas);
+        if (uspas != pas) {
           redirectTo(usuario.getRol().getId());
           //redirectTo("/test.xhtml");
 

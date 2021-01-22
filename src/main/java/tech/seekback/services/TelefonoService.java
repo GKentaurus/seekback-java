@@ -65,7 +65,7 @@ public class TelefonoService {
    * @throws ConnectionExcep
    */
   public Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep {
-    return telefonoDAO.getByIdUsuario(IdUsuario);
+    return telefonoDAO.getByIdPrincipal(IdUsuario);
   }
 
   /**
