@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-  $('.sidenav').sidenav();
+    $('.sidenav').sidenav();
 
-  $(".dropdown-trigger").dropdown();
+    $(".dropdown-trigger").dropdown();
 
   $('.slider').slider();
 
@@ -64,11 +64,30 @@ $(document).ready(function () {
 
   }
 
-  $("#drkmode").click(function () {
+    if (localStorage.getItem("preferredmode") == "dark") {
 
-    $("#ody").toggleClass("dark-mode");
+        /* tipos producto */
+        $("#ody").addClass("dark-mode");
+        $("#inv").addClass("wrapmoddark");
+        $(".card").addClass("black");
+        $(".card").removeClass("white");
+        $("#bread").addClass("darken-1");
+        $("#bread").removeClass("darken-4");
+        $("#namet").addClass("white-text");
+        $("#bsea").addClass("white-text");
+        $(".filtable").addClass("white-text");
+        $(".dataTables_empty").addClass("white-text");
+        $(".childesc").addClass("white-text");
 
-    if ($("#ody").hasClass("dark-mode") == true) {
+        /* index */
+        $("#ody").addClass("dark-mode");
+        $("#inv").addClass("wrapmoddark");
+        $(".card").removeClass("white");
+        $(".card").addClass("black");
+        $(".division").removeClass("white");
+        $(".division").addClass("black");
+        $(".ingr").addClass("white-text");
+        $(".ingr").removeClass("black-text");
 
       /* tipos producto */
       $("#inv").addClass("wrapmoddark");
@@ -142,7 +161,6 @@ $(document).ready(function () {
       localStorage.setItem("preferredmode", "normal");
     }
 
-  });
 
   /* login */
   $('#modal2').modal({

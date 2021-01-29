@@ -42,7 +42,8 @@ public class DivisaService {
   }
 
   /**
-   * @return Una colección de objetos de tipo Divisa (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Divisa (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Divisa> getAll() throws ConnectionExcep {

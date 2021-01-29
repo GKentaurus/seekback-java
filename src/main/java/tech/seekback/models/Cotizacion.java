@@ -19,7 +19,8 @@ import tech.seekback.models.templates.Timestamps;
 @Entity
 @Table(name = "cotizacion")
 @NamedQueries(value = {
-  @NamedQuery(name = "Cotizacion.getAll", query = "SELECT obj FROM Cotizacion obj WHERE obj.timestamps.deleted = false")
+  @NamedQuery(name = "Cotizacion.getAll", query = "SELECT obj FROM Cotizacion obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Cotizacion.getByIdEmpleado", query = "SELECT obj FROM Cotizacion obj WHERE obj.empleado.id = :IdEmpleado and obj.timestamps.deleted = false")
 })
 public class Cotizacion implements Serializable {
 
@@ -261,7 +262,8 @@ public class Cotizacion implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información
+   * relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */
