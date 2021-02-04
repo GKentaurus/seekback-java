@@ -13,6 +13,8 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import tech.seekback.dao.interfaces.CotizacionDAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Cotizacion;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CotizacionService;
@@ -32,6 +34,7 @@ public class CotizacionController implements Serializable {
   private Usuario usuario;
   private CotizacionService cotizacionService;
   private List<Cotizacion> cotizaciones;
+  private CotizacionDAO CotizacionDAO;
 
   @PostConstruct
   public void init() {
@@ -48,11 +51,12 @@ public class CotizacionController implements Serializable {
 
   public List<Cotizacion> getCotizaciones() {
     try {
-      if (Objects.isNull(cotizaciones)) {
-        cotizaciones = cotizacionService.getAll();
+      if (Objects.nonNull(usuario.getId())) {
+        cotizaciones = CotizacionDAO.getByIdEmpleado(usuario.getId());
+      } else {
+        System.out.println("error al realizar la consulta");
       }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los clientes.....");
+    } catch (ConnectionExcep ex) {
       ex.printStackTrace();
     }
     return cotizaciones;

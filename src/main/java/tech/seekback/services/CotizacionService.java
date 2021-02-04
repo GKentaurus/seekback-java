@@ -42,11 +42,17 @@ public class CotizacionService {
   }
 
   /**
-   * @return Una colección de objetos de tipo Cotizacion (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Cotizacion (referente al Dao que
+   * lo implementa)
    * @throws ConnectionExcep
    */
   public List<Cotizacion> getAll() throws ConnectionExcep {
     return cotizacionDAO.getAll();
+  }
+
+  public List<Cotizacion> getByIdEmpleado(Integer idEmpleado) throws ConnectionExcep {
+    List<Cotizacion> cotizaciones = cotizacionDAO.getByIdEmpleado(idEmpleado);
+    return cotizaciones;
   }
 
   /**

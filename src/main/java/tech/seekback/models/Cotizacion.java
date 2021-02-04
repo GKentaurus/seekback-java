@@ -20,7 +20,7 @@ import tech.seekback.models.templates.Timestamps;
 @Table(name = "cotizacion")
 @NamedQueries(value = {
   @NamedQuery(name = "Cotizacion.getAll", query = "SELECT obj FROM Cotizacion obj WHERE obj.timestamps.deleted = false"),
-  @NamedQuery(name = "Cotizacion.getByIdEmpleado", query = "SELECT obj FROM Cotizacion obj WHERE obj.empleado.id = :IdEmpleado and obj.timestamps.deleted = false")
+  @NamedQuery(name = "Cotizacion.getByIdEmpleado", query = "SELECT obj FROM Cotizacion obj WHERE obj.empleado.id = :idEmpleado and obj.timestamps.deleted = false")
 })
 public class Cotizacion implements Serializable {
 
