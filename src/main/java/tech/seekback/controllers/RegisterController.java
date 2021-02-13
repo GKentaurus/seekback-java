@@ -5,36 +5,30 @@
  */
 package tech.seekback.controllers;
 
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.*;
+import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.*;
+
+import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
-import javax.ejb.EJB;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Cliente;
-import tech.seekback.models.Correo;
-import tech.seekback.models.Direccion;
-import tech.seekback.models.Telefono;
-import tech.seekback.models.Usuario;
-import tech.seekback.models.templates.Timestamps;
-import tech.seekback.services.CiudadService;
-import tech.seekback.services.ClienteService;
-import tech.seekback.services.CorreoService;
-import tech.seekback.services.DireccionService;
-import tech.seekback.services.RolService;
-import tech.seekback.services.TelefonoService;
-import tech.seekback.services.TipoDocService;
-import tech.seekback.services.UsuarioService;
 
 /**
- *
  * @author danny
  */
+@ManagedBean
 @ViewScoped
 @Named
 public class RegisterController implements Serializable {
@@ -85,7 +79,7 @@ public class RegisterController implements Serializable {
     cliente = new Cliente();
   }
 
-//<editor-fold defaultstate="collapsed" desc="Getters && Setters">
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Usuario getUsuario() {
     return usuario;
   }
@@ -148,6 +142,22 @@ public class RegisterController implements Serializable {
 
   public void setPasswordConfirm(String passwordConfirm) {
     this.passwordConfirm = passwordConfirm;
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Validators" defaultstate="collapsed">
+  /**
+   * Validación de la información recibida en el formulario, de los campos asociados.
+   *
+   * @param context
+   * @param component
+   * @param value
+   * @throws ValidatorException
+   */
+  public void validateNames(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+    if (((String) value).length() < 3) {
+      throw new ValidatorException(new FacesMessage("El dato ingresado debe tener al menos 3 caracteres."));
+    }
   }
   //</editor-fold>
 
