@@ -1,42 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
-<h:head>
-  <title>login / sign up</title>
-  <meta charset="utf-8"/>
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <h:outputStylesheet library="styles" name="style.css" />
-  <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-  <h:outputScript library="" name="jquery.min.js" />
-  <h:outputScript library="materialize" name="js/materialize.min.js" />
-  <h:outputScript library="" name="fontawesome.js" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <h:outputScript library="scripts" name="loginjs.js" />-->
-  <style>
+  <h:head>
+    <title>login / sign up</title>
+    <meta charset="utf-8"/>
+    <style>
       .mssa {
-          width: 12em;
-          border-left: 5px solid #0188bd;
-          border-radius: 0;
+        width: 12em;
+        border-left: 5px solid #0188bd;
+        border-radius: 0;
       }
-  </style>
+    </style>
 
-</h:head>
+  </h:head>
 
-<h:body id="ody">
+  <h:body id="ody">
 
-  <ui:composition template="/WEB-INF/templates/handf.xhtml">
-    <ui:define name="content">
-      <f:event type="preRenderView" listener="#{loginController.validate()}"/>
-      <h:outputScript library="scripts" name="loginjs.js"/>
+    <ui:composition template="/WEB-INF/templates/handf.xhtml">
+      <ui:define name="content">
+        <f:event type="preRenderView" listener="#{loginController.validate()}"/>
+        <h:outputScript library="scripts" name="loginjs.js"/>
 
-      <div class="wrap" id="inv" style="margin-bottom:20px;">
-        <div class="container">
-          <div class="row">
+        <div class="wrap" id="inv" style="margin-bottom:20px;">
+          <div class="container">
             <div class="row">
               <div class="col s12">
                 <ul class="tabs">
@@ -82,161 +73,162 @@
                 </div>
               </div>
               <div id="test2" class="col s12">
-                <h:form class="col s12" pt:autocomplete="off">
-                  <br/>
-                  <h3>Regístrate</h3>
-                  <br/>
-                  <div class="row">
-                    <h:form>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="fname" title="solo se permiten letras" class="ingre validate"
-                                     autocomplete="off" onkeyup="namesa();" required="true"
-                                     value="#{registerController.usuario.primerNombre}"
-                                     validator="#{registerController.validateString}"/>
-                        <h:outputLabel for="fname" value="1º Nombre"/>
-                        <h:message for="fname"/>
-                        <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="sname" title="solo se permiten letras" class="ingre validate"
-                                     autocomplete="off" onkeyup="namesa();"
-                                     value="#{registerController.usuario.otrosNombres}"
-                                     validator="#{registerController.validateString}"/>
-                        <h:outputLabel for="sname" value="2º Nombre"/>
-                        <h:message for="sname"/>
-                        <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="lname" title="solo se permiten letras" class="ingre validate"
-                                     autocomplete="off" required="true"
-                                     value="#{registerController.usuario.primerApellido}"
-                                     validator="#{registerController.validateString}"/>
-                        <h:outputLabel for="lname" value="1º Apellido"/>
-                        <h:message for="lname"/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="lsname" title="solo se permiten letras" class="ingre validate"
-                                     autocomplete="off" value="#{registerController.usuario.otrosApellidos}"
-                                     validator="#{registerController.validateString}"/>
-                        <h:outputLabel for="lsname" value="2º Apellido"/>
-                        <h:message for="lsname"/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:selectOneMenu pt:placeholder=" " id="tdoc" value="#{registerController.idTipoDoc}">
-                          <f:selectItem itemLabel="-- Seleccione un tipo de documento --"/>
-                          <f:selectItems value="#{tipoDocController.tipoDocs}" var="td" itemValue="#{td.id}"
-                                         itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
-                        </h:selectOneMenu>
-                        <h:outputLabel for="tdoc" value="Tipo documento:"/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="docu" class="ingre validate" autocomplete="off" pt:min="0" required="true"
-                                     value="#{registerController.usuario.numeroDoc}"/>
-                        <h:outputLabel for="docu" value="Documento"/>
-                        <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="emailr" pt:type="email" class="ingre validate" autocomplete="off"
-                                     value="#{registerController.email}"/>
-                        <h:outputLabel for="emailr" value="Email"/>
-                        <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="tel" class="ingre validate" autocomplete="off" pt:min="0"
-                                     value="#{registerController.phoneNumber}"/>
-                        <h:outputLabel for="tel" value="Telefono"/>
-                        <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputText id="fdir" class="ingre validate" autocomplete="off"
-                                     value="#{registerController.address}"/>
-                        <h:outputLabel for="fdir" value="Direccion"/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:outputLabel for="pais" value="Pais" style="margin-top: -30px;"/>
-                        <h:selectOneMenu pt:placeholder=" " id="pais" class="browser-default"
-                                         value="#{departamentoController.idPaisSeleccionado}">
-                          <f:selectItem itemLabel="-- Seleccione un país --"/>
-                          <f:selectItems value="#{paisController.paises}" var="pa" itemValue="#{pa.id}"
-                                         itemLabel="#{pa.nombrePais}"/>
-                          <f:ajax execute="@this" render="depto"/>
-                        </h:selectOneMenu>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:outputLabel for="depto" value="departamento" style="margin-top: -30px;"/>
-                        <h:selectOneMenu pt:placeholder=" " id="depto" class="browser-default"
-                                         value="#{ciudadController.idDepartamentoSeleccionado}">
-                          <f:selectItem itemLabel="-- Seleccione un departamento --"/>
-                          <f:selectItems value="#{departamentoController.departamentoSeleccionado}" var="de"
-                                         itemValue="#{de.id}" itemLabel="#{de.nombreDepartamento}"/>
-                          <f:ajax execute="@this" render="ciu"/>
-                        </h:selectOneMenu>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:outputLabel for="ciu" value="ciudad" style="margin-top: -30px;"/>
-                        <h:selectOneMenu pt:placeholder=" " id="ciu" class="browser-default"
-                                         value="#{registerController.idCiudad}">
-                          <f:selectItem itemLabel="-- Seleccione una ciudad --"/>
-                          <f:selectItems value="#{ciudadController.ciudadSeleccionada}" var="pa" itemValue="#{pa.id}"
-                                         itemLabel="#{pa.nombreCiudad}"/>
-                        </h:selectOneMenu>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputSecret id="fcontra" onkeyup="passwo();" class="ingre validate" required="true"
-                                       value="#{registerController.password}"/>
-                        <h:outputLabel for="fcontra" value="Contraseña "/>
-                      </div>
-                      <div class="input-field col s12 m6">
-                        <h:inputSecret id="scontra" onkeyup="passwo();" class="ingre validate"
-                                       value="#{registerController.passwordConfirm}"/>
-                        <label for="scontra">Confirmar Contraseña</label>
-                      </div>
-                      <div class="col s12 m6">
-                        <h:commandButton class="btn waves-effect waves-light blue" value="ingresar"
-                                         actionListener="#{registerController.register()}"/>
-                      </div>
-                    </h:form>
-                    <div class="col s12 m6">
-                      <ul class="collection">
-                        <li class="collection-item">
-                          <div id="bar" class="determinate teal" style="width:0;height: 5px;border-radius: 10px;"></div>
-                        </li>
-                        <li class="collection-item">
-                          <div>Mas de 8 carácteres
-                            <h:commandLink class="secondary-content"><i id="lpass"
-                                                                        class="material-icons red-text">close</i></h:commandLink>
-                          </div>
-                        </li>
-                        <li class="collection-item">
-                          <div>Por lo menos una mayúscula
-                            <h:commandLink class="secondary-content"><i id="Mpass"
-                                                                        class="material-icons red-text">close</i></h:commandLink>
-                          </div>
-                        </li>
-                        <li class="collection-item">
-                          <div>Por lo menos un carácter especial
-                            <h:commandLink class="secondary-content"><i id="Cpass"
-                                                                        class="material-icons red-text">close</i></h:commandLink>
-                          </div>
-                        </li>
-                        <li class="collection-item">
-                          <div>Por lo menos un número
-                            <h:commandLink class="secondary-content"><i id="Npass"
-                                                                        class="material-icons red-text">close</i></h:commandLink>
-                          </div>
-                        </li>
-                        <li class="collection-item">
-                          <div>Deben ser iguales
-                            <h:commandLink class="secondary-content"><i id="Ipass"
-                                                                        class="material-icons red-text">close</i></h:commandLink>
-                          </div>
-                        </li>
-                      </ul>
+                <div class="test2">
+                  <h:form pt:class="col s12 registrer white" pt:autocomplete="off">
+                    <br/>
+                    <h3>Regístrate</h3>
+                    <br/>
+                    <div class="row">
+                      <h:form>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="fname" title="solo se permiten letras" class="ingre validate"
+                                       autocomplete="off" onkeyup="namesa();" required="true"
+                                       value="#{registerController.usuario.primerNombre}"
+                                       validator="#{registerController.validateString}"/>
+                          <h:outputLabel for="fname" value="1º Nombre"/>
+                          <h:message for="fname"/>
+                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="sname" title="solo se permiten letras" class="ingre validate"
+                                       autocomplete="off" onkeyup="namesa();"
+                                       value="#{registerController.usuario.otrosNombres}"
+                                       validator="#{registerController.validateString}"/>
+                          <h:outputLabel for="sname" value="2º Nombre"/>
+                          <h:message for="sname"/>
+                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="lname" title="solo se permiten letras" class="ingre validate"
+                                       autocomplete="off" required="true"
+                                       value="#{registerController.usuario.primerApellido}"
+                                       validator="#{registerController.validateString}"/>
+                          <h:outputLabel for="lname" value="1º Apellido"/>
+                          <h:message for="lname"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="lsname" title="solo se permiten letras" class="ingre validate"
+                                       autocomplete="off" value="#{registerController.usuario.otrosApellidos}"
+                                       validator="#{registerController.validateString}"/>
+                          <h:outputLabel for="lsname" value="2º Apellido"/>
+                          <h:message for="lsname"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:selectOneMenu pt:placeholder=" " id="tdoc" value="#{registerController.idTipoDoc}">
+                            <f:selectItem itemLabel="-- Seleccione un tipo de documento --"/>
+                            <f:selectItems value="#{tipoDocController.tipoDocs}" var="td" itemValue="#{td.id}"
+                                           itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
+                          </h:selectOneMenu>
+                          <h:outputLabel for="tdoc" value="Tipo documento:"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="docu" class="ingre validate" autocomplete="off" pt:min="0" required="true"
+                                       value="#{registerController.usuario.numeroDoc}"/>
+                          <h:outputLabel for="docu" value="Documento"/>
+                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="emailr" pt:type="email" class="ingre validate" autocomplete="off"
+                                       value="#{registerController.email}"/>
+                          <h:outputLabel for="emailr" value="Email"/>
+                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="tel" class="ingre validate" autocomplete="off" pt:min="0"
+                                       value="#{registerController.phoneNumber}"/>
+                          <h:outputLabel for="tel" value="Telefono"/>
+                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputText id="fdir" class="ingre validate" autocomplete="off"
+                                       value="#{registerController.address}"/>
+                          <h:outputLabel for="fdir" value="Direccion"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:selectOneMenu pt:placeholder=" " id="pais" class=""
+                                           value="#{departamentoController.idPaisSeleccionado}">
+                            <f:selectItem itemLabel="-- Seleccione un país --"/>
+                            <f:selectItems value="#{paisController.paises}" var="pa" itemValue="#{pa.id}"
+                                           itemLabel="#{pa.nombrePais}"/>
+                            <f:ajax execute="@this" render="depto"/>
+                          </h:selectOneMenu>
+                          <h:outputLabel for="pais" value="Pais"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:selectOneMenu pt:placeholder=" " id="depto" class="browser-default" style="border:0px solid black; border-bottom: 1px solid #212121"
+                                           value="#{ciudadController.idDepartamentoSeleccionado}">
+                            <f:selectItem itemLabel="-- Seleccione un departamento --"/>
+                            <f:selectItems value="#{departamentoController.departamentoSeleccionado}" var="de"
+                                           itemValue="#{de.id}" itemLabel="#{de.nombreDepartamento}"/>
+                            <f:ajax execute="@this" render="ciu"/>
+                          </h:selectOneMenu>
+                          <h:outputLabel for="depto" value="departamento" style="margin-top: -30px;"/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:outputLabel for="ciu" value="ciudad" style="margin-top: -30px;"/>
+                          <h:selectOneMenu pt:placeholder=" " id="ciu" class="browser-default" style="border:0px solid black; border-bottom: 1px solid #212121"
+                                           value="#{registerController.idCiudad}">
+                            <f:selectItem itemLabel="-- Seleccione una ciudad --"/>
+                            <f:selectItems value="#{ciudadController.ciudadSeleccionada}" var="pa" itemValue="#{pa.id}"
+                                           itemLabel="#{pa.nombreCiudad}"/>
+                          </h:selectOneMenu>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputSecret id="fcontra" onkeyup="passwo();" class="ingre validate" required="true"
+                                         value="#{registerController.password}"/>
+                          <h:outputLabel for="fcontra" value="Contraseña "/>
+                        </div>
+                        <div class="input-field col s12 m6">
+                          <h:inputSecret id="scontra" onkeyup="passwo();" class="ingre validate"
+                                         value="#{registerController.passwordConfirm}"/>
+                          <label for="scontra">Confirmar Contraseña</label>
+                        </div>
+                        <div class="col s12 m6">
+                          <h:commandButton class="btn waves-effect waves-light blue" value="ingresar"
+                                           actionListener="#{registerController.register()}"/>
+                        </div>
+                      </h:form>
                     </div>
-                  </div>
-                </h:form>
-                <div id="modalfo" class="modal-footer modalf grey lighten-3">
-                  <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
+                    <div class="row">
+                      <div class="col s12 m6">
+                        <ul class="collection">
+                          <li class="collection-item">
+                            <div id="bar" class="determinate teal" style="width:0;height: 5px;border-radius: 10px;"></div>
+                          </li>
+                          <li class="collection-item">
+                            <div>Mas de 8 carácteres
+                              <h:commandLink class="secondary-content"><i id="lpass"
+                                                                          class="material-icons red-text">close</i></h:commandLink>
+                            </div>
+                          </li>
+                          <li class="collection-item">
+                            <div>Por lo menos una mayúscula
+                              <h:commandLink class="secondary-content"><i id="Mpass"
+                                                                          class="material-icons red-text">close</i></h:commandLink>
+                            </div>
+                          </li>
+                          <li class="collection-item">
+                            <div>Por lo menos un carácter especial
+                              <h:commandLink class="secondary-content"><i id="Cpass"
+                                                                          class="material-icons red-text">close</i></h:commandLink>
+                            </div>
+                          </li>
+                          <li class="collection-item">
+                            <div>Por lo menos un número
+                              <h:commandLink class="secondary-content"><i id="Npass"
+                                                                          class="material-icons red-text">close</i></h:commandLink>
+                            </div>
+                          </li>
+                          <li class="collection-item">
+                            <div>Deben ser iguales
+                              <h:commandLink class="secondary-content"><i id="Ipass"
+                                                                          class="material-icons red-text">close</i></h:commandLink>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </h:form>
                 </div>
               </div>
 
@@ -272,11 +264,10 @@
             </div>
           </div>
         </div>
-      </div>
 
-    </ui:define>
-  </ui:composition>
+      </ui:define>
+    </ui:composition>
 
-</h:body>
+  </h:body>
 
 </html>

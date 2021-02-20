@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $('.sidenav').sidenav();
+  $('.sidenav').sidenav();
 
-    $(".dropdown-trigger").dropdown();
+  $(".dropdown-trigger").dropdown();
 
   $('.slider').slider();
 
@@ -43,10 +43,10 @@ $(document).ready(function() {
     /* index */
     $("#ody").addClass("dark-mode");
     $("#inv").addClass("wrapmoddark");
-    $(".card").removeClass("white");
     $(".card").addClass("black");
-    $(".division").removeClass("white");
+    $(".card").removeClass("white");
     $(".division").addClass("black");
+    $(".division").removeClass("white");
     $(".ingr").addClass("white-text");
     $(".ingr").removeClass("black-text");
 
@@ -64,102 +64,104 @@ $(document).ready(function() {
 
   }
 
-    if (localStorage.getItem("preferredmode") == "dark") {
+  if (localStorage.getItem("preferredmode") == "dark") {
 
-        /* tipos producto */
-        $("#ody").addClass("dark-mode");
-        $("#inv").addClass("wrapmoddark");
-        $(".card").addClass("black");
-        $(".card").removeClass("white");
-        $("#bread").addClass("darken-1");
-        $("#bread").removeClass("darken-4");
-        $("#namet").addClass("white-text");
-        $("#bsea").addClass("white-text");
-        $(".filtable").addClass("white-text");
-        $(".dataTables_empty").addClass("white-text");
-        $(".childesc").addClass("white-text");
+    /* tipos producto */
+    $("#ody").addClass("dark-mode");
+    $("#inv").addClass("wrapmoddark");
+    $(".card").addClass("black");
+    $(".card").removeClass("white");
+    $("#bread").addClass("darken-1");
+    $("#bread").removeClass("darken-4");
+    $("#namet").addClass("white-text");
+    $("#bsea").addClass("white-text");
+    $(".filtable").addClass("white-text");
+    $(".dataTables_empty").addClass("white-text");
+    $(".childesc").addClass("white-text");
 
-        /* index */
-        $("#ody").addClass("dark-mode");
-        $("#inv").addClass("wrapmoddark");
-        $(".card").removeClass("white");
-        $(".card").addClass("black");
-        $(".division").removeClass("white");
-        $(".division").addClass("black");
-        $(".ingr").addClass("white-text");
-        $(".ingr").removeClass("black-text");
+    /* index */
+    $("#ody").addClass("dark-mode");
+    $("#inv").addClass("wrapmoddark");
+    $(".card").removeClass("white");
+    $(".card").addClass("black");
+    $(".division").removeClass("white");
+    $(".division").addClass("black");
+    $(".ingr").addClass("white-text");
+    $(".ingr").removeClass("black-text");
 
-      /* tipos producto */
-      $("#inv").addClass("wrapmoddark");
-      $(".card").addClass("black");
-      $(".card").removeClass("white");
-      $("#bread").addClass("darken-4");
-      $("#bread").removeClass("darken-1");
-      $("#namet").addClass("white-text");
-      $("#namet").removeClass("black-text");
-      $("#bsea").addClass("white-text");
-      $("#bsea").removeClass("black-text");
-      $(".filtable").removeClass("black-text");
-      $(".filtable").addClass("white-text");
-      $(".dataTables_empty").removeClass("black-text");
-      $(".dataTables_empty").addClass("white-text");
-      $(".childesc").removeClass("black-text");
-      $(".childesc").addClass("white-text");
+    /* tipos producto */
+    $("#inv").addClass("wrapmoddark");
+    $(".card").addClass("black");
+    $(".card").removeClass("white");
+    $("#bread").addClass("darken-4");
+    $("#bread").removeClass("darken-1");
+    $("#namet").addClass("white-text");
+    $("#namet").removeClass("black-text");
+    $("#bsea").addClass("white-text");
+    $("#bsea").removeClass("black-text");
+    $(".filtable").removeClass("black-text");
+    $(".filtable").addClass("white-text");
+    $(".dataTables_empty").removeClass("black-text");
+    $(".dataTables_empty").addClass("white-text");
+    $(".childesc").removeClass("black-text");
+    $(".childesc").addClass("white-text");
 
-      /* index */
-      $(".division").removeClass("white");
-      $(".division").addClass("black");
-      $(".ingr").addClass("white-text");
-      $(".ingr").removeClass("black-text");
+    /* index */
+    $(".division").addClass("black");
+    $(".division").removeClass("white");
+    $(".ingr").addClass("white-text");
+    $(".ingr").removeClass("black-text");
 
-      /* login */
-      $(".modal").addClass("black");
-      $(".modal").removeClass("white");
-      $(".modal-footer").addClass("darken-4");
-      $(".modal-footer").removeClass("darken-3");
-      $(".ingre").css("color", "white");
-      $(".select-dropdown").css("color", "white");
-      $(".collection-item").addClass("black");
-      $(".collection-item").removeClass("white");
+    /* login */
+    $(".test2").addClass("wrapmoddark");
+    $(".modal").addClass("black");
+    $(".modal").removeClass("white");
+    $(".modal-footer").addClass("darken-4");
+    $(".modal-footer").removeClass("darken-3");
+    $(".ingre").css("color", "white");
+    $(".select-dropdown").css("color", "white");
+    $(".collection-item").addClass("black");
+    $(".collection-item").removeClass("white");
 
-      localStorage.setItem("preferredmode", "dark");
-    } else {
+    localStorage.setItem("preferredmode", "dark");
+  } else {
 
-      /* tipos producto */
-      $("#inv").removeClass("wrapmoddark");
-      $(".card").addClass("white");
-      $(".card").removeClass("black");
-      $("#bread").addClass("darken-1");
-      $("#bread").removeClass("darken-4");
-      $("#namet").addClass("black-text");
-      $("#namet").removeClass("white-text");
-      $("#bsea").addClass("black-text");
-      $("#bsea").removeClass("white-text");
-      $(".filtable").addClass("black-text");
-      $(".filtable").removeClass("white-text");
-      $(".dataTables_empty").addClass("black-text");
-      $(".dataTables_empty").removeClass("white-text");
-      $(".childesc").addClass("black-text");
-      $(".childesc").removeClass("white-text");
+    /* tipos producto */
+    $("#inv").removeClass("wrapmoddark");
+    $(".card").addClass("white");
+    $(".card").removeClass("black");
+    $("#bread").addClass("darken-1");
+    $("#bread").removeClass("darken-4");
+    $("#namet").addClass("black-text");
+    $("#namet").removeClass("white-text");
+    $("#bsea").addClass("black-text");
+    $("#bsea").removeClass("white-text");
+    $(".filtable").addClass("black-text");
+    $(".filtable").removeClass("white-text");
+    $(".dataTables_empty").addClass("black-text");
+    $(".dataTables_empty").removeClass("white-text");
+    $(".childesc").addClass("black-text");
+    $(".childesc").removeClass("white-text");
 
-      /* index */
-      $(".division").removeClass("black");
-      $(".division").addClass("white");
-      $(".ingr").removeClass("white-text");
-      $(".ingr").addClass("black-text");
+    /* index */
+    $(".division").addClass("white");
+    $(".division").removeClass("black");
+    $(".ingr").addClass("black-text");
+    $(".ingr").removeClass("white-text");
 
-      /* login */
-      $(".modal").addClass("white");
-      $(".modal").removeClass("black");
-      $(".modal-footer").addClass("darken-3");
-      $(".modal-footer").removeClass("darken-4");
-      $(".ingre").css("color", "#222");
-      $(".select-dropdown").css("color", "#222");
-      $(".collection-item").addClass("white");
-      $(".collection-item").removeClass("black");
+    /* login */
+    $(".test2").removeClass("wrapmoddark");
+    $(".modal").addClass("white");
+    $(".modal").removeClass("black");
+    $(".modal-footer").addClass("darken-3");
+    $(".modal-footer").removeClass("darken-4");
+    $(".ingre").css("color", "#222");
+    $(".select-dropdown").css("color", "#222");
+    $(".collection-item").addClass("white");
+    $(".collection-item").removeClass("black");
 
-      localStorage.setItem("preferredmode", "normal");
-    }
+    localStorage.setItem("preferredmode", "normal");
+  }
 
 
   /* login */

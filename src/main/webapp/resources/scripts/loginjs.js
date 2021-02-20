@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $('.modal').modal();
   $('select').formSelect();
   $('.tabs').tabs();
@@ -19,10 +19,12 @@ $(document).ready(function() {
     $(".select-dropdown").css("color", "white");
     $(".collection-item").addClass("black");
     $(".collection-item").removeClass("white");
+    $(".registrer").addClass("black");
+    $(".registrer").removeClass("white");
 
   }
 
-  $("#drkmode").click(function() {
+  $("#drkmode").click(function () {
 
     $("#ody").toggleClass("dark-mode");
 
@@ -37,6 +39,8 @@ $(document).ready(function() {
       $(".select-dropdown").css("color", "white");
       $(".collection-item").addClass("black");
       $(".collection-item").removeClass("white");
+      $(".registrer").addClass("black");
+      $(".registrer").removeClass("white");
 
       localStorage.setItem("preferredmode", "dark");
     } else {
@@ -50,14 +54,16 @@ $(document).ready(function() {
       $(".select-dropdown").css("color", "#222");
       $(".collection-item").addClass("white");
       $(".collection-item").removeClass("black");
+      $(".registrer").addClass("white");
+      $(".registrer").removeClass("black");
 
       localStorage.setItem("preferredmode", "normal");
     }
 
   });
-  
-   $('#modal2').modal({
-      onCloseEnd: function (){
+
+  $('#modal2').modal({
+    onCloseEnd: function () {
       window.location.replace('login.html');
     }
   });
@@ -65,38 +71,38 @@ $(document).ready(function() {
 });
 
 
-function login(){
+function login() {
   var emaillog = document.getElementById("emaillog").value;
   var passwordlog = document.getElementById("passwordlog").value;
-  
+
   var data = emaillog + '/' + passwordlog;
-  
+
   var cliente = 'cliente@cliente.com/123456';
   var empleado = 'empleado@empleado.com/123456';
   var admin = 'admin@admin.com/123456';
-  
-  
-  
-  if(data === cliente){
+
+
+
+  if (data === cliente) {
     window.location.replace('../frames/cliente.html');
-  } else if(data === empleado){
+  } else if (data === empleado) {
     window.location.replace('../frames/empleado.html');
-  }  else if(data === admin){
+  } else if (data === admin) {
     window.location.replace('../frames/admin.html');
-  } else if(data === '/'){
-      M.toast({html: 'datos invalidos'});
+  } else if (data === '/') {
+    M.toast({html: 'datos invalidos'});
   } else {
-      M.toast({html: 'Usuario no esta registrado'});
+    M.toast({html: 'Usuario no esta registrado'});
   }
-  
+
 }
 
-function namesa(){
+function namesa() {
   var fname = document.getElementById('fname').value;
   var nameee = document.getElementById('nameee');
-  
+
   nameee.innerHTML = fname;
-  
+
 }
 
 
@@ -155,7 +161,7 @@ function passwo() {
     i = i + 0;
   }
 
-  if (pass == passa && pass !="") {
+  if (pass == passa && pass != "") {
     Ipass.innerHTML = "check";
     Ipass.className = Ipass.className.replace("red-text", "green-text");
     i = i + 20;
