@@ -1,225 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-  <h:head>
-    <title>QPCOM | Seekback</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-    <h:outputScript library="" name="jquery.min.js" />
-    <h:outputScript library="materialize" name="js/materialize.min.js" />
-    <h:outputScript library="" name="fontawesome.js" />
-    <h:outputStylesheet library="styles" name="table.css" />
-    <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
-    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
-    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
-    <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <style>
+<h:head>
+  <title>QPCOM | Seekback</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <h:outputStylesheet library="materialize" name="css/materialize.min.css"/>
+  <h:outputScript library="" name="jquery.min.js"/>
+  <h:outputScript library="materialize" name="js/materialize.min.js"/>
+  <h:outputScript library="" name="fontawesome.js"/>
+  <h:outputStylesheet library="styles" name="table.css"/>
+  <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <style>
       body {
-        background-image: url("#{resource['images/logob.png']}");
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: 700px;
-        background-position: 130% -300%;
-        background-blend-mode: difference;
+          background-image: url("#{resource['images/logob.png']}");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: 700px;
+          background-position: 130% -300%;
+          background-blend-mode: difference;
       }
 
       .menssage {
-        max-width: 100%;
-        border: 1px solid transparent;
-        border-bottom: 1px solid #9E9E9E;
-        outline: none;
+          max-width: 100%;
+          border: 1px solid transparent;
+          border-bottom: 1px solid #9E9E9E;
+          outline: none;
       }
 
       .menssage:focus {
-        border-bottom: 1px solid #26a69a;
-        -webkit-box-shadow: 0 1px 0 0 #26a69a;
-        box-shadow: 0 1px 0 0 #26a69a;
+          border-bottom: 1px solid #26a69a;
+          -webkit-box-shadow: 0 1px 0 0 #26a69a;
+          box-shadow: 0 1px 0 0 #26a69a;
       }
 
-      .menssage:focus+label {
-        color: #26a69a;
+      .menssage:focus + label {
+          color: #26a69a;
       }
 
-    </style>
-  </h:head>
+  </style>
+</h:head>
 
-  <h:body>
-    <div class="container">
-      <div class="row">
-        <p class="center-align" style="font-size:25px;"><i class="fas fa-chalkboard-teacher"></i> Capacitaciones y asesorías técnicas <i class="fas fa-tools"></i></p>
-        <div id="admin" class="col s12">
-          <div class="card material-table">
-            <div class="table-header">
-              <span class="table-title">capacitaciones y asesorías técnicas</span>
-              <div class="actions">
-                <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
-              </div>
+<h:body>
+  <div class="container">
+    <div class="row">
+      <p class="center-align" style="font-size:25px;"><i
+          class="fas fa-chalkboard-teacher"/> Capacitaciones y asesorías técnicas <i class="fas fa-tools"/></p>
+      <div id="admin" class="col s12">
+        <div class="card material-table">
+          <div class="table-header">
+            <span class="table-title">capacitaciones y asesorías técnicas</span>
+            <div class="actions">
+              <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
             </div>
-            <h:form>
-              <h:dataTable pt:id="datatable"
-                           value="#{agendaController.agendas}"
-                           var="st">
-                <h:column>
-                  <f:facet name="header">Servicios</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.tipoServicio.nombreServicio}" pt:data-position="bottom" pt:data-tooltip="#{st.tipoServicio.nombreServicio}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Cliente</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Empleado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Fecha</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Comentario</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.observaciones}" pt:data-position="bottom" pt:data-tooltip="#{st.observaciones}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Estado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}" pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Editar</f:facet>
-                  <a class="waves-effect waves-light btn modal-trigger"
-                     href="#modal#{st.id}"
-                     onclick="document.getElementById('estado#{st.id}').selectedIndex = #{st.tipoServicio.id};document.getElementById('estad#{st.id}').selectedIndex = #{st.estado.id};">Visualizar</a>
-                  <div id="modal#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <h4 class="center-align">#{st.tipoServicio.nombreServicio}</h4>
-                      <div class="section" style="padding-bottom:0px;">
-                        <div class="row">
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="quien" type="text" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" readonly="true"/>
-                              <label for="quien">Cliente</label>
-                            </div>
+          </div>
+          <h:form>
+            <h:dataTable pt:id="datatable"
+                         value="#{agendaController.agendas}"
+                         var="st">
+              <h:column>
+                <f:facet name="header">Servicios</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.tipoServicio.nombreServicio}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.tipoServicio.nombreServicio}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Cliente</f:facet>
+                <h:outputText pt:class="tooltipped"
+                              value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"
+                              pt:data-position="bottom"
+                              pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Empleado</f:facet>
+                <h:outputText pt:class="tooltipped"
+                              value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"
+                              pt:data-position="bottom"
+                              pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Fecha</f:facet>
+                <h:outputText pt:class="tooltipped"
+                              value="#{st.timestamps.created_at}"
+                              pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}">
+                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Comentario</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.observaciones}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.observaciones}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Estado</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.estado.nombreEstado}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Editar</f:facet>
+                <a class="waves-effect waves-light btn modal-trigger"
+                   href="#modal#{st.id}"
+                   onclick="document.getElementById('estado#{st.id}').selectedIndex = #{st.tipoServicio.id};document.getElementById('estad#{st.id}').selectedIndex = #{st.estado.id};">Visualizar</a>
+                <div id="modal#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <h4 class="center-align">#{st.tipoServicio.nombreServicio}</h4>
+                    <div class="section" style="padding-bottom:0px;">
+                      <div class="row">
+                        <div class="col s12 m6">
+                          <div class="input-field">
+                            <input id="quien" type="text"
+                                   value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"
+                                   readonly="true"/>
+                            <label for="quien">Cliente</label>
                           </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="quien" type="text" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}" readonly="true"/>
-                              <label for="quien">Cliente</label>
-                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                          <div class="input-field">
+                            <input id="quien" type="text"
+                                   value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"
+                                   readonly="true"/>
+                            <label for="quien">Cliente</label>
                           </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <label for="datei">Fecha</label>
-                              <br/>
-                              <input id="datei" type="datetime"  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}"/>
-                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                          <div class="input-field">
+                            <label for="datei">Fecha</label>
+                            <br/>
+                            <input id="datei" type="datetime"
+                                   value="#{st.timestamps.created_at}">
+                              <!-- TODO formatear la fecha y pasar estas etiquetas a JSF-->
+                              <!-- <f:convertDateTime pattern="dd/MM/yyyy - HH:mm:ss"/> -->
+                            </input>
                           </div>
-                          <div class="col s12 m6">
-                            <input type="hidden" value="#{st.tipoServicio.id}" />
-                            <div class="input-field">
-                              <h:outputLabel for="estado#{st.id}" value="Tipo Servicio" style="margin-top: -30px;"/>
-                              <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                               valueChangeListener="#{st.estado.id}">
-                                <f:selectItem itemValue="#{null}"
-                                              itemLabel="Seleccione una opción"
-                                              noSelectionOption="true" />
-                                <f:selectItems value="#{agendaController.tipoServicio}"
-                                               var="da"
-                                               itemValue="#{da.id}"
-                                               itemLabel="#{da.nombreServicio}"/>
-                              </h:selectOneMenu>
-                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                          <input type="hidden" value="#{st.tipoServicio.id}"/>
+                          <div class="input-field">
+                            <h:outputLabel for="estado#{st.id}" value="Tipo Servicio" style="margin-top: -30px;"/>
+                            <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}" class="browser-default"
+                                             valueChangeListener="#{st.estado.id}">
+                              <f:selectItem itemValue="#{null}"
+                                            itemLabel="Seleccione una opción"
+                                            noSelectionOption="true"/>
+                              <f:selectItems value="#{agendaController.tipoServicio}"
+                                             var="da"
+                                             itemValue="#{da.id}"
+                                             itemLabel="#{da.nombreServicio}"/>
+                            </h:selectOneMenu>
                           </div>
-                          <div class="col s12 m6">
-                            <input type="hidden" value="#{st.estado.id}" />
-                            <div class="input-field">
-                              <h:outputLabel for="estad#{st.id}" value="Estado" style="margin-top: -30px;"/>
-                              <h:selectOneMenu pt:placeholder=" " pt:id="estad#{st.id}"  class="browser-default"
-                                               valueChangeListener="#{st.estado.id}">
-                                <f:selectItem itemValue="#{null}"
-                                              itemLabel="Seleccione una opción"
-                                              noSelectionOption="true" />
-                                <f:selectItems value="#{agendaController.estadosAgendas}"
-                                               var="es"
-                                               itemValue="#{es.id}"
-                                               itemLabel="#{es.nombreEstado}"/>
-                              </h:selectOneMenu>
-                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                          <input type="hidden" value="#{st.estado.id}"/>
+                          <div class="input-field">
+                            <h:outputLabel for="estad#{st.id}" value="Estado" style="margin-top: -30px;"/>
+                            <h:selectOneMenu pt:placeholder=" " pt:id="estad#{st.id}" class="browser-default"
+                                             valueChangeListener="#{st.estado.id}">
+                              <f:selectItem itemValue="#{null}"
+                                            itemLabel="Seleccione una opción"
+                                            noSelectionOption="true"/>
+                              <f:selectItems value="#{agendaController.estadosAgendas}"
+                                             var="es"
+                                             itemValue="#{es.id}"
+                                             itemLabel="#{es.nombreEstado}"/>
+                            </h:selectOneMenu>
                           </div>
-                          <div class="col s12">
-                            <div class="input-field">
-                              <textarea id="motivo" class="materialize-textarea">#{st.observaciones}</textarea>
-                              <label for="motivo">Motivo</label>
-                            </div>
+                        </div>
+                        <div class="col s12">
+                          <div class="input-field">
+                            <textarea id="motivo" class="materialize-textarea">#{st.observaciones}</textarea>
+                            <label for="motivo">Motivo</label>
                           </div>
                         </div>
                       </div>
-                      <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                     </div>
                   </div>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                  <div id="modaldel#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar el servicio de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                      </div>
+                </div>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Eliminar</f:facet>
+                <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                <div id="modaldel#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <div class="section" style="padding-bottom:0px;">
+                      <h4 class="center-align">Desea eliminar el servicio de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                     </div>
                   </div>
-                </h:column>
-              </h:dataTable>
-            </h:form>
-          </div>
+                </div>
+              </h:column>
+            </h:dataTable>
+          </h:form>
         </div>
       </div>
     </div>
-    <h:outputScript library="" name="table.js" />
+  </div>
+  <h:outputScript library="" name="table.js"/>
 
-    <script>
+  <script>
       $(document).ready(function () {
-        $('.tooltipped').tooltip();
-        $('select').formSelect();
-        $('.modal').modal();
-        $('.timepicker').timepicker({
-          autoClose: true,
-          twelveHour: true,
-          i18n: {
-            cancel: 'Cancelar',
-            done: 'Ok'
-          }
-        });
-        $('.datepicker').datepicker({
-          autoClose: true,
-          firstDay: 1,
-          i18n: {
-            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
-            cancel: 'Cancelar'
-          },
-          format: 'dd/mm/yyyy'
-        });
+          $('.tooltipped').tooltip();
+          $('select').formSelect();
+          $('.modal').modal();
+          $('.timepicker').timepicker({
+              autoClose: true,
+              twelveHour: true,
+              i18n: {
+                  cancel: 'Cancelar',
+                  done: 'Ok'
+              }
+          });
+          $('.datepicker').datepicker({
+              autoClose: true,
+              firstDay: 1,
+              i18n: {
+                  weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                  weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                  weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                  months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                  monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
+                  cancel: 'Cancelar'
+              },
+              format: 'dd/mm/yyyy'
+          });
       });
       $("#myInput").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function () {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
       });
-    </script>
-  </h:body>
+  </script>
+</h:body>
 </html>
