@@ -5,16 +5,17 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.models.EstadosFidelizacion;
 import tech.seekback.models.SoporteTecnico;
 import tech.seekback.services.EstadosFidelizacionService;
 import tech.seekback.services.SoporteTecnicoService;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -22,7 +23,7 @@ import tech.seekback.services.SoporteTecnicoService;
  */
 @Named
 @ViewScoped
-public class SoporteTecnicoController implements Serializable {
+public class SoporteTecnicoController extends CustomController implements Serializable {
 
   @EJB
   private SoporteTecnicoService soporteTecnicoService;

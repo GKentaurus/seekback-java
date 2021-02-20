@@ -5,20 +5,21 @@
  */
 package tech.seekback.controllers;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Objects;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Correo;
+import tech.seekback.models.Usuario;
+import tech.seekback.services.CorreoService;
+import tech.seekback.services.UsuarioService;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Correo;
-import tech.seekback.models.Usuario;
-import tech.seekback.services.CorreoService;
-import tech.seekback.services.UsuarioService;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -26,7 +27,7 @@ import tech.seekback.services.UsuarioService;
  */
 @Named
 @SessionScoped
-public class LoginController implements Serializable {
+public class LoginController extends CustomController implements Serializable {
 
   @EJB
   private UsuarioService usuarioService;

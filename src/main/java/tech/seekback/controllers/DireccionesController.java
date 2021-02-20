@@ -5,18 +5,19 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
 import tech.seekback.models.Direccion;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.DireccionService;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -24,7 +25,7 @@ import tech.seekback.services.DireccionService;
  */
 @ViewScoped
 @Named
-public class DireccionesController implements Serializable {
+public class DireccionesController extends CustomController implements Serializable {
 
   @EJB
   private DireccionService direccionesService;

@@ -5,20 +5,19 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.models.EstadosFidelizacion;
 import tech.seekback.models.PQRS;
 import tech.seekback.models.TipoSolicitud;
 import tech.seekback.services.EstadosFidelizacionService;
 import tech.seekback.services.PQRSService;
 import tech.seekback.services.TipoSolicitudService;
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -26,7 +25,7 @@ import javax.persistence.EntityManager;
  */
 @Named
 @ViewScoped
-public class PqrController implements Serializable {
+public class PqrController extends CustomController implements Serializable {
 
   @EJB
   private PQRSService pQRSService;

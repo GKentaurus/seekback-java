@@ -5,15 +5,16 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.dao.interfaces.CiudadDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Ciudad;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -21,7 +22,7 @@ import tech.seekback.models.Ciudad;
  */
 @Named
 @ViewScoped
-public class CiudadController implements Serializable {
+public class CiudadController extends CustomController implements Serializable {
 
   @EJB
   private CiudadDAO ciudadDAO;

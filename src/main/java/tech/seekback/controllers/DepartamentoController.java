@@ -5,15 +5,16 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.dao.interfaces.DepartamentoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Departamento;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -21,7 +22,7 @@ import tech.seekback.models.Departamento;
  */
 @Named
 @ViewScoped
-public class DepartamentoController implements Serializable {
+public class DepartamentoController extends CustomController implements Serializable {
 
   @EJB
   private DepartamentoDAO departamentoDAO;

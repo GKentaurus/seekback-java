@@ -24,7 +24,7 @@ import java.util.Objects;
  */
 @Named
 @ViewScoped
-public class UsuarioController implements Serializable {
+public class UsuarioController extends CustomController implements Serializable {
 
   @Inject
   private LoginController loginController;

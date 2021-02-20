@@ -5,14 +5,15 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
+import tech.seekback.models.Divisa;
+import tech.seekback.services.DivisaService;
+
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.models.Divisa;
-import tech.seekback.services.DivisaService;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -20,7 +21,7 @@ import tech.seekback.services.DivisaService;
  */
 @Named
 @ViewScoped
-public class DivisaController implements Serializable {
+public class DivisaController extends CustomController implements Serializable {
 
   @EJB
   private DivisaService divisaService;

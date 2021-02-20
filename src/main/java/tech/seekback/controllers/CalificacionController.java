@@ -5,14 +5,15 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
+import tech.seekback.models.Calificacion;
+import tech.seekback.services.CalificacionService;
+
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.models.Calificacion;
-import tech.seekback.services.CalificacionService;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -20,7 +21,7 @@ import tech.seekback.services.CalificacionService;
  */
 @Named
 @ViewScoped
-public class CalificacionController implements Serializable {
+public class CalificacionController extends CustomController implements Serializable {
 
   @EJB
   private CalificacionService calificacionService;

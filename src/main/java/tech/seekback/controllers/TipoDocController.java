@@ -5,15 +5,16 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.TipoDoc;
+import tech.seekback.services.TipoDocService;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.TipoDoc;
-import tech.seekback.services.TipoDocService;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -21,7 +22,7 @@ import tech.seekback.services.TipoDocService;
  */
 @Named
 @ViewScoped
-public class TipoDocController implements Serializable {
+public class TipoDocController extends CustomController implements Serializable {
 
   @EJB
   private TipoDocService tipoDocService;

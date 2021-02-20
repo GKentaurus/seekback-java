@@ -5,15 +5,16 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Rol;
+import tech.seekback.services.RolService;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Rol;
-import tech.seekback.services.RolService;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -21,7 +22,7 @@ import tech.seekback.services.RolService;
  */
 @Named
 @ViewScoped
-public class RolesController implements Serializable {
+public class RolesController extends CustomController implements Serializable {
 
   @EJB
   private RolService rolesService;

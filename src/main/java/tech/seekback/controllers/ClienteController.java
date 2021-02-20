@@ -5,14 +5,15 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
+import tech.seekback.models.Cliente;
+import tech.seekback.services.ClienteService;
+
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.models.Cliente;
-import tech.seekback.services.ClienteService;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -20,7 +21,7 @@ import tech.seekback.services.ClienteService;
  */
 @Named
 @ViewScoped
-public class ClienteController implements Serializable {
+public class ClienteController extends CustomController implements Serializable {
 
   @EJB
   private ClienteService clienteService;

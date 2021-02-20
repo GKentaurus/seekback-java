@@ -5,12 +5,6 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.models.Agenda;
 import tech.seekback.models.EstadosAgenda;
 import tech.seekback.models.TipoServicio;
@@ -18,13 +12,20 @@ import tech.seekback.services.AgendaService;
 import tech.seekback.services.EstadosAgendaService;
 import tech.seekback.services.TipoServicioService;
 
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+
 /**
  *
  * @author danny
  */
 @Named
 @ViewScoped
-public class AgendaController implements Serializable {
+public class AgendaController extends CustomController implements Serializable {
 
   @EJB
   private EstadosAgendaService estadosAgendaService;

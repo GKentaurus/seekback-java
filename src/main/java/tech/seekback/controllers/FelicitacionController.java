@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 @Named
 @ViewScoped
-public class FelicitacionController implements Serializable {
+public class FelicitacionController extends CustomController implements Serializable {
 
   @EJB
   private FelicitacionService felicitacionService;

@@ -12,11 +12,8 @@ import tech.seekback.services.*;
 
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.IOException;
@@ -31,7 +28,7 @@ import java.util.Date;
 @ManagedBean
 @ViewScoped
 @Named
-public class RegisterController implements Serializable {
+public class RegisterController extends CustomController implements Serializable {
 
   @EJB
   private UsuarioService usuarioService;
@@ -142,22 +139,6 @@ public class RegisterController implements Serializable {
 
   public void setPasswordConfirm(String passwordConfirm) {
     this.passwordConfirm = passwordConfirm;
-  }
-  //</editor-fold>
-
-  //<editor-fold desc="Validators" defaultstate="collapsed">
-  /**
-   * Validación de la información recibida en el formulario, de los campos asociados.
-   *
-   * @param context
-   * @param component
-   * @param value
-   * @throws ValidatorException
-   */
-  public void validateNames(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-    if (((String) value).length() < 3) {
-      throw new ValidatorException(new FacesMessage("El dato ingresado debe tener al menos 3 caracteres."));
-    }
   }
   //</editor-fold>
 
