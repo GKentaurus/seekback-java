@@ -28,30 +28,42 @@ public class CustomController {
    * @param value
    * @throws ValidatorException
    */
-  public void validateString(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-    int minLength = 3;
-    if (((String) value).length() < minLength) {
-      String message = "El valor ingresado debe tener al menos "
-        + minLength
-        + " caracteres";
-      throw new ValidatorException(new FacesMessage(message));
-    }
-  }
+  public void validateInputType(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+    long minValue = (long)component.getAttributes().get("minValue");
+    long maxValue = (long)component.getAttributes().get("maxValue");
+    String dataType = (String)component.getAttributes().get("dataType");
 
-  /**
-   * Validación de la información recibida en el formulario, de los campos asociados
-   * Requiere definir el valor mínimo y máximo del número ingresado..
-   *
-   * @param context
-   * @param component
-   * @param value
-   * @throws ValidatorException
-   */
-  public void validateNumeric(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-    long minValue = 0;
-    if ((long) value < minValue) {
-      String message = "El número ingresado debe ser mayor a '" + minValue + "'.";
-      throw new ValidatorException(new FacesMessage(message));
+    switch (dataType) {
+      case "text":
+        if (minValue > 0) {
+          if (((String) value).length() < minValue) {
+            String message = "El valor ingresado debe tener al menos " + minValue + " caracteres.";
+            throw new ValidatorException(new FacesMessage(message));
+          }
+        }
+        if (maxValue > 0 && maxValue > minValue) {
+          if (((String) value).length() > maxValue) {
+            String message = "El valor ingresado debe tener menos de " + maxValue + " caracteres.";
+            throw new ValidatorException(new FacesMessage(message));
+          }
+        }
+        break;
+      case "numeric":
+        if (minValue > 0) {
+          if ((long) value < minValue) {
+            String message = "El numero ingresado debe ser mayor a " + minValue + ".";
+            throw new ValidatorException(new FacesMessage(message));
+          }
+        }
+        if (maxValue > 0 && maxValue > minValue) {
+          if ((long) value > maxValue) {
+            String message = "El numero ingresado debe ser menor a " + maxValue + ".";
+            throw new ValidatorException(new FacesMessage(message));
+          }
+        }
+        break;
+      default:
+        throw new ValidatorException(new FacesMessage("Error en el tipo de dato requerido."));
     }
   }
 }
