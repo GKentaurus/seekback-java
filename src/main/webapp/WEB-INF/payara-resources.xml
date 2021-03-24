@@ -28,8 +28,8 @@
                         steady-pool-size="8"
                         validate-atmost-once-period-in-seconds="0"
                         wrap-jdbc-objects="false">
-    <property name="URL" value="jdbc:mysql://eurodeco.com.co:3306/sk_test_db?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;useSSL=false"/>
-    <property name="User" value="sk_test_user"/>
-    <property name="Password" value="8EZ*Uk453EWvwQsjPJ"/>
+    <property name="URL" value=${ENV=JDBC_URL}/>
+    <property name="User" value=${ENV=JDBC_USER}/>
+    <property name="Password" value=${ENV=JDBC_PASSWORD}/>
   </jdbc-connection-pool>
 </resources>
