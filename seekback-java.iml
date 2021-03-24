@@ -42,5 +42,9 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:8.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.6.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.faces:javax.faces-api:2.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.glassfish:javax.faces:2.3.8" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.faces:jsf-api:2.1.7" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.faces:jsf-impl:2.1.7" level="project" />
   </component>
 </module>
