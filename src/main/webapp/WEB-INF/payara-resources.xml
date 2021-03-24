@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "https://raw.githubusercontent.com/payara/Payara-Server-Documentation/master/schemas/payara-resources_1_6.dtd">
 <resources>
-  <jdbc-resource enabled="true"
-                 jndi-name="java:app/jdbc/seekback"
-                 object-type="user"
-                 pool-name="appweb_Pool">
-    <description/>
-  </jdbc-resource>
+  <jdbc-resource enabled="true" jndi-name="java:app/ed_database" object-type="user" pool-name="mysql_sk_test_db_sk_test_userPool"/>
   <jdbc-connection-pool allow-non-component-callers="false"
                         associate-with-thread="false"
                         connection-creation-retry-attempts="0"
@@ -16,7 +11,7 @@
                         connection-validation-method="auto-commit"
                         datasource-classname="com.mysql.cj.jdbc.MysqlDataSource"
                         fail-all-connections="false"
-                        idle-timeout-in-seconds="80000000"
+                        idle-timeout-in-seconds="300"
                         is-connection-validation-required="false"
                         is-isolation-level-guaranteed="true"
                         lazy-connection-association="false"
@@ -24,8 +19,8 @@
                         match-connections="false"
                         max-connection-usage-count="0"
                         max-pool-size="32"
-                        max-wait-time-in-millis="80000000"
-                        name="appweb_Pool"
+                        max-wait-time-in-millis="60000"
+                        name="mysql_sk_test_db_sk_test_userPool"
                         non-transactional-connections="false"
                         pool-resize-quantity="2"
                         res-type="javax.sql.DataSource"
@@ -33,8 +28,8 @@
                         steady-pool-size="8"
                         validate-atmost-once-period-in-seconds="0"
                         wrap-jdbc-objects="false">
-    <property name="URL" value="jdbc:mysql://127.0.0.1:3306/u925035511_seekback_test?serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"/>
-    <property name="User" value="u925035511_test"/>
-    <property name="Password" value="123PorMi"/>
+    <property name="URL" value="jdbc:mysql://eurodeco.com.co:3306/sk_test_db?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;useSSL=false"/>
+    <property name="User" value="sk_test_user"/>
+    <property name="Password" value="8EZ*Uk453EWvwQsjPJ"/>
   </jdbc-connection-pool>
 </resources>
