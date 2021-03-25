@@ -67,7 +67,6 @@
     </dependency>
 
     <!-- Dependencias añadidas para Heroku con funcionamiento parcial -->
-
     <!-- https://mvnrepository.com/artifact/fish.payara.extras/payara-embedded-all -->
     <dependency>
       <groupId>fish.payara.extras</groupId>
@@ -109,6 +108,15 @@
       <version>2.1.7</version>
     </dependency>
     <!-- Fin de dependencias para Heroku -->
+
+    <!-- Inicio Java Mail -->
+    <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <!-- Fin Java Mail -->
   </dependencies>
 
   <build>
