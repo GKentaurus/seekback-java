@@ -5,21 +5,20 @@
  */
 package tech.seekback.controllers;
 
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Correo;
-import tech.seekback.models.Usuario;
-import tech.seekback.services.CorreoService;
-import tech.seekback.services.UsuarioService;
-
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Objects;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Objects;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Correo;
+import tech.seekback.models.Usuario;
+import tech.seekback.services.CorreoService;
+import tech.seekback.services.UsuarioService;
 
 /**
  *
@@ -86,29 +85,19 @@ public class LoginController extends CustomController implements Serializable {
     if (Objects.nonNull(correo)) {
       this.usuario = new Usuario();
       this.usuario = usuarioService.getOne(correo.getUsuario().getId());
-      String uspas = usuario.getContrasena();
-      String pas = password;
       if (Objects.nonNull(usuario)) {
-        //if (usuario.verificarContrasena(password)) {
-        System.out.println(this.usuario.getContrasena() + " / " + password + " antes");
-        System.out.println(uspas + " / " + pas + " antes");
-        System.out.println(uspas == pas);
-        if (uspas != pas) {
+        if (usuario.verificarContrasena(password)) {
           redirectTo(usuario.getRol().getId());
-          //redirectTo("/test.xhtml");
-
         } else {
           this.usuario = null;
           FacesMessage message = new FacesMessage("Contraseña invalida");
           fc.addMessage("messs:mesag", message);
-          //redirectTo("/index.xhtml");
         }
       } else {
         FacesMessage message = new FacesMessage("El  no esta registrado");
         fc.addMessage("messs:mesag", message);
         this.usuario = null;
       }
-
     } else {
       this.correo = null;
       FacesMessage message = new FacesMessage("El correo no esta registrado");
