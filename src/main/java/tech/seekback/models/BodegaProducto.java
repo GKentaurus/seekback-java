@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "BodegaProducto"
@@ -65,8 +62,8 @@ public class BodegaProducto implements Serializable {
   /**
    * Retorna el valor del atributo <code>bodega</code> del objeto.
    *
-   * @see Bodega
    * @return <code>bodega</code> de la bodega de productos.
+   * @see Bodega
    */
   public Bodega getBodega() {
     return bodega;
@@ -75,8 +72,8 @@ public class BodegaProducto implements Serializable {
   /**
    * Asigna el valor del atributo <code>bodega</code> del objeto.
    *
-   * @see Bodega
    * @param bodega de la bodega de productos.
+   * @see Bodega
    */
   public void setBodega(Bodega bodega) {
     this.bodega = bodega;
@@ -85,8 +82,8 @@ public class BodegaProducto implements Serializable {
   /**
    * Retorna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @return <code>producto</code> de la bodega de productos.
+   * @see Producto
    */
   public Producto getProducto() {
     return producto;
@@ -95,8 +92,8 @@ public class BodegaProducto implements Serializable {
   /**
    * Asigna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @param producto de la bodega de productos.
+   * @see Producto
    */
   public void setProducto(Producto producto) {
     this.producto = producto;
@@ -123,8 +120,8 @@ public class BodegaProducto implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la bodega de productos.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -133,8 +130,8 @@ public class BodegaProducto implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la bodega de productos.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -161,10 +158,7 @@ public class BodegaProducto implements Serializable {
       return false;
     }
     final BodegaProducto other = (BodegaProducto) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -177,12 +171,12 @@ public class BodegaProducto implements Serializable {
    */
   public String toString() {
     return "BodegaProductos("
-            + "id = " + id + ", "
-            + "bodega = " + bodega + ", "
-            + "producto = " + producto + ", "
-            + "cantidad = " + cantidad + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "bodega = " + bodega + ", "
+      + "producto = " + producto + ", "
+      + "cantidad = " + cantidad + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

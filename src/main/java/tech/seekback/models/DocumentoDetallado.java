@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "DocumentoDetallado"
@@ -104,8 +101,8 @@ public class DocumentoDetallado implements Serializable {
   /**
    * Retorna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @return <code>producto</code> del documento detallado.
+   * @see Producto
    */
   public Producto getProducto() {
     return producto;
@@ -114,8 +111,8 @@ public class DocumentoDetallado implements Serializable {
   /**
    * Asigna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @param producto del documento detallado.
+   * @see Producto
    */
   public void setProducto(Producto producto) {
     this.producto = producto;
@@ -160,8 +157,8 @@ public class DocumentoDetallado implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del documento detallado.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -170,8 +167,8 @@ public class DocumentoDetallado implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del documento detallado.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -198,10 +195,7 @@ public class DocumentoDetallado implements Serializable {
       return false;
     }
     final DocumentoDetallado other = (DocumentoDetallado) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -213,14 +207,14 @@ public class DocumentoDetallado implements Serializable {
    */
   public String toString() {
     return "DocumentoDetallado("
-            + "id = " + id + ", "
-            + "prefijoDocumento = " + prefijoDocumento + ", "
-            + "consecutivo = " + consecutivo + ", "
-            + "producto = " + producto + ", "
-            + "cantidad = " + cantidad + ", "
-            + "valorUnitario = " + valorUnitario + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "prefijoDocumento = " + prefijoDocumento + ", "
+      + "consecutivo = " + consecutivo + ", "
+      + "producto = " + producto + ", "
+      + "cantidad = " + cantidad + ", "
+      + "valorUnitario = " + valorUnitario + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

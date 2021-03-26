@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Cotizacion"
@@ -135,8 +132,8 @@ public class Cotizacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>trm</code> del objeto.
    *
-   * @see TRM
    * @return <code>trm</code> de la cotización.
+   * @see TRM
    */
   public TRM getTrm() {
     return trm;
@@ -145,8 +142,8 @@ public class Cotizacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>trm</code> del objeto.
    *
-   * @see TRM
    * @param trm de la cotización.
+   * @see TRM
    */
   public void setTrm(TRM trm) {
     this.trm = trm;
@@ -155,8 +152,8 @@ public class Cotizacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosCotizacion
    * @return <code>estado</code> de la cotización.
+   * @see EstadosCotizacion
    */
   public EstadosCotizacion getEstado() {
     return estado;
@@ -165,8 +162,8 @@ public class Cotizacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosCotizacion
    * @param estado de la cotización.
+   * @see EstadosCotizacion
    */
   public void setEstado(EstadosCotizacion estado) {
     this.estado = estado;
@@ -175,8 +172,8 @@ public class Cotizacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>empleado</code> del objeto.
    *
-   * @see Empleado
    * @return <code>empleado</code> de la cotización.
+   * @see Empleado
    */
   public Empleado getEmpleado() {
     return empleado;
@@ -185,8 +182,8 @@ public class Cotizacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>empleado</code> del objeto.
    *
-   * @see Empleado
    * @param empleado de la cotización.
+   * @see Empleado
    */
   public void setEmpleado(Empleado empleado) {
     this.empleado = empleado;
@@ -195,8 +192,8 @@ public class Cotizacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @return <code>cliente</code> de la cotización.
+   * @see Cliente
    */
   public Cliente getCliente() {
     return cliente;
@@ -205,8 +202,8 @@ public class Cotizacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @param cliente de la cotización.
+   * @see Cliente
    */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
@@ -215,8 +212,8 @@ public class Cotizacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la cotización.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -225,8 +222,8 @@ public class Cotizacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la cotización.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -253,10 +250,7 @@ public class Cotizacion implements Serializable {
       return false;
     }
     final Cotizacion other = (Cotizacion) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -269,16 +263,16 @@ public class Cotizacion implements Serializable {
    */
   public String toString() {
     return "Cotizacion("
-            + "id = " + id + ", "
-            + "requerimiento = " + requerimiento + ", "
-            + "fecha = " + fecha + ", "
-            + "fechaVencimiento = " + vencimiento + ", "
-            + "trm = " + trm + ", "
-            + "estado = " + estado + ", "
-            + "empleado = " + empleado + ", "
-            + "cliente = " + cliente + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "requerimiento = " + requerimiento + ", "
+      + "fecha = " + fecha + ", "
+      + "fechaVencimiento = " + vencimiento + ", "
+      + "trm = " + trm + ", "
+      + "estado = " + estado + ", "
+      + "empleado = " + empleado + ", "
+      + "cliente = " + cliente + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

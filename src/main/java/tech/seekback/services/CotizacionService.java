@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CotizacionDAO;
@@ -14,7 +10,7 @@ import javax.ejb.Stateless;
 import java.util.List;
 
 /**
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class CotizacionService {

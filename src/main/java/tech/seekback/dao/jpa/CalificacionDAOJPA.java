@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -18,8 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implements CalificacionDAO {
@@ -29,7 +24,6 @@ public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implem
   }
 
   /**
-   *
    * @param idProducto
    * @return Un objeto de tipo Calificacion consultado por idProducto
    * @throws ConnectionExcep

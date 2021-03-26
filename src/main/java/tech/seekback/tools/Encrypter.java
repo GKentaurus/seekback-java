@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.tools;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Random;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 
 /**
  * Por medio de una llave generada de forma aleatoria (salt), permite la
  * encriptación de las contraseñas enviadas por parte del usuario, para ser
  * almacenadas en la base de datos.
- *
+ * <p>
  * Tanto la llave (salt) como la contraseña, son almacenadas en la base de datos
  * de forma que, al momento de requerir la verificación de contraseña, esta
  * indique si es verdadero o falso.
@@ -55,7 +51,7 @@ public class Encrypter {
    * la contraseña.
    *
    * @param password Contraseña indicada por el usuario.
-   * @param salt Llave de encriptación.
+   * @param salt     Llave de encriptación.
    * @return Hash para la generación de contraseña segura.
    */
   public static byte[] hash(char[] password, byte[] salt) {
@@ -75,7 +71,7 @@ public class Encrypter {
    * Genera la contraseña encriptada para ser almacenada en la base de datos.
    *
    * @param password Contraseña indicada por el usuario.
-   * @param salt Llave de encriptación generada previamente.
+   * @param salt     Llave de encriptación generada previamente.
    * @return Contraseña encriptada.
    */
   public static String generateSecurePassword(String password, String salt) {
@@ -93,15 +89,15 @@ public class Encrypter {
    * caracteres o una totalmente distinta.
    *
    * @param providedPassword Contraseña proveida para el inicio de sesión.
-   * @param securedPassword Contraseña encriptada, almacenada en la base de
-   * datos.
-   * @param salt Llave de encriptación correspondiente al usuario, con la que se
-   * encriptará la contraseña proveida.
+   * @param securedPassword  Contraseña encriptada, almacenada en la base de
+   *                         datos.
+   * @param salt             Llave de encriptación correspondiente al usuario, con la que se
+   *                         encriptará la contraseña proveida.
    * @return <code>true</code> si la llave encriptada almacenada y la proveida
    * encriptada son la misma.
    */
   public static boolean verifyUserPassword(String providedPassword,
-          String securedPassword, String salt) {
+                                           String securedPassword, String salt) {
     boolean returnValue = false;
 
     // Genera una nueva contraseña segura con la misma llave (salt).

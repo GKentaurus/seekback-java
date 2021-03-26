@@ -1,9 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "TipoDoc"
@@ -89,8 +90,8 @@ public class TipoDoc implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del tipo de documento.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -99,8 +100,8 @@ public class TipoDoc implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del tipo de documento.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -127,10 +128,7 @@ public class TipoDoc implements Serializable {
       return false;
     }
     final TipoDoc other = (TipoDoc) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -142,9 +140,9 @@ public class TipoDoc implements Serializable {
    */
   public String toString() {
     return "TipoDoc("
-            + "id = " + id + ", "
-            + "nombreDocumento = " + nombreDocumento + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "nombreDocumento = " + nombreDocumento + ", "
+      + timestamps.toString()
+      + ")";
   }
 }

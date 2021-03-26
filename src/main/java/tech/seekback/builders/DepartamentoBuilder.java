@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
 import tech.seekback.models.Departamento;
@@ -10,12 +6,11 @@ import tech.seekback.models.Pais;
 import tech.seekback.models.templates.Timestamps;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class DepartamentoBuilder {
 
-  private Departamento departamento;
+  private final Departamento departamento;
 
   private DepartamentoBuilder() {
     this.departamento = new Departamento();

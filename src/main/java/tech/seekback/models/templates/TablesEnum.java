@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models.templates;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public enum TablesEnum {
   ADMINISTRADOR("administrador"),
@@ -44,9 +39,9 @@ public enum TablesEnum {
   TIPO_SOLICITUD("tipo_solicitud"),
   USUARIO("usuario");
 
-  private String nombreTabla;
+  private final String nombreTabla;
 
-  private TablesEnum(String nombreTabla) {
+  TablesEnum(String nombreTabla) {
     this.nombreTabla = nombreTabla;
   }
 

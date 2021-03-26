@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao;
 
-import java.util.List;
 import tech.seekback.exceptions.ConnectionExcep;
+
+import java.util.List;
 
 /**
  * Se declaran los métodos del CRUD
  *
- * @author gkentaurus
  * @param <T>
  * @param <PK>
+ * @author gkentaurus
  */
 public interface DAO<T, PK> {
 

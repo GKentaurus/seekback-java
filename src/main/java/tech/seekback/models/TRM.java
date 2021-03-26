@@ -1,10 +1,11 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "TRM"
@@ -59,8 +60,8 @@ public class TRM implements Serializable {
   /**
    * Retorna el valor del atributo <code>divisa</code> del objeto.
    *
-   * @see Divisa
    * @return <code>divisa</code> de la TRM.
+   * @see Divisa
    */
   public Divisa getDivisa() {
     return divisa;
@@ -69,8 +70,8 @@ public class TRM implements Serializable {
   /**
    * Asigna el valor del atributo <code>divisa</code> del objeto.
    *
-   * @see Divisa
    * @param divisa de la TRM.
+   * @see Divisa
    */
   public void setDivisa(Divisa divisa) {
     this.divisa = divisa;
@@ -115,8 +116,8 @@ public class TRM implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la TRM.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -125,8 +126,8 @@ public class TRM implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la TRM.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -153,10 +154,7 @@ public class TRM implements Serializable {
       return false;
     }
     final TRM other = (TRM) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -168,10 +166,10 @@ public class TRM implements Serializable {
    */
   public String toString() {
     return "Trm{" + "idTrm=" + id
-            + ", idDivisa=" + divisa
-            + ", fecha=" + fecha
-            + ", tasaCambio=" + tasaCambio
-            + timestamps.toString()
-            + '}';
+      + ", idDivisa=" + divisa
+      + ", fecha=" + fecha
+      + ", tasaCambio=" + tasaCambio
+      + timestamps.toString()
+      + '}';
   }
 }

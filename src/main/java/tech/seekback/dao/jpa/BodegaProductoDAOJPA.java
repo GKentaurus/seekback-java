@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -18,8 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> implements BodegaProductoDAO {
@@ -29,7 +24,6 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
   }
 
   /**
-   *
    * @param idCategoria
    * @return Un objeto de tipo BodegaProducto consultado por idCategoria
    * @throws ConnectionExcep
@@ -64,9 +58,9 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
    */
   public void delete(BodegaProducto obj) throws ConnectionExcep {
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
-            + "\n######################################################################\n"
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
     );
     Timestamps tt = obj.getTimestamps();
     tt.setDeleted(true);

@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
-import java.util.Date;
-import tech.seekback.models.Cliente;
-import tech.seekback.models.Cotizacion;
-import tech.seekback.models.Empleado;
-import tech.seekback.models.EstadosCotizacion;
-import tech.seekback.models.TRM;
+import tech.seekback.models.*;
 import tech.seekback.models.templates.Timestamps;
 
+import java.util.Date;
+
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class CotizacionBuilder {
 
-  private Cotizacion cotizacion;
+  private final Cotizacion cotizacion;
 
   private CotizacionBuilder() {
     this.cotizacion = new Cotizacion();

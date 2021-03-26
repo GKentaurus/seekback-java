@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import tech.seekback.models.Rol;
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class UsuarioBuilder {
 
-  private Usuario usuario;
+  private final Usuario usuario;
 
   private UsuarioBuilder() {
     this.usuario = new Usuario();

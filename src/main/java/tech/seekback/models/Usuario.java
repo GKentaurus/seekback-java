@@ -1,10 +1,11 @@
 package tech.seekback.models;
 
-import java.io.Serializable;
-import java.util.Objects;
-import javax.persistence.*;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.tools.Encrypter;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Definición del modelo "Usuario"
@@ -149,8 +150,8 @@ public class Usuario implements Serializable {
   /**
    * Retorna el valor del atributo <code>tipoDoc</code> del objeto.
    *
-   * @see TipoDoc
    * @return <code>tipoDoc</code> del usuario
+   * @see TipoDoc
    */
   public TipoDoc getTipoDoc() {
     return tipoDoc;
@@ -159,8 +160,8 @@ public class Usuario implements Serializable {
   /**
    * Asigna el valor del atributo <code>tipoDoc</code> del objeto.
    *
-   * @see TipoDoc
    * @param tipoDoc del usuario
+   * @see TipoDoc
    */
   public void setTipoDoc(TipoDoc tipoDoc) {
     this.tipoDoc = tipoDoc;
@@ -216,8 +217,8 @@ public class Usuario implements Serializable {
   /**
    * Retorna el valor del atributo <code>rol</code> del objeto.
    *
-   * @see Rol
    * @return <code>rol</code> del usuario
+   * @see Rol
    */
   public Rol getRol() {
     return rol;
@@ -226,8 +227,8 @@ public class Usuario implements Serializable {
   /**
    * Asigna el valor del atributo <code>rol</code> del objeto.
    *
-   * @see Rol
    * @param rol del usuario
+   * @see Rol
    */
   public void setRol(Rol rol) {
     this.rol = rol;
@@ -236,8 +237,8 @@ public class Usuario implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del usuario
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -246,8 +247,8 @@ public class Usuario implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del usuario
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -274,10 +275,7 @@ public class Usuario implements Serializable {
       return false;
     }
     final Usuario other = (Usuario) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -290,15 +288,15 @@ public class Usuario implements Serializable {
    */
   public String toString() {
     return "Usuario{"
-            + "idUsuario = " + id + ", "
-            + "primerNombre = " + primerNombre + ", "
-            + "otrosNombres = " + otrosNombres + ", "
-            + "primerApellido = " + primerApellido + ", "
-            + "otrosApellidos = " + otrosApellidos + ", "
-            + "tipoDoc = " + tipoDoc + ", "
-            + "numeroDoc = " + numeroDoc + ", "
-            + "rol = " + rol + ", "
-            + timestamps.toString()
-            + '}';
+      + "idUsuario = " + id + ", "
+      + "primerNombre = " + primerNombre + ", "
+      + "otrosNombres = " + otrosNombres + ", "
+      + "primerApellido = " + primerApellido + ", "
+      + "otrosApellidos = " + otrosApellidos + ", "
+      + "tipoDoc = " + tipoDoc + ", "
+      + "numeroDoc = " + numeroDoc + ", "
+      + "rol = " + rol + ", "
+      + timestamps.toString()
+      + '}';
   }
 }

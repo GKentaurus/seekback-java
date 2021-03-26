@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.controllers;
 
 
@@ -29,9 +25,9 @@ public class CustomController {
    * @throws ValidatorException
    */
   public void validateInputType(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-    long minValue = (long)component.getAttributes().get("minValue");
-    long maxValue = (long)component.getAttributes().get("maxValue");
-    String dataType = (String)component.getAttributes().get("dataType");
+    long minValue = (long) component.getAttributes().get("minValue");
+    long maxValue = (long) component.getAttributes().get("maxValue");
+    String dataType = (String) component.getAttributes().get("dataType");
 
     switch (dataType) {
       case "text":

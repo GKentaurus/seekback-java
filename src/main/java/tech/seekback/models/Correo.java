@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Correo"
@@ -64,8 +61,8 @@ public class Correo implements Serializable {
   /**
    * Retorna el valor del atributo <code>usuario</code> del objeto.
    *
-   * @see Usuario
    * @return <code>usuario</code> del correo.
+   * @see Usuario
    */
   public Usuario getUsuario() {
     return usuario;
@@ -74,8 +71,8 @@ public class Correo implements Serializable {
   /**
    * Asigna el valor del atributo <code>usuario</code> del objeto.
    *
-   * @see Usuario
    * @param usuario del correo.
+   * @see Usuario
    */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
@@ -120,8 +117,8 @@ public class Correo implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del correo.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -130,8 +127,8 @@ public class Correo implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del correo.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -158,10 +155,7 @@ public class Correo implements Serializable {
       return false;
     }
     final Correo other = (Correo) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -173,11 +167,11 @@ public class Correo implements Serializable {
    */
   public String toString() {
     return "Correos("
-            + "id = " + id + ", "
-            + "usuario = " + usuario + ", "
-            + "correo = " + correoElectronico + ", "
-            + "principal = " + esPrincipal + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "usuario = " + usuario + ", "
+      + "correo = " + correoElectronico + ", "
+      + "principal = " + esPrincipal + ", "
+      + timestamps.toString()
+      + ")";
   }
 }

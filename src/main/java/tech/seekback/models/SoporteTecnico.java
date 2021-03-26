@@ -1,10 +1,11 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "SoporteTecnico"
@@ -72,8 +73,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Retorna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @return <code>producto</code> del soporte técnico.
+   * @see Producto
    */
   public Producto getProducto() {
     return producto;
@@ -82,8 +83,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Asigna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @param producto del soporte técnico.
+   * @see Producto
    */
   public void setProducto(Producto producto) {
     this.producto = producto;
@@ -92,8 +93,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Retorna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosFidelizacion
    * @return <code>estado</code> del soporte técnico.
+   * @see EstadosFidelizacion
    */
   public EstadosFidelizacion getEstado() {
     return estado;
@@ -102,8 +103,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Asigna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosFidelizacion
    * @param estado del soporte técnico.
+   * @see EstadosFidelizacion
    */
   public void setEstado(EstadosFidelizacion estado) {
     this.estado = estado;
@@ -112,8 +113,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del soporte técnico.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -122,8 +123,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del soporte técnico.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -132,8 +133,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Cliente
    * @return <code>timestamps</code> del soporte técnico.
+   * @see Cliente
    */
   public Cliente getCliente() {
     return cliente;
@@ -142,8 +143,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Cliente
    * @param cliente del soporte técnico.
+   * @see Cliente
    */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
@@ -152,8 +153,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Retorna el valor del atributo <code>empleado</code> del objeto.
    *
-   * @see Empleado
    * @return <code>empleado</code> del soporte técnico.
+   * @see Empleado
    */
   public Empleado getEmpleado() {
     return empleado;
@@ -162,8 +163,8 @@ public class SoporteTecnico implements Serializable {
   /**
    * Asigna el valor del atributo <code>empleado</code> del objeto.
    *
-   * @see Empleado
    * @param empleado del soporte técnico.
+   * @see Empleado
    */
   public void setEmpleado(Empleado empleado) {
     this.empleado = empleado;
@@ -226,10 +227,7 @@ public class SoporteTecnico implements Serializable {
       return false;
     }
     final SoporteTecnico other = (SoporteTecnico) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -241,14 +239,14 @@ public class SoporteTecnico implements Serializable {
    */
   public String toString() {
     return "SoporteTecnico{"
-            + "id = " + id + ", "
-            + "producto = " + producto + ", "
-            + "cliente = " + cliente + ", "
-            + "empleado = " + empleado + ", "
-            + "comentario = " + comentario + ", "
-            + "estado = " + estado + ", "
-            + "fechaRespuesta = " + fechaRespuesta + ", "
-            + timestamps.toString()
-            + '}';
+      + "id = " + id + ", "
+      + "producto = " + producto + ", "
+      + "cliente = " + cliente + ", "
+      + "empleado = " + empleado + ", "
+      + "comentario = " + comentario + ", "
+      + "estado = " + estado + ", "
+      + "fechaRespuesta = " + fechaRespuesta + ", "
+      + timestamps.toString()
+      + '}';
   }
 }

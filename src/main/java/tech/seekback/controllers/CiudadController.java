@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.controllers;
 
 import tech.seekback.dao.interfaces.CiudadDAO;
@@ -17,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
  * @author danny
  */
 @Named
@@ -37,7 +32,7 @@ public class CiudadController extends CustomController implements Serializable {
     try {
       if (Objects.nonNull(idDepartamentoSeleccionado)) {
         ciudadSeleccionada = ciudadDAO
-                .getByIdDepartamento(idDepartamentoSeleccionado);
+          .getByIdDepartamento(idDepartamentoSeleccionado);
       } else {
         ciudadSeleccionada = null;
       }

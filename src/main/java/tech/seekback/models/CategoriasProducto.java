@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "CategoriasProducto"
@@ -73,8 +70,8 @@ public class CategoriasProducto implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de las categorías de productos.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -83,8 +80,8 @@ public class CategoriasProducto implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de las categorías de productos.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -111,10 +108,7 @@ public class CategoriasProducto implements Serializable {
       return false;
     }
     final CategoriasProducto other = (CategoriasProducto) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -127,10 +121,10 @@ public class CategoriasProducto implements Serializable {
    */
   public String toString() {
     return "CategoriasProducto("
-            + "id = " + id + ", "
-            + "producto = " + nombreCategoria + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "producto = " + nombreCategoria + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

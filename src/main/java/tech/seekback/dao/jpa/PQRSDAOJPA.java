@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -16,8 +12,7 @@ import javax.ejb.Stateless;
 import java.util.Date;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class PQRSDAOJPA extends GenericDAO<PQRS, Integer> implements PQRSDAO {
@@ -27,7 +22,6 @@ public class PQRSDAOJPA extends GenericDAO<PQRS, Integer> implements PQRSDAO {
   }
 
   /**
-   *
    * @return Un entero de la consulta COUNT de PQRS
    * @throws ConnectionExcep
    */

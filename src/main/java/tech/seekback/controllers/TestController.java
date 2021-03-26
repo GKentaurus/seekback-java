@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.controllers;
 
 import tech.seekback.exceptions.ConnectionExcep;
@@ -13,12 +9,12 @@ import tech.seekback.services.tools.MailService;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.mail.MessagingException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author camorenoc
+ * @author gkentaurus
  */
 @Named
 @ViewScoped
@@ -31,8 +27,7 @@ public class TestController extends CustomController implements Serializable {
   private MailService mailService;
 
   public void encrypt() throws ConnectionExcep {
-    List<Usuario> users = new ArrayList<>();
-    users = usuarioService.getAll();
+    List<Usuario> users = usuarioService.getAll();
 
     for (Usuario user : users) {
       if (user.getContrasena().length() < 20) {
@@ -43,7 +38,7 @@ public class TestController extends CustomController implements Serializable {
     }
   }
 
-  public void newEmail() {
+  public void newEmail() throws MessagingException {
     String recipient = "camorenoc@outlook.com";
     String subject = "Mensaje de prueba desde JavaMail";
     String message = "Y te preguntaras... ¿Por qué has recibido este correo?\n"

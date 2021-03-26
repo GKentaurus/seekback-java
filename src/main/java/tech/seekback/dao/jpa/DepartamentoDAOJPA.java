@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -18,8 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class DepartamentoDAOJPA extends GenericDAO<Departamento, Integer> implements DepartamentoDAO {
@@ -29,7 +24,6 @@ public class DepartamentoDAOJPA extends GenericDAO<Departamento, Integer> implem
   }
 
   /**
-   *
    * @param idPais
    * @return Un objeto de tipo departamento consultado por idPais
    * @throws ConnectionExcep

@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "EstadosFidelizacion"
@@ -73,8 +70,8 @@ public class EstadosFidelizacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del estado de fidelización.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -83,8 +80,8 @@ public class EstadosFidelizacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del estado de fidelización.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -111,10 +108,7 @@ public class EstadosFidelizacion implements Serializable {
       return false;
     }
     final EstadosFidelizacion other = (EstadosFidelizacion) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -127,10 +121,10 @@ public class EstadosFidelizacion implements Serializable {
    */
   public String toString() {
     return "EstadosFidelizacion("
-            + "id = " + id + ", "
-            + "nombreEstado = " + nombreEstado + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "nombreEstado = " + nombreEstado + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

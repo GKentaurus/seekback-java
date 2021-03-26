@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "PQRS"
@@ -80,8 +77,8 @@ public class PQRS implements Serializable {
   /**
    * Retorna el valor del atributo <code>tipoSolicitud</code> del objeto.
    *
-   * @see TipoSolicitud
    * @return <code>tipoSolicitud</code> del PQRS.
+   * @see TipoSolicitud
    */
   public TipoSolicitud getTipoSolicitud() {
     return tipoSolicitud;
@@ -90,8 +87,8 @@ public class PQRS implements Serializable {
   /**
    * Asigna el valor del atributo <code>tipoSolicitud</code> del objeto.
    *
-   * @see TipoSolicitud
    * @param tipoSolicitud del PQRS.
+   * @see TipoSolicitud
    */
   public void setTipoSolicitud(TipoSolicitud tipoSolicitud) {
     this.tipoSolicitud = tipoSolicitud;
@@ -118,8 +115,8 @@ public class PQRS implements Serializable {
   /**
    * Retorna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosFidelizacion
    * @return <code>estado</code> del PQRS.
+   * @see EstadosFidelizacion
    */
   public EstadosFidelizacion getEstado() {
     return estado;
@@ -128,8 +125,8 @@ public class PQRS implements Serializable {
   /**
    * Asigna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosFidelizacion
    * @param estado del PQRS.
+   * @see EstadosFidelizacion
    */
   public void setEstado(EstadosFidelizacion estado) {
     this.estado = estado;
@@ -138,8 +135,8 @@ public class PQRS implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del PQRS.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -148,8 +145,8 @@ public class PQRS implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del PQRS.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -158,8 +155,8 @@ public class PQRS implements Serializable {
   /**
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @return <code>cliente</code> del PQRS.
+   * @see Cliente
    */
   public Cliente getCliente() {
     return cliente;
@@ -168,8 +165,8 @@ public class PQRS implements Serializable {
   /**
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @param cliente del PQRS.
+   * @see Cliente
    */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
@@ -178,8 +175,8 @@ public class PQRS implements Serializable {
   /**
    * Retorna el valor del atributo <code>administrador</code> del objeto.
    *
-   * @see Administrador
    * @return <code>administrador</code> del PQRS.
+   * @see Administrador
    */
   public Administrador getAdministrador() {
     return administrador;
@@ -188,8 +185,8 @@ public class PQRS implements Serializable {
   /**
    * Asigna el valor del atributo <code>administrador</code> del objeto.
    *
-   * @see Administrador
    * @param administrador del PQRS.
+   * @see Administrador
    */
   public void setAdministrador(Administrador administrador) {
     this.administrador = administrador;
@@ -252,10 +249,7 @@ public class PQRS implements Serializable {
       return false;
     }
     final PQRS other = (PQRS) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -267,15 +261,15 @@ public class PQRS implements Serializable {
    */
   public String toString() {
     return "PQRS{"
-            + "id = " + id + ", "
-            + "tipoSolicitud = " + tipoSolicitud + ", "
-            + "cliente = " + cliente + ", "
-            + "administrador = " + administrador + ", "
-            + "area = " + area + ", "
-            + "comentario = " + comentario + ", "
-            + "estado = " + estado
-            + "fechaRespuesta = " + fechaRespuesta
-            + timestamps.toString()
-            + '}';
+      + "id = " + id + ", "
+      + "tipoSolicitud = " + tipoSolicitud + ", "
+      + "cliente = " + cliente + ", "
+      + "administrador = " + administrador + ", "
+      + "area = " + area + ", "
+      + "comentario = " + comentario + ", "
+      + "estado = " + estado
+      + "fechaRespuesta = " + fechaRespuesta
+      + timestamps.toString()
+      + '}';
   }
 }

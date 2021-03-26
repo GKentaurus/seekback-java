@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao;
 
-import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import tech.seekback.exceptions.ConnectionExcep;
+import java.util.List;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
@@ -37,9 +33,9 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public T create(T obj) throws ConnectionExcep {
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Creando Objeto " + obj.getClass().getSimpleName()
-            + "\n######################################################################\n"
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Creando Objeto " + obj.getClass().getSimpleName()
+        + "\n######################################################################\n"
     );
 
     T newObj = em.merge(obj);
@@ -48,7 +44,6 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   }
 
   /**
-   *
    * @param id
    * @return un objeto de tipo T (referente al DAO que lo implemente)
    * @throws ConnectionExcep
@@ -56,25 +51,24 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public T getOne(PK id) throws ConnectionExcep {
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Consultando el objeto No. " + id
-            + " de " + this.classType.getSimpleName()
-            + "\n######################################################################\n"
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Consultando el objeto No. " + id
+        + " de " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
     );
     return em.find(this.classType, id);
   }
 
   /**
-   *
    * @return una colección de objetos de tipo T (referente al DAO que lo implemente)
    * @throws ConnectionExcep
    */
   @Override
   public List<T> getAll() throws ConnectionExcep {
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Consultando todos los objetos de " + this.classType.getSimpleName()
-            + "\n######################################################################\n"
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Consultando todos los objetos de " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
     );
     TypedQuery<T> tq = em.createNamedQuery(classType.getSimpleName() + ".getAll", classType);
     return tq.getResultList();
@@ -89,9 +83,9 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   @Override
   public void update(T obj) throws ConnectionExcep {
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Actualizando el objeto " + this.classType.getSimpleName()
-            + "\n######################################################################\n"
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Actualizando el objeto " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
     );
     create(obj);
   }

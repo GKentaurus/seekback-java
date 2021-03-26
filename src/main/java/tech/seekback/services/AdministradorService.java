@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.services;
 
-import java.util.List;
-import javax.ejb.*;
 import tech.seekback.dao.interfaces.AdministradorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Administrador;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class AdministradorService {
@@ -23,7 +20,6 @@ public class AdministradorService {
   private AdministradorDAO administradorDAO;
 
   /**
-   *
    * @param administrador
    * @return Retorna un objeto de tipo Administrador
    * @throws ConnectionExcep
@@ -33,7 +29,6 @@ public class AdministradorService {
   }
 
   /**
-   *
    * @param id
    * @return Un objeto de tipo Administrador consultado por el id
    * @throws ConnectionExcep
@@ -43,7 +38,6 @@ public class AdministradorService {
   }
 
   /**
-   *
    * @return Una colección de objetos de tipo Administrador (referente al DAO que lo implemente)
    * @throws ConnectionExcep
    */
@@ -52,7 +46,6 @@ public class AdministradorService {
   }
 
   /**
-   *
    * @param id del Usuario
    * @return Un objeto de tipo Administrador
    * @throws ConnectionExcep

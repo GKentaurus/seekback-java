@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
 import tech.seekback.models.TipoDoc;
 import tech.seekback.models.templates.Timestamps;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class TipoDocBuilder {
 
-  private TipoDoc tipoDoc;
+  private final TipoDoc tipoDoc;
 
   private TipoDocBuilder() {
     this.tipoDoc = new TipoDoc();

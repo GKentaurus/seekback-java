@@ -1,10 +1,11 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "ProformaVenta"
@@ -60,8 +61,8 @@ public class ProformaVenta implements Serializable {
   /**
    * Retorna el valor del atributo <code>cotizacion</code> del objeto.
    *
-   * @see Cotizacion
    * @return <code>cotizacion</code> de la proforma de venta.
+   * @see Cotizacion
    */
   public Cotizacion getCotizacion() {
     return cotizacion;
@@ -70,8 +71,8 @@ public class ProformaVenta implements Serializable {
   /**
    * Asigna el valor del atributo <code>cotizacion</code> del objeto.
    *
-   * @see Cotizacion
    * @param cotizacion de la proforma de venta.
+   * @see Cotizacion
    */
   public void setCotizacion(Cotizacion cotizacion) {
     this.cotizacion = cotizacion;
@@ -116,8 +117,8 @@ public class ProformaVenta implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la proforma de venta.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -126,8 +127,8 @@ public class ProformaVenta implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la proforma de venta.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -154,10 +155,7 @@ public class ProformaVenta implements Serializable {
       return false;
     }
     final ProformaVenta other = (ProformaVenta) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -169,11 +167,11 @@ public class ProformaVenta implements Serializable {
    */
   public String toString() {
     return "ProformaVenta{"
-            + "idProforma = " + id + ", "
-            + "cotizacion = " + cotizacion + ", "
-            + "fecha = " + fecha + ", "
-            + "vencimiento = " + vencimiento + ", "
-            + timestamps.toString()
-            + '}';
+      + "idProforma = " + id + ", "
+      + "cotizacion = " + cotizacion + ", "
+      + "fecha = " + fecha + ", "
+      + "vencimiento = " + vencimiento + ", "
+      + timestamps.toString()
+      + '}';
   }
 }

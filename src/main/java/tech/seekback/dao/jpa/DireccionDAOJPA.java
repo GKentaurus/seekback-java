@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -18,8 +14,7 @@ import javax.persistence.TypedQuery;
 import java.util.Date;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class DireccionDAOJPA extends GenericDAO<Direccion, Integer> implements DireccionDAO {
@@ -29,7 +24,6 @@ public class DireccionDAOJPA extends GenericDAO<Direccion, Integer> implements D
   }
 
   /**
-   *
    * @param idUsuario
    * @return Un objeto tipo Correo consultado por el correo electronico
    * @throws ConnectionExcep

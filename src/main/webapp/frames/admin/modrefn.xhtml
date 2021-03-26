@@ -1,144 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-  <h:head>
-    <title>QPCOM | Seekback</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-    <h:outputScript library="" name="jquery.min.js" />
-    <h:outputScript library="materialize" name="js/materialize.min.js" />
-    <h:outputScript library="" name="fontawesome.js" />
-    <h:outputStylesheet library="styles" name="table.css" />
-    <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
-    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
-    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
-    <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <style>
+<h:head>
+  <title>QPCOM | Seekback</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <h:outputStylesheet library="materialize" name="css/materialize.min.css"/>
+  <h:outputScript library="" name="jquery.min.js"/>
+  <h:outputScript library="materialize" name="js/materialize.min.js"/>
+  <h:outputScript library="" name="fontawesome.js"/>
+  <h:outputStylesheet library="styles" name="table.css"/>
+  <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
+  <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <style>
       body {
-        background-image: url("#{resource['images/logob.png']}");
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: 700px;
-        background-position: 130% -300%;
-        background-blend-mode: difference;
+          background-image: url("#{resource['images/logob.png']}");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: 700px;
+          background-position: 130% -300%;
+          background-blend-mode: difference;
       }
 
-    </style>
-  </h:head>
+  </style>
+</h:head>
 
-  <h:body>
-    <div class="container">
-      <div class="row">
-        <p class="center-align" style="font-size:25px;"><i class="far fa-edit"></i> Modificar referencias <i class="fas fa-asterisk"></i></p>
-        <div id="admin" class="col s12">
-          <div class="card material-table">
-            <div class="table-header">
-              <span class="table-title">Modificar referencias</span>
-              <div class="actions">
-                <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
-              </div>
+<h:body>
+  <div class="container">
+    <div class="row">
+      <p class="center-align" style="font-size:25px;"><i class="far fa-edit"></i> Modificar referencias <i
+          class="fas fa-asterisk"></i></p>
+      <div id="admin" class="col s12">
+        <div class="card material-table">
+          <div class="table-header">
+            <span class="table-title">Modificar referencias</span>
+            <div class="actions">
+              <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
             </div>
-            <h:form>
-              <h:dataTable pt:id="datatable"
-                           value="#{bodegaProductoController.bodegaProductos}"
-                           var="st">
-                <h:column>
-                  <f:facet name="header">Producto</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Descripción</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.producto.descripcion}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.descripcion}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Cantidad</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cantidad}" pt:data-position="bottom" pt:data-tooltip="#{st.cantidad}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Precio</f:facet>
-                  <h:outputText pt:class="tooltipped" value="$#{st.producto.precioVenta}" pt:data-position="bottom" pt:data-tooltip="$#{st.producto.precioVenta}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Editar</f:facet>
-                  <a class="waves-effect waves-light btn modal-trigger"
-                     href="#modal#{st.id}">Visualizar</a>
-                  <div id="modal#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <div class="row">
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="quien" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
-                              <label for="quien">Producto</label>
-                            </div>
+          </div>
+          <h:form>
+            <h:dataTable pt:id="datatable"
+                         value="#{bodegaProductoController.bodegaProductos}"
+                         var="st">
+              <h:column>
+                <f:facet name="header">Producto</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.producto.modeloProducto}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Descripción</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.producto.descripcion}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.producto.descripcion}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Cantidad</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.cantidad}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.cantidad}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Precio</f:facet>
+                <h:outputText pt:class="tooltipped" value="$#{st.producto.precioVenta}" pt:data-position="bottom"
+                              pt:data-tooltip="$#{st.producto.precioVenta}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Editar</f:facet>
+                <a class="waves-effect waves-light btn modal-trigger"
+                   href="#modal#{st.id}">Visualizar</a>
+                <div id="modal#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <div class="section" style="padding-bottom:0px;">
+                      <div class="row">
+                        <div class="col s12 m6">
+                          <div class="input-field">
+                            <input id="quien" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
+                            <label for="quien">Producto</label>
                           </div>
-                          <div class="col s6 m3">
-                            <div class="input-field">
-                              <input id="can" type="text" value="#{st.cantidad}"/>
-                              <label for="can">Cantidad</label>
-                            </div>
+                        </div>
+                        <div class="col s6 m3">
+                          <div class="input-field">
+                            <input id="can" type="text" value="#{st.cantidad}"/>
+                            <label for="can">Cantidad</label>
                           </div>
-                          <div class="col s6 m3">
-                            <div class="input-field">
-                              <input id="pre" type="text" value="$#{st.producto.precioVenta}"/>
-                              <label for="pre">Precio</label>
-                            </div>
+                        </div>
+                        <div class="col s6 m3">
+                          <div class="input-field">
+                            <input id="pre" type="text" value="$#{st.producto.precioVenta}"/>
+                            <label for="pre">Precio</label>
                           </div>
-                          <div class="col s12">
-                            <div class="input-field">
-                              <input id="quien" type="text" value="#{st.producto.descripcion}" readonly="true"/>
-                              <label for="quien">Descripción</label>
-                            </div>
+                        </div>
+                        <div class="col s12">
+                          <div class="input-field">
+                            <input id="quien" type="text" value="#{st.producto.descripcion}" readonly="true"/>
+                            <label for="quien">Descripción</label>
                           </div>
                         </div>
                       </div>
-                      <div class="modal-footer">
-                        <a href="" class="waves-effect waves-green btn-flat">Actualizada</a>
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="" class="waves-effect waves-green btn-flat">Actualizada</a>
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                     </div>
                   </div>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                  <div id="modaldel#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar el producto de #{st.producto.modeloProducto}?</h4>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                      </div>
+                </div>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Eliminar</f:facet>
+                <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                <div id="modaldel#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <div class="section" style="padding-bottom:0px;">
+                      <h4 class="center-align">Desea eliminar el producto de #{st.producto.modeloProducto}?</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                     </div>
                   </div>
-                </h:column>
-              </h:dataTable>
-            </h:form>
-          </div>
+                </div>
+              </h:column>
+            </h:dataTable>
+          </h:form>
         </div>
       </div>
     </div>
-    <h:outputScript library="" name="table.js" />
+  </div>
+  <h:outputScript library="" name="table.js"/>
 
-    <script>
-      $(document).ready(function () {
-        $('.tooltipped').tooltip();
-        $('.modal').modal();
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-          });
+  <script>
+    $(document).ready(function () {
+      $('.tooltipped').tooltip();
+      $('.modal').modal();
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
-    </script>
-  </h:body>
+    });
+  </script>
+</h:body>
 </html>

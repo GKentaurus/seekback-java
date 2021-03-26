@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Ciudad"
@@ -60,8 +57,8 @@ public class Ciudad implements Serializable {
   /**
    * Retorna el valor del atributo <code>departamento</code> del objeto.
    *
-   * @see Departamento
    * @return <code>departamento</code> de la ciudad.
+   * @see Departamento
    */
   public Departamento getDepartamento() {
     return departamento;
@@ -70,8 +67,8 @@ public class Ciudad implements Serializable {
   /**
    * Asigna el valor del atributo <code>departamento</code> del objeto.
    *
-   * @see Departamento
    * @param departamento de la ciudad.
+   * @see Departamento
    */
   public void setDepartamento(Departamento departamento) {
     this.departamento = departamento;
@@ -98,8 +95,8 @@ public class Ciudad implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la ciudad.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -108,8 +105,8 @@ public class Ciudad implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la ciudad.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -136,10 +133,7 @@ public class Ciudad implements Serializable {
       return false;
     }
     final Ciudad other = (Ciudad) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -151,11 +145,11 @@ public class Ciudad implements Serializable {
    */
   public String toString() {
     return "Ciudad{"
-            + "id = " + id + ", "
-            + "fepartamento = " + departamento + ", "
-            + "nombreCiudad = " + nombreCiudad + ", "
-            + timestamps.toString()
-            + '}';
+      + "id = " + id + ", "
+      + "fepartamento = " + departamento + ", "
+      + "nombreCiudad = " + nombreCiudad + ", "
+      + timestamps.toString()
+      + '}';
   }
 
 }

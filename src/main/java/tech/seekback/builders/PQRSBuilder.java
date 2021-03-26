@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
-import java.util.Date;
-import tech.seekback.models.Administrador;
-import tech.seekback.models.Cliente;
-import tech.seekback.models.EstadosFidelizacion;
-import tech.seekback.models.PQRS;
-import tech.seekback.models.TipoSolicitud;
+import tech.seekback.models.*;
 import tech.seekback.models.templates.Timestamps;
 
+import java.util.Date;
+
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class PQRSBuilder {
 
-  private PQRS pqrs;
+  private final PQRS pqrs;
 
   private PQRSBuilder() {
     this.pqrs = new PQRS();

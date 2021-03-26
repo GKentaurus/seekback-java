@@ -1,9 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Telefono"
@@ -59,8 +60,8 @@ public class Telefono implements Serializable {
   /**
    * Retorna el valor del atributo <code>usuario</code> del objeto.
    *
-   * @see Usuario
    * @return <code>usuario</code> relacionado con el telefono.
+   * @see Usuario
    */
   public Usuario getUsuario() {
     return usuario;
@@ -69,8 +70,8 @@ public class Telefono implements Serializable {
   /**
    * Asigna el valor del atributo <code>usuario</code> del objeto.
    *
-   * @see Usuario
    * @param usuario del telefono.
+   * @see Usuario
    */
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
@@ -115,8 +116,8 @@ public class Telefono implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del telefono.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -125,8 +126,8 @@ public class Telefono implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del telefono.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -153,10 +154,7 @@ public class Telefono implements Serializable {
       return false;
     }
     final Telefono other = (Telefono) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -168,12 +166,12 @@ public class Telefono implements Serializable {
    */
   public String toString() {
     return "Telefono{"
-            + "idTelefono=" + id + ", "
-            + "idUsuario=" + usuario + ", "
-            + "numeroTelefono=" + numeroTelefono + ", "
-            + "esPrincipal=" + esPrincipal + ", "
-            + timestamps.toString()
-            + '}';
+      + "idTelefono=" + id + ", "
+      + "idUsuario=" + usuario + ", "
+      + "numeroTelefono=" + numeroTelefono + ", "
+      + "esPrincipal=" + esPrincipal + ", "
+      + timestamps.toString()
+      + '}';
   }
 
 }

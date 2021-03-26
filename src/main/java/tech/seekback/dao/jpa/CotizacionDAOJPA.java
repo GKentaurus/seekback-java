@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -18,8 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Stateless
 public class CotizacionDAOJPA extends GenericDAO<Cotizacion, Integer> implements CotizacionDAO {
@@ -48,9 +43,9 @@ public class CotizacionDAOJPA extends GenericDAO<Cotizacion, Integer> implements
    */
   public void delete(Cotizacion obj) throws ConnectionExcep {
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
-            + "\n######################################################################\n"
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
     );
     Timestamps tt = obj.getTimestamps();
     tt.setDeleted(true);

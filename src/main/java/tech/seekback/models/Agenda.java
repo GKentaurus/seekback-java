@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Agenda"
@@ -116,8 +113,8 @@ public class Agenda implements Serializable {
   /**
    * Retorna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosAgenda
    * @return <code>estado</code> de la agenda.
+   * @see EstadosAgenda
    */
   public EstadosAgenda getEstado() {
     return estado;
@@ -126,8 +123,8 @@ public class Agenda implements Serializable {
   /**
    * Asigna el valor del atributo <code>estado</code> del objeto.
    *
-   * @see EstadosAgenda
    * @param estado de la agenda.
+   * @see EstadosAgenda
    */
   public void setEstado(EstadosAgenda estado) {
     this.estado = estado;
@@ -136,8 +133,8 @@ public class Agenda implements Serializable {
   /**
    * Retorna el valor del atributo <code>tipoServicio</code> del objeto.
    *
-   * @see TipoServicio
    * @return <code>tipoServicio</code> de la agenda.
+   * @see TipoServicio
    */
   public TipoServicio getTipoServicio() {
     return tipoServicio;
@@ -146,8 +143,8 @@ public class Agenda implements Serializable {
   /**
    * Asigna el valor del atributo <code>tipoServicio</code> del objeto.
    *
-   * @see TipoServicio
    * @param tipoServicio de la agenda.
+   * @see TipoServicio
    */
   public void setTipoServicio(TipoServicio tipoServicio) {
     this.tipoServicio = tipoServicio;
@@ -156,8 +153,8 @@ public class Agenda implements Serializable {
   /**
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @return <code>cliente</code> de la agenda.
+   * @see Cliente
    */
   public Cliente getCliente() {
     return cliente;
@@ -166,8 +163,8 @@ public class Agenda implements Serializable {
   /**
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @param cliente de la agenda.
+   * @see Cliente
    */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
@@ -176,8 +173,8 @@ public class Agenda implements Serializable {
   /**
    * Retorna el valor del atributo <code>empleado</code> del objeto.
    *
-   * @see Empleado
    * @return <code>empleado</code> de la agenda.
+   * @see Empleado
    */
   public Empleado getEmpleado() {
     return empleado;
@@ -186,8 +183,8 @@ public class Agenda implements Serializable {
   /**
    * Asigna el valor del atributo <code>empleado</code> del objeto.
    *
-   * @see Empleado
    * @param empleado de la agenda.
+   * @see Empleado
    */
   public void setEmpleado(Empleado empleado) {
     this.empleado = empleado;
@@ -196,8 +193,8 @@ public class Agenda implements Serializable {
   /**
    * Retorna el valor del atributo <code>administrador</code> del objeto.
    *
-   * @see Administrador
    * @return <code>administrador</code> de la agenda.
+   * @see Administrador
    */
   public Administrador getAdministrador() {
     return administrador;
@@ -206,8 +203,8 @@ public class Agenda implements Serializable {
   /**
    * Asigna el valor del atributo <code>administrador</code> del objeto.
    *
-   * @see Administrador
    * @param administrador de la agenda.
+   * @see Administrador
    */
   public void setAdministrador(Administrador administrador) {
     this.administrador = administrador;
@@ -216,8 +213,8 @@ public class Agenda implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la agenda.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -226,8 +223,8 @@ public class Agenda implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la agenda.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -254,10 +251,7 @@ public class Agenda implements Serializable {
       return false;
     }
     final Agenda other = (Agenda) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -269,16 +263,16 @@ public class Agenda implements Serializable {
    */
   public String toString() {
     return "Agenda("
-            + "id = " + id + ", "
-            + "fecha = " + fecha + ", "
-            + "observaciones = " + observaciones + ", "
-            + "estado = " + estado + ", "
-            + "tipoServicio = " + tipoServicio + ", "
-            + "cliente = " + cliente + ", "
-            + "empleado = " + empleado + ", "
-            + "administrador = " + administrador + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "fecha = " + fecha + ", "
+      + "observaciones = " + observaciones + ", "
+      + "estado = " + estado + ", "
+      + "tipoServicio = " + tipoServicio + ", "
+      + "cliente = " + cliente + ", "
+      + "empleado = " + empleado + ", "
+      + "administrador = " + administrador + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

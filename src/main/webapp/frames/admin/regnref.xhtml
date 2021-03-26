@@ -1,84 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-  <h:head>
-    <title>QPCOM | Seekback</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
-    <h:outputScript library="" name="jquery.min.js" />
-    <h:outputScript library="materialize" name="js/materialize.min.js" />
-    <h:outputScript library="scripts" name="regnref.js" />
-    <h:outputScript library="" name="fontawesome.js" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <style>
+<h:head>
+  <title>QPCOM | Seekback</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <h:outputStylesheet library="materialize" name="css/materialize.min.css"/>
+  <h:outputScript library="" name="jquery.min.js"/>
+  <h:outputScript library="materialize" name="js/materialize.min.js"/>
+  <h:outputScript library="scripts" name="regnref.js"/>
+  <h:outputScript library="" name="fontawesome.js"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <style>
       body {
-        background-image: url("#{resource['images/logob.png']}");
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: 700px;
-        background-position: 130% -300%;
-        background-blend-mode: difference;
+          background-image: url("#{resource['images/logob.png']}");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: 700px;
+          background-position: 130% -300%;
+          background-blend-mode: difference;
       }
 
-    </style>
-  </h:head>
+  </style>
+</h:head>
 
-  <h:body>
-    <div class="container">
+<h:body>
+  <div class="container">
+    <div class="row">
+      <p class="center-align" style="font-size:25px;"><i class="fas fa-folder-plus"></i> Registrar nuevas referencias <i
+          class="fas fa-asterisk"></i></p>
+      <br/>
       <div class="row">
-        <p class="center-align" style="font-size:25px;"><i class="fas fa-folder-plus"></i> Registrar nuevas referencias <i class="fas fa-asterisk"></i></p>
-        <br/>
-        <div class="row">
-          <div class="col s6">
-            <div class="input-field">
-              <input id="quien" type="text"/>
-              <label for="quien">Proveedor</label>
-            </div>
-          </div>
-          <div class="col s6">
-            <div class="input-field">
-              <input id="docc" type="number"/>
-              <label for="docc">Documento</label>
-            </div>
+        <div class="col s6">
+          <div class="input-field">
+            <input id="quien" type="text"/>
+            <label for="quien">Proveedor</label>
           </div>
         </div>
-
-        <table id="myTable" class="responsive-table">
-          <thead>
-            <tr>
-              <td colspan="5" style="text-align: left;">
-                <a class="col s12 waves-effect waves-light btn" id="addrow" >Agregar otro campo</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Referencia</td>
-              <td>Cantidad</td>
-              <td>Costo unitario</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text" name="Referencia" class="form-control" /></td>
-              <td><input type="number" name="Cantidad" class="form-control" /></td>
-              <td><input type="number" name="Costo" class="form-control" /></td>
-              <td><a class="deleteRow"></a></td>
-            </tr>
-          </tbody>
-        </table>
-
+        <div class="col s6">
+          <div class="input-field">
+            <input id="docc" type="number"/>
+            <label for="docc">Documento</label>
+          </div>
+        </div>
       </div>
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <p>Referencia nueva registrada satisfactoriamente</p>
-        </div>
+
+      <table id="myTable" class="responsive-table">
+        <thead>
+        <tr>
+          <td colspan="5" style="text-align: left;">
+            <a class="col s12 waves-effect waves-light btn" id="addrow">Agregar otro campo</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Referencia</td>
+          <td>Cantidad</td>
+          <td>Costo unitario</td>
+          <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><input type="text" name="Referencia" class="form-control"/></td>
+          <td><input type="number" name="Cantidad" class="form-control"/></td>
+          <td><input type="number" name="Costo" class="form-control"/></td>
+          <td><a class="deleteRow"></a></td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <p>Referencia nueva registrada satisfactoriamente</p>
       </div>
     </div>
+  </div>
 
 
-  </h:body>
+</h:body>
 </html>

@@ -1,9 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Departamento"
@@ -55,8 +56,8 @@ public class Departamento implements Serializable {
   /**
    * Retorna el valor del atributo <code>pais</code> del objeto.
    *
-   * @see Pais
    * @return <code>pais</code> del departamento.
+   * @see Pais
    */
   public Pais getPais() {
     return pais;
@@ -65,8 +66,8 @@ public class Departamento implements Serializable {
   /**
    * Asigna el valor del atributo <code>pais</code> del objeto.
    *
-   * @see Pais
    * @param pais del departamento.
+   * @see Pais
    */
   public void setPais(Pais pais) {
     this.pais = pais;
@@ -93,8 +94,8 @@ public class Departamento implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del departamento.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -103,8 +104,8 @@ public class Departamento implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del departamento.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -131,10 +132,7 @@ public class Departamento implements Serializable {
       return false;
     }
     final Departamento other = (Departamento) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -146,9 +144,9 @@ public class Departamento implements Serializable {
    */
   public String toString() {
     return "Departamento("
-            + "id = " + id + ", "
-            + "nombreDepartamento = " + nombreDepartamento + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "nombreDepartamento = " + nombreDepartamento + ", "
+      + timestamps.toString()
+      + ")";
   }
 }

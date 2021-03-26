@@ -1,9 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Producto"
@@ -117,8 +118,8 @@ public class Producto implements Serializable {
   /**
    * Retorna el valor del atributo <code>categoria</code> del objeto.
    *
-   * @see CategoriasProducto
    * @return <code>categoria</code> del producto.
+   * @see CategoriasProducto
    */
   public CategoriasProducto getCategoria() {
     return categoria;
@@ -127,8 +128,8 @@ public class Producto implements Serializable {
   /**
    * Asigna el valor del atributo <code>categoria</code> del objeto.
    *
-   * @see CategoriasProducto
    * @param categoria del producto.
+   * @see CategoriasProducto
    */
   public void setCategoria(CategoriasProducto categoria) {
     this.categoria = categoria;
@@ -155,8 +156,8 @@ public class Producto implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del producto.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -165,8 +166,8 @@ public class Producto implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del producto.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -193,10 +194,7 @@ public class Producto implements Serializable {
       return false;
     }
     final Producto other = (Producto) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
 //</editor-fold>
 
@@ -208,13 +206,13 @@ public class Producto implements Serializable {
    */
   public String toString() {
     return "Producto("
-            + "id = " + id + ", "
-            + "modeloProducto = " + modeloProducto + ", "
-            + "descripcion = " + descripcion + ", "
-            + "precioVenta = " + precioVenta + ", "
-            + "categoria = " + categoria + ", "
-            + "estado = " + estado + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "modeloProducto = " + modeloProducto + ", "
+      + "descripcion = " + descripcion + ", "
+      + "precioVenta = " + precioVenta + ", "
+      + "categoria = " + categoria + ", "
+      + "estado = " + estado + ", "
+      + timestamps.toString()
+      + ")";
   }
 }

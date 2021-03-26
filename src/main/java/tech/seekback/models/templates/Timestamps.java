@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models.templates;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import javax.persistence.*;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 @Embeddable
 public class Timestamps implements Serializable {
@@ -75,14 +73,18 @@ public class Timestamps implements Serializable {
    *
    * @return <code>deleted</code> de los timestamps del respectivo objeto.
    */
-  public boolean getDeleted() { return deleted; }
+  public boolean getDeleted() {
+    return deleted;
+  }
 
   /**
    * Asigna el valor del atributo <code>deleted</code> del objeto.
    *
    * @param deleted de los timestamps del respectivo objeto.
    */
-  public void setDeleted(boolean deleted) { this.deleted = deleted; }
+  public void setDeleted(boolean deleted) {
+    this.deleted = deleted;
+  }
 
   /**
    * Retorna el valor del atributo <code>deleted_at</code> del objeto.
@@ -125,9 +127,9 @@ public class Timestamps implements Serializable {
    */
   public String toString() {
     return "created_at = " + created_at + ", "
-            + "updated_at = " + updated_at + ", "
-            + "deleted = " + deleted + ", "
-            + "deleted at = " + deleted_at;
+      + "updated_at = " + updated_at + ", "
+      + "deleted = " + deleted + ", "
+      + "deleted at = " + deleted_at;
   }
 
 }

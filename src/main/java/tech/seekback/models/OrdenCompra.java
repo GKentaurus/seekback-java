@@ -1,10 +1,11 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "OrdenCompra"
@@ -70,8 +71,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Retorna el valor del atributo <code>proveedor</code> del objeto.
    *
-   * @see Proveedor
    * @return <code>proveedor</code> de la orden de compra.
+   * @see Proveedor
    */
   public Proveedor getProveedor() {
     return proveedor;
@@ -80,8 +81,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Asigna el valor del atributo <code>proveedor</code> del objeto.
    *
-   * @see Proveedor
    * @param proveedor de la orden de compra.
+   * @see Proveedor
    */
   public void setProveedor(Proveedor proveedor) {
     this.proveedor = proveedor;
@@ -126,8 +127,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Retorna el valor del atributo <code>trm</code> del objeto.
    *
-   * @see TRM
    * @return <code>trm</code> de la orden de compra.
+   * @see TRM
    */
   public TRM getTrm() {
     return trm;
@@ -136,8 +137,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Asigna el valor del atributo <code>trm</code> del objeto.
    *
-   * @see TRM
    * @param trm de la orden de compra.
+   * @see TRM
    */
   public void setTrm(TRM trm) {
     this.trm = trm;
@@ -164,8 +165,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Retorna el valor del atributo <code>factorImport</code> del objeto.
    *
-   * @see Empleado
    * @return <code>factorImport</code> de la orden de compra.
+   * @see Empleado
    */
   public Empleado getEmpleado() {
     return empleado;
@@ -174,8 +175,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Asigna el valor del atributo <code>factorImport</code> del objeto.
    *
-   * @see Empleado
    * @param empleado de la orden de compra.
+   * @see Empleado
    */
   public void setEmpleado(Empleado empleado) {
     this.empleado = empleado;
@@ -184,8 +185,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la orden de compra.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -194,8 +195,8 @@ public class OrdenCompra implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la orden de compra.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -222,10 +223,7 @@ public class OrdenCompra implements Serializable {
       return false;
     }
     final OrdenCompra other = (OrdenCompra) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -237,14 +235,14 @@ public class OrdenCompra implements Serializable {
    */
   public String toString() {
     return "OrdenCompra("
-            + "id = " + id + ", "
-            + "proveedor = " + proveedor + ", "
-            + "docAsociado = " + docAsociado + ", "
-            + "trm = " + trm + ", "
-            + "factorImport = " + factorImport + ", "
-            + "empleado = " + empleado + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "proveedor = " + proveedor + ", "
+      + "docAsociado = " + docAsociado + ", "
+      + "trm = " + trm + ", "
+      + "factorImport = " + factorImport + ", "
+      + "empleado = " + empleado + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

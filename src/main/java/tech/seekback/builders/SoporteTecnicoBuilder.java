@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
-import tech.seekback.models.Cliente;
-import tech.seekback.models.Empleado;
-import tech.seekback.models.EstadosFidelizacion;
-import tech.seekback.models.Producto;
-import tech.seekback.models.SoporteTecnico;
+import tech.seekback.models.*;
 import tech.seekback.models.templates.Timestamps;
 
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class SoporteTecnicoBuilder {
 
-  private SoporteTecnico soporteTecnico;
+  private final SoporteTecnico soporteTecnico;
 
   private SoporteTecnicoBuilder() {
     this.soporteTecnico = new SoporteTecnico();

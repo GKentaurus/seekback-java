@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.builders;
 
-import java.util.Date;
 import tech.seekback.models.Cotizacion;
 import tech.seekback.models.ProformaVenta;
 import tech.seekback.models.templates.Timestamps;
 
+import java.util.Date;
+
 /**
- *
- * @author camorenoc
+ * @author gkentaurus
  */
 public class ProformaVentaBuilder {
 
-  private ProformaVenta proformaVenta;
+  private final ProformaVenta proformaVenta;
 
   private ProformaVentaBuilder() {
     proformaVenta = new ProformaVenta();

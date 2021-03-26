@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Calificacion"
@@ -70,8 +67,8 @@ public class Calificacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @return <code>producto</code> de la calificación.
+   * @see Producto
    */
   public Producto getProducto() {
     return producto;
@@ -80,8 +77,8 @@ public class Calificacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>producto</code> del objeto.
    *
-   * @see Producto
    * @param producto de la calificación.
+   * @see Producto
    */
   public void setProducto(Producto producto) {
     this.producto = producto;
@@ -108,8 +105,8 @@ public class Calificacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> de la calificación.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -118,8 +115,8 @@ public class Calificacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps de la calificación.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -128,8 +125,8 @@ public class Calificacion implements Serializable {
   /**
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @return <code>cliente</code> de la calificación.
+   * @see Cliente
    */
   public Cliente getCliente() {
     return cliente;
@@ -138,8 +135,8 @@ public class Calificacion implements Serializable {
   /**
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @param cliente de la calificación.
+   * @see Cliente
    */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
@@ -202,10 +199,7 @@ public class Calificacion implements Serializable {
       return false;
     }
     final Calificacion other = (Calificacion) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -218,14 +212,14 @@ public class Calificacion implements Serializable {
    */
   public String toString() {
     return "Calificacion("
-            + "id = " + id + ", "
-            + "cliente = " + cliente + ", "
-            + "producto = " + producto + ", "
-            + "calificacion = " + calificacion + ", "
-            + "comentario = " + comentario + ", "
-            + "esAprobado = " + esAprobado + ", "
-            + timestamps.toString()
-            + ")";
+      + "id = " + id + ", "
+      + "cliente = " + cliente + ", "
+      + "producto = " + producto + ", "
+      + "calificacion = " + calificacion + ", "
+      + "comentario = " + comentario + ", "
+      + "esAprobado = " + esAprobado + ", "
+      + timestamps.toString()
+      + ")";
   }
 
 }

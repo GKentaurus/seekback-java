@@ -1,9 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "TipoSolicitud"
@@ -68,8 +69,8 @@ public class TipoSolicitud implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del tipo de solicitud.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -78,8 +79,8 @@ public class TipoSolicitud implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del tipo de solicitud.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -106,10 +107,7 @@ public class TipoSolicitud implements Serializable {
       return false;
     }
     final TipoSolicitud other = (TipoSolicitud) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -122,9 +120,9 @@ public class TipoSolicitud implements Serializable {
    */
   public String toString() {
     return "TipoSolicitud{"
-            + "idTipoSolicitud=" + id + ", "
-            + "nombreServicio=" + nombreSolicitud + ", "
-            + timestamps.toString()
-            + '}';
+      + "idTipoSolicitud=" + id + ", "
+      + "nombreServicio=" + nombreSolicitud + ", "
+      + timestamps.toString()
+      + '}';
   }
 }

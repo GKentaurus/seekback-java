@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tech.seekback.models;
 
+import tech.seekback.models.templates.Timestamps;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import tech.seekback.models.templates.Timestamps;
 
 /**
  * Definición del modelo "Proveedor"
@@ -75,8 +72,8 @@ public class Proveedor implements Serializable {
   /**
    * Retorna el valor del atributo <code>tipoDoc</code> del objeto.
    *
-   * @see TipoDoc
    * @return <code>tipoDoc</code> del proveedor.
+   * @see TipoDoc
    */
   public TipoDoc getTipoDoc() {
     return tipoDoc;
@@ -85,8 +82,8 @@ public class Proveedor implements Serializable {
   /**
    * Asigna el valor del atributo <code>tipoDoc</code> del objeto.
    *
-   * @see TipoDoc
    * @param tipoDoc del proveedor.
+   * @see TipoDoc
    */
   public void setTipoDoc(TipoDoc tipoDoc) {
     this.tipoDoc = tipoDoc;
@@ -185,8 +182,8 @@ public class Proveedor implements Serializable {
   /**
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @return <code>cliente</code> del proveedor.
+   * @see Cliente
    */
   public Cliente getCliente() {
     return cliente;
@@ -195,8 +192,8 @@ public class Proveedor implements Serializable {
   /**
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
-   * @see Cliente
    * @param cliente del proveedor.
+   * @see Cliente
    */
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
@@ -205,8 +202,8 @@ public class Proveedor implements Serializable {
   /**
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @return <code>timestamps</code> del proveedor.
+   * @see Timestamps
    */
   public Timestamps getTimestamps() {
     return timestamps;
@@ -215,8 +212,8 @@ public class Proveedor implements Serializable {
   /**
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
-   * @see Timestamps
    * @param timestamps del proveedor.
+   * @see Timestamps
    */
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
@@ -243,10 +240,7 @@ public class Proveedor implements Serializable {
       return false;
     }
     final Proveedor other = (Proveedor) obj;
-    if (!Objects.equals(this.id, other.id)) {
-      return false;
-    }
-    return true;
+    return Objects.equals(this.id, other.id);
   }
   //</editor-fold>
 
@@ -258,15 +252,15 @@ public class Proveedor implements Serializable {
    */
   public String toString() {
     return "Proveedor{"
-            + "id = " + id + ", "
-            + "tipoDoc = " + tipoDoc + ", "
-            + "numeroDoc = " + numeroDoc + ", "
-            + "digitoVerif = " + digitoVerif + ", "
-            + "razonSocial = " + razonSocial + ", "
-            + "telefono = " + telefono + ", "
-            + "email = " + email + ", "
-            + "cliente = " + cliente + ", "
-            + timestamps.toString()
-            + '}';
+      + "id = " + id + ", "
+      + "tipoDoc = " + tipoDoc + ", "
+      + "numeroDoc = " + numeroDoc + ", "
+      + "digitoVerif = " + digitoVerif + ", "
+      + "razonSocial = " + razonSocial + ", "
+      + "telefono = " + telefono + ", "
+      + "email = " + email + ", "
+      + "cliente = " + cliente + ", "
+      + timestamps.toString()
+      + '}';
   }
 }
