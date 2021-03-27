@@ -22,7 +22,7 @@ public class MailService {
 
   private void initSession() {
     String user = "gkentaurus@gmail.com";
-    String password = "jbhfcwizhmezkafp";
+    String password = "slwbzqfjoxliovlb";
 
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -57,21 +57,29 @@ public class MailService {
     coreMail(mimeMessage);
   }
 
-  public void sendMail(List<String> recipients, String subject, String message) throws MessagingException {
+  public void sendEmail(List<String> recipients, String subject, String message) throws MessagingException {
+    String strRecipients = "";
+    for (String recipient: recipients) {
+      strRecipients = strRecipients.concat(recipient).concat(", ");
+    }
     initSession();
     MimeMessage mimeMessage = new MimeMessage(session);
     mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
-    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(String.join(",", (String[]) recipients.toArray())));
+    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(strRecipients));
     mimeMessage.setSubject(subject);
     mimeMessage.setText(message);
     coreMail(mimeMessage);
   }
 
-  public void sendMail(String sender, List<String> recipients, String subject, String message) throws MessagingException {
+  public void sendEmail(String sender, List<String> recipients, String subject, String message) throws MessagingException {
     initSession();
+    String strRecipients = "";
+    for (String recipient: recipients) {
+      strRecipients = strRecipients.concat(recipient).concat(", ");
+    }
     MimeMessage mimeMessage = new MimeMessage(session);
     mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
-    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(String.join(",", (String[]) recipients.toArray())));
+    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(strRecipients));
     mimeMessage.setFrom(new InternetAddress(sender));
     mimeMessage.setSubject(subject);
     mimeMessage.setText(message);
@@ -83,5 +91,6 @@ public class MailService {
     t.connect((String) properties.get("mail.smtp.user"), (String) properties.get("mail.smtp.password"));
     t.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
     t.close();
+    System.out.println("El correo se envió correctamente.");
   }
 }

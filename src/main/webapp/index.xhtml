@@ -151,22 +151,24 @@
             <!--Contactenos-->
             <div id="contac" class="container section scrollspy">
               <div class="row">
-                <div class="col s12">
-                  <div class="input-field col s6">
-                    <h:inputText id="name" class="ingr validate black-text"/>
-                    <h:outputLabel for="name">Nombre</h:outputLabel>
+                <h:form>
+                  <div class="col s12">
+                    <div class="input-field col s6">
+                      <h:inputText id="name" class="ingr validate black-text" value="${indexController.name}"/>
+                      <h:outputLabel for="name">Nombre</h:outputLabel>
+                    </div>
+                    <div class="input-field col s6">
+                      <h:inputText id="email" pt:type="email" class="ingr validate black-text" value="${indexController.recipient}"/>
+                      <h:outputLabel for="email">Email</h:outputLabel>
+                      <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
+                    </div>
+                    <div class="input-field col s12">
+                      <h:inputTextarea id="motivo" class="ingr materialize-textarea black-text" value="${indexController.message}"/>
+                      <h:outputLabel for="motivo">Mensaje</h:outputLabel>
+                    </div>
                   </div>
-                  <div class="input-field col s6">
-                    <h:inputText id="email" pt:type="email" class="ingr validate black-text"/>
-                    <h:outputLabel for="email">Email</h:outputLabel>
-                    <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"></span>
-                  </div>
-                  <div class="input-field col s12">
-                    <h:inputTextarea id="motivo" class="ingr materialize-textarea black-text"/>
-                    <h:outputLabel for="motivo">Mensaje</h:outputLabel>
-                  </div>
-                </div>
-                <h:commandLink class="modal-close waves-effect waves-green btn">Enviar</h:commandLink>
+                  <h:commandButton class="modal-close waves-effect waves-green btn" value="Enviar" actionListener="${indexController.sendMessage()}"></h:commandButton>
+                </h:form>
               </div>
             </div>
           </div>

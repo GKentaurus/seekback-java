@@ -6,6 +6,7 @@ import tech.seekback.models.Correo;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.CorreoService;
 import tech.seekback.services.UsuarioService;
+import tech.seekback.services.tools.MailService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -13,9 +14,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @author danny
@@ -29,6 +32,9 @@ public class LoginController extends CustomController implements Serializable {
 
   @EJB
   private CorreoService correosService;
+
+  @EJB
+  private MailService mailService;
 
   private Usuario usuario;
   private Correo correo;
@@ -71,17 +77,25 @@ public class LoginController extends CustomController implements Serializable {
   }
 //</editor-fold>
 
+  private boolean validateEmail() throws ConnectionExcep {
+    // Validar si el correo existe
+    this.correo = new Correo();
+    this.correo = correosService.getByCorreo(email);
+    return Objects.nonNull(correo);
+  }
+
+  private boolean validateUser() throws ConnectionExcep {
+    this.usuario = new Usuario();
+    this.usuario = usuarioService.getOne(correo.getUsuario().getId());
+    return Objects.nonNull(usuario);
+  }
+
   public void login() throws ConnectionExcep, IOException {
     FacesContext fc = FacesContext.getCurrentInstance();
     // TODO: Enviar los mensajes de error o confirmación a través de addMessage()
 
-    // Validar si el correo existe
-    this.correo = new Correo();
-    this.correo = correosService.getByCorreo(email);
-    if (Objects.nonNull(correo)) {
-      this.usuario = new Usuario();
-      this.usuario = usuarioService.getOne(correo.getUsuario().getId());
-      if (Objects.nonNull(usuario)) {
+    if (validateEmail()) {
+      if (validateUser()) {
         if (usuario.verificarContrasena(password)) {
           redirectTo(usuario.getRol().getId());
         } else {
@@ -90,7 +104,7 @@ public class LoginController extends CustomController implements Serializable {
           fc.addMessage("messs:mesag", message);
         }
       } else {
-        FacesMessage message = new FacesMessage("El  no esta registrado");
+        FacesMessage message = new FacesMessage("El usuario no esta registrado");
         fc.addMessage("messs:mesag", message);
         this.usuario = null;
       }
@@ -98,7 +112,40 @@ public class LoginController extends CustomController implements Serializable {
       this.correo = null;
       FacesMessage message = new FacesMessage("El correo no esta registrado");
       fc.addMessage("messs:mesag", message);
-      System.out.println("!!! Correo no existente !!!");
+    }
+  }
+
+  public void restorePassword() throws ConnectionExcep, MessagingException {
+    System.out.println("Recuperando contraseña...");
+    FacesContext fc = FacesContext.getCurrentInstance();
+    if (validateEmail()) {
+      if (validateUser()) {
+        String alphabet = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789";
+        String temporalPassword = "";
+        Random rrn = new Random();
+        for (int i = 0; i < 10; i++) {
+          int randomIndex = rrn.nextInt(alphabet.length() - 1);
+          temporalPassword = temporalPassword.concat(alphabet.substring(randomIndex, randomIndex+1));
+        }
+        usuario.setContrasena(temporalPassword);
+        usuarioService.update(usuario);
+        this.mailService.sendEmail(
+          this.correo.getCorreoElectronico(),
+          "¿Olvidaste tu contraseña en Seekback?",
+          "Hola" + this.usuario.getPrimerNombre() + " " + this.usuario.getOtrosNombres() + ":\n\n" +
+            "Su nueva contraseña es " + temporalPassword + "\n\n" +
+            "Usala para iniciar sesión la próxima vez. Le recomendamos la cambie tan pronto sea posible.\n\n" +
+            "Cordialmente,\n\n" +
+            "El equipo de desarrollo de Seekback");
+      } else {
+        FacesMessage message = new FacesMessage("El usuario no esta registrado");
+        fc.addMessage("messs:mesag", message);
+        this.usuario = null;
+      }
+    } else {
+      this.correo = null;
+      FacesMessage message = new FacesMessage("El correo no esta registrado");
+      fc.addMessage("messs:mesag", message);
     }
   }
 
@@ -154,5 +201,4 @@ public class LoginController extends CustomController implements Serializable {
     }
     ec.redirect(ec.getRequestContextPath() + ruta);
   }
-
 }

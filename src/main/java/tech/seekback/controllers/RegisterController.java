@@ -5,6 +5,7 @@ import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.*;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.*;
+import tech.seekback.services.tools.MailService;
 
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
@@ -12,6 +13,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
@@ -49,6 +51,9 @@ public class RegisterController extends CustomController implements Serializable
 
   @EJB
   private ClienteService clienteService;
+
+  @EJB
+  private MailService mailService;
 
   private Usuario usuario;
   private Direccion direccion;
@@ -146,7 +151,7 @@ public class RegisterController extends CustomController implements Serializable
    * @throws NoSuchAlgorithmException
    * @throws InvalidKeySpecException
    */
-  public void register() throws ConnectionExcep, NoSuchAlgorithmException, InvalidKeySpecException, IOException {
+  public void register() throws ConnectionExcep, NoSuchAlgorithmException, InvalidKeySpecException, IOException, MessagingException {
     if (this.password.equals(this.passwordConfirm)) {
       // Creación de Timestamp para todos los procesos
       Timestamps timestamps = new Timestamps();
@@ -159,7 +164,6 @@ public class RegisterController extends CustomController implements Serializable
       this.usuario.setContrasena(password);
       this.usuario.setRol(rolService.getOne(3));
       this.usuario.setTimestamps(timestamps);
-
       this.usuario = usuarioService.create(usuario);
 
       // Creación del objeto Direccion
@@ -170,7 +174,6 @@ public class RegisterController extends CustomController implements Serializable
       this.direccion.setCiudad(ciudadService.getOne(idCiudad));
       this.direccion.setEsPrincipal(true);
       this.direccion.setTimestamps(timestamps);
-
       this.direccion = direccionService.create(direccion);
 
       // Creación del objeto Telefono
@@ -178,7 +181,6 @@ public class RegisterController extends CustomController implements Serializable
       this.telefono.setNumeroTelefono(phoneNumber);
       this.telefono.setEsPrincipal(true);
       this.telefono.setTimestamps(timestamps);
-
       this.telefono = telefonoService.create(telefono);
 
       // Creación del objeto Correo
@@ -186,14 +188,18 @@ public class RegisterController extends CustomController implements Serializable
       this.correo.setCorreoElectronico(email);
       this.correo.setEsPrincipal(true);
       this.correo.setTimestamps(timestamps);
-
       this.correo = correoService.create(correo);
 
       // Creación del objeto Cliente
       this.cliente.setUsuario(usuario);
       this.cliente.setTimestamps(timestamps);
-
       this.cliente = clienteService.create(cliente);
+
+      this.mailService.sendEmail(
+        correo.getCorreoElectronico(),
+        "Bienvenido a Seekback",
+        "Su registro ha sido completado satisfactoriamente."
+      );
 
       ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
       ec.redirect(ec.getRequestContextPath() + "/login.xhtml");

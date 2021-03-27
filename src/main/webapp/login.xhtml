@@ -258,11 +258,13 @@
               <div class="modal-content">
                 <p>Para restaurar la contraseña de tu cuenta por favor ingresa el correo usado al momento de crear la cuenta y te enviaremos un link para restaurarla</p>
                 <div class="input-field col s6">
-                  <input id="remail" type="email" class="ingre validate"/>
-                  <label for="remail">Email</label>
-                  <span class="helper-text" data-error="Email invalido" data-success="Email valido"/>
+                  <h:form>
+                    <label for="remail">Email</label>
+                    <h:inputText id="remail" type="email" class="ingre validate" value="${loginController.email}"/>
+                    <span class="helper-text" data-error="Email invalido" data-success="Email valido"/>
+                    <h:commandButton class="waves-effect waves-light btn s12 blue" actionListener="${loginController.restorePassword()}" value="Recuperar"></h:commandButton>
+                  </h:form>
                 </div>
-                <h:commandLink class="waves-effect waves-light btn s12 blue">Recuperar</h:commandLink>
               </div>
               <div id="modalfo" class="modal-footer modalf grey lighten-3">
                 <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
