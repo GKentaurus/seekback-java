@@ -41,11 +41,7 @@ public class TestController extends CustomController implements Serializable {
   public void newEmail() throws MessagingException {
     String recipient = "camorenoc@outlook.com";
     String subject = "Mensaje de prueba desde JavaMail";
-    String message = "Y te preguntaras... ¿Por qué has recibido este correo?\n"
-      + "Pos porque si... porque un tal Carlos lo quiso así, y porque quería hacer pruebas de JavaMail\n"
-      + "Y si quieres gastarle una cerveza el domingo por la noche a Carlos\n"
-      + "Entonces mándasela por Rappi, porque el domingo en la noche es de comida trampa y cerveza xD\n\n"
-      + "PD: No es broma :C";
+    String message = "<h1>Hola</h1>";
     mailService.sendEmail(recipient, subject, message);
   }
 }

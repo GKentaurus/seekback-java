@@ -18,6 +18,7 @@ import java.util.Properties;
 public class MailService {
 
   private final Properties properties = new Properties();
+  private final String mimeMessageContextParams = "text/html; charset=UTF-8";
   private Session session;
 
   private void initSession() {
@@ -32,6 +33,7 @@ public class MailService {
     properties.put("mail.smtp.mail.sender", user);
     properties.put("mail.smtp.user", user);
     properties.put("mail.smtp.password", password);
+    properties.put("mail.mime.charset", "UTF-8");
 
     session = Session.getDefaultInstance(properties);
   }
@@ -42,7 +44,7 @@ public class MailService {
     mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
     mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
     mimeMessage.setSubject(subject);
-    mimeMessage.setText(message);
+    mimeMessage.setContent(message, mimeMessageContextParams);
     coreMail(mimeMessage);
   }
 
@@ -53,7 +55,7 @@ public class MailService {
     mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
     mimeMessage.setFrom(new InternetAddress(sender));
     mimeMessage.setSubject(subject);
-    mimeMessage.setText(message);
+    mimeMessage.setContent(message, mimeMessageContextParams);
     coreMail(mimeMessage);
   }
 
@@ -67,7 +69,7 @@ public class MailService {
     mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
     mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(strRecipients));
     mimeMessage.setSubject(subject);
-    mimeMessage.setText(message);
+    mimeMessage.setContent(message, mimeMessageContextParams);
     coreMail(mimeMessage);
   }
 
@@ -82,7 +84,7 @@ public class MailService {
     mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(strRecipients));
     mimeMessage.setFrom(new InternetAddress(sender));
     mimeMessage.setSubject(subject);
-    mimeMessage.setText(message);
+    mimeMessage.setContent(message, mimeMessageContextParams);
     coreMail(mimeMessage);
   }
 
