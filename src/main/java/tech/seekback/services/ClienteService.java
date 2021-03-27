@@ -3,7 +3,7 @@ package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.ClienteDAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Cliente;
+import tech.seekback.models.Usuario;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,7 +24,7 @@ public class ClienteService {
    * @return Un objeto de tipo Cliente
    * @throws ConnectionExcep
    */
-  public Cliente create(Cliente cliente) throws ConnectionExcep {
+  public Usuario create(Usuario cliente) throws ConnectionExcep {
     return clienteDAO.create(cliente);
   }
 
@@ -33,7 +33,7 @@ public class ClienteService {
    * @return Un objeto de tipo Cliente consultado por id
    * @throws ConnectionExcep
    */
-  public Cliente getOne(Integer id) throws ConnectionExcep {
+  public Usuario getOne(Integer id) throws ConnectionExcep {
     return clienteDAO.getOne(id);
   }
 
@@ -41,7 +41,7 @@ public class ClienteService {
    * @return Una colección de objetos de tipo Cliente (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
-  public List<Cliente> getAll() throws ConnectionExcep {
+  public List<Usuario> getAll() throws ConnectionExcep {
     return clienteDAO.getAll();
   }
 
@@ -50,7 +50,7 @@ public class ClienteService {
    * @return Un objeto de tipo Cliente
    * @throws ConnectionExcep
    */
-  public Cliente getByIdUsuario(Integer id) throws ConnectionExcep {
+  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
     return clienteDAO.getByIdUsuario(id);
   }
 
@@ -60,7 +60,7 @@ public class ClienteService {
    * @param cliente
    * @throws ConnectionExcep
    */
-  public void update(Cliente cliente) throws ConnectionExcep {
+  public void update(Usuario cliente) throws ConnectionExcep {
     clienteDAO.update(cliente);
   }
 
@@ -70,7 +70,7 @@ public class ClienteService {
    * @param cliente
    * @throws ConnectionExcep
    */
-  public void delete(Cliente cliente) throws ConnectionExcep {
+  public void delete(Usuario cliente) throws ConnectionExcep {
     clienteDAO.delete(cliente);
   }
 }

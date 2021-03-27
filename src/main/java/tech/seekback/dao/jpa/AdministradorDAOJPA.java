@@ -5,7 +5,7 @@ import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.AdministradorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.exceptions.enums.ConnectionExcepEnum;
-import tech.seekback.models.Administrador;
+import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.ejb.Stateless;
@@ -16,10 +16,10 @@ import java.util.Date;
  * @author gkentaurus
  */
 @Stateless
-public class AdministradorDAOJPA extends GenericDAO<Administrador, Integer> implements AdministradorDAO {
+public class AdministradorDAOJPA extends GenericDAO<Usuario, Integer> implements AdministradorDAO {
 
   public AdministradorDAOJPA() {
-    super(Administrador.class);
+    super(Usuario.class);
   }
 
   /**
@@ -28,11 +28,11 @@ public class AdministradorDAOJPA extends GenericDAO<Administrador, Integer> impl
    * @throws ConnectionExcep
    */
   @Override
-  public Administrador getByIdUsuario(Integer id) throws ConnectionExcep {
+  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
 
     try {
-      TypedQuery<Administrador> tq = em.createNamedQuery("Empleado.getByIdUsuario", classType);
-      tq.setParameter("idUsuario", id);
+      TypedQuery<Usuario> tq = em.createNamedQuery("Administrador.getByIdAdministrador", classType);
+      tq.setParameter("idAdministrador", id);
       return tq.getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
@@ -45,7 +45,7 @@ public class AdministradorDAOJPA extends GenericDAO<Administrador, Integer> impl
    * @param obj
    * @throws ConnectionExcep
    */
-  public void delete(Administrador obj) throws ConnectionExcep {
+  public void delete(Usuario obj) throws ConnectionExcep {
     System.out.println(
       "\n\n\n\n\n######################################################################"
         + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()

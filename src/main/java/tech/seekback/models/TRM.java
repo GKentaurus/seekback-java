@@ -159,11 +159,6 @@ public class TRM implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Trm{" + "idTrm=" + id
       + ", idDivisa=" + divisa

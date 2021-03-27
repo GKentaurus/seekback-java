@@ -26,7 +26,7 @@ public class Felicitacion implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
-  private Cliente cliente;
+  private Usuario cliente;
 
   @Column(name = "dirigidoA", nullable = false, length = 100)
   private String dirigidoA;
@@ -98,9 +98,9 @@ public class Felicitacion implements Serializable {
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
    * @return <code>cliente</code> de la felicitación.
-   * @see Cliente
+   * @see Usuario
    */
-  public Cliente getCliente() {
+  public Usuario getCliente() {
     return cliente;
   }
 
@@ -108,9 +108,9 @@ public class Felicitacion implements Serializable {
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
    * @param cliente de la felicitación.
-   * @see Cliente
+   * @see Usuario
    */
-  public void setCliente(Cliente cliente) {
+  public void setCliente(Usuario cliente) {
     this.cliente = cliente;
   }
 
@@ -158,11 +158,6 @@ public class Felicitacion implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Felicitacion("
       + "id = " + id + ", "

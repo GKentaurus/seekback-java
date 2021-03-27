@@ -2,7 +2,10 @@
 package tech.seekback.controllers;
 
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.*;
+import tech.seekback.models.Correo;
+import tech.seekback.models.Direccion;
+import tech.seekback.models.Telefono;
+import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.*;
 import tech.seekback.services.tools.MailService;
@@ -59,7 +62,7 @@ public class RegisterController extends CustomController implements Serializable
   private Direccion direccion;
   private Correo correo;
   private Telefono telefono;
-  private Cliente cliente;
+  private Usuario cliente;
 
   private Integer idTipoDoc;
   private Integer idCiudad;
@@ -74,7 +77,7 @@ public class RegisterController extends CustomController implements Serializable
     direccion = new Direccion();
     correo = new Correo();
     telefono = new Telefono();
-    cliente = new Cliente();
+    cliente = new Usuario();
   }
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -189,11 +192,6 @@ public class RegisterController extends CustomController implements Serializable
       this.correo.setEsPrincipal(true);
       this.correo.setTimestamps(timestamps);
       this.correo = correoService.create(correo);
-
-      // Creación del objeto Cliente
-      this.cliente.setUsuario(usuario);
-      this.cliente.setTimestamps(timestamps);
-      this.cliente = clienteService.create(cliente);
 
       this.mailService.sendEmail(
         correo.getCorreoElectronico(),

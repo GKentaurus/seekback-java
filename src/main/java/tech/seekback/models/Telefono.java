@@ -159,11 +159,6 @@ public class Telefono implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Telefono{"
       + "idTelefono=" + id + ", "

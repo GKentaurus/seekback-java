@@ -3,7 +3,7 @@ package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.AdministradorDAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Administrador;
+import tech.seekback.models.Usuario;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,7 +24,7 @@ public class AdministradorService {
    * @return Retorna un objeto de tipo Administrador
    * @throws ConnectionExcep
    */
-  public Administrador create(Administrador administrador) throws ConnectionExcep {
+  public Usuario create(Usuario administrador) throws ConnectionExcep {
     return administradorDAO.create(administrador);
   }
 
@@ -33,7 +33,7 @@ public class AdministradorService {
    * @return Un objeto de tipo Administrador consultado por el id
    * @throws ConnectionExcep
    */
-  public Administrador getOne(Integer id) throws ConnectionExcep {
+  public Usuario getOne(Integer id) throws ConnectionExcep {
     return administradorDAO.getOne(id);
   }
 
@@ -41,7 +41,7 @@ public class AdministradorService {
    * @return Una colección de objetos de tipo Administrador (referente al DAO que lo implemente)
    * @throws ConnectionExcep
    */
-  public List<Administrador> getAll() throws ConnectionExcep {
+  public List<Usuario> getAll() throws ConnectionExcep {
     return administradorDAO.getAll();
   }
 
@@ -50,7 +50,7 @@ public class AdministradorService {
    * @return Un objeto de tipo Administrador
    * @throws ConnectionExcep
    */
-  public Administrador getByIdUsuario(Integer id) throws ConnectionExcep {
+  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
     return administradorDAO.getByIdUsuario(id);
   }
 
@@ -60,7 +60,7 @@ public class AdministradorService {
    * @param administrador
    * @throws ConnectionExcep
    */
-  public void update(Administrador administrador) throws ConnectionExcep {
+  public void update(Usuario administrador) throws ConnectionExcep {
     administradorDAO.update(administrador);
   }
 
@@ -70,7 +70,7 @@ public class AdministradorService {
    * @param administrador
    * @throws ConnectionExcep
    */
-  public void delete(Administrador administrador) throws ConnectionExcep {
+  public void delete(Usuario administrador) throws ConnectionExcep {
     administradorDAO.delete(administrador);
   }
 }

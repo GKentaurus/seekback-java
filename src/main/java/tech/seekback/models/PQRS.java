@@ -32,11 +32,11 @@ public class PQRS implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
-  private Cliente cliente;
+  private Usuario cliente;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idAdministrador", nullable = false)
-  private Administrador administrador;
+  private Usuario administrador;
 
   @Column(name = "area", nullable = false, length = 100)
   private String area;
@@ -156,9 +156,9 @@ public class PQRS implements Serializable {
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
    * @return <code>cliente</code> del PQRS.
-   * @see Cliente
+   * @see Usuario
    */
-  public Cliente getCliente() {
+  public Usuario getCliente() {
     return cliente;
   }
 
@@ -166,9 +166,9 @@ public class PQRS implements Serializable {
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
    * @param cliente del PQRS.
-   * @see Cliente
+   * @see Usuario
    */
-  public void setCliente(Cliente cliente) {
+  public void setCliente(Usuario cliente) {
     this.cliente = cliente;
   }
 
@@ -176,9 +176,9 @@ public class PQRS implements Serializable {
    * Retorna el valor del atributo <code>administrador</code> del objeto.
    *
    * @return <code>administrador</code> del PQRS.
-   * @see Administrador
+   * @see Usuario
    */
-  public Administrador getAdministrador() {
+  public Usuario getAdministrador() {
     return administrador;
   }
 
@@ -186,9 +186,9 @@ public class PQRS implements Serializable {
    * Asigna el valor del atributo <code>administrador</code> del objeto.
    *
    * @param administrador del PQRS.
-   * @see Administrador
+   * @see Usuario
    */
-  public void setAdministrador(Administrador administrador) {
+  public void setAdministrador(Usuario administrador) {
     this.administrador = administrador;
   }
 
@@ -254,11 +254,6 @@ public class PQRS implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "PQRS{"
       + "id = " + id + ", "

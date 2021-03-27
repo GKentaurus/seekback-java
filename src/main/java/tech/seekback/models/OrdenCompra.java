@@ -44,7 +44,7 @@ public class OrdenCompra implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEmpleado", nullable = false)
-  private Empleado empleado;
+  private Usuario empleado;
 
   @Embedded
   private Timestamps timestamps;
@@ -166,9 +166,9 @@ public class OrdenCompra implements Serializable {
    * Retorna el valor del atributo <code>factorImport</code> del objeto.
    *
    * @return <code>factorImport</code> de la orden de compra.
-   * @see Empleado
+   * @see Usuario
    */
-  public Empleado getEmpleado() {
+  public Usuario getEmpleado() {
     return empleado;
   }
 
@@ -176,9 +176,9 @@ public class OrdenCompra implements Serializable {
    * Asigna el valor del atributo <code>factorImport</code> del objeto.
    *
    * @param empleado de la orden de compra.
-   * @see Empleado
+   * @see Usuario
    */
-  public void setEmpleado(Empleado empleado) {
+  public void setEmpleado(Usuario empleado) {
     this.empleado = empleado;
   }
 
@@ -228,11 +228,6 @@ public class OrdenCompra implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "OrdenCompra("
       + "id = " + id + ", "
