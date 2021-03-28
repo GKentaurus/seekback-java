@@ -17,6 +17,4 @@ public interface BodegaProductoDAO extends DAO<BodegaProducto, Integer> {
   List<BodegaProducto> getByIdCategoria(int idCategoria) throws ConnectionExcep;
 
   List<BodegaProducto> getLikeName(String parteNombre) throws ConnectionExcep;
-
-  void delete(BodegaProducto bodegaProducto) throws ConnectionExcep;
 }

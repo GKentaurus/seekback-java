@@ -14,5 +14,5 @@ import javax.ejb.Local;
 public interface CorreoDAO extends DAO<Correo, Integer> {
   Correo getByCorreo(String email) throws ConnectionExcep;
   Correo getByIdPrincipal(Integer idUsuario) throws ConnectionExcep;
-  void delete(Correo correo) throws ConnectionExcep;
+  //
 }

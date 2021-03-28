@@ -1,10 +1,10 @@
 
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "Agenda.getAll", query = "SELECT obj FROM Agenda obj WHERE obj.timestamps.deleted = false")
 })
-public class Agenda implements Serializable {
+public class Agenda implements EntityTimestamp {
 
   @Id
   @Column(name = "idAgenda")
@@ -204,7 +204,7 @@ public class Agenda implements Serializable {
    * Asigna el valor del atributo <code>administrador</code> del objeto.
    *
    * @param administrador de la agenda.
-   * @see Administrador
+   * @see Usuario
    */
   public void setAdministrador(Usuario administrador) {
     this.administrador = administrador;

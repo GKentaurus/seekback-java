@@ -38,54 +38,47 @@ public class MailService {
     session = Session.getDefaultInstance(properties);
   }
 
-  public void sendEmail(String recipient, String subject, String message) throws MessagingException {
-    initSession();
+  private MimeMessage prepareMimeMessage(String recipients, String subject, String message) throws MessagingException {
     MimeMessage mimeMessage = new MimeMessage(session);
     mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
-    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
     mimeMessage.setSubject(subject);
     mimeMessage.setContent(message, mimeMessageContextParams);
+    return mimeMessage;
+  }
+
+  private MimeMessage prepareMimeMessage(String recipients, String subject, String message, String sender) throws MessagingException {
+    MimeMessage mimeMessage = prepareMimeMessage(recipients, subject, message);
+    mimeMessage.setFrom(new InternetAddress(sender));
+    return mimeMessage;
+  }
+
+  public void sendEmail(String recipients, String subject, String message, String sender) throws MessagingException {
+    initSession();
+    MimeMessage mimeMessage = prepareMimeMessage(recipients, subject, message, sender);
     coreMail(mimeMessage);
   }
 
-  public void sendEmail(String sender, String recipient, String subject, String message) throws MessagingException {
+  public void sendEmail(String recipients, String subject, String message) throws MessagingException {
     initSession();
-    MimeMessage mimeMessage = new MimeMessage(session);
-    mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
-    mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-    mimeMessage.setFrom(new InternetAddress(sender));
-    mimeMessage.setSubject(subject);
-    mimeMessage.setContent(message, mimeMessageContextParams);
+    MimeMessage mimeMessage = prepareMimeMessage(recipients, subject, message);
     coreMail(mimeMessage);
   }
 
   public void sendEmail(List<String> recipients, String subject, String message) throws MessagingException {
-    String strRecipients = "";
-    for (String recipient: recipients) {
-      strRecipients = strRecipients.concat(recipient).concat(", ");
-    }
-    initSession();
-    MimeMessage mimeMessage = new MimeMessage(session);
-    mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
-    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(strRecipients));
-    mimeMessage.setSubject(subject);
-    mimeMessage.setContent(message, mimeMessageContextParams);
-    coreMail(mimeMessage);
+    sendEmail(listToString(recipients), subject, message);
   }
 
-  public void sendEmail(String sender, List<String> recipients, String subject, String message) throws MessagingException {
-    initSession();
+  public void sendEmail(List<String> recipients, String subject, String message, String sender) throws MessagingException {
+    sendEmail(listToString(recipients), subject, message, sender);
+  }
+
+  private String listToString(List<String> recipients) {
     String strRecipients = "";
-    for (String recipient: recipients) {
+    for (String recipient : recipients) {
       strRecipients = strRecipients.concat(recipient).concat(", ");
     }
-    MimeMessage mimeMessage = new MimeMessage(session);
-    mimeMessage.setFrom(new InternetAddress((String) properties.get("mail.smtp.mail.sender")));
-    mimeMessage.addRecipients(Message.RecipientType.TO, InternetAddress.parse(strRecipients));
-    mimeMessage.setFrom(new InternetAddress(sender));
-    mimeMessage.setSubject(subject);
-    mimeMessage.setContent(message, mimeMessageContextParams);
-    coreMail(mimeMessage);
+    return strRecipients;
   }
 
   private void coreMail(MimeMessage mimeMessage) throws MessagingException {

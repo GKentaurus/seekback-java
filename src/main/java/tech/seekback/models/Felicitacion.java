@@ -1,9 +1,9 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Objects;
   @NamedQuery(name = "Felicitacion.getAll", query = "SELECT obj FROM Felicitacion obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "Felicitacion.getAllCount", query = "SELECT COUNT(obj) FROM Felicitacion obj WHERE obj.timestamps.deleted = false")
 })
-public class Felicitacion implements Serializable {
+public class Felicitacion implements EntityTimestamp {
 
   @Id
   @Column(name = "idFelicitacion")

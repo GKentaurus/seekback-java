@@ -1,10 +1,10 @@
 
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -19,7 +19,7 @@ import java.util.Objects;
   @NamedQuery(name = "BodegaProducto.getLikeName", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.modeloProducto like CONCAT('%', :parteNombre, '%') AND obj.timestamps.deleted = false"),
   @NamedQuery(name = "BodegaProducto.getByIdCategoria", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.categoria.id = :idCategoria AND obj.timestamps.deleted = false")
 })
-public class BodegaProducto implements Serializable {
+public class BodegaProducto implements EntityTimestamp {
 
   @Id
   @Column(name = "idRegistro", nullable = false)

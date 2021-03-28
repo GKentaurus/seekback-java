@@ -13,5 +13,4 @@ import javax.ejb.Local;
 @Local
 public interface AdministradorDAO extends DAO<Usuario, Integer> {
   Usuario getByIdUsuario(Integer id) throws ConnectionExcep;
-  void delete(Usuario administrador) throws ConnectionExcep;
 }

@@ -14,5 +14,5 @@ import java.util.List;
 @Local
 public interface CalificacionDAO extends DAO<Calificacion, Integer> {
   List<Calificacion> getByIdProducto(int idProducto) throws ConnectionExcep;
-  void delete(Calificacion calificacion) throws ConnectionExcep;
+  //
 }

@@ -1,9 +1,9 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -16,7 +16,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "TipoDoc.getAll", query = "SELECT obj FROM TipoDoc obj WHERE obj.timestamps.deleted = false")
 })
-public class TipoDoc implements Serializable {
+public class TipoDoc implements EntityTimestamp {
 
   @Id //esto es como la PK
   @Column(name = "idTipoDoc")

@@ -1,10 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.tools.Encrypter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -47,7 +47,7 @@ import java.util.Objects;
     query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted = false"
   ),
 })
-public class Usuario implements Serializable {
+public class Usuario implements EntityTimestamp {
 
   @Id
   @Column(name = "idUsuario")

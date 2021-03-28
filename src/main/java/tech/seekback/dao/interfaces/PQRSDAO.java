@@ -13,5 +13,4 @@ import javax.ejb.Local;
 @Local
 public interface PQRSDAO extends DAO<PQRS, Integer> {
   Integer getAllCount() throws ConnectionExcep;
-  void delete(PQRS pqrs) throws ConnectionExcep;
 }

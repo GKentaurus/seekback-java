@@ -21,4 +21,6 @@ public interface DAO<T, PK> {
   List<T> getAll() throws ConnectionExcep;
 
   void update(T obj) throws ConnectionExcep;
+
+  void delete (T obj) throws ConnectionExcep;
 }

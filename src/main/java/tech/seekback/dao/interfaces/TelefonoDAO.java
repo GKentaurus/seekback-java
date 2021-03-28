@@ -14,5 +14,4 @@ import javax.ejb.Local;
 public interface TelefonoDAO extends DAO<Telefono, Integer> {
   Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep;
   Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep;
-  void delete(Telefono telefono) throws ConnectionExcep;
 }
