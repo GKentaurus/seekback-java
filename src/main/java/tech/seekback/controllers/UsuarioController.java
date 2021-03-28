@@ -176,27 +176,16 @@ public class UsuarioController extends CustomController implements Serializable 
 
   public void delete() throws ConnectionExcep, IOException {
     try {
-      switch (usuario.getRol().getId()) {
-        case 1:
-          administradorService.delete(administradorService.getByIdUsuario(usuario.getId()));
-          break;
-        case 2:
-          empleadoService.delete(empleadoService.getByIdUsuario(usuario.getId()));
-          break;
-        case 3:
-          clienteService.delete(clienteService.getByIdUsuario(usuario.getId()));
-          break;
-        default:
-          System.out.println("Opción de ROL inválido");
-          break;
-      }
-
       usuarioService.delete(loginController.getUsuario());
       loginController.logout();
     } catch (ConnectionExcep ex) {
       System.out.println("Error al registrar usuario");
       ex.printStackTrace();
     }
+  }
+
+  public boolean confirmRole(String rolName) {
+    return usuario.getRol().getNombreRol().equals(rolName);
   }
 
 }
