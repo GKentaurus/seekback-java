@@ -1,10 +1,10 @@
 
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "Agenda.getAll", query = "SELECT obj FROM Agenda obj WHERE obj.timestamps.deleted = false")
 })
-public class Agenda implements Serializable {
+public class Agenda implements EntityTimestamp {
 
   @Id
   @Column(name = "idAgenda")
@@ -42,15 +42,15 @@ public class Agenda implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
-  private Cliente cliente;
+  private Usuario cliente;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEmpleado", nullable = true)
-  private Empleado empleado;
+  private Usuario empleado;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idAdministrador", nullable = true)
-  private Administrador administrador;
+  private Usuario administrador;
 
   @Embedded
   private Timestamps timestamps;
@@ -154,9 +154,9 @@ public class Agenda implements Serializable {
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
    * @return <code>cliente</code> de la agenda.
-   * @see Cliente
+   * @see Usuario
    */
-  public Cliente getCliente() {
+  public Usuario getCliente() {
     return cliente;
   }
 
@@ -164,9 +164,9 @@ public class Agenda implements Serializable {
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
    * @param cliente de la agenda.
-   * @see Cliente
+   * @see Usuario
    */
-  public void setCliente(Cliente cliente) {
+  public void setCliente(Usuario cliente) {
     this.cliente = cliente;
   }
 
@@ -174,9 +174,9 @@ public class Agenda implements Serializable {
    * Retorna el valor del atributo <code>empleado</code> del objeto.
    *
    * @return <code>empleado</code> de la agenda.
-   * @see Empleado
+   * @see Usuario
    */
-  public Empleado getEmpleado() {
+  public Usuario getEmpleado() {
     return empleado;
   }
 
@@ -184,9 +184,9 @@ public class Agenda implements Serializable {
    * Asigna el valor del atributo <code>empleado</code> del objeto.
    *
    * @param empleado de la agenda.
-   * @see Empleado
+   * @see Usuario
    */
-  public void setEmpleado(Empleado empleado) {
+  public void setEmpleado(Usuario empleado) {
     this.empleado = empleado;
   }
 
@@ -194,9 +194,9 @@ public class Agenda implements Serializable {
    * Retorna el valor del atributo <code>administrador</code> del objeto.
    *
    * @return <code>administrador</code> de la agenda.
-   * @see Administrador
+   * @see Usuario
    */
-  public Administrador getAdministrador() {
+  public Usuario getAdministrador() {
     return administrador;
   }
 
@@ -204,9 +204,9 @@ public class Agenda implements Serializable {
    * Asigna el valor del atributo <code>administrador</code> del objeto.
    *
    * @param administrador de la agenda.
-   * @see Administrador
+   * @see Usuario
    */
-  public void setAdministrador(Administrador administrador) {
+  public void setAdministrador(Usuario administrador) {
     this.administrador = administrador;
   }
 
@@ -256,11 +256,6 @@ public class Agenda implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Agenda("
       + "id = " + id + ", "

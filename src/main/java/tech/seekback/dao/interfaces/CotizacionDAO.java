@@ -13,8 +13,5 @@ import java.util.List;
  */
 @Local
 public interface CotizacionDAO extends DAO<Cotizacion, Integer> {
-
-  void delete(Cotizacion cotizacion) throws ConnectionExcep;
-
   List<Cotizacion> getByIdEmpleado(Integer idEmpleado) throws ConnectionExcep;
 }

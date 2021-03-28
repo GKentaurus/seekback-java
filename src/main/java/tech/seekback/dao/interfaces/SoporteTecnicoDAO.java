@@ -13,5 +13,4 @@ import javax.ejb.Local;
 @Local
 public interface SoporteTecnicoDAO extends DAO<SoporteTecnico, Integer> {
   Integer getAllCount() throws ConnectionExcep;
-  void delete(SoporteTecnico soporteTecnico) throws ConnectionExcep;
 }

@@ -1,9 +1,9 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,7 +17,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "ProformaVenta.getAll", query = "SELECT obj FROM ProformaVenta obj WHERE obj.timestamps.deleted = false")
 })
-public class ProformaVenta implements Serializable {
+public class ProformaVenta implements EntityTimestamp {
 
   @Id
   @Column(name = "idProforma")
@@ -160,11 +160,6 @@ public class ProformaVenta implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "ProformaVenta{"
       + "idProforma = " + id + ", "

@@ -1,10 +1,10 @@
 
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ import java.util.Objects;
   @NamedQuery(name = "Cotizacion.getAll", query = "SELECT obj FROM Cotizacion obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "Cotizacion.getByIdEmpleado", query = "SELECT obj FROM Cotizacion obj WHERE obj.empleado.id = :idEmpleado and obj.timestamps.deleted = false")
 })
-public class Cotizacion implements Serializable {
+public class Cotizacion implements EntityTimestamp {
 
   @Id
   @Column(name = "idCotizacion")
@@ -47,11 +47,11 @@ public class Cotizacion implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEmpleado", nullable = false)
-  private Empleado empleado;
+  private Usuario empleado;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
-  private Cliente cliente;
+  private Usuario cliente;
 
   @Embedded
   private Timestamps timestamps;
@@ -173,9 +173,9 @@ public class Cotizacion implements Serializable {
    * Retorna el valor del atributo <code>empleado</code> del objeto.
    *
    * @return <code>empleado</code> de la cotización.
-   * @see Empleado
+   * @see Usuario
    */
-  public Empleado getEmpleado() {
+  public Usuario getEmpleado() {
     return empleado;
   }
 
@@ -183,9 +183,9 @@ public class Cotizacion implements Serializable {
    * Asigna el valor del atributo <code>empleado</code> del objeto.
    *
    * @param empleado de la cotización.
-   * @see Empleado
+   * @see Usuario
    */
-  public void setEmpleado(Empleado empleado) {
+  public void setEmpleado(Usuario empleado) {
     this.empleado = empleado;
   }
 
@@ -193,9 +193,9 @@ public class Cotizacion implements Serializable {
    * Retorna el valor del atributo <code>cliente</code> del objeto.
    *
    * @return <code>cliente</code> de la cotización.
-   * @see Cliente
+   * @see Usuario
    */
-  public Cliente getCliente() {
+  public Usuario getCliente() {
     return cliente;
   }
 
@@ -203,9 +203,9 @@ public class Cotizacion implements Serializable {
    * Asigna el valor del atributo <code>cliente</code> del objeto.
    *
    * @param cliente de la cotización.
-   * @see Cliente
+   * @see Usuario
    */
-  public void setCliente(Cliente cliente) {
+  public void setCliente(Usuario cliente) {
     this.cliente = cliente;
   }
 
@@ -255,12 +255,6 @@ public class Cotizacion implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Cotizacion("
       + "id = " + id + ", "

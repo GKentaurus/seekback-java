@@ -2,16 +2,19 @@
 package tech.seekback.dao;
 
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.interfaces.EntityTimestamp;
+import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author gkentaurus
  */
-public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
+public abstract class GenericDAO<T extends EntityTimestamp, PK> implements DAO<T, PK> {
 
   public static final String PU = "Seekback_PU";
 
@@ -87,6 +90,25 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
         + "\n#\t Actualizando el objeto " + this.classType.getSimpleName()
         + "\n######################################################################\n"
     );
+    create(obj);
+  }
+
+  /**
+   * Elimina un objeto de tipo Usuario
+   *
+   * @param obj
+   * @throws ConnectionExcep
+   */
+  public void delete(T obj) throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Eliminando el objeto No. " + this.classType.getSimpleName()
+        + "\n######################################################################\n"
+    );
+    Timestamps tt = obj.getTimestamps();
+    tt.setDeleted(true);
+    tt.setDeleted_at(new Date());
+    obj.setTimestamps(tt);
     create(obj);
   }
 }

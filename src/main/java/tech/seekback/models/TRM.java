@@ -1,9 +1,9 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,7 +17,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "TRM.getAll", query = "SELECT obj FROM TRM obj WHERE obj.timestamps.deleted = false")
 })
-public class TRM implements Serializable {
+public class TRM implements EntityTimestamp {
 
   @Id
   @Column(name = "idTrm")
@@ -159,11 +159,6 @@ public class TRM implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Trm{" + "idTrm=" + id
       + ", idDivisa=" + divisa

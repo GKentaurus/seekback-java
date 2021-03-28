@@ -14,5 +14,5 @@ import java.util.List;
 @Local
 public interface CiudadDAO extends DAO<Ciudad, Integer> {
   List<Ciudad> getByIdDepartamento(Integer idDepartamento) throws ConnectionExcep;
-  void delete(Ciudad ciudad) throws ConnectionExcep;
+  //
 }

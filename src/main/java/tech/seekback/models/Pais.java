@@ -1,9 +1,9 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Objects;
   @NamedQuery(name = "Pais.getAll", query = "SELECT obj FROM Pais obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "Pais.getOne", query = "SELECT obj FROM Pais obj WHERE obj.id = :idPais AND obj.timestamps.deleted = false")
 })
-public class Pais implements Serializable {
+public class Pais implements EntityTimestamp {
 
   @Id //esto es como la PK
   @Column(name = "idPais")
@@ -113,12 +113,6 @@ public class Pais implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Pais("
       + "id = " + id + ", "

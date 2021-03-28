@@ -1,10 +1,10 @@
 
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "DocumentoDetallado.getAll", query = "SELECT obj FROM DocumentoDetallado obj WHERE obj.timestamps.deleted = false")
 })
-public class DocumentoDetallado implements Serializable {
+public class DocumentoDetallado implements EntityTimestamp {
 
   @Id
   @Column(name = "idDetalle")
@@ -200,11 +200,6 @@ public class DocumentoDetallado implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "DocumentoDetallado("
       + "id = " + id + ", "

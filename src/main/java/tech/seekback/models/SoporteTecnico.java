@@ -1,9 +1,9 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ import java.util.Objects;
   @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "SoporteTecnico.getAllCount", query = "SELECT COUNT(obj) FROM SoporteTecnico obj WHERE obj.timestamps.deleted = false")
 })
-public class SoporteTecnico implements Serializable {
+public class SoporteTecnico implements EntityTimestamp {
 
   @Id
   @Column(name = "idSoporteTecnico")
@@ -31,11 +31,11 @@ public class SoporteTecnico implements Serializable {
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idCliente", nullable = false)
-  private Cliente cliente;
+  private Usuario cliente;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEmpleado", nullable = true)
-  private Empleado empleado;
+  private Usuario empleado;
 
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
@@ -134,9 +134,9 @@ public class SoporteTecnico implements Serializable {
    * Retorna el valor del atributo <code>timestamps</code> del objeto.
    *
    * @return <code>timestamps</code> del soporte técnico.
-   * @see Cliente
+   * @see Usuario
    */
-  public Cliente getCliente() {
+  public Usuario getCliente() {
     return cliente;
   }
 
@@ -144,9 +144,9 @@ public class SoporteTecnico implements Serializable {
    * Asigna el valor del atributo <code>timestamps</code> del objeto.
    *
    * @param cliente del soporte técnico.
-   * @see Cliente
+   * @see Usuario
    */
-  public void setCliente(Cliente cliente) {
+  public void setCliente(Usuario cliente) {
     this.cliente = cliente;
   }
 
@@ -154,9 +154,9 @@ public class SoporteTecnico implements Serializable {
    * Retorna el valor del atributo <code>empleado</code> del objeto.
    *
    * @return <code>empleado</code> del soporte técnico.
-   * @see Empleado
+   * @see Usuario
    */
-  public Empleado getEmpleado() {
+  public Usuario getEmpleado() {
     return empleado;
   }
 
@@ -164,9 +164,9 @@ public class SoporteTecnico implements Serializable {
    * Asigna el valor del atributo <code>empleado</code> del objeto.
    *
    * @param empleado del soporte técnico.
-   * @see Empleado
+   * @see Usuario
    */
-  public void setEmpleado(Empleado empleado) {
+  public void setEmpleado(Usuario empleado) {
     this.empleado = empleado;
   }
 
@@ -232,11 +232,6 @@ public class SoporteTecnico implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "SoporteTecnico{"
       + "id = " + id + ", "

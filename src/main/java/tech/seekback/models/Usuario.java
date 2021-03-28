@@ -1,10 +1,10 @@
 package tech.seekback.models;
 
+import tech.seekback.models.interfaces.EntityTimestamp;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.tools.Encrypter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -15,9 +15,39 @@ import java.util.Objects;
 @Entity
 @Table(name = "usuario")
 @NamedQueries(value = {
-  @NamedQuery(name = "Usuario.getAll", query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted = false")
+  @NamedQuery(
+    name = "Administrador.getAll",
+    query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted = false"
+  ),
+  @NamedQuery(
+    name = "Administrador.getByIdAdministrador",
+    query = "SELECT obj FROM Usuario obj WHERE obj.id = :idAdministrador AND obj.timestamps.deleted = false"
+  ),
+
+  @NamedQuery(
+    name = "Cliente.getAll",
+    query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted = false"
+  ),
+  @NamedQuery(
+    name = "Cliente.getByIdCliente",
+    query = "SELECT obj FROM Usuario obj WHERE obj.id = :idCliente AND obj.timestamps.deleted = false"
+  ),
+
+  @NamedQuery(
+    name = "Empleado.getAll",
+    query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted = false"
+  ),
+  @NamedQuery(
+    name = "Empleado.getByIdEmpleado",
+    query = "SELECT obj FROM Usuario obj WHERE obj.id = :idEmpleado AND obj.timestamps.deleted = false"
+  ),
+
+  @NamedQuery(
+    name = "Usuario.getAll",
+    query = "SELECT obj FROM Usuario obj WHERE obj.timestamps.deleted = false"
+  ),
 })
-public class Usuario implements Serializable {
+public class Usuario implements EntityTimestamp {
 
   @Id
   @Column(name = "idUsuario")
@@ -280,12 +310,6 @@ public class Usuario implements Serializable {
   //</editor-fold>
 
   @Override
-  /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
-   *
-   * @return <code>String compilado</code> del objeto.
-   */
   public String toString() {
     return "Usuario{"
       + "idUsuario = " + id + ", "

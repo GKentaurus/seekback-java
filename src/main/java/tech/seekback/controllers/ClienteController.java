@@ -1,7 +1,7 @@
 
 package tech.seekback.controllers;
 
-import tech.seekback.models.Cliente;
+import tech.seekback.models.Usuario;
 import tech.seekback.services.ClienteService;
 
 import javax.ejb.EJB;
@@ -20,9 +20,9 @@ public class ClienteController extends CustomController implements Serializable 
 
   @EJB
   private ClienteService clienteService;
-  private List<Cliente> clientes;
+  private List<Usuario> clientes;
 
-  public List<Cliente> getClientes() {
+  public List<Usuario> getClientes() {
     try {
       if (Objects.isNull(clientes)) {
         clientes = clienteService.getAll();

@@ -3,7 +3,7 @@ package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.EmpleadoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Empleado;
+import tech.seekback.models.Usuario;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,7 +24,7 @@ public class EmpleadoService {
    * @return Un objeto de tipo Empleado
    * @throws ConnectionExcep
    */
-  public Empleado create(Empleado empleado) throws ConnectionExcep {
+  public Usuario create(Usuario empleado) throws ConnectionExcep {
     return empleadoDAO.create(empleado);
   }
 
@@ -33,7 +33,7 @@ public class EmpleadoService {
    * @return Un objeto de tipo Empleado consultado por id
    * @throws ConnectionExcep
    */
-  public Empleado getOne(Integer id) throws ConnectionExcep {
+  public Usuario getOne(Integer id) throws ConnectionExcep {
     return empleadoDAO.getOne(id);
   }
 
@@ -41,7 +41,7 @@ public class EmpleadoService {
    * @return Una colección de objetos de tipo Empleado (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
-  public List<Empleado> getAll() throws ConnectionExcep {
+  public List<Usuario> getAll() throws ConnectionExcep {
     return empleadoDAO.getAll();
   }
 
@@ -50,7 +50,7 @@ public class EmpleadoService {
    * @return Un objeto de tipo Cliente
    * @throws ConnectionExcep
    */
-  public Empleado getByIdUsuario(Integer id) throws ConnectionExcep {
+  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
     return empleadoDAO.getByIdUsuario(id);
   }
 
@@ -60,7 +60,7 @@ public class EmpleadoService {
    * @param empleado
    * @throws ConnectionExcep
    */
-  public void update(Empleado empleado) throws ConnectionExcep {
+  public void update(Usuario empleado) throws ConnectionExcep {
     empleadoDAO.update(empleado);
   }
 
@@ -70,7 +70,7 @@ public class EmpleadoService {
    * @param empleado
    * @throws ConnectionExcep
    */
-  public void delete(Empleado empleado) throws ConnectionExcep {
+  public void delete(Usuario empleado) throws ConnectionExcep {
     empleadoDAO.delete(empleado);
   }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
-             xmlns="http://java.sun.com/xml/ns/persistence"
+<persistence
+        version="2.2"
+        xmlns="http://java.sun.com/xml/ns/persistence"
 >
     <persistence-unit name="Seekback_PU" transaction-type="JTA">
         <jta-data-source>java:app/localhost</jta-data-source>
