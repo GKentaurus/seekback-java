@@ -5,7 +5,7 @@ tech.seekback.dao
 tech.seekback.dao.interfaces
 tech.seekback.dao.jpa
 tech.seekback.exceptions
-tech.seekback.exceptions.enums
+tech.seekback.enums
 tech.seekback.factories
 tech.seekback.java.resources
 tech.seekback.models

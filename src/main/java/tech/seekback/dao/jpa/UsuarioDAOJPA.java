@@ -12,7 +12,6 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class UsuarioDAOJPA extends GenericDAO<Usuario, Integer> implements UsuarioDAO {
-
   public UsuarioDAOJPA() {
     super(Usuario.class);
   }

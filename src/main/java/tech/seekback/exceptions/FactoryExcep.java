@@ -1,7 +1,7 @@
 
 package tech.seekback.exceptions;
 
-import tech.seekback.exceptions.enums.FactoryExcepEnum;
+import tech.seekback.enums.FactoryExcepEnum;
 
 /**
  * @author gkentaurus

@@ -1,7 +1,7 @@
 
 package tech.seekback.exceptions;
 
-import tech.seekback.exceptions.enums.ConnectionExcepEnum;
+import tech.seekback.enums.ConnectionExcepEnum;
 
 /**
  * @author gkentaurus

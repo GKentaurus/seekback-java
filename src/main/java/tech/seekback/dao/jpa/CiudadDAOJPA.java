@@ -3,8 +3,8 @@ package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.CiudadDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.exceptions.enums.ConnectionExcepEnum;
 import tech.seekback.models.Ciudad;
 
 import javax.ejb.Stateless;

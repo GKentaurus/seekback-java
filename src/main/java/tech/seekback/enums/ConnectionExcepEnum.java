@@ -1,5 +1,5 @@
 
-package tech.seekback.exceptions.enums;
+package tech.seekback.enums;
 
 /**
  * @author gkentaurus
