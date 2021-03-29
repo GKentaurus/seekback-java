@@ -103,6 +103,10 @@ public class Timestamps implements Serializable {
   public void setDeleted_at(Date deleted_at) {
     this.deleted_at = deleted_at;
   }
+
+  public void resetDeleted_at() {
+    this.deleted_at = null;
+  }
   //</editor-fold>
 
   /**

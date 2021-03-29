@@ -36,12 +36,13 @@ public class LoginController extends CustomController implements Serializable {
   @EJB
   private MailService mailService;
 
+  // TODO: Usar este boolean en la vista de perfil de usuario, para mostrar un mensaje que diga "Bienvenido de vuelta"
+  private boolean cuentaReactivada = false;
   private Usuario usuario;
   private Correo correo;
 
   private String password;
   private String email;
-  private String ruta;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public String getPassword() {
@@ -75,6 +76,13 @@ public class LoginController extends CustomController implements Serializable {
   public void setCorreo(Correo correo) {
     this.correo = correo;
   }
+
+  public boolean getCuentaReactivada() {
+    return cuentaReactivada;
+  }
+  public void setCuentaReactivada(boolean cuentaReactivada) {
+    this.cuentaReactivada = cuentaReactivada;
+  }
 //</editor-fold>
 
   private boolean validateEmail() throws ConnectionExcep {
@@ -90,6 +98,16 @@ public class LoginController extends CustomController implements Serializable {
     return Objects.nonNull(usuario);
   }
 
+  private void reactiveUser() throws ConnectionExcep {
+    if (this.usuario.getTimestamps().getDeleted()) {
+      System.out.println("Restaurando usuario eliminado");
+      this.usuario.getTimestamps().setDeleted(false);
+      this.usuario.getTimestamps().resetDeleted_at();
+      this.usuarioService.update(this.usuario);
+      this.cuentaReactivada = true;
+    }
+  }
+
   public void login() throws ConnectionExcep, IOException {
     FacesContext fc = FacesContext.getCurrentInstance();
     // TODO: Enviar los mensajes de error o confirmación a través de addMessage()
@@ -97,6 +115,7 @@ public class LoginController extends CustomController implements Serializable {
     if (validateEmail()) {
       if (validateUser()) {
         if (usuario.verificarContrasena(password)) {
+          reactiveUser();
           redirectTo(usuario.getRol().getId());
         } else {
           this.usuario = null;
@@ -185,18 +204,19 @@ public class LoginController extends CustomController implements Serializable {
   public void redirectTo(Integer rol) throws IOException {
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 
+    String ruta;
     switch (rol) {
       case 1: // Administrador
-        this.ruta = "/frames/admin.xhtml";
+        ruta = "/frames/admin.xhtml";
         break;
       case 2: // Empleado
-        this.ruta = "/frames/empleado.xhtml";
+        ruta = "/frames/empleado.xhtml";
         break;
       case 3: // Cliente
-        this.ruta = "/frames/cliente.xhtml";
+        ruta = "/frames/cliente.xhtml";
         break;
       default:
-        this.ruta = "/index.xhtml";
+        ruta = "/index.xhtml";
         break;
     }
     ec.redirect(ec.getRequestContextPath() + ruta);
