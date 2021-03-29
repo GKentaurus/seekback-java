@@ -27,14 +27,29 @@ public class AdministradorDAOJPA extends GenericDAO<Usuario, Integer> implements
    * @throws ConnectionExcep
    */
   @Override
-  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
-
+  public Usuario getOne(Integer id) throws ConnectionExcep {
     try {
-      TypedQuery<Usuario> tq = em.createNamedQuery("Administrador.getByIdAdministrador", classType);
+      TypedQuery<Usuario> tq = em.createNamedQuery("Administrador.getOne", classType);
       tq.setParameter("idAdministrador", id);
       return tq.getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
+  }
+
+  /**
+   *
+   * @return
+   * @throws ConnectionExcep
+   */
+  @Override
+  public List<Usuario> getAll() throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Consultando todos los objetos de Administrador"
+        + "\n######################################################################\n"
+    );
+    TypedQuery<Usuario> tq = em.createNamedQuery("Administrador.getAll", classType);
+    return tq.getResultList();
   }
 }

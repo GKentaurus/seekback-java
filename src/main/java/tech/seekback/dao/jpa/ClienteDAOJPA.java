@@ -27,14 +27,30 @@ public class ClienteDAOJPA extends GenericDAO<Usuario, Integer> implements Clien
    * @throws ConnectionExcep
    */
   @Override
-  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
+  public Usuario getOne(Integer id) throws ConnectionExcep {
 
     try {
-      TypedQuery<Usuario> tq = em.createNamedQuery("Cliente.getByIdCliente", classType);
+      TypedQuery<Usuario> tq = em.createNamedQuery("Cliente.getOne", classType);
       tq.setParameter("idCliente", id);
       return tq.getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
+  }
+
+  /**
+   *
+   * @return
+   * @throws ConnectionExcep
+   */
+  @Override
+  public List<Usuario> getAll() throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Consultando todos los objetos de Cliente"
+        + "\n######################################################################\n"
+    );
+    TypedQuery<Usuario> tq = em.createNamedQuery("Cliente.getAll", classType);
+    return tq.getResultList();
   }
 }

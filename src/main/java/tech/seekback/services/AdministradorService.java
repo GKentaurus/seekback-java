@@ -46,15 +46,6 @@ public class AdministradorService {
   }
 
   /**
-   * @param id del Usuario
-   * @return Un objeto de tipo Administrador
-   * @throws ConnectionExcep
-   */
-  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
-    return administradorDAO.getByIdUsuario(id);
-  }
-
-  /**
    * Actualiza un objeto de tipo Administrador
    *
    * @param administrador

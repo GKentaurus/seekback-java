@@ -46,15 +46,6 @@ public class EmpleadoService {
   }
 
   /**
-   * @param id del Usuario
-   * @return Un objeto de tipo Cliente
-   * @throws ConnectionExcep
-   */
-  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
-    return empleadoDAO.getByIdUsuario(id);
-  }
-
-  /**
    * Actualiza un objeto de tipo Empleado
    *
    * @param empleado

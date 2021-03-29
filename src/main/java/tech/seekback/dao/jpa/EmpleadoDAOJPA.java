@@ -27,14 +27,30 @@ public class EmpleadoDAOJPA extends GenericDAO<Usuario, Integer> implements Empl
    * @throws ConnectionExcep
    */
   @Override
-  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
+  public Usuario getOne(Integer id) throws ConnectionExcep {
 
     try {
-      TypedQuery<Usuario> tq = em.createNamedQuery("Empleado.getByIdEmpleado", classType);
+      TypedQuery<Usuario> tq = em.createNamedQuery("Empleado.getOne", classType);
       tq.setParameter("idEmpleado", id);
       return tq.getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
+  }
+
+  /**
+   *
+   * @return
+   * @throws ConnectionExcep
+   */
+  @Override
+  public List<Usuario> getAll() throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Consultando todos los objetos de Empleado"
+        + "\n######################################################################\n"
+    );
+    TypedQuery<Usuario> tq = em.createNamedQuery("Empleado.getAll", classType);
+    return tq.getResultList();
   }
 }

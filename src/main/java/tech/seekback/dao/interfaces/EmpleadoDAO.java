@@ -6,11 +6,13 @@ import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
 
 import javax.ejb.Local;
+import java.util.List;
 
 /**
  * @author gkentaurus
  */
 @Local
 public interface EmpleadoDAO extends DAO<Usuario, Integer> {
-  Usuario getByIdUsuario(Integer id) throws ConnectionExcep;
+  Usuario getOne(Integer id) throws ConnectionExcep;
+  List<Usuario> getAll() throws ConnectionExcep;
 }

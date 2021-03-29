@@ -46,15 +46,6 @@ public class ClienteService {
   }
 
   /**
-   * @param id del Usuario
-   * @return Un objeto de tipo Cliente
-   * @throws ConnectionExcep
-   */
-  public Usuario getByIdUsuario(Integer id) throws ConnectionExcep {
-    return clienteDAO.getByIdUsuario(id);
-  }
-
-  /**
    * Actualiza un objeto de tipo Cliente
    *
    * @param cliente
