@@ -2,8 +2,8 @@ package tech.seekback.enums;
 
 public enum JasperReportsEnum {
   // Diseño del reporte
-  VERTICAL(1),
-  HORIZONTAL(2),
+  VERTICAL_ORIENTATION(1),
+  HORIZONTAL_ORIENTATION(2),
 
   // Tipo de título o banda
   TITLE(1),

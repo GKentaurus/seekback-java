@@ -13,13 +13,13 @@ public class JasperStyleBuilder {
     return new JasperStyleBuilder();
   }
 
-  public JasperStyleBuilder defaultSettings(String name, boolean isDefault) {
+  public JasperStyleBuilder defaultSettings(String name, Float fontSize, boolean isDefault) {
     this.style.setName(name);
     this.style.setDefault(isDefault);
-    this.style.setFontName("Helvetica");
+    this.style.setFontName("DejaVu Sans");
     this.style.setPdfFontName("Helvetica");
     this.style.setPdfEncoding("UTF-8");
-    this.style.setFontSize(22f);
+    this.style.setFontSize(fontSize);
     return this;
   }
 

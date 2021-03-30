@@ -3,6 +3,7 @@ package tech.seekback.builders.JasperReports;
 import net.sf.jasperreports.engine.design.JRDesignBand;
 import net.sf.jasperreports.engine.design.JRDesignStaticText;
 import net.sf.jasperreports.engine.design.JRDesignTextField;
+import net.sf.jasperreports.engine.type.SplitTypeEnum;
 import tech.seekback.enums.JasperReportsEnum;
 
 public class JasperBandBuilder {
@@ -16,8 +17,9 @@ public class JasperBandBuilder {
     return new JasperBandBuilder();
   }
 
-  public JasperBandBuilder defaultSettings(String text, JasperReportsEnum option, Integer columnWidth) {
-    switch (option.getCode()) {
+  public JasperBandBuilder defaultSettings(JasperReportsEnum size) {
+    this.band.setSplitType(SplitTypeEnum.STRETCH);
+    switch (size.getCode()) {
       case 1:
         this.band.setHeight(JasperReportsEnum.TITLE_HEIGHT.getCode());
         break;
@@ -28,8 +30,14 @@ public class JasperBandBuilder {
     return this;
   }
 
-  public JasperBandBuilder setSectionHeight(Integer height) {
-    this.band.setHeight(height);
+
+  public JasperBandBuilder defaultSettings(Integer size) {
+    this.band.setHeight(size);
+    return this;
+  }
+
+  public JasperBandBuilder setSplitType(SplitTypeEnum type) {
+    this.band.setSplitType(type);
     return this;
   }
 

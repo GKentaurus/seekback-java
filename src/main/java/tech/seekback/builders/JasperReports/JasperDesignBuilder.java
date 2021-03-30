@@ -1,11 +1,9 @@
 package tech.seekback.builders.JasperReports;
 
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.design.JRDesignBand;
-import net.sf.jasperreports.engine.design.JRDesignField;
-import net.sf.jasperreports.engine.design.JRDesignSection;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import tech.seekback.enums.JasperReportsEnum;
+import net.sf.jasperreports.engine.design.*;
+import tech.seekback.enums.JasperReports.DocumentSizeEnum;
+import tech.seekback.enums.JasperReports.OrientationEnum;
 
 public class JasperDesignBuilder{
 
@@ -19,18 +17,18 @@ public class JasperDesignBuilder{
     return new JasperDesignBuilder();
   }
 
-  public JasperDesignBuilder defaultSettings(String name, JasperReportsEnum option) {
+  public JasperDesignBuilder defaultSettings(String name, OrientationEnum orientation) {
     int pageWidth, pageHeight;
 
-    switch (option.getCode()) {
+    switch (orientation.getCode()) {
       case 1:
       default:
-        pageWidth = JasperReportsEnum.VERTICAL_PAGE_WIDTH.getCode();
-        pageHeight = JasperReportsEnum.VERTICAL_PAGE_HEIGHT.getCode();
+        pageWidth = DocumentSizeEnum.VERTICAL_PAGE_WIDTH.getCode();
+        pageHeight = DocumentSizeEnum.VERTICAL_PAGE_HEIGHT.getCode();
         break;
       case 2:
-        pageWidth = JasperReportsEnum.HORIZONTAL_PAGE_WIDTH.getCode();
-        pageHeight = JasperReportsEnum.HORIZONTAL_PAGE_HEIGHT.getCode();
+        pageWidth = DocumentSizeEnum.HORIZONTAL_PAGE_WIDTH.getCode();
+        pageHeight = DocumentSizeEnum.HORIZONTAL_PAGE_HEIGHT.getCode();
         break;
     }
 
@@ -47,6 +45,10 @@ public class JasperDesignBuilder{
     this.design.setRightMargin(horizontalMargin);
     this.design.setColumnWidth(columnWidth);
     return this;
+  }
+
+  public Integer getColumnWidth() {
+    return this.design.getColumnWidth();
   }
 
   public JasperDesignBuilder setName(String name) {
@@ -128,6 +130,16 @@ public class JasperDesignBuilder{
 
   public JasperDesignBuilder addDetailBand(JRDesignBand detailBand) {
     ((JRDesignSection) this.design.getDetailSection()).addBand(detailBand);
+    return this;
+  }
+
+  public JasperDesignBuilder addColumnBand(JRDesignBand band) {
+    this.design.setColumnHeader(band);
+    return this;
+  }
+
+  public JasperDesignBuilder addStyle(JRDesignStyle style) throws JRException {
+    this.design.addStyle(style);
     return this;
   }
 
