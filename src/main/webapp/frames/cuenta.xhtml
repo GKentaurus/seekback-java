@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <f:event type="preRenderView" listener="#{loginController.validate(1)}"/>
+
+  <h:head>
+    <title>QPCOM | Seekback</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="styles" name="style.css" />
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <h:outputScript library="scripts" name="module.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  </h:head>
+
+  <h:body id="ody">
+    <ui:composition template="/WEB-INF/templates/handf.xhtml">
+      <ui:define name="content">
+
+        <h:panelGroup rendered="#{usuarioController.confirmRole('Administrador')}">
+          <ul id="slide-out" class="sidenav grey lighten-4">
+            <li>
+              <div class="user-view" style="margin-bottom:-30px;">
+                <div class="background">
+                  <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
+                </div>
+                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo"/></a>
+                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
+              </div>
+            </li>
+            <li><a class="waves-effect sidenav-close" href="admin/reporta.xhtml" target="iframe_a"><i class="fas fa-chart-line"></i>Dashboard</a></li>
+            <li><a class="waves-effect sidenav-close" href="perfil.xhtml" target="iframe_a"><i class="material-icons">person</i>Perfil</a></li>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="far fa-calendar-alt"></i> Agendamiento</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="all/colsulservi.xhtml" target="iframe_a">Consultar servicios</a></li>
+                      <li><a class="waves-effect sidenav-close" href="admin/soliservi.xhtml" target="iframe_a">Solicitar servicio</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="far fa-handshake"></i> Fidelización</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="admin/colsulfidel.xhtml" target="iframe_a">Consultar PQR</a></li>
+                      <li><a class="waves-effect sidenav-close" href="admin/colsulfeli.xhtml" target="iframe_a">Consultar Felicitaciones</a></li>
+                      <li><a class="waves-effect sidenav-close" href="admin/colsulsopo.xhtml" target="iframe_a">Consultar Soportes técnicos</a></li>
+                      <li><a class="waves-effect sidenav-close" href="admin/colsulcalif.xhtml" target="iframe_a">Consultar Calificaciones</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="fas fa-warehouse"></i> Inventarios</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="admin/regnref.xhtml" target="iframe_a">Registrar nuevas referencias</a></li>
+                      <li><a class="waves-effect sidenav-close" href="admin/modrefn.xhtml" target="iframe_a">Modificar referencias nuevas</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <h:form>
+              <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.logout()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
+            </h:form>
+          </ul>
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{usuarioController.confirmRole('Empleado')}">
+          <ul id="slide-out" class="sidenav grey lighten-4">
+            <li>
+              <div class="user-view" style="margin-bottom:-30px;">
+                <div class="background">
+                  <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
+                </div>
+                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo"/></a>
+                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
+              </div>
+            </li>
+            <li><a class="waves-effect sidenav-close" href="perfil.xhtml" target="iframe_a"><i class="material-icons">person</i>Perfil</a></li>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="far fa-calendar-alt"></i> Agendamiento</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="all/colsulservi.xhtml" target="iframe_a">Consultar servicios</a></li>
+                      <li><a class="waves-effect sidenav-close" href="empleado/soliservi.xhtml" target="iframe_a">Solicitar servicio</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="far fa-handshake"></i> Fidelización</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="empleado/solsoptec.xhtml" target="iframe_a">Soporte técnico</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="fas fa-warehouse"></i> Inventarios</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="empleado/consulinv.xhtml" target="iframe_a">Consultar inventario</a></li>
+                      <li><a class="waves-effect sidenav-close" href="empleado/regprod.xhtml" target="iframe_a">Registrar productos</a></li>
+                      <li><a class="waves-effect sidenav-close" href="empleado/ordsug.xhtml" target="iframe_a">Generar sugerido de orden</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="fas fa-store"></i> Ventas</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="empleado/gencotiza.xhtml" target="iframe_a">Solicitar cotización</a></li>
+                      <li><a class="waves-effect sidenav-close" href="empleado/consulcoti.xhtml" target="iframe_a">Consultar cotización</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <h:form>
+              <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.logout()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
+            </h:form>
+          </ul>
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{usuarioController.confirmRole('Cliente')}">
+          <ul id="slide-out" class="sidenav grey lighten-4">
+            <li>
+              <div class="user-view" style="margin-bottom:-30px;">
+                <div class="background">
+                  <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
+                </div>
+                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo"/></a>
+                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
+              </div>
+            </li>
+            <li><a class="waves-effect sidenav-close" href="perfil.xhtml" target="iframe_a"><i class="material-icons">person</i>Perfil</a></li>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="far fa-calendar-alt"></i> Agendamiento</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="all/colsulservi.xhtml" target="iframe_a">Consultar servicios</a></li>
+                      <li><a class="waves-effect sidenav-close" href="cliente/soliservi.xhtml" target="iframe_a">Solicitar servicio</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="far fa-handshake"></i> Fidelización</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="cliente/colsulfidel.xhtml" target="iframe_a">Registrar PQRS</a></li>
+                      <li><a class="waves-effect sidenav-close" href="cliente/colsulfeli.xhtml" target="iframe_a">Enviar felicitaciones</a></li>
+                      <li><a class="waves-effect sidenav-close" href="cliente/colsulsopo.xhtml" target="iframe_a">Calificar producto</a></li>
+                      <li><a class="waves-effect sidenav-close" href="cliente/colsulcalif.xhtml" target="iframe_a">Soporte técnico</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect"><i class="fas fa-store"></i> Ventas</a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a class="waves-effect sidenav-close" href="cliente/regnref.xhtml" target="iframe_a">Solicitar cotización</a></li>
+                      <li><a class="waves-effect sidenav-close" href="cliente/modrefn.xhtml" target="iframe_a">Consultar cotización</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <h:form>
+              <li><h:commandLink class="btn waves-effect white overable black-text browser-default" actionListener="#{loginController.logout()}" ><i class="material-icons">exit_to_app</i>Salir</h:commandLink></li>
+            </h:form>
+          </ul>
+        </h:panelGroup>
+
+        <div class="wrap" id="inv" style="width:98% !important;">
+          <button class="btn waves-effect waves-light sidenav-trigger z-depth-3" data-target="slide-out" style="margin-left:10px;">menú
+            <i class="material-icons right">apps</i>
+          </button>
+          <div class="section" style="width:98% !important;">
+            <div class="row">
+              <div class="col s12">
+                <div class="panel panel-default" style="border-color: transparent !important;">
+                  <iframe src="perfil.xhtml" name="iframe_a" style="width: 100%;height: 60em; background-color:#fff;"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>

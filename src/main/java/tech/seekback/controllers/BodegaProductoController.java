@@ -1,4 +1,3 @@
-
 package tech.seekback.controllers;
 
 import tech.seekback.exceptions.ConnectionExcep;
@@ -13,6 +12,8 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author danny
@@ -30,6 +31,7 @@ public class BodegaProductoController extends CustomController implements Serial
   private List<BodegaProducto> pornombre;
   private BodegaProducto bodegaProducto;
   private Producto producto;
+  private Integer idProd;
 
   public List<BodegaProducto> getBodegaProductos() {
     try {
@@ -43,8 +45,20 @@ public class BodegaProductoController extends CustomController implements Serial
     return bodegaProductos;
   }
 
-  public void getOne(int idProducto) throws ConnectionExcep {
-    this.producto = productoService.getOne(idProducto);
+  public Integer getIdProd() {
+    return idProd;
+  }
+
+  public void setIdProd(Integer idProd) {
+    this.idProd = idProd;
+  }
+
+  public void getOne() {
+    try {
+      this.producto = productoService.getOne(this.idProd);
+    } catch (ConnectionExcep ex) {
+      Logger.getLogger(BodegaProductoController.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
 
   public Producto getProducto() {

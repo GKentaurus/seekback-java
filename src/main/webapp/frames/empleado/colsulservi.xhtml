@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -67,30 +68,43 @@
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.tipoServicio.nombreServicio}" pt:data-position="bottom" pt:data-tooltip="#{st.tipoServicio.nombreServicio}"/>
+                  <h:outputText pt:class="tooltipped" value="#{st.tipoServicio.nombreServicio}" pt:data-position="bottom"
+                                pt:data-tooltip="#{st.tipoServicio.nombreServicio}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Cliente</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                  <h:outputText pt:class="tooltipped"
+                                value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"
+                                pt:data-position="bottom"
+                                pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Empleado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"/>
+                  <h:outputText pt:class="tooltipped"
+                                value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"
+                                pt:data-position="bottom"
+                                pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                  <h:outputText pt:class="tooltipped"
+                                value="#{st.timestamps.created_at}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" >
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:outputText>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Comentario</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.observaciones}" pt:data-position="bottom" pt:data-tooltip="#{st.observaciones}"/>
+                  <h:outputText pt:class="tooltipped" value="#{st.observaciones}" pt:data-position="bottom"
+                                pt:data-tooltip="#{st.observaciones}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Estado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}" pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
+                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}" pt:data-position="bottom"
+                                pt:data-tooltip="#{st.estado.nombreEstado}"/>
                 </h:column>
                 <h:column>
-                  <f:facet name="header">Editar</f:facet>
+                  <f:facet name="header">Visualizar</f:facet>
                   <a class="waves-effect waves-light btn modal-trigger"
                      href="#modal#{st.id}"
                      onclick="document.getElementById('estado#{st.id}').selectedIndex = #{st.tipoServicio.id};document.getElementById('estad#{st.id}').selectedIndex = #{st.estado.id};">Visualizar</a>

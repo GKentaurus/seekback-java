@@ -1,4 +1,3 @@
-
 package tech.seekback.controllers;
 
 import tech.seekback.exceptions.ConnectionExcep;
@@ -80,6 +79,7 @@ public class LoginController extends CustomController implements Serializable {
   public boolean getCuentaReactivada() {
     return cuentaReactivada;
   }
+
   public void setCuentaReactivada(boolean cuentaReactivada) {
     this.cuentaReactivada = cuentaReactivada;
   }
@@ -144,18 +144,18 @@ public class LoginController extends CustomController implements Serializable {
         Random rrn = new Random();
         for (int i = 0; i < 10; i++) {
           int randomIndex = rrn.nextInt(alphabet.length() - 1);
-          temporalPassword = temporalPassword.concat(alphabet.substring(randomIndex, randomIndex+1));
+          temporalPassword = temporalPassword.concat(alphabet.substring(randomIndex, randomIndex + 1));
         }
         usuario.setContrasena(temporalPassword);
         usuarioService.update(usuario);
         this.mailService.sendEmail(
-          this.correo.getCorreoElectronico(),
-          "¿Olvidaste tu contraseña en Seekback?",
-          "Hola" + this.usuario.getPrimerNombre() + " " + this.usuario.getOtrosNombres() + ":\n\n" +
-            "Su nueva contraseña es " + temporalPassword + "\n\n" +
-            "Usala para iniciar sesión la próxima vez. Le recomendamos la cambie tan pronto sea posible.\n\n" +
-            "Cordialmente,\n\n" +
-            "El equipo de desarrollo de Seekback");
+                this.correo.getCorreoElectronico(),
+                "¿Olvidaste tu contraseña en Seekback?",
+                "Hola" + this.usuario.getPrimerNombre() + " " + this.usuario.getOtrosNombres() + ":\n\n"
+                + "Su nueva contraseña es " + temporalPassword + "\n\n"
+                + "Usala para iniciar sesión la próxima vez. Le recomendamos la cambie tan pronto sea posible.\n\n"
+                + "Cordialmente,\n\n"
+                + "El equipo de desarrollo de Seekback");
       } else {
         FacesMessage message = new FacesMessage("El usuario no esta registrado");
         fc.addMessage("messs:mesag", message);
@@ -205,19 +205,10 @@ public class LoginController extends CustomController implements Serializable {
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 
     String ruta;
-    switch (rol) {
-      case 1: // Administrador
-        ruta = "/frames/admin.xhtml";
-        break;
-      case 2: // Empleado
-        ruta = "/frames/empleado.xhtml";
-        break;
-      case 3: // Cliente
-        ruta = "/frames/cliente.xhtml";
-        break;
-      default:
-        ruta = "/index.xhtml";
-        break;
+    if (rol == null) {
+      ruta = "/index.xhtml";
+    } else {
+      ruta = "/frames/cuenta.xhtml";
     }
     ec.redirect(ec.getRequestContextPath() + ruta);
   }

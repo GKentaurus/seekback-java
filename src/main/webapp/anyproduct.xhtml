@@ -11,152 +11,153 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-  <title>.:QPCOM | Seekback:.</title>
-</h:head>
+  <h:head>
+    <title>.:QPCOM | Seekback:.</title>
+  </h:head>
 
-<h:body id="ody">
+  <h:body id="ody">
 
-  <ui:composition template="/WEB-INF/templates/handf.xhtml">
-    <ui:define name="content">
+    <ui:composition template="/WEB-INF/templates/handf.xhtml">
+      <ui:define name="content">
+        #{bodegaProductoController.setIdProd((param['id']))}
 
-      <h:outputText value="#{bodegaProductoController.getOne(param['id'])}"/>
-      <h:outputScript library="scripts" name="anyp.js"/>
+        <h:outputText value="#{bodegaProductoController.getOne()}"/>
+        <h:outputScript library="scripts" name="anyp.js"/>
 
-      <div class="wrap" id="inv">
-        <div class="row">
-          <div class="col m2 hide-on-small-only">
-            <div class="">
-              <ul class="section table-of-contents fixed">
-                <h:form>
-                  <ul class="table-of-contents">
-                    <li>
-                      <h:commandLink action="index.xhtml?faces-redirect=true">Inicio</h:commandLink>
-                      <li style="padding-left: 10px">
-                        <a class="dropdown-trigger breadcrumb"
-                           data-target="dropdown3">#{bodegaProductoController.producto.categoria.nombreCategoria}</a>
-                        <li style="padding-left: 20px">
-                          <h:commandLink
+        <div class="wrap" id="inv">
+          <div class="row">
+            <div class="col m2 hide-on-small-only">
+              <div class="">
+                <ul class="section table-of-contents fixed">
+                  <h:form>
+                    <ul class="table-of-contents">
+                      <li>
+                        <h:commandLink action="index.xhtml?faces-redirect=true">Inicio</h:commandLink>
+                        <li style="padding-left: 10px">
+                          <a class="dropdown-trigger breadcrumb"
+                             data-target="dropdown3">#{bodegaProductoController.producto.categoria.nombreCategoria}</a>
+                          <li style="padding-left: 20px">
+                            <h:commandLink
                               class="active">#{bodegaProductoController.producto.modeloProducto}</h:commandLink>
+                          </li>
                         </li>
                       </li>
-                    </li>
-                  </ul>
-                </h:form>
-              </ul>
-            </div>
-          </div>
-          <h:form>
-            <ul id="dropdown3" class="dropdown-content z-depth-3" style="z-index: 8;">
-              <li><h:commandLink class="opt" action="aproduct?id=1 faces-redirect=true">
-                <i class="fas fa-network-wired"></i> Accesorios</h:commandLink></li>
-              <li><h:commandLink class="opt" action="cproduct?id=2 faces-redirect=true">
-                <i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
-              <li><h:commandLink class="opt" action="hproduct?id=3 faces-redirect=true">
-                <i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
-              <li><h:commandLink class="opt" action="wproduct?id=4 faces-redirect=true">
-                <i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
-              <li><h:commandLink class="opt" action="sproduct?id=5 faces-redirect=true">
-                <i class="fas fa-server"></i> Switches</h:commandLink></li>
-              <li><h:commandLink class="opt" action="saproduct?id=6 faces-redirect=true">
-                <i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
-            </ul>
-          </h:form>
-          <div class="col s12 m10">
-
-            <div class="center-align section">
-              <div class="col s12 m6">
-                <h:graphicImage library="images" name="router.webp" alt="prod" style="width:100%;"/>
+                    </ul>
+                  </h:form>
+                </ul>
               </div>
-              <div class="col s12 col m6">
-                <div class="z-depth-3 card grey lighten-4">
-                  <div class="card-content black-text">
-                    <span class="card-title">#{bodegaProductoController.producto.modeloProducto}</span>
-                    <p>#{bodegaProductoController.producto.descripcion}</p>
+            </div>
+            <h:form>
+              <ul id="dropdown3" class="dropdown-content z-depth-3" style="z-index: 8;">
+                <li><h:commandLink class="opt" action="aproduct?id=1 faces-redirect=true">
+                    <i class="fas fa-network-wired"></i> Accesorios</h:commandLink></li>
+                <li><h:commandLink class="opt" action="cproduct?id=2 faces-redirect=true">
+                    <i class="fas fa-network-wired"></i> Cables</h:commandLink></li>
+                <li><h:commandLink class="opt" action="hproduct?id=3 faces-redirect=true">
+                    <i class="fas fa-tools"></i> Herramientas</h:commandLink></li>
+                <li><h:commandLink class="opt" action="wproduct?id=4 faces-redirect=true">
+                    <i class="fas fa-wifi"></i> Inalámbrico</h:commandLink></li>
+                <li><h:commandLink class="opt" action="sproduct?id=5 faces-redirect=true">
+                    <i class="fas fa-server"></i> Switches</h:commandLink></li>
+                <li><h:commandLink class="opt" action="saproduct?id=6 faces-redirect=true">
+                    <i class="fas fa-desktop"></i> Switches administrables</h:commandLink></li>
+              </ul>
+            </h:form>
+            <div class="col s12 m10">
+
+              <div class="center-align section">
+                <div class="col s12 m6">
+                  <h:graphicImage library="images" name="router.webp" alt="prod" style="width:100%;"/>
+                </div>
+                <div class="col s12 col m6">
+                  <div class="z-depth-3 card grey lighten-4">
+                    <div class="card-content black-text">
+                      <span class="card-title">#{bodegaProductoController.producto.modeloProducto}</span>
+                      <p>#{bodegaProductoController.producto.descripcion}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col m8 s12">
-              <h:form>
-                <h:dataTable pt:id="datatable" class="highlight"
-                             value="#{calificacionController.getCalificaciondelproducto(param['id'])}"
-                             var="st">
-                  <h:column>
-                    <f:facet name="header">Califica</f:facet>
-                    <h:outputText pt:class="tooltipped"
-                                  value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"
-                                  pt:data-position="bottom"
-                                  pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Fecha</f:facet>
-                    <h:outputText pt:class="tooltipped"
-                                  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year}"
-                                  pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Comentario</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom"
-                                  pt:data-tooltip="#{st.comentario}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Calificacion</f:facet>
-                    <h:outputText pt:class="tooltipped #{st.calificacion}" value="#{st.calificacion}"
-                                  pt:data-position="bottom" pt:data-tooltip="#{st.calificacion}"/>
-                  </h:column>
-                </h:dataTable>
-              </h:form>
+              <div class="col m8 s12">
+                <h:form>
+                  <h:dataTable pt:id="datatable" class="highlight"
+                               value="#{calificacionController.getCalificaciondelproducto(param['id'])}"
+                               var="st">
+                    <h:column>
+                      <f:facet name="header">Califica</f:facet>
+                      <h:outputText pt:class="tooltipped"
+                                    value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"
+                                    pt:data-position="bottom"
+                                    pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
+                    </h:column>
+                    <h:column>
+                      <f:facet name="header">Fecha</f:facet>
+                      <h:outputText pt:class="tooltipped"
+                                    value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year}"
+                                    pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}"/>
+                    </h:column>
+                    <h:column>
+                      <f:facet name="header">Comentario</f:facet>
+                      <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom"
+                                    pt:data-tooltip="#{st.comentario}"/>
+                    </h:column>
+                    <h:column>
+                      <f:facet name="header">Calificacion</f:facet>
+                      <h:outputText pt:class="tooltipped #{st.calificacion}" value="#{st.calificacion}"
+                                    pt:data-position="bottom" pt:data-tooltip="#{st.calificacion}"/>
+                    </h:column>
+                  </h:dataTable>
+                </h:form>
 
-              <script>
+                <script>
 
-                $(document).ready(function () {
-                  $('.1').html('<i class="fas fa-star"></i>');
-                  $('.2').html('<i class="fas fa-star"></i><i class="fas fa-star"></i>');
-                  $('.3').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-                  $('.4').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-                  $('.5').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-                  $('.fa-star').addClass("yellow-text");
-                })
-              </script>
+                  $(document).ready(function () {
+                    $('.1').html('<i class="fas fa-star"></i>');
+                    $('.2').html('<i class="fas fa-star"></i><i class="fas fa-star"></i>');
+                    $('.3').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
+                    $('.4').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
+                    $('.5').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
+                    $('.fa-star').addClass("yellow-text");
+                  })
+                </script>
 
-              <br/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br/>
-
-    </ui:define>
-  </ui:composition>
-  <!--
-      <footer class="page-footer" style="background-color: #222222;">
-        <div class="wrap transparent">
-          <div class="container">
-            <div class="row">
-              <div class="col s6" style="text-align:left">
-                <h4>Redes sociales </h4>
-                <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> Siguenos en facebook
-                <br />
-                <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> Siguenos en twitter
-                <br />
-                <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> Siguenos en Instagram
-              </div>
-              <div class="col s6" style="text-align:left">
-                <h4>Información de contacto </h4>
-                <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
-                <br />
-                <br />
-                <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
+                <br/>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer-copyright">
-          <div class="container">
-            Copyright Seekback. Todos los derechos reservados.
+        <br/>
+
+      </ui:define>
+    </ui:composition>
+    <!--
+        <footer class="page-footer" style="background-color: #222222;">
+          <div class="wrap transparent">
+            <div class="container">
+              <div class="row">
+                <div class="col s6" style="text-align:left">
+                  <h4>Redes sociales </h4>
+                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> Siguenos en facebook
+                  <br />
+                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> Siguenos en twitter
+                  <br />
+                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> Siguenos en Instagram
+                </div>
+                <div class="col s6" style="text-align:left">
+                  <h4>Información de contacto </h4>
+                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
+                  <br />
+                  <br />
+                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </footer>-->
-</h:body>
+          <div class="footer-copyright">
+            <div class="container">
+              Copyright Seekback. Todos los derechos reservados.
+            </div>
+          </div>
+        </footer>-->
+  </h:body>
 </html>
