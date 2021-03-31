@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <h:head>
+    <title>QPCOM | Seekback</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style>
+      body {
+        background-image: url("#{resource['images/logob.png']}");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 700px;
+        background-position: 130% -300%;
+        background-blend-mode: difference;
+      }
+
+    </style>
+  </h:head>
+
+  <h:body>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <p style="font-size:25px;" class="center-align"><i class="fas fa-headset"></i> Solicitar servicio <i class="far fa-calendar-alt"></i></p>
+          <h:form rendered="#{usuarioController.confirmRole('Administrador')}">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:id="cliente"  class="browser-default" value="#{agendaController.idCliente}">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opcion"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{clienteController.clientes}"
+                                   var="cl"
+                                   itemValue="#{cl.id}"
+                                   itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="Empleado" value="Empleado" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:id="Empleado"  class="browser-default" value="#{agendaController.idEmpleado}">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opcion"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{empleadoController.empleados}"
+                                   var="em"
+                                   itemValue="#{em.id}"
+                                   itemLabel="#{em.primerNombre} #{em.otrosNombres} #{em.primerApellido} #{em.otrosApellidos}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="tservi" value="Tipo Servicio" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:id="tservi"  class="browser-default" value="#{agendaController.idTipoServicio}">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opción"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{agendaController.tipoServicio}"
+                                   var="da"
+                                   itemValue="#{da.id}"
+                                   itemLabel="#{da.nombreServicio}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:inputText id="datee" class="datepicker" value="#{agendaController.fecha}">
+                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                  </h:inputText>
+                  <h:outputLabel for="datee" value="Fecha" />
+                </div>
+                <h:messages></h:messages>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{agendaController.obs}"></h:inputTextarea>
+                  <h:outputLabel for="motivo">Motivo</h:outputLabel>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <h:commandLink class="waves-effect waves-light btn modal-trigger" actionListener="#{agendaController.create()}">Solicitar</h:commandLink>
+              </div>
+            </div>
+          </h:form>
+          <h:form rendered="#{usuarioController.confirmRole('Empleado')}">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opcion"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{clienteController.clientes}"
+                                   var="cl"
+                                   itemValue="#{cl.id}"
+                                   itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="estado" value="Tipo Servicio" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opción"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{agendaController.tipoServicio}"
+                                   var="da"
+                                   itemValue="#{da.id}"
+                                   itemLabel="#{da.nombreServicio}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:inputText id="datee" class="datepicker"/>
+                  <h:outputLabel for="datee" value="Fecha" />
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <textarea id="motivo" class="materialize-textarea"></textarea>
+                  <h:outputLabel for="motivo">Motivo</h:outputLabel>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <h:commandLink class="waves-effect waves-light btn modal-trigger">Solicitar</h:commandLink>
+              </div>
+            </div>
+          </h:form>
+          <h:form rendered="#{usuarioController.confirmRole('Cliente')}">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="estado" value="Tipo Servicio" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opción"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{agendaController.tipoServicio}"
+                                   var="da"
+                                   itemValue="#{da.id}"
+                                   itemLabel="#{da.nombreServicio}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:inputText id="datee" class="datepicker"/>
+                  <h:outputLabel for="datee" value="Fecha" />
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <textarea id="motivo" class="materialize-textarea"></textarea>
+                  <h:outputLabel for="motivo">Motivo</h:outputLabel>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
+              </div>
+            </div>
+          </h:form>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <p>Solicitud enviada satisfactoriamente</p>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $('.datepicker').datepicker({
+          autoClose: true,
+          firstDay: 1,
+          i18n: {
+            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
+            cancel: 'Cancelar'},
+          format: 'yyyy-mm-dd'
+        });
+        $('select').formSelect();
+        $('.modal').modal();
+      });
+    </script>
+
+  </h:body>
+</html>

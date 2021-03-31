@@ -1,4 +1,3 @@
-
 package tech.seekback.controllers;
 
 import tech.seekback.exceptions.ConnectionExcep;
@@ -147,8 +146,9 @@ public class RegisterController extends CustomController implements Serializable
   //</editor-fold>
 
   /**
-   * Obtiene toda la información suministrada por el usuario al momento de diligenciar el formulario de registro, y
-   * asigna la información por defecto a los objetos correspondientes.
+   * Obtiene toda la información suministrada por el usuario al momento de
+   * diligenciar el formulario de registro, y asigna la información por defecto
+   * a los objetos correspondientes.
    *
    * @throws ConnectionExcep
    * @throws NoSuchAlgorithmException
@@ -194,9 +194,9 @@ public class RegisterController extends CustomController implements Serializable
       this.correo = correoService.create(correo);
 
       this.mailService.sendEmail(
-        correo.getCorreoElectronico(),
-        "Bienvenido a Seekback",
-        "Su registro ha sido completado satisfactoriamente."
+              correo.getCorreoElectronico(),
+              "Bienvenido a Seekback",
+              "Su registro ha sido completado satisfactoriamente."
       );
 
       ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
