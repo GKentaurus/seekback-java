@@ -39,7 +39,7 @@ public class ReportService {
 
   /**
    * La estructura del array debe ser la siguiente:
-   * [0] String: Nombre de la columna
+   * [0] String: Nombre de la columna del como se quiere mostrar (entre mas corto, mejor)
    * [1] String: Nombre de la variable de la DATA (Colección de los DAOJPA)
    * [2] String: XXXXX.class.getName() donde XXXXX es la clase del tipo de dato que viene de la DATA
    * [3] String: Ancho de la columna
@@ -47,7 +47,7 @@ public class ReportService {
    * @param columnValues
    * @throws JRException
    */
-  public void JasperReportMaker(List<String[]> columnValues) throws JRException {
+  public void JasperReportMaker(List<String[]> columnValues, String nombreReporte) throws JRException {
     JasperDesignBuilder designBuilder = JasperDesignBuilder.start();
     designBuilder.defaultSettings("name", OrientationEnum.VERTICAL_ORIENTATION);
 
@@ -78,7 +78,7 @@ public class ReportService {
 
     JasperStaticTextCommonBuilder titleText = JasperStaticTextCommonBuilder
       .start()
-      .defaultSettings(designBuilder.getColumnWidth(), 10, "Lista de usuarios", JasperReportsEnum.TITLE);
+      .defaultSettings(designBuilder.getColumnWidth(), 10, nombreReporte, JasperReportsEnum.TITLE);
 
     titleBandBuilder.addElement(titleText.getText());
     designBuilder.setTitle(titleBandBuilder.getBand());
@@ -146,7 +146,7 @@ public class ReportService {
     ExternalContext ec = fc.getExternalContext();
     HttpServletResponse response = (HttpServletResponse) ec.getResponse();
     Date now = new Date();
-    response.addHeader("Content-disposition", "attachment; filename=" + now.getTime() + "-report.pdf");
+    response.addHeader("Content-disposition", "attachment; filename=report-" + now.getTime() + ".pdf");
     OutputStream outputStream = response.getOutputStream();
     JasperExportManager.exportReportToPdfStream(this.jasperPrint, outputStream);
     outputStream.flush();

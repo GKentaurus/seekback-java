@@ -35,22 +35,22 @@ public class TestController extends CustomController implements Serializable {
 
   private List<String[]> list() {
     List<String[]> columnValues = new ArrayList<>();
-    columnValues.add(new String[]{"ID", "id", Integer.class.getName(),"30"});
-    columnValues.add(new String[]{"Primer nombre", "primerNombre", String.class.getName(),"100"});
-    columnValues.add(new String[]{"Segundo nombre", "primerApellido", String.class.getName(),"100"});
+    columnValues.add(new String[]{"ID", "id", Integer.class.getName(), "40"});
+    columnValues.add(new String[]{"Nombre", "primerNombre", String.class.getName(), "100"});
+    columnValues.add(new String[]{"Apellido", "primerApellido", String.class.getName(), "100"});
+    columnValues.add(new String[]{"Tipo Doc", "tipoDoc.sigla", String.class.getName(), "50"});
+    columnValues.add(new String[]{"Documento", "numeroDoc", String.class.getName(), "100"});
     return columnValues;
   }
 
   public void exportOnline() throws JRException, ConnectionExcep, IOException {
-    ;
-    reportService.JasperReportMaker(list());
+    reportService.JasperReportMaker(list(), "Lista de usuarios");
     reportService.generateReport(this.usuarioService.getAll());
     reportService.exportPdfOnWeb();
   }
 
   public void exportLocal() throws JRException, ConnectionExcep {
-    list();
-    reportService.JasperReportMaker(list());
+    reportService.JasperReportMaker(list(), "Lista de usuarios");
     reportService.generateReport(this.usuarioService.getAll());
     reportService.exportPdfOnLocalDisk();
   }
