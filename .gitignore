@@ -33,5 +33,7 @@ hs_err_pid*
 /target
 .env
 /migrations
+.classpath
+.project
 
 localtest*
