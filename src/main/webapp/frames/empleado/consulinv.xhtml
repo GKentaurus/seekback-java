@@ -79,7 +79,9 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Costo unitario</f:facet>
-                  <h:outputText pt:class="tooltipped" value="$#{st.producto.precioVenta}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.precioVenta}" />
+                  <h:outputText pt:class="tooltipped" value="#{st.producto.precioVenta}" pt:data-position="bottom" pt:data-tooltip="$#{st.producto.precioVenta}">
+                    <f:convertNumber  type="currency" currencySymbol="$" />
+                  </h:outputText>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Categoria</f:facet>

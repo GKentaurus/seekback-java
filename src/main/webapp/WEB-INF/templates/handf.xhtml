@@ -86,6 +86,14 @@ and open the template in the editor.
         position: relative;
         margin: .5rem 0 1rem 0;
       }
+      .rnd-btn{
+        color:black;
+        background-color: #fff;
+        border-radius: 66px;
+        width: 30px;
+        height: 30px;
+        padding: 7px 0 0 10px;
+      }
     </style>
   </h:head>
 
@@ -108,17 +116,17 @@ and open the template in the editor.
                   </div>
                 </div>
                 <div class="col s12 m3 center-align" style="padding:0px; display: inline-flex">
-                  <h:commandLink class="waves-effect waves-purple btn-flat btnsearch"
-                                 id="seacrh" title="Buscar"><i
-                      class="fas fa-search" style="color:#fff"></i></h:commandLink>
+                  <h:commandLink class="waves-effect waves-purple btn-flat btnsearch" id="seacrh" title="Buscar">
+                    <i class="fas fa-search" style="color:#fff"></i>
+                  </h:commandLink>
                   <h:form>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser"
-                                   action="login.xhtml? faces-redirect=true">
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" action="login.xhtml faces-redirect=true">
                       <i class="far fa-user" style="color:#fff"></i>
                     </h:commandLink>
                   </h:form>
-                  <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode"
-                                 title="intercambiar modo"><i class="far fa-moon" style="color:#fff"></i></h:commandLink>
+                  <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode" title="intercambiar modo">
+                    <i class="far fa-moon" style="color:#fff"></i>
+                  </h:commandLink>
                 </div>
               </div>
             </div>
@@ -128,28 +136,28 @@ and open the template in the editor.
               <ul id="dropdown1" class="dropdown-content z-depth-3">
                 <h:form>
                   <li>
-                    <h:commandLink class="opt" action="product.xhtml?id=1 faces-redirect=true"><i
-                        class="fab fa-usb"></i> Accesorios</h:commandLink>
+                    <h:commandLink class="opt" action="/product.xhtml?id=1 faces-redirect=true">
+                      <i class="fab fa-usb"></i> Accesorios</h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink class="opt" action="product.xhtml?id=2 faces-redirect=true"><i
-                        class="fas fa-network-wired"></i> Cables</h:commandLink>
+                    <h:commandLink class="opt" action="/product.xhtml?id=2 faces-redirect=true">
+                      <i class="fas fa-network-wired"></i> Cables</h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink class="opt" action="product.xhtml?id=3 faces-redirect=true"><i
-                        class="fas fa-tools"></i> Herramientas</h:commandLink>
+                    <h:commandLink class="opt" action="/product.xhtml?id=3 faces-redirect=true">
+                      <i class="fas fa-tools"></i> Herramientas</h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink class="opt" action="product.xhtml?id=4 faces-redirect=true"><i
-                        class="fas fa-wifi"></i> Inalambrico</h:commandLink>
+                    <h:commandLink class="opt" action="/product.xhtml?id=4 faces-redirect=true">
+                      <i class="fas fa-wifi"></i> Inalambrico</h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink class="opt" action="product.xhtml?id=5 faces-redirect=true"><i
-                        class="fas fa-server"></i> Switches</h:commandLink>
+                    <h:commandLink class="opt" action="/product.xhtml?id=5 faces-redirect=true">
+                      <i class="fas fa-server"></i> Switches</h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink class="opt" action="product.xhtml?id=6 faces-redirect=true"><i
-                        class="fas fa-desktop"></i> Switches administrables</h:commandLink>
+                    <h:commandLink class="opt" action="/product.xhtml?id=6 faces-redirect=true">
+                      <i class="fas fa-desktop"></i> Switches administrables</h:commandLink>
                   </li>
                 </h:form>
               </ul>
@@ -162,36 +170,37 @@ and open the template in the editor.
                   <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                     <h:form>
                       <li>
-                        <h:commandLink action="index.xhtml faces-redirect=true" value="Inicio"/>
+                        <h:commandLink action="/index.xhtml faces-redirect=true" value="Inicio"/>
                       </li>
                     </h:form>
                     <li>
-                      <h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos<i
-                          class="fas fa-caret-down right"></i></h:commandLink>
+                      <h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos
+                        <i class="fas fa-caret-down right"></i>
+                      </h:commandLink>
                       <ul id="dropdown2" class="dropdown-content">
                         <h:form>
                           <li>
-                            <h:commandLink class="opt" action="product.xhtml?id=1 faces-redirect=true"><i
+                            <h:commandLink class="opt" action="/product.xhtml?id=1 faces-redirect=true"><i
                                 class="fab fa-usb"></i> Accesorios</h:commandLink>
                           </li>
                           <li>
-                            <h:commandLink class="opt" action="product.xhtml?id=2 faces-redirect=true"><i
+                            <h:commandLink class="opt" action="/product.xhtml?id=2 faces-redirect=true"><i
                                 class="fas fa-network-wired"></i> Cables</h:commandLink>
                           </li>
                           <li>
-                            <h:commandLink class="opt" action="product.xhtml?id=3 faces-redirect=true"><i
+                            <h:commandLink class="opt" action="/product.xhtml?id=3 faces-redirect=true"><i
                                 class="fas fa-tools"></i> Herramientas</h:commandLink>
                           </li>
                           <li>
-                            <h:commandLink class="opt" action="product.xhtml?id=4 faces-redirect=true"><i
+                            <h:commandLink class="opt" action="/product.xhtml?id=4 faces-redirect=true"><i
                                 class="fas fa-wifi"></i> Inalambrico</h:commandLink>
                           </li>
                           <li>
-                            <h:commandLink class="opt" action="product.xhtml?id=5 faces-redirect=true"><i
+                            <h:commandLink class="opt" action="/product.xhtml?id=5 faces-redirect=true"><i
                                 class="fas fa-server"></i> Switches</h:commandLink>
                           </li>
                           <li>
-                            <h:commandLink class="opt" action="product.xhtml?id=6 faces-redirect=true"><i
+                            <h:commandLink class="opt" action="/product.xhtml?id=6 faces-redirect=true"><i
                                 class="fas fa-desktop"></i> Switches administrables</h:commandLink>
                           </li>
                         </h:form>
@@ -199,10 +208,10 @@ and open the template in the editor.
                     </li>
                     <h:form>
                       <li>
-                        <h:commandLink action="index.xhtml#contac?faces-redirect=true">Contactenos</h:commandLink>
+                        <h:commandLink action="/index.xhtml#contac faces-redirect=true">Contactenos</h:commandLink>
                       </li>
                       <li>
-                        <h:commandLink action="index.xhtml#qsomos?faces-redirect=true">Nosotros</h:commandLink>
+                        <h:commandLink action="/index.xhtml#qsomos faces-redirect=true">Nosotros</h:commandLink>
                       </li>
                     </h:form>
                   </ul>
@@ -220,17 +229,18 @@ and open the template in the editor.
                 </div>
                 <h:form>
                   <li>
-                    <h:commandLink action="index" value="Inicio"/>
+                    <h:commandLink action="/index.xhtml faces-redirect=true" value="Inicio"/>
                   </li>
                   <li>
-                    <h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos<i
-                        class="fas fa-caret-down right"></i></h:commandLink>
+                    <h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos
+                      <i class="fas fa-caret-down right"></i>
+                    </h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink pt:href="index#contac">Contactenos</h:commandLink>
+                    <h:commandLink pt:href="/index.xhtml#contac faces-redirect=true">Contactenos</h:commandLink>
                   </li>
                   <li>
-                    <h:commandLink pt:href="index#contac">Nosotros</h:commandLink>
+                    <h:commandLink pt:href="/index.xhtml#qsomos faces-redirect=true">Nosotros</h:commandLink>
                   </li>
                 </h:form>
               </ul>
@@ -248,25 +258,30 @@ and open the template in the editor.
           <div class="row">
             <div class="col s6" style="text-align:left">
               <h4>Redes sociales </h4>
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white">
-                <i class="fab fa-facebook-f" style="color:black;"></i><span> siguenos en facebook</span></h:commandLink>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fab fa-facebook-f " style="color:black;"></i>
+              </h:commandLink> siguenos en facebook
               <br/>
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter"
-                                                                                              style="color:black;"></i> siguenos en twitter</h:commandLink>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fab fa-twitter" style="color:black;"></i>
+              </h:commandLink> siguenos en twitter
               <br/>
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram"
-                                                                                              style="color:black;"></i> siguenos en instagram</h:commandLink>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fab fa-instagram" style="color:black;"></i>
+              </h:commandLink> siguenos en instagram
             </div>
             <div class="col s6" style="text-align:left">
               <h4>Informaciòn de contacto </h4>
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt"
-                                                                                              style="color:black;"></i> +57 300 000 0000</h:commandLink>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fas fa-phone-alt" style="color:black;"></i>
+              </h:commandLink> +57 300 000 0000
               <br/>
               <br/>
-              <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope"
-                                                                                              style="color:black;"></i></h:commandLink>
-              <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech"
-                             style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fas fa-envelope" style="color:black;"></i>
+              </h:commandLink>
+              <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;"> admin@qpcom.seekback.tech
+              </h:commandLink>
             </div>
           </div>
         </div>

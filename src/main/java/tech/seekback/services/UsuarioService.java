@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.UsuarioDAO;
@@ -37,7 +36,8 @@ public class UsuarioService {
   }
 
   /**
-   * @return Una colección de objetos de tipo Usuario (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Usuario (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Usuario> getAll() throws ConnectionExcep {
@@ -64,4 +64,5 @@ public class UsuarioService {
   public void delete(Usuario usuario) throws ConnectionExcep {
     usuarioDAO.delete(usuario);
   }
+
 }

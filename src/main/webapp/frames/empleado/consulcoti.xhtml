@@ -50,6 +50,7 @@
   </h:head>
 
   <h:body>
+
     <div class="container">
       <div class="row">
         <p class="center-align" style="font-size:25px;"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Cotizaciones <i class="fas fa-tools" aria-hidden="true"></i></p>
@@ -67,27 +68,25 @@
                            var="st">
                 <h:column>
                   <f:facet name="header">Cliente</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Empleado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres}  #{st.empleado.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.empleado.primerNombre} #{st.empleado.otrosNombres}  #{st.empleado.primerApellido}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Producto</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}" />
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}" pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" />
+                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:outputText>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Motivo</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                  <h:outputText pt:class="tooltipped" value="#{st.requerimiento}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.requerimiento}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Estado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}"  pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
+                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Editar</f:facet>
@@ -105,20 +104,8 @@
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="empke" type="text" value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres}  #{st.empleado.primerApellido}" readonly="true"/>
-                              <label for="empke">Empleado</label>
-                            </div>
-                          </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="produc" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
-                              <label for="produc">Producto</label>
-                            </div>
-                          </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
                               <label for="datei">Fecha</label>
-                              <input id="datei" type="datetime"  value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year} #{st.timestamps.created_at.hours}:#{st.timestamps.created_at.minutes}"/>
+                              <input id="datei" type="datetime" value="#{st.timestamps.created_at}"/>
                             </div>
                           </div>
                           <div class="col s12 m6">
@@ -139,7 +126,7 @@
                           </div>
                           <div class="col s12">
                             <div class="input-field">
-                              <textarea id="motivo" class="menssage">#{st.comentario}</textarea>
+                              <textarea id="motivo" class="menssage">#{st.requerimiento}</textarea>
                               <label for="motivo">Motivo</label>
                             </div>
                           </div>

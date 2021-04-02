@@ -1,4 +1,3 @@
-
 package tech.seekback.controllers;
 
 import tech.seekback.dao.interfaces.CotizacionDAO;
@@ -27,14 +26,17 @@ public class CotizacionController extends CustomController implements Serializab
   private LoginController loginController;
 
   @EJB
-  private Usuario usuario;
   private CotizacionService cotizacionService;
+
+  private Usuario usuario;
   private List<Cotizacion> cotizaciones;
-  private CotizacionDAO CotizacionDAO;
+  private Integer Idempleado;
+  private String nombre;
 
   @PostConstruct
-  public void init() {
-    this.usuario = loginController.getUsuario();
+  public void Init() {
+    this.Idempleado = loginController.getUsuario().getId();
+    this.nombre = loginController.getUsuario().getPrimerNombre();
   }
 
   public Usuario getUsuario() {
@@ -45,15 +47,11 @@ public class CotizacionController extends CustomController implements Serializab
     this.usuario = usuario;
   }
 
-  public List<Cotizacion> getCotizaciones() {
-    try {
-      if (Objects.nonNull(usuario.getId())) {
-        cotizaciones = CotizacionDAO.getByIdEmpleado(usuario.getId());
-      } else {
-        System.out.println("error al realizar la consulta");
-      }
-    } catch (ConnectionExcep ex) {
-      ex.printStackTrace();
+  public List<Cotizacion> getCotizaciones() throws ConnectionExcep {
+    System.out.println("nombre " + this.nombre);
+    cotizaciones = cotizacionService.getByIdEmpleado(this.Idempleado);
+    for (Cotizacion cotizacione : cotizaciones) {
+      System.out.println(cotizacione);
     }
     return cotizaciones;
   }

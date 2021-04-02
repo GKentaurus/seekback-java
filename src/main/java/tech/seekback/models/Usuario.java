@@ -17,67 +17,67 @@ import java.util.Objects;
 @NamedQueries(value = {
   // <editor-fold desc="Queries para Administradores" defaultstate="collapsed">
   @NamedQuery(
-    name = "Administrador.getAll",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.timestamps.deleted = false " +
-      "AND obj.rol.nombreRol = 'Administrador'"
+          name = "Administrador.getAll",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.timestamps.deleted = false "
+          + "AND obj.rol.nombreRol = 'Administrador'"
   ),
   @NamedQuery(
-    name = "Administrador.getOne",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.id = :idAdministrador " +
-      "AND obj.timestamps.deleted = false " +
-      "AND obj.rol.nombreRol = 'Administrador'"
+          name = "Administrador.getOne",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.id = :idAdministrador "
+          + "AND obj.timestamps.deleted = false "
+          + "AND obj.rol.nombreRol = 'Administrador'"
   ),
   // </editor-fold>
 
   // <editor-fold desc="Queries para Clientes" defaultstate="collapsed">
   @NamedQuery(
-    name = "Cliente.getAll",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.timestamps.deleted = false " +
-      "AND obj.rol.nombreRol = 'Cliente'"
+          name = "Cliente.getAll",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.timestamps.deleted = false "
+          + "AND obj.rol.nombreRol = 'Cliente'"
   ),
   @NamedQuery(
-    name = "Cliente.getOne",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.id = :idCliente " +
-      "AND obj.timestamps.deleted = false " +
-      "AND obj.rol.nombreRol = 'Cliente'"
+          name = "Cliente.getOne",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.id = :idCliente "
+          + "AND obj.timestamps.deleted = false "
+          + "AND obj.rol.nombreRol = 'Cliente'"
   ),
   // </editor-fold>
 
   // <editor-fold desc="Queries para Empleados" defaultstate="collapsed">
   @NamedQuery(
-    name = "Empleado.getAll",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.timestamps.deleted = false " +
-      "AND obj.rol.nombreRol = 'Empleado'"
+          name = "Empleado.getAll",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.timestamps.deleted = false "
+          + "AND obj.rol.nombreRol = 'Empleado'"
   ),
   @NamedQuery(
-    name = "Empleado.getOne",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.id = :idEmpleado " +
-      "AND obj.timestamps.deleted = false " +
-      "AND obj.rol.nombreRol = 'Empleado'"
+          name = "Empleado.getOne",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.id = :idEmpleado "
+          + "AND obj.timestamps.deleted = false "
+          + "AND obj.rol.nombreRol = 'Empleado'"
   ),
   // </editor-fold>
 
   // <editor-fold desc="Queries para Usuarios en general" defaultstate="collapsed">
   @NamedQuery(
-    name = "Usuario.getAll",
-    query = "SELECT obj " +
-      "FROM Usuario obj " +
-      "WHERE obj.timestamps.deleted = false"
-  ),
-  // </editor-fold>
+          name = "Usuario.getAll",
+          query = "SELECT obj "
+          + "FROM Usuario obj "
+          + "WHERE obj.timestamps.deleted = false"
+  ), // </editor-fold>
 })
+
 public class Usuario implements EntityTimestamp {
 
   @Id
@@ -343,15 +343,15 @@ public class Usuario implements EntityTimestamp {
   @Override
   public String toString() {
     return "Usuario{"
-      + "idUsuario = " + id + ", "
-      + "primerNombre = " + primerNombre + ", "
-      + "otrosNombres = " + otrosNombres + ", "
-      + "primerApellido = " + primerApellido + ", "
-      + "otrosApellidos = " + otrosApellidos + ", "
-      + "tipoDoc = " + tipoDoc + ", "
-      + "numeroDoc = " + numeroDoc + ", "
-      + "rol = " + rol + ", "
-      + timestamps.toString()
-      + '}';
+            + "idUsuario = " + id + ", "
+            + "primerNombre = " + primerNombre + ", "
+            + "otrosNombres = " + otrosNombres + ", "
+            + "primerApellido = " + primerApellido + ", "
+            + "otrosApellidos = " + otrosApellidos + ", "
+            + "tipoDoc = " + tipoDoc + ", "
+            + "numeroDoc = " + numeroDoc + ", "
+            + "rol = " + rol + ", "
+            + timestamps.toString()
+            + '}';
   }
 }

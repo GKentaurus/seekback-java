@@ -1,4 +1,3 @@
-
 package tech.seekback.models;
 
 import tech.seekback.models.interfaces.EntityTimestamp;
@@ -257,16 +256,16 @@ public class Cotizacion implements EntityTimestamp {
   @Override
   public String toString() {
     return "Cotizacion("
-      + "id = " + id + ", "
-      + "requerimiento = " + requerimiento + ", "
-      + "fecha = " + fecha + ", "
-      + "fechaVencimiento = " + vencimiento + ", "
-      + "trm = " + trm + ", "
-      + "estado = " + estado + ", "
-      + "empleado = " + empleado + ", "
-      + "cliente = " + cliente + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "requerimiento = " + requerimiento + ", "
+            + "fecha = " + fecha + ", "
+            + "fechaVencimiento = " + vencimiento + ", "
+            + "trm = " + trm + ", "
+            + "estado = " + estado + ", "
+            + "empleado = " + empleado + ", "
+            + "cliente = " + cliente + ", "
+            + timestamps.toString()
+            + ")";
   }
 
 }
