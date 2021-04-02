@@ -74,16 +74,16 @@
                 <h:column>
                   <f:facet name="header">Cliente</f:facet>
                   <h:outputText pt:class="tooltipped"
-                                value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"
+                                value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"
                                 pt:data-position="bottom"
-                                pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                                pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Empleado</f:facet>
                   <h:outputText pt:class="tooltipped"
-                                value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"
+                                value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}"
                                 pt:data-position="bottom"
-                                pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"/>
+                                pt:data-tooltip="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
@@ -116,14 +116,14 @@
                           <div class="col s12 m6">
                             <div class="input-field">
                               <h:inputText disabled="true"
-                                           value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" />
+                                           value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" />
                               <label for="quien">Cliente</label>
                             </div>
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
                               <h:inputText disabled="true"
-                                           value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}" />
+                                           value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}" />
                               <label for="quien">Cliente</label>
                             </div>
                           </div>
@@ -188,7 +188,7 @@
                   <div id="modaldel#{st.id}" class="modal">
                     <div class="modal-content">
                       <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar el servicio de #{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido} ?</h4>
+                        <h4 class="center-align">Desea eliminar el servicio de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
                       </div>
                       <div class="modal-footer">
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>

@@ -36,7 +36,7 @@
               <div class="col s12 m6">
                 <div class="input-field">
                   <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
-                  <h:selectOneMenu pt:id="cliente"  class="browser-default" value="#{agendaController.idCliente}">
+                  <h:selectOneMenu pt:id="cliente"  class="browser-default" value="#{agendaController.idCliente}" required="true">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opcion"
                                   noSelectionOption="true" />
@@ -50,7 +50,7 @@
               <div class="col s12 m6">
                 <div class="input-field">
                   <h:outputLabel for="Empleado" value="Empleado" style="margin-top: -30px;"/>
-                  <h:selectOneMenu pt:id="Empleado"  class="browser-default" value="#{agendaController.idEmpleado}">
+                  <h:selectOneMenu pt:id="Empleado"  class="browser-default" value="#{agendaController.idEmpleado}" required="true">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opcion"
                                   noSelectionOption="true" />
@@ -64,7 +64,7 @@
               <div class="col s12 m6">
                 <div class="input-field">
                   <h:outputLabel for="tservi" value="Tipo Servicio" style="margin-top: -30px;"/>
-                  <h:selectOneMenu pt:id="tservi"  class="browser-default" value="#{agendaController.idTipoServicio}">
+                  <h:selectOneMenu pt:id="tservi"  class="browser-default" value="#{agendaController.idTipoServicio}" required="true">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opción"
                                   noSelectionOption="true" />
@@ -77,16 +77,15 @@
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <h:inputText id="datee" class="datepicker" value="#{agendaController.fecha}">
+                  <h:inputText id="datee" class="datepicker" value="#{agendaController.fecha}" required="true">
                     <f:convertDateTime pattern="yyyy-MM-dd" />
                   </h:inputText>
                   <h:outputLabel for="datee" value="Fecha" />
                 </div>
-                <h:messages></h:messages>
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{agendaController.obs}"></h:inputTextarea>
+                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{agendaController.obs}" required="true"></h:inputTextarea>
                   <h:outputLabel for="motivo">Motivo</h:outputLabel>
                 </div>
               </div>
@@ -96,6 +95,7 @@
                 <h:commandLink class="waves-effect waves-light btn modal-trigger" actionListener="#{agendaController.create()}">Solicitar</h:commandLink>
               </div>
             </div>
+            <h:messages></h:messages>
           </h:form>
           <h:form rendered="#{usuarioController.confirmRole('Empleado')}">
             <div class="row">

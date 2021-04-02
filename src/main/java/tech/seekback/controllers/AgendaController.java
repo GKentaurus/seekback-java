@@ -11,36 +11,33 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
+import javax.annotation.ManagedBean;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.AdministradorService;
 import tech.seekback.services.ClienteService;
 import tech.seekback.services.EmpleadoService;
-import tech.seekback.services.UsuarioService;
 
 /**
  * @author danny
  */
+@ManagedBean
 @Named
 @ViewScoped
 public class AgendaController extends CustomController implements Serializable {
 
   @EJB
-  private UsuarioService usuarioService;
-
-  @EJB
-  private ClienteService clienteService;
+  private AdministradorService administradorService;
 
   @EJB
   private EmpleadoService empleadoService;
+
+  @EJB
+  private ClienteService clienteService;
 
   @EJB
   private EstadosAgendaService estadosAgendaService;
@@ -51,10 +48,7 @@ public class AgendaController extends CustomController implements Serializable {
   @EJB
   private AgendaService agendaService;
 
-  private Usuario usuario;
   private Agenda agenda;
-  private EstadosAgenda estadosAgenda;
-  private TipoServicio tipoServicios;
 
   private Integer idTipoServicio;
   private Integer idCliente;
@@ -70,6 +64,7 @@ public class AgendaController extends CustomController implements Serializable {
     agenda = new Agenda();
   }
 
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Agenda getAgenda() {
     return agenda;
   }
@@ -107,13 +102,7 @@ public class AgendaController extends CustomController implements Serializable {
   }
 
   public void setFecha(Date fecha) throws ParseException {
-    System.out.println("fecha1 " + fecha);
-    String fechaa = new SimpleDateFormat("yyyy-MM-dd").format(fecha);
-    System.out.println("fecha2 " + fechaa);
-    DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-    Date dates = format.parse(fechaa);
-    System.out.println("fecha3 " + dates);
-    this.fecha = dates;
+    this.fecha = fecha;
   }
 
   public String getObs() {
@@ -123,6 +112,7 @@ public class AgendaController extends CustomController implements Serializable {
   public void setObs(String obs) {
     this.obs = obs;
   }
+  //</editor-fold>
 
   public List<Agenda> getAgendas() {
     try {
@@ -162,27 +152,21 @@ public class AgendaController extends CustomController implements Serializable {
 
   public void create() throws ConnectionExcep {
 
-    System.out.println("cliente " + this.idCliente);
-    System.out.println("empleado " + this.idEmpleado);
-    System.out.println("servicio " + this.idTipoServicio);
-    System.out.println("fecha " + fecha);
-    System.out.println("obser " + this.obs);
-
-    // Creación de Timestamp para todos los procesos
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
-    System.out.println("timestamp " + momentum);
+    timestamps.setDeleted(false);
     timestamps.setCreated_at(momentum);
     timestamps.setUpdated_at(momentum);
 
-    this.agenda.setFecha(fecha);
+    this.agenda.setFecha(this.fecha);
     this.agenda.setObservaciones(this.obs);
     this.agenda.setEstado(estadosAgendaService.getOne(1));
     this.agenda.setTipoServicio(tipoServicioService.getOne(this.idTipoServicio));
-    this.agenda.setCliente(usuarioService.getOne(this.idCliente));
-    this.agenda.setEmpleado(usuarioService.getOne(this.idEmpleado));
-    this.agenda.setAdministrador(usuarioService.getOne(1));
+    this.agenda.setCliente(clienteService.getOne(this.idCliente));
+    this.agenda.setEmpleado(empleadoService.getOne(this.idEmpleado));
+    this.agenda.setAdministrador(administradorService.getOne(1));
     this.agenda.setTimestamps(timestamps);
+
     this.agenda = agendaService.create(agenda);
   }
 

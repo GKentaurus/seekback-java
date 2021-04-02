@@ -134,7 +134,7 @@ public class LoginController extends CustomController implements Serializable {
     }
   }
 
-  public void restorePassword() throws ConnectionExcep, MessagingException {
+  public void restorePassword() throws ConnectionExcep, MessagingException, IOException {
     System.out.println("Recuperando contraseña...");
     FacesContext fc = FacesContext.getCurrentInstance();
     if (validateEmail()) {
@@ -166,6 +166,7 @@ public class LoginController extends CustomController implements Serializable {
       FacesMessage message = new FacesMessage("El correo no esta registrado");
       fc.addMessage("messs:mesag", message);
     }
+    redirectTo("/login.xhtml");
   }
 
   public void logout() throws IOException {

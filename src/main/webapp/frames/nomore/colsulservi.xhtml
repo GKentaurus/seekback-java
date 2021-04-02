@@ -74,16 +74,16 @@
                 <h:column>
                   <f:facet name="header">Cliente</f:facet>
                   <h:outputText pt:class="tooltipped"
-                                value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"
+                                value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"
                                 pt:data-position="bottom"
-                                pt:data-tooltip="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}"/>
+                                pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Empleado</f:facet>
                   <h:outputText pt:class="tooltipped"
-                                value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"
+                                value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}"
                                 pt:data-position="bottom"
-                                pt:data-tooltip="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}"/>
+                                pt:data-tooltip="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
@@ -115,13 +115,13 @@
                         <div class="row">
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="quien" type="text" value="#{st.cliente.usuario.primerNombre} #{st.cliente.usuario.otrosNombres} #{st.cliente.usuario.primerApellido}" readonly="true"/>
+                              <input id="quien" type="text" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" readonly="true"/>
                               <label for="quien">Cliente</label>
                             </div>
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="quien" type="text" value="#{st.empleado.usuario.primerNombre} #{st.empleado.usuario.otrosNombres} #{st.empleado.usuario.primerApellido}" readonly="true"/>
+                              <input id="quien" type="text" value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}" readonly="true"/>
                               <label for="quien">Cliente</label>
                             </div>
                           </div>
