@@ -53,6 +53,8 @@ public abstract class GenericDAO<T extends EntityTimestamp, PK> implements DAO<T
    */
   @Override
   public T getOne(PK id) throws ConnectionExcep {
+    // TODO: Borrar la caché de esta consulta en especifico y para el objeto especificado
+    // em.getEntityManagerFactory().getCache().evict(classType);
     System.out.println(
       "\n\n\n\n\n######################################################################"
         + "\n#\t Consultando el objeto No. " + id
@@ -68,6 +70,8 @@ public abstract class GenericDAO<T extends EntityTimestamp, PK> implements DAO<T
    */
   @Override
   public List<T> getAll() throws ConnectionExcep {
+    // TODO: Borrar la caché de esta consulta en especifico
+    // em.getEntityManagerFactory().getCache().evictAll();
     System.out.println(
       "\n\n\n\n\n######################################################################"
         + "\n#\t Consultando todos los objetos de " + this.classType.getSimpleName()
