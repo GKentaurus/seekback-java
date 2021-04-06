@@ -6,6 +6,7 @@
 package tech.seekback.controllers;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -28,6 +29,7 @@ public class CategoriaController extends CustomController implements Serializabl
   private CategoriasProductoService categoriasprods;
 
   private CategoriasProducto categoriasp;
+  private List<CategoriasProducto> categoriasProductos;
   private Integer categoria;
 
   public Integer getCategoria() {
@@ -37,6 +39,19 @@ public class CategoriaController extends CustomController implements Serializabl
   public void setCategoria(Integer categoria) {
     this.categoria = categoria;
     System.out.println("categoria: " + this.categoria);
+  }
+
+  @PostConstruct
+  public void init() {
+    try {
+      categoriasProductos = categoriasprods.getAll();
+    } catch (ConnectionExcep ex) {
+      Logger.getLogger(CategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+
+  public List<CategoriasProducto> getCategoriasProductos() {
+    return categoriasProductos;
   }
 
   public boolean checkCat(Integer cat) {

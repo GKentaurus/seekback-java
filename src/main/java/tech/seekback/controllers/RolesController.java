@@ -1,5 +1,6 @@
 package tech.seekback.controllers;
 
+import java.io.IOException;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Rol;
 import tech.seekback.services.RolService;
@@ -11,6 +12,8 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.UsuarioService;
@@ -30,18 +33,29 @@ public class RolesController extends CustomController implements Serializable {
 
   private List<Rol> roles;
   private Usuario usuario;
+  private List<Usuario> listaUsuarios;
   private Integer idUsuario;
   private Integer idRolUsuario;
 
-//  public RolesController() {
-//    usuario = new Usuario();
-//  }
+  private RolesController() {
+    usuario = new Usuario();
+  }
+
+  @PostConstruct
+  public void init() {
+    try {
+      roles = rolesService.getAll();
+    } catch (ConnectionExcep ex) {
+      System.out.println("Error de la consulta 'ROLES'.");
+    }
+  }
+
   public Usuario getUsuario() {
     return usuario;
   }
 
-  public void setUsuario(Usuario usuario) {
-    this.usuario = usuario;
+  public void setUsuario(int usuario) throws ConnectionExcep {
+    this.usuario = usuarioService.getOne(usuario);
   }
 
   public Integer getIdUsuario() {
@@ -58,35 +72,28 @@ public class RolesController extends CustomController implements Serializable {
 
   public void setIdRolUsuario(Integer idRolUsuario) {
     this.idRolUsuario = idRolUsuario;
-    System.out.println("rol usuario seter: " + this.idRolUsuario);
-  }
-
-  @PostConstruct
-  public void init() {
-    try {
-      roles = rolesService.getAll();
-    } catch (ConnectionExcep ex) {
-      System.out.println("Error de la consulta 'ROLES'.");
-    }
   }
 
   public List<Rol> getAll() {
     return roles;
   }
 
-  public void updaterol() {
+  public void updaterol() throws ConnectionExcep, IOException {
+    this.usuario = usuarioService.getOne(this.idUsuario);
 
-    System.out.println(" olololo ");
+    Date momentum = new Date();
+    this.usuario.getTimestamps().setUpdated_at(momentum);
 
-    // Creación de Timestamp para todos los procesos
-//    Timestamps timestamps = new Timestamps();
-//    Date momentum = new Date();
-//    timestamps.setUpdated_at(momentum);
-//
-//    this.usuario.setRol(rolesService.getOne(this.idRolUsuario));
-//    this.usuario.setTimestamps(timestamps);
-//    usuarioService.update(usuario);
-    System.out.println("rol usuario metodo: " + this.idRolUsuario);
+    this.usuario.setRol(rolesService.getOne(this.idRolUsuario));
+    usuarioService.update(usuario);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/admin/users.xhtml");
 
   }
 
