@@ -1,10 +1,11 @@
 package tech.seekback.dao.interfaces;
 
 import tech.seekback.dao.DAO;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 
 import javax.ejb.Local;
-import tech.seekback.exceptions.ConnectionExcep;
+import java.util.List;
 
 /**
  * @author gkentaurus
@@ -12,16 +13,8 @@ import tech.seekback.exceptions.ConnectionExcep;
 @Local
 public interface ProductoDAO extends DAO<Producto, Integer> {
 
-  Integer getCatCount1() throws ConnectionExcep;
+  Integer getCatCount(Integer id) throws ConnectionExcep;
 
-  Integer getCatCount2() throws ConnectionExcep;
-
-  Integer getCatCount3() throws ConnectionExcep;
-
-  Integer getCatCount4() throws ConnectionExcep;
-
-  Integer getCatCount5() throws ConnectionExcep;
-
-  Integer getCatCount6() throws ConnectionExcep;
+  List<Producto> getCategoryProducts(Integer idCategory) throws ConnectionExcep;
   //
 }

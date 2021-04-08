@@ -5,21 +5,9 @@
  */
 package tech.seekback.controllers;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Bodega;
 import tech.seekback.models.BodegaProducto;
+import tech.seekback.models.CategoriasProducto;
 import tech.seekback.models.Producto;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.BodegaProductoService;
@@ -27,8 +15,18 @@ import tech.seekback.services.BodegaService;
 import tech.seekback.services.CategoriasProductoService;
 import tech.seekback.services.ProductoService;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 /**
- *
  * @author danny
  */
 @Named
@@ -39,7 +37,7 @@ public class ProductoController implements Serializable {
   private ProductoService productoService;
 
   @EJB
-  private CategoriasProductoService categoriasprods;
+  private CategoriasProductoService categoriasProductoService;
 
   @EJB
   private BodegaProductoService bodegaProductoService;
@@ -49,108 +47,39 @@ public class ProductoController implements Serializable {
 
   private Producto producto;
   private BodegaProducto bodegaProducto;
-  private List<Bodega> bodegas;
   private String ModelProduct;
   private String Descripcion;
   private Double valor;
   private Integer idCat;
   private Integer idBod;
   private Integer Cant;
-  private Integer countcat1;
-  private Integer countcat2;
-  private Integer countcat3;
-  private Integer countcat4;
-  private Integer countcat5;
-  private Integer countcat6;
 
-  public ProductoController() {
+  private List<Producto> categoryProductList;
+  private CategoriasProducto categoria;
+
+  public ProductoController() throws ConnectionExcep {
     producto = new Producto();
     bodegaProducto = new BodegaProducto();
   }
 
   @PostConstruct
-  public void init() {
-    try {
-      bodegas = bodegaService.getAll();
-    } catch (ConnectionExcep ex) {
-      Logger.getLogger(CategoriaController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+  public void init(){
+    //
   }
 
-  public Integer getCountcat1() {
-    try {
-      if (countcat1 == null) {
-        countcat1 = productoService.getCatCount1();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcat1;
+  public List<Producto> getCategoryProductList() {
+    return categoryProductList;
+  }
+  public void setCategoryProductList(Integer id) throws ConnectionExcep {
+    this.categoria = categoriasProductoService.getOne(id);
+    this.categoryProductList = productoService.getCategoryProducts(this.categoria.getId());
   }
 
-  public Integer getCountcat2() {
-    try {
-      if (countcat2 == null) {
-        countcat2 = productoService.getCatCount2();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcat2;
+  public CategoriasProducto getCategoria() {
+    return categoria;
   }
-
-  public Integer getCountcat3() {
-    try {
-      if (countcat3 == null) {
-        countcat3 = productoService.getCatCount3();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcat3;
-  }
-
-  public Integer getCountcat4() {
-    try {
-      if (countcat4 == null) {
-        countcat4 = productoService.getCatCount4();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcat4;
-  }
-
-  public Integer getCountcat5() {
-    try {
-      if (countcat5 == null) {
-        countcat5 = productoService.getCatCount5();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcat5;
-  }
-
-  public Integer getCountcat6() {
-    try {
-      if (countcat6 == null) {
-        countcat6 = productoService.getCatCount6();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcat6;
-  }
-
-  public List<Bodega> getBodegas() {
-    return bodegas;
+  public void setCategoria(CategoriasProducto categoria) {
+    this.categoria = categoria;
   }
 
   public Integer getIdBod() {
@@ -211,7 +140,7 @@ public class ProductoController implements Serializable {
     this.producto.setModeloProducto(this.ModelProduct);
     this.producto.setDescripcion(this.Descripcion);
     this.producto.setPrecioVenta(this.valor);
-    this.producto.setCategoria(categoriasprods.getOne(this.idCat));
+    this.producto.setCategoria(categoriasProductoService.getOne(this.idCat));
     this.producto.setEstado(true);
     this.producto.setTimestamps(timestamps);
     this.producto = productoService.create(producto);
@@ -223,9 +152,9 @@ public class ProductoController implements Serializable {
     this.bodegaProducto = bodegaProductoService.create(bodegaProducto);
 
     System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t  Registro creado "
-            + "\n######################################################################\n");
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t  Registro creado "
+        + "\n######################################################################\n");
 
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
     ec.redirect(ec.getRequestContextPath() + "/frames/admin/regnref.xhtml");

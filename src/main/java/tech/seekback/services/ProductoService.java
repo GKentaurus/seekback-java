@@ -41,38 +41,15 @@ public class ProductoService {
    * @throws ConnectionExcep
    */
   public List<Producto> getAll() throws ConnectionExcep {
-    List<Producto> productos = productoDAO.getAll();
-    return productos;
+    return productoDAO.getAll();
   }
 
-  public Integer getCatCount1() throws ConnectionExcep {
-    Integer CatCount1 = productoDAO.getCatCount1();
-    return CatCount1;
+  public Integer getCategoryCount(Integer id) throws ConnectionExcep {
+    return productoDAO.getCatCount(id);
   }
 
-  public Integer getCatCount2() throws ConnectionExcep {
-    Integer CatCount1 = productoDAO.getCatCount2();
-    return CatCount1;
-  }
-
-  public Integer getCatCount3() throws ConnectionExcep {
-    Integer CatCount1 = productoDAO.getCatCount3();
-    return CatCount1;
-  }
-
-  public Integer getCatCount4() throws ConnectionExcep {
-    Integer CatCount1 = productoDAO.getCatCount4();
-    return CatCount1;
-  }
-
-  public Integer getCatCount5() throws ConnectionExcep {
-    Integer CatCount1 = productoDAO.getCatCount5();
-    return CatCount1;
-  }
-
-  public Integer getCatCount6() throws ConnectionExcep {
-    Integer CatCount1 = productoDAO.getCatCount6();
-    return CatCount1;
+  public List<Producto> getCategoryProducts(Integer idCategory) throws ConnectionExcep {
+    return productoDAO.getCategoryProducts(idCategory);
   }
 
   /**

@@ -5,17 +5,16 @@
  */
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.CategoriasProducto;
+import tech.seekback.services.CategoriasProductoService;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.CategoriasProducto;
-import tech.seekback.services.CategoriasProductoService;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -26,12 +25,24 @@ import tech.seekback.services.CategoriasProductoService;
 public class CategoriaController extends CustomController implements Serializable {
 
   @EJB
-  private CategoriasProductoService categoriasprods;
+  private CategoriasProductoService categoriasProductoService;
 
-  private CategoriasProducto categoriasp;
+  private CategoriasProducto categoriasProducto;
   private List<CategoriasProducto> categoriasProductos;
   private Integer categoria;
 
+  @PostConstruct
+  public void init() {
+    //
+  }
+
+  public CategoriasProducto getCategoriasProducto(Integer id) throws ConnectionExcep {
+    return categoriasProductoService.getOne(id);
+  }
+
+  public void setCategoriasProducto(CategoriasProducto categoriasProducto) {
+    this.categoriasProducto = categoriasProducto;
+  }
   public Integer getCategoria() {
     return categoria;
   }
@@ -41,14 +52,6 @@ public class CategoriaController extends CustomController implements Serializabl
     System.out.println("categoria: " + this.categoria);
   }
 
-  @PostConstruct
-  public void init() {
-    try {
-      categoriasProductos = categoriasprods.getAll();
-    } catch (ConnectionExcep ex) {
-      Logger.getLogger(CategoriaController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-  }
 
   public List<CategoriasProducto> getCategoriasProductos() {
     return categoriasProductos;

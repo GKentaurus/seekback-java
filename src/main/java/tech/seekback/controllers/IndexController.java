@@ -19,9 +19,9 @@ public class IndexController extends CustomController implements Serializable {
   @EJB
   private MailService mailService;
 
-  String recipient;
-  String name;
-  String message;
+  private String recipient;
+  private String name;
+  private String message;
 
   public void sendMessage() throws MessagingException {
     mailService.sendEmail(
