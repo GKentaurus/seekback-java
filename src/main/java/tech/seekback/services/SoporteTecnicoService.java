@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.SoporteTecnicoDAO;
@@ -44,6 +43,11 @@ public class SoporteTecnicoService {
   public List<SoporteTecnico> getAll() throws ConnectionExcep {
     List<SoporteTecnico> seportesTecnicos = soporteTecnicoDAO.getAll();
     return seportesTecnicos;
+  }
+
+  public List<SoporteTecnico> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep {
+    List<SoporteTecnico> soportesTecnicosIdEmpleado = soporteTecnicoDAO.getByidEmpleado(idEmpleado);
+    return soportesTecnicosIdEmpleado;
   }
 
   /**

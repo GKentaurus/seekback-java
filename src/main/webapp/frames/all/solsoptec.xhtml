@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <h:head>
+    <title>QPCOM | Seekback</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+    <h:outputScript library="" name="jquery.min.js" />
+    <h:outputScript library="materialize" name="js/materialize.min.js" />
+    <h:outputScript library="" name="fontawesome.js" />
+    <h:outputStylesheet library="styles" name="table.css" />
+    <script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js'></script>
+    <script src='https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <style>
+      body {
+        background-image: url("#{resource['images/logob.png']}");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 700px;
+        background-position: 130% -300%;
+        background-blend-mode: difference;
+      }
+
+    </style>
+  </h:head>
+
+  <h:body>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <p style="font-size:25px;" class="center-align"><i class="fas fa-headset"></i> Solicitar servicio <i class="far fa-calendar-alt"></i></p>
+          <h:panelGroup rendered="#{usuarioController.confirmRole('Administrador')}">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opcion"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{clienteController.clientes}"
+                                   var="cl"
+                                   itemValue="#{cl.id}"
+                                   itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <h:outputLabel for="estado" value="Producto" style="margin-top: -30px;"/>
+                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default">
+                    <f:selectItem itemValue="#{null}"
+                                  itemLabel="Seleccione una opción"
+                                  noSelectionOption="true" />
+                    <f:selectItems value="#{bodegaProductoController.bodegaProductos}"
+                                   var="da"
+                                   itemValue="#{da.producto.id}"
+                                   itemLabel="#{da.producto.modeloProducto}"/>
+                  </h:selectOneMenu>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <input id="datee" type="text" class="datepicker"/>
+                  <h:outputLabel for="datee" value="Fecha" />
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="input-field">
+                  <textarea id="motivo" class="materialize-textarea"></textarea>
+                  <label for="motivo">Motivo</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
+              </div>
+            </div>
+            <hr/>
+          </h:panelGroup>
+          <h:panelGroup rendered="#{usuarioController.confirmRole('Empleado')}">
+            <h:form>
+              <div class="row">
+                <div class="col s12 m6">
+                  <div class="input-field">
+                    <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
+                    <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default"
+                                     value="#{soporteTecnicoController.idCliente}">
+                      <f:selectItem itemValue="#{null}"
+                                    itemLabel="Seleccione una opcion"
+                                    noSelectionOption="true" />
+                      <f:selectItems value="#{clienteController.clientes}"
+                                     var="cl"
+                                     itemValue="#{cl.id}"
+                                     itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
+                    </h:selectOneMenu>
+                  </div>
+                </div>
+                <div class="col s12 m6">
+                  <div class="input-field">
+                    <h:outputLabel for="estado" value="Producto" style="margin-top: -30px;"/>
+                    <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default"
+                                     value="#{soporteTecnicoController.idProducto}">
+                      <f:selectItem itemValue="#{null}"
+                                    itemLabel="Seleccione una opción"
+                                    noSelectionOption="true" />
+                      <f:selectItems value="#{bodegaProductoController.bodegaProductos}"
+                                     var="da"
+                                     itemValue="#{da.producto.id}"
+                                     itemLabel="#{da.producto.modeloProducto}"/>
+                    </h:selectOneMenu>
+                  </div>
+                </div>
+                <div class="col s12 m6">
+                  <div class="input-field">
+                    <h:inputTextarea id="motivo" class="materialize-textarea" value="#{soporteTecnicoController.obs}" required="true"></h:inputTextarea>
+                    <h:outputLabel for="motivo">Comentario</h:outputLabel>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <h:commandLink class="waves-effect waves-light btn" actionListener="#{soporteTecnicoController.create()}">Solicitar</h:commandLink>
+                </div>
+              </div>
+            </h:form>
+            <hr/>
+            <div class="card material-table">
+              <div class="table-header">
+                <div class="actions">
+                  <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                </div>
+              </div>
+              <h:dataTable pt:id="datatable"
+                           value="#{soporteTecnicoController.soportesByidempleado}"
+                           var="st">
+                <h:column>
+                  <f:facet name="header">Producto</f:facet>
+                  <h:outputText value="#{st.producto.modeloProducto}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Cliente</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Comentario</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Estado</f:facet>
+                  <h:outputText value="#{st.estado.nombreEstado}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Fecha</f:facet>
+                  <h:outputText value="#{st.timestamps.created_at}" >
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:outputText>
+                </h:column>
+
+              </h:dataTable>
+            </div>
+
+          </h:panelGroup>
+        </div>
+      </div>
+    </div>
+    <h:outputScript library="" name="table.js" />
+
+    <script>
+      $(document).ready(function () {
+        $('.tooltipped').tooltip();
+        $('.datepicker').datepicker({
+          autoClose: true,
+          firstDay: 1,
+          i18n: {
+            weekdays: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
+            cancel: 'Cancelar'},
+          format: 'yyyy-mm-dd'
+        });
+        $('select').formSelect();
+        $('.modal').modal();
+      });
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    </script>
+
+  </h:body>
+</html>

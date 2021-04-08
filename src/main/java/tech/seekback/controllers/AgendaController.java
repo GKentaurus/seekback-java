@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.AdministradorService;
@@ -29,6 +31,9 @@ import tech.seekback.services.EmpleadoService;
 @Named
 @ViewScoped
 public class AgendaController extends CustomController implements Serializable {
+
+  @Inject
+  private LoginController loginController;
 
   @EJB
   private AdministradorService administradorService;
@@ -53,12 +58,20 @@ public class AgendaController extends CustomController implements Serializable {
   private Integer idTipoServicio;
   private Integer idCliente;
   private Integer idEmpleado;
+  private Integer idUsuario;
   private Date fecha;
   private String obs;
 
   private List<Agenda> agendas;
+  private List<Agenda> agendasByidEmpleado;
+  private List<Agenda> agendasByidCliente;
   private List<EstadosAgenda> estadosAgendas;
   private List<TipoServicio> tipoServicio;
+
+  @PostConstruct
+  public void Init() {
+    this.idUsuario = loginController.getUsuario().getId();
+  }
 
   public AgendaController() {
     agenda = new Agenda();
@@ -71,6 +84,14 @@ public class AgendaController extends CustomController implements Serializable {
 
   public void setAgenda(Agenda agenda) {
     this.agenda = agenda;
+  }
+
+  public Integer getIdUsuario() {
+    return idUsuario;
+  }
+
+  public void setIdUsuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
   }
 
   public Integer getIdTipoServicio() {
@@ -124,6 +145,30 @@ public class AgendaController extends CustomController implements Serializable {
       ex.printStackTrace();
     }
     return agendas;
+  }
+
+  public List<Agenda> getAgendasByidEmpleado() {
+    try {
+      if (Objects.isNull(agendasByidEmpleado)) {
+        agendasByidEmpleado = agendaService.getByidEmpleado(this.idUsuario);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los Agenda.....");
+      ex.printStackTrace();
+    }
+    return agendasByidEmpleado;
+  }
+
+  public List<Agenda> getAgendasByidCliente() {
+    try {
+      if (Objects.isNull(agendasByidCliente)) {
+        agendasByidCliente = agendaService.getByidCliente(this.idUsuario);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los Agenda.....");
+      ex.printStackTrace();
+    }
+    return agendasByidCliente;
   }
 
   public List<TipoServicio> getTipoServicio() {

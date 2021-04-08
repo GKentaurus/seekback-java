@@ -36,7 +36,6 @@ public class CotizacionController extends CustomController implements Serializab
   @PostConstruct
   public void Init() {
     this.Idempleado = loginController.getUsuario().getId();
-    this.nombre = loginController.getUsuario().getPrimerNombre();
   }
 
   public Usuario getUsuario() {
@@ -47,11 +46,22 @@ public class CotizacionController extends CustomController implements Serializab
     this.usuario = usuario;
   }
 
+  public Integer getIdempleado() {
+    return Idempleado;
+  }
+
+  public void setIdempleado(Integer Idempleado) {
+    this.Idempleado = Idempleado;
+  }
+
   public List<Cotizacion> getCotizaciones() throws ConnectionExcep {
-    System.out.println("nombre " + this.nombre);
-    cotizaciones = cotizacionService.getByIdEmpleado(this.Idempleado);
-    for (Cotizacion cotizacione : cotizaciones) {
-      System.out.println(cotizacione);
+    try {
+      if (Objects.isNull(cotizaciones)) {
+        cotizaciones = cotizacionService.getByIdEmpleado(this.Idempleado);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los soporteTecnico.....");
+      ex.printStackTrace();
     }
     return cotizaciones;
   }

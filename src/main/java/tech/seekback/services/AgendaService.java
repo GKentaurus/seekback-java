@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.AgendaDAO;
@@ -38,11 +37,22 @@ public class AgendaService {
   }
 
   /**
-   * @return Una colección de objetos de tipo Agenda (referente al DAO que lo implemente)
+   * @return Una colección de objetos de tipo Agenda (referente al DAO que lo
+   * implemente)
    * @throws ConnectionExcep
    */
   public List<Agenda> getAll() throws ConnectionExcep {
     return agendaDAO.getAll();
+  }
+
+  public List<Agenda> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep {
+    List<Agenda> agendasIdEmpleado = agendaDAO.getByidEmpleado(idEmpleado);
+    return agendasIdEmpleado;
+  }
+
+  public List<Agenda> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    List<Agenda> agendasIdCliente = agendaDAO.getByidCliente(idCliente);
+    return agendasIdCliente;
   }
 
   /**

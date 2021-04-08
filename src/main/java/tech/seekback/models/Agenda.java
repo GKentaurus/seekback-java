@@ -1,4 +1,3 @@
-
 package tech.seekback.models;
 
 import tech.seekback.models.interfaces.EntityTimestamp;
@@ -16,7 +15,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "agenda")
 @NamedQueries(value = {
-  @NamedQuery(name = "Agenda.getAll", query = "SELECT obj FROM Agenda obj WHERE obj.timestamps.deleted = false")
+  @NamedQuery(name = "Agenda.getAll", query = "SELECT obj FROM Agenda obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Agenda.getByidEmpleado", query = "SELECT obj FROM Agenda obj WHERE obj.empleado.id = :idEmpleado AND obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Agenda.getByidCliente", query = "SELECT obj FROM Agenda obj WHERE obj.cliente.id = :idCliente AND obj.timestamps.deleted = false")
 })
 public class Agenda implements EntityTimestamp {
 
@@ -258,16 +259,16 @@ public class Agenda implements EntityTimestamp {
   @Override
   public String toString() {
     return "Agenda("
-      + "id = " + id + ", "
-      + "fecha = " + fecha + ", "
-      + "observaciones = " + observaciones + ", "
-      + "estado = " + estado + ", "
-      + "tipoServicio = " + tipoServicio + ", "
-      + "cliente = " + cliente + ", "
-      + "empleado = " + empleado + ", "
-      + "administrador = " + administrador + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "fecha = " + fecha + ", "
+            + "observaciones = " + observaciones + ", "
+            + "estado = " + estado + ", "
+            + "tipoServicio = " + tipoServicio + ", "
+            + "cliente = " + cliente + ", "
+            + "empleado = " + empleado + ", "
+            + "administrador = " + administrador + ", "
+            + timestamps.toString()
+            + ")";
   }
 
 }

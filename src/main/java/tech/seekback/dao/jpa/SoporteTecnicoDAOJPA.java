@@ -1,6 +1,6 @@
-
 package tech.seekback.dao.jpa;
 
+import java.util.List;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.SoporteTecnicoDAO;
 import tech.seekback.enums.ConnectionExcepEnum;
@@ -8,6 +8,7 @@ import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 /**
  * @author gkentaurus
@@ -28,6 +29,17 @@ public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> im
     try {
       Integer cont = ((Number) em.createNamedQuery("SoporteTecnico.getAllCount").getSingleResult()).intValue();
       return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public List<SoporteTecnico> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep {
+    try {
+      TypedQuery<SoporteTecnico> tq = em.createNamedQuery("SoporteTecnico.getByidEmpleado", classType);
+      tq.setParameter("idEmpleado", idEmpleado);
+      return tq.getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

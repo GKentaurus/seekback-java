@@ -29,23 +29,6 @@
         background-blend-mode: difference;
       }
 
-      .menssage {
-        max-width: 100%;
-        border: 1px solid transparent;
-        border-bottom: 1px solid #9E9E9E;
-        outline: none;
-      }
-
-      .menssage:focus {
-        border-bottom: 1px solid #26a69a;
-        -webkit-box-shadow: 0 1px 0 0 #26a69a;
-        box-shadow: 0 1px 0 0 #26a69a;
-      }
-
-      .menssage:focus+label {
-        color: #26a69a;
-      }
-
     </style>
   </h:head>
 
@@ -172,7 +155,7 @@
             </h:form>
             <h:form rendered="#{usuarioController.confirmRole('Empleado')}">
               <h:dataTable pt:id="datatable"
-                           value="#{agendaController.agendas}"
+                           value="#{agendaController.agendasByidEmpleado}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
@@ -292,7 +275,7 @@
             </h:form>
             <h:form rendered="#{usuarioController.confirmRole('Cliente')}">
               <h:dataTable pt:id="datatable"
-                           value="#{agendaController.agendas}"
+                           value="#{agendaController.agendasByidCliente}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
