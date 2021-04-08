@@ -1,4 +1,3 @@
-
 package tech.seekback.models;
 
 import tech.seekback.models.interfaces.EntityTimestamp;
@@ -16,7 +15,12 @@ import java.util.Objects;
 @Table(name = "calificacion")
 @NamedQueries(value = {
   @NamedQuery(name = "Calificacion.getAll", query = "SELECT obj FROM Calificacion obj WHERE obj.timestamps.deleted = false"),
-  @NamedQuery(name = "Calificacion.getByIdProducto", query = "SELECT obj FROM Calificacion obj WHERE obj.producto.id = :idProducto AND obj.timestamps.deleted = false")
+  @NamedQuery(name = "Calificacion.getByIdProducto", query = "SELECT obj FROM Calificacion obj WHERE obj.producto.id = :idProducto AND obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Calificacion.getCalCount1", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = :idCalif AND obj.esAprobado = true"),
+  @NamedQuery(name = "Calificacion.getCalCount2", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = 2 AND obj.esAprobado = true"),
+  @NamedQuery(name = "Calificacion.getCalCount3", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = 3 AND obj.esAprobado = true"),
+  @NamedQuery(name = "Calificacion.getCalCount4", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = 4 AND obj.esAprobado = true"),
+  @NamedQuery(name = "Calificacion.getCalCount5", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = 5 AND obj.esAprobado = true")
 })
 public class Calificacion implements EntityTimestamp {
 
@@ -206,14 +210,14 @@ public class Calificacion implements EntityTimestamp {
   @Override
   public String toString() {
     return "Calificacion("
-      + "id = " + id + ", "
-      + "cliente = " + cliente + ", "
-      + "producto = " + producto + ", "
-      + "calificacion = " + calificacion + ", "
-      + "comentario = " + comentario + ", "
-      + "esAprobado = " + esAprobado + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "cliente = " + cliente + ", "
+            + "producto = " + producto + ", "
+            + "calificacion = " + calificacion + ", "
+            + "comentario = " + comentario + ", "
+            + "esAprobado = " + esAprobado + ", "
+            + timestamps.toString()
+            + ")";
   }
 
 }

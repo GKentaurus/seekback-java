@@ -56,6 +56,12 @@ public class ProductoController implements Serializable {
   private Integer idCat;
   private Integer idBod;
   private Integer Cant;
+  private Integer countcat1;
+  private Integer countcat2;
+  private Integer countcat3;
+  private Integer countcat4;
+  private Integer countcat5;
+  private Integer countcat6;
 
   public ProductoController() {
     producto = new Producto();
@@ -69,6 +75,78 @@ public class ProductoController implements Serializable {
     } catch (ConnectionExcep ex) {
       Logger.getLogger(CategoriaController.class.getName()).log(Level.SEVERE, null, ex);
     }
+  }
+
+  public Integer getCountcat1() {
+    try {
+      if (countcat1 == null) {
+        countcat1 = productoService.getCatCount1();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcat1;
+  }
+
+  public Integer getCountcat2() {
+    try {
+      if (countcat2 == null) {
+        countcat2 = productoService.getCatCount2();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcat2;
+  }
+
+  public Integer getCountcat3() {
+    try {
+      if (countcat3 == null) {
+        countcat3 = productoService.getCatCount3();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcat3;
+  }
+
+  public Integer getCountcat4() {
+    try {
+      if (countcat4 == null) {
+        countcat4 = productoService.getCatCount4();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcat4;
+  }
+
+  public Integer getCountcat5() {
+    try {
+      if (countcat5 == null) {
+        countcat5 = productoService.getCatCount5();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcat5;
+  }
+
+  public Integer getCountcat6() {
+    try {
+      if (countcat6 == null) {
+        countcat6 = productoService.getCatCount6();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcat6;
   }
 
   public List<Bodega> getBodegas() {

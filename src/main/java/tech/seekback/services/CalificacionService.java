@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CalificacionDAO;
@@ -45,6 +44,31 @@ public class CalificacionService {
    */
   public List<Calificacion> getAll() throws ConnectionExcep {
     return calificacionDAO.getAll();
+  }
+
+  public Integer getCalCountId(int idcalif) throws ConnectionExcep {
+    Integer CalCount1 = calificacionDAO.getCalCountId(idcalif);
+    return CalCount1;
+  }
+
+  public Integer getCalCount2() throws ConnectionExcep {
+    Integer CalCount1 = calificacionDAO.getCalCount2();
+    return CalCount1;
+  }
+
+  public Integer getCalCount3() throws ConnectionExcep {
+    Integer CalCount1 = calificacionDAO.getCalCount3();
+    return CalCount1;
+  }
+
+  public Integer getCalCount4() throws ConnectionExcep {
+    Integer CalCount1 = calificacionDAO.getCalCount4();
+    return CalCount1;
+  }
+
+  public Integer getCalCount5() throws ConnectionExcep {
+    Integer CalCount1 = calificacionDAO.getCalCount5();
+    return CalCount1;
   }
 
   /**

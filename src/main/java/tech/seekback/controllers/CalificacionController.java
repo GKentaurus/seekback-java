@@ -1,4 +1,3 @@
-
 package tech.seekback.controllers;
 
 import tech.seekback.models.Calificacion;
@@ -20,8 +19,14 @@ public class CalificacionController extends CustomController implements Serializ
 
   @EJB
   private CalificacionService calificacionService;
+
   private List<Calificacion> calificaciones;
   private List<Calificacion> calificaciondelproducto;
+  private Integer countcal;
+  private Integer countcal2;
+  private Integer countcal3;
+  private Integer countcal4;
+  private Integer countcal5;
 
   public List<Calificacion> getCalificaciones() {
     try {
@@ -33,6 +38,66 @@ public class CalificacionController extends CustomController implements Serializ
       ex.printStackTrace();
     }
     return calificaciones;
+  }
+
+  public Integer getCountcal(int idCal) {
+    try {
+      if (countcal == null) {
+        countcal = calificacionService.getCalCountId(idCal);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcal;
+  }
+
+  public Integer getCountcal2() {
+    try {
+      if (countcal2 == null) {
+        countcal2 = calificacionService.getCalCount2();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcal2;
+  }
+
+  public Integer getCountcal3() {
+    try {
+      if (countcal3 == null) {
+        countcal3 = calificacionService.getCalCount3();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcal3;
+  }
+
+  public Integer getCountcal4() {
+    try {
+      if (countcal4 == null) {
+        countcal4 = calificacionService.getCalCount4();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcal4;
+  }
+
+  public Integer getCountcal5() {
+    try {
+      if (countcal5 == null) {
+        countcal5 = calificacionService.getCalCount5();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los getAllCount.....");
+      ex.printStackTrace();
+    }
+    return countcal5;
   }
 
   public List<Calificacion> getCalificaciondelproducto(int idProducto) {

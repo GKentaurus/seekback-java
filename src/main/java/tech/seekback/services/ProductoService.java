@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.ProductoDAO;
@@ -37,12 +36,43 @@ public class ProductoService {
   }
 
   /**
-   * @return Una colección de objetos de tipo Producto (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Producto (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Producto> getAll() throws ConnectionExcep {
     List<Producto> productos = productoDAO.getAll();
     return productos;
+  }
+
+  public Integer getCatCount1() throws ConnectionExcep {
+    Integer CatCount1 = productoDAO.getCatCount1();
+    return CatCount1;
+  }
+
+  public Integer getCatCount2() throws ConnectionExcep {
+    Integer CatCount1 = productoDAO.getCatCount2();
+    return CatCount1;
+  }
+
+  public Integer getCatCount3() throws ConnectionExcep {
+    Integer CatCount1 = productoDAO.getCatCount3();
+    return CatCount1;
+  }
+
+  public Integer getCatCount4() throws ConnectionExcep {
+    Integer CatCount1 = productoDAO.getCatCount4();
+    return CatCount1;
+  }
+
+  public Integer getCatCount5() throws ConnectionExcep {
+    Integer CatCount1 = productoDAO.getCatCount5();
+    return CatCount1;
+  }
+
+  public Integer getCatCount6() throws ConnectionExcep {
+    Integer CatCount1 = productoDAO.getCatCount6();
+    return CatCount1;
   }
 
   /**

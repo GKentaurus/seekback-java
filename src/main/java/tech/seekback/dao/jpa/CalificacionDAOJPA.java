@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -32,6 +31,61 @@ public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implem
       TypedQuery<Calificacion> tq = em.createNamedQuery("Calificacion.getByIdProducto", classType);
       tq.setParameter("idProducto", idProducto);
       return tq.getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public Integer getCalCountId(int idcalif) throws ConnectionExcep {
+
+    try {
+      Integer cont = ((Number) em.createNamedQuery("Calificacion.getCalCount1").setParameter("idCalif", idcalif).getSingleResult()).intValue();
+      return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public Integer getCalCount2() throws ConnectionExcep {
+
+    try {
+      Integer cont = ((Number) em.createNamedQuery("Calificacion.getCalCount2").getSingleResult()).intValue();
+      return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public Integer getCalCount3() throws ConnectionExcep {
+
+    try {
+      Integer cont = ((Number) em.createNamedQuery("Calificacion.getCalCount3").getSingleResult()).intValue();
+      return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public Integer getCalCount4() throws ConnectionExcep {
+
+    try {
+      Integer cont = ((Number) em.createNamedQuery("Calificacion.getCalCount4").getSingleResult()).intValue();
+      return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public Integer getCalCount5() throws ConnectionExcep {
+
+    try {
+      Integer cont = ((Number) em.createNamedQuery("Calificacion.getCalCount5").getSingleResult()).intValue();
+      return cont;
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

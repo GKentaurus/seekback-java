@@ -14,7 +14,13 @@ import java.util.Objects;
 @Entity
 @Table(name = "producto")
 @NamedQueries(value = {
-  @NamedQuery(name = "Producto.getAll", query = "SELECT obj FROM Producto obj WHERE obj.timestamps.deleted = false")
+  @NamedQuery(name = "Producto.getAll", query = "SELECT obj FROM Producto obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Producto.getCatCount1", query = "SELECT COUNT(obj) FROM Producto obj WHERE obj.categoria.id = 1 AND obj.estado = true"),
+  @NamedQuery(name = "Producto.getCatCount2", query = "SELECT COUNT(obj) FROM Producto obj WHERE obj.categoria.id = 2 AND obj.estado = true"),
+  @NamedQuery(name = "Producto.getCatCount3", query = "SELECT COUNT(obj) FROM Producto obj WHERE obj.categoria.id = 3 AND obj.estado = true"),
+  @NamedQuery(name = "Producto.getCatCount4", query = "SELECT COUNT(obj) FROM Producto obj WHERE obj.categoria.id = 4 AND obj.estado = true"),
+  @NamedQuery(name = "Producto.getCatCount5", query = "SELECT COUNT(obj) FROM Producto obj WHERE obj.categoria.id = 5 AND obj.estado = true"),
+  @NamedQuery(name = "Producto.getCatCount6", query = "SELECT COUNT(obj) FROM Producto obj WHERE obj.categoria.id = 6 AND obj.estado = true")
 })
 public class Producto implements EntityTimestamp {
 
@@ -201,13 +207,13 @@ public class Producto implements EntityTimestamp {
   @Override
   public String toString() {
     return "Producto("
-      + "id = " + id + ", "
-      + "modeloProducto = " + modeloProducto + ", "
-      + "descripcion = " + descripcion + ", "
-      + "precioVenta = " + precioVenta + ", "
-      + "categoria = " + categoria + ", "
-      + "estado = " + estado + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "modeloProducto = " + modeloProducto + ", "
+            + "descripcion = " + descripcion + ", "
+            + "precioVenta = " + precioVenta + ", "
+            + "categoria = " + categoria + ", "
+            + "estado = " + estado + ", "
+            + timestamps.toString()
+            + ")";
   }
 }
