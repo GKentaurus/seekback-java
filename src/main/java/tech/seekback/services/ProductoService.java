@@ -52,6 +52,10 @@ public class ProductoService {
     return productoDAO.getCategoryProducts(idCategory);
   }
 
+  public List<Producto> getLastProducts(Integer limit) throws ConnectionExcep {
+    return productoDAO.getLastProducts(limit);
+  }
+
   /**
    * Actualiza un objeto de tipo Producto
    *

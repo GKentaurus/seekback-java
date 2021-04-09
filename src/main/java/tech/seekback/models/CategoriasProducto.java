@@ -27,6 +27,9 @@ public class CategoriasProducto implements EntityTimestamp {
   @Column(name = "nombreCategoria", nullable = false, length = 50)
   private String nombreCategoria;
 
+  @Column(name = "faIcon", length = 50)
+  private String faIcon;
+
   @Embedded
   private Timestamps timestamps;
 
@@ -65,6 +68,24 @@ public class CategoriasProducto implements EntityTimestamp {
    */
   public void setNombreCategoria(String nombreCategoria) {
     this.nombreCategoria = nombreCategoria;
+  }
+
+  /**
+   * Retorna el valor del atributo <code>nombreCategoria</code> del objeto.
+   *
+   * @return <code>nombreCategoria</code> de las categorías de productos.
+   */
+  public String getFaIcon() {
+    return faIcon;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>nombreCategoria</code> del objeto.
+   *
+   * @param faIcon de las categorías de productos.
+   */
+  public void setFaIcon(String faIcon) {
+    this.faIcon = faIcon;
   }
 
   /**

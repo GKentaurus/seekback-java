@@ -20,6 +20,7 @@ import java.util.Objects;
     query = "SELECT obj " +
       "FROM Producto obj " +
       "WHERE obj.categoria.id = :idCategoria " +
+      "AND obj.estado = true " +
       "AND obj.timestamps.deleted = false"
   ),
   @NamedQuery(
@@ -29,6 +30,15 @@ import java.util.Objects;
       "WHERE obj.categoria.id = :idCategoria " +
       "AND obj.estado = true " +
       "AND obj.timestamps.deleted = false"
+  ),
+  @NamedQuery(
+    name = "Producto.getLastProducts",
+    query = "SELECT obj " +
+      "FROM Producto obj " +
+      "WHERE obj.estado = true " +
+      "AND obj.timestamps.deleted = false " +
+      "GROUP BY obj " +
+      "ORDER BY obj.id DESC "
   )
 })
 public class Producto implements EntityTimestamp {

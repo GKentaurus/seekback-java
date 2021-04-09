@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+>
 
 <h:body id="ody">
   <ui:composition template="/WEB-INF/templates/handf.xhtml">
@@ -37,7 +37,6 @@
           <div class="col m9 s12">
             <div class="material-table">
               <div class="table-header">
-                #{productoController.setCategoryProductList(param['id'])}
                 <span class="table-title" id="namet">#{productoController.categoria.nombreCategoria}</span>
                 <div class="actions">
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i
@@ -45,23 +44,21 @@
                 </div>
               </div>
               <h:form>
-                <h:dataTable pt:id="datatable" value="#{productoController.getCategoryProductList()}"
-                             var="st">
-                  <h:column>
-
-                    <f:facet name="header" pt:style="display:none;">Productos</f:facet>
+                <h:dataTable pt:id="datatable" value="#{productoController.getCategoryProductList(param['id'])}"
+                             var="product">
+                  <h:column rendered="#{productoController.listHasData()}">
                     <div class="col m12 cont">
                       <div class="col s12 m6 l3 childimg" style="display: flex;">
                         <h:graphicImage class="materialboxed" library="images" name="acc/acc1.webp" alt="cards"
                                         style="height:200px; width:200px;"/>
                       </div>
                       <div class="col s12 m6 l9 childesc">
-                        <span class="crdt">#{st.modeloProducto}</span>
-                        <p class=" hide-on-small-only">#{st.descripcion}</p>
+                        <span class="crdt">#{product.modeloProducto}</span>
+                        <p class=" hide-on-small-only">#{product.descripcion}</p>
                         <div class="col s12 m9 childbtn">
                           <h:form>
                             <a class='btn light-blue darken-4 waves-effect waves-light white-text hoverable'
-                               href="anyproduct.xhtml?id=#{st.id}">visualizar</a>
+                               href="anyproduct.xhtml?id=#{product.id}">visualizar</a>
                           </h:form>
                         </div>
                       </div>

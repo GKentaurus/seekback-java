@@ -16,5 +16,6 @@ public interface ProductoDAO extends DAO<Producto, Integer> {
   Integer getCatCount(Integer id) throws ConnectionExcep;
 
   List<Producto> getCategoryProducts(Integer idCategory) throws ConnectionExcep;
-  //
+
+  List<Producto> getLastProducts(Integer limit) throws ConnectionExcep;
 }

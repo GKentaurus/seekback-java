@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author danny
@@ -57,22 +58,35 @@ public class ProductoController implements Serializable {
   private List<Producto> categoryProductList;
   private CategoriasProducto categoria;
 
-  public ProductoController() throws ConnectionExcep {
-    producto = new Producto();
-    bodegaProducto = new BodegaProducto();
-  }
-
   @PostConstruct
   public void init(){
     //
   }
 
-  public List<Producto> getCategoryProductList() {
-    return categoryProductList;
+  public ProductoController() throws ConnectionExcep {
+    producto = new Producto();
+    bodegaProducto = new BodegaProducto();
   }
-  public void setCategoryProductList(Integer id) throws ConnectionExcep {
-    this.categoria = categoriasProductoService.getOne(id);
-    this.categoryProductList = productoService.getCategoryProducts(this.categoria.getId());
+
+  public List<CategoriasProducto> categoryList() throws ConnectionExcep {
+    return this.categoriasProductoService.getAll();
+  }
+
+  public Integer categoryProductCount(Integer idCategoria) throws ConnectionExcep {
+    return this.productoService.getCategoryCount(idCategoria);
+  }
+
+  public List<Producto> getCategoryProductList(Integer id) throws ConnectionExcep {
+    CategoriasProducto categoria = categoriasProductoService.getOne(id);
+    if (Objects.nonNull(categoria)) {
+      this.categoryProductList = productoService.getCategoryProducts(categoria.getId());
+    }
+    return this.categoryProductList;
+  }
+
+  public boolean listHasData() {
+
+    return Objects.nonNull(this.categoryProductList) && this.categoryProductList.size() > 0;
   }
 
   public CategoriasProducto getCategoria() {

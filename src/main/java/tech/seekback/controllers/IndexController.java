@@ -1,6 +1,9 @@
 
 package tech.seekback.controllers;
 
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Producto;
+import tech.seekback.services.ProductoService;
 import tech.seekback.services.tools.MailService;
 
 import javax.ejb.EJB;
@@ -8,6 +11,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author gkentaurus
@@ -18,6 +22,9 @@ public class IndexController extends CustomController implements Serializable {
 
   @EJB
   private MailService mailService;
+
+  @EJB
+  private ProductoService productoService;
 
   private String recipient;
   private String name;
@@ -44,26 +51,35 @@ public class IndexController extends CustomController implements Serializable {
     );
 
     this.recipient = "";
-    this.message ="";
+    this.message = "";
     this.name = "";
   }
 
   // <editor-fold desc="Getters y Setters" defaultstate="collapsed">
+  public List<Producto> getLastProducts(Integer limit) throws ConnectionExcep {
+    return this.productoService.getLastProducts(limit);
+  }
+
   public String getRecipient() {
     return recipient;
   }
+
   public void setRecipient(String recipient) {
     this.recipient = recipient;
   }
+
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
+
   public String getMessage() {
     return message;
   }
+
   public void setMessage(String message) {
     this.message = message;
   }
