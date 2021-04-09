@@ -46,6 +46,11 @@ public class CalificacionService {
     return calificacionDAO.getAll();
   }
 
+  public List<Calificacion> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    List<Calificacion> calificacionByidCliente = calificacionDAO.getByidCliente(idCliente);
+    return calificacionByidCliente;
+  }
+
   public Integer getCalCountId(int idcalif) throws ConnectionExcep {
     Integer CalCount1 = calificacionDAO.getCalCountId(idcalif);
     return CalCount1;

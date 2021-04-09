@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.FelicitacionDAO;
@@ -44,6 +43,11 @@ public class FelicitacionService {
    */
   public List<Felicitacion> getAll() throws ConnectionExcep {
     return felicitacionDAO.getAll();
+  }
+
+  public List<Felicitacion> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    List<Felicitacion> felicitacionesByidCliente = felicitacionDAO.getByidCliente(idCliente);
+    return felicitacionesByidCliente;
   }
 
   /**

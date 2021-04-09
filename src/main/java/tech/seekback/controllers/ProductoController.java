@@ -26,6 +26,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import tech.seekback.models.Bodega;
 
 /**
  * @author danny
@@ -55,11 +56,13 @@ public class ProductoController implements Serializable {
   private Integer idBod;
   private Integer Cant;
 
+  private List<Bodega> bodegas;
   private List<Producto> categoryProductList;
+  private List<Producto> productos;
   private CategoriasProducto categoria;
 
   @PostConstruct
-  public void init(){
+  public void init() {
     //
   }
 
@@ -84,6 +87,24 @@ public class ProductoController implements Serializable {
     return this.categoryProductList;
   }
 
+  public List<Producto> getProductos() {
+    try {
+      productos = productoService.getAll();
+    } catch (Exception e) {
+      System.out.println("error al consultar bodegas");
+    }
+    return productos;
+  }
+
+  public List<Bodega> getBodegas() {
+    try {
+      bodegas = bodegaService.getAll();
+    } catch (Exception e) {
+      System.out.println("error al consultar bodegas");
+    }
+    return bodegas;
+  }
+
   public boolean listHasData() {
 
     return Objects.nonNull(this.categoryProductList) && this.categoryProductList.size() > 0;
@@ -92,6 +113,7 @@ public class ProductoController implements Serializable {
   public CategoriasProducto getCategoria() {
     return categoria;
   }
+
   public void setCategoria(CategoriasProducto categoria) {
     this.categoria = categoria;
   }
@@ -166,9 +188,9 @@ public class ProductoController implements Serializable {
     this.bodegaProducto = bodegaProductoService.create(bodegaProducto);
 
     System.out.println(
-      "\n\n\n\n\n######################################################################"
-        + "\n#\t  Registro creado "
-        + "\n######################################################################\n");
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
 
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
     ec.redirect(ec.getRequestContextPath() + "/frames/admin/regnref.xhtml");

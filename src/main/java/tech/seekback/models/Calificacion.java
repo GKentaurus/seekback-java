@@ -16,6 +16,7 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "Calificacion.getAll", query = "SELECT obj FROM Calificacion obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "Calificacion.getByIdProducto", query = "SELECT obj FROM Calificacion obj WHERE obj.producto.id = :idProducto AND obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Calificacion.getByidCliente", query = "SELECT obj FROM Calificacion obj WHERE obj.cliente.id = :idCliente AND obj.timestamps.deleted = false"),
   @NamedQuery(name = "Calificacion.getCalCount1", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = :idCalif AND obj.esAprobado = true"),
   @NamedQuery(name = "Calificacion.getCalCount2", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = 2 AND obj.esAprobado = true"),
   @NamedQuery(name = "Calificacion.getCalCount3", query = "SELECT COUNT(obj) FROM Calificacion obj WHERE obj.calificacion = 3 AND obj.esAprobado = true"),

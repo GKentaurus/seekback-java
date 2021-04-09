@@ -17,7 +17,8 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "SoporteTecnico.getAll", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "SoporteTecnico.getAllCount", query = "SELECT COUNT(obj) FROM SoporteTecnico obj WHERE obj.timestamps.deleted = false"),
-  @NamedQuery(name = "SoporteTecnico.getByidEmpleado", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.empleado.id = :idEmpleado AND obj.timestamps.deleted = false")
+  @NamedQuery(name = "SoporteTecnico.getByidEmpleado", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.empleado.id = :idEmpleado AND obj.timestamps.deleted = false"),
+  @NamedQuery(name = "SoporteTecnico.getByidCliente", query = "SELECT obj FROM SoporteTecnico obj WHERE obj.cliente.id = :idCliente AND obj.timestamps.deleted = false")
 })
 public class SoporteTecnico implements EntityTimestamp {
 

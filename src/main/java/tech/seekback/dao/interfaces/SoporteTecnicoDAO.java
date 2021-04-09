@@ -16,4 +16,6 @@ public interface SoporteTecnicoDAO extends DAO<SoporteTecnico, Integer> {
   Integer getAllCount() throws ConnectionExcep;
 
   List<SoporteTecnico> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep;
+
+  List<SoporteTecnico> getByidCliente(Integer idCliente) throws ConnectionExcep;
 }

@@ -44,4 +44,15 @@ public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> im
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
   }
+
+  @Override
+  public List<SoporteTecnico> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    try {
+      TypedQuery<SoporteTecnico> tq = em.createNamedQuery("SoporteTecnico.getByidCliente", classType);
+      tq.setParameter("idCliente", idCliente);
+      return tq.getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
 }

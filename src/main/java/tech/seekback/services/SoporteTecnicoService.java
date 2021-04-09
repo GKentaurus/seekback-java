@@ -50,6 +50,11 @@ public class SoporteTecnicoService {
     return soportesTecnicosIdEmpleado;
   }
 
+  public List<SoporteTecnico> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    List<SoporteTecnico> soportesTecnicosIdCliente = soporteTecnicoDAO.getByidCliente(idCliente);
+    return soportesTecnicosIdCliente;
+  }
+
   /**
    * @return Un entero de la consulta a soporteTecnico (referente al Dao que lo
    * implementa)

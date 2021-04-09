@@ -1,6 +1,6 @@
-
 package tech.seekback.dao.jpa;
 
+import java.util.List;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.FelicitacionDAO;
 import tech.seekback.enums.ConnectionExcepEnum;
@@ -8,6 +8,7 @@ import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 /**
  * @author gkentaurus
@@ -28,6 +29,17 @@ public class FelicitacionDAOJPA extends GenericDAO<Felicitacion, Integer> implem
     try {
       Integer cont = ((Number) em.createNamedQuery("Felicitacion.getAllCount").getSingleResult()).intValue();
       return cont;
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public List<Felicitacion> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    try {
+      TypedQuery<Felicitacion> tq = em.createNamedQuery("Felicitacion.getByidCliente", classType);
+      tq.setParameter("idCliente", idCliente);
+      return tq.getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

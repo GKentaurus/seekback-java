@@ -37,6 +37,17 @@ public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implem
   }
 
   @Override
+  public List<Calificacion> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    try {
+      TypedQuery<Calificacion> tq = em.createNamedQuery("Calificacion.getByidCliente", classType);
+      tq.setParameter("idCliente", idCliente);
+      return tq.getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
   public Integer getCalCountId(int idcalif) throws ConnectionExcep {
 
     try {

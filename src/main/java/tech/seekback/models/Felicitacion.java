@@ -15,7 +15,8 @@ import java.util.Objects;
 @Table(name = "felicitacion")
 @NamedQueries(value = {
   @NamedQuery(name = "Felicitacion.getAll", query = "SELECT obj FROM Felicitacion obj WHERE obj.timestamps.deleted = false"),
-  @NamedQuery(name = "Felicitacion.getAllCount", query = "SELECT COUNT(obj) FROM Felicitacion obj WHERE obj.timestamps.deleted = false")
+  @NamedQuery(name = "Felicitacion.getAllCount", query = "SELECT COUNT(obj) FROM Felicitacion obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Felicitacion.getByidCliente", query = "SELECT obj FROM Felicitacion obj WHERE obj.cliente.id = :idCliente AND obj.timestamps.deleted = false")
 })
 public class Felicitacion implements EntityTimestamp {
 
@@ -160,12 +161,12 @@ public class Felicitacion implements EntityTimestamp {
   @Override
   public String toString() {
     return "Felicitacion("
-      + "id = " + id + ", "
-      + "cliente = " + cliente + ", "
-      + "dirigidoA = " + dirigidoA + ", "
-      + "comentario = " + comentario + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "cliente = " + cliente + ", "
+            + "dirigidoA = " + dirigidoA + ", "
+            + "comentario = " + comentario + ", "
+            + timestamps.toString()
+            + ")";
   }
 
 }
