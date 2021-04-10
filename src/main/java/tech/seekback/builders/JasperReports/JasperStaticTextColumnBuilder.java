@@ -30,7 +30,7 @@ public class JasperStaticTextColumnBuilder extends JasperStaticTextParentBuilder
 
   public JasperStaticTextColumnBuilder defaultSettings(Integer columnWidth, Integer spacing, String text, JasperReportsEnum option) {
     this.text.setText(text);
-    this.text.setHorizontalTextAlign(HorizontalTextAlignEnum.CENTER);
+    this.text.setHorizontalTextAlign(HorizontalTextAlignEnum.LEFT);
     this.text.setVerticalTextAlign(VerticalTextAlignEnum.MIDDLE);
     this.text.setWidth(columnWidth);
     this.text.setX(getNextColumnStart());

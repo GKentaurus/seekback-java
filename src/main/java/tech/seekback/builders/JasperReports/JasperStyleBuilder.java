@@ -17,8 +17,8 @@ public class JasperStyleBuilder {
   public JasperStyleBuilder defaultSettings(String name, Float fontSize, boolean isDefault) {
     this.style.setName(name);
     this.style.setDefault(isDefault);
-//    this.style.setFontName("Helvetica");
-//    this.style.setPdfFontName("Helvetica");
+    this.style.setFontName("DejaVu Sans");
+    this.style.setPdfFontName("DejaVu Sans");
     this.style.setPdfEncoding("UTF-8");
     this.style.setFontSize(fontSize);
     return this;

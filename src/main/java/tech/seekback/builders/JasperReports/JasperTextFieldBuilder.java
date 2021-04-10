@@ -33,7 +33,7 @@ public class JasperTextFieldBuilder {
     this.text.setY(0);
     this.text.setWidth(columnWidth);
     this.text.setHeight(15);
-    this.text.setHorizontalTextAlign(HorizontalTextAlignEnum.RIGHT);
+    this.text.setHorizontalTextAlign(HorizontalTextAlignEnum.LEFT);
     this.text.setVerticalTextAlign(VerticalTextAlignEnum.MIDDLE);
     this.text.setFontSize(12f);
     this.text.setExpression(new JRDesignExpression("$F{" + expression + "}"));
