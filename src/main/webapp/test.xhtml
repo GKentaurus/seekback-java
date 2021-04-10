@@ -22,6 +22,11 @@
       <br/>
       <h:commandButton actionListener="#{testController.testQuery()}" value="Ejecutar consulta"/>
     </h:form>
+    <hr/>
+    <h:form prependId="false" enctype="multipart/form-data">
+      <h:inputFile id="archivoInfo" value="#{testController.part}"/>
+      <h:commandButton actionListener="#{testController.uploadFile()}" value="Cargar archivo"/>
+    </h:form>
   </h:body>
 </f:view>
 </html>

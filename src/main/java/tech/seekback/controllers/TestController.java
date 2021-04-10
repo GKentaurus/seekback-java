@@ -7,6 +7,7 @@ import tech.seekback.models.Correo;
 import tech.seekback.models.Usuario;
 import tech.seekback.services.AdministradorService;
 import tech.seekback.services.CorreoService;
+import tech.seekback.services.ProductoService;
 import tech.seekback.services.UsuarioService;
 import tech.seekback.services.tools.MailService;
 import tech.seekback.services.tools.ReportService;
@@ -15,8 +16,10 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
+import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +40,7 @@ public class TestController extends CustomController implements Serializable {
   private ReportService reportService;
 
   @EJB
-  private AdministradorService administradorService;
+  private ProductoService productoService;
 
   @EJB
   private CorreoService correoService;
@@ -88,7 +91,18 @@ public class TestController extends CustomController implements Serializable {
   public void testQuery() throws ConnectionExcep {
     for (Correo correo: correoService.getAll()) {
       System.out.println(correo.getUsuario().getPrimerNombre());
-    };
+    }
+  }
 
+  public void setPart(Part part) {
+    this.productoService.setPart(part);
+  }
+
+  public Part getPart() {
+    return this.productoService.getPart();
+  }
+
+  public void uploadFile() throws IOException, ConnectionExcep, ParseException {
+    this.productoService.uploadData();
   }
 }
