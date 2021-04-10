@@ -15,6 +15,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -43,6 +44,7 @@ public class CategoriaController extends CustomController implements Serializabl
   public void setCategoriasProducto(CategoriasProducto categoriasProducto) {
     this.categoriasProducto = categoriasProducto;
   }
+
   public Integer getCategoria() {
     return categoria;
   }
@@ -52,8 +54,15 @@ public class CategoriaController extends CustomController implements Serializabl
     System.out.println("categoria: " + this.categoria);
   }
 
-
   public List<CategoriasProducto> getCategoriasProductos() {
+    try {
+      if (Objects.isNull(categoriasProductos)) {
+        categoriasProductos = categoriasProductoService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los Agenda.....");
+      ex.printStackTrace();
+    }
     return categoriasProductos;
   }
 

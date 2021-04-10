@@ -159,8 +159,11 @@
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.tipoServicio.nombreServicio}" pt:data-position="bottom"
-                                pt:data-tooltip="#{st.tipoServicio.nombreServicio}"/>
+                  <h:outputText value="#{st.tipoServicio.nombreServicio}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Estado</f:facet>
+                  <h:outputText value="#{st.estado.nombreEstado}" />
                 </h:column>
                 <h:column>
                   <f:facet name="header">Cliente</f:facet>
@@ -170,17 +173,8 @@
                                 pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
                 </h:column>
                 <h:column>
-                  <f:facet name="header">Empleado</f:facet>
-                  <h:outputText pt:class="tooltipped"
-                                value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}"
-                                pt:data-position="bottom"
-                                pt:data-tooltip="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}"/>
-                </h:column>
-                <h:column>
                   <f:facet name="header">Fecha</f:facet>
-                  <h:outputText pt:class="tooltipped"
-                                value="#{st.timestamps.created_at}"
-                                pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" >
+                  <h:outputText value="#{st.timestamps.created_at}">
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                   </h:outputText>
                 </h:column>
@@ -189,12 +183,7 @@
                   <h:outputText pt:class="tooltipped" value="#{st.observaciones}" pt:data-position="bottom"
                                 pt:data-tooltip="#{st.observaciones}"/>
                 </h:column>
-                <h:column>
-                  <f:facet name="header">Estado</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}" pt:data-position="bottom"
-                                pt:data-tooltip="#{st.estado.nombreEstado}"/>
-                </h:column>
-                <h:column>
+                <!--<h:column>
                   <f:facet name="header">Visualizar</f:facet>
                   <a class="waves-effect waves-light btn modal-trigger"
                      href="#modal#{st.id}"
@@ -218,7 +207,7 @@
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <h:inputText id="datei" class="datepicker"
+                              <h:inputText id="datei"
                                            value="#{st.timestamps.created_at}" readonly="true">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                               </h:inputText>
@@ -230,7 +219,7 @@
                             <div class="input-field">
                               <h:outputLabel for="estado#{st.id}" value="Tipo Servicio" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                               valueChangeListener="#{st.estado.id}">
+                                               valueChangeListener="#{st.estado.id}" readonly="true">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opción"
                                               noSelectionOption="true" />
@@ -246,7 +235,7 @@
                             <div class="input-field">
                               <h:outputLabel for="estad#{st.id}" value="Estado" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:placeholder=" " pt:id="estad#{st.id}"  class="browser-default"
-                                               valueChangeListener="#{st.estado.id}">
+                                               valueChangeListener="#{st.estado.id}" readonly="true">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opción"
                                               noSelectionOption="true" />
@@ -259,7 +248,7 @@
                           </div>
                           <div class="col s12">
                             <div class="input-field">
-                              <textarea id="motivo" class="materialize-textarea">#{st.observaciones}</textarea>
+                              <textarea id="motivo" class="materialize-textarea" readonly="true">#{st.observaciones}</textarea>
                               <label for="motivo">Motivo</label>
                             </div>
                           </div>
@@ -270,7 +259,7 @@
                       </div>
                     </div>
                   </div>
-                </h:column>
+                </h:column>-->
               </h:dataTable>
             </h:form>
             <h:form rendered="#{usuarioController.confirmRole('Cliente')}">

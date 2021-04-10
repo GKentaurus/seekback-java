@@ -92,7 +92,7 @@
             </div>
             <div class="row">
               <div class="col s12">
-                <h:commandLink class="waves-effect waves-light btn modal-trigger" actionListener="#{agendaController.create()}">Solicitar</h:commandLink>
+                <h:commandLink class="waves-effect waves-light btn" actionListener="#{agendaController.create()}">Solicitar</h:commandLink>
               </div>
             </div>
             <h:messages></h:messages>
@@ -102,7 +102,8 @@
               <div class="col s12 m6">
                 <div class="input-field">
                   <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
-                  <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default">
+                  <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default"
+                                   value="#{agendaController.idCliente}">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opcion"
                                   noSelectionOption="true" />
@@ -116,7 +117,8 @@
               <div class="col s12 m6">
                 <div class="input-field">
                   <h:outputLabel for="estado" value="Tipo Servicio" style="margin-top: -30px;"/>
-                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default">
+                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default"
+                                   value="#{agendaController.idTipoServicio}">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opción"
                                   noSelectionOption="true" />
@@ -129,20 +131,22 @@
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <h:inputText id="datee" class="datepicker"/>
+                  <h:inputText id="datee" class="datepicker" value="#{agendaController.fecha}" required="true">
+                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                  </h:inputText>
                   <h:outputLabel for="datee" value="Fecha" />
                 </div>
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <textarea id="motivo" class="materialize-textarea"></textarea>
+                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{agendaController.obs}" required="true"></h:inputTextarea>
                   <h:outputLabel for="motivo">Motivo</h:outputLabel>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <h:commandLink class="waves-effect waves-light btn modal-trigger">Solicitar</h:commandLink>
+                <h:commandLink class="waves-effect waves-light btn" actionListener="#{agendaController.createe()}">Solicitar</h:commandLink>
               </div>
             </div>
           </h:form>
@@ -151,7 +155,8 @@
               <div class="col s12 m6">
                 <div class="input-field">
                   <h:outputLabel for="estado" value="Tipo Servicio" style="margin-top: -30px;"/>
-                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default">
+                  <h:selectOneMenu pt:placeholder=" " pt:id="estado"  class="browser-default"
+                                   value="#{agendaController.idTipoServicio}">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opción"
                                   noSelectionOption="true" />
@@ -164,20 +169,22 @@
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <h:inputText id="datee" class="datepicker"/>
+                  <h:inputText id="datee" class="datepicker" value="#{agendaController.fecha}" required="true">
+                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                  </h:inputText>
                   <h:outputLabel for="datee" value="Fecha" />
                 </div>
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <textarea id="motivo" class="materialize-textarea"></textarea>
+                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{agendaController.obs}" required="true"></h:inputTextarea>
                   <h:outputLabel for="motivo">Motivo</h:outputLabel>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Solicitar</a>
+                <h:commandButton class="waves-effect waves-light btn" action="#{agendaController.createc()}" value="Solicitar" />
               </div>
             </div>
           </h:form>

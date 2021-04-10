@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.interfaces;
 
 import tech.seekback.dao.DAO;
@@ -13,5 +12,8 @@ import java.util.List;
  */
 @Local
 public interface CotizacionDAO extends DAO<Cotizacion, Integer> {
+
   List<Cotizacion> getByIdEmpleado(Integer idEmpleado) throws ConnectionExcep;
+
+  List<Cotizacion> getByIdCliente(Integer idCliente) throws ConnectionExcep;
 }

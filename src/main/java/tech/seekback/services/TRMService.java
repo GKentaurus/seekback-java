@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.TRMDAO;
@@ -37,12 +36,18 @@ public class TRMService {
   }
 
   /**
-   * @return Una colección de objetos de tipo TRM (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo TRM (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<TRM> getAll() throws ConnectionExcep {
     List<TRM> trms = trmDao.getAll();
     return trms;
+  }
+
+  public List<TRM> getByidDivisa(Integer idDivisa) throws ConnectionExcep {
+    List<TRM> trmsByidDivisa = trmDao.getByidDivisa(idDivisa);
+    return trmsByidDivisa;
   }
 
   /**

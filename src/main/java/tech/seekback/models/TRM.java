@@ -15,7 +15,13 @@ import java.util.Objects;
 @Entity
 @Table(name = "trm")
 @NamedQueries(value = {
-  @NamedQuery(name = "TRM.getAll", query = "SELECT obj FROM TRM obj WHERE obj.timestamps.deleted = false")
+  @NamedQuery(name = "TRM.getAll", query = "SELECT obj FROM TRM obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "TRM.getByidDivisa",
+          query = "SELECT obj "
+          + "FROM TRM obj "
+          + "WHERE obj.divisa.id = :idDivisa AND obj.timestamps.deleted = false "
+          + "GROUP BY obj "
+          + "ORDER BY obj.id DESC ")
 })
 public class TRM implements EntityTimestamp {
 
@@ -25,7 +31,7 @@ public class TRM implements EntityTimestamp {
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "idDivisas", nullable = false)
+  @JoinColumn(name = "idDivisa", nullable = false)
   private Divisa divisa;
 
   @Column(name = "fechaTRM", nullable = false)
@@ -161,10 +167,10 @@ public class TRM implements EntityTimestamp {
   @Override
   public String toString() {
     return "Trm{" + "idTrm=" + id
-      + ", idDivisa=" + divisa
-      + ", fecha=" + fecha
-      + ", tasaCambio=" + tasaCambio
-      + timestamps.toString()
-      + '}';
+            + ", idDivisa=" + divisa
+            + ", fecha=" + fecha
+            + ", tasaCambio=" + tasaCambio
+            + timestamps.toString()
+            + '}';
   }
 }

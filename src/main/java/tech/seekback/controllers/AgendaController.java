@@ -1,5 +1,6 @@
 package tech.seekback.controllers;
 
+import java.io.IOException;
 import tech.seekback.models.Agenda;
 import tech.seekback.models.EstadosAgenda;
 import tech.seekback.models.TipoServicio;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Objects;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.templates.Timestamps;
@@ -195,7 +198,7 @@ public class AgendaController extends CustomController implements Serializable {
     return estadosAgendas;
   }
 
-  public void create() throws ConnectionExcep {
+  public void create() throws ConnectionExcep, IOException {
 
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
@@ -213,6 +216,70 @@ public class AgendaController extends CustomController implements Serializable {
     this.agenda.setTimestamps(timestamps);
 
     this.agenda = agendaService.create(agenda);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/soliservi.xhtml");
+  }
+
+  public void createc() throws ConnectionExcep, IOException {
+
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.agenda.setFecha(this.fecha);
+    this.agenda.setObservaciones(this.obs);
+    this.agenda.setEstado(estadosAgendaService.getOne(1));
+    this.agenda.setTipoServicio(tipoServicioService.getOne(this.idTipoServicio));
+    this.agenda.setCliente(clienteService.getOne(this.idUsuario));
+    this.agenda.setEmpleado(empleadoService.getOne(2));
+    this.agenda.setAdministrador(administradorService.getOne(1));
+    this.agenda.setTimestamps(timestamps);
+
+    this.agenda = agendaService.create(agenda);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/soliservi.xhtml");
+  }
+
+  public void createe() throws ConnectionExcep, IOException {
+
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.agenda.setFecha(this.fecha);
+    this.agenda.setObservaciones(this.obs);
+    this.agenda.setEstado(estadosAgendaService.getOne(1));
+    this.agenda.setTipoServicio(tipoServicioService.getOne(this.idTipoServicio));
+    this.agenda.setCliente(clienteService.getOne(this.idCliente));
+    this.agenda.setEmpleado(empleadoService.getOne(this.idUsuario));
+    this.agenda.setAdministrador(administradorService.getOne(1));
+    this.agenda.setTimestamps(timestamps);
+
+    this.agenda = agendaService.create(agenda);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/soliservi.xhtml");
   }
 
 }

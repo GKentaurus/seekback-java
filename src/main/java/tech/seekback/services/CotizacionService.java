@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CotizacionDAO;
@@ -49,6 +48,11 @@ public class CotizacionService {
   public List<Cotizacion> getByIdEmpleado(Integer idEmpleado) throws ConnectionExcep {
     List<Cotizacion> cotizaciones = cotizacionDAO.getByIdEmpleado(idEmpleado);
     return cotizaciones;
+  }
+
+  public List<Cotizacion> getByIdCliente(Integer idCliente) throws ConnectionExcep {
+    List<Cotizacion> cotizacionesByIdCliente = cotizacionDAO.getByIdCliente(idCliente);
+    return cotizacionesByIdCliente;
   }
 
   /**

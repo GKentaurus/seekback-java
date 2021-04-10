@@ -16,7 +16,8 @@ import java.util.Objects;
 @Table(name = "cotizacion")
 @NamedQueries(value = {
   @NamedQuery(name = "Cotizacion.getAll", query = "SELECT obj FROM Cotizacion obj WHERE obj.timestamps.deleted = false"),
-  @NamedQuery(name = "Cotizacion.getByIdEmpleado", query = "SELECT obj FROM Cotizacion obj WHERE obj.empleado.id = :idEmpleado and obj.timestamps.deleted = false")
+  @NamedQuery(name = "Cotizacion.getByIdEmpleado", query = "SELECT obj FROM Cotizacion obj WHERE obj.empleado.id = :idEmpleado and obj.timestamps.deleted = false"),
+  @NamedQuery(name = "Cotizacion.getByIdCliente", query = "SELECT obj FROM Cotizacion obj WHERE obj.cliente.id = :idCliente and obj.timestamps.deleted = false")
 })
 public class Cotizacion implements EntityTimestamp {
 

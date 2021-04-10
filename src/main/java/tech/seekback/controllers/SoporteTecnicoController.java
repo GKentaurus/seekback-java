@@ -55,6 +55,7 @@ public class SoporteTecnicoController extends CustomController implements Serial
   private List<EstadosFidelizacion> estados;
   private Integer count;
   private Integer idCliente;
+  private Integer idEmpleado;
   private Integer idProducto;
   private Integer idUsuario;
   private Date fecha;
@@ -83,6 +84,14 @@ public class SoporteTecnicoController extends CustomController implements Serial
 
   public void setIdUsuario(Integer idEmpleado) {
     this.idUsuario = idEmpleado;
+  }
+
+  public Integer getIdEmpleado() {
+    return idEmpleado;
+  }
+
+  public void setIdEmpleado(Integer idEmpleado) {
+    this.idEmpleado = idEmpleado;
   }
 
   public Integer getIdCliente() {
@@ -188,6 +197,33 @@ public class SoporteTecnicoController extends CustomController implements Serial
     this.soporteTecnico.setProducto(productoService.getOne(this.idProducto));
     this.soporteTecnico.setCliente(clienteService.getOne(this.idCliente));
     this.soporteTecnico.setEmpleado(empleadoService.getOne(loginController.getUsuario().getId()));
+    this.soporteTecnico.setEstado(estadosFidelizacionService.getOne(1));
+    this.soporteTecnico.setComentario(this.obs);
+    this.soporteTecnico.setTimestamps(timestamps);
+
+    this.soporteTecnico = soporteTecnicoService.create(soporteTecnico);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
+
+  }
+
+  public void createa() throws ConnectionExcep, IOException {
+
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.soporteTecnico.setProducto(productoService.getOne(this.idProducto));
+    this.soporteTecnico.setCliente(clienteService.getOne(this.idCliente));
+    this.soporteTecnico.setEmpleado(empleadoService.getOne(this.idEmpleado));
     this.soporteTecnico.setEstado(estadosFidelizacionService.getOne(1));
     this.soporteTecnico.setComentario(this.obs);
     this.soporteTecnico.setTimestamps(timestamps);
