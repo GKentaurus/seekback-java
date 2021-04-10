@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -19,7 +20,9 @@ import tech.seekback.models.templates.Timestamps;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import java.util.Date;
+import net.sf.jasperreports.engine.JRException;
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.services.tools.ReportService;
 
 /**
  * @author danny
@@ -39,6 +42,9 @@ public class CalificacionController extends CustomController implements Serializ
 
   @EJB
   private ProductoService productoService;
+
+  @EJB
+  private ReportService reportService;
 
   private List<Calificacion> calificaciones;
   private List<Calificacion> calificaciondelproducto;
@@ -153,6 +159,23 @@ public class CalificacionController extends CustomController implements Serializ
 
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
     ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulcalif.xhtml");
+
+  }
+
+  public void genpdf() throws JRException, IOException, ConnectionExcep {
+
+    List<String[]> columnas = new ArrayList<>();
+    columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
+    columnas.add(new String[]{"Producto", "producto.modeloProducto", String.class.getName(), "70"});
+    columnas.add(new String[]{"Calificacion", "calificacion", Integer.class.getName(), "40"});
+    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "300"});
+    columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
+
+    this.reportService.JasperReportMaker(columnas, "Reporte de calificaciones");
+
+    this.reportService.generateReport(this.calificacionService.getAll());
+
+    this.reportService.exportPdfOnWeb();
 
   }
 
