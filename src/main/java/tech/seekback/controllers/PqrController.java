@@ -67,6 +67,7 @@ public class PqrController extends CustomController implements Serializable {
   private Integer idPQR;
   private String who;
   private String comment;
+  private String answer;
 
   @PostConstruct
   public void Init() {
@@ -173,6 +174,14 @@ public class PqrController extends CustomController implements Serializable {
     }
     return tipoSolicitudes;
   }
+
+  public String getAnswer() {
+    return answer;
+  }
+
+  public void setAnswer(String answer) {
+    this.answer = answer;
+  }
   //</editor-fold>
 
   public void create() throws ConnectionExcep, IOException {
@@ -208,7 +217,8 @@ public class PqrController extends CustomController implements Serializable {
     columnas.add(new String[]{"Solicitud", "tipoSolicitud.nombreSolicitud", String.class.getName(), "100"});
     columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
     columnas.add(new String[]{"Dirigido a", "area", String.class.getName(), "100"});
-    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "420"});
+    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "210"});
+    columnas.add(new String[]{"Respuesta", "respuesta", String.class.getName(), "210"});
     columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 
     this.reportService.exportPdfOnWeb("Reporte de PQRS", columnas, this.pQRSService.getAll());
