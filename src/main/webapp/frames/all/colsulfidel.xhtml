@@ -95,6 +95,9 @@
                 <span class="table-title">PQRS</span>
                 <div class="actions">
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                  <h:form>
+                    <h:commandButton action="#{pqrController.genpdf()}" class="waves-effect btn-flat nopadding cyan lighten-1" value="PDF" />
+                  </h:form>
                 </div>
               </div>
               <h:dataTable pt:id="datatable"

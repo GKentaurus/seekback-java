@@ -151,7 +151,7 @@ public class FelicitacionController extends CustomController implements Serializ
 
     List<String[]> columnas = new ArrayList<>();
     columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
-    columnas.add(new String[]{"Dirigido a", "area", Integer.class.getName(), "100"});
+    columnas.add(new String[]{"Dirigido a", "dirigidoA", String.class.getName(), "100"});
     columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "530"});
     columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 

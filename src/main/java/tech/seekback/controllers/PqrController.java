@@ -196,7 +196,7 @@ public class PqrController extends CustomController implements Serializable {
     List<String[]> columnas = new ArrayList<>();
     columnas.add(new String[]{"Solicitud", "tipoSolicitud.nombreSolicitud", String.class.getName(), "100"});
     columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
-    columnas.add(new String[]{"Dirigido a", "area", Integer.class.getName(), "100"});
+    columnas.add(new String[]{"Dirigido a", "area", String.class.getName(), "100"});
     columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "420"});
     columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 
