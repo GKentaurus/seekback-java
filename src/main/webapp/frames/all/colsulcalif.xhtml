@@ -178,7 +178,7 @@
 
     <script>
 
-      $(document).ready(function () {
+        $(document).ready(function () {
         $('.1').html('<i class="fas fa-star"></i>');
         $('.2').html('<i class="fas fa-star"></i><i class="fas fa-star"></i>');
         $('.3').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
@@ -188,14 +188,14 @@
 
         $('.tooltipped').tooltip();
         $('select').formSelect();
-        $('.modal').modal();
+      $('.modal').modal();
       });
-      $("#myInput").on("keyup", function () {
+        $("#myInput").on("keyup", function () {
         var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function () {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+          $("#myTable tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
+  });
     </script>
   </h:body>
 </html>
