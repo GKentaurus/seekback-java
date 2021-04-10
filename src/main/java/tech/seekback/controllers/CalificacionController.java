@@ -166,9 +166,9 @@ public class CalificacionController extends CustomController implements Serializ
 
     List<String[]> columnas = new ArrayList<>();
     columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
-    columnas.add(new String[]{"Producto", "producto.modeloProducto", String.class.getName(), "70"});
-    columnas.add(new String[]{"Calificacion", "calificacion", Integer.class.getName(), "40"});
-    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "300"});
+    columnas.add(new String[]{"Producto", "producto.modeloProducto", String.class.getName(), "100"});
+    columnas.add(new String[]{"Calificacion", "calificacion", Integer.class.getName(), "100"});
+    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "420"});
     columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 
     this.reportService.JasperReportMaker(columnas, "Reporte de calificaciones");

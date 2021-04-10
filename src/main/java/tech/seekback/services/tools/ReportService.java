@@ -93,7 +93,7 @@ public class ReportService {
       if (i == 0) {
         columnHeader.addElement(JasperStaticTextColumnBuilder
           .start()
-          .defaultSettings(Integer.parseInt(column[3]), 10, column[0], JasperReportsEnum.SUBTITLE, 0)
+          .defaultSettings(Integer.parseInt(column[3]), 5, column[0], JasperReportsEnum.SUBTITLE, 0)
           .setFontSize(12f)
           .setStyle(columnStyle)
           .getText());
@@ -106,7 +106,7 @@ public class ReportService {
       } else {
         columnHeader.addElement(JasperStaticTextColumnBuilder
           .start()
-          .defaultSettings(Integer.parseInt(column[3]), 10, column[0], JasperReportsEnum.SUBTITLE)
+          .defaultSettings(Integer.parseInt(column[3]), 0, column[0], JasperReportsEnum.SUBTITLE)
           .setFontSize(12f)
           .setStyle(columnStyle)
           .getText());
