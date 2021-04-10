@@ -59,9 +59,11 @@ public class AgendaController extends CustomController implements Serializable {
   private Agenda agenda;
 
   private Integer idTipoServicio;
+  private Integer idEstado;
   private Integer idCliente;
   private Integer idEmpleado;
   private Integer idUsuario;
+  private Integer idAgenda;
   private Date fecha;
   private String obs;
 
@@ -95,6 +97,22 @@ public class AgendaController extends CustomController implements Serializable {
 
   public void setIdUsuario(Integer idUsuario) {
     this.idUsuario = idUsuario;
+  }
+
+  public Integer getIdEstado() {
+    return idEstado;
+  }
+
+  public void setIdEstado(Integer idEstado) {
+    this.idEstado = idEstado;
+  }
+
+  public Integer getIdAgenda() {
+    return idAgenda;
+  }
+
+  public void setIdAgenda(Integer idAgenda) {
+    this.idAgenda = idAgenda;
   }
 
   public Integer getIdTipoServicio() {
@@ -196,6 +214,48 @@ public class AgendaController extends CustomController implements Serializable {
       ex.printStackTrace();
     }
     return estadosAgendas;
+  }
+
+  public void update(Integer idagenda) throws ConnectionExcep, IOException {
+    this.agenda = this.agendaService.getOne(idagenda);
+
+    this.agenda.setEmpleado(this.empleadoService.getOne(this.idEmpleado));
+    this.agenda.setTipoServicio(this.tipoServicioService.getOne(this.idTipoServicio));
+    this.agenda.setEstado(this.estadosAgendaService.getOne(this.idEstado));
+    this.agenda.setObservaciones(this.obs);
+
+    agendaService.update(agenda);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Actualizando Registro " + idagenda
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/soliservi.xhtml");
+
+  }
+
+  public void delete(Integer idagen) throws ConnectionExcep, IOException {
+    try {
+      agendaService.delete(agendaService.getOne(idagen));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idagen
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/all/soliservi.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idagen
+              + "\n######################################################################\n");
+      ex.printStackTrace();
+
+    }
+
   }
 
   public void create() throws ConnectionExcep, IOException {

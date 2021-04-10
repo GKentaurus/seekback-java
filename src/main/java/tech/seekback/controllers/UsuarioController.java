@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  * @author gkentaurus
@@ -179,6 +181,26 @@ public class UsuarioController extends CustomController implements Serializable 
       loginController.logout();
     } catch (ConnectionExcep ex) {
       System.out.println("Error al registrar usuario");
+      ex.printStackTrace();
+    }
+  }
+
+  public void deleteu(Integer idusu) throws ConnectionExcep, IOException {
+    try {
+      usuarioService.delete(usuarioService.getOne(idusu));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idusu
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/admin/users.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idusu
+              + "\n######################################################################\n");
       ex.printStackTrace();
     }
   }

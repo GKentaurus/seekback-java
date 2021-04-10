@@ -8570,22 +8570,22 @@ input[type=range]::-ms-thumb {
 }
 
 .datepicker-table td {
-  border-radius: 50%;
-  padding: 0
+  border-radius: 50% !important;
+  padding: 0 !important
 }
 
 .datepicker-table td.is-today {
-  color: #26a69a
+  color: #26a69a !important
 }
 
 .datepicker-table td.is-selected {
-  background-color: #26a69a;
-  color: #fff
+  background-color: #26a69a !important;
+  color: #fff !important
 }
 
 .datepicker-table td.is-outside-current-month,
 .datepicker-table td.is-disabled {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.3) !important;
   pointer-events: none
 }
 
