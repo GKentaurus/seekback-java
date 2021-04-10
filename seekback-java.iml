@@ -21,7 +21,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="Seekback_PU" value="c8c3d821-c4af-4e91-9f89-c9d33c061427" />
+          <factory-entry name="Seekback_PU" value="f1061063-250e-4cbe-b3ae-3067d9bdc155" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />

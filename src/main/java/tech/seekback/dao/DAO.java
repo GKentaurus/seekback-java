@@ -16,6 +16,8 @@ public interface DAO<T, PK> {
 
   T create(T obj) throws ConnectionExcep;
 
+  void create(List<T> objs) throws ConnectionExcep;
+
   T getOne(PK id) throws ConnectionExcep;
 
   List<T> getAll() throws ConnectionExcep;

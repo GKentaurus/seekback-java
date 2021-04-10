@@ -47,6 +47,24 @@ public abstract class GenericDAO<T extends EntityTimestamp, PK> implements DAO<T
   }
 
   /**
+   * Por medio de la unidad de persistencia, almacena el objeto recibido por el argumento
+   *
+   * @param obj
+   * @return un objeto de tipo T (referente al DAO que lo implemente)
+   * @throws ConnectionExcep
+   */
+
+  @Override
+  public void create(List<T> objs) throws ConnectionExcep {
+    System.out.println(
+      "\n\n\n\n\n######################################################################"
+        + "\n#\t Creando Objetos "
+        + "\n######################################################################\n"
+    );
+    objs.forEach(obj -> em.persist(obj));
+  }
+
+  /**
    * @param id
    * @return un objeto de tipo T (referente al DAO que lo implemente)
    * @throws ConnectionExcep
