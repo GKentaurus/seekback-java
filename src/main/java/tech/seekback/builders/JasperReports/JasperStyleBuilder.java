@@ -3,6 +3,7 @@ package tech.seekback.builders.JasperReports;
 import net.sf.jasperreports.engine.design.JRDesignStyle;
 
 public class JasperStyleBuilder {
+
   private final JRDesignStyle style;
 
   private JasperStyleBuilder() {
@@ -16,8 +17,8 @@ public class JasperStyleBuilder {
   public JasperStyleBuilder defaultSettings(String name, Float fontSize, boolean isDefault) {
     this.style.setName(name);
     this.style.setDefault(isDefault);
-    this.style.setFontName("DejaVu Sans");
-    this.style.setPdfFontName("Helvetica");
+//    this.style.setFontName("Helvetica");
+//    this.style.setPdfFontName("Helvetica");
     this.style.setPdfEncoding("UTF-8");
     this.style.setFontSize(fontSize);
     return this;
@@ -49,7 +50,7 @@ public class JasperStyleBuilder {
     return this;
   }
 
-  public JasperStyleBuilder setFontSize (Float fontSize) {
+  public JasperStyleBuilder setFontSize(Float fontSize) {
     this.style.setFontSize(fontSize);
     return this;
   }
