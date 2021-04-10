@@ -1,6 +1,8 @@
 package tech.seekback.controllers;
 
 import java.io.IOException;
+
+import net.sf.jasperreports.engine.JRException;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Felicitacion;
 import tech.seekback.services.FelicitacionService;
@@ -9,6 +11,7 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +21,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.ClienteService;
+import tech.seekback.services.tools.ReportService;
 
 /**
  * @author danny
@@ -34,6 +38,9 @@ public class FelicitacionController extends CustomController implements Serializ
 
   @EJB
   private ClienteService clienteService;
+
+  @EJB
+  private ReportService reportService;
 
   private List<Felicitacion> felicitaciones;
   private List<Felicitacion> felicitacionesByidCliente;
@@ -139,5 +146,18 @@ public class FelicitacionController extends CustomController implements Serializ
     ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfeli.xhtml");
 
   }
+
+  public void genpdf() throws JRException, IOException, ConnectionExcep {
+
+    List<String[]> columnas = new ArrayList<>();
+    columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
+    columnas.add(new String[]{"Dirigido a", "area", Integer.class.getName(), "100"});
+    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "530"});
+    columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
+
+    this.reportService.exportPdfOnWeb("Reporte de Felicitaciones", columnas, this.felicitacionService.getAll());
+
+  }
+
 
 }
