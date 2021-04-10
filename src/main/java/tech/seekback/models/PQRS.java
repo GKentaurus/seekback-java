@@ -44,6 +44,9 @@ public class PQRS implements EntityTimestamp {
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
+  @Column(name= "respuesta")
+  private String respuesta;
+
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "idEstado", nullable = false)
   private EstadosFidelizacion estado;
@@ -211,6 +214,23 @@ public class PQRS implements EntityTimestamp {
   }
 
   /**
+   * Retorna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @return <code>respuesta</code> del PQRS.
+   */
+  public String getRespuesta() {
+    return respuesta;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @param respuesta del PQRS.
+   */
+  public void setRespuesta(String respuesta) {
+    this.respuesta = respuesta;
+  }
+  /**
    * Retorna el valor del atributo <code>fechaRespuesta</code> del objeto.
    *
    * @return <code>fechaRespuesta</code> del PQRS.
@@ -262,6 +282,7 @@ public class PQRS implements EntityTimestamp {
       + "administrador = " + administrador + ", "
       + "area = " + area + ", "
       + "comentario = " + comentario + ", "
+      + "respuesta = " + respuesta + ", "
       + "estado = " + estado
       + "fechaRespuesta = " + fechaRespuesta
       + timestamps.toString()
