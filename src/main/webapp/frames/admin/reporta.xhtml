@@ -50,11 +50,11 @@
     function drawStuff() {
       var data = new google.visualization.arrayToDataTable([
         ['Calificación', ''],
-        ["5", #{calificacionController.getCountcal(1)}],
-        ["4", #{calificacionController.getCountcal(4)}],
-        ["3", #{calificacionController.getCountcal(3)}],
-        ["2", #{calificacionController.getCountcal(2)}],
-        ["1", #{calificacionController.getCountcal(1)}]
+        ["5", #{calificacionController.getCalCount(5)}],
+        ["4", #{calificacionController.getCalCount(4)}],
+        ["3", #{calificacionController.getCalCount(3)}],
+        ["2", #{calificacionController.getCalCount(2)}],
+        ["1", #{calificacionController.getCalCount(1)}]
       ]);
       var options = {
         colors: '#017CF6',

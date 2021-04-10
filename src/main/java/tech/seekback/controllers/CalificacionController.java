@@ -48,11 +48,6 @@ public class CalificacionController extends CustomController implements Serializ
   private Integer idProducto;
   private Integer calif;
   private String comment;
-  private Integer countcal;
-  private Integer countcal2;
-  private Integer countcal3;
-  private Integer countcal4;
-  private Integer countcal5;
 
   @PostConstruct
   public void Init() {
@@ -119,66 +114,6 @@ public class CalificacionController extends CustomController implements Serializ
     return calificaciones;
   }
 
-  public Integer getCountcal(int idCal) {
-    try {
-      if (countcal == null) {
-        countcal = calificacionService.getCalCountId(idCal);
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcal;
-  }
-
-  public Integer getCountcal2() {
-    try {
-      if (countcal2 == null) {
-        countcal2 = calificacionService.getCalCount2();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcal2;
-  }
-
-  public Integer getCountcal3() {
-    try {
-      if (countcal3 == null) {
-        countcal3 = calificacionService.getCalCount3();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcal3;
-  }
-
-  public Integer getCountcal4() {
-    try {
-      if (countcal4 == null) {
-        countcal4 = calificacionService.getCalCount4();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcal4;
-  }
-
-  public Integer getCountcal5() {
-    try {
-      if (countcal5 == null) {
-        countcal5 = calificacionService.getCalCount5();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return countcal5;
-  }
-
   public List<Calificacion> getCalificaciondelproducto(int idProducto) {
     try {
       if (Objects.isNull(calificaciondelproducto)) {
@@ -189,6 +124,10 @@ public class CalificacionController extends CustomController implements Serializ
       ex.printStackTrace();
     }
     return calificaciondelproducto;
+  }
+
+  public Integer getCalCount(Integer calificacion) throws ConnectionExcep {
+    return this.calificacionService.getCalCount(calificacion);
   }
 
   public void create() throws IOException, ConnectionExcep {

@@ -17,14 +17,5 @@ public interface CalificacionDAO extends DAO<Calificacion, Integer> {
 
   List<Calificacion> getByidCliente(Integer idCliente) throws ConnectionExcep;
 
-  Integer getCalCountId(int idcalif) throws ConnectionExcep;
-
-  Integer getCalCount2() throws ConnectionExcep;
-
-  Integer getCalCount3() throws ConnectionExcep;
-
-  Integer getCalCount4() throws ConnectionExcep;
-
-  Integer getCalCount5() throws ConnectionExcep;
-  //
+  Integer getCalCountId(int calificacion) throws ConnectionExcep;
 }
