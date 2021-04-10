@@ -1,188 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-  <title>QPCOM | Seekback</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <h:outputStylesheet library="materialize" name="css/materialize.min.css"/>
-  <h:outputScript library="" name="jquery.min.js"/>
-  <h:outputScript library="materialize" name="js/materialize.min.js"/>
-  <h:outputScript library="" name="fontawesome.js"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {
-      'packages': ['bar']
-    });
-    google.charts.setOnLoadCallback(drawStuff);
-
-    function drawStuff() {
-      var data = new google.visualization.arrayToDataTable([
-        ['Producto', 'cantidad'],
-        <ui:repeat value="#{productoController.categoryList()}" var="category">
-          ['#{category.nombreCategoria}', #{productoController.categoryProductCount(category.id)}],
-        </ui:repeat>
-      ]);
-      var options = {
-        colors: '#017CF6',
-        legend: {
-          position: 'none'
-        },
-        bar: {
-          groupWidth: "90%"
-        }
-      };
-      var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-      chart.draw(data, google.charts.Bar.convertOptions(options));
-    }
-  </script>
-  <script type="text/javascript">
-    google.charts.load('current', {
+  <h:head>
+    <title>QPCOM | Seekback</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="materialize" name="css/materialize.min.css"/>
+    <h:outputScript library="" name="jquery.min.js"/>
+    <h:outputScript library="materialize" name="js/materialize.min.js"/>
+    <h:outputScript library="" name="fontawesome.js"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
         'packages': ['bar']
+      });
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Producto', 'cantidad'],
+          <ui:repeat value="#{productoController.categoryList()}" var="category">
+          ['#{category.nombreCategoria}', #{productoController.categoryProductCount(category.id)}],
+    </ui:repeat>
+        ]);
+        var options = {
+          colors: '#017CF6',
+          legend: {
+            position: 'none'
+          },
+          bar: {
+            groupWidth: "90%"
+          }
+        };
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
       }
-    );
-    google.charts.setOnLoadCallback(drawStuff);
+          </script>
+          <script type="text/javascript">
+            google.charts.load('current', {
+              'packages': ['bar']
+            }
+            );
+            google.charts.setOnLoadCallback(drawStuff);
 
-    function drawStuff() {
-      var data = new google.visualization.arrayToDataTable([
-        ['Calificación', ''],
-        ["5", #{calificacionController.getCalCount(5)}],
-        ["4", #{calificacionController.getCalCount(4)}],
-        ["3", #{calificacionController.getCalCount(3)}],
-        ["2", #{calificacionController.getCalCount(2)}],
-        ["1", #{calificacionController.getCalCount(1)}]
-      ]);
-      var options = {
-        colors: '#017CF6',
-        legend: {
-          position: 'none'
-        },
-        bar: {
-          groupWidth: "90%"
-        }
-      };
-      var chart = new google.charts.Bar(document.getElementById('califf'));
-      chart.draw(data, google.charts.Bar.convertOptions(options));
+            function drawStuff() {
+              var data = new google.visualization.arrayToDataTable([
+                ['Calificación', ''],
+                ["5", #{calificacionController.getCalCount(5)}],
+                ["4", #{calificacionController.getCalCount(4)}],
+                ["3", #{calificacionController.getCalCount(3)}],
+                ["2", #{calificacionController.getCalCount(2)}],
+                ["1", #{calificacionController.getCalCount(1)}]
+              ]);
+              var options = {
+                colors: '#017CF6',
+                legend: {
+                  position: 'none'
+                },
+                bar: {
+                  groupWidth: "90%"
+                }
+              };
+              var chart = new google.charts.Bar(document.getElementById('califf'));
+              chart.draw(data, google.charts.Bar.convertOptions(options));
 
-    }
-  </script>
-  <style>
-    * {
-      font-family: 'Roboto', sans-serif;
-    }
+            }
+          </script>
+          <style>
+            * {
+              font-family: 'Roboto', sans-serif;
+            }
 
-    body {
-      background-image: url("#{resource['images/logob.png']}");
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-size: 700px;
-      background-position: 130% -300%;
-      background-blend-mode: difference;
-      background-color: #ECECEE;
-    }
+            body {
+              background-image: url("#{resource['images/logob.png']}");
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              background-size: 700px;
+              background-position: 130% -300%;
+              background-blend-mode: difference;
+              background-color: #ECECEE;
+            }
 
-    .pqr {
-      background: rgb(243, 135, 98);
-      background: linear-gradient(to right, rgba(243, 135, 98, 1) 0%, rgba(248, 152, 74, 1) 100%);
-    }
+            .pqr {
+              background: rgb(243, 135, 98);
+              background: linear-gradient(to right, rgba(243, 135, 98, 1) 0%, rgba(248, 152, 74, 1) 100%);
+            }
 
-    .happy {
-      background: rgb(158, 88, 250);
-      background: linear-gradient(90deg, rgba(158, 88, 250, 1) 0%, rgba(218, 104, 220, 1) 100%);
-    }
+            .happy {
+              background: rgb(158, 88, 250);
+              background: linear-gradient(90deg, rgba(158, 88, 250, 1) 0%, rgba(218, 104, 220, 1) 100%);
+            }
 
-    .tech {
-      background: rgb(47, 157, 243);
-      background: linear-gradient(90deg, rgba(47, 157, 243, 1) 0%, rgba(118, 185, 237, 1) 100%);
-    }
+            .tech {
+              background: rgb(47, 157, 243);
+              background: linear-gradient(90deg, rgba(47, 157, 243, 1) 0%, rgba(118, 185, 237, 1) 100%);
+            }
 
-    .card .card-content {
-      height: 150px;
-    }
-  </style>
-</h:head>
+            .card .card-content {
+              height: 150px;
+            }
+            .waves-button-input{
+              width: 100%;
+              height: 70%;
+            }
+          </style>
+          </h:head>
 
-<h:body>
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <p style="font-size:25px;" class="center-align">Dashboard</p>
-        <div class="row">
-          <div class="col s4">
-            <div class="card horizontal pqr">
-              <div class="card-stacked">
-                <div class="card-content white-text">
-                  <h5>PQRS recibidos</h5>
+          <h:body>
+            <div class="container">
+              <div class="row">
+                <div class="col s12">
+                  <p style="font-size:25px;" class="center-align">Dashboard</p>
                   <div class="row">
-                    <div class="col s6">
-                      <h3><i class="fas fa-exclamation-triangle"></i></h3>
+                    <div class="col s4">
+                      <div class="card horizontal pqr">
+                        <div class="card-stacked">
+                          <div class="card-content white-text">
+                            <h5>PQRS recibidos</h5>
+                            <div class="row">
+                              <div class="col s6">
+                                <h3><i class="fas fa-exclamation-triangle"></i></h3>
+                              </div>
+                              <div class="col s6 right-align">
+                                <h3>#{pqrController.count}</h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-action"><a href="../all/colsulfidel.xhtml" class="white-text">Click aqui para revisarlos</a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col s6 right-align">
-                      <h3>#{pqrController.count}</h3>
+                    <div class="col s4">
+                      <div class="card horizontal happy">
+                        <div class="card-stacked">
+                          <div class="card-content white-text">
+                            <h5>Felicitaciones recibidas</h5>
+                            <div class="row">
+                              <div class="col s6">
+                                <h3><i class="far fa-laugh-beam"></i></h3>
+                              </div>
+                              <div class="col s6 right-align">
+                                <h3>#{felicitacionController.count}</h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-action"><a href="../all/colsulfeli.xhtml" class="white-text">Click aqui para revisarlas</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col s4">
+                      <div class="card horizontal tech">
+                        <div class="card-stacked">
+                          <div class="card-content white-text">
+                            <h5>Soportes tecnicos recibidos</h5>
+                            <div class="row">
+                              <div class="col s6">
+                                <h3><i class="fas fa-tools"></i></h3>
+                              </div>
+                              <div class="col s6 right-align">
+                                <h3>#{soporteTecnicoController.count}</h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-action"><a href="../all/solsoptec.xhtml" class="white-text">Click aqui para revisarlos</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col s4"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col s8 white">
+                      <p>cantidad de productos segun categoria</p>
+                      <div id="top_x_div"></div>
+                    </div>
+                    <div class="col s4 white">
+                      <p>Calificacion de productos</p>
+                      <div id="califf"></div>
                     </div>
                   </div>
                 </div>
-                <div class="card-action"><a href="colsulfidel.html" class="white-text">Click aqui para revisarlos</a>
+              </div>
+              <div  class="fixed-action-btn">
+                <a class="btn-floating btn-large red">
+                  <i class="large material-icons">add</i>
+                </a>
+                <ul>
+                  <li><a  class="btn-floating blue tooltipped modal-trigger" href="#modal1" data-position="left" data-tooltip="Carga masiva"><i class="material-icons">attach_file</i></a></li>
+                </ul>
+              </div>
+              <div id="modal1" class="modal">
+                <div class="modal-content row">
+                  <h4>Carga de datos para Productos</h4>
+                  <h:form prependId="false" enctype="multipart/form-data">
+                    <div class="file-field input-field col s12">
+                      <div class="btn col s12 m2">
+                        <span>Seleccione</span>
+                        <h:inputFile  value="#{indexController.part}"  />
+                      </div>
+                      <div class="file-path-wrapper col s12 m8">
+                        <h:inputText class="file-path validate"/>
+                      </div>
+                      <div class="col s12 m2">
+                        <h:commandButton class="btn waves-effect waves-light" value="Cargar" actionListener="#{indexController.uploadFile()}"/>
+                      </div>
+                    </div>
+                  </h:form>
                 </div>
               </div>
+              <script>
+                $(document).ready(function () {
+                  $('.tap-target').tapTarget();
+                  $('.fixed-action-btn').floatingActionButton();
+                  $('.tooltipped').tooltip();
+                  $('.modal').modal();
+                });
+              </script>
             </div>
-          </div>
-          <div class="col s4">
-            <div class="card horizontal happy">
-              <div class="card-stacked">
-                <div class="card-content white-text">
-                  <h5>Felicitaciones recibidas</h5>
-                  <div class="row">
-                    <div class="col s6">
-                      <h3><i class="far fa-laugh-beam"></i></h3>
-                    </div>
-                    <div class="col s6 right-align">
-                      <h3>#{felicitacionController.count}</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-action"><a href="colsulfeli.html" class="white-text">Click aqui para revisarlas</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s4">
-            <div class="card horizontal tech">
-              <div class="card-stacked">
-                <div class="card-content white-text">
-                  <h5>Soportes tecnicos recibidos</h5>
-                  <div class="row">
-                    <div class="col s6">
-                      <h3><i class="fas fa-tools"></i></h3>
-                    </div>
-                    <div class="col s6 right-align">
-                      <h3>#{soporteTecnicoController.count}</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-action"><a href="colsulsopo.html" class="white-text">Click aqui para revisarlos</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s4"></div>
-        </div>
-        <div class="row">
-          <div class="col s8 white">
-            <p>cantidad de productos segun categoria</p>
-            <div id="top_x_div"></div>
-          </div>
-          <div class="col s4 white">
-            <p>Calificacion de productos</p>
-            <div id="califf"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</h:body>
-</html>
+          </h:body>
+          </html>

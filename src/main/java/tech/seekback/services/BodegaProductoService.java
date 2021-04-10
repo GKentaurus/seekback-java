@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.BodegaProductoDAO;
@@ -64,6 +63,11 @@ public class BodegaProductoService {
   public List<BodegaProducto> getLikeName(String parteNombre) throws ConnectionExcep {
     List<BodegaProducto> bodegaProductos = bodegaProductoDAO.getLikeName(parteNombre);
     return bodegaProductos;
+  }
+
+  public BodegaProducto getByIdProducto(Integer idProducto) throws ConnectionExcep {
+    BodegaProducto bodegaProductobyidproducto = bodegaProductoDAO.getByIdProducto(idProducto);
+    return bodegaProductobyidproducto;
   }
 
   /**

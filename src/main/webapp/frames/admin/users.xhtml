@@ -78,7 +78,11 @@
                 <h:column>
                   <f:facet name="header">Editar</f:facet>
                   <h:form>
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}" onclick="document.getElementById('rol#{st.id}').selectedIndex = #{st.rol.id};document.getElementById('usu#{st.id}').selectedIndex = #{st.id};">Visualizar</a>
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}"
+                       onclick="
+                           document.getElementById('rol#{st.id}').value = #{st.rol.id};
+                           document.getElementById('usu#{st.id}').value = #{st.id};
+                       ">Visualizar</a>
 
                   </h:form>
                   <div id="modal#{st.id}" class="modal">

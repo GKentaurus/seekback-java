@@ -1,4 +1,3 @@
-
 package tech.seekback.models;
 
 import tech.seekback.models.interfaces.EntityTimestamp;
@@ -17,7 +16,8 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "BodegaProducto.getAll", query = "SELECT obj FROM BodegaProducto obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "BodegaProducto.getLikeName", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.modeloProducto like CONCAT('%', :parteNombre, '%') AND obj.timestamps.deleted = false"),
-  @NamedQuery(name = "BodegaProducto.getByIdCategoria", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.categoria.id = :idCategoria AND obj.timestamps.deleted = false")
+  @NamedQuery(name = "BodegaProducto.getByIdCategoria", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.categoria.id = :idCategoria AND obj.timestamps.deleted = false"),
+  @NamedQuery(name = "BodegaProducto.getByIdProducto", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.id = :idProducto AND obj.timestamps.deleted = false")
 })
 public class BodegaProducto implements EntityTimestamp {
 
@@ -165,12 +165,12 @@ public class BodegaProducto implements EntityTimestamp {
   @Override
   public String toString() {
     return "BodegaProductos("
-      + "id = " + id + ", "
-      + "bodega = " + bodega + ", "
-      + "producto = " + producto + ", "
-      + "cantidad = " + cantidad + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "bodega = " + bodega + ", "
+            + "producto = " + producto + ", "
+            + "cantidad = " + cantidad + ", "
+            + timestamps.toString()
+            + ")";
   }
 
 }

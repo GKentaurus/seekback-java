@@ -267,4 +267,25 @@ public class SoporteTecnicoController extends CustomController implements Serial
 
   }
 
+  public void delete(Integer idsopor) throws IOException {
+    try {
+      soporteTecnicoService.delete(soporteTecnicoService.getOne(idsopor));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idsopor
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idsopor
+              + "\n######################################################################\n");
+      ex.printStackTrace();
+
+    }
+  }
+
 }

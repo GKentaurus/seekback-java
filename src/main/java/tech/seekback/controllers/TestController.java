@@ -1,4 +1,3 @@
-
 package tech.seekback.controllers;
 
 import net.sf.jasperreports.engine.JRException;
@@ -85,7 +84,7 @@ public class TestController extends CustomController implements Serializable {
   }
 
   public void testQuery() throws ConnectionExcep {
-    for (Correo correo: correoService.getAll()) {
+    for (Correo correo : correoService.getAll()) {
       System.out.println(correo.getUsuario().getPrimerNombre());
     }
   }

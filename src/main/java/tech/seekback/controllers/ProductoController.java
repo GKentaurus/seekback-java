@@ -216,5 +216,26 @@ public class ProductoController implements Serializable {
 
   }
 
+  public void delete(Integer idprod) throws IOException {
+    try {
+      productoService.delete(productoService.getOne(idprod));
+      bodegaProductoService.delete(bodegaProductoService.getByIdProducto(idprod));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idprod
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/admin/modrefn.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idprod
+              + "\n######################################################################\n");
+      ex.printStackTrace();
+
+    }
+  }
 
 }

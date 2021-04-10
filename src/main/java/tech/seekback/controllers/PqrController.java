@@ -64,6 +64,7 @@ public class PqrController extends CustomController implements Serializable {
   private Integer count;
   private Integer idCategoria;
   private Integer idUsuario;
+  private Integer idPQR;
   private String who;
   private String comment;
 
@@ -76,6 +77,7 @@ public class PqrController extends CustomController implements Serializable {
     pqrs = new PQRS();
   }
 
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdCategoria() {
     return idCategoria;
   }
@@ -98,6 +100,14 @@ public class PqrController extends CustomController implements Serializable {
 
   public void setWho(String who) {
     this.who = who;
+  }
+
+  public Integer getIdPQR() {
+    return idPQR;
+  }
+
+  public void setIdPQR(Integer idPQR) {
+    this.idPQR = idPQR;
   }
 
   public String getComment() {
@@ -163,6 +173,7 @@ public class PqrController extends CustomController implements Serializable {
     }
     return tipoSolicitudes;
   }
+  //</editor-fold>
 
   public void create() throws ConnectionExcep, IOException {
     // Creación de Timestamp para todos los procesos
@@ -201,6 +212,28 @@ public class PqrController extends CustomController implements Serializable {
     columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 
     this.reportService.exportPdfOnWeb("Reporte de PQRS", columnas, this.pQRSService.getAll());
+
+  }
+
+  public void delete(Integer idpqr) throws IOException {
+    try {
+      pQRSService.delete(pQRSService.getOne(idpqr));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idpqr
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfidel.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idpqr
+              + "\n######################################################################\n");
+      ex.printStackTrace();
+
+    }
 
   }
 

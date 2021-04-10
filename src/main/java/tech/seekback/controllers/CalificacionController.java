@@ -175,4 +175,25 @@ public class CalificacionController extends CustomController implements Serializ
 
   }
 
+  public void delete(Integer idcalif) throws IOException {
+    try {
+      calificacionService.delete(calificacionService.getOne(idcalif));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idcalif
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulcalif.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idcalif
+              + "\n######################################################################\n");
+      ex.printStackTrace();
+
+    }
+  }
+
 }

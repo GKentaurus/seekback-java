@@ -1,6 +1,6 @@
-
 package tech.seekback.controllers;
 
+import java.io.IOException;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 import tech.seekback.services.ProductoService;
@@ -11,7 +11,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
+import javax.servlet.http.Part;
 
 /**
  * @author gkentaurus
@@ -32,22 +34,22 @@ public class IndexController extends CustomController implements Serializable {
 
   public void sendMessage() throws MessagingException {
     mailService.sendEmail(
-      "carlos.moreno@metasysco.com",
-      "Contacto desde el formulario de la página",
-      name + " (" + recipient + ") escribió el siguiente mensaje:\n\n" +
-        "'" + message + "'.\n\n" +
-        "Por favor póngase en contacto con el cliente.\n\n" +
-        "Cordialmente,\n" +
-        "El equipo de desarrollo de Seekback."
+            "carlos.moreno@metasysco.com",
+            "Contacto desde el formulario de la página",
+            name + " (" + recipient + ") escribió el siguiente mensaje:\n\n"
+            + "'" + message + "'.\n\n"
+            + "Por favor póngase en contacto con el cliente.\n\n"
+            + "Cordialmente,\n"
+            + "El equipo de desarrollo de Seekback."
     );
 
     mailService.sendEmail(
-      recipient,
-      "Gracias por contactarnos.",
-      "Hola " + name + ":\n\n" +
-        "Hemos recibido tu mensaje, pronto estaremos en contacto contigo.\n\n" +
-        "Cordialmente,\n" +
-        "El equipo de desarrollo de Seekback."
+            recipient,
+            "Gracias por contactarnos.",
+            "Hola " + name + ":\n\n"
+            + "Hemos recibido tu mensaje, pronto estaremos en contacto contigo.\n\n"
+            + "Cordialmente,\n"
+            + "El equipo de desarrollo de Seekback."
     );
 
     this.recipient = "";
@@ -84,4 +86,17 @@ public class IndexController extends CustomController implements Serializable {
     this.message = message;
   }
   // </editor-fold>
+
+  public void setPart(Part part) {
+    this.productoService.setPart(part);
+  }
+
+  public Part getPart() {
+    return this.productoService.getPart();
+  }
+
+  public void uploadFile() throws IOException, ConnectionExcep, ParseException {
+    this.productoService.uploadData();
+  }
+
 }

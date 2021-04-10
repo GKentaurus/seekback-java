@@ -119,10 +119,10 @@
                   <div id="modaldel#{st.id}" class="modal">
                     <div class="modal-content">
                       <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar el producto de #{st.producto.modeloProducto}?</h4>
+                        <h4 class="center-align">Desea eliminar el producto de #{st.producto.modeloProducto} ?</h4>
                       </div>
                       <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                        <h:commandButton action="#{productoController.delete(st.producto.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>

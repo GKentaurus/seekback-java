@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -43,6 +42,17 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
       TypedQuery<BodegaProducto> tq = em.createNamedQuery("BodegaProducto.getLikeName", classType);
       tq.setParameter("parteNombre", parteNombre);
       return tq.getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
+  public BodegaProducto getByIdProducto(Integer idProducto) throws ConnectionExcep {
+    try {
+      TypedQuery<BodegaProducto> tq = em.createNamedQuery("BodegaProducto.getByIdProducto", classType);
+      tq.setParameter("idProducto", idProducto);
+      return tq.getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
