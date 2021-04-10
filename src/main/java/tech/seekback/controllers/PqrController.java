@@ -1,6 +1,8 @@
 package tech.seekback.controllers;
 
 import java.io.IOException;
+
+import net.sf.jasperreports.engine.JRException;
 import tech.seekback.models.EstadosFidelizacion;
 import tech.seekback.models.PQRS;
 import tech.seekback.models.TipoSolicitud;
@@ -12,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +27,7 @@ import tech.seekback.models.templates.Timestamps;
 import tech.seekback.services.AdministradorService;
 import tech.seekback.services.ClienteService;
 import tech.seekback.services.EstadosCotizacionService;
+import tech.seekback.services.tools.ReportService;
 
 /**
  * @author danny
@@ -49,6 +53,9 @@ public class PqrController extends CustomController implements Serializable {
 
   @EJB
   private ClienteService clienteService;
+
+  @EJB
+  private ReportService reportService;
 
   private List<PQRS> pqrses;
   private List<EstadosFidelizacion> estados;
@@ -181,6 +188,19 @@ public class PqrController extends CustomController implements Serializable {
 
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
     ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfidel.xhtml");
+
+  }
+
+  public void genpdf() throws JRException, IOException, ConnectionExcep {
+
+    List<String[]> columnas = new ArrayList<>();
+    columnas.add(new String[]{"Solicitud", "tipoSolicitud.nombreSolicitud", String.class.getName(), "100"});
+    columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
+    columnas.add(new String[]{"Dirigido a", "area", String.class.getName(), "100"});
+    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "420"});
+    columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
+
+    this.reportService.exportPdfOnWeb("Reporte de PQRS", columnas, this.pQRSService.getAll());
 
   }
 

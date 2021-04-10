@@ -5,6 +5,7 @@
  */
 package tech.seekback.controllers;
 
+import net.sf.jasperreports.engine.JRException;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.BodegaProducto;
 import tech.seekback.models.CategoriasProducto;
@@ -23,10 +24,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import tech.seekback.models.Bodega;
+import tech.seekback.services.tools.ReportService;
 
 /**
  * @author danny
@@ -46,6 +49,9 @@ public class ProductoController implements Serializable {
 
   @EJB
   private BodegaService bodegaService;
+
+  @EJB
+  private ReportService reportService;
 
   private Producto producto;
   private BodegaProducto bodegaProducto;
@@ -196,5 +202,19 @@ public class ProductoController implements Serializable {
     ec.redirect(ec.getRequestContextPath() + "/frames/admin/regnref.xhtml");
 
   }
+
+  public void genpdf() throws JRException, IOException, ConnectionExcep {
+
+    List<String[]> columnas = new ArrayList<>();
+    columnas.add(new String[]{"Modelo", "modeloProducto", String.class.getName(), "100"});
+    columnas.add(new String[]{"Descripción", "descripcion", String.class.getName(), "420"});
+    columnas.add(new String[]{"Categoria", "categoria.nombreCategoria", String.class.getName(), "100"});
+    columnas.add(new String[]{"precioVenta", "precioVenta", Double.class.getName(), "70"});
+    columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
+
+    this.reportService.exportPdfOnWeb("Reporte de Productos", columnas, this.productoService.getAll());
+
+  }
+
 
 }

@@ -144,6 +144,7 @@ public class JasperDesignBuilder{
   }
 
   public JasperDesign getDesign() {
+
     return this.design;
   }
 }
