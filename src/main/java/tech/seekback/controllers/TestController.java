@@ -58,15 +58,11 @@ public class TestController extends CustomController implements Serializable {
   }
 
   public void exportOnline() throws JRException, ConnectionExcep, IOException {
-    reportService.JasperReportMaker(list(), "Lista de usuarios");
-    reportService.generateReport(this.usuarioService.getAll());
-    reportService.exportPdfOnWeb();
+    reportService.exportPdfOnWeb("Lista de usuarios", list(), this.usuarioService.getAll());
   }
 
   public void exportLocal() throws JRException, ConnectionExcep {
-    reportService.JasperReportMaker(list(), "Lista de usuarios");
-    reportService.generateReport(this.usuarioService.getAll());
-    reportService.exportPdfOnLocalDisk();
+    reportService.exportPdfOnLocalDisk("Lista de usuarios", list(), this.usuarioService.getAll());
   }
 
   public void encrypt() throws ConnectionExcep {

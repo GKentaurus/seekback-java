@@ -16,7 +16,10 @@ public class JasperTextFieldBuilder {
 
   private void setNextColumnStart(int next, int spacing) {
     nextColumnStart += (next + spacing);
-    System.out.println("La siguiente colDetail empieza en " + nextColumnStart);
+  }
+
+  private void resetNextColumnStart() {
+    nextColumnStart = 0;
   }
 
   private JasperTextFieldBuilder() {
@@ -25,6 +28,11 @@ public class JasperTextFieldBuilder {
 
   public static JasperTextFieldBuilder start() {
     return new JasperTextFieldBuilder();
+  }
+
+  public JasperTextFieldBuilder resetColumnStart() {
+    this.resetNextColumnStart();
+    return this;
   }
 
   public JasperTextFieldBuilder defaultSettings(Integer columnWidth, Integer spacing, String expression) {

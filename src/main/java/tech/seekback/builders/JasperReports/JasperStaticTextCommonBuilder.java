@@ -15,7 +15,10 @@ public class JasperStaticTextCommonBuilder {
 
   private void setNextColumnStart(int next, int spacing) {
     nextColumnStart += (next + spacing);
-    System.out.println("La siguiente colHeader empieza en " + nextColumnStart);
+  }
+
+  private void resetNextColumnStart() {
+    nextColumnStart = 0;
   }
 
   private JasperStaticTextCommonBuilder() {
@@ -24,6 +27,11 @@ public class JasperStaticTextCommonBuilder {
 
   public static JasperStaticTextCommonBuilder start() {
     return new JasperStaticTextCommonBuilder();
+  }
+
+  public JasperStaticTextCommonBuilder resetColumnStart() {
+    this.resetNextColumnStart();
+    return this;
   }
 
   public JasperStaticTextCommonBuilder defaultSettings(Integer columnWidth, Integer spacing, String text, JasperReportsEnum option, Integer startAt) {

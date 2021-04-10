@@ -171,11 +171,7 @@ public class CalificacionController extends CustomController implements Serializ
     columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "420"});
     columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 
-    this.reportService.JasperReportMaker(columnas, "Reporte de calificaciones");
-
-    this.reportService.generateReport(this.calificacionService.getAll());
-
-    this.reportService.exportPdfOnWeb();
+    this.reportService.exportPdfOnWeb("Reporte de calificaciones", columnas, this.calificacionService.getAll());
 
   }
 

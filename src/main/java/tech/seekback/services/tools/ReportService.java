@@ -11,17 +11,16 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 import tech.seekback.builders.JasperReports.*;
 import tech.seekback.enums.JasperReports.OrientationEnum;
 import tech.seekback.enums.JasperReportsEnum;
+import tech.seekback.models.Usuario;
 
 import javax.ejb.Stateless;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author gkentaurus
@@ -32,6 +31,9 @@ public class ReportService {
 
   private JasperPrint jasperPrint;
   private JasperDesign design;
+  private File jasperFile;
+  private FacesContext fc;
+  private ExternalContext ec;
 
   public void setDesign(JasperDesign design) {
     this.design = design;
@@ -47,7 +49,7 @@ public class ReportService {
    * @param columnValues
    * @throws JRException
    */
-  public void JasperReportMaker(List<String[]> columnValues, String nombreReporte) throws JRException {
+  private void JasperReportMaker(List<String[]> columnValues, String nombreReporte) throws JRException {
     JasperDesignBuilder designBuilder = JasperDesignBuilder.start();
     designBuilder.defaultSettings("name", OrientationEnum.VERTICAL_ORIENTATION);
 
@@ -78,6 +80,7 @@ public class ReportService {
 
     JasperStaticTextCommonBuilder titleText = JasperStaticTextCommonBuilder
       .start()
+      .resetColumnStart()
       .defaultSettings(designBuilder.getColumnWidth(), 10, nombreReporte, JasperReportsEnum.TITLE);
 
     titleBandBuilder.addElement(titleText.getText());
@@ -93,6 +96,7 @@ public class ReportService {
       if (i == 0) {
         columnHeader.addElement(JasperStaticTextColumnBuilder
           .start()
+          .resetColumnStart()
           .defaultSettings(Integer.parseInt(column[3]), 5, column[0], JasperReportsEnum.SUBTITLE, 0)
           .setFontSize(12f)
           .setStyle(columnStyle)
@@ -100,6 +104,7 @@ public class ReportService {
 
         detailBand.addElement(JasperTextFieldBuilder
           .start()
+          .resetColumnStart()
           .defaultSettings(Integer.parseInt(column[3]), column[1], 0)
           .setStyle(detailStyle)
           .getText());
@@ -126,13 +131,15 @@ public class ReportService {
     this.design = designBuilder.getDesign();
   }
 
-  public void generateReport(Collection<?> collection) throws JRException {
+  private void generateReport(Collection<?> collection) throws JRException {
     JasperReport report = JasperCompileManager.compileReport(this.design);
     HashMap<String, Object> parameters = new HashMap<>();
     this.jasperPrint = JasperFillManager.fillReport(report, parameters, new JRBeanCollectionDataSource(collection));
   }
 
-  public void exportPdfOnLocalDisk() throws JRException {
+  public void exportPdfOnLocalDisk(String nombreReporte, List<String[]> columnValues, Collection<?> collection) throws JRException {
+    this.JasperReportMaker(columnValues, nombreReporte);
+    this.generateReport(collection);
     JRPdfExporter exporter = new JRPdfExporter();
     exporter.setExporterInput(new SimpleExporterInput(this.jasperPrint));
     exporter.setExporterOutput(new SimpleOutputStreamExporterOutput("D:\\reporte.pdf"));
@@ -141,9 +148,19 @@ public class ReportService {
     exporter.exportReport();
   }
 
-  public void exportPdfOnWeb() throws JRException, IOException {
-    FacesContext fc = FacesContext.getCurrentInstance();
-    ExternalContext ec = fc.getExternalContext();
+  private void initializeInstances() {
+    this.fc = FacesContext.getCurrentInstance();
+    this.ec = fc.getExternalContext();
+  }
+
+  public void exportPdfOnWeb(String reportName, List<String[]> columnValues, Collection<?> collection) throws JRException, IOException {
+    this.JasperReportMaker(columnValues, reportName);
+    this.generateReport(collection);
+    this.initializeInstances();
+    this.response(fc, ec);
+  }
+
+  private void response(FacesContext fc, ExternalContext ec) throws IOException, JRException {
     HttpServletResponse response = (HttpServletResponse) ec.getResponse();
     Date now = new Date();
     response.addHeader("Content-disposition", "attachment; filename=report-" + now.getTime() + ".pdf");
@@ -152,5 +169,26 @@ public class ReportService {
     outputStream.flush();
     outputStream.close();
     fc.responseComplete();
+  }
+
+  public void exportPdfOnWeb(String templateName, Collection<?> collection, Usuario usuario) throws JRException, IOException {
+    this.initializeInstances();
+    this.jasperFile = new File(ec.getRealPath("/WEB-INF/reports/" + templateName + ".jasper"));
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("logo", ec.getRealPath("/WEB-INF/reports/seekback-logo.png"));
+    parameters.put("NAME_USER", usuario.getPrimerNombre() + " " + usuario.getPrimerApellido());
+    parameters.put("DATE_REPORT", new Date());
+    this.jasperPrint = JasperFillManager.fillReport(this.jasperFile.getPath(), parameters, new JRBeanCollectionDataSource(collection));
+    this.response(fc, ec);
+  }
+
+  public void exportPdfOnWeb(String templateName, Collection<?> collection) throws JRException, IOException {
+    this.initializeInstances();
+    this.jasperFile = new File(ec.getRealPath("/WEB-INF/reports/" + templateName + ".jasper"));
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("logo", ec.getRealPath("/WEB-INF/reports/logo.png"));
+    parameters.put("DATE_REPORT", new Date());
+    this.jasperPrint = JasperFillManager.fillReport(this.jasperFile.getPath(), parameters, new JRBeanCollectionDataSource(collection));
+    this.response(fc, ec);
   }
 }
