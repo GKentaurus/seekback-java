@@ -22,7 +22,6 @@ public class TRMDAOJPA extends GenericDAO<TRM, Integer> implements TRMDAO {
 
   @Override
   public List<TRM> getByidDivisa(Integer idDivisa) throws ConnectionExcep {
-    System.out.println("divisa " + idDivisa);
     try {
       return em
               .createNamedQuery("TRM.getByidDivisa", classType)

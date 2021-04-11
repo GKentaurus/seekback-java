@@ -24,9 +24,9 @@ public class CotizacionDAOJPA extends GenericDAO<Cotizacion, Integer> implements
   public List<Cotizacion> getByIdEmpleado(Integer idEmpleado) throws ConnectionExcep {
 
     try {
-      TypedQuery<Cotizacion> tq = em.createNamedQuery("Cotizacion.getByIdEmpleado", classType);
-      tq.setParameter("idEmpleado", idEmpleado);
-      return tq.getResultList();
+      return em.createNamedQuery("Cotizacion.getByIdEmpleado", classType)
+              .setParameter("idEmpleado", idEmpleado)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

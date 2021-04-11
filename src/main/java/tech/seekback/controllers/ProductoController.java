@@ -61,6 +61,8 @@ public class ProductoController implements Serializable {
   private Integer idCat;
   private Integer idBod;
   private Integer Cant;
+  private boolean estate;
+  private String estado;
 
   private List<Bodega> bodegas;
   private List<Producto> categoryProductList;
@@ -140,6 +142,22 @@ public class ProductoController implements Serializable {
     this.Cant = Cant;
   }
 
+  public boolean isEstate() {
+    return estate;
+  }
+
+  public void setEstate(boolean estate) {
+    this.estate = estate;
+  }
+
+  public String getEstado() {
+    return estado;
+  }
+
+  public void setEstado(String estado) {
+    this.estado = estado;
+  }
+
   public Integer getIdCat() {
     return idCat;
   }
@@ -172,6 +190,39 @@ public class ProductoController implements Serializable {
     this.valor = valor;
   }
 
+  public void updateadm(Integer idprodB, Integer idprod) throws ConnectionExcep, IOException {
+    this.bodegaProducto = bodegaProductoService.getOne(idprodB);
+    this.producto = productoService.getOne(idprod);
+
+    if (this.estado == "true") {
+      this.estate = true;
+    } else {
+      this.estate = false;
+    }
+
+    this.producto.setModeloProducto(ModelProduct);
+    this.producto.setDescripcion(Descripcion);
+    this.producto.setPrecioVenta(valor);
+    this.producto.setEstado(estate);
+    this.producto.setCategoria(categoriasProductoService.getOne(idCat));
+
+    this.bodegaProducto.setProducto(producto);
+    this.bodegaProducto.setBodega(bodegaService.getOne(idBod));
+    this.bodegaProducto.setCantidad(Cant);
+
+    bodegaProductoService.update(bodegaProducto);
+    productoService.update(producto);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/admin/modrefn.xhtml");
+
+  }
+
   public void createp() throws ConnectionExcep, IOException {
     // Creación de Timestamp para todos los procesos
     Timestamps timestamps = new Timestamps();
@@ -199,7 +250,7 @@ public class ProductoController implements Serializable {
             + "\n######################################################################\n");
 
     ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-    ec.redirect(ec.getRequestContextPath() + "/frames/admin/regnref.xhtml");
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/regnref.xhtml");
 
   }
 

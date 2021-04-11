@@ -23,9 +23,10 @@ public class AgendaDAOJPA extends GenericDAO<Agenda, Integer> implements AgendaD
   @Override
   public List<Agenda> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep {
     try {
-      TypedQuery<Agenda> tq = em.createNamedQuery("Agenda.getByidEmpleado", classType);
-      tq.setParameter("idEmpleado", idEmpleado);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Agenda.getByidEmpleado", classType)
+              .setParameter("idEmpleado", idEmpleado)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -34,9 +35,10 @@ public class AgendaDAOJPA extends GenericDAO<Agenda, Integer> implements AgendaD
   @Override
   public List<Agenda> getByidCliente(Integer idCliente) throws ConnectionExcep {
     try {
-      TypedQuery<Agenda> tq = em.createNamedQuery("Agenda.getByidCliente", classType);
-      tq.setParameter("idCliente", idCliente);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Agenda.getByidCliente", classType)
+              .setParameter("idCliente", idCliente)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

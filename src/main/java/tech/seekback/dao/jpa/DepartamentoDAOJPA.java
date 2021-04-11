@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -29,9 +28,10 @@ public class DepartamentoDAOJPA extends GenericDAO<Departamento, Integer> implem
   @Override
   public List<Departamento> getByIdPais(Integer idPais) throws ConnectionExcep {
     try {
-      TypedQuery<Departamento> tq = em.createNamedQuery("Departamento.getByIdPais", classType);
-      tq.setParameter("paisId", idPais);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Departamento.getByIdPais", classType)
+              .setParameter("paisId", idPais)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

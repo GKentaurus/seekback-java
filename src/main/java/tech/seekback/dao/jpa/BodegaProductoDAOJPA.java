@@ -28,9 +28,10 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
   @Override
   public List<BodegaProducto> getByIdCategoria(int idCategoria) throws ConnectionExcep {
     try {
-      TypedQuery<BodegaProducto> tq = em.createNamedQuery("BodegaProducto.getByIdCategoria", classType);
-      tq.setParameter("idCategoria", idCategoria);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("BodegaProducto.getByIdCategoria", classType)
+              .setParameter("idCategoria", idCategoria)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -39,9 +40,10 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
   @Override
   public List<BodegaProducto> getLikeName(String parteNombre) throws ConnectionExcep {
     try {
-      TypedQuery<BodegaProducto> tq = em.createNamedQuery("BodegaProducto.getLikeName", classType);
-      tq.setParameter("parteNombre", parteNombre);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("BodegaProducto.getLikeName", classType)
+              .setParameter("parteNombre", parteNombre)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -50,9 +52,10 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
   @Override
   public BodegaProducto getByIdProducto(Integer idProducto) throws ConnectionExcep {
     try {
-      TypedQuery<BodegaProducto> tq = em.createNamedQuery("BodegaProducto.getByIdProducto", classType);
-      tq.setParameter("idProducto", idProducto);
-      return tq.getSingleResult();
+      return em
+              .createNamedQuery("BodegaProducto.getByIdProducto", classType)
+              .setParameter("idProducto", idProducto)
+              .getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
