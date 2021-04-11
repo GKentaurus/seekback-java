@@ -1,180 +1,179 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-  <title>.:QPCOM | Seekback:.</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</h:head>
+  <h:head>
+    <title>.:QPCOM | Seekback:.</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </h:head>
 
-<h:body id="ody">
+  <h:body id="ody">
 
-  <ui:composition template="/WEB-INF/templates/handf.xhtml">
-    <ui:define name="content">
-      <div class="row">
-        <div class="col s12 m10 l10 offset-l1 offset-m1">
-          <div class="wrap" id="inv">
-            <!--slider-->
-            <div id="slpro" class="container section scrollspy">
-              <div class="row">
-                <div class="col s12">
-                  <div class="slider">
-                    <ul class="slides">
-                      <li>
-                        <h:graphicImage library="images" name="router.webp" alt="producto"/>
-                        <div class="caption left-align">
-                          <h3>Router</h3>
-                          <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
-                        </div>
-                      </li>
-                      <li>
-                        <h:graphicImage library="images" name="cableado1.webp" alt="producto"/>
-                        <div class="caption left-align">
-                          <h3>Switch</h3>
-                          <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
-                        </div>
-                      </li>
-                      <li>
-                        <h:graphicImage library="images" name="cableado.webp" alt="producto"/>
-                        <div class="caption left-align">
-                          <h3>Utp cat6</h3>
-                          <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
-                        </div>
-                      </li>
-                    </ul>
+    <ui:composition template="/WEB-INF/templates/handf.xhtml">
+      <ui:define name="content">
+
+        <div class="row">
+          <div class="col s12 m10 l10 offset-l1 offset-m1">
+            <div class="wrap" id="inv">
+              <!--slider-->
+              <div id="slpro" class="container section scrollspy">
+                <div class="row">
+                  <div class="col s12">
+                    <div class="slider">
+                      <ul class="slides">
+                        <li>
+                          <h:graphicImage library="images" name="router.webp" alt="producto"/>
+                          <div class="caption left-align">
+                            <h3>Router</h3>
+                            <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
+                          </div>
+                        </li>
+                        <li>
+                          <h:graphicImage library="images" name="cableado1.webp" alt="producto"/>
+                          <div class="caption left-align">
+                            <h3>Switch</h3>
+                            <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
+                          </div>
+                        </li>
+                        <li>
+                          <h:graphicImage library="images" name="cableado.webp" alt="producto"/>
+                          <div class="caption left-align">
+                            <h3>Utp cat6</h3>
+                            <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <hr style="width:70%; border: 1px solid #b9b9b9;"/>
-            <!--productos-->
-            <div id="prod" class="container section scrollspy">
-              <div class="row">
-
-                <h:form id="tabla">
-                  <h:dataTable pt:id="datatable" value="#{indexController.getLastProducts(4)}" var="st" rows="4">
-                    <h:column>
-
-                      <f:facet name="header" pt:style="display:none;">Productos</f:facet>
-                      <div class="card white" style="width: 300px;">
-                        <div class="card-image">
-                          <h:graphicImage library="images" name="cable/utp1.webp" alt="producto"
-                                          style="height:200px; width:100%;"/>
-                          <span class="card-title truncate">#{st.modeloProducto}</span>
+              <hr style="width:70%; border: 1px solid #b9b9b9;"/>
+              <!--productos-->
+              <div id="prod" class="container section scrollspy">
+                <div class="row">
+                  <h:form id="tabla">
+                    <h:dataTable pt:id="datatable" value="#{indexController.getLastProducts(4)}" var="st" rows="4">
+                      <h:column>
+                        <f:facet name="header" pt:style="display:none;">Productos</f:facet>
+                        <div class="card white" style="width: 300px;">
+                          <div class="card-image">
+                            <h:graphicImage library="images" name="cable/utp1.webp" alt="producto"
+                                            style="height:200px; width:100%;"/>
+                            <span class="card-title truncate">#{st.modeloProducto}</span>
+                          </div>
+                          <div class="card-action">
+                            <h:form>
+                              <a href="anyproduct.xhtml?id=#{st.id}">Ver mas</a>
+                            </h:form>
+                          </div>
                         </div>
-                        <div class="card-action">
-                          <h:form>
-                            <a href="anyproduct.xhtml?id=#{st.id}">Ver mas</a>
-                          </h:form>
-                        </div>
-                      </div>
-
-                    </h:column>
-                  </h:dataTable>
-                </h:form>
-
+                      </h:column>
+                    </h:dataTable>
+                  </h:form>
+                </div>
               </div>
-            </div>
 
-            <style>
-              thead {
-                display: none;
-              }
+              <style>
+                thead {
+                  display: none;
+                }
 
 
-              #tabla {
-                width: max-content;
-              }
-
-              tbody {
-                display: flex;
-              }
-
-              @media (max-width: 1000px) {
+                #tabla {
+                  width: max-content;
+                }
 
                 tbody {
-                  display: unset !important;
+                  display: flex;
                 }
-              }
-            </style>
 
-            <div class="section left-align division white"
-                 style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
-              <h:commandLink>#{indexTr.aboutUs}</h:commandLink>
-            </div>
-            <!--Quienes somos-->
-            <div id="qsomos" class="container section scrollspy">
-              <div class="row">
-                <div class="col s12">
-                  <div class="col m6">
-                    <div class="card white">
-                      <div class="card-image">
-                        <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%"/>
-                        <span class="card-title">#{indexTr.mission}</span>
-                      </div>
-                      <div class="card-content">
-                        <p>#{indexTr. missionContent }</p>
+                @media (max-width: 1000px) {
+
+                  tbody {
+                    display: unset !important;
+                  }
+                }
+              </style>
+
+              <div class="section left-align division white"
+                   style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
+                <h:commandLink>#{indexTr.aboutUs}</h:commandLink>
+              </div>
+
+              <!--Quienes somos-->
+              <div id="qsomos" class="container section scrollspy">
+                <div class="row">
+                  <div class="col s12">
+                    <div class="col m6">
+                      <div class="card white">
+                        <div class="card-image">
+                          <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%"/>
+                          <span class="card-title">#{indexTr.mission}</span>
+                        </div>
+                        <div class="card-content">
+                          <p>#{indexTr. missionContent }</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col m6">
-                    <div class="card white">
-                      <div class="card-image">
-                        <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%"/>
-                        <span class="card-title">#{indexTr.vision}</span>
-                      </div>
-                      <div class="card-content">
-                        <p>#{indexTr. visionContent }</p>
+                    <div class="col m6">
+                      <div class="card white">
+                        <div class="card-image">
+                          <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%"/>
+                          <span class="card-title">#{indexTr.vision}</span>
+                        </div>
+                        <div class="card-content">
+                          <p>#{indexTr. visionContent }</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="section left-align division white"
-                 style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
-              <h:commandLink>#{indexTr.contactUs}</h:commandLink>
-            </div>
-            <!--Contactenos-->
-            <div id="contac" class="container section scrollspy">
-              <div class="row">
-                <h:form>
-                  <div class="col s12">
-                    <div class="input-field col s6">
-                      <h:inputText id="name" class="ingr validate black-text" value="${indexController.name}"/>
-                      <h:outputLabel for="name">#{indexTr.contactUsNameLabel}</h:outputLabel>
+              <div class="section left-align division white"
+                   style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
+                <h:commandLink>#{indexTr.contactUs}</h:commandLink>
+              </div>
+
+              <!--Contactenos-->
+              <div id="contac" class="container section scrollspy">
+                <div class="row">
+                  <h:form>
+                    <div class="col s12">
+                      <div class="input-field col s6">
+                        <h:inputText id="name" class="ingr validate black-text" value="${indexController.name}"/>
+                        <h:outputLabel for="name">#{indexTr.contactUsNameLabel}</h:outputLabel>
+                      </div>
+                      <div class="input-field col s6">
+                        <h:inputText id="email" pt:type="email" class="ingr validate black-text"
+                                     value="${indexController.recipient}"/>
+                        <h:outputLabel for="email">#{indexTr.contactUsEmailLabel}</h:outputLabel>
+                        <span id="help" class="helper-text" data-error="Email invalido"
+                              data-success="Email valido"></span>
+                      </div>
+                      <div class="input-field col s12">
+                        <h:inputTextarea id="motivo" class="ingr materialize-textarea black-text"
+                                         value="${indexController.message}"/>
+                        <h:outputLabel for="motivo">#{indexTr.contactUsMessageLabel}</h:outputLabel>
+                      </div>
                     </div>
-                    <div class="input-field col s6">
-                      <h:inputText id="email" pt:type="email" class="ingr validate black-text"
-                                   value="${indexController.recipient}"/>
-                      <h:outputLabel for="email">#{indexTr.contactUsEmailLabel}</h:outputLabel>
-                      <span id="help" class="helper-text" data-error="Email invalido"
-                            data-success="Email valido"></span>
-                    </div>
-                    <div class="input-field col s12">
-                      <h:inputTextarea id="motivo" class="ingr materialize-textarea black-text"
-                                       value="${indexController.message}"/>
-                      <h:outputLabel for="motivo">#{indexTr.contactUsMessageLabel}</h:outputLabel>
-                    </div>
-                  </div>
-                  <h:commandButton class="modal-close waves-effect waves-green btn" value="#{indexTr.contactUsSendButton}"
-                                   actionListener="${indexController.sendMessage()}"></h:commandButton>
-                </h:form>
+                    <h:commandButton class="modal-close waves-effect waves-green btn" value="#{indexTr.contactUsSendButton}"
+                                     actionListener="${indexController.sendMessage()}"></h:commandButton>
+                  </h:form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <br/>
+        <br/>
 
-    </ui:define>
-  </ui:composition>
+      </ui:define>
+    </ui:composition>
 
-</h:body>
+  </h:body>
 
 </html>

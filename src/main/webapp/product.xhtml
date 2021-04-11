@@ -3,89 +3,95 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+      >
 
-<h:body id="ody">
-  <ui:composition template="/WEB-INF/templates/handf.xhtml">
-    <ui:define name="content">
-      <h:outputStylesheet library="styles" name="table.css"/>
-      <h:outputScript library="scripts" name="jquery.dataTables.min.js"/>
-      <h:outputScript library="scripts" name="buttons.html5.min.js"/>
-      <h:outputScript library="scripts" name="buttons.print.min.js"/>
-      <h:outputScript library="scripts" name="dataTables.buttons.min.js"/>
-      <h:outputScript library="scripts" name="jszip.min.js"/>
-      <div class="container wrap" id="inv">
-        <div class="row">
-          <div class="col m3 hide-on-small-only">
-            <div class="">
-              <ul class="section table-of-contents fixed">
-                <li><b>Categorias</b></li>
-                <ul class="table-of-contents">
-                  <h:form>
-                    #{mainMenuController.updateCategoryList()}
-                    <ui:repeat value="#{mainMenuController.getCategoryList()}" var="item">
-                      <li>
-                        <h:commandLink action="#{mainMenuController.link(item.id)}" value="#{item.getNombreCategoria()}"/>
-                      </li>
-                    </ui:repeat>
-                  </h:form>
+  <h:body id="ody">
+    <ui:composition template="/WEB-INF/templates/handf.xhtml">
+      <ui:define name="content">
+        <h:outputStylesheet library="styles" name="table.css"/>
+        <h:outputScript library="scripts" name="jquery.dataTables.min.js"/>
+        <h:outputScript library="scripts" name="buttons.html5.min.js"/>
+        <h:outputScript library="scripts" name="buttons.print.min.js"/>
+        <h:outputScript library="scripts" name="dataTables.buttons.min.js"/>
+        <h:outputScript library="scripts" name="jszip.min.js"/>
+        <div class="container wrap" id="inv">
+          <div class="row">
+            <div class="col m3 hide-on-small-only">
+              <div class="">
+                <ul class="section table-of-contents fixed">
+                  <li><b>Categorias</b></li>
+                  <ul class="table-of-contents">
+                    <h:form>
+                      #{mainMenuController.updateCategoryList()}
+                      <ui:repeat value="#{mainMenuController.getCategoryList()}" var="item">
+                        <li>
+                          <h:commandLink action="#{mainMenuController.link(item.id)}" value="#{item.getNombreCategoria()}"/>
+                        </li>
+                      </ui:repeat>
+                    </h:form>
+                  </ul>
                 </ul>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col m9 s12">
-            <div class="material-table">
-              <div class="table-header">
-                <span class="table-title" id="namet">#{productoController.categoria.nombreCategoria}</span>
-                <div class="actions">
-                  <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i
-                      class="material-icons" id="bsea">search</i></a>
-                </div>
               </div>
-              <h:form>
-                <h:dataTable pt:id="datatable" value="#{productoController.getCategoryProductList(param['id'])}"
-                             var="product">
-                  <h:column rendered="#{productoController.listHasData()}">
-                    <div class="col m12 cont">
-                      <div class="col s12 m6 l3 childimg" style="display: flex;">
-                        <h:graphicImage class="materialboxed" library="images" name="acc/acc1.webp" alt="cards"
-                                        style="height:200px; width:200px;"/>
-                      </div>
-                      <div class="col s12 m6 l9 childesc">
-                        <span class="crdt">#{product.modeloProducto}</span>
-                        <p class=" hide-on-small-only">#{product.descripcion}</p>
-                        <div class="col s12 m9 childbtn">
-                          <h:form>
-                            <a class='btn light-blue darken-4 waves-effect waves-light white-text hoverable'
-                               href="anyproduct.xhtml?id=#{product.id}">visualizar</a>
-                          </h:form>
+            </div>
+
+            <div class="col m9 s12">
+              <div class="card material-table">
+                <div class="table-header">
+                  <span class="table-title" id="namet"><h5 >Productos</h5></span>
+                  <div class="actions">
+                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i
+                        class="material-icons" id="bsea">search</i></a>
+                  </div>
+                </div>
+                <h:form>
+                  <h:dataTable pt:id="datatable" value="#{productoController.getCategoryProductList(param['id'])}"
+                               var="product">
+                    <h:column rendered="#{productoController.listHasData()}">
+                      <div class="col m12 cont">
+                        <div class="col s12 m6 l3 childimg" style="display: flex;">
+                          <h:graphicImage class="materialboxed" library="images" name="acc/acc1.webp" alt="cards"
+                                          style="height:200px; width:200px;"/>
+                        </div>
+                        <div class="col s12 m6 l9 childesc">
+                          <span class="crdt">#{product.modeloProducto}</span>
+                          <p class=" hide-on-small-only">#{product.descripcion}</p>
+                          <div class="col s12 m9 childbtn">
+                            <h:form>
+                              <a class='btn light-blue darken-4 waves-effect waves-light white-text hoverable'
+                                 href="anyproduct.xhtml?id=#{product.id}">visualizar</a>
+                            </h:form>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </h:column>
-                </h:dataTable>
-              </h:form>
-            </div>
-            <h:outputScript library="" name="table.js"/>
-            <script>
-              $(document).ready(function () {
-                $('.materialboxed').materialbox();
-                if ($("#ody").hasClass("dark-mode") == true) {
-                  $(".filtable").addClass("white-text");
-                  $(".dataTables_empty").addClass("white-text");
-                }
-              });
-            </script>
+                    </h:column>
+                  </h:dataTable>
+                </h:form>
+              </div>
+              <h:outputScript library="" name="table.js"/>
+              <script>
+                $(document).ready(function () {
+                  $('.materialboxed').materialbox();
+                  $("#myInput").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function () {
+                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                  });
+                  if ($("#ody").hasClass("dark-mode") == true) {
+                    $(".filtable").addClass("white-text");
+                    $(".dataTables_empty").addClass("white-text");
+                  }
+                });
+              </script>
 
+            </div>
           </div>
         </div>
-      </div>
-      <br/>
+        <br/>
 
-    </ui:define>
-  </ui:composition>
+      </ui:define>
+    </ui:composition>
 
-</h:body>
+  </h:body>
 
 </html>

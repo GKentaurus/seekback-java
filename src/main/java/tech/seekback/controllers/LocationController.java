@@ -11,7 +11,9 @@ import java.util.Locale;
 @Named
 @SessionScoped
 public class LocationController implements Serializable {
+
   private Locale locale;
+  private String localefront;
   private List<Locale> availableLocales;
 
   @PostConstruct
@@ -23,11 +25,20 @@ public class LocationController implements Serializable {
     this.availableLocales.add(new Locale("en"));
   }
 
+  public String getLocalefront() {
+    return localefront;
+  }
+
+  public void setLocalefront(String localefront) {
+    this.localefront = localefront;
+  }
+
   public Locale getLocale() {
     return locale;
   }
-  public void setLocale(Locale locale) {
-    this.locale = locale;
+
+  public void setLocale() {
+    this.locale = new Locale(this.localefront);
   }
 
   public List<Locale> getAvailableLocales() {
