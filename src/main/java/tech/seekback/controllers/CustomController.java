@@ -12,8 +12,7 @@ import javax.inject.Named;
 /**
  * @author gkentaurus
  */
-@ManagedBean
-@Named
+
 public class CustomController {
   /**
    * Validación de la información recibida en el formulario, de los campos asociados
