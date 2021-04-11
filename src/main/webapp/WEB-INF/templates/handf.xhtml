@@ -5,9 +5,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:h="http://java.sun.com/jsf/html">
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
   <title>.:QPCOM | Seekback:.</title>
   <meta charset="utf-8"/>
@@ -26,243 +28,248 @@ and open the template in the editor.
     });
   </script>
   <style>
-    .sorting_asc {
-      display: none;
-    }
+      .sorting_asc {
+          display: none;
+      }
 
-    div.material-table table tbody tr:hover {
-      background-color: transparent !important;
-    }
+      div.material-table table tbody tr:hover {
+          background-color: transparent !important;
+      }
 
-    .stack {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-      -ms-flex: 1;
-      flex: 1;
-      position: relative;
-    }
+      .stack {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          -ms-flex: 1;
+          flex: 1;
+          position: relative;
+      }
 
-    .cont {
-      -webkit-box-flex: 1;
-      -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-      flex-grow: 1;
-      padding: 24px;
-      border-radius: 0 0 2px 2px;
-    }
+      .cont {
+          -webkit-box-flex: 1;
+          -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+          flex-grow: 1;
+          padding: 24px;
+          border-radius: 0 0 2px 2px;
+      }
 
-    .acti {
-      border-radius: 0 0 2px 2px;
-      background-color: inherit;
-      border-top: 1px solid rgba(160, 160, 160, 0.2);
-      position: relative;
-      padding: 16px 24px;
-    }
+      .acti {
+          border-radius: 0 0 2px 2px;
+          background-color: inherit;
+          border-top: 1px solid rgba(160, 160, 160, 0.2);
+          position: relative;
+          padding: 16px 24px;
+      }
 
-    .acti > form > a {
-      color: #ffab40;
-      margin-right: 24px;
-      -webkit-transition: color .3s ease;
-      transition: color .3s ease;
-      text-transform: uppercase;
-    }
+      .acti > form > a {
+          color: #ffab40;
+          margin-right: 24px;
+          -webkit-transition: color .3s ease;
+          transition: color .3s ease;
+          text-transform: uppercase;
+      }
 
-    .crdt {
-      font-size: 24px;
-      font-weight: 300;
-    }
+      .crdt {
+          font-size: 24px;
+          font-weight: 300;
+      }
 
-    .crdh {
-      display: flex;
-      position: relative;
-      margin: .5rem 0 1rem 0;
-    }
+      .crdh {
+          display: flex;
+          position: relative;
+          margin: .5rem 0 1rem 0;
+      }
 
-    .rnd-btn {
-      color: black;
-      background-color: #fff;
-      border-radius: 66px;
-      width: 30px;
-      height: 30px;
-      padding: 7px 0 0 10px;
-    }
+      .rnd-btn {
+          color: black;
+          background-color: #fff;
+          border-radius: 66px;
+          width: 30px;
+          height: 30px;
+          padding: 7px 0 0 10px;
+      }
   </style>
 </h:head>
 
-<h:body id="ody">
-  #{mainMenuController.updateCategoryList()}
-  <div class="pnav">
-    <div class="wrap wnav">
-      <div id="nav" class="container  scrollspy">
-        <div class="row" style="margin-bottom:0px;">
-          <div class="col s2">
-            <h:commandLink>
-              <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg"/>
-            </h:commandLink>
-          </div>
-          <div class="col s10">
-            <div class="row" style="margin-bottom:0px;">
-              <div class="col s12 m9">
-                <div class="input-field">
-                  <h:inputText id="searxh"/>
-                  <h:outputLabel for="searxh" value="Buscar"/>
+<f:view locale="#{locationController.locale}">
+  <h:body id="ody">
+    #{mainMenuController.updateCategoryList()}
+    <div class="pnav">
+      <div class="wrap wnav">
+        <div id="nav" class="container  scrollspy">
+          <div class="row" style="margin-bottom:0px;">
+            <div class="col s2">
+              <h:commandLink>
+                <h:graphicImage library="images" name="Imagen1.webp" alt="logo" class="logoimg"/>
+              </h:commandLink>
+            </div>
+            <div class="col s10">
+              <div class="row" style="margin-bottom:0px;">
+                <div class="col s12 m9">
+                  <div class="input-field">
+                    <h:inputText id="searxh"/>
+                    <h:outputLabel for="searxh" value="#{wrapperTr.navbarSearchBar}"/>
+                  </div>
                 </div>
-              </div>
-              <div class="col s12 m3 center-align" style="padding:0px; display: inline-flex">
-                <h:commandLink class="waves-effect waves-purple btn-flat btnsearch" id="seacrh" title="Buscar">
-                  <i class="fas fa-search" style="color:#fff"></i>
-                </h:commandLink>
-                <h:form>
-                  <h:commandLink class="waves-effect waves-purple btn-flat btnuser"
-                                 action="login.xhtml faces-redirect=true">
-                    <i class="far fa-user" style="color:#fff"></i>
+                <div class="col s12 m3 center-align" style="padding:0px; display: inline-flex">
+                  <h:commandLink class="waves-effect waves-purple btn-flat btnsearch" id="seacrh"
+                                 title="#{wrapperTr.navbarSearchBar}">
+                    <i class="fas fa-search" style="color:#fff"></i>
                   </h:commandLink>
-                </h:form>
-                <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode"
-                               title="intercambiar modo">
-                  <i class="far fa-moon" style="color:#fff"></i>
-                </h:commandLink>
+                  <h:form>
+                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser"
+                                   action="login.xhtml faces-redirect=true">
+                      <i class="far fa-user" style="color:#fff"></i>
+                    </h:commandLink>
+                  </h:form>
+                  <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode"
+                                 title="intercambiar modo">
+                    <i class="far fa-moon" style="color:#fff"></i>
+                  </h:commandLink>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row" style="margin-bottom:20px;">
-          <div class="col s12">
-            <ul id="dropdown1" class="dropdown-content z-depth-3">
-              <h:form>
-                <ui:repeat value="#{mainMenuController.getCategoryList()}" var="item">
-                  <li>
-                    <h:commandLink class="opt" action="#{mainMenuController.link(item.id)}">
-                      <i class="#{item.getFaIcon()}"></i><h:outputLabel value="#{item.getNombreCategoria()}"/>
-                    </h:commandLink>
-                  </li>
-                </ui:repeat>
-              </h:form>
-            </ul>
-
-            <nav style="background-color:#222222;" class="z-depth-0">
-              <div class="nav-wrapper">
-                <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
-                  <i class="fas fa-bars"></i>
-                </h:commandLink>
-                <ul class="left hide-on-med-and-down" style="display: inline-flex;">
-                  <h:form>
+          <div class="row" style="margin-bottom:20px;">
+            <div class="col s12">
+              <ul id="dropdown1" class="dropdown-content z-depth-3">
+                <h:form>
+                  <ui:repeat value="#{mainMenuController.getCategoryList()}" var="item">
                     <li>
-                      <h:commandLink action="/index.xhtml faces-redirect=true" value="Inicio"/>
+                      <h:commandLink class="opt" action="#{mainMenuController.link(item.id)}">
+                        <i class="#{item.getFaIcon()}"></i><h:outputLabel value="#{item.getNombreCategoria()}"/>
+                      </h:commandLink>
                     </li>
-                  </h:form>
+                  </ui:repeat>
+                </h:form>
+              </ul>
+
+              <nav style="background-color:#222222;" class="z-depth-0">
+                <div class="nav-wrapper">
+                  <h:commandLink pt:href="#" pt:data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="fas fa-bars"></i>
+                  </h:commandLink>
+                  <ul class="left hide-on-med-and-down" style="display: inline-flex;">
+                    <h:form>
+                      <li>
+                        <h:commandLink action="/index.xhtml faces-redirect=true" value="#{wrapperTr.menuHomeLabel}"/>
+                      </li>
+                    </h:form>
+                    <li>
+                      <h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">#{wrapperTr.menuProductsLabel}
+                        <i class="fas fa-caret-down right"></i>
+                      </h:commandLink>
+                      <ul id="dropdown2" class="dropdown-content">
+                        <h:form>
+                          <ui:repeat class="opt" value="#{mainMenuController.getCategoryList()}" var="item">
+                            <li>
+                              <h:commandLink action="#{mainMenuController.link(item.id)}">
+                                <i class=""></i><h:outputLabel value="#{item.getNombreCategoria()}"/>
+                              </h:commandLink>
+                            </li>
+                          </ui:repeat>
+                        </h:form>
+                      </ul>
+                    </li>
+                    <h:form>
+                      <li>
+                        <h:commandLink
+                            action="/index.xhtml#contac faces-redirect=true">#{wrapperTr.menuContactUsLabel}</h:commandLink>
+                      </li>
+                      <li>
+                        <h:commandLink
+                            action="/index.xhtml#qsomos faces-redirect=true">#{wrapperTr.menuAboutUsLabel}</h:commandLink>
+                      </li>
+                    </h:form>
+                  </ul>
+                </div>
+              </nav>
+
+              <ul class="sidenav" id="mobile-demo">
+                <div class="user-view">
+                  <div class="background">
+                    <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img"/>
+                  </div>
+                  <h:commandLink pt:href="">
+                    <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;"/>
+                  </h:commandLink>
+                </div>
+                <h:form>
                   <li>
-                    <h:commandLink class="dropdown-trigger" pt:data-target="dropdown1">Productos
+                    <h:commandLink action="/index.xhtml faces-redirect=true" value="#{wrapperTr.menuHomeLabel}"/>
+                  </li>
+                  <li>
+                    <h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">#{wrapperTr.menuProductsLabel}
                       <i class="fas fa-caret-down right"></i>
                     </h:commandLink>
-                    <ul id="dropdown2" class="dropdown-content">
-                      <h:form>
-                        <ui:repeat class="opt" value="#{mainMenuController.getCategoryList()}" var="item">
-                          <li>
-                            <h:commandLink action="#{mainMenuController.link(item.id)}">
-                              <i class=""></i><h:outputLabel value="#{item.getNombreCategoria()}"/>
-                            </h:commandLink>
-                          </li>
-                        </ui:repeat>
-                      </h:form>
-                    </ul>
                   </li>
-                  <h:form>
-                    <li>
-                      <h:commandLink action="/index.xhtml#contac faces-redirect=true">Contactenos</h:commandLink>
-                    </li>
-                    <li>
-                      <h:commandLink action="/index.xhtml#qsomos faces-redirect=true">Nosotros</h:commandLink>
-                    </li>
-                  </h:form>
-                </ul>
-              </div>
-            </nav>
-
-            <ul class="sidenav" id="mobile-demo">
-              <div class="user-view">
-                <div class="background">
-                  <h:graphicImage library="images" name="fond.webp" alt="sideimg" class="responsive-img"/>
-                </div>
-                <h:commandLink pt:href="">
-                  <h:graphicImage library="images" name="Imagen1.webp" alt="logo" style="height: 80px;"/>
-                </h:commandLink>
-              </div>
-              <h:form>
-                <li>
-                  <h:commandLink action="/index.xhtml faces-redirect=true" value="Inicio"/>
-                </li>
-                <li>
-                  <h:commandLink class="dropdown-trigger" pt:data-target="dropdown2">Productos
-                    <i class="fas fa-caret-down right"></i>
-                  </h:commandLink>
-                </li>
-                <li>
-                  <h:commandLink pt:href="/index.xhtml#contac faces-redirect=true">Contactenos</h:commandLink>
-                </li>
-                <li>
-                  <h:commandLink pt:href="/index.xhtml#qsomos faces-redirect=true">Nosotros</h:commandLink>
-                </li>
-              </h:form>
-            </ul>
+                  <li>
+                    <h:commandLink
+                        pt:href="/index.xhtml#contac faces-redirect=true">#{wrapperTr.menuContactUsLabel}</h:commandLink>
+                  </li>
+                  <li>
+                    <h:commandLink
+                        pt:href="/index.xhtml#qsomos faces-redirect=true">#{wrapperTr.menuAboutUsLabel}</h:commandLink>
+                  </li>
+                </h:form>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <ui:insert name="content">paginas</ui:insert>
+    <ui:insert name="content">paginas</ui:insert>
 
-  <footer class="page-footer" style="background-color: #222222;">
-    <div class="wrap transparent">
-      <div class="container">
-        <div class="row">
-          <div class="col s6" style="text-align:left">
-            <h4>Redes sociales </h4>
-            <h:commandLink class="btn-floating waves-effect waves-light white">
-              <i class="fab fa-facebook-f " style="color:black;"></i>
-            </h:commandLink> siguenos en facebook
-            <br/>
-            <h:commandLink class="btn-floating waves-effect waves-light white">
-              <i class="fab fa-twitter" style="color:black;"></i>
-            </h:commandLink> siguenos en twitter
-            <br/>
-            <h:commandLink class="btn-floating waves-effect waves-light white">
-              <i class="fab fa-instagram" style="color:black;"></i>
-            </h:commandLink> siguenos en instagram
-          </div>
-          <div class="col s6" style="text-align:left">
-            <h4>Informaciòn de contacto </h4>
-            <h:commandLink class="btn-floating waves-effect waves-light white">
-              <i class="fas fa-phone-alt" style="color:black;"></i>
-            </h:commandLink> +57 300 000 0000
-            <br/>
-            <br/>
-            <h:commandLink class="btn-floating waves-effect waves-light white">
-              <i class="fas fa-envelope" style="color:black;"></i>
-            </h:commandLink>
-            <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;"> admin@qpcom.seekback.tech
-            </h:commandLink>
+    <footer class="page-footer" style="background-color: #222222;">
+      <div class="wrap transparent">
+        <div class="container">
+          <div class="row">
+            <div class="col s6" style="text-align:left">
+              <h4>#{wrapperTr.footerSocialMediaLabel}</h4>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fab fa-facebook-f " style="color:black;"></i>
+              </h:commandLink> Facebook
+              <br/>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fab fa-twitter" style="color:black;"></i>
+              </h:commandLink> Twitter
+              <br/>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fab fa-instagram" style="color:black;"></i>
+              </h:commandLink> Instagram
+            </div>
+            <div class="col s6" style="text-align:left">
+              <h4>#{wrapperTr.footerContactInfo} </h4>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fas fa-phone-alt" style="color:black;"></i>
+              </h:commandLink> +57 300 000 0000
+              <br/>
+              <br/>
+              <h:commandLink class="btn-floating waves-effect waves-light white">
+                <i class="fas fa-envelope" style="color:black;"></i>
+              </h:commandLink>
+              <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;"> admin@qpcom.seekback.tech
+              </h:commandLink>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-        Copyright Seekback. todos los derechos reservados
+      <div class="footer-copyright">
+        <div class="container">
+          #{wrapperTr.footerCopyrights}
+        </div>
       </div>
-    </div>
-  </footer>
-
-</h:body>
-
+    </footer>
+  </h:body>
+</f:view>
 </html>

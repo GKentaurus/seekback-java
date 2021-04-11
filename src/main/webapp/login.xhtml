@@ -7,7 +7,7 @@
 
 
   <h:head>
-    <title>login / sign up</title>
+    <title>#{loginTr.titlePage}</title>
     <meta charset="utf-8"/>
     <style>
       .mssa {
@@ -42,7 +42,7 @@
               <div id="test1" class="col s12">
                 <div class="row">
                   <br/>
-                  <h3>Inicia sesión</h3>
+                  <h3>#{loginTr.formLoginTabLabel}</h3>
                   <blockquote class="z-depth-2 mssa">
                     <h:form id="messs">
                       <h:commandLink id="mesag"/>
@@ -54,19 +54,19 @@
                     <div class="input-field s12">
                       <h:inputText id="emaillog" class="ingre validate" autocomplete="off" required="true"
                                    value="#{loginController.email}"/>
-                      <h:outputLabel for="emaillog" value="Email"/>
-                      <span id="help" class="helper-text" data-error="Email invalido" data-success="Email valido"/>
+                      <h:outputLabel for="emaillog" value="#{loginTr.formLoginEmailLabel}"/>
+                      <span id="help" class="helper-text" data-error="#{loginTr.formLoginEmailError}" data-success="#{loginTr.formLoginEmailError}"/>
                     </div>
                     <div class="input-field s12">
                       <h:inputSecret id="passwordlog" class="ingre" required="true"
                                      value="#{loginController.password}"/>
-                      <h:outputLabel for="passwordlog" value="Contraseña"/>
+                      <h:outputLabel for="passwordlog" value="#{loginTr.formLoginPasswordLabel}"/>
                     </div>
-                    <h:commandButton class="btn waves-effect waves-light blue" value="ingresar"
+                    <h:commandButton class="btn waves-effect waves-light blue" value="#{loginTr.formLoginLoginButton}"
                                      actionListener="#{loginController.login()}"/>
                     <br/>
                     <br/>
-                    <a data-target="modal1" class="modal-trigger">¿Olvido su contraseña?</a>
+                    <a data-target="modal1" class="modal-trigger">#{loginTr.forgotPassword}</a>
                   </h:form>
                   <br/>
                   <br/>
@@ -76,7 +76,7 @@
                 <div class="test2">
                   <h:form pt:class="col s12 registrer white" pt:autocomplete="off">
                     <br/>
-                    <h3>Regístrate</h3>
+                    <h3>#{loginTr.formRegisterTabLabel}</h3>
                     <br/>
                     <div class="row">
                       <h:form>
@@ -89,12 +89,12 @@
                             <f:attribute name="maxValue" value="#{20}"/>
                             <f:attribute name="dataType" value="text"/>
                           </h:inputText>
-                          <h:outputLabel for="fname" value="1º Nombre"/>
+                          <h:outputLabel for="fname" value="#{loginTr.formRegisterFirstNameLabel}"/>
                           <h:message for="fname"/>
-                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                          <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
                         </div>
                         <div class="input-field col s12 m6">
-                          <h:inputText id="sname" title="solo se permiten letras" class="ingre validate"
+                          <h:inputText id="sname" title="#{loginTr.errorOnlyLetters}" class="ingre validate"
                                        autocomplete="off" onkeyup="namesa();"
                                        value="#{registerController.usuario.otrosNombres}"
                                        validator="#{registerController.validateInputType}">
@@ -102,12 +102,12 @@
                             <f:attribute name="maxValue" value="#{20}"/>
                             <f:attribute name="dataType" value="text"/>
                           </h:inputText>
-                          <h:outputLabel for="sname" value="2º Nombre"/>
+                          <h:outputLabel for="sname" value="#{loginTr.formRegisterMiddleNameLabel}"/>
                           <h:message for="sname"/>
-                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                          <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
                         </div>
                         <div class="input-field col s12 m6">
-                          <h:inputText id="lname" title="solo se permiten letras" class="ingre validate"
+                          <h:inputText id="lname" title="#{loginTr.errorOnlyLetters}" class="ingre validate"
                                        autocomplete="off" required="true"
                                        value="#{registerController.usuario.primerApellido}"
                                        validator="#{registerController.validateInputType}">
@@ -115,78 +115,78 @@
                             <f:attribute name="maxValue" value="#{20}"/>
                             <f:attribute name="dataType" value="text"/>
                           </h:inputText>
-                          <h:outputLabel for="lname" value="1º Apellido"/>
+                          <h:outputLabel for="lname" value="#{loginTr.formRegisterLastNameLabel}"/>
                           <h:message for="lname"/>
                         </div>
                         <div class="input-field col s12 m6">
-                          <h:inputText id="lsname" title="solo se permiten letras" class="ingre validate"
+                          <h:inputText id="lsname" title="#{loginTr.errorOnlyLetters}" class="ingre validate"
                                        autocomplete="off" value="#{registerController.usuario.otrosApellidos}"
                                        validator="#{registerController.validateInputType}">
                             <f:attribute name="minValue" value="#{3}"/>
                             <f:attribute name="maxValue" value="#{20}"/>
                             <f:attribute name="dataType" value="text"/>
                           </h:inputText>
-                          <h:outputLabel for="lsname" value="2º Apellido"/>
+                          <h:outputLabel for="lsname" value="#{loginTr.formRegisterOtherLastNameLabel}"/>
                           <h:message for="lsname"/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:selectOneMenu pt:placeholder=" " id="tdoc" value="#{registerController.idTipoDoc}">
-                            <f:selectItem itemLabel="-- Seleccione un tipo de documento --"/>
+                            <f:selectItem itemLabel="-- #{loginTr.formRegisterDocumentTypeSelect} --"/>
                             <f:selectItems value="#{tipoDocController.tipoDocs}" var="td" itemValue="#{td.id}"
                                            itemLabel="#{td.sigla} - #{td.nombreDocumento}"/>
                           </h:selectOneMenu>
-                          <h:outputLabel for="tdoc" value="Tipo documento:"/>
+                          <h:outputLabel for="tdoc" value="#{loginTr.formRegisterDocTypeLabel}:"/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputText id="docu" class="ingre validate" autocomplete="off" pt:min="0" required="true"
                                        value="#{registerController.usuario.numeroDoc}"/>
-                          <h:outputLabel for="docu" value="Documento"/>
-                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                          <h:outputLabel for="docu" value="#{loginTr.formRegisterDocumentNumberLabel}"/>
+                          <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputText id="emailr" pt:type="email" class="ingre validate" autocomplete="off"
                                        value="#{registerController.email}"/>
-                          <h:outputLabel for="emailr" value="Email"/>
-                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                          <h:outputLabel for="emailr" value="#{loginTr.formRegisterEmailLabel}"/>
+                          <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputText id="tel" class="ingre validate" autocomplete="off" pt:min="0"
                                        value="#{registerController.phoneNumber}"/>
-                          <h:outputLabel for="tel" value="Telefono"/>
-                          <span class="helper-text" data-error="Dato incorrecto" data-success=""/>
+                          <h:outputLabel for="tel" value="#{loginTr.formRegisterPhoneLabel}"/>
+                          <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputText id="fdir" class="ingre validate" autocomplete="off"
                                        value="#{registerController.address}"/>
-                          <h:outputLabel for="fdir" value="Direccion"/>
+                          <h:outputLabel for="fdir" value="#{loginTr.formRegisterAddressLabel}"/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:selectOneMenu pt:placeholder=" " id="pais" class=""
                                            value="#{departamentoController.idPaisSeleccionado}">
-                            <f:selectItem itemLabel="-- Seleccione un país --"/>
+                            <f:selectItem itemLabel="-- #{loginTr.formRegisterCountrySelect} --"/>
                             <f:selectItems value="#{paisController.paises}" var="pa" itemValue="#{pa.id}"
                                            itemLabel="#{pa.nombrePais}"/>
                             <f:ajax execute="@this" render="depto"/>
                           </h:selectOneMenu>
-                          <h:outputLabel for="pais" value="Pais"/>
+                          <h:outputLabel for="pais" value="#{loginTr.formRegisterCountryLabel}"/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:selectOneMenu pt:placeholder=" " id="depto" class="browser-default"
                                            style="border:0px solid black; border-bottom: 1px solid #212121"
                                            value="#{ciudadController.idDepartamentoSeleccionado}">
-                            <f:selectItem itemLabel="-- Seleccione un departamento --"/>
+                            <f:selectItem itemLabel="-- #{loginTr.formRegisterStateSelect} --"/>
                             <f:selectItems value="#{departamentoController.departamentoSeleccionado}" var="de"
                                            itemValue="#{de.id}" itemLabel="#{de.nombreDepartamento}"/>
                             <f:ajax execute="@this" render="ciu"/>
                           </h:selectOneMenu>
-                          <h:outputLabel for="depto" value="departamento" style="margin-top: -30px;"/>
+                          <h:outputLabel for="depto" value="#{loginTr.formRegisterStateLabel}" style="margin-top: -30px;"/>
                         </div>
                         <div class="input-field col s12 m6">
-                          <h:outputLabel for="ciu" value="ciudad" style="margin-top: -30px;"/>
+                          <h:outputLabel for="ciu" value="#{loginTr.formRegisterCityLabel}" style="margin-top: -30px;"/>
                           <h:selectOneMenu pt:placeholder=" " id="ciu" class="browser-default"
                                            style="border:0px solid black; border-bottom: 1px solid #212121"
                                            value="#{registerController.idCiudad}">
-                            <f:selectItem itemLabel="-- Seleccione una ciudad --"/>
+                            <f:selectItem itemLabel="-- #{loginTr.formRegisterCitySelect} --"/>
                             <f:selectItems value="#{ciudadController.ciudadSeleccionada}" var="pa" itemValue="#{pa.id}"
                                            itemLabel="#{pa.nombreCiudad}"/>
                           </h:selectOneMenu>
@@ -194,15 +194,15 @@
                         <div class="input-field col s12 m6">
                           <h:inputSecret id="fcontra" onkeyup="passwo();" class="ingre validate" required="true"
                                          value="#{registerController.password}"/>
-                          <h:outputLabel for="fcontra" value="Contraseña "/>
+                          <h:outputLabel for="fcontra" value="#{loginTr.formRegisterPasswordLabel}"/>
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputSecret id="scontra" onkeyup="passwo();" class="ingre validate"
                                          value="#{registerController.passwordConfirm}"/>
-                          <label for="scontra">Confirmar Contraseña</label>
+                          <label for="scontra">#{loginTr.formRegisterPasswordConfirmLabel}</label>
                         </div>
                         <div class="col s12 m6">
-                          <h:commandButton class="btn waves-effect waves-light blue" value="ingresar"
+                          <h:commandButton class="btn waves-effect waves-light blue" value="#{loginTr.formRegisterRegisterButton}"
                                            actionListener="#{registerController.register()}"/>
                         </div>
                       </h:form>
@@ -214,31 +214,31 @@
                             <div id="bar" class="determinate teal" style="width:0;height: 5px;border-radius: 10px;"></div>
                           </li>
                           <li class="collection-item">
-                            <div>Mas de 8 carácteres
+                            <div>#{loginTr.tableRequirementPassMinimunChars}
                               <h:commandLink class="secondary-content"><i id="lpass"
                                                                           class="material-icons red-text">close</i></h:commandLink>
                             </div>
                           </li>
                           <li class="collection-item">
-                            <div>Por lo menos una mayúscula
+                            <div>#{loginTr.tableRequirementPassUppercase}
                               <h:commandLink class="secondary-content"><i id="Mpass"
                                                                           class="material-icons red-text">close</i></h:commandLink>
                             </div>
                           </li>
                           <li class="collection-item">
-                            <div>Por lo menos un carácter especial
+                            <div>#{loginTr.tableRequirementPassSpecialChar}
                               <h:commandLink class="secondary-content"><i id="Cpass"
                                                                           class="material-icons red-text">close</i></h:commandLink>
                             </div>
                           </li>
                           <li class="collection-item">
-                            <div>Por lo menos un número
+                            <div>#{loginTr.tableRequirementPassNumber}
                               <h:commandLink class="secondary-content"><i id="Npass"
                                                                           class="material-icons red-text">close</i></h:commandLink>
                             </div>
                           </li>
                           <li class="collection-item">
-                            <div>Deben ser iguales
+                            <div>#{loginTr.tableRequirementPassEquals}
                               <h:commandLink class="secondary-content"><i id="Ipass"
                                                                           class="material-icons red-text">close</i></h:commandLink>
                             </div>
@@ -253,31 +253,31 @@
               <!-- Modal Structure -->
               <div id="modal1" class="modal modal-fixed-footer bottom-sheet modalp white">
                 <div class="modal-header">
-                  <h4>Recuperar contraseña</h4>
+                  <h4>#{loginTr.formPasswordLabelTab}</h4>
                 </div>
                 <div class="modal-content">
-                  <p>Para restaurar la contraseña de tu cuenta por favor ingresa el correo usado al momento de crear la cuenta y te enviaremos un link para restaurarla</p>
+                  <p>#{loginTr.formPasswordLabelMessage}</p>
                   <div class="input-field col s6">
                     <h:form>
-                      <label for="remail">Email</label>
+                      <label for="remail">#{loginTr.formPasswordEmailLabel}</label>
                       <h:inputText id="remail" class="ingre validate" value="${loginController.email}"/>
-                      <span class="helper-text" data-error="Email invalido" data-success="Email valido"/>
+                      <span class="helper-text" data-error="#{loginTr.formPasswordEmailErrorMessage}" data-success="#{loginTr.formPasswordEmailSuccessMessage}"/>
                       <h:commandButton class="waves-effect waves-light btn s12 blue" actionListener="${restorePasswordController.restorePassword()}" value="Recuperar"></h:commandButton>
                     </h:form>
                   </div>
                 </div>
                 <div id="modalfo" class="modal-footer modalf grey lighten-3">
-                  <h:commandLink class="modal-close waves-effect waves-green btn-flat">aceptar</h:commandLink>
+                  <h:commandLink class="modal-close waves-effect waves-green btn-flat">#{loginTr.formPasswordAcceptButton}</h:commandLink>
                 </div>
               </div>
 
               <div id="modal2" class="modal modalp white">
                 <div class="modal-content">
-                  <h4>Registro</h4>
-                  <p><span id="nameee"/> Resistrado exitosamente</p>
+                  <h4>#{loginTr.formRegisterConfirmationTab}</h4>
+                  <p><span id="nameee"/>#{loginTr.formRegisterConfirmationMessage}</p>
                 </div>
                 <div class="modal-footer">
-                  <h:commandLink class="modal-close waves-effect waves-green btn-flat">Aceptar</h:commandLink>
+                  <h:commandLink class="modal-close waves-effect waves-green btn-flat">#{loginTr.formPasswordAcceptButton}</h:commandLink>
                 </div>
               </div>
 

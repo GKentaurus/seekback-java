@@ -104,7 +104,7 @@
 
             <div class="section left-align division white"
                  style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
-              <h:commandLink>Quienes somos</h:commandLink>
+              <h:commandLink>#{indexTr.aboutUs}</h:commandLink>
             </div>
             <!--Quienes somos-->
             <div id="qsomos" class="container section scrollspy">
@@ -114,10 +114,10 @@
                     <div class="card white">
                       <div class="card-image">
                         <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%"/>
-                        <span class="card-title">Mision</span>
+                        <span class="card-title">#{indexTr.mission}</span>
                       </div>
                       <div class="card-content">
-                        <p>Brindar sistemas de información de alta calidad que resuelvan las necesidades de nuestros clientes, con un servicio de preventa y posventa que nos permitirá alcanzar los objetivos requeridos.</p>
+                        <p>#{indexTr. missionContent }</p>
                       </div>
                     </div>
                   </div>
@@ -125,10 +125,10 @@
                     <div class="card white">
                       <div class="card-image">
                         <h:graphicImage library="images" name="us.webp" alt="us" style="width:100%"/>
-                        <span class="card-title">Visión</span>
+                        <span class="card-title">#{indexTr.vision}</span>
                       </div>
                       <div class="card-content">
-                        <p>En los próximos 5 años, seremos una de las mejores empresas de desarrollo de software, que continuará brindando servicios de calidad.</p>
+                        <p>#{indexTr. visionContent }</p>
                       </div>
                     </div>
                   </div>
@@ -138,7 +138,7 @@
 
             <div class="section left-align division white"
                  style="border-left: 5px solid #1a6fdd; padding: 10px 0px 10px 10px; background-color: #eee;">
-              <h:commandLink>Contactenos</h:commandLink>
+              <h:commandLink>#{indexTr.contactUs}</h:commandLink>
             </div>
             <!--Contactenos-->
             <div id="contac" class="container section scrollspy">
@@ -147,22 +147,22 @@
                   <div class="col s12">
                     <div class="input-field col s6">
                       <h:inputText id="name" class="ingr validate black-text" value="${indexController.name}"/>
-                      <h:outputLabel for="name">Nombre</h:outputLabel>
+                      <h:outputLabel for="name">#{indexTr.contactUsNameLabel}</h:outputLabel>
                     </div>
                     <div class="input-field col s6">
                       <h:inputText id="email" pt:type="email" class="ingr validate black-text"
                                    value="${indexController.recipient}"/>
-                      <h:outputLabel for="email">Email</h:outputLabel>
+                      <h:outputLabel for="email">#{indexTr.contactUsEmailLabel}</h:outputLabel>
                       <span id="help" class="helper-text" data-error="Email invalido"
                             data-success="Email valido"></span>
                     </div>
                     <div class="input-field col s12">
                       <h:inputTextarea id="motivo" class="ingr materialize-textarea black-text"
                                        value="${indexController.message}"/>
-                      <h:outputLabel for="motivo">Mensaje</h:outputLabel>
+                      <h:outputLabel for="motivo">#{indexTr.contactUsMessageLabel}</h:outputLabel>
                     </div>
                   </div>
-                  <h:commandButton class="modal-close waves-effect waves-green btn" value="Enviar"
+                  <h:commandButton class="modal-close waves-effect waves-green btn" value="#{indexTr.contactUsSendButton}"
                                    actionListener="${indexController.sendMessage()}"></h:commandButton>
                 </h:form>
               </div>
