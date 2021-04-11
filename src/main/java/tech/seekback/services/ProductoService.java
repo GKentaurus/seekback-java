@@ -5,7 +5,9 @@ import tech.seekback.dao.interfaces.ProductoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.tools.BulkLoaderService;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.servlet.http.Part;
@@ -23,7 +25,7 @@ import java.util.Objects;
  */
 
 @Stateless
-public class ProductoService {
+public class ProductoService extends BulkLoaderService<Producto, Integer> {
 
   @EJB
   private ProductoDAO productoDAO;
@@ -31,9 +33,10 @@ public class ProductoService {
   @EJB
   private CategoriasProductoDAO categoriasProductoDAO;
 
-  private Part part;
-  private List<Producto> dataToUpload;
-  private List<String[]> errors;
+  @PostConstruct
+  public void init() {
+    super.setDAO(productoDAO);
+  }
 
   //<editor-fold desc="CRUD methods" defaultstate="collapsed">
   /**
@@ -97,40 +100,7 @@ public class ProductoService {
   //</editor-fold>
 
   //<editor-fold desc="Bulk Load" defaultstate="collapsed">
-  public void uploadData() throws IOException, ConnectionExcep, ParseException {
-    this.dataToUpload = new ArrayList<>();
-    this.errors = new ArrayList<>();
-    InputStreamReader inputStreamReader = new InputStreamReader(part.getInputStream());
-    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-    String line = bufferedReader.readLine();
-
-    while(Objects.nonNull(line = bufferedReader.readLine())) {
-      Producto producto = objectMaker(line, 5);
-      if (Objects.nonNull(producto)) {
-        this.dataToUpload.add(producto);
-      }
-    }
-
-    if (!this.dataToUpload.isEmpty() && this.errors.isEmpty()) {
-      this.productoDAO.create(this.dataToUpload);
-    } else {
-      for (String[] error: this.errors) {
-        System.out.println("****************************************************************************");
-        System.out.println("*\tError: " + error[0]);
-        System.out.println("*\tCause: " + error[1]);
-        System.out.println("****************************************************************************");
-      }
-    }
-  }
-
-  public Part getPart() {
-    return part;
-  }
-  public void setPart(Part part) {
-    this.part = part;
-  }
-
-  private Producto objectMaker(String line, Integer modelFieldsCount) throws ConnectionExcep, ParseException {
+  protected Producto objectMaker(String line, Integer modelFieldsCount) throws ConnectionExcep, NumberFormatException {
     String[] data = line.split(";");
     Producto producto = null;
     if (data.length == modelFieldsCount) {
@@ -146,7 +116,7 @@ public class ProductoService {
       ts.setUpdated_at(date);
       producto.setTimestamps(ts);
     } else {
-      this.errors.add(new String[] {"Se esperaban " + modelFieldsCount + ", se recibieron " + data.length, line});
+      this.getErrors().add(new String[] {"Se esperaban " + modelFieldsCount + ", se recibieron " + data.length, line});
     }
     return producto;
   }
