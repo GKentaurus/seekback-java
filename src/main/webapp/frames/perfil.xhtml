@@ -20,22 +20,6 @@
       $(document).ready(function () {
         $('.modal').modal();
       });
-
-      /* verificacion de password */
-      function passwo() {
-        var pass = document.getElementById("fcontra");
-        var passa = document.getElementById("scontra");
-        var ing = document.getElementById("ing");
-
-        if (pass.value == passa.value) {
-
-          document.getElementById("ing").className = ing.className.replace("disabled", "enabled");
-          ing.disabled = false;
-        } else {
-          document.getElementById("ing").className = ing.className.replace("enabled", "disabled");
-          ing.disabled = true;
-        }
-      }
     </script>
     <style>
       body {
@@ -89,13 +73,6 @@
             <div class="input-field">
               <h:inputText id="tel" class="validate" value="#{usuarioController.telefono.numeroTelefono}"/>
               <h:outputLabel for="tel" value="Telefono"/>
-            </div>
-          </div>
-          <div class="col s6 col m6">
-            <div class="input-field">
-              <h:inputText id="pais" class="validate"
-                           value="#{usuarioController.direccion.ciudad.departamento.pais.nombrePais}" autocomplete="off"/>
-              <h:outputLabel for="pais" value="Pais"/>
             </div>
           </div>
           <div class="col s6 col m6">

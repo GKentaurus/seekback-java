@@ -37,9 +37,10 @@ public class FelicitacionDAOJPA extends GenericDAO<Felicitacion, Integer> implem
   @Override
   public List<Felicitacion> getByidCliente(Integer idCliente) throws ConnectionExcep {
     try {
-      TypedQuery<Felicitacion> tq = em.createNamedQuery("Felicitacion.getByidCliente", classType);
-      tq.setParameter("idCliente", idCliente);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Felicitacion.getByidCliente", classType)
+              .setParameter("idCliente", idCliente)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

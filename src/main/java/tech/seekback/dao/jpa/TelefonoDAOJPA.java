@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -29,9 +28,10 @@ public class TelefonoDAOJPA extends GenericDAO<Telefono, Integer> implements Tel
   public Telefono getByIdUsuario(Integer IdUsuario) throws ConnectionExcep {
 
     try {
-      TypedQuery<Telefono> tq = em.createNamedQuery("Telefono.getByIdUsuario", classType);
-      tq.setParameter("idUsuario", IdUsuario);
-      return tq.getSingleResult();
+      return em
+              .createNamedQuery("Telefono.getByIdUsuario", classType)
+              .setParameter("idUsuario", IdUsuario)
+              .getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -47,9 +47,10 @@ public class TelefonoDAOJPA extends GenericDAO<Telefono, Integer> implements Tel
   public Telefono getByIdPrincipal(Integer IdUsuario) throws ConnectionExcep {
 
     try {
-      TypedQuery<Telefono> tq = em.createNamedQuery("Telefono.getByIdPrincipal", classType);
-      tq.setParameter("idUsuario", IdUsuario);
-      return tq.getSingleResult();
+      return em
+              .createNamedQuery("Telefono.getByIdPrincipal", classType)
+              .setParameter("idUsuario", IdUsuario)
+              .getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

@@ -37,9 +37,10 @@ public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> im
   @Override
   public List<SoporteTecnico> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep {
     try {
-      TypedQuery<SoporteTecnico> tq = em.createNamedQuery("SoporteTecnico.getByidEmpleado", classType);
-      tq.setParameter("idEmpleado", idEmpleado);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("SoporteTecnico.getByidEmpleado", classType)
+              .setParameter("idEmpleado", idEmpleado)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -48,9 +49,10 @@ public class SoporteTecnicoDAOJPA extends GenericDAO<SoporteTecnico, Integer> im
   @Override
   public List<SoporteTecnico> getByidCliente(Integer idCliente) throws ConnectionExcep {
     try {
-      TypedQuery<SoporteTecnico> tq = em.createNamedQuery("SoporteTecnico.getByidCliente", classType);
-      tq.setParameter("idCliente", idCliente);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("SoporteTecnico.getByidCliente", classType)
+              .setParameter("idCliente", idCliente)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -30,9 +29,10 @@ public class EmpleadoDAOJPA extends GenericDAO<Usuario, Integer> implements Empl
   public Usuario getOne(Integer id) throws ConnectionExcep {
 
     try {
-      TypedQuery<Usuario> tq = em.createNamedQuery("Empleado.getOne", classType);
-      tq.setParameter("idEmpleado", id);
-      return tq.getSingleResult();
+      return em
+              .createNamedQuery("Empleado.getOne", classType)
+              .setParameter("idEmpleado", id)
+              .getSingleResult();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -40,15 +40,14 @@ public class EmpleadoDAOJPA extends GenericDAO<Usuario, Integer> implements Empl
 
   /**
    *
-   * @return
-   * @throws ConnectionExcep
+   * @return @throws ConnectionExcep
    */
   @Override
   public List<Usuario> getAll() throws ConnectionExcep {
     System.out.println(
-      "\n\n\n\n\n######################################################################"
-        + "\n#\t Consultando todos los objetos de Empleado"
-        + "\n######################################################################\n"
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t Consultando todos los objetos de Empleado"
+            + "\n######################################################################\n"
     );
     TypedQuery<Usuario> tq = em.createNamedQuery("Empleado.getAll", classType);
     return tq.getResultList();

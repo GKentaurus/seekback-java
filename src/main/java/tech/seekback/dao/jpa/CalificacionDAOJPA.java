@@ -28,9 +28,10 @@ public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implem
   @Override
   public List<Calificacion> getByIdProducto(int idProducto) throws ConnectionExcep {
     try {
-      TypedQuery<Calificacion> tq = em.createNamedQuery("Calificacion.getByIdProducto", classType);
-      tq.setParameter("idProducto", idProducto);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Calificacion.getByIdProducto", classType)
+              .setParameter("idProducto", idProducto)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -39,9 +40,10 @@ public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implem
   @Override
   public List<Calificacion> getByidCliente(Integer idCliente) throws ConnectionExcep {
     try {
-      TypedQuery<Calificacion> tq = em.createNamedQuery("Calificacion.getByidCliente", classType);
-      tq.setParameter("idCliente", idCliente);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Calificacion.getByidCliente", classType)
+              .setParameter("idCliente", idCliente)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
@@ -52,10 +54,10 @@ public class CalificacionDAOJPA extends GenericDAO<Calificacion, Integer> implem
 
     try {
       return ((Number) em
-        .createNamedQuery("Calificacion.getCalCount")
-        .setParameter("calificacion", calificacion)
-        .getSingleResult())
-        .intValue();
+              .createNamedQuery("Calificacion.getCalCount")
+              .setParameter("calificacion", calificacion)
+              .getSingleResult())
+              .intValue();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }

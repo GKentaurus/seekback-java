@@ -7,6 +7,8 @@ import tech.seekback.models.Producto;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import tech.seekback.enums.ConnectionExcepEnum;
+import tech.seekback.exceptions.ConnectionExcep;
 
 /**
  * @author gkentaurus
@@ -21,23 +23,33 @@ public class ProductoDAOJPA extends GenericDAO<Producto, Integer> implements Pro
   @Override
   public Integer getCatCount(Integer id) {
     TypedQuery<Producto> tq = em.createNamedQuery("Producto.getCatCount", classType);
-    return ((Number)em.createNamedQuery("Producto.getCatCount")
-      .setParameter("idCategoria", id)
-      .getSingleResult())
-      .intValue();
+    return ((Number) em.createNamedQuery("Producto.getCatCount")
+            .setParameter("idCategoria", id)
+            .getSingleResult())
+            .intValue();
   }
 
   @Override
-  public List<Producto> getCategoryProducts(Integer idCategory) {
-    TypedQuery<Producto> tq = em.createNamedQuery("Producto.getCategoryProducts", classType);
-    tq.setParameter("idCategoria", idCategory);
-    return tq.getResultList();
+  public List<Producto> getCategoryProducts(Integer idCategory) throws ConnectionExcep {
+    try {
+      return em
+              .createNamedQuery("Producto.getCategoryProducts", classType)
+              .setParameter("idCategoria", idCategory)
+              .getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
   }
 
   @Override
-  public List<Producto> getLastProducts(Integer limit) {
-    TypedQuery<Producto> tq = em.createNamedQuery("Producto.getLastProducts", classType)
-      .setMaxResults(4);
-    return tq.getResultList();
+  public List<Producto> getLastProducts(Integer limit) throws ConnectionExcep {
+    try {
+      return em
+              .createNamedQuery("Producto.getLastProducts", classType)
+              .setMaxResults(4)
+              .getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
   }
 }

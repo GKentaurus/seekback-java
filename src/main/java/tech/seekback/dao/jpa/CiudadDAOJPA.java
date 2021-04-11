@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.jpa;
 
 import tech.seekback.dao.GenericDAO;
@@ -23,11 +22,11 @@ public class CiudadDAOJPA extends GenericDAO<Ciudad, Integer> implements CiudadD
 
   @Override
   public List<Ciudad> getByIdDepartamento(Integer idDepartamento) throws ConnectionExcep {
-    System.out.println("id ---- " + idDepartamento);
     try {
-      TypedQuery<Ciudad> tq = em.createNamedQuery("Ciudad.getByIdDepartamento", classType);
-      tq.setParameter("DepartamentoId", idDepartamento);
-      return tq.getResultList();
+      return em
+              .createNamedQuery("Ciudad.getByIdDepartamento", classType)
+              .setParameter("DepartamentoId", idDepartamento)
+              .getResultList();
     } catch (Exception e) {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
