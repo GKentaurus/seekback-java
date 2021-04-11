@@ -44,6 +44,12 @@
               <span class="table-title">Modificar referencias</span>
               <div class="actions">
                 <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                <h:form>
+                  <h:commandButton pt:class=" waves-effect btn-small cyan lighten-1 tooltipped"
+                                   action="#{productoController.genpdf()}"
+                                   value="PDF"
+                                   pt:data-position="bottom" pt:data-tooltip="Descargar reporte"/>
+                </h:form>
               </div>
             </div>
             <h:dataTable pt:id="datatable"
