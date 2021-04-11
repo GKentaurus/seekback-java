@@ -57,6 +57,7 @@ public class SoporteTecnicoController extends CustomController implements Serial
   private Integer idCliente;
   private Integer idEmpleado;
   private Integer idProducto;
+  private Integer idEstado;
   private Integer idUsuario;
   private Date fecha;
   private String obs;
@@ -100,6 +101,14 @@ public class SoporteTecnicoController extends CustomController implements Serial
 
   public void setIdCliente(Integer idCliente) {
     this.idCliente = idCliente;
+  }
+
+  public Integer getIdEstado() {
+    return idEstado;
+  }
+
+  public void setIdEstado(Integer idEstado) {
+    this.idEstado = idEstado;
   }
 
   public Integer getIdProducto() {
@@ -184,6 +193,25 @@ public class SoporteTecnicoController extends CustomController implements Serial
       ex.printStackTrace();
     }
     return estados;
+  }
+
+  public void update(Integer idsopo) throws ConnectionExcep, IOException {
+
+    this.soporteTecnico = soporteTecnicoService.getOne(idsopo);
+
+    this.soporteTecnico.setEmpleado(empleadoService.getOne(this.idEmpleado));
+    this.soporteTecnico.setEstado(estadosFidelizacionService.getOne(this.idEstado));
+
+    soporteTecnicoService.update(soporteTecnico);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
+
   }
 
   public void create() throws ConnectionExcep, IOException {

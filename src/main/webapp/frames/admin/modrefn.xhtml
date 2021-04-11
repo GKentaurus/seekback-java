@@ -46,90 +46,113 @@
                 <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
               </div>
             </div>
-            <h:form>
-              <h:dataTable pt:id="datatable"
-                           value="#{bodegaProductoController.bodegaProductos}"
-                           var="st">
-                <h:column>
-                  <f:facet name="header">Producto</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom"
-                                pt:data-tooltip="#{st.producto.modeloProducto}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Descripción</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.producto.descripcion}" pt:data-position="bottom"
-                                pt:data-tooltip="#{st.producto.descripcion}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Cantidad</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cantidad}" pt:data-position="bottom"
-                                pt:data-tooltip="#{st.cantidad}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Precio</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.producto.precioVenta}" pt:data-position="bottom"
-                                pt:data-tooltip="$#{st.producto.precioVenta}">
-                    <f:convertNumber currencySymbol="$" type="currency"/>
-                  </h:outputText>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Editar</f:facet>
-                  <a class="waves-effect waves-light btn modal-trigger"
-                     href="#modal#{st.id}">Visualizar</a>
-                  <div id="modal#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <div class="row">
+            <h:dataTable pt:id="datatable"
+                         value="#{bodegaProductoController.bodegaProductos}"
+                         var="st">
+              <h:column>
+                <f:facet name="header">Producto</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.producto.modeloProducto}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Descripción</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.producto.descripcion}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.producto.descripcion}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Cantidad</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.cantidad}" pt:data-position="bottom"
+                              pt:data-tooltip="#{st.cantidad}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Precio</f:facet>
+                <h:outputText pt:class="tooltipped" value="#{st.producto.precioVenta}" pt:data-position="bottom"
+                              pt:data-tooltip="$#{st.producto.precioVenta}">
+                  <f:convertNumber currencySymbol="$" type="currency"/>
+                </h:outputText>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Editar</f:facet>
+                <a class="waves-effect waves-light btn modal-trigger"
+                   href="#modal#{st.id}" onclick="
+                       document.getElementById('cat#{st.id}').value = #{st.producto.categoria.id};">
+                  Visualizar</a>
+                <div id="modal#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <div class="section" style="padding-bottom:0px;">
+                      <div class="row">
+                        <h:form>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <input id="quien" type="text" value="#{st.producto.modeloProducto}" readonly="true"/>
-                              <label for="quien">Producto</label>
+                              <h:inputText id="quien" value="#{st.producto.modeloProducto}"/>
+                              <h:outputLabel for="quien" value="Producto"/>
                             </div>
                           </div>
                           <div class="col s6 m3">
                             <div class="input-field">
-                              <input id="can" type="text" value="#{st.cantidad}"/>
-                              <label for="can">Cantidad</label>
+                              <h:inputText id="can" pt:type="number" value="#{st.cantidad}"/>
+                              <h:outputLabel for="can" value="Cantidad"/>
                             </div>
                           </div>
                           <div class="col s6 m3">
                             <div class="input-field">
-                              <input id="pre" type="text" value="$#{st.producto.precioVenta}"/>
-                              <label for="pre">Precio</label>
+                              <h:inputText id="pre" pt:type="number" value="#{st.producto.precioVenta}">
+                                <f:convertNumber type="currency" />
+                              </h:inputText>
+                              <h:outputLabel for="pre" value="Precio"/>
+                            </div>
+                          </div>
+                          <div class="col m6 s12">
+                            <div class="input-field">
+                              <h:outputLabel for="cat#{st.id}" value="Categoria" style="margin-top: -30px;"/>
+                              <h:selectOneMenu pt:placeholder=" " pt:id="cat#{st.id}"
+                                               value="#{productoController.idCat}"
+                                               class="browser-default" required="true">
+                                <f:selectItem itemValue="#{null}"
+                                              itemLabel="Seleccione una opcion"
+                                              noSelectionOption="true" />
+                                <f:selectItems value="#{categoriaController.categoriasProductos}"
+                                               var="cl"
+                                               itemValue="#{cl.id}"
+                                               itemLabel="#{cl.nombreCategoria}"/>
+                              </h:selectOneMenu>
                             </div>
                           </div>
                           <div class="col s12">
                             <div class="input-field">
-                              <input id="quien" type="text" value="#{st.producto.descripcion}" readonly="true"/>
-                              <label for="quien">Descripción</label>
+                              <h:inputTextarea id="quien" value="#{st.producto.descripcion}"></h:inputTextarea>
+                              <h:outputLabel for="quien" value="Descripción" />
                             </div>
                           </div>
-                        </div>
                       </div>
+                    </div>
+                    <h:form>
                       <div class="modal-footer">
                         <a href="" class="waves-effect waves-green btn-flat">Actualizada</a>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                       </div>
-                    </div>
+                    </h:form>
                   </div>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                  <div id="modaldel#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar el producto de #{st.producto.modeloProducto} ?</h4>
-                      </div>
+                </div>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Eliminar</f:facet>
+                <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                <div id="modaldel#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <div class="section" style="padding-bottom:0px;">
+                      <h4 class="center-align">Desea eliminar el producto de #{st.producto.modeloProducto} ?</h4>
+                    </div>
+                    <h:form>
                       <div class="modal-footer">
                         <h:commandButton action="#{productoController.delete(st.producto.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
-                    </div>
+                    </h:form>
                   </div>
-                </h:column>
-              </h:dataTable>
-            </h:form>
+                </div>
+              </h:column>
+            </h:dataTable>
           </div>
         </div>
       </div>

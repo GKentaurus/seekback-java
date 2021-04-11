@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
   <h:head>
     <title>QPCOM | Seekback</title>
     <meta charset="utf-8"/>
@@ -51,49 +52,167 @@
                   </h:form>
                 </div>
               </div>
-              <h:form>
-                <h:dataTable pt:id="datatable"
-                             value="#{calificacionController.calificaciones}"
-                             var="st">
-                  <h:column>
-                    <f:facet name="header">Califica</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Producto</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Fecha</f:facet>
-                    <h:outputText value="#{st.timestamps.created_at}" >
-                      <f:convertDateTime pattern="dd/MM/yyyy"/>
-                    </h:outputText>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Calificacion</f:facet>
-                    <h:outputText pt:class="tooltipped #{st.calificacion}" value="#{st.calificacion}" pt:data-position="bottom" pt:data-tooltip="#{st.calificacion}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Comentario</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Eliminar</f:facet>
-                    <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                    <div id="modaldel#{st.id}" class="modal">
+              <h:dataTable pt:id="datatable"
+                           value="#{calificacionController.calificaciones}"
+                           var="st">
+                <h:column>
+                  <f:facet name="header">Califica</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Producto</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.producto.modeloProducto}" pt:data-position="bottom" pt:data-tooltip="#{st.producto.modeloProducto}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Fecha</f:facet>
+                  <h:outputText value="#{st.timestamps.created_at}" >
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:outputText>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Calificacion</f:facet>
+                  <h:panelGroup rendered="#{st.calificacion eq 1}">
+                    <i class="fas fa-star"></i>
+                  </h:panelGroup>
+                  <h:panelGroup rendered="#{st.calificacion eq 2}">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </h:panelGroup>
+                  <h:panelGroup rendered="#{st.calificacion eq 3}">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </h:panelGroup>
+                  <h:panelGroup rendered="#{st.calificacion eq 4}">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </h:panelGroup>
+                  <h:panelGroup rendered="#{st.calificacion eq 5}">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </h:panelGroup>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Comentario</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.comentario}" pt:data-position="bottom" pt:data-tooltip="#{st.comentario}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Aprobada</f:facet>
+                  <h:outputText value="Pendiente" rendered="#{st.esAprobado eq false}"/>
+                  <h:outputText value="Aprobada" rendered="#{st.esAprobado eq true}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Editar</f:facet>
+                  <a class="waves-effect waves-light btn modal-trigger"
+                     href="#modal#{st.id}"
+                     onclick="
+                           document.getElementById('esta#{st.id}').value = '#{st.esAprobado}';
+                     ">Visualizar</a>
+                  <div id="modal#{st.id}" class="modal">
+                    <h:form>
                       <div class="modal-content">
+                        <h4 class="center-align">Calificaciòn
+                          <h:panelGroup rendered="#{st.calificacion eq 1}">
+                            <i class="fas fa-star"></i>
+                          </h:panelGroup>
+                          <h:panelGroup rendered="#{st.calificacion eq 2}">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                          </h:panelGroup>
+                          <h:panelGroup rendered="#{st.calificacion eq 3}">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                          </h:panelGroup>
+                          <h:panelGroup rendered="#{st.calificacion eq 4}">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                          </h:panelGroup>
+                          <h:panelGroup rendered="#{st.calificacion eq 5}">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                          </h:panelGroup>
+                        </h4>
                         <div class="section" style="padding-bottom:0px;">
-                          <h4 class="center-align">Desea eliminar la calificaciòn de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
+                          <div class="row">
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:inputText id="quien" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" readonly="true"/>
+                                <h:outputLabel for="quien" value="Cliente" />
+                              </div>
+                            </div>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:inputText id="prod" value="#{st.producto.modeloProducto}" readonly="true"/>
+                                <h:outputLabel for="prod" value="Empleado" />
+                              </div>
+                            </div>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:inputText id="datei"
+                                             value="#{st.timestamps.created_at}"  readonly="true">
+                                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+                                <h:outputLabel for="datei">Fecha</h:outputLabel>
+                              </div>
+                            </div>
+                            <div class="col s12 m6">
+                              <h:outputLabel for="esta#{st.id}" value="estado" style="margin-top: -30px;"/>
+                              <h:selectOneMenu pt:placeholder=" " pt:id="esta#{st.id}"  class="browser-default"
+                                               value="#{calificacionController.aprobacion}">
+                                <f:selectItem itemValue="#{null}"
+                                              itemLabel="Seleccione una opción"
+                                              noSelectionOption="true" />
+                                <f:selectItem itemValue="false"
+                                              itemLabel="Pendiente"/>
+                                <f:selectItem itemValue="true"
+                                              itemLabel="aprobada"/>
+                              </h:selectOneMenu>
+                            </div>
+                            <div class="col s12">
+                              <div class="input-field">
+                                <h:inputTextarea pt:id="motivo#{st.id}" class="materialize-textarea" value="#{st.comentario}" readonly="true"/>
+                                <h:outputLabel for="motivo" value="Motivo" />
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                        <div class="modal-footer">
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{calificacionController.updateadm(st.id)}" value="Actualizar" />
+                          <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                        </div>
+                      </div>
+                    </h:form>
+                  </div>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Eliminar</f:facet>
+                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                  <div id="modaldel#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <div class="section" style="padding-bottom:0px;">
+                        <h4 class="center-align">Desea eliminar la calificaciòn de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
+                      </div>
+                      <h:form>
                         <div class="modal-footer">
                           <h:commandButton action="#{calificacionController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
                           <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                         </div>
-                      </div>
+                      </h:form>
                     </div>
-                  </h:column>
-                </h:dataTable>
-              </h:form>
+                  </div>
+                </h:column>
+              </h:dataTable>
             </div>
           </h:panelGroup>
           <h:panelGroup rendered="#{usuarioController.confirmRole('Cliente')}">
@@ -179,11 +298,6 @@
     <script>
 
       $(document).ready(function () {
-        $('.1').html('<i class="fas fa-star"></i>');
-        $('.2').html('<i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.3').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.4').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
-        $('.5').html('<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>');
         $('.fa-star').addClass("orange-text");
 
         $('.tooltipped').tooltip();

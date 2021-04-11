@@ -64,23 +64,6 @@
         background-blend-mode: difference;
       }
 
-      .menssage {
-        max-width: 100%;
-        border: 1px solid transparent;
-        border-bottom: 1px solid #9E9E9E;
-        outline: none;
-      }
-
-      .menssage:focus {
-        border-bottom: 1px solid #26a69a;
-        -webkit-box-shadow: 0 1px 0 0 #26a69a;
-        box-shadow: 0 1px 0 0 #26a69a;
-      }
-
-      .menssage:focus+label {
-        color: #26a69a;
-      }
-
     </style>
   </h:head>
 
@@ -89,7 +72,7 @@
       <div class="row">
         <p class="center-align" style="font-size:25px;"><i class="fas fa-exclamation-triangle"></i> PQRS <i class="fas fa-exclamation-triangle"></i></p>
         <div id="admin" class="col s12">
-          <h:form  rendered="#{usuarioController.confirmRole('Administrador')}">
+          <h:panelGroup  rendered="#{usuarioController.confirmRole('Administrador')}">
             <div class="card material-table">
               <div class="table-header">
                 <span class="table-title">PQRS</span>
@@ -127,58 +110,70 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Editar</f:facet>
-                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}" onclick="document.getElementById('estado#{st.id}').value = #{st.estado.id};">Visualizar</a>
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}"
+                     onclick="
+                         document.getElementById('estado#{st.id}').value = #{st.estado.id};
+                         document.getElementById('resp#{st.id}').value = '#{st.respuesta}';
+                     ">Visualizar</a>
                   <div id="modal#{st.id}" class="modal">
                     <div class="modal-content">
-                      <h4 class="center-align">#{st.tipoSolicitud.nombreSolicitud}</h4>
-                      <div class="section" style="padding-bottom:0px;">
-                        <div class="row">
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="quien" type="text" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" readonly="true"/>
-                              <label for="quien">Cliente</label>
+                      <h:form>
+                        <h4 class="center-align">#{st.tipoSolicitud.nombreSolicitud}</h4>
+                        <div class="section" style="padding-bottom:0px;">
+                          <div class="row">
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <input id="quien" type="text" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" readonly="true"/>
+                                <label for="quien">Cliente</label>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <h:inputText id="datei" value="#{st.timestamps.created_at}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                              </h:inputText>
-                              <h:outputLabel for="datei">Fecha</h:outputLabel>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:inputText id="datei" value="#{st.timestamps.created_at}">
+                                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+                                <h:outputLabel for="datei">Fecha</h:outputLabel>
+                              </div>
                             </div>
-                          </div>
-                          <div class="col s12 m6">
-                            <div class="input-field">
-                              <input id="produc" type="text" value="#{st.area}" readonly="true"/>
-                              <label for="produc">Producto</label>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <input id="produc" type="text" value="#{st.area}" readonly="true"/>
+                                <label for="produc">Producto</label>
+                              </div>
                             </div>
-                          </div>
-                          <input type="hidden" value="#{st.estado.id}" />
-                          <div class="input-field col s12 m6">
-                            <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
-                            <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                             valueChangeListener="#{st.estado.id}">
-                              <f:selectItem itemValue="#{null}"
-                                            itemLabel="Seleccione una opcion"
-                                            noSelectionOption="true" />
-                              <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
-                                             var="es"
-                                             itemValue="#{es.id}"
-                                             itemLabel="#{es.nombreEstado}"/>
-                            </h:selectOneMenu>
-                          </div>
-                          <div class="col s12">
-                            <div class="input-field">
-                              <textarea id="motivo" class="menssage">#{st.comentario}</textarea>
-                              <label for="motivo">Motivo</label>
+                            <input type="hidden" value="#{st.estado.id}" />
+                            <div class="input-field col s12 m6">
+                              <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
+                                               value="#{pqrController.idEstado}">
+                                <f:selectItem itemValue="#{null}"
+                                              itemLabel="Seleccione una opcion"
+                                              noSelectionOption="true" />
+                                <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                               var="es"
+                                               itemValue="#{es.id}"
+                                               itemLabel="#{es.nombreEstado}"/>
+                              </h:selectOneMenu>
+                              <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
+                            </div>
+                            <div class="col s12">
+                              <div class="input-field">
+                                <h:inputTextarea id="motivo" class="materialize-textarea" value="#{st.comentario}" readonly="true"/>
+                                <h:outputLabel for="motivo" value="Motivo"/>
+                              </div>
+                            </div>
+                            <div class="col s12">
+                              <div class="input-field">
+                                <h:inputTextarea pt:id="resp#{st.id}" pt:placeholder="" class="materialize-textarea" value="#{pqrController.answer}"/>
+                                <h:outputLabel for="resp#{st.id}" value="Respuesta"/>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                      </div>
+                        <div class="modal-footer">
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{pqrController.updateAdm(st.id)}" value="Actualizar" />
+                          <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        </div>
+                      </h:form>
                     </div>
                   </div>
                 </h:column>
@@ -199,7 +194,7 @@
                 </h:column>
               </h:dataTable>
             </div>
-          </h:form>
+          </h:panelGroup>
           <h:form  rendered="#{usuarioController.confirmRole('Cliente')}">
             <div class="row">
               <h:form>

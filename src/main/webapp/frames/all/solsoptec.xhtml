@@ -111,7 +111,11 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Cliente</f:facet>
-                  <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
+                  <h:outputText value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" />
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Empleado</f:facet>
+                  <h:outputText value="#{st.empleado.primerNombre} #{st.empleado.otrosNombres} #{st.empleado.primerApellido}" />
                 </h:column>
                 <h:column>
                   <f:facet name="header">Comentario</f:facet>
@@ -126,6 +130,81 @@
                   <h:outputText value="#{st.timestamps.created_at}" >
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                   </h:outputText>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Editar</f:facet>
+                  <a class="waves-effect waves-light btn modal-trigger"
+                     href="#modal#{st.id}"
+                     onclick="
+                         document.getElementById('estado#{st.id}').value = #{st.estado.id};
+                         document.getElementById('emple#{st.id}').value = #{st.empleado.id};
+                     ">Visualizar</a>
+                  <div id="modal#{st.id}" class="modal">
+                    <h:form>
+                      <div class="modal-content">
+                        <h4 class="center-align">PQRS</h4>
+                        <div class="section" style="padding-bottom:0px;">
+                          <div class="row">
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <input id="quien" type="text" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}" readonly="true"/>
+                                <label for="quien">Cliente</label>
+                              </div>
+                            </div>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:outputLabel for="emple#{st.id}" value="Empleado" style="margin-top: -30px;"/>
+                                <h:selectOneMenu pt:placeholder=" " pt:id="emple#{st.id}"  class="browser-default"
+                                                 value="#{soporteTecnicoController.idEmpleado}">
+                                  <f:selectItem itemValue="#{null}"
+                                                itemLabel="Seleccione una opción"
+                                                noSelectionOption="true" />
+                                  <f:selectItems value="#{empleadoController.empleados}"
+                                                 var="em"
+                                                 itemValue="#{em.id}"
+                                                 itemLabel="#{em.primerNombre} #{em.otrosNombres} #{em.primerApellido} #{em.otrosApellidos}"/>
+                                </h:selectOneMenu>
+                              </div>
+                            </div>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:inputText id="datei"
+                                             value="#{st.timestamps.created_at}"  readonly="true">
+                                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
+                                <h:outputLabel for="datei">Fecha</h:outputLabel>
+                              </div>
+                            </div>
+                            <div class="col s12 m6">
+                              <div class="input-field">
+                                <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
+                                <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
+                                                 value="#{soporteTecnicoController.idEstado}">
+                                  <f:selectItem itemValue="#{null}"
+                                                itemLabel="Seleccione una opción"
+                                                noSelectionOption="true" />
+                                  <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                                 var="es"
+                                                 itemValue="#{es.id}"
+                                                 itemLabel="#{es.nombreEstado}"/>
+                                </h:selectOneMenu>
+                              </div>
+                            </div>
+                            <div class="col s12">
+                              <div class="input-field">
+                                <h:inputTextarea pt:id="motivo#{st.id}" class="materialize-textarea" value="#{st.comentario}" readonly="true"/>
+                                <h:outputLabel for="motivo" value="Motivo" style="margin-top: -30px;"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{soporteTecnicoController.update(st.id)}" value="Actualizar" />
+                          <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                        </div>
+                      </div>
+                    </h:form>
+                  </div>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Eliminar</f:facet>

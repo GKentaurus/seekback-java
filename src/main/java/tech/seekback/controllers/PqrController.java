@@ -65,6 +65,7 @@ public class PqrController extends CustomController implements Serializable {
   private Integer idCategoria;
   private Integer idUsuario;
   private Integer idPQR;
+  private Integer idEstado;
   private String who;
   private String comment;
   private String answer;
@@ -93,6 +94,14 @@ public class PqrController extends CustomController implements Serializable {
 
   public void setIdUsuario(Integer idUsuario) {
     this.idUsuario = idUsuario;
+  }
+
+  public Integer getIdEstado() {
+    return idEstado;
+  }
+
+  public void setIdEstado(Integer idEstado) {
+    this.idEstado = idEstado;
   }
 
   public String getWho() {
@@ -183,6 +192,25 @@ public class PqrController extends CustomController implements Serializable {
     this.answer = answer;
   }
   //</editor-fold>
+
+  public void updateAdm(Integer idPQR) throws ConnectionExcep, IOException {
+
+    this.pqrs = pQRSService.getOne(idPQR);
+
+    this.pqrs.setEstado(estadosFidelizacionService.getOne(idEstado));
+    this.pqrs.setRespuesta(answer);
+
+    pQRSService.update(pqrs);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfidel.xhtml");
+
+  }
 
   public void create() throws ConnectionExcep, IOException {
     // Creación de Timestamp para todos los procesos

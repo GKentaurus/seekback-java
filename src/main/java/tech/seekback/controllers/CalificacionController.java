@@ -54,6 +54,8 @@ public class CalificacionController extends CustomController implements Serializ
   private Integer idProducto;
   private Integer calif;
   private String comment;
+  private String aprobacion;
+  private Boolean aprobacionB;
 
   @PostConstruct
   public void Init() {
@@ -70,6 +72,22 @@ public class CalificacionController extends CustomController implements Serializ
 
   public void setIdCliente(Integer idCliente) {
     this.idCliente = idCliente;
+  }
+
+  public String getAprobacion() {
+    return aprobacion;
+  }
+
+  public void setAprobacion(String aprobacion) {
+    this.aprobacion = aprobacion;
+  }
+
+  public Boolean getAprobacionB() {
+    return aprobacionB;
+  }
+
+  public void setAprobacionB(Boolean aprobacionB) {
+    this.aprobacionB = aprobacionB;
   }
 
   public Integer getIdProducto() {
@@ -134,6 +152,26 @@ public class CalificacionController extends CustomController implements Serializ
 
   public Integer getCalCount(Integer calificacion) throws ConnectionExcep {
     return this.calificacionService.getCalCount(calificacion);
+  }
+
+  public void updateadm(Integer idcal) throws ConnectionExcep, IOException {
+    if (this.aprobacion == "true") {
+      this.aprobacionB = true;
+    } else {
+      this.aprobacionB = false;
+    }
+    this.calificacion = calificacionService.getOne(idcal);
+    this.calificacion.setEsAprobado(aprobacionB);
+
+    calificacionService.update(calificacion);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro " + idcal + " Actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulcalif.xhtml");
   }
 
   public void create() throws IOException, ConnectionExcep {
