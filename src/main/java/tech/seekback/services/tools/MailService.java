@@ -23,7 +23,7 @@ public class MailService {
 
   private void initSession() {
     String user = "gkentaurus@gmail.com";
-    String password = "slwbzqfjoxliovlb";
+    String password = "cezybvqlbicssjlr";
 
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.smtp.host", "smtp.gmail.com");
