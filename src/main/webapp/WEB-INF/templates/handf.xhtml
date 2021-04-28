@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
   <h:head>
     <title>.:QPCOM | Seekback:.</title>
     <meta charset="utf-8"/>
@@ -173,7 +174,7 @@ and open the template in the editor.
                     <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                       <h:form>
                         <li>
-                          <h:commandLink action="/index.xhtml faces-redirect=true" value="#{wrapperTr.menuHomeLabel}"/>
+                          <h:commandLink action="/index.xhtml? faces-redirect=true" value="#{wrapperTr.menuHomeLabel}"/>
                         </li>
                       </h:form>
                       <li>
@@ -194,12 +195,12 @@ and open the template in the editor.
                       </li>
                       <h:form>
                         <li>
-                          <h:commandLink
-                            action="/index.xhtml#contac faces-redirect=true">#{wrapperTr.menuContactUsLabel}</h:commandLink>
+                          <a href="#footer">#{wrapperTr.menuContactUsLabel}</a>
                         </li>
                         <li>
-                          <h:commandLink
-                            action="/index.xhtml#qsomos faces-redirect=true">#{wrapperTr.menuAboutUsLabel}</h:commandLink>
+                          <c:if test="#{view.viewId == '/index.xhtml'}">
+                            <a href="#qsomos">#{wrapperTr.menuAboutUsLabel}</a>
+                          </c:if>
                         </li>
                       </h:form>
                     </ul>
@@ -242,7 +243,7 @@ and open the template in the editor.
 
       <ui:insert name="content">paginas</ui:insert>
 
-      <footer class="page-footer" style="background-color: #222222;">
+      <footer class="page-footer" id="footer" style="background-color: #222222;">
         <div class="wrap transparent">
           <div class="container">
             <div class="row">
@@ -277,7 +278,7 @@ and open the template in the editor.
           </div>
         </div>
         <div class="footer-copyright">
-          <div class="container">
+          <div class="container"><i class="fab fa-java"></i>
             #{wrapperTr.footerCopyrights}
           </div>
         </div>

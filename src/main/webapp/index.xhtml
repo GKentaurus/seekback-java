@@ -3,7 +3,8 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
   <h:head>
     <title>.:QPCOM | Seekback:.</title>
     <meta charset="utf-8"/>
@@ -24,27 +25,15 @@
                   <div class="col s12">
                     <div class="slider">
                       <ul class="slides">
-                        <li>
-                          <h:graphicImage library="images" name="router.webp" alt="producto"/>
-                          <div class="caption left-align">
-                            <h3>Router</h3>
-                            <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
-                          </div>
-                        </li>
-                        <li>
-                          <h:graphicImage library="images" name="cableado1.webp" alt="producto"/>
-                          <div class="caption left-align">
-                            <h3>Switch</h3>
-                            <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
-                          </div>
-                        </li>
-                        <li>
-                          <h:graphicImage library="images" name="cableado.webp" alt="producto"/>
-                          <div class="caption left-align">
-                            <h3>Utp cat6</h3>
-                            <h5 class="light grey-text text-lighten-3">Lorem ipsun in dolorem</h5>
-                          </div>
-                        </li>
+                        <c:forEach items="#{indexController.getLastProducts(4)}" var="so">
+                          <li>
+                            <h:graphicImage library="images" name="router.webp" alt="producto"/>
+                            <div class="caption left-align">
+                              <h3>#{so.modeloProducto}</h3>
+                              <h5 class="light grey-text text-lighten-3">#{so.descripcion}</h5>
+                            </div>
+                          </li>
+                        </c:forEach>
                       </ul>
                     </div>
                   </div>
@@ -55,25 +44,20 @@
               <!--productos-->
               <div id="prod" class="container section scrollspy">
                 <div class="row">
-                  <h:form id="tabla">
-                    <h:dataTable pt:id="datatable" value="#{indexController.getLastProducts(4)}" var="st" rows="4">
-                      <h:column>
-                        <f:facet name="header" pt:style="display:none;">Productos</f:facet>
-                        <div class="card white" style="width: 300px;">
-                          <div class="card-image">
-                            <h:graphicImage library="images" name="cable/utp1.webp" alt="producto"
-                                            style="height:200px; width:100%;"/>
-                            <span class="card-title truncate">#{st.modeloProducto}</span>
-                          </div>
-                          <div class="card-action">
-                            <h:form>
-                              <a href="anyproduct.xhtml?id=#{st.id}">#{indexTr.productsViewMore}</a>
-                            </h:form>
-                          </div>
-                        </div>
-                      </h:column>
-                    </h:dataTable>
-                  </h:form>
+                  <c:forEach items="#{indexController.getLastProducts(4)}" var="so">
+                    <div class="card white col m3 s12" style="width: 300px;">
+                      <div class="card-image">
+                        <h:graphicImage library="images" name="cable/utp1.webp" alt="producto"
+                                        style="height:200px; width:100%;"/>
+                        <span class="card-title truncate">#{so.modeloProducto}</span>
+                      </div>
+                      <div class="card-action">
+                        <h:form>
+                          <a href="anyproduct.xhtml?id=#{so.id}">#{indexTr.productsViewMore}</a>
+                        </h:form>
+                      </div>
+                    </div>
+                  </c:forEach>
                 </div>
               </div>
 

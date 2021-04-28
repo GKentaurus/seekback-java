@@ -27,8 +27,8 @@
                 <div class="table-header">
                   <span class="table-title " id="namet">Resultados para " #{param['pr']} "</span>
                   <div class="actions">
-                    <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i
-                        class="material-icons" id="bsea">search</i></a>
+                    <a href="#" class="search-toggle waves-effect btn-flat nopadding">
+                      <i class="material-icons" id="bsea">search</i></a>
                   </div>
                 </div>
                 <h:form>
@@ -42,8 +42,7 @@
                                           style="height:200px; width:200px;"/>
                         </div>
                         <div class="col s12 m6 l9 childesc">
-                          <span
-                            class="crdt truncate">#{st.producto.modeloProducto} </span><span> #{st.producto.categoria.nombreCategoria}</span>
+                          <span class="crdt truncate">#{st.producto.modeloProducto} </span><span> #{st.producto.categoria.nombreCategoria}</span>
                           <p class=" hide-on-small-only">#{st.producto.descripcion}</p>
                           <div class="col s12 m9 childbtn">
                             <h:form>

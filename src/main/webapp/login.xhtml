@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <f:event type="preRenderView" listener="#{loginController.validate()}"/>
 
 
   <h:head>
@@ -23,7 +24,6 @@
 
     <ui:composition template="/WEB-INF/templates/handf.xhtml">
       <ui:define name="content">
-        <f:event type="preRenderView" listener="#{loginController.validate()}"/>
         <h:outputScript library="scripts" name="loginjs.js"/>
 
         <div class="wrap" id="inv" style="margin-bottom:20px;">
@@ -53,6 +53,7 @@
                   <h:form>
                     <div class="input-field s12">
                       <h:inputText id="emaillog" class="ingre validate" autocomplete="off" required="true"
+                                   pt:oninput="this.value = this.value.replace(/[^a-zA-Z0-9@.]/g, '');"
                                    value="#{loginController.email}"/>
                       <h:outputLabel for="emaillog" value="#{loginTr.formLoginEmailLabel}"/>
                       <span id="help" class="helper-text" data-error="#{loginTr.formLoginEmailError}" data-success="#{loginTr.formLoginEmailError}"/>
@@ -139,6 +140,7 @@
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputText id="docu" class="ingre validate" autocomplete="off" pt:min="0" required="true"
+                                       pt:oninput="this.value = this.value.replace(/[^0-9]/g, '');"
                                        value="#{registerController.usuario.numeroDoc}"/>
                           <h:outputLabel for="docu" value="#{loginTr.formRegisterDocumentNumberLabel}"/>
                           <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
@@ -151,6 +153,7 @@
                         </div>
                         <div class="input-field col s12 m6">
                           <h:inputText id="tel" class="ingre validate" autocomplete="off" pt:min="0"
+                                       pt:oninput="this.value = this.value.replace(/[^0-9+ ]/g, '');"
                                        value="#{registerController.phoneNumber}"/>
                           <h:outputLabel for="tel" value="#{loginTr.formRegisterPhoneLabel}"/>
                           <span class="helper-text" data-error="#{loginTr.errorIncorrectData}" data-success=""/>
