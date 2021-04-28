@@ -26,10 +26,10 @@
                   <li><b>Categorias</b></li>
                   <ul class="table-of-contents">
                     <h:form>
-                      #{mainMenuController.updateCategoryList()}
-                      <ui:repeat value="#{mainMenuController.getCategoryList()}" var="item">
+                      #{productosController.updateCategoryList()}
+                      <ui:repeat value="#{productosController.getCategoryList()}" var="item">
                         <li>
-                          <h:commandLink action="#{mainMenuController.link(item.id)}" value="#{item.getNombreCategoria()}"/>
+                          <h:commandLink action="#{productosController.link(item.id)}" value="#{item.getNombreCategoria()}"/>
                         </li>
                       </ui:repeat>
                     </h:form>
@@ -49,9 +49,9 @@
                   </div>
                 </div>
                 <h:form>
-                  <h:dataTable pt:id="datatable" value="#{productoController.getCategoryProductList(param['id'])}"
+                  <h:dataTable pt:id="datatable" value="#{productosController.getCategoryProductList(param['id'])}"
                                var="product">
-                    <h:column rendered="#{productoController.listHasData()}">
+                    <h:column rendered="#{productosController.listHasData()}">
 
                       <f:facet name="header" pt:style="display:none;">Productos</f:facet>
                       <div class="col m12 cont">
