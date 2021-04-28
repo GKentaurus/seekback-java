@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
   <f:event type="preRenderView" listener="#{loginController.validate(1)}"/>
 
@@ -29,8 +30,8 @@
                 <div class="background">
                   <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
                 </div>
-                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo" title="#{loginController.usuario.rol.nombreRol}"/></a>
-                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
+                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo" title="#{usuarioController.usuario.rol.nombreRol}"/></a>
+                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{usuarioController.usuario.primerNombre} #{usuarioController.usuario.primerApellido}</span></a>
               </div>
             </li>
             <li><a class="waves-effect sidenav-close" href="admin/reporta.xhtml" target="iframe_a"><i class="fas fa-chart-line"></i>Dashboard</a></li>
@@ -93,8 +94,8 @@
                 <div class="background">
                   <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
                 </div>
-                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo" title="#{loginController.usuario.rol.nombreRol}"/></a>
-                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
+                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo" title="#{usuarioController.usuario.rol.nombreRol}"/></a>
+                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{usuarioController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
               </div>
             </li>
             <li><a class="waves-effect sidenav-close" href="perfil.xhtml" target="iframe_a"><i class="material-icons">person</i>Perfil</a></li>
@@ -166,8 +167,8 @@
                 <div class="background">
                   <h:graphicImage library="images" name="fond1.webp" alt="fond" class="responsive-img"/>
                 </div>
-                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo" title="#{loginController.usuario.rol.nombreRol}"/></a>
-                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{loginController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
+                <a href=""><h:graphicImage style="height: 80px;"  library="images" name="Imagen1.webp" alt="logo" title="#{usuarioController.usuario.rol.nombreRol}"/></a>
+                <a href="perfil.xhtml" target="iframe_a" style="padding: 10px;"><span class="white-text name">Bienvenido #{usuarioController.usuario.primerNombre} #{loginController.usuario.primerApellido}</span></a>
               </div>
             </li>
             <li><a class="waves-effect sidenav-close" href="perfil.xhtml" target="iframe_a"><i class="material-icons">person</i>Perfil</a></li>

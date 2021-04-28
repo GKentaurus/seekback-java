@@ -49,7 +49,7 @@
             <h:panelGroup rendered="#{usuarioController.confirmRole('Administrador')}">
 
               <h:dataTable pt:id="datatable"
-                           value="#{agendaController.agendas}"
+                           value="#{colsulserviController.agendas}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
@@ -66,7 +66,7 @@
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
                   <h:outputText value="#{st.timestamps.created_at}" >
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    <f:convertDateTime pattern="yyyy/MM/dd"/>
                   </h:outputText>
                 </h:column>
                 <h:column>
@@ -103,11 +103,11 @@
                               <div class="input-field">
                                 <h:outputLabel for="emple#{st.id}" value="Empleado" style="margin-top: -30px;"/>
                                 <h:selectOneMenu pt:placeholder=" " pt:id="emple#{st.id}"  class="browser-default"
-                                                 value="#{agendaController.idEmpleado}">
+                                                 value="#{colsulserviController.idEmpleado}">
                                   <f:selectItem itemValue="#{null}"
                                                 itemLabel="Seleccione una opción"
                                                 noSelectionOption="true" />
-                                  <f:selectItems value="#{empleadoController.empleados}"
+                                  <f:selectItems value="#{colsulserviController.empleados}"
                                                  var="em"
                                                  itemValue="#{em.id}"
                                                  itemLabel="#{em.primerNombre} #{em.otrosNombres} #{em.primerApellido} #{em.otrosApellidos}"/>
@@ -118,7 +118,7 @@
                               <div class="input-field">
                                 <h:inputText id="datei"
                                              value="#{st.timestamps.created_at}"  readonly="true">
-                                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                  <f:convertDateTime pattern="yyyy/MM/dd"/>
                                 </h:inputText>
                                 <h:outputLabel for="datei">Fecha</h:outputLabel>
                               </div>
@@ -127,11 +127,11 @@
                               <div class="input-field">
                                 <h:outputLabel for="tserv#{st.id}" value="Tipo Servicio" style="margin-top: -30px;"/>
                                 <h:selectOneMenu pt:placeholder=" " pt:id="tserv#{st.id}"  class="browser-default"
-                                                 value="#{agendaController.idTipoServicio}">
+                                                 value="#{colsulserviController.idTipoServicio}">
                                   <f:selectItem itemValue="#{null}"
                                                 itemLabel="Seleccione una opción"
                                                 noSelectionOption="true" />
-                                  <f:selectItems value="#{agendaController.tipoServicio}"
+                                  <f:selectItems value="#{colsulserviController.tipoServicio}"
                                                  var="da"
                                                  itemValue="#{da.id}"
                                                  itemLabel="#{da.nombreServicio}"/>
@@ -142,11 +142,11 @@
                               <div class="input-field">
                                 <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
                                 <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                                 value="#{agendaController.idEstado}">
+                                                 value="#{colsulserviController.idEstado}">
                                   <f:selectItem itemValue="#{null}"
                                                 itemLabel="Seleccione una opción"
                                                 noSelectionOption="true" />
-                                  <f:selectItems value="#{agendaController.estadosAgendas}"
+                                  <f:selectItems value="#{colsulserviController.estadosAgendas}"
                                                  var="es"
                                                  itemValue="#{es.id}"
                                                  itemLabel="#{es.nombreEstado}"/>
@@ -155,14 +155,14 @@
                             </div>
                             <div class="col s12">
                               <div class="input-field">
-                                <h:inputTextarea pt:id="motivo#{st.id}" class="materialize-textarea" value="#{agendaController.obs}"/>
+                                <h:inputTextarea pt:id="motivo#{st.id}" class="materialize-textarea" value="#{colsulserviController.obs}"/>
                                 <h:outputLabel for="motivo" value="Motivo" style="margin-top: -30px;"/>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{agendaController.update(st.id)}" value="Actualizar" />
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{colsulserviController.updatedByAdmin(st.id)}" value="Actualizar" />
                           <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                         </div>
                       </div>
@@ -171,13 +171,15 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Eliminar</f:facet>
-                  <h:commandButton action="#{agendaController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                  <h:form>
+                    <h:commandButton action="#{colsulserviController.deletedByAdmin(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                  </h:form>
                 </h:column>
               </h:dataTable>
             </h:panelGroup>
             <h:form rendered="#{usuarioController.confirmRole('Empleado')}">
               <h:dataTable pt:id="datatable"
-                           value="#{agendaController.agendasByidEmpleado}"
+                           value="#{colsulserviController.agendasByidEmpleado}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
@@ -197,7 +199,7 @@
                 <h:column>
                   <f:facet name="header">Fecha</f:facet>
                   <h:outputText value="#{st.timestamps.created_at}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    <f:convertDateTime pattern="yyyy/MM/dd"/>
                   </h:outputText>
                 </h:column>
                 <h:column>
@@ -286,7 +288,7 @@
             </h:form>
             <h:form rendered="#{usuarioController.confirmRole('Cliente')}">
               <h:dataTable pt:id="datatable"
-                           value="#{agendaController.agendasByidCliente}"
+                           value="#{colsulserviController.agendasByidCliente}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicios</f:facet>
@@ -305,7 +307,7 @@
                   <h:outputText pt:class="tooltipped"
                                 value="#{st.timestamps.created_at}"
                                 pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}" >
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    <f:convertDateTime pattern="yyyy/MM/dd"/>
                   </h:outputText>
                 </h:column>
                 <h:column>
@@ -341,7 +343,7 @@
                             <div class="input-field">
                               <h:inputText id="datei" class="datepicker"
                                            value="#{st.timestamps.created_at}" readonly="true">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                <f:convertDateTime pattern="yyyy/MM/dd"/>
                                 <h:outputLabel for="datei">Fecha</h:outputLabel>
                               </h:inputText>
                             </div>
@@ -392,7 +394,7 @@
             months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic'],
             cancel: 'Cancelar'},
-          format: 'dd/mm/yyyy'
+          format: 'yyyy/mm/dd'
         });
         $('.tooltipped').tooltip();
         $('select').formSelect();
