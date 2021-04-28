@@ -1,19 +1,21 @@
 package tech.seekback.controllers;
 
 import java.io.IOException;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Producto;
-import tech.seekback.services.ProductoService;
-import tech.seekback.services.tools.MailService;
-
+import java.io.Serializable;
+import java.text.ParseException;
+import java.util.List;
+import java.util.Objects;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
-import java.io.Serializable;
-import java.text.ParseException;
-import java.util.List;
 import javax.servlet.http.Part;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Producto;
+import tech.seekback.models.Slide;
+import tech.seekback.services.ProductoService;
+import tech.seekback.services.SlideService;
+import tech.seekback.services.tools.MailService;
 
 /**
  * @author gkentaurus
@@ -28,6 +30,10 @@ public class IndexController extends CustomController implements Serializable {
   @EJB
   private ProductoService productoService;
 
+  @EJB
+  private SlideService slideService;
+
+  private List<Slide> slides;
   private String recipient;
   private String name;
   private String message;
@@ -97,6 +103,18 @@ public class IndexController extends CustomController implements Serializable {
 
   public void uploadFile() throws IOException, ConnectionExcep, ParseException {
     this.productoService.uploadData();
+  }
+
+  public List<Slide> getPaises() {
+    try {
+      if (Objects.isNull(slides)) {
+        slides = slideService.getAll();
+      }
+    } catch (ConnectionExcep ex) {
+      System.out.println("Error de la consulta 'slides'.");
+      ex.printStackTrace();
+    }
+    return slides;
   }
 
 }

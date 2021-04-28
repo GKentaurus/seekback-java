@@ -11,17 +11,11 @@
 <f:view contentType="text/html">
   <h:body>
     <h1>Pruebas</h1>
+    <!--
     <h:form>
-      <h:commandButton actionListener="#{testController.newEmail()}" value="Enviar correo (Desde servicio)"/>
-      <br/>
       <h:commandButton actionListener="#{testController.encrypt()}" value="Encriptar"/>
-      <br/><br/>
-      <h:commandButton actionListener="#{testController.exportLocal()}" value="Generar reporte (archivo local)"/>
-      <br/>
-      <h:commandButton actionListener="#{testController.exportOnline()}" value="Generar reporte (archivo descargable)"/>
-      <br/>
-      <h:commandButton actionListener="#{testController.testQuery()}" value="Ejecutar consulta"/>
     </h:form>
+    -->
     <hr/>
     <h:form prependId="false" enctype="multipart/form-data">
       <h:inputFile id="archivoInfo" value="#{testController.part}"/>
