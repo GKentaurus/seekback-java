@@ -1,34 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tech.seekback.controllers;
 
 import java.io.IOException;
-import tech.seekback.models.EstadosFidelizacion;
-import tech.seekback.models.SoporteTecnico;
-import tech.seekback.services.EstadosFidelizacionService;
-import tech.seekback.services.SoporteTecnicoService;
-
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.BodegaProducto;
+import tech.seekback.models.EstadosFidelizacion;
+import tech.seekback.models.SoporteTecnico;
+import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.BodegaProductoService;
 import tech.seekback.services.ClienteService;
 import tech.seekback.services.EmpleadoService;
+import tech.seekback.services.EstadosFidelizacionService;
 import tech.seekback.services.ProductoService;
+import tech.seekback.services.SoporteTecnicoService;
 
 /**
+ *
  * @author danny
  */
 @Named
 @ViewScoped
-public class SoporteTecnicoController extends CustomController implements Serializable {
+public class SolsoptecController extends CustomController implements Serializable {
 
   @Inject
   private LoginController loginController;
@@ -37,62 +45,47 @@ public class SoporteTecnicoController extends CustomController implements Serial
   private SoporteTecnicoService soporteTecnicoService;
 
   @EJB
-  private ProductoService productoService;
+  private EmpleadoService empleadoService;
 
   @EJB
   private ClienteService clienteService;
 
   @EJB
-  private EmpleadoService empleadoService;
+  private BodegaProductoService bodegaProductoService;
+
+  @EJB
+  private ProductoService productoService;
 
   @EJB
   private EstadosFidelizacionService estadosFidelizacionService;
 
   private SoporteTecnico soporteTecnico;
-  private List<SoporteTecnico> soportes;
-  private List<SoporteTecnico> soportesByidempleado;
-  private List<SoporteTecnico> soportesByidCliente;
-  private List<EstadosFidelizacion> estados;
-  private Integer count;
   private Integer idCliente;
   private Integer idEmpleado;
   private Integer idProducto;
+  private String obs;
   private Integer idEstado;
   private Integer idUsuario;
-  private Date fecha;
-  private String obs;
+  private List<SoporteTecnico> soportes;
+  private List<Usuario> clientes;
+  private List<Usuario> empleados;
+  private List<BodegaProducto> bodegaProductos;
+  private List<EstadosFidelizacion> estados;
+  private List<SoporteTecnico> soportesByidempleado;
+  private List<SoporteTecnico> soportesByidCliente;
 
   @PostConstruct
   public void init() {
     this.idUsuario = loginController.getUsuario().getId();
   }
 
-  public SoporteTecnicoController() {
-    soporteTecnico = new SoporteTecnico();
-  }
-
-  public SoporteTecnico getSoporteTecnico() {
-    return soporteTecnico;
-  }
-
-  public void setSoporteTecnico(SoporteTecnico soporteTecnico) {
-    this.soporteTecnico = soporteTecnico;
-  }
-
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdUsuario() {
     return idUsuario;
   }
 
   public void setIdUsuario(Integer idEmpleado) {
     this.idUsuario = idEmpleado;
-  }
-
-  public Integer getIdEmpleado() {
-    return idEmpleado;
-  }
-
-  public void setIdEmpleado(Integer idEmpleado) {
-    this.idEmpleado = idEmpleado;
   }
 
   public Integer getIdCliente() {
@@ -103,12 +96,12 @@ public class SoporteTecnicoController extends CustomController implements Serial
     this.idCliente = idCliente;
   }
 
-  public Integer getIdEstado() {
-    return idEstado;
+  public Integer getIdEmpleado() {
+    return idEmpleado;
   }
 
-  public void setIdEstado(Integer idEstado) {
-    this.idEstado = idEstado;
+  public void setIdEmpleado(Integer idEmpleado) {
+    this.idEmpleado = idEmpleado;
   }
 
   public Integer getIdProducto() {
@@ -119,14 +112,6 @@ public class SoporteTecnicoController extends CustomController implements Serial
     this.idProducto = idProducto;
   }
 
-  public Date getFecha() {
-    return fecha;
-  }
-
-  public void setFecha(Date fecha) {
-    this.fecha = fecha;
-  }
-
   public String getObs() {
     return obs;
   }
@@ -135,16 +120,48 @@ public class SoporteTecnicoController extends CustomController implements Serial
     this.obs = obs;
   }
 
-  public Integer getCount() {
+  public Integer getIdEstado() {
+    return idEstado;
+  }
+
+  public void setIdEstado(Integer idEstado) {
+    this.idEstado = idEstado;
+  }
+
+  public List<Usuario> getClientes() {
     try {
-      if (count == null) {
-        count = soporteTecnicoService.getAllCount();
+      if (Objects.isNull(clientes)) {
+        clientes = clienteService.getAll();
       }
     } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
+      System.out.println("Error al consultar los clientes.....");
       ex.printStackTrace();
     }
-    return count;
+    return clientes;
+  }
+
+  public List<Usuario> getEmpleados() {
+    try {
+      if (Objects.isNull(empleados)) {
+        empleados = empleadoService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los clientes.....");
+      ex.printStackTrace();
+    }
+    return empleados;
+  }
+
+  public List<BodegaProducto> getBodegaProductos() {
+    try {
+      if (Objects.isNull(bodegaProductos)) {
+        bodegaProductos = bodegaProductoService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los bodegaProductos.....");
+      ex.printStackTrace();
+    }
+    return bodegaProductos;
   }
 
   public List<SoporteTecnico> getSoportes() {
@@ -157,6 +174,18 @@ public class SoporteTecnicoController extends CustomController implements Serial
       ex.printStackTrace();
     }
     return soportes;
+  }
+
+  public List<EstadosFidelizacion> getEstadosFidelizacion() {
+    try {
+      if (Objects.isNull(estados)) {
+        estados = estadosFidelizacionService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los estadosFidelizacion.....");
+      ex.printStackTrace();
+    }
+    return estados;
   }
 
   public List<SoporteTecnico> getSoportesByidempleado() {
@@ -182,20 +211,36 @@ public class SoporteTecnicoController extends CustomController implements Serial
     }
     return soportesByidCliente;
   }
+  //</editor-fold>
 
-  public List<EstadosFidelizacion> getEstadosFidelizacion() {
-    try {
-      if (Objects.isNull(estados)) {
-        estados = estadosFidelizacionService.getAll();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los estadosFidelizacion.....");
-      ex.printStackTrace();
-    }
-    return estados;
+  public void createdByAdmin() throws ConnectionExcep, IOException {
+
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.soporteTecnico.setProducto(productoService.getOne(this.idProducto));
+    this.soporteTecnico.setCliente(clienteService.getOne(this.idCliente));
+    this.soporteTecnico.setEmpleado(empleadoService.getOne(this.idEmpleado));
+    this.soporteTecnico.setEstado(estadosFidelizacionService.getOne(1));
+    this.soporteTecnico.setComentario(this.obs);
+    this.soporteTecnico.setTimestamps(timestamps);
+
+    this.soporteTecnico = soporteTecnicoService.create(soporteTecnico);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
+
   }
 
-  public void update(Integer idsopo) throws ConnectionExcep, IOException {
+  public void updatedByAdmin(Integer idsopo) throws ConnectionExcep, IOException {
 
     this.soporteTecnico = soporteTecnicoService.getOne(idsopo);
 
@@ -214,7 +259,28 @@ public class SoporteTecnicoController extends CustomController implements Serial
 
   }
 
-  public void create() throws ConnectionExcep, IOException {
+  public void deletedByAdmin(Integer idsopor) throws IOException {
+    try {
+      soporteTecnicoService.delete(soporteTecnicoService.getOne(idsopor));
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Eliminando Registro " + idsopor
+              + "\n######################################################################\n");
+
+      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+      ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
+
+    } catch (ConnectionExcep ex) {
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Error al eliminar el registro " + idsopor
+              + "\n######################################################################\n");
+      ex.printStackTrace();
+
+    }
+  }
+
+  public void createByEmpleado() throws ConnectionExcep, IOException {
 
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
@@ -241,34 +307,7 @@ public class SoporteTecnicoController extends CustomController implements Serial
 
   }
 
-  public void createa() throws ConnectionExcep, IOException {
-
-    Timestamps timestamps = new Timestamps();
-    Date momentum = new Date();
-    timestamps.setDeleted(false);
-    timestamps.setCreated_at(momentum);
-    timestamps.setUpdated_at(momentum);
-
-    this.soporteTecnico.setProducto(productoService.getOne(this.idProducto));
-    this.soporteTecnico.setCliente(clienteService.getOne(this.idCliente));
-    this.soporteTecnico.setEmpleado(empleadoService.getOne(this.idEmpleado));
-    this.soporteTecnico.setEstado(estadosFidelizacionService.getOne(1));
-    this.soporteTecnico.setComentario(this.obs);
-    this.soporteTecnico.setTimestamps(timestamps);
-
-    this.soporteTecnico = soporteTecnicoService.create(soporteTecnico);
-
-    System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t  Registro creado "
-            + "\n######################################################################\n");
-
-    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-    ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
-
-  }
-
-  public void createc() throws ConnectionExcep, IOException {
+  public void createdByCliente() throws ConnectionExcep, IOException {
 
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
@@ -294,26 +333,4 @@ public class SoporteTecnicoController extends CustomController implements Serial
     ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
 
   }
-
-  public void delete(Integer idsopor) throws IOException {
-    try {
-      soporteTecnicoService.delete(soporteTecnicoService.getOne(idsopor));
-      System.out.println(
-              "\n\n\n\n\n######################################################################"
-              + "\n#\t  Eliminando Registro " + idsopor
-              + "\n######################################################################\n");
-
-      ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-      ec.redirect(ec.getRequestContextPath() + "/frames/all/solsoptec.xhtml");
-
-    } catch (ConnectionExcep ex) {
-      System.out.println(
-              "\n\n\n\n\n######################################################################"
-              + "\n#\t  Error al eliminar el registro " + idsopor
-              + "\n######################################################################\n");
-      ex.printStackTrace();
-
-    }
-  }
-
 }

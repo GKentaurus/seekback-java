@@ -150,10 +150,6 @@ public class CalificacionController extends CustomController implements Serializ
     return calificaciondelproducto;
   }
 
-  public Integer getCalCount(Integer calificacion) throws ConnectionExcep {
-    return this.calificacionService.getCalCount(calificacion);
-  }
-
   public void updateadm(Integer idcal) throws ConnectionExcep, IOException {
     if (this.aprobacion == "true") {
       this.aprobacionB = true;

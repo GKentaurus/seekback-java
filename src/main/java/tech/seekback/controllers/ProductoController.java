@@ -79,14 +79,6 @@ public class ProductoController implements Serializable {
     bodegaProducto = new BodegaProducto();
   }
 
-  public List<CategoriasProducto> categoryList() throws ConnectionExcep {
-    return this.categoriasProductoService.getAll();
-  }
-
-  public Integer categoryProductCount(Integer idCategoria) throws ConnectionExcep {
-    return this.productoService.getCategoryCount(idCategoria);
-  }
-
   public List<Producto> getCategoryProductList(Integer id) throws ConnectionExcep {
     CategoriasProducto categoria = categoriasProductoService.getOne(id);
     if (Objects.nonNull(categoria)) {

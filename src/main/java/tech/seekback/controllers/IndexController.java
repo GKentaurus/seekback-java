@@ -93,18 +93,6 @@ public class IndexController extends CustomController implements Serializable {
   }
   // </editor-fold>
 
-  public void setPart(Part part) {
-    this.productoService.setPart(part);
-  }
-
-  public Part getPart() {
-    return this.productoService.getPart();
-  }
-
-  public void uploadFile() throws IOException, ConnectionExcep, ParseException {
-    this.productoService.uploadData();
-  }
-
   public List<Slide> getPaises() {
     try {
       if (Objects.isNull(slides)) {

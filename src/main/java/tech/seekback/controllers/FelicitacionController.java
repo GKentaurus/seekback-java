@@ -45,7 +45,6 @@ public class FelicitacionController extends CustomController implements Serializ
   private List<Felicitacion> felicitaciones;
   private List<Felicitacion> felicitacionesByidCliente;
   private Felicitacion felicitacion;
-  private Integer count;
   private Integer idCliente;
   private String para;
   private String comment;
@@ -81,18 +80,6 @@ public class FelicitacionController extends CustomController implements Serializ
 
   public void setComment(String comment) {
     this.comment = comment;
-  }
-
-  public Integer getCount() {
-    try {
-      if (count == null) {
-        count = felicitacionService.getAllCount();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return count;
   }
 
   public List<Felicitacion> getFelicitaciones() {
@@ -158,6 +145,5 @@ public class FelicitacionController extends CustomController implements Serializ
     this.reportService.exportPdfOnWeb("Reporte de Felicitaciones", columnas, this.felicitacionService.getAll());
 
   }
-
 
 }

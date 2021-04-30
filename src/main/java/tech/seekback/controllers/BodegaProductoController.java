@@ -24,8 +24,10 @@ public class BodegaProductoController extends CustomController implements Serial
 
   @EJB
   private BodegaProductoService bodegaProductoService;
+
   @EJB
   private ProductoService productoService;
+
   private List<BodegaProducto> bodegaProductos;
   private List<BodegaProducto> productosporcategoria;
   private List<BodegaProducto> pornombre;

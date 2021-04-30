@@ -58,7 +58,6 @@ public class PqrController extends CustomController implements Serializable {
   private List<EstadosFidelizacion> estados;
   private List<TipoSolicitud> tipoSolicitudes;
   private PQRS pqrs;
-  private Integer count;
   private Integer idCategoria;
   private Integer idUsuario;
   private Integer idPQR;
@@ -133,6 +132,7 @@ public class PqrController extends CustomController implements Serializable {
     this.pqrs = pqrs;
   }
 
+<<<<<<< Updated upstream
   public Integer getCount() {
     try {
       if (count == null) {
@@ -145,6 +145,8 @@ public class PqrController extends CustomController implements Serializable {
     return count;
   }
 
+=======
+>>>>>>> Stashed changes
   public List<PQRS> getPqrses() {
     try {
       if (Objects.isNull(pqrses)) {
