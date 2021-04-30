@@ -132,21 +132,6 @@ public class PqrController extends CustomController implements Serializable {
     this.pqrs = pqrs;
   }
 
-<<<<<<< Updated upstream
-  public Integer getCount() {
-    try {
-      if (count == null) {
-        count = pqrsService.getAllCount();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los getAllCount.....");
-      ex.printStackTrace();
-    }
-    return count;
-  }
-
-=======
->>>>>>> Stashed changes
   public List<PQRS> getPqrses() {
     try {
       if (Objects.isNull(pqrses)) {
