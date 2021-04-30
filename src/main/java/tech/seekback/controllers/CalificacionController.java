@@ -1,27 +1,26 @@
 package tech.seekback.controllers;
 
 import java.io.IOException;
-import tech.seekback.models.Calificacion;
-import tech.seekback.services.CalificacionService;
-
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import tech.seekback.services.ClienteService;
-import tech.seekback.services.ProductoService;
-import tech.seekback.models.templates.Timestamps;
+import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import java.util.Date;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import net.sf.jasperreports.engine.JRException;
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Calificacion;
+import tech.seekback.models.Producto;
+import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.CalificacionService;
+import tech.seekback.services.ClienteService;
+import tech.seekback.services.ProductoService;
 import tech.seekback.services.tools.ReportService;
 
 /**
@@ -56,6 +55,7 @@ public class CalificacionController extends CustomController implements Serializ
   private String comment;
   private String aprobacion;
   private Boolean aprobacionB;
+  private List<Producto> productos;
 
   @PostConstruct
   public void Init() {
@@ -232,6 +232,15 @@ public class CalificacionController extends CustomController implements Serializ
       ex.printStackTrace();
 
     }
+  }
+
+  public List<Producto> getProductos() {
+    try {
+      productos = productoService.getAll();
+    } catch (Exception e) {
+      System.out.println("error al consultar bodegas");
+    }
+    return productos;
   }
 
 }
