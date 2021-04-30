@@ -61,13 +61,13 @@
                 <div class="actions">
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                   <h:form>
-                    <h:commandButton action="#{felicitacionController.genpdf()}" class="waves-effect btn-flat nopadding cyan lighten-1" value="PDF" />
+                    <h:commandButton action="#{colsulFeliController.genpdf()}" class="waves-effect btn-flat nopadding cyan lighten-1" value="PDF" />
                   </h:form>
                 </div>
               </div>
               <h:form>
                 <h:dataTable pt:id="datatable"
-                             value="#{felicitacionController.felicitaciones}"
+                             value="#{colsulFeliController.felicitaciones}"
                              var="st">
                   <h:column>
                     <f:facet name="header">Remitida</f:facet>
@@ -95,14 +95,14 @@
             <div class="row">
               <h:form>
                 <div class="input-field col s12 m6">
-                  <h:inputText id="area" value="#{felicitacionController.para}"/>
+                  <h:inputText id="area" value="#{colsulFeliController.para}"/>
                   <h:outputLabel for="area" value="Area o empleado"/>
                 </div>
                 <div class="input-field col s12 m6">
-                  <h:inputTextarea class="materialize-textarea" value="#{felicitacionController.comment}"/>
+                  <h:inputTextarea class="materialize-textarea" value="#{colsulFeliController.comment}"/>
                   <h:outputLabel value="Motivo"/>
                 </div>
-                <h:commandButton action="#{felicitacionController.create()}" class="waves-effect waves-green btn" value="Enviar"/>
+                <h:commandButton action="#{colsulFeliController.create()}" class="waves-effect waves-green btn" value="Enviar"/>
               </h:form>
             </div>
             <hr/>
@@ -115,7 +115,7 @@
               </div>
               <h:form>
                 <h:dataTable pt:id="datatable"
-                             value="#{felicitacionController.felicitacionesByidCliente}"
+                             value="#{colsulFeliController.felicitacionesByidCliente}"
                              var="st">
                   <h:column>
                     <f:facet name="header">Dirigida a</f:facet>

@@ -1,13 +1,12 @@
 
 package tech.seekback.services;
 
+import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.EstadosCotizacionDAO;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosCotizacion;
-
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import java.util.List;
 
 /**
  * @author gkentaurus
@@ -41,7 +40,7 @@ public class EstadosCotizacionService {
    * @return Una colección de objetos de tipo EstadosCotizacion consultado por id (referente al Dao que lo implementa)
    * @throws ConnectionExcep
    */
-  public List<EstadosCotizacion> getAll(Integer id) throws ConnectionExcep {
+  public List<EstadosCotizacion> getAll() throws ConnectionExcep {
     return estadosCotizacionDAO.getAll();
   }
 

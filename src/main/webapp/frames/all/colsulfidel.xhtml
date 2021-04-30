@@ -79,12 +79,12 @@
                 <div class="actions">
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                   <h:form>
-                    <h:commandButton action="#{pqrController.genpdf()}" class="waves-effect btn-flat nopadding cyan lighten-1" value="PDF" />
+                    <h:commandButton action="#{colsulFidelController.genpdf()}" class="waves-effect btn-flat nopadding cyan lighten-1" value="PDF" />
                   </h:form>
                 </div>
               </div>
               <h:dataTable pt:id="datatable"
-                           value="#{pqrController.pqrses}"
+                           value="#{colsulFidelController.pqrses}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicio</f:facet>
@@ -144,11 +144,11 @@
                             <input type="hidden" value="#{st.estado.id}" />
                             <div class="input-field col s12 m6">
                               <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                               value="#{pqrController.idEstado}">
+                                               value="#{colsulFidelController.idEstado}">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
                                               noSelectionOption="true" />
-                                <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                <f:selectItems value="#{colsulFidelController.estadosFidelizacion}"
                                                var="es"
                                                itemValue="#{es.id}"
                                                itemLabel="#{es.nombreEstado}"/>
@@ -163,14 +163,14 @@
                             </div>
                             <div class="col s12">
                               <div class="input-field">
-                                <h:inputTextarea pt:id="resp#{st.id}" pt:placeholder="" class="materialize-textarea" value="#{pqrController.answer}"/>
+                                <h:inputTextarea pt:id="resp#{st.id}" pt:placeholder="" class="materialize-textarea" value="#{colsulFidelController.answer}"/>
                                 <h:outputLabel for="resp#{st.id}" value="Respuesta"/>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{pqrController.updateAdm(st.id)}" value="Actualizar" />
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{colsulFidelController.updateAdm(st.id)}" value="Actualizar" />
                           <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                         </div>
                       </h:form>
@@ -186,7 +186,7 @@
                         <h4 class="center-align">Desea eliminar el PQRS de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
                       </div>
                       <div class="modal-footer">
-                        <h:commandButton action="#{pqrController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                        <h:commandButton action="#{colsulFidelController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>
@@ -201,11 +201,11 @@
                 <div class="input-field col m6 s12">
                   <h:outputLabel for="solici" value="Estado" style="margin-top: -30px;"/>
                   <h:selectOneMenu pt:placeholder=" " pt:id="solici"  class="browser-default"
-                                   value="#{pqrController.idCategoria}">
+                                   value="#{colsulFidelController.idCategoria}">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opcion"
                                   noSelectionOption="true" />
-                    <f:selectItems value="#{pqrController.tipoSolicitudes}"
+                    <f:selectItems value="#{colsulFidelController.tipoSolicitudes}"
                                    var="es"
                                    itemValue="#{es.id}"
                                    itemLabel="#{es.nombreSolicitud}"/>
@@ -213,13 +213,13 @@
                 </div>
                 <div class="input-field col m6 s12">
                   <h:outputLabel for="who" value="Area o Persona"/>
-                  <h:inputText id="who" value="#{pqrController.who}"/>
+                  <h:inputText id="who" value="#{colsulFidelController.who}"/>
                 </div>
                 <div class="input-field col s12">
                   <h:outputLabel for="motiv" value="Motivo"/>
-                  <h:inputTextarea  class="materialize-textarea" id="motiv" value="#{pqrController.comment}"/>
+                  <h:inputTextarea  class="materialize-textarea" id="motiv" value="#{colsulFidelController.comment}"/>
                 </div>
-                <h:commandButton action="#{pqrController.create()}" class="waves-effect waves-light btn" value="Registrar"/>
+                <h:commandButton action="#{colsulFidelController.create()}" class="waves-effect waves-light btn" value="Registrar"/>
               </h:form>
             </div>
             <hr/>
@@ -231,7 +231,7 @@
                 </div>
               </div>
               <h:dataTable pt:id="datatable"
-                           value="#{pqrController.pqrses}"
+                           value="#{colsulFidelController.pqrses}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicio</f:facet>

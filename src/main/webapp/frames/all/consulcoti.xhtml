@@ -65,7 +65,7 @@
               </div>
               <h:form>
                 <h:dataTable pt:id="datatable"
-                             value="#{cotizacionController.cotizaciones}"
+                             value="#{consulCotiController.cotizaciones}"
                              var="st">
                   <h:column>
                     <f:facet name="header">Cliente</f:facet>
@@ -118,7 +118,7 @@
                                   <f:selectItem itemValue="#{null}"
                                                 itemLabel="Seleccione una opcion"
                                                 noSelectionOption="true" />
-                                  <f:selectItems value="#{soporteTecnicoController.estadosFidelizacion}"
+                                  <f:selectItems value="#{consulCotiController.estadosCotizacion}"
                                                  var="es"
                                                  itemValue="#{es.id}"
                                                  itemLabel="#{es.nombreEstado}"/>
@@ -169,7 +169,7 @@
               </div>
               <h:form>
                 <h:dataTable pt:id="datatable"
-                             value="#{cotizacionController.cotizacionesByidCliente}"
+                             value="#{consulCotiController.cotizacionesByidCliente}"
                              var="st">
                   <h:column>
                     <f:facet name="header">Empleado</f:facet>
