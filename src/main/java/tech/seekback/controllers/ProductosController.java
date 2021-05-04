@@ -123,7 +123,8 @@ public class ProductosController extends CustomController implements Serializabl
     try {
       this.producto = productoService.getOne(this.idProd);
     } catch (ConnectionExcep ex) {
-      Logger.getLogger(BodegaProductoController.class.getName()).log(Level.SEVERE, null, ex);
+      System.out.println("Error al consultar.....");
+      ex.printStackTrace();
     }
   }
 }
