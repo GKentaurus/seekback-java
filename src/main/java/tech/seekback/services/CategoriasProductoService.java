@@ -2,11 +2,13 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CategoriasProductoDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.CategoriasProducto;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,8 +18,9 @@ import java.util.List;
 public class CategoriasProductoService {
 
   @EJB
-
   private CategoriasProductoDAO categoriasProductoDAO;
+
+  private final String column = "nombreCategoria";
 
   /**
    * @param categoriasProducto
@@ -25,7 +28,22 @@ public class CategoriasProductoService {
    * @throws ConnectionExcep
    */
   public CategoriasProducto create(CategoriasProducto categoriasProducto) throws ConnectionExcep {
-    return categoriasProductoDAO.create(categoriasProducto);
+    if (this.categoriasProductoDAO.checkIfExist(categoriasProducto, column, categoriasProducto.getNombreCategoria())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.categoriasProductoDAO.create(categoriasProducto);
+  }
+
+  public List<CategoriasProducto> create(List<CategoriasProducto> listaCategoriasProductos) throws ConnectionExcep {
+    List<CategoriasProducto> errors = new ArrayList<>();
+    for (CategoriasProducto categoriasProducto : listaCategoriasProductos) {
+      if (!this.categoriasProductoDAO.checkIfExist(categoriasProducto, column, categoriasProducto.getNombreCategoria())) {
+        this.categoriasProductoDAO.create(categoriasProducto);
+      } else {
+        errors.add(categoriasProducto);
+      }
+    }
+    return errors;
   }
 
   /**

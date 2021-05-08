@@ -1,13 +1,14 @@
-
 package tech.seekback.services;
 
-import tech.seekback.dao.interfaces.AdministradorDAO;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Usuario;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import java.util.List;
+
+import tech.seekback.dao.interfaces.AdministradorDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Usuario;
 
 /**
  * @author gkentaurus
@@ -16,8 +17,9 @@ import java.util.List;
 public class AdministradorService {
 
   @EJB
-
   private AdministradorDAO administradorDAO;
+
+  private final String column = "numeroDoc";
 
   /**
    * @param administrador
@@ -25,7 +27,22 @@ public class AdministradorService {
    * @throws ConnectionExcep
    */
   public Usuario create(Usuario administrador) throws ConnectionExcep {
-    return administradorDAO.create(administrador);
+    if (this.administradorDAO.checkIfExist(administrador, column, administrador.getNumeroDoc())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.administradorDAO.create(administrador);
+  }
+
+  public List<Usuario> create(List<Usuario> listaAdministrador) throws ConnectionExcep {
+    List<Usuario> errors = new ArrayList<>();
+    for (Usuario administrador : listaAdministrador) {
+      if (!this.administradorDAO.checkIfExist(administrador, column, administrador.getNumeroDoc())) {
+        this.administradorDAO.create(administrador);
+      } else {
+        errors.add(administrador);
+      }
+    }
+    return errors;
   }
 
   /**

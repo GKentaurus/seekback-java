@@ -2,11 +2,13 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.BodegaDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Bodega;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,8 +18,9 @@ import java.util.List;
 public class BodegaService {
 
   @EJB
-
   private BodegaDAO bodegaDAO;
+
+  private final String column = "nombreBodega";
 
   /**
    * @param bodega
@@ -25,7 +28,22 @@ public class BodegaService {
    * @throws ConnectionExcep
    */
   public Bodega create(Bodega bodega) throws ConnectionExcep {
-    return bodegaDAO.create(bodega);
+    if (this.bodegaDAO.checkIfExist(bodega, column, bodega.getNombreBodega())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.bodegaDAO.create(bodega);
+  }
+
+  public List<Bodega> create(List<Bodega> listaBodegas) throws ConnectionExcep {
+    List<Bodega> errors = new ArrayList<>();
+    for (Bodega bodega : listaBodegas) {
+      if (!this.bodegaDAO.checkIfExist(bodega, column, bodega.getNombreBodega())) {
+        this.bodegaDAO.create(bodega);
+      } else {
+        errors.add(bodega);
+      }
+    }
+    return errors;
   }
 
   /**

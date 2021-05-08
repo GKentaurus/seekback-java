@@ -2,11 +2,13 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CorreoDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Correo;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,15 +18,32 @@ import java.util.List;
 public class CorreoService {
 
   @EJB
-  private CorreoDAO correosDAO;
+  private CorreoDAO correoDAO;
+
+  private final String column = "correoElectronico";
 
   /**
-   * @param correos
+   * @param correo
    * @return Un objeto de tipo Correo
    * @throws ConnectionExcep
    */
-  public Correo create(Correo correos) throws ConnectionExcep {
-    return correosDAO.create(correos);
+  public Correo create(Correo correo) throws ConnectionExcep {
+    if (this.correoDAO.checkIfExist(correo, column, correo.getCorreoElectronico())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.correoDAO.create(correo);
+  }
+
+  public List<Correo> create(List<Correo> listaCorreos) throws ConnectionExcep {
+    List<Correo> errors = new ArrayList<>();
+    for (Correo correo : listaCorreos) {
+      if (!this.correoDAO.checkIfExist(correo, column, correo.getCorreoElectronico())) {
+        this.correoDAO.create(correo);
+      } else {
+        errors.add(correo);
+      }
+    }
+    return errors;
   }
 
   /**
@@ -33,7 +52,7 @@ public class CorreoService {
    * @throws ConnectionExcep
    */
   public Correo getOne(Integer id) throws ConnectionExcep {
-    return correosDAO.getOne(id);
+    return correoDAO.getOne(id);
   }
 
   /**
@@ -42,8 +61,7 @@ public class CorreoService {
    * @throws ConnectionExcep
    */
   public List<Correo> getAll() throws ConnectionExcep {
-    List<Correo> correos = correosDAO.getAll();
-    return correos;
+    return correoDAO.getAll();
   }
 
   /**
@@ -52,7 +70,7 @@ public class CorreoService {
    * @throws ConnectionExcep
    */
   public Correo getByCorreo(String correo) throws ConnectionExcep {
-    return correosDAO.getByCorreo(correo);
+    return correoDAO.getByCorreo(correo);
   }
 
   /**
@@ -61,7 +79,7 @@ public class CorreoService {
    * @throws ConnectionExcep
    */
   public Correo getByIdPrincipal(Integer idUsuario) throws ConnectionExcep {
-    return correosDAO.getByIdPrincipal(idUsuario);
+    return correoDAO.getByIdPrincipal(idUsuario);
   }
 
   /**
@@ -71,7 +89,7 @@ public class CorreoService {
    * @throws ConnectionExcep
    */
   public void update(Correo correo) throws ConnectionExcep {
-    correosDAO.update(correo);
+    correoDAO.update(correo);
   }
 
   /**
@@ -81,6 +99,6 @@ public class CorreoService {
    * @throws ConnectionExcep
    */
   public void delete(Correo correo) throws ConnectionExcep {
-    correosDAO.delete(correo);
+    correoDAO.delete(correo);
   }
 }

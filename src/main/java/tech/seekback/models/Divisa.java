@@ -13,7 +13,12 @@ import java.util.Objects;
  * @author danny
  */
 @Entity
-@Table(name = "divisas")
+@Table(
+  name = "divisas",
+  uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"nombre", "sigla"})
+  }
+)
 @NamedQueries(value = {
   @NamedQuery(name = "Divisa.getAll", query = "SELECT obj FROM Divisa obj WHERE obj.timestamps.deleted = false")
 })

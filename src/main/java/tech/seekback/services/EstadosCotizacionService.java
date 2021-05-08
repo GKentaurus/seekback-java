@@ -1,10 +1,10 @@
-
 package tech.seekback.services;
 
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import tech.seekback.dao.interfaces.EstadosCotizacionDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosCotizacion;
 
@@ -17,13 +17,27 @@ public class EstadosCotizacionService {
   @EJB
   private EstadosCotizacionDAO estadosCotizacionDAO;
 
+  private final String column = "nombreEstado";
+
   /**
    * @param estadosCotizacion
    * @return Un objeto de tipo EstadosCotizacion
    * @throws ConnectionExcep
    */
   public EstadosCotizacion create(EstadosCotizacion estadosCotizacion) throws ConnectionExcep {
+    if (this.estadosCotizacionDAO.checkIfExist(estadosCotizacion, this.column, estadosCotizacion.getNombreEstado())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
     return estadosCotizacionDAO.create(estadosCotizacion);
+  }
+
+  public void create(List<EstadosCotizacion> listaEstadosCotizacion) throws ConnectionExcep {
+    for (EstadosCotizacion estadosCotizacion : listaEstadosCotizacion) {
+      if (this.estadosCotizacionDAO.checkIfExist(estadosCotizacion, this.column, estadosCotizacion.getNombreEstado())) {
+        throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+      }
+    }
+    estadosCotizacionDAO.create(listaEstadosCotizacion);
   }
 
   /**

@@ -1,11 +1,13 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.UsuarioDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,13 +19,30 @@ public class UsuarioService {
   @EJB
   private UsuarioDAO usuarioDAO;
 
+  private final String column = "numeroDoc";
+
   /**
    * @param usuario
    * @return Un objeto de tipo Usuario
    * @throws ConnectionExcep
    */
   public Usuario create(Usuario usuario) throws ConnectionExcep {
-    return usuarioDAO.create(usuario);
+    if (this.usuarioDAO.checkIfExist(usuario, column, usuario.getNumeroDoc())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.usuarioDAO.create(usuario);
+  }
+
+  public List<Usuario> create(List<Usuario> listaClientes) throws ConnectionExcep {
+    List<Usuario> errors = new ArrayList<>();
+    for (Usuario usuario : listaClientes) {
+      if (!this.usuarioDAO.checkIfExist(usuario, column, usuario.getNumeroDoc())) {
+        this.usuarioDAO.create(usuario);
+      } else {
+        errors.add(usuario);
+      }
+    }
+    return errors;
   }
 
   /**

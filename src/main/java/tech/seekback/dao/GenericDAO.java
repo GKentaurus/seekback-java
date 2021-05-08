@@ -1,15 +1,14 @@
 
 package tech.seekback.dao;
 
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.interfaces.EntityTimestamp;
-import tech.seekback.models.templates.Timestamps;
-
+import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.Date;
-import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.interfaces.EntityTimestamp;
+import tech.seekback.models.templates.Timestamps;
 
 /**
  * @author gkentaurus
@@ -49,11 +48,10 @@ public abstract class GenericDAO<T extends EntityTimestamp, PK> implements DAO<T
   /**
    * Por medio de la unidad de persistencia, almacena el objeto recibido por el argumento
    *
+   * @param objs
    * @param obj
-   * @return un objeto de tipo T (referente al DAO que lo implemente)
    * @throws ConnectionExcep
    */
-
   @Override
   public void create(List<T> objs) throws ConnectionExcep {
     System.out.println(
@@ -62,6 +60,18 @@ public abstract class GenericDAO<T extends EntityTimestamp, PK> implements DAO<T
         + "\n######################################################################\n"
     );
     objs.forEach(obj -> em.persist(obj));
+  }
+
+  @Override
+  public boolean checkIfExist(T obj, String column, String value) throws ConnectionExcep {
+    String query = "SELECT COUNT(obj) FROM "
+            + this.classType.getSimpleName() + " obj "
+            + "WHERE obj.timestamps.deleted = false "
+            + "AND obj." + column + " = :value";
+    return ((Number) em.createQuery(query, classType)
+            .setParameter("value", value)
+            .getSingleResult())
+            .intValue() > 0;
   }
 
   /**

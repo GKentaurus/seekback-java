@@ -12,7 +12,12 @@ import java.util.Objects;
  * @author veron
  */
 @Entity
-@Table(name = "tipo_doc")
+@Table(
+  name = "tipo_doc",
+  uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"sigla", "nombreDocumento"})
+  }
+)
 @NamedQueries(value = {
   @NamedQuery(name = "TipoDoc.getAll", query = "SELECT obj FROM TipoDoc obj WHERE obj.timestamps.deleted = false")
 })
@@ -23,10 +28,10 @@ public class TipoDoc implements EntityTimestamp {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @Column(name = "sigla", nullable = false, length = 5)
+  @Column(name = "sigla", nullable = false, length = 5, unique = true)
   private String sigla;
 
-  @Column(name = "nombreDocumento", nullable = false, length = 10)
+  @Column(name = "nombreDocumento", nullable = false, length = 10, unique = true)
   private String nombreDocumento;
 
   @Embedded

@@ -2,6 +2,7 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.EstadosAgendaDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.EstadosAgenda;
 
@@ -16,8 +17,9 @@ import java.util.List;
 public class EstadosAgendaService {
 
   @EJB
-
   private EstadosAgendaDAO estadosAgendaDAO;
+
+  private final String column = "nombreEstado";
 
   /**
    * @param estadosAgenda
@@ -25,7 +27,19 @@ public class EstadosAgendaService {
    * @throws ConnectionExcep
    */
   public EstadosAgenda create(EstadosAgenda estadosAgenda) throws ConnectionExcep {
+    if (this.estadosAgendaDAO.checkIfExist(estadosAgenda, this.column, estadosAgenda.getNombreEstado())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
     return estadosAgendaDAO.create(estadosAgenda);
+  }
+
+  public void create(List<EstadosAgenda> listaEstadosAgenda) throws ConnectionExcep {
+    for (EstadosAgenda estadosAgenda : listaEstadosAgenda) {
+      if (this.estadosAgendaDAO.checkIfExist(estadosAgenda, this.column, estadosAgenda.getNombreEstado())) {
+        throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+      }
+    }
+    estadosAgendaDAO.create(listaEstadosAgenda);
   }
 
   /**

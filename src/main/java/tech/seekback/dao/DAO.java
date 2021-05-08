@@ -1,9 +1,8 @@
 
 package tech.seekback.dao;
 
-import tech.seekback.exceptions.ConnectionExcep;
-
 import java.util.List;
+import tech.seekback.exceptions.ConnectionExcep;
 
 /**
  * Se declaran los métodos del CRUD
@@ -17,6 +16,8 @@ public interface DAO<T, PK> {
   T create(T obj) throws ConnectionExcep;
 
   void create(List<T> objs) throws ConnectionExcep;
+
+  boolean checkIfExist(T obj, String column, String value) throws ConnectionExcep;
 
   T getOne(PK id) throws ConnectionExcep;
 
