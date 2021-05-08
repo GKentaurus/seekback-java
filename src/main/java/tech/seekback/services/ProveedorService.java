@@ -2,11 +2,13 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.ProveedorDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Proveedor;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,13 +20,30 @@ public class ProveedorService {
   @EJB
   private ProveedorDAO proveedorDAO;
 
+  private final String column = "numeroDoc";
+
   /**
    * @param proveedor
    * @return Un objeto de tipo de tipo Proveedor
    * @throws ConnectionExcep
    */
   public Proveedor create(Proveedor proveedor) throws ConnectionExcep {
-    return proveedorDAO.create(proveedor);
+    if (this.proveedorDAO.checkIfExist(proveedor, column, proveedor.getNumeroDoc())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.proveedorDAO.create(proveedor);
+  }
+
+  public List<Proveedor> create(List<Proveedor> listaProveedors) throws ConnectionExcep {
+    List<Proveedor> errors = new ArrayList<>();
+    for (Proveedor proveedor : listaProveedors) {
+      if (!this.proveedorDAO.checkIfExist(proveedor, column, proveedor.getNumeroDoc())) {
+        this.proveedorDAO.create(proveedor);
+      } else {
+        errors.add(proveedor);
+      }
+    }
+    return errors;
   }
 
   /**

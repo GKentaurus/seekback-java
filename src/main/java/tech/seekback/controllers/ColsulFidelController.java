@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tech.seekback.controllers;
 
 import java.io.IOException;
@@ -27,11 +32,12 @@ import tech.seekback.services.TipoSolicitudService;
 import tech.seekback.services.tools.ReportService;
 
 /**
- * @author danny
+ *
+ * @author camorenoc
  */
 @Named
 @ViewScoped
-public class PqrController extends CustomController implements Serializable {
+public class ColsulFidelController extends CustomController implements Serializable {
 
   @Inject
   private LoginController loginController;
@@ -40,108 +46,47 @@ public class PqrController extends CustomController implements Serializable {
   private PQRSService pqrsService;
 
   @EJB
-  private AdministradorService administradorService;
-
-  @EJB
   private EstadosFidelizacionService estadosFidelizacionService;
 
   @EJB
   private TipoSolicitudService tipoSolicitudService;
 
   @EJB
-  private ClienteService clienteService;
-
-  @EJB
   private ReportService reportService;
 
+  @EJB
+  private AdministradorService administradorService;
+
+  @EJB
+  private ClienteService clienteService;
+
+  private Integer idUsuario;
   private List<PQRS> pqrses;
+  private Integer idEstado;
   private List<EstadosFidelizacion> estados;
-  private List<TipoSolicitud> tipoSolicitudes;
+  private String answer;
   private PQRS pqrs;
   private Integer idCategoria;
-  private Integer idUsuario;
-  private Integer idPQR;
-  private Integer idEstado;
+  private List<TipoSolicitud> tipoSolicitudes;
   private String who;
   private String comment;
-  private String answer;
 
   @PostConstruct
   public void Init() {
     this.idUsuario = loginController.getUsuario().getId();
   }
 
-  public PqrController() {
-    pqrs = new PQRS();
-  }
+  public void genpdf() throws JRException, IOException, ConnectionExcep {
 
-  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-  public Integer getIdCategoria() {
-    return idCategoria;
-  }
+    List<String[]> columnas = new ArrayList<>();
+    columnas.add(new String[]{"Solicitud", "tipoSolicitud.nombreSolicitud", String.class.getName(), "100"});
+    columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
+    columnas.add(new String[]{"Dirigido a", "area", String.class.getName(), "100"});
+    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "210"});
+    columnas.add(new String[]{"Respuesta", "respuesta", String.class.getName(), "210"});
+    columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
 
-  public void setIdCategoria(Integer idCategoria) {
-    this.idCategoria = idCategoria;
-  }
-
-  public Integer getIdUsuario() {
-    return idUsuario;
-  }
-
-  public void setIdUsuario(Integer idUsuario) {
-    this.idUsuario = idUsuario;
-  }
-
-  public Integer getIdEstado() {
-    return idEstado;
-  }
-
-  public void setIdEstado(Integer idEstado) {
-    this.idEstado = idEstado;
-  }
-
-  public String getWho() {
-    return who;
-  }
-
-  public void setWho(String who) {
-    this.who = who;
-  }
-
-  public Integer getIdPQR() {
-    return idPQR;
-  }
-
-  public void setIdPQR(Integer idPQR) {
-    this.idPQR = idPQR;
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
-  public PQRS getPqrs() {
-    return pqrs;
-  }
-
-  public void setPqrs(PQRS pqrs) {
-    this.pqrs = pqrs;
-  }
-
-  public List<PQRS> getPqrses() {
-    try {
-      if (Objects.isNull(pqrses)) {
-        pqrses = pqrsService.getAll();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los pqrses.....");
-      ex.printStackTrace();
-    }
-    return pqrses;
+    this.reportService.exportPdfOnWeb("Reporte de PQRS", columnas, this.pqrsService.getAll());
   }
 
   public List<EstadosFidelizacion> getEstadosFidelizacion() {
@@ -156,44 +101,16 @@ public class PqrController extends CustomController implements Serializable {
     return estados;
   }
 
-  public List<TipoSolicitud> getTipoSolicitudes() {
+  public List<PQRS> getPqrses() {
     try {
-      if (Objects.isNull(tipoSolicitudes)) {
-        tipoSolicitudes = tipoSolicitudService.getAll();
+      if (Objects.isNull(pqrses)) {
+        pqrses = pqrsService.getAll();
       }
     } catch (Exception ex) {
-      System.out.println("Error al consultar los tipoSolicitudes.....");
+      System.out.println("Error al consultar los pqrses.....");
       ex.printStackTrace();
     }
-    return tipoSolicitudes;
-  }
-
-  public String getAnswer() {
-    return answer;
-  }
-
-  public void setAnswer(String answer) {
-    this.answer = answer;
-  }
-  //</editor-fold>
-
-  public void updateAdm(Integer idPQR) throws ConnectionExcep, IOException {
-
-    this.pqrs = pqrsService.getOne(idPQR);
-
-    this.pqrs.setEstado(estadosFidelizacionService.getOne(idEstado));
-    this.pqrs.setRespuesta(answer);
-
-    pqrsService.update(pqrs);
-
-    System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t  Registro actualizado "
-            + "\n######################################################################\n");
-
-    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-    ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfidel.xhtml");
-
+    return pqrses;
   }
 
   public void create() throws ConnectionExcep, IOException {
@@ -223,18 +140,22 @@ public class PqrController extends CustomController implements Serializable {
 
   }
 
-  public void genpdf() throws JRException, IOException, ConnectionExcep {
+  public void updateAdm(Integer idPQR) throws ConnectionExcep, IOException {
 
-    List<String[]> columnas = new ArrayList<>();
-    columnas.add(new String[]{"Solicitud", "tipoSolicitud.nombreSolicitud", String.class.getName(), "100"});
-    columnas.add(new String[]{"Cliente", "cliente.primerNombre", String.class.getName(), "70"});
-    columnas.add(new String[]{"Dirigido a", "area", String.class.getName(), "100"});
-    columnas.add(new String[]{"Comentario", "comentario", String.class.getName(), "210"});
-    columnas.add(new String[]{"Respuesta", "respuesta", String.class.getName(), "210"});
-    columnas.add(new String[]{"Fecha", "timestamps.created_at", Date.class.getName(), "100"});
+    this.pqrs = pqrsService.getOne(idPQR);
 
-    this.reportService.exportPdfOnWeb("Reporte de PQRS", columnas, this.pqrsService.getAll());
+    this.pqrs.setEstado(estadosFidelizacionService.getOne(idEstado));
+    this.pqrs.setRespuesta(answer);
 
+    pqrsService.update(pqrs);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfidel.xhtml");
   }
 
   public void delete(Integer idpqr) throws IOException {
@@ -254,9 +175,66 @@ public class PqrController extends CustomController implements Serializable {
               + "\n#\t  Error al eliminar el registro " + idpqr
               + "\n######################################################################\n");
       ex.printStackTrace();
-
     }
-
   }
 
+  public List<TipoSolicitud> getTipoSolicitudes() {
+    try {
+      if (Objects.isNull(tipoSolicitudes)) {
+        tipoSolicitudes = tipoSolicitudService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los tipoSolicitudes.....");
+      ex.printStackTrace();
+    }
+    return tipoSolicitudes;
+  }
+
+  public Integer getIdUsuario() {
+    return idUsuario;
+  }
+
+  public void setIdUsuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
+  }
+
+  public Integer getIdEstado() {
+    return idEstado;
+  }
+
+  public void setIdEstado(Integer idEstado) {
+    this.idEstado = idEstado;
+  }
+
+  public String getAnswer() {
+    return answer;
+  }
+
+  public void setAnswer(String answer) {
+    this.answer = answer;
+  }
+
+  public Integer getIdCategoria() {
+    return idCategoria;
+  }
+
+  public void setIdCategoria(Integer idCategoria) {
+    this.idCategoria = idCategoria;
+  }
+
+  public String getWho() {
+    return who;
+  }
+
+  public void setWho(String who) {
+    this.who = who;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
 }

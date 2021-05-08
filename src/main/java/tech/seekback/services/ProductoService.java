@@ -2,6 +2,7 @@ package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CategoriasProductoDAO;
 import tech.seekback.dao.interfaces.ProductoDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 import tech.seekback.models.templates.Timestamps;
@@ -33,19 +34,37 @@ public class ProductoService extends BulkLoaderService<Producto, Integer> {
   @EJB
   private CategoriasProductoDAO categoriasProductoDAO;
 
+  private final String column = "modeloProducto";
+
   @PostConstruct
   public void init() {
     super.setDAO(productoDAO);
   }
 
   //<editor-fold desc="CRUD methods" defaultstate="collapsed">
+
   /**
    * @param producto
    * @return Un objeto de tipo de tipo Producto
    * @throws ConnectionExcep
    */
   public Producto create(Producto producto) throws ConnectionExcep {
-    return productoDAO.create(producto);
+    if (this.productoDAO.checkIfExist(producto, column, producto.getModeloProducto())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.productoDAO.create(producto);
+  }
+
+  public List<Producto> create(List<Producto> listaProductos) throws ConnectionExcep {
+    List<Producto> errors = new ArrayList<>();
+    for (Producto producto : listaProductos) {
+      if (!this.productoDAO.checkIfExist(producto, column, producto.getModeloProducto())) {
+        this.productoDAO.create(producto);
+      } else {
+        errors.add(producto);
+      }
+    }
+    return errors;
   }
 
   /**

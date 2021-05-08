@@ -12,7 +12,12 @@ import java.util.Objects;
  * @author veron
  */
 @Entity
-@Table(name = "telefonos")
+@Table(
+  name = "telefonos",
+  uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"numeroTelefono", "idUsuario"})
+  }
+)
 @NamedQueries(value = {
   @NamedQuery(name = "Telefono.getAll", query = "SELECT obj FROM Telefono obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(name = "Telefono.getByIdUsuario", query = "SELECT obj FROM Telefono obj WHERE obj.usuario.id = :idUsuario AND obj.timestamps.deleted = false"),

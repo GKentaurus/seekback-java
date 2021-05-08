@@ -2,9 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
   <h:head>
     <title>QPCOM | Seekback</title>
     <meta charset="utf-8"/>
@@ -24,9 +25,9 @@
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
           ['Producto', 'cantidad'],
-          <ui:repeat value="#{productoController.categoryList()}" var="category">
-          ['#{category.nombreCategoria}', #{productoController.categoryProductCount(category.id)}],
-    </ui:repeat>
+      <c:forEach items="#{dashboardController.categoryList()}" var="category">
+        ['#{category.nombreCategoria}', #{dashboardController.categoryProductCount(category.id)}],
+      </c:forEach>
         ]);
         var options = {
           colors: '#017CF6',
@@ -51,11 +52,11 @@
             function drawStuff() {
               var data = new google.visualization.arrayToDataTable([
                 ['Calificación', ''],
-                ["5", #{calificacionController.getCalCount(5)}],
-                ["4", #{calificacionController.getCalCount(4)}],
-                ["3", #{calificacionController.getCalCount(3)}],
-                ["2", #{calificacionController.getCalCount(2)}],
-                ["1", #{calificacionController.getCalCount(1)}]
+                ["5", #{dashboardController.getCalCount(5)}],
+                ["4", #{dashboardController.getCalCount(4)}],
+                ["3", #{dashboardController.getCalCount(3)}],
+                ["2", #{dashboardController.getCalCount(2)}],
+                ["1", #{dashboardController.getCalCount(1)}]
               ]);
               var options = {
                 colors: '#017CF6',
@@ -127,7 +128,7 @@
                                 <h3><i class="fas fa-exclamation-triangle"></i></h3>
                               </div>
                               <div class="col s6 right-align">
-                                <h3>#{pqrController.count}</h3>
+                                <h3>#{dashboardController.countpqr}</h3>
                               </div>
                             </div>
                           </div>
@@ -146,7 +147,7 @@
                                 <h3><i class="far fa-laugh-beam"></i></h3>
                               </div>
                               <div class="col s6 right-align">
-                                <h3>#{felicitacionController.count}</h3>
+                                <h3>#{dashboardController.countfelicitaciones}</h3>
                               </div>
                             </div>
                           </div>
@@ -165,7 +166,7 @@
                                 <h3><i class="fas fa-tools"></i></h3>
                               </div>
                               <div class="col s6 right-align">
-                                <h3>#{soporteTecnicoController.count}</h3>
+                                <h3>#{dashboardController.countsoportes}</h3>
                               </div>
                             </div>
                           </div>
@@ -203,13 +204,13 @@
                     <div class="file-field input-field col s12">
                       <div class="btn col s12 m2">
                         <span>Seleccione</span>
-                        <h:inputFile  value="#{indexController.part}"  />
+                        <h:inputFile  value="#{dashboardController.part}"  />
                       </div>
                       <div class="file-path-wrapper col s12 m8">
                         <h:inputText class="file-path validate"/>
                       </div>
                       <div class="col s12 m2">
-                        <h:commandButton class="btn waves-effect waves-light" value="Cargar" actionListener="#{indexController.uploadFile()}"/>
+                        <h:commandButton class="btn waves-effect waves-light" value="Cargar" actionListener="#{dashboardController.uploadFile()}"/>
                       </div>
                     </div>
                   </h:form>

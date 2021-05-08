@@ -2,7 +2,9 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.EstadosFidelizacionDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.EstadosAgenda;
 import tech.seekback.models.EstadosFidelizacion;
 
 import javax.ejb.EJB;
@@ -18,13 +20,27 @@ public class EstadosFidelizacionService {
   @EJB
   private EstadosFidelizacionDAO estadosFidelizacionDAO;
 
+  private final String column = "nombreEstado";
+
   /**
-   * @param obj
-   * @return Un objeto de tipo EstadosFidelizacion
+   * @param estadosFidelizacion
+   * @return Un objeto de tipo EstadosAgenda
    * @throws ConnectionExcep
    */
-  public EstadosFidelizacion create(EstadosFidelizacion obj) throws ConnectionExcep {
-    return estadosFidelizacionDAO.create(obj);
+  public EstadosFidelizacion create(EstadosFidelizacion estadosFidelizacion) throws ConnectionExcep {
+    if (this.estadosFidelizacionDAO.checkIfExist(estadosFidelizacion, this.column, estadosFidelizacion.getNombreEstado())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return estadosFidelizacionDAO.create(estadosFidelizacion);
+  }
+
+  public void create(List<EstadosFidelizacion> listaEstadosFidelizacion) throws ConnectionExcep {
+    for (EstadosFidelizacion estadosFidelizacion : listaEstadosFidelizacion) {
+      if (this.estadosFidelizacionDAO.checkIfExist(estadosFidelizacion, this.column, estadosFidelizacion.getNombreEstado())) {
+        throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+      }
+    }
+    estadosFidelizacionDAO.create(listaEstadosFidelizacion);
   }
 
   /**

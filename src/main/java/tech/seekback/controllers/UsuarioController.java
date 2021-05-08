@@ -1,20 +1,20 @@
 package tech.seekback.controllers;
 
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.*;
-import tech.seekback.services.*;
-
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.List;
-import java.util.Objects;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.*;
+import tech.seekback.services.*;
 
 /**
  * @author gkentaurus
@@ -30,40 +30,29 @@ public class UsuarioController extends CustomController implements Serializable 
   private UsuarioService usuarioService;
 
   @EJB
-  private AdministradorService administradorService;
-
-  @EJB
-  private EmpleadoService empleadoService;
-
-  @EJB
-  private ClienteService clienteService;
-
-  @EJB
-  private DireccionService direccionService;
-
-  @EJB
-  private TelefonoService telefonoService;
-
-  @EJB
   private CorreoService correoService;
 
   @EJB
-  private TipoDocService tipoDocService;
+  private RolService rolesService;
+
+  private Correo correo;
+  private String email;
 
   private Usuario usuario;
-  private Correo correo;
-  private Direccion direccion;
-  private Telefono telefono;
   private List<Usuario> usuarios;
-  private List<TipoDoc> tipoDocs;
-  private Integer idTipoDoc;
-  private String oldPassword;
-  private String newPassword;
-  private String confirmPassword;
+
+  private Integer idUsuario;
+  private Integer idRolUsuario;
+  private List<Rol> roles;
 
   @PostConstruct
   public void init() {
     this.usuario = loginController.getUsuario();
+    try {
+      roles = rolesService.getAll();
+    } catch (ConnectionExcep ex) {
+      System.out.println("Error de la consulta 'ROLES'.");
+    }
   }
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -73,39 +62,6 @@ public class UsuarioController extends CustomController implements Serializable 
 
   public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
-  }
-
-  public Correo getCorreo() throws ConnectionExcep {
-    return correoService.getByIdPrincipal(usuario.getId());
-  }
-
-  public void setCorreo(Correo correo) {
-    this.correo = correo;
-  }
-
-  public Direccion getDireccion() throws ConnectionExcep {
-    Direccion temp = direccionService.getByIdPrincipal(usuario.getId());
-    return temp;
-  }
-
-  public void setDireccion(Direccion direccion) {
-    this.direccion = direccion;
-  }
-
-  public Telefono getTelefono() throws ConnectionExcep {
-    return telefonoService.getByIdPrincipal(usuario.getId());
-  }
-
-  public void setTelefono(Telefono telefono) {
-    this.telefono = telefono;
-  }
-
-  public Integer getIdTipoDoc() {
-    return idTipoDoc;
-  }
-
-  public void setIdTipoDoc(Integer idTipoDoc) {
-    this.idTipoDoc = idTipoDoc;
   }
 
   public List<Usuario> getUsuarios() throws ConnectionExcep {
@@ -120,71 +76,7 @@ public class UsuarioController extends CustomController implements Serializable 
     return usuarios;
   }
 
-  public List<TipoDoc> getTipoDocs() {
-    try {
-      if (Objects.isNull(tipoDocs)) {
-        tipoDocs = tipoDocService.getAll();
-      }
-    } catch (ConnectionExcep ex) {
-      System.out.println("Error al consultar los usuarios.....");
-      ex.printStackTrace();
-    }
-    return tipoDocs;
-  }
-
-  public String getOldPassword() {
-    return oldPassword;
-  }
-
-  public void setOldPassword(String oldPassword) {
-    this.oldPassword = oldPassword;
-  }
-
-  public String getNewPassword() {
-    return newPassword;
-  }
-
-  public void setNewPassword(String newPassword) {
-    this.newPassword = newPassword;
-  }
-
-  public String getConfirmPassword() {
-    return confirmPassword;
-  }
-
-  public void setConfirmPassword(String confirmPassword) {
-    this.confirmPassword = confirmPassword;
-  }
   //</editor-fold>
-
-  public void updatePassword() throws ConnectionExcep {
-    if (usuario.verificarContrasena(oldPassword)) {
-      if (newPassword.equals(confirmPassword) && !oldPassword.equals(newPassword)) {
-        usuario.setContrasena(newPassword);
-        usuarioService.update(usuario);
-      }
-    }
-  }
-
-  public void update() throws ConnectionExcep {
-    try {
-      usuarioService.update(usuario);
-    } catch (ConnectionExcep ex) {
-      System.out.println("Error al registrar usuario");
-      ex.printStackTrace();
-    }
-  }
-
-  public void delete() throws ConnectionExcep, IOException {
-    try {
-      usuarioService.delete(loginController.getUsuario());
-      loginController.logout();
-    } catch (ConnectionExcep ex) {
-      System.out.println("Error al registrar usuario");
-      ex.printStackTrace();
-    }
-  }
-
   public void deleteu(Integer idusu) throws ConnectionExcep, IOException {
     try {
       usuarioService.delete(usuarioService.getOne(idusu));
@@ -207,6 +99,58 @@ public class UsuarioController extends CustomController implements Serializable 
 
   public boolean confirmRole(String rolName) {
     return usuario.getRol().getNombreRol().equals(rolName);
+  }
+
+  public String getEmail(int idusu) throws ConnectionExcep {
+    email = correoService.getByIdPrincipal(idusu).getCorreoElectronico();
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setUsuario(int usuario) throws ConnectionExcep {
+    this.usuario = usuarioService.getOne(usuario);
+  }
+
+  public Integer getIdUsuario() {
+    return idUsuario;
+  }
+
+  public void setIdUsuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
+  }
+
+  public Integer getIdRolUsuario() {
+    return idRolUsuario;
+  }
+
+  public void setIdRolUsuario(Integer idRolUsuario) {
+    this.idRolUsuario = idRolUsuario;
+  }
+
+  public List<Rol> findAll() {
+    return roles;
+  }
+
+  public void updaterol() throws ConnectionExcep, IOException {
+    this.usuario = usuarioService.getOne(this.idUsuario);
+
+    Date momentum = new Date();
+    this.usuario.getTimestamps().setUpdated_at(momentum);
+
+    this.usuario.setRol(rolesService.getOne(this.idRolUsuario));
+    usuarioService.update(usuario);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro actualizado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/admin/users.xhtml");
+
   }
 
 }

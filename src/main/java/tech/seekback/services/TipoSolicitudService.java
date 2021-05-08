@@ -2,11 +2,13 @@
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.TipoSolicitudDAO;
+import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.TipoSolicitud;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,13 +20,30 @@ public class TipoSolicitudService {
   @EJB
   private TipoSolicitudDAO tipoSolicitudDAO;
 
+  private final String column = "nombreSolicitud";
+
   /**
    * @param tipoSolicitud
    * @return Un objeto de tipo TipoSolicitud
    * @throws ConnectionExcep
    */
   public TipoSolicitud create(TipoSolicitud tipoSolicitud) throws ConnectionExcep {
-    return tipoSolicitudDAO.create(tipoSolicitud);
+    if (this.tipoSolicitudDAO.checkIfExist(tipoSolicitud, column, tipoSolicitud.getNombreSolicitud())) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
+    }
+    return this.tipoSolicitudDAO.create(tipoSolicitud);
+  }
+
+  public List<TipoSolicitud> create(List<TipoSolicitud> listaTipoSolicituds) throws ConnectionExcep {
+    List<TipoSolicitud> errors = new ArrayList<>();
+    for (TipoSolicitud tipoSolicitud : listaTipoSolicituds) {
+      if (!this.tipoSolicitudDAO.checkIfExist(tipoSolicitud, column, tipoSolicitud.getNombreSolicitud())) {
+        this.tipoSolicitudDAO.create(tipoSolicitud);
+      } else {
+        errors.add(tipoSolicitud);
+      }
+    }
+    return errors;
   }
 
   /**

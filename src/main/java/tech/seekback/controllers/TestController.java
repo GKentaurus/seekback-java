@@ -10,6 +10,7 @@ import javax.inject.Named;
 import javax.servlet.http.Part;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
+import tech.seekback.services.EstadosCotizacionService;
 import tech.seekback.services.UsuarioService;
 import tech.seekback.services.tools.UploadFileService;
 
@@ -25,6 +26,9 @@ public class TestController extends CustomController implements Serializable {
 
   @EJB
   private UploadFileService uploadService;
+
+  @EJB
+  private EstadosCotizacionService estadosCotizacionService;
 
   private Part part;
 

@@ -46,14 +46,14 @@
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                   <h:form>
                     <h:commandButton pt:class=" waves-effect btn-small cyan lighten-1 tooltipped"
-                                     action="#{calificacionController.genpdf()}"
+                                     action="#{colsulCalifController.genpdf()}"
                                      value="PDF"
                                      pt:data-position="bottom" pt:data-tooltip="Descargar reporte"/>
                   </h:form>
                 </div>
               </div>
               <h:dataTable pt:id="datatable"
-                           value="#{calificacionController.calificaciones}"
+                           value="#{colsulCalifController.calificaciones}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Califica</f:facet>
@@ -169,7 +169,7 @@
                             <div class="col s12 m6">
                               <h:outputLabel for="esta#{st.id}" value="estado" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:placeholder=" " pt:id="esta#{st.id}"  class="browser-default"
-                                               value="#{calificacionController.aprobacion}">
+                                               value="#{colsulCalifController.aprobacion}">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opción"
                                               noSelectionOption="true" />
@@ -188,7 +188,7 @@
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{calificacionController.updateadm(st.id)}" value="Actualizar" />
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{colsulCalifController.updateadm(st.id)}" value="Actualizar" />
                           <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                         </div>
                       </div>
@@ -205,7 +205,7 @@
                       </div>
                       <h:form>
                         <div class="modal-footer">
-                          <h:commandButton action="#{calificacionController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                          <h:commandButton action="#{colsulCalifController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
                           <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                         </div>
                       </h:form>
@@ -221,11 +221,11 @@
                 <div class="input-field col s12 m6">
                   <h:outputLabel for="prod" value="Productos" style="margin-top: -30px;"/>
                   <h:selectOneMenu pt:id="prod"  class="browser-default"
-                                   value="#{calificacionController.idProducto}" requiredMessage="Debe seleccionar un producto" required="true">
+                                   value="#{colsulCalifController.idProducto}" requiredMessage="Debe seleccionar un producto" required="true">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opción"
                                   noSelectionOption="true" />
-                    <f:selectItems value="#{productoController.productos}"
+                    <f:selectItems value="#{colsulCalifController.productos}"
                                    var="da"
                                    itemValue="#{da.id}"
                                    itemLabel="#{da.modeloProducto}"/>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="input-field col s12 m6">
                   <h:selectOneMenu pt:id="cal"
-                                   value="#{calificacionController.calif}" requiredMessage="Debe seleccionar una calificación" required="true">
+                                   value="#{colsulCalifController.calif}" requiredMessage="Debe seleccionar una calificación" required="true">
                     <f:selectItem itemValue="#{null}"
                                   itemLabel="Seleccione una opción"
                                   noSelectionOption="true" />
@@ -246,10 +246,10 @@
                   <h:outputLabel for="area" value="Calificación"/>
                 </div>
                 <div class="input-field col s12 m6">
-                  <h:inputTextarea class="materialize-textarea" value="#{calificacionController.comment}" requiredMessage="Debe ingrear un motivo" required="true"/>
+                  <h:inputTextarea class="materialize-textarea" value="#{colsulCalifController.comment}" requiredMessage="Debe ingrear un motivo" required="true"/>
                   <h:outputLabel value="Motivo"/>
                 </div>
-                <h:commandButton action="#{calificacionController.create()}" class="waves-effect waves-green btn" value="Enviar"/>
+                <h:commandButton action="#{colsulCalifController.create()}" class="waves-effect waves-green btn" value="Enviar"/>
                 <div class="col s12">
                   <h:messages></h:messages>
                 </div>
@@ -265,7 +265,7 @@
               </div>
               <h:form>
                 <h:dataTable pt:id="datatable"
-                             value="#{calificacionController.calificaciones}"
+                             value="#{colsulCalifController.calificaciones}"
                              var="st">
                   <h:column>
                     <f:facet name="header">Fecha</f:facet>

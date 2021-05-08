@@ -46,14 +46,14 @@
                 <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                 <h:form>
                   <h:commandButton pt:class=" waves-effect btn-small cyan lighten-1 tooltipped"
-                                   action="#{productoController.genpdf()}"
+                                   action="#{modRefnController.genpdf()}"
                                    value="PDF"
                                    pt:data-position="bottom" pt:data-tooltip="Descargar reporte"/>
                 </h:form>
               </div>
             </div>
             <h:dataTable pt:id="datatable"
-                         value="#{bodegaProductoController.bodegaProductos}"
+                         value="#{modRefnController.bodegaProductos}"
                          var="st">
               <h:column>
                 <f:facet name="header">Producto</f:facet>
@@ -101,19 +101,19 @@
                         <div class="row">
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <h:inputText pt:id="model#{st.id}" value="#{productoController.modelProduct}" pt:placeholder=""/>
+                              <h:inputText pt:id="model#{st.id}" value="#{modRefnController.modelProduct}" pt:placeholder=""/>
                               <h:outputLabel for="model#{st.id}" value="Producto"/>
                             </div>
                           </div>
                           <div class="col s6 m3">
                             <div class="input-field">
-                              <h:inputText pt:id="can#{st.id}" pt:type="number" value="#{productoController.cant}" pt:placeholder=""/>
+                              <h:inputText pt:id="can#{st.id}" pt:type="number" value="#{modRefnController.cant}" pt:placeholder=""/>
                               <h:outputLabel for="can#{st.id}" value="Cantidad"/>
                             </div>
                           </div>
                           <div class="col s6 m3">
                             <div class="input-field">
-                              <h:inputText pt:id="pre#{st.id}" pt:placeholder="" value="#{productoController.valor}">
+                              <h:inputText pt:id="pre#{st.id}" pt:placeholder="" value="#{modRefnController.valor}">
                               </h:inputText>
                               <h:outputLabel for="pre" value="Precio"/>
                             </div>
@@ -122,12 +122,12 @@
                             <div class="input-field">
                               <h:outputLabel for="cat#{st.id}" value="Categoria" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:placeholder=" " pt:id="cat#{st.id}"
-                                               value="#{productoController.idCat}"
+                                               value="#{modRefnController.idCat}"
                                                class="browser-default" required="true">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
                                               noSelectionOption="true" />
-                                <f:selectItems value="#{categoriaController.categoriasProductos}"
+                                <f:selectItems value="#{modRefnController.categoriasProductos}"
                                                var="cl"
                                                itemValue="#{cl.id}"
                                                itemLabel="#{cl.nombreCategoria}"/>
@@ -138,12 +138,12 @@
                             <div class="input-field">
                               <h:outputLabel for="bod#{st.id}" value="Bodega" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:placeholder=" " pt:id="bod#{st.id}"
-                                               value="#{productoController.idBod}"
+                                               value="#{modRefnController.idBod}"
                                                class="browser-default" required="true">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
                                               noSelectionOption="true" />
-                                <f:selectItems value="#{productoController.bodegas}"
+                                <f:selectItems value="#{modRefnController.bodegas}"
                                                var="cl"
                                                itemValue="#{cl.id}"
                                                itemLabel="#{cl.nombreBodega}"/>
@@ -154,7 +154,7 @@
                             <div class="input-field">
                               <h:outputLabel for="esta#{st.id}" value="Aprobado" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:placeholder=" " pt:id="esta#{st.id}"
-                                               value="#{productoController.estado}"
+                                               value="#{modRefnController.estado}"
                                                class="browser-default" required="true">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
@@ -168,14 +168,14 @@
                           </div>
                           <div class="col s12">
                             <div class="input-field">
-                              <h:inputTextarea pt:id="desc#{st.id}" pt:placeholder="" class="materialize-textarea" value="#{productoController.descripcion}"></h:inputTextarea>
+                              <h:inputTextarea pt:id="desc#{st.id}" pt:placeholder="" class="materialize-textarea" value="#{modRefnController.descripcion}"></h:inputTextarea>
                               <h:outputLabel for="desc" value="Descripción" />
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <h:commandButton action="#{productoController.updateadm(st.id, st.producto.id)}" class="btn waves-effect waves-light red" value="Actualizar"/>
+                        <h:commandButton action="#{modRefnController.updateadm(st.id, st.producto.id)}" class="btn waves-effect waves-light red" value="Actualizar"/>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                       </div>
                     </h:form>
@@ -192,7 +192,7 @@
                     </div>
                     <h:form>
                       <div class="modal-footer">
-                        <h:commandButton action="#{productoController.delete(st.producto.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                        <h:commandButton action="#{modRefnController.delete(st.producto.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </h:form>

@@ -19,9 +19,9 @@ and open the template in the editor.
 
     <ui:composition template="/WEB-INF/templates/handf.xhtml">
       <ui:define name="content">
-        #{bodegaProductoController.setIdProd((param['id']))}
+        #{productosController.setIdProd((param['id']))}
 
-        <h:outputText value="#{bodegaProductoController.getOne()}"/>
+        <h:outputText value="#{productosController.getOne()}"/>
         <h:outputScript library="scripts" name="anyp.js"/>
 
         <div class="wrap" id="inv">
@@ -35,10 +35,10 @@ and open the template in the editor.
                         <h:commandLink action="index.xhtml?faces-redirect=true">Inicio</h:commandLink>
                         <li style="padding-left: 10px">
                           <a class="dropdown-trigger breadcrumb"
-                             data-target="dropdown3">#{bodegaProductoController.producto.categoria.nombreCategoria}</a>
+                             data-target="dropdown3">#{productosController.producto.categoria.nombreCategoria}</a>
                           <li style="padding-left: 20px">
                             <h:commandLink
-                              class="active">#{bodegaProductoController.producto.modeloProducto}</h:commandLink>
+                              class="active">#{productosController.producto.modeloProducto}</h:commandLink>
                           </li>
                         </li>
                       </li>
@@ -72,8 +72,8 @@ and open the template in the editor.
                 <div class="col s12 col m6">
                   <div class="z-depth-3 card grey lighten-4">
                     <div class="card-content black-text">
-                      <span class="card-title">#{bodegaProductoController.producto.modeloProducto}</span>
-                      <p>#{bodegaProductoController.producto.descripcion}</p>
+                      <span class="card-title">#{productosController.producto.modeloProducto}</span>
+                      <p>#{productosController.producto.descripcion}</p>
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ and open the template in the editor.
               <div class="col m8 s12">
                 <h:form>
                   <h:dataTable pt:id="datatable" class="highlight"
-                               value="#{calificacionController.getCalificaciondelproducto(param['id'])}"
+                               value="#{productosController.getCalificaciondelproducto(param['id'])}"
                                var="st">
                     <h:column>
                       <f:facet name="header">Califica</f:facet>
@@ -92,9 +92,9 @@ and open the template in the editor.
                     </h:column>
                     <h:column>
                       <f:facet name="header">Fecha</f:facet>
-                      <h:outputText pt:class="tooltipped"
-                                    value="#{st.timestamps.created_at.date}/#{st.timestamps.created_at.month}/#{st.timestamps.created_at.year}"
-                                    pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}"/>
+                      <h:outputText value="#{st.timestamps.created_at}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                      </h:outputText>
                     </h:column>
                     <h:column>
                       <f:facet name="header">Comentario</f:facet>
@@ -103,8 +103,7 @@ and open the template in the editor.
                     </h:column>
                     <h:column>
                       <f:facet name="header">Calificacion</f:facet>
-                      <h:outputText pt:class="tooltipped #{st.calificacion}" value="#{st.calificacion}"
-                                    pt:data-position="bottom" pt:data-tooltip="#{st.calificacion}"/>
+                      <h:outputText pt:class="#{st.calificacion}" value="#{st.calificacion}"/>
                     </h:column>
                   </h:dataTable>
                 </h:form>
@@ -130,34 +129,5 @@ and open the template in the editor.
 
       </ui:define>
     </ui:composition>
-    <!--
-        <footer class="page-footer" style="background-color: #222222;">
-          <div class="wrap transparent">
-            <div class="container">
-              <div class="row">
-                <div class="col s6" style="text-align:left">
-                  <h4>Redes sociales </h4>
-                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-facebook-f" style="color:black;"></i></h:commandLink> Siguenos en facebook
-                  <br />
-                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-twitter" style="color:black;"></i></h:commandLink> Siguenos en twitter
-                  <br />
-                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fab fa-instagram" style="color:black;"></i></h:commandLink> Siguenos en Instagram
-                </div>
-                <div class="col s6" style="text-align:left">
-                  <h4>Información de contacto </h4>
-                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-phone-alt" style="color:black;"></i></h:commandLink> +57 300 000 0000
-                  <br />
-                  <br />
-                  <h:commandLink class="btn-floating btn-small waves-effect waves-light white"><i class="fas fa-envelope" style="color:black;"></i></h:commandLink> <h:commandLink pt:href="mailto:admin@qpcom.seekback.tech" style="color:white;">admin@qpcom.seekback.tech</h:commandLink>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-              Copyright Seekback. Todos los derechos reservados.
-            </div>
-          </div>
-        </footer>-->
   </h:body>
 </html>

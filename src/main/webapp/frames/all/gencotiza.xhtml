@@ -38,9 +38,9 @@
                   <div class="input-field">
                     <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
                     <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default"
-                                     value="#{cotizacionController.idCliente}">
+                                     value="#{genCotizaController.idCliente}">
                       <f:selectItem itemLabel="Seleccione una opcion"/>
-                      <f:selectItems value="#{clienteController.clientes}"
+                      <f:selectItems value="#{genCotizaController.clientes}"
                                      var="cl"
                                      itemValue="#{cl.id}"
                                      itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
@@ -49,9 +49,9 @@
                 </div>
                 <div class="input-field col s12 m6">
                   <h:selectOneMenu id="divi"
-                                   value="#{cotizacionController.idDivisaseleccionada}">
+                                   value="#{genCotizaController.idDivisaseleccionada}">
                     <f:selectItem itemLabel="Seleccione una opcion"/>
-                    <f:selectItems value="#{divisaController.divisas}"
+                    <f:selectItems value="#{genCotizaController.divisas}"
                                    var="di"
                                    itemValue="#{di.id}"
                                    itemLabel="#{di.sigla} #{di.nombre}"/>
@@ -63,7 +63,7 @@
                   <h:selectOneMenu pt:placeholder=" " id="trm"  class="browser-default">
                     <f:selectItem itemLabel="Seleccione una opcion"
                                   noSelectionOption="true" />
-                    <f:selectItems value="#{cotizacionController.trmsSeleccionada}"
+                    <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
                                    var="tr"
                                    itemValue="#{tr.id}"
                                    itemLabel="#{tr.tasaCambio}">
@@ -74,13 +74,13 @@
               </div>
               <div class="col s12 m6">
                 <div class="input-field">
-                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{cotizacionController.motivo}" ></h:inputTextarea>
+                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{genCotizaController.motivo}" ></h:inputTextarea>
                   <h:outputLabel for="motivo">Motivo</h:outputLabel>
                 </div>
               </div>
               <div class="row">
                 <div class="col s12">
-                  <h:commandButton class="waves-effect waves-light btn" action="#{cotizacionController.createe()}" value="Solicitar"/>
+                  <h:commandButton class="waves-effect waves-light btn" action="#{genCotizaController.createe()}" value="Solicitar"/>
                 </div>
               </div>
             </h:form>
@@ -90,9 +90,9 @@
               <div class="row">
                 <div class="input-field col s12 m6">
                   <h:selectOneMenu id="divi"
-                                   value="#{cotizacionController.idDivisaseleccionada}">
+                                   value="#{genCotizaController.idDivisaseleccionada}">
                     <f:selectItem itemLabel="Seleccione una opcion"/>
-                    <f:selectItems value="#{divisaController.divisas}"
+                    <f:selectItems value="#{genCotizaController.divisas}"
                                    var="di"
                                    itemValue="#{di.id}"
                                    itemLabel="#{di.sigla} #{di.nombre}"/>
@@ -102,10 +102,10 @@
                 </div>
                 <div class="input-field col s12 m6">
                   <h:selectOneMenu pt:placeholder=" " id="trm"  class="browser-default"
-                                   value="#{cotizacionController.trm}">
+                                   value="#{genCotizaController.trm}">
                     <f:selectItem itemLabel="Seleccione una opcion"
                                   noSelectionOption="true" />
-                    <f:selectItems value="#{cotizacionController.trmsSeleccionada}"
+                    <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
                                    var="tr"
                                    itemValue="#{tr.id}"
                                    itemLabel="#{tr.tasaCambio}">
@@ -115,11 +115,11 @@
                 </div>
                 <div class="col s12 m6">
                   <div class="input-field">
-                    <h:inputTextarea id="motivo" class="materialize-textarea" value="#{cotizacionController.motivo}" ></h:inputTextarea>
+                    <h:inputTextarea id="motivo" class="materialize-textarea" value="#{genCotizaController.motivo}" ></h:inputTextarea>
                     <h:outputLabel for="motivo">Motivo</h:outputLabel>
                   </div>
                 </div>
-                <h:commandButton class="waves-effect waves-light btn" action="#{cotizacionController.test()}" value="Solicitar"/>
+                <h:commandButton class="waves-effect waves-light btn" action="#{genCotizaController.test()}" value="Solicitar"/>
               </div>
               <h:messages></h:messages>
             </h:form>

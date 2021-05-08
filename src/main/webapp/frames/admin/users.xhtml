@@ -63,7 +63,7 @@
                 </h:column>
                 <h:column>
                   <f:facet name="header">Correo</f:facet>
-                  <h:commandLink value="#{correoController.getEmail(st.id)}" pt:href="mailto:#{correoController.getEmail(st.id)}"/>
+                  <h:commandLink value="#{usuarioController.getEmail(st.id)}" pt:href="mailto:#{usuarioController.getEmail(st.id)}"/>
                 </h:column>
                 <h:column>
                   <f:facet name="header">Rol</f:facet>
@@ -106,7 +106,7 @@
                           </div>
                           <div class="col s12 m6">
                             <div class="input-field">
-                              <h:inputText id="email" value="#{correoController.getEmail(st.id)}" readonly="true"/>
+                              <h:inputText id="email" value="#{usuarioController.getEmail(st.id)}" readonly="true"/>
                               <h:outputLabel for="email">Correo</h:outputLabel>
                             </div>
                           </div>
@@ -114,7 +114,7 @@
                             <div class="input-field">
                               <h:outputLabel for="usu#{st.id}" value="usu" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:id="usu#{st.id}"  class="browser-default"
-                                               value="#{rolesController.idUsuario}">
+                                               value="#{usuarioController.idUsuario}">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
                                               noSelectionOption="true" />
@@ -129,11 +129,11 @@
                             <div class="input-field">
                               <h:outputLabel for="rol#{st.id}" value="Rol" style="margin-top: -30px;"/>
                               <h:selectOneMenu pt:id="rol#{st.id}"  class="browser-default"
-                                               value="#{rolesController.idRolUsuario}">
+                                               value="#{usuarioController.idRolUsuario}">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
                                               noSelectionOption="true" />
-                                <f:selectItems value="#{rolesController.all}"
+                                <f:selectItems value="#{usuarioController.findAll()}"
                                                var="es"
                                                itemValue="#{es.id}"
                                                itemLabel="#{es.nombreRol}"/>
@@ -143,7 +143,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <h:commandButton action="#{rolesController.updaterol}" class="waves-effect waves-green btn-flat" value="Actualizar"/>
+                        <h:commandButton action="#{usuarioController.updaterol}" class="waves-effect waves-green btn-flat" value="Actualizar"/>
                         <h:commandLink class="modal-close waves-effect waves-green btn-flat">Cancelar</h:commandLink>
                       </div>
                     </div>
