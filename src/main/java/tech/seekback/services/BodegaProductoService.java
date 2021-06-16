@@ -55,16 +55,6 @@ public class BodegaProductoService {
     return bodegaProductos;
   }
 
-  /**
-   * @param parteNombre
-   * @return Una colección de objetos de tipo producto consultado por nombre
-   * @throws ConnectionExcep
-   */
-  public List<BodegaProducto> getLikeName(String parteNombre) throws ConnectionExcep {
-    List<BodegaProducto> bodegaProductos = bodegaProductoDAO.getLikeName(parteNombre);
-    return bodegaProductos;
-  }
-
   public BodegaProducto getByIdProducto(Integer idProducto) throws ConnectionExcep {
     BodegaProducto bodegaProductobyidproducto = bodegaProductoDAO.getByIdProducto(idProducto);
     return bodegaProductobyidproducto;

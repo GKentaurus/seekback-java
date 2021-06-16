@@ -16,30 +16,38 @@ import java.util.Objects;
 @NamedQueries(value = {
   @NamedQuery(name = "Producto.getAll", query = "SELECT obj FROM Producto obj WHERE obj.timestamps.deleted = false"),
   @NamedQuery(
-    name = "Producto.getCategoryProducts",
-    query = "SELECT obj " +
-      "FROM Producto obj " +
-      "WHERE obj.categoria.id = :idCategoria " +
-      "AND obj.estado = true " +
-      "AND obj.timestamps.deleted = false"
+          name = "Producto.getCategoryProducts",
+          query = "SELECT obj "
+          + "FROM Producto obj "
+          + "WHERE obj.categoria.id = :idCategoria "
+          + "AND obj.estado = true "
+          + "AND obj.timestamps.deleted = false"
   ),
   @NamedQuery(
-    name = "Producto.getCatCount",
-    query = "SELECT COUNT(obj) " +
-      "FROM Producto obj " +
-      "WHERE obj.categoria.id = :idCategoria " +
-      "AND obj.estado = true " +
-      "AND obj.timestamps.deleted = false"
+          name = "Producto.getCatCount",
+          query = "SELECT COUNT(obj) "
+          + "FROM Producto obj "
+          + "WHERE obj.categoria.id = :idCategoria "
+          + "AND obj.estado = true "
+          + "AND obj.timestamps.deleted = false"
   ),
   @NamedQuery(
-    name = "Producto.getLastProducts",
-    query = "SELECT obj " +
-      "FROM Producto obj " +
-      "WHERE obj.estado = true " +
-      "AND obj.timestamps.deleted = false " +
-      "GROUP BY obj " +
-      "ORDER BY obj.id DESC "
+          name = "Producto.getLikeName",
+          query = "SELECT obj "
+          + "FROM Producto obj "
+          + "WHERE obj.modeloProducto like CONCAT('%', :parteNombre, '%') "
+          + "AND obj.timestamps.deleted = false"
+  ),
+  @NamedQuery(
+          name = "Producto.getLastProducts",
+          query = "SELECT obj "
+          + "FROM Producto obj "
+          + "WHERE obj.estado = true "
+          + "AND obj.timestamps.deleted = false "
+          + "GROUP BY obj "
+          + "ORDER BY obj.id DESC "
   )
+
 })
 public class Producto implements EntityTimestamp {
 
@@ -226,13 +234,13 @@ public class Producto implements EntityTimestamp {
   @Override
   public String toString() {
     return "Producto("
-      + "id = " + id + ", "
-      + "modeloProducto = " + modeloProducto + ", "
-      + "descripcion = " + descripcion + ", "
-      + "precioVenta = " + precioVenta + ", "
-      + "categoria = " + categoria + ", "
-      + "estado = " + estado + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "modeloProducto = " + modeloProducto + ", "
+            + "descripcion = " + descripcion + ", "
+            + "precioVenta = " + precioVenta + ", "
+            + "categoria = " + categoria + ", "
+            + "estado = " + estado + ", "
+            + timestamps.toString()
+            + ")";
   }
 }

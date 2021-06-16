@@ -123,23 +123,24 @@ public class UsuarioController extends CustomController implements Serializable 
   }
 
   public Integer getIdRolUsuario() {
+    this.idRolUsuario = idRolUsuario;
     return idRolUsuario;
   }
 
   public void setIdRolUsuario(Integer idRolUsuario) {
     this.idRolUsuario = idRolUsuario;
+    System.out.println(this.idRolUsuario);
   }
 
   public List<Rol> findAll() {
     return roles;
   }
 
-  public void updaterol() throws ConnectionExcep, IOException {
-    this.usuario = usuarioService.getOne(this.idUsuario);
+  public void updaterol(Integer idusu) throws ConnectionExcep, IOException {
+    this.usuario = usuarioService.getOne(idusu);
 
-    Date momentum = new Date();
-    this.usuario.getTimestamps().setUpdated_at(momentum);
-
+//    Date momentum = new Date();
+//    this.usuario.getTimestamps().setUpdated_at(momentum);
     this.usuario.setRol(rolesService.getOne(this.idRolUsuario));
     usuarioService.update(usuario);
 

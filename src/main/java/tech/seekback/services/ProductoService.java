@@ -24,7 +24,6 @@ import java.util.Objects;
 /**
  * @author gkentaurus
  */
-
 @Stateless
 public class ProductoService extends BulkLoaderService<Producto, Integer> {
 
@@ -42,7 +41,6 @@ public class ProductoService extends BulkLoaderService<Producto, Integer> {
   }
 
   //<editor-fold desc="CRUD methods" defaultstate="collapsed">
-
   /**
    * @param producto
    * @return Un objeto de tipo de tipo Producto
@@ -53,6 +51,16 @@ public class ProductoService extends BulkLoaderService<Producto, Integer> {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_DUPLICADO);
     }
     return this.productoDAO.create(producto);
+  }
+
+  /**
+   * @param parteNombre
+   * @return Una colección de objetos de tipo producto consultado por nombre
+   * @throws ConnectionExcep
+   */
+  public List<Producto> getLikeName(String parteNombre) throws ConnectionExcep {
+    List<Producto> productos = productoDAO.getLikeName(parteNombre);
+    return productos;
   }
 
   public List<Producto> create(List<Producto> listaProductos) throws ConnectionExcep {
@@ -135,7 +143,7 @@ public class ProductoService extends BulkLoaderService<Producto, Integer> {
       ts.setUpdated_at(date);
       producto.setTimestamps(ts);
     } else {
-      this.getErrors().add(new String[] {"Se esperaban " + modelFieldsCount + ", se recibieron " + data.length, line});
+      this.getErrors().add(new String[]{"Se esperaban " + modelFieldsCount + ", se recibieron " + data.length, line});
     }
     return producto;
   }

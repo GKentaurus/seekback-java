@@ -42,6 +42,18 @@ public class ProductoDAOJPA extends GenericDAO<Producto, Integer> implements Pro
   }
 
   @Override
+  public List<Producto> getLikeName(String parteNombre) throws ConnectionExcep {
+    try {
+      return em
+              .createNamedQuery("Producto.getLikeName", classType)
+              .setParameter("parteNombre", parteNombre)
+              .getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
+  }
+
+  @Override
   public List<Producto> getLastProducts(Integer limit) throws ConnectionExcep {
     try {
       return em

@@ -1,50 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
->
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>error 500</title>
-  <style>
+      >
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>error 500</title>
+    <style>
       body {
-          background-color: #161D2F;
+        background-color: #161D2F;
       }
 
       p {
-          font-family: 'Roboto', sans-serif;
-          color: white;
-          font-size: 50px;
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        font-size: 50px;
       }
 
       .btn {
-          font-family: 'Roboto', sans-serif;
-          padding: 5px;
-          text-decoration: none;
-          background-color: #161D2F;
-          color: white;
-          transition: 0.3s ease-in-out;
+        font-family: 'Roboto', sans-serif;
+        padding: 5px;
+        text-decoration: none;
+        background-color: #161D2F;
+        color: white;
+        transition: 0.3s ease-in-out;
       }
 
       .btn:hover {
-          padding: 6px;
-          text-decoration: none;
-          background-color: white;
-          color: #161D2F;
+        padding: 6px;
+        text-decoration: none;
+        background-color: white;
+        color: #161D2F;
       }
-  </style>
-</head>
-<h:body>
-  <center>
-    <div>
-      <p style="color:#EC0665;margin-left: -5px;">ERROR</p>
-      <p style="margin-top: -111px;">ERROR</p>
-      <h:graphicImage library="images" name="5001.webp" style="width: 40%; margin-top:-20px;"/>
-      <p style="color:#EC0665;margin-left: -5px;">ERROR INTERNO DEL SERVIDOR</p>
-      <p style="margin-top: -111px;">ERROR INTERNO DEL SERVIDOR</p>
-      <p style="font-size:20px;">Aparentemente algo no est&aacute; funcionando bien</p>
-    </div>
-  </center>
-</h:body>
+    </style>
+  </head>
+  <h:body>
+    <center>
+      <div>
+        <p style="color:#EC0665;margin-left: -5px;">ERROR</p>
+        <p style="margin-top: -111px;">ERROR</p>
+        <h:graphicImage library="images" name="5001.webp" style="width: 40%; margin-top:-20px;"/>
+        <p style="color:#EC0665;margin-left: -5px;">ERROR INTERNO DEL SERVIDOR</p>
+        <p style="margin-top: -111px;">ERROR INTERNO DEL SERVIDOR</p>
+        <p style="font-size:20px;">Aparentemente algo no est&aacute; funcionando bien</p>
+        <p style="font-size:20px;">#{requestScope['javax.servlet.error.exception_type']}</p>
+        <p style="font-size:20px;">#{requestScope['javax.servlet.error.exception']}</p>
+        <p style="font-size:20px;color:transparent;">!QUE ALGUIEN LLAME A ALGUIEN¡</p>
+      </div>
+    </center>
+  </h:body>
 </html>

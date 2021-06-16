@@ -128,25 +128,26 @@ and open the template in the editor.
                     </h:commandLink>
                     <h:form>
                       <h:commandLink class="waves-effect waves-purple btn-flat btnuser"
-                                     action="login.xhtml faces-redirect=true">
+                                     action="/login.xhtml? faces-redirect=true">
                         <i class="far fa-user" style="color:#fff"></i>
                       </h:commandLink>
                     </h:form>
-                    <h:commandLink class="waves-effect waves-purple btn-flat btnuser" id="drkmode"
-                                   title="intercambiar modo">
+                    <a class="waves-effect waves-purple btn-flat btnuser" id="drkmode"
+                       title="intercambiar modo">
                       <i class="far fa-moon" style="color:#fff"></i>
-                    </h:commandLink>
+                    </a>
                     <h:form prependId="true">
-                      <div class="input-field col s8">
+                      <div class="input-field">
                         <h:selectOneMenu
                           id="lang"
                           value="#{locationController.localefront}"
-                          class="" required="true">
-                          <f:selectItem itemValue="en" itemLabel="Ingles"/>
-                          <f:selectItem itemValue="es" itemLabel="Español"/>
+                          class="" required="true"
+                          valueChangeListener="#{locationController.setLocale()}"
+                          onchange="submit()">
+                          <f:selectItem itemValue="en" itemLabel="Español"/>
+                          <f:selectItem itemValue="es" itemLabel="Ingles"/>
                         </h:selectOneMenu>
                       </div>
-                      <h:commandButton value="0" class="btn-small" action="#{locationController.setLocale()}" />
                     </h:form>
                   </div>
                 </div>
@@ -174,7 +175,7 @@ and open the template in the editor.
                     <ul class="left hide-on-med-and-down" style="display: inline-flex;">
                       <h:form>
                         <li>
-                          <h:commandLink action="/index.xhtml? faces-redirect=true" value="#{wrapperTr.menuHomeLabel}"/>
+                          <h:commandLink action="index.xhtml? faces-redirect=true" value="#{wrapperTr.menuHomeLabel}"/>
                         </li>
                       </h:form>
                       <li>

@@ -49,43 +49,40 @@
                 <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
               </div>
             </div>
-            <h:form>
-              <h:dataTable pt:id="datatable"
-                           value="#{usuarioController.usuarios}"
-                           var="st">
-                <h:column>
-                  <f:facet name="header">Usuario</f:facet>
-                  <h:outputText value="#{st.primerNombre} #{st.otrosNombres} #{st.primerApellido} #{st.otrosApellidos}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Documento</f:facet>
-                  <h:outputText value="#{st.tipoDoc.sigla} #{st.numeroDoc}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Correo</f:facet>
-                  <h:commandLink value="#{usuarioController.getEmail(st.id)}" pt:href="mailto:#{usuarioController.getEmail(st.id)}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Rol</f:facet>
-                  <h:outputText value="#{st.rol.nombreRol}"/>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Fecha de creaciòn</f:facet>
-                  <h:outputText value="#{st.timestamps.created_at}">
-                    <f:convertDateTime pattern="dd/MM/yyyy"/>
-                  </h:outputText>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Editar</f:facet>
+            <h:dataTable pt:id="datatable"
+                         value="#{usuarioController.usuarios}"
+                         var="st">
+              <h:column>
+                <f:facet name="header">Usuario</f:facet>
+                <h:outputText value="#{st.primerNombre} #{st.otrosNombres} #{st.primerApellido} #{st.otrosApellidos}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Documento</f:facet>
+                <h:outputText value="#{st.tipoDoc.sigla} #{st.numeroDoc}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Correo</f:facet>
+                <h:commandLink value="#{usuarioController.getEmail(st.id)}" pt:href="mailto:#{usuarioController.getEmail(st.id)}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Rol</f:facet>
+                <h:outputText value="#{st.rol.nombreRol}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Fecha de creaciòn</f:facet>
+                <h:outputText value="#{st.timestamps.created_at}">
+                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Editar</f:facet>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}"
+                   onclick="
+                       document.getElementById('rol#{st.id}').value = #{st.rol.id};
+                       document.getElementById('usu#{st.id}').value = #{st.id};
+                   ">Visualizar</a>
+                <div id="modal#{st.id}" class="modal">
                   <h:form>
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}"
-                       onclick="
-                           document.getElementById('rol#{st.id}').value = #{st.rol.id};
-                           document.getElementById('usu#{st.id}').value = #{st.id};
-                       ">Visualizar</a>
-
-                  </h:form>
-                  <div id="modal#{st.id}" class="modal">
                     <div class="modal-content">
                       <h4 class="center-align">Actualizaciòn</h4>
                       <div class="section" style="padding-bottom:0px;">
@@ -128,8 +125,8 @@
                           <div class="col s12 m6">
                             <div class="input-field">
                               <h:outputLabel for="rol#{st.id}" value="Rol" style="margin-top: -30px;"/>
-                              <h:selectOneMenu pt:id="rol#{st.id}"  class="browser-default"
-                                               value="#{usuarioController.idRolUsuario}">
+                              <h:selectOneMenu  pt:placeholder=" " pt:id="rol#{st.id}"  class="browser-default"
+                                                value="#{usuarioController.idRolUsuario}">
                                 <f:selectItem itemValue="#{null}"
                                               itemLabel="Seleccione una opcion"
                                               noSelectionOption="true" />
@@ -143,29 +140,30 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <h:commandButton action="#{usuarioController.updaterol}" class="waves-effect waves-green btn-flat" value="Actualizar"/>
-                        <h:commandLink class="modal-close waves-effect waves-green btn-flat">Cancelar</h:commandLink>
+                        <h:commandButton class="waves-effect waves-green btn-flat" action="#{usuarioController.updaterol(st.id)}" value="Actualizar" />
+                        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>
-                  </div>
-                </h:column>
-                <h:column>
-                  <f:facet name="header">Eliminar</f:facet>
-                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                  <div id="modaldel#{st.id}" class="modal">
-                    <div class="modal-content">
-                      <div class="section" style="padding-bottom:0px;">
-                        <h4 class="center-align">Desea eliminar el usuario #{st.primerNombre} #{st.otrosNombres} #{st.primerApellido} #{st.otrosApellidos} ?</h4>
-                      </div>
-                      <div class="modal-footer">
-                        <h:commandButton action="#{usuarioController.deleteu(st.id)}" class="waves-effect waves-green btn-flat red lighten-5" value="Aceptar"/>
-                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                      </div>
+                  </h:form>
+                </div>
+              </h:column>
+              <h:column>
+                <f:facet name="header">Eliminar</f:facet>
+                <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                <div id="modaldel#{st.id}" class="modal">
+                  <div class="modal-content">
+                    <div class="section" style="padding-bottom:0px;">
+                      <h4 class="center-align">Desea eliminar el usuario #{st.primerNombre} #{st.otrosNombres} #{st.primerApellido} #{st.otrosApellidos} ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <h:commandButton action="#{usuarioController.deleteu(st.id)}" class="waves-effect waves-green btn-flat red lighten-5" value="Aceptar"/>
+                      <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                     </div>
                   </div>
-                </h:column>
-              </h:dataTable>
-            </h:form>
+                </div>
+              </h:column>
+            </h:dataTable>
+
           </div>
         </div>
       </div>

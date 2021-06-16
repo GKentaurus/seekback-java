@@ -13,14 +13,13 @@ import java.util.Objects;
  */
 @Entity
 @Table(
-  name = "bodega_productos",
-  uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"idBodega", "idProducto"})
-  }
+        name = "bodega_productos",
+        uniqueConstraints = {
+          @UniqueConstraint(columnNames = {"idBodega", "idProducto"})
+        }
 )
 @NamedQueries(value = {
   @NamedQuery(name = "BodegaProducto.getAll", query = "SELECT obj FROM BodegaProducto obj WHERE obj.timestamps.deleted = false"),
-  @NamedQuery(name = "BodegaProducto.getLikeName", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.modeloProducto like CONCAT('%', :parteNombre, '%') AND obj.timestamps.deleted = false"),
   @NamedQuery(name = "BodegaProducto.getByIdCategoria", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.categoria.id = :idCategoria AND obj.timestamps.deleted = false"),
   @NamedQuery(name = "BodegaProducto.getByIdProducto", query = "SELECT obj FROM BodegaProducto obj WHERE  obj.producto.id = :idProducto AND obj.timestamps.deleted = false")
 })
@@ -46,7 +45,6 @@ public class BodegaProducto implements EntityTimestamp {
   private Timestamps timestamps;
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-
   /**
    * Retorna el valor del atributo <code>id</code> del objeto.
    *
@@ -171,12 +169,12 @@ public class BodegaProducto implements EntityTimestamp {
   @Override
   public String toString() {
     return "BodegaProductos("
-      + "id = " + id + ", "
-      + "bodega = " + bodega + ", "
-      + "producto = " + producto + ", "
-      + "cantidad = " + cantidad + ", "
-      + timestamps.toString()
-      + ")";
+            + "id = " + id + ", "
+            + "bodega = " + bodega + ", "
+            + "producto = " + producto + ", "
+            + "cantidad = " + cantidad + ", "
+            + timestamps.toString()
+            + ")";
   }
 
 }

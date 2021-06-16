@@ -38,15 +38,12 @@ public class ProductosController extends CustomController implements Serializabl
   private ProductoService productoService;
 
   @EJB
-  private BodegaProductoService bodegaProductoService;
-
-  @EJB
   private CategoriasProductoService categoriasProductoService;
 
   private List<CategoriasProducto> categoriasProductoList;
   private List<Calificacion> calificaciondelproducto;
   private List<Producto> categoryProductList;
-  private List<BodegaProducto> pornombre;
+  private List<Producto> pornombre;
   private Producto producto;
   private Integer idProd;
 
@@ -107,10 +104,10 @@ public class ProductosController extends CustomController implements Serializabl
     return Objects.nonNull(this.categoryProductList) && this.categoryProductList.size() > 0;
   }
 
-  public List<BodegaProducto> getPornombre(String parteNombre) {
+  public List<Producto> getPornombre(String parteNombre) {
     try {
       if (Objects.isNull(pornombre)) {
-        pornombre = bodegaProductoService.getLikeName(parteNombre);
+        pornombre = productoService.getLikeName(parteNombre);
       }
     } catch (Exception ex) {
       System.out.println("Error al consultar los bodegaProductos.....");

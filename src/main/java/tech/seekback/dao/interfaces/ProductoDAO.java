@@ -17,5 +17,7 @@ public interface ProductoDAO extends DAO<Producto, Integer> {
 
   List<Producto> getCategoryProducts(Integer idCategory) throws ConnectionExcep;
 
+  List<Producto> getLikeName(String parteNombre) throws ConnectionExcep;
+
   List<Producto> getLastProducts(Integer limit) throws ConnectionExcep;
 }

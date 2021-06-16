@@ -107,7 +107,6 @@ public class GenCotizaController extends CustomController implements Serializabl
   }
 
   public void createe() throws ConnectionExcep, IOException {
-    System.out.println("metodo crear emp");
 
     this.cotizacion = new Cotizacion();
 

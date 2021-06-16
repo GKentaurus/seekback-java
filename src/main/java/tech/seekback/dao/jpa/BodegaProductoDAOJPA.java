@@ -38,18 +38,6 @@ public class BodegaProductoDAOJPA extends GenericDAO<BodegaProducto, Integer> im
   }
 
   @Override
-  public List<BodegaProducto> getLikeName(String parteNombre) throws ConnectionExcep {
-    try {
-      return em
-              .createNamedQuery("BodegaProducto.getLikeName", classType)
-              .setParameter("parteNombre", parteNombre)
-              .getResultList();
-    } catch (Exception e) {
-      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
-    }
-  }
-
-  @Override
   public BodegaProducto getByIdProducto(Integer idProducto) throws ConnectionExcep {
     try {
       return em

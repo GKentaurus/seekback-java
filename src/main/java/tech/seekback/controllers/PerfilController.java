@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -129,7 +131,15 @@ public class PerfilController extends CustomController implements Serializable {
   public void delete() throws ConnectionExcep, IOException {
     try {
       usuarioService.delete(loginController.getUsuario());
-      loginController.logout();
+      // loginController.logout();
+
+      System.out.println(
+              "\n\n\n\n\n######################################################################"
+              + "\n#\t  Registro eliminado "
+              + "\n######################################################################\n");
+
+      FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/login.xhtml");
+
     } catch (ConnectionExcep ex) {
       System.out.println("Error al registrar usuario");
       ex.printStackTrace();

@@ -2,13 +2,13 @@
 <!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN"
         "https://raw.githubusercontent.com/payara/Payara-Server-Documentation/master/schemas/payara-resources_1_6.dtd">
 <resources>
-    <jdbc-resource enabled="true"
+  <jdbc-resource enabled="true"
                    jndi-name="java:app/localhost"
                    object-type="user"
                    pool-name="mysql_sk_test_db_rootPool">
-        <description/>
-    </jdbc-resource>
-    <jdbc-connection-pool allow-non-component-callers="false"
+    <description/>
+  </jdbc-resource>
+  <jdbc-connection-pool allow-non-component-callers="false"
                           associate-with-thread="false"
                           connection-creation-retry-attempts="0"
                           connection-creation-retry-interval-in-seconds="10"
@@ -34,9 +34,9 @@
                           steady-pool-size="8"
                           validate-atmost-once-period-in-seconds="0"
                           wrap-jdbc-objects="false">
-        <property name="URL"
+    <property name="URL"
                   value="jdbc:mysql://127.0.0.1:3306/sk_test_db?serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"/>
-        <property name="User" value="root"/>
-        <property name="Password" value="root"/>
-    </jdbc-connection-pool>
+    <property name="User" value="u925035511_test"/>
+    <property name="Password" value="123PorMi"/>
+  </jdbc-connection-pool>
 </resources>

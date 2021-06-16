@@ -33,8 +33,6 @@ $(document).ready(function () {
     $(".childesc").addClass("white-text");
 
     /* index */
-    $("#ody").addClass("dark-mode");
-    $("#inv").addClass("wrapmoddark");
     $(".card").addClass("black");
     $(".card").removeClass("white");
     $(".division").addClass("black");
@@ -43,8 +41,6 @@ $(document).ready(function () {
     $(".ingr").removeClass("black-text");
 
     /* login */
-    $("#ody").addClass("dark-mode");
-    $("#inv").addClass("wrapmoddark");
     $(".modal").addClass("black");
     $(".modal").removeClass("white");
     $(".modal-footer").addClass("darken-4");
@@ -60,7 +56,6 @@ $(document).ready(function () {
 
   $("#drkmode").click(function () {
 
-    $("#ody").toggleClass("dark-mode");
 
     if ($("#ody").hasClass("dark-mode") == true) {
 
@@ -78,19 +73,13 @@ $(document).ready(function () {
       $(".childesc").addClass("white-text");
 
       /* index */
-      $("#ody").addClass("dark-mode");
       $("#inv").addClass("wrapmoddark");
-      $(".card").removeClass("white");
-      $(".card").addClass("black");
       $(".division").removeClass("white");
       $(".division").addClass("black");
       $(".ingr").addClass("white-text");
       $(".ingr").removeClass("black-text");
 
       /* tipos producto */
-      $("#inv").addClass("wrapmoddark");
-      $(".card").addClass("black");
-      $(".card").removeClass("white");
       $("#bread").addClass("darken-4");
       $("#bread").removeClass("darken-1");
       $("#namet").addClass("white-text");
@@ -111,7 +100,6 @@ $(document).ready(function () {
       $(".ingr").removeClass("black-text");
 
       /* login */
-      $(".test2").addClass("wrapmoddark");
       $(".modal").addClass("black");
       $(".modal").removeClass("white");
       $(".modal-footer").addClass("darken-4");
@@ -120,11 +108,14 @@ $(document).ready(function () {
       $(".select-dropdown").css("color", "white");
       $(".collection-item").addClass("black");
       $(".collection-item").removeClass("white");
+      $(".registrer").addClass("black");
+      $(".registrer").removeClass("white");
 
       localStorage.setItem("preferredmode", "dark");
 
     } else {
 
+      $("#ody").removeClass("dark-mode");
       /* tipos producto */
       $("#inv").removeClass("wrapmoddark");
       $(".card").addClass("white");
@@ -149,7 +140,6 @@ $(document).ready(function () {
       $(".ingr").removeClass("white-text");
 
       /* login */
-      $(".test2").removeClass("wrapmoddark");
       $(".modal").addClass("white");
       $(".modal").removeClass("black");
       $(".modal-footer").addClass("darken-3");
@@ -158,6 +148,8 @@ $(document).ready(function () {
       $(".select-dropdown").css("color", "#222");
       $(".collection-item").addClass("white");
       $(".collection-item").removeClass("black");
+      $(".registrer").addClass("white");
+      $(".registrer").removeClass("black");
 
       localStorage.setItem("preferredmode", "normal");
 
