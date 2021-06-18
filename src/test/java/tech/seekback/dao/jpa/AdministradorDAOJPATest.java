@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Agenda;
+import tech.seekback.models.Usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -18,14 +18,16 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-class AgendaDAOJPATest {
+class AdministradorDAOJPATest {
 
   @InjectMocks
-  private AgendaDAOJPA daoMock;
+  private AdministradorDAOJPA daoMock;
 
   @Mock
   private EntityManager emMock;
@@ -36,60 +38,62 @@ class AgendaDAOJPATest {
   }
 
   @Test
-  public void getByIdEmpleadoTest() throws ConnectionExcep {
+  public void getOneTest() throws Exception {
     TypedQuery queryMock = mock(TypedQuery.class);
+    Usuario adminstradorMock = new Usuario();
+    Integer id = 1;
+    adminstradorMock.setId(id);
     when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
     when(queryMock.setParameter(anyString(), anyInt())).thenReturn(queryMock);
-    when(queryMock.getResultList()).thenReturn(Collections.emptyList());
+    when(queryMock.getSingleResult()).thenReturn(adminstradorMock);
 
-    List<Agenda> list = daoMock.getByidEmpleado(1);
+    Usuario administrador = daoMock.getOne(id);
 
-    assertNotNull(list);
-    assertTrue(list.isEmpty());
+    assertNotNull(administrador);
+//    assertEquals(id, administrador.getId());
   }
 
   @Test
-  public void getByIdEmpleadoThrowExceptionTest() {
-    List<Agenda> list = null;
+  public void getOneThrowExceptionTest() {
+    Usuario administrador = null;
     Exception exception = null;
 
     try {
-      when(daoMock.getByidEmpleado(anyInt())).thenThrow(new Exception());
-      list = daoMock.getByidEmpleado(1);
+      when(daoMock.getOne(anyInt())).thenThrow(new Exception());
+      administrador = daoMock.getOne(1);
     } catch (Exception e) {
       exception = e;
     }
 
-    assertNull(list);
+    assertNull(administrador);
     assertNotNull(exception);
   }
 
   @Test
-  public void getByIdClienteTest() throws ConnectionExcep {
+  public void getAllTest() throws ConnectionExcep {
     TypedQuery queryMock = mock(TypedQuery.class);
     when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
-    when(queryMock.setParameter(anyString(), anyInt())).thenReturn(queryMock);
     when(queryMock.getResultList()).thenReturn(Collections.emptyList());
 
-    List<Agenda> list = daoMock.getByidCliente(1);
+    List<Usuario> administradores = daoMock.getAll();
 
-    assertNotNull(list);
-    assertTrue(list.isEmpty());
+    assertNotNull(administradores);
+    assertTrue(administradores.isEmpty());
   }
 
   @Test
-  public void getByIdClienteThrowExceptionTest() {
-    List<Agenda> list = null;
+  public void getAllThrowExceptionTest() {
+    List<Usuario> administradores = null;
     Exception exception = null;
 
     try {
-      when(daoMock.getByidCliente(anyInt())).thenThrow(new Exception());
-      list = daoMock.getByidCliente(1);
+      when(daoMock.getAll()).thenThrow(new Exception());
+      administradores = daoMock.getAll();
     } catch (Exception e) {
       exception = e;
     }
 
-    assertNull(list);
+    assertNull(administradores);
     assertNotNull(exception);
   }
 }
