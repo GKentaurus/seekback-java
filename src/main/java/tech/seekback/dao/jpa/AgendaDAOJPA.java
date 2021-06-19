@@ -21,7 +21,8 @@ public class AgendaDAOJPA extends GenericDAO<Agenda, Integer> implements AgendaD
   }
 
   @Override
-  public List<Agenda> getByidEmpleado(Integer idEmpleado) throws ConnectionExcep {
+  public List<Agenda> getByidEmpleado(Integer idEmpleado) throws
+      ConnectionExcep {
     try {
       return em
               .createNamedQuery("Agenda.getByidEmpleado", classType)
