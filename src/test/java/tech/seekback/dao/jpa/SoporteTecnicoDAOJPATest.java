@@ -1,7 +1,6 @@
 package tech.seekback.dao.jpa;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -10,6 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import tech.seekback.enums.ConnectionExcepEnum;
+import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
 
 import javax.persistence.EntityManager;
@@ -37,11 +38,10 @@ class SoporteTecnicoDAOJPATest {
   }
 
   @Test
-  @Disabled
   void getAllCount() throws Exception {
     TypedQuery queryMock = mock(TypedQuery.class);
 
-    when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
+    when(emMock.createNamedQuery(anyString())).thenReturn(queryMock);
     when(queryMock.getSingleResult()).thenReturn(anyInt());
     when(this.daoMock.getAllCount()).thenReturn(1);
 
@@ -83,7 +83,7 @@ class SoporteTecnicoDAOJPATest {
     Exception exception = null;
 
     try {
-      when(daoMock.getAll()).thenThrow(new Exception());
+      when(daoMock.getByidEmpleado(anyInt())).thenThrow(new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION));
       list = daoMock.getByidEmpleado(1);
     } catch (Exception e) {
       exception = e;
@@ -111,7 +111,7 @@ class SoporteTecnicoDAOJPATest {
     Exception exception = null;
 
     try {
-      when(daoMock.getAll()).thenThrow(new Exception());
+      when(daoMock.getByidCliente(anyInt())).thenThrow(new Exception());
       list = daoMock.getByidCliente(1);
     } catch (Exception e) {
       exception = e;

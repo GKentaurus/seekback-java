@@ -17,8 +17,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static faker.FakerData.correoFaker;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -32,34 +32,34 @@ class CorreoDAOJPATest {
   @Mock
   EntityManager emMock;
 
+  private Correo obj;
+
   @BeforeEach
   void setUp() {
     MockitoAnnotations.openMocks(this);
+    this.obj = correoFaker();
   }
 
   @Test
   public void getByCorreo() throws ConnectionExcep {
     TypedQuery queryMock = mock(TypedQuery.class);
-    Correo correoMock = mock(Correo.class);
     Integer id = 1;
-    correoMock.setId(id);
+    obj.setId(id);
     when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
     when(queryMock.setParameter(anyString(), anyString())).thenReturn(queryMock);
-    when(queryMock.getSingleResult()).thenReturn(correoMock);
+    when(queryMock.getSingleResult()).thenReturn(obj);
 
     Correo correo = daoMock.getByCorreo("correo@correo.com");
 
     assertNotNull(correo);
-//    assertEquals(id, correo.getId());
+    assertEquals(id, correo.getId());
   }
 
   @Test
   public void getByCorreoThrowsNoResultException() {
     Correo correo = null;
     Exception exception = null;
-
     try {
-      when(daoMock.getByCorreo(anyString())).thenThrow(new NoResultException()).thenReturn(null);
       correo = daoMock.getByCorreo("correo@correo.com");
     } catch (Exception e) {
       exception = e;

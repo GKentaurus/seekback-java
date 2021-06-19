@@ -1,7 +1,6 @@
 package tech.seekback.dao.jpa;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -87,10 +86,9 @@ class CalificacionDAOJPATest {
   }
 
   @Test
-  @Disabled
   void getCalCountId() throws ConnectionExcep {
     TypedQuery queryMock = mock(TypedQuery.class);
-    when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
+    when(emMock.createNamedQuery(anyString())).thenReturn(queryMock);
     when(queryMock.setParameter(anyString(), any())).thenReturn(queryMock);
     when(queryMock.getSingleResult()).thenReturn(1);
 

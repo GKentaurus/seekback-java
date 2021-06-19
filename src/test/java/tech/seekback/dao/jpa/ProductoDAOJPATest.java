@@ -1,7 +1,6 @@
 package tech.seekback.dao.jpa;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -38,11 +37,10 @@ class ProductoDAOJPATest {
   }
 
   @Test
-  @Disabled
   public void getCatCount() {
     TypedQuery queryMock = mock(TypedQuery.class);
 
-    when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
+    when(emMock.createNamedQuery(anyString())).thenReturn(queryMock);
     when(queryMock.setParameter(anyString(), any())).thenReturn(queryMock);
     when(queryMock.getSingleResult()).thenReturn(anyInt());
 

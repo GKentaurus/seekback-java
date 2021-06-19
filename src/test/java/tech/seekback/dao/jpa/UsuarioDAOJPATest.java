@@ -12,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Usuario;
-import tech.seekback.models.templates.Timestamps;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -20,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static faker.FakerData.usuarioFaker;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
@@ -34,12 +34,12 @@ class UsuarioDAOJPATest {
   @Mock
   private EntityManager emMock;
 
-  @Mock
-  private Usuario usuarioMock;
+  private Usuario obj;
 
   @BeforeEach
   public void setUp() {
     MockitoAnnotations.openMocks(this);
+    this.obj = usuarioFaker();
   }
 
   @Test
@@ -50,8 +50,8 @@ class UsuarioDAOJPATest {
 
   @Test
   public void createOneTest() throws ConnectionExcep {
-    when(emMock.merge(any())).thenReturn(usuarioMock);
-    Usuario persistedUsuario = this.daoMock.create(usuarioMock);
+    when(emMock.merge(any())).thenReturn(obj);
+    Usuario persistedUsuario = this.daoMock.create(obj);
 
     assertNotNull(persistedUsuario);
   }
@@ -59,13 +59,13 @@ class UsuarioDAOJPATest {
   @Test
   public void createListTest() throws ConnectionExcep {
     List<Usuario> list = new ArrayList<>();
-    list.add(usuarioMock);
+    list.add(obj);
     this.daoMock.create(list);
   }
 
   @Test
   public void getOneTest() throws ConnectionExcep {
-    when(emMock.find(any(), anyInt())).thenReturn(usuarioMock);
+    when(emMock.find(any(), anyInt())).thenReturn(obj);
     Usuario persistedUsuario = this.daoMock.getOne(1);
 
     assertNotNull(persistedUsuario);
@@ -73,18 +73,14 @@ class UsuarioDAOJPATest {
 
   @Test
   public void updateTest() throws ConnectionExcep {
-    this.daoMock.update(usuarioMock);
+    this.daoMock.update(obj);
   }
 
   @Test
-  @Disabled
   public void deleteTest() throws ConnectionExcep {
-    Timestamps tsMock = mock(Timestamps.class);
-    usuarioMock.setTimestamps(tsMock);
-    tsMock.setDeleted(true);
-    tsMock.setDeleted_at(new Date());
-    usuarioMock.setTimestamps(tsMock);
-    this.daoMock.delete(usuarioMock);
+    obj.getTimestamps().setDeleted(true);
+    obj.getTimestamps().setDeleted_at(new Date());
+    this.daoMock.delete(obj);
   }
 
   @Test
@@ -93,9 +89,9 @@ class UsuarioDAOJPATest {
     TypedQuery queryMock = mock(TypedQuery.class);
     when(emMock.createQuery(anyString(), any())).thenReturn(queryMock);
     when(queryMock.setParameter(anyString(), anyString())).thenReturn(queryMock);
-    when(queryMock.getSingleResult()).thenReturn(usuarioMock);
-    when(daoMock.checkIfExist(usuarioMock, anyString(), anyString())).thenReturn(true);
-    boolean response = this.daoMock.checkIfExist(usuarioMock, "", "");
+    when(queryMock.getSingleResult()).thenReturn(obj);
+    when(daoMock.checkIfExist(obj, anyString(), anyString())).thenReturn(true);
+    boolean response = this.daoMock.checkIfExist(obj, "", "");
     assertTrue(response);
   }
 }

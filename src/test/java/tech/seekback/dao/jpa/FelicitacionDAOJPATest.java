@@ -17,8 +17,7 @@ import javax.persistence.TypedQuery;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -42,12 +41,13 @@ class FelicitacionDAOJPATest {
   void getAllCount() throws Exception {
     TypedQuery queryMock = mock(TypedQuery.class);
 
-    when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
-    when(queryMock.setParameter(anyString(), any())).thenReturn(queryMock);
+    when(emMock.createNamedQuery(anyString())).thenReturn(queryMock);
     when(queryMock.getSingleResult()).thenReturn(anyInt());
+    when(this.daoMock.getAllCount()).thenReturn(1);
 
     Integer count = this.daoMock.getAllCount();
     assertNotNull(count);
+    assertNotEquals(0, count);
   }
 
   @Test

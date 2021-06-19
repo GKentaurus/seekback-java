@@ -1,7 +1,6 @@
 package tech.seekback.dao.jpa;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -15,7 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -34,11 +34,10 @@ class PQRSDAOJPATest {
   }
 
   @Test
-  @Disabled
   public void getAllCount() throws Exception {
     TypedQuery queryMock = mock(TypedQuery.class);
 
-    when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
+    when(emMock.createNamedQuery(anyString())).thenReturn(queryMock);
     when(queryMock.getSingleResult()).thenReturn(anyInt());
     when(this.daoMock.getAllCount()).thenReturn(1);
 
