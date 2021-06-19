@@ -65,33 +65,6 @@ class BodegaProductoDAOJPATest {
   }
 
   @Test
-  public void getLikeNameTest() throws ConnectionExcep {
-    TypedQuery queryMock = mock(TypedQuery.class);
-    when(emMock.createNamedQuery(anyString(), any())).thenReturn(queryMock);
-    when(queryMock.setParameter(anyString(), any())).thenReturn(queryMock);
-    when(queryMock.getResultList()).thenReturn(Collections.emptyList());
-
-    List<BodegaProducto> bodegaProductos = this.daoMock.getLikeName("prueba");
-    assertNotNull(bodegaProductos);
-    assertTrue(bodegaProductos.isEmpty());
-  }
-
-  @Test
-  public void getLikeNameTestThrowsException() {
-    List<BodegaProducto> list = null;
-    Exception exception = null;
-
-    try {
-      list = daoMock.getLikeName("prueba");
-    } catch (Exception e) {
-      exception = e;
-    }
-
-    assertNull(list);
-    assertNotNull(exception);
-  }
-
-  @Test
   public void getByIdProductoTest() throws Exception {
     TypedQuery queryMock = mock(TypedQuery.class);
     BodegaProducto bodegaProductoMock = mock(BodegaProducto.class);

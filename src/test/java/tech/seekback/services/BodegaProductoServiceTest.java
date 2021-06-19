@@ -19,7 +19,8 @@ import java.util.List;
 
 import static faker.FakerData.bodegaProductoFaker;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -72,17 +73,6 @@ class BodegaProductoServiceTest {
     BodegaProducto persisted = service.getByIdProducto(1);
     assertNotNull(persisted);
     assertEquals(obj, persisted);
-  }
-
-  @Test
-  public void getLikeName() throws ConnectionExcep {
-    List<BodegaProducto> fakerList = new ArrayList<>();
-    for (int i = 0; i < 4; i++) {
-      fakerList.add(bodegaProductoFaker());
-    }
-    when(dao.getLikeName(anyString())).thenReturn(fakerList);
-    List<BodegaProducto> persisted = service.getLikeName("Producto");
-    assertTrue(persisted.size() > 0);
   }
 
   @Test
