@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tech.seekback.services.tools;
+package tech.seekback.tools;
 
+import tech.seekback.exceptions.ConnectionExcep;
+
+import javax.ejb.Stateless;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.text.ParseException;
 import java.util.Date;
-import javax.ejb.Stateless;
-import javax.servlet.http.Part;
-import tech.seekback.exceptions.ConnectionExcep;
 
 /**
  *

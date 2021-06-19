@@ -1,21 +1,19 @@
 package tech.seekback.controllers;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.text.ParseException;
-import java.util.List;
-import java.util.Objects;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
-import javax.mail.MessagingException;
-import javax.servlet.http.Part;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 import tech.seekback.models.Slide;
 import tech.seekback.services.ProductoService;
 import tech.seekback.services.SlideService;
-import tech.seekback.services.tools.MailService;
+import tech.seekback.tools.MailService;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import javax.mail.MessagingException;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author gkentaurus

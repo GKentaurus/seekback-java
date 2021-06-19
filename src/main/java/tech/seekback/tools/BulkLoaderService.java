@@ -1,8 +1,7 @@
-package tech.seekback.services.tools;
+package tech.seekback.tools;
 
 import tech.seekback.dao.DAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Producto;
 
 import javax.servlet.http.Part;
 import java.io.BufferedReader;

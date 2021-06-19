@@ -1,12 +1,14 @@
 package tech.seekback.controllers;
 
+import tech.seekback.dao.interfaces.CiudadDAO;
+import tech.seekback.dao.interfaces.DepartamentoDAO;
 import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Correo;
-import tech.seekback.models.Usuario;
-import tech.seekback.services.CorreoService;
-import tech.seekback.services.UsuarioService;
-import tech.seekback.services.tools.MailService;
+import tech.seekback.models.*;
+import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.*;
+import tech.seekback.tools.MailService;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -22,23 +24,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
-import javax.annotation.PostConstruct;
-import tech.seekback.dao.interfaces.CiudadDAO;
-import tech.seekback.dao.interfaces.DepartamentoDAO;
-import tech.seekback.models.Ciudad;
-import tech.seekback.models.Departamento;
-import tech.seekback.models.Direccion;
-import tech.seekback.models.Pais;
-import tech.seekback.models.Telefono;
-import tech.seekback.models.TipoDoc;
-import tech.seekback.models.templates.Timestamps;
-import tech.seekback.services.CiudadService;
-import tech.seekback.services.ClienteService;
-import tech.seekback.services.DireccionService;
-import tech.seekback.services.PaisService;
-import tech.seekback.services.RolService;
-import tech.seekback.services.TelefonoService;
-import tech.seekback.services.TipoDocService;
 
 /**
  * @author danny

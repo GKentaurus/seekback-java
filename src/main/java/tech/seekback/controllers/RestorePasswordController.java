@@ -5,10 +5,13 @@
  */
 package tech.seekback.controllers;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Objects;
-import java.util.Random;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.Correo;
+import tech.seekback.models.Usuario;
+import tech.seekback.services.CorreoService;
+import tech.seekback.services.UsuarioService;
+import tech.seekback.tools.MailService;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -16,12 +19,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.mail.MessagingException;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.Correo;
-import tech.seekback.models.Usuario;
-import tech.seekback.services.CorreoService;
-import tech.seekback.services.UsuarioService;
-import tech.seekback.services.tools.MailService;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.Random;
 
 /**
  *

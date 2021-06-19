@@ -1,15 +1,16 @@
 
 package tech.seekback.controllers;
 
-import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Slide;
 import tech.seekback.services.SlideService;
-import tech.seekback.services.tools.UploadFileService;
+import tech.seekback.tools.UploadFileService;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author danny

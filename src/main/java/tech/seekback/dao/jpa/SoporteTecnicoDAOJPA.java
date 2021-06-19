@@ -1,6 +1,5 @@
 package tech.seekback.dao.jpa;
 
-import java.util.List;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.SoporteTecnicoDAO;
 import tech.seekback.enums.ConnectionExcepEnum;
@@ -8,7 +7,7 @@ import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.SoporteTecnico;
 
 import javax.ejb.Stateless;
-import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * @author gkentaurus

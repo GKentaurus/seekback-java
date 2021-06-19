@@ -1,4 +1,4 @@
-package tech.seekback.services.tools;
+package tech.seekback.tools;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;

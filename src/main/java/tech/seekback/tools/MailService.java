@@ -1,5 +1,5 @@
 
-package tech.seekback.services.tools;
+package tech.seekback.tools;
 
 import javax.ejb.Stateless;
 import javax.mail.Message;

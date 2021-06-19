@@ -6,20 +6,14 @@ import tech.seekback.enums.ConnectionExcepEnum;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.Producto;
 import tech.seekback.models.templates.Timestamps;
-import tech.seekback.services.tools.BulkLoaderService;
+import tech.seekback.tools.BulkLoaderService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.servlet.http.Part;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author gkentaurus
