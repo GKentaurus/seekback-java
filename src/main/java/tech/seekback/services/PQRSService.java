@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.PQRSDAO;
@@ -54,6 +53,11 @@ public class PQRSService {
   public Integer getAllCount() throws ConnectionExcep {
     Integer countpqrs = pqrsDAO.getAllCount();
     return countpqrs;
+  }
+
+  public List<PQRS> getByidCliente(Integer idCliente) throws ConnectionExcep {
+    List<PQRS> byidcliente = pqrsDAO.getByCliente(idCliente);
+    return byidcliente;
   }
 
   /**

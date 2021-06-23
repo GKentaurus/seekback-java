@@ -47,7 +47,7 @@ public class ColsulFeliController extends CustomController implements Serializab
   @EJB
   private ClienteService clienteService;
 
-  private Integer idCliente;
+  private Integer idUsuario;
   private List<Felicitacion> felicitaciones;
   private String para;
   private String comment;
@@ -56,7 +56,66 @@ public class ColsulFeliController extends CustomController implements Serializab
 
   @PostConstruct
   public void Init() {
-    this.idCliente = loginController.getUsuario().getId();
+    this.idUsuario = loginController.getUsuario().getId();
+  }
+
+  public ColsulFeliController() {
+    felicitacion = new Felicitacion();
+  }
+
+  public Integer getIdUsuario() {
+    return idUsuario;
+  }
+
+  public void setIdUsuario(Integer idUsuario) {
+    this.idUsuario = idUsuario;
+  }
+
+  public String getPara() {
+    return para;
+  }
+
+  public void setPara(String para) {
+    this.para = para;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+  public void create() throws IOException, ConnectionExcep {
+    System.out.println("setCliente " + this.idUsuario);
+    System.out.println("setDirigidoA " + para);
+    System.out.println("setComentario " + comment);
+    // Creación de Timestamp para todos los procesos
+
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.felicitacion.setCliente(clienteService.getOne(28));
+    System.out.println("setCliente: " + clienteService.getOne(28));
+    //this.felicitacion.setCliente(clienteService.getOne(this.idUsuario));
+    this.felicitacion.setDirigidoA(para);
+    this.felicitacion.setComentario(comment);
+    this.felicitacion.setTimestamps(timestamps);
+
+    this.felicitacion = felicitacionService.create(felicitacion);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfeli.xhtml");
+
   }
 
   public void genpdf() throws JRException, IOException, ConnectionExcep {
@@ -85,7 +144,7 @@ public class ColsulFeliController extends CustomController implements Serializab
   public List<Felicitacion> getFelicitacionesByidCliente() {
     try {
       if (Objects.isNull(felicitacionesByidCliente)) {
-        felicitacionesByidCliente = felicitacionService.getByidCliente(this.idCliente);
+        felicitacionesByidCliente = felicitacionService.getByidCliente(this.idUsuario);
       }
     } catch (Exception ex) {
       System.out.println("Error al consultar los felicitaciones.....");
@@ -93,53 +152,4 @@ public class ColsulFeliController extends CustomController implements Serializab
     }
     return felicitacionesByidCliente;
   }
-
-  public void create() throws IOException, ConnectionExcep {
-    // Creación de Timestamp para todos los procesos
-    Timestamps timestamps = new Timestamps();
-    Date momentum = new Date();
-    timestamps.setCreated_at(momentum);
-    timestamps.setUpdated_at(momentum);
-
-    this.felicitacion.setCliente(clienteService.getOne(this.idCliente));
-    this.felicitacion.setDirigidoA(para);
-    this.felicitacion.setComentario(comment);
-    this.felicitacion.setTimestamps(timestamps);
-
-    this.felicitacion = felicitacionService.create(felicitacion);
-
-    System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t  Registro creado "
-            + "\n######################################################################\n");
-
-    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-    ec.redirect(ec.getRequestContextPath() + "/frames/all/colsulfeli.xhtml");
-
-  }
-
-  public Integer getIdCliente() {
-    return idCliente;
-  }
-
-  public void setIdCliente(Integer idCliente) {
-    this.idCliente = idCliente;
-  }
-
-  public String getPara() {
-    return para;
-  }
-
-  public void setPara(String para) {
-    this.para = para;
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
 }

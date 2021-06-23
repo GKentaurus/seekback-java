@@ -53,6 +53,7 @@ public class ColsulCalifController extends CustomController implements Serializa
   private ClienteService clienteService;
 
   private List<Calificacion> calificaciones;
+  private List<Calificacion> calificacionesByIdCliente;
   private String aprobacion;
   private Boolean aprobacionB;
   private Calificacion calificacion;
@@ -65,6 +66,83 @@ public class ColsulCalifController extends CustomController implements Serializa
   @PostConstruct
   public void Init() {
     this.idCliente = loginController.getUsuario().getId();
+  }
+
+  public ColsulCalifController() {
+    calificacion = new Calificacion();
+  }
+
+  public String getAprobacion() {
+    return aprobacion;
+  }
+
+  public void setAprobacion(String aprobacion) {
+    this.aprobacion = aprobacion;
+  }
+
+  public Integer getIdProducto() {
+    return idProducto;
+  }
+
+  public void setIdProducto(Integer idProducto) {
+    this.idProducto = idProducto;
+  }
+
+  public Integer getIdCliente() {
+    return idCliente;
+  }
+
+  public void setIdCliente(Integer idCliente) {
+    this.idCliente = idCliente;
+  }
+
+  public Integer getCalif() {
+    return calif;
+  }
+
+  public void setCalif(Integer calif) {
+    this.calif = calif;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+  public List<Producto> getProductos() {
+    try {
+      productos = productoService.getAll();
+    } catch (Exception e) {
+      System.out.println("error al consultar bodegas");
+    }
+    return productos;
+  }
+
+  public List<Calificacion> getCalificaciones() {
+    try {
+      if (Objects.isNull(calificaciones)) {
+        calificaciones = calificacionService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los calificaciones.....");
+      ex.printStackTrace();
+    }
+    return calificaciones;
+  }
+
+  public List<Calificacion> getCalificacionesByIdCliente() {
+    try {
+      if (Objects.isNull(calificacionesByIdCliente)) {
+        calificacionesByIdCliente = calificacionService.getByidCliente(this.idCliente);
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los calificaciones.....");
+      ex.printStackTrace();
+    }
+    return calificacionesByIdCliente;
   }
 
   public void genpdf() throws JRException, IOException, ConnectionExcep {
@@ -80,22 +158,11 @@ public class ColsulCalifController extends CustomController implements Serializa
 
   }
 
-  public List<Calificacion> getCalificaciones() {
-    try {
-      if (Objects.isNull(calificaciones)) {
-        calificaciones = calificacionService.getAll();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los calificaciones.....");
-      ex.printStackTrace();
-    }
-    return calificaciones;
-  }
-
   public void create() throws IOException, ConnectionExcep {
     // Creación de Timestamp para todos los procesos
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
+    timestamps.setDeleted(false);
     timestamps.setCreated_at(momentum);
     timestamps.setUpdated_at(momentum);
 
@@ -157,54 +224,5 @@ public class ColsulCalifController extends CustomController implements Serializa
       ex.printStackTrace();
 
     }
-  }
-
-  public List<Producto> getProductos() {
-    try {
-      productos = productoService.getAll();
-    } catch (Exception e) {
-      System.out.println("error al consultar bodegas");
-    }
-    return productos;
-  }
-
-  public String getAprobacion() {
-    return aprobacion;
-  }
-
-  public void setAprobacion(String aprobacion) {
-    this.aprobacion = aprobacion;
-  }
-
-  public Integer getIdProducto() {
-    return idProducto;
-  }
-
-  public void setIdProducto(Integer idProducto) {
-    this.idProducto = idProducto;
-  }
-
-  public Integer getIdCliente() {
-    return idCliente;
-  }
-
-  public void setIdCliente(Integer idCliente) {
-    this.idCliente = idCliente;
-  }
-
-  public Integer getCalif() {
-    return calif;
-  }
-
-  public void setCalif(Integer calif) {
-    this.calif = calif;
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
   }
 }

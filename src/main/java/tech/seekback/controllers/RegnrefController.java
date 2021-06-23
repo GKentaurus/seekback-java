@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.ManagedBean;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import tech.seekback.services.ProductoService;
@@ -30,6 +31,7 @@ import tech.seekback.services.CategoriasProductoService;
  *
  * @author danny
  */
+@ManagedBean
 @Named
 @ViewScoped
 public class RegnrefController implements Serializable {
@@ -60,6 +62,7 @@ public class RegnrefController implements Serializable {
   public RegnrefController() throws ConnectionExcep {
     producto = new Producto();
     bodegaProducto = new BodegaProducto();
+    //categoriasProductos = categoriasProductoService.getAll();
   }
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -109,7 +112,7 @@ public class RegnrefController implements Serializable {
         categoriasProductos = categoriasProductoService.getAll();
       }
     } catch (Exception ex) {
-      System.out.println("Error al consultar los Agenda.....");
+      System.out.println("Error al consultar categoriasProductos.....");
       ex.printStackTrace();
     }
     return categoriasProductos;

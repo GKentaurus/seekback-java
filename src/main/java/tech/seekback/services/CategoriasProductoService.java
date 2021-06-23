@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.CategoriasProductoDAO;
@@ -56,11 +55,13 @@ public class CategoriasProductoService {
   }
 
   /**
-   * @return Una colección de objetos de tipo CategoriasProducto (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo CategoriasProducto (referente al
+   * Dao que lo implementa)
    * @throws ConnectionExcep
    */
   public List<CategoriasProducto> getAll() throws ConnectionExcep {
-    return categoriasProductoDAO.getAll();
+    List<CategoriasProducto> categorias = categoriasProductoDAO.getAll();
+    return categorias;
   }
 
   /**

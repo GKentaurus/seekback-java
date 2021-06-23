@@ -69,6 +69,10 @@ public class ColsulserviController extends CustomController implements Serializa
     this.idUsuario = loginController.getUsuario().getId();
   }
 
+  public ColsulserviController() {
+    agenda = new Agenda();
+  }
+
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Integer getIdEmpleado() {
     return idEmpleado;

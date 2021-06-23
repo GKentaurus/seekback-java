@@ -155,10 +155,12 @@
                     <div class="section" style="padding-bottom:0px;">
                       <h4 class="center-align">Desea eliminar el usuario #{st.primerNombre} #{st.otrosNombres} #{st.primerApellido} #{st.otrosApellidos} ?</h4>
                     </div>
-                    <div class="modal-footer">
-                      <h:commandButton action="#{usuarioController.deleteu(st.id)}" class="waves-effect waves-green btn-flat red lighten-5" value="Aceptar"/>
-                      <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                    </div>
+                    <h:form>
+                      <div class="modal-footer">
+                        <h:commandButton action="#{usuarioController.deleteu(st.id)}" class="waves-effect waves-green btn-flat red lighten-5" value="Aceptar"/>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                      </div>
+                    </h:form>
                   </div>
                 </div>
               </h:column>

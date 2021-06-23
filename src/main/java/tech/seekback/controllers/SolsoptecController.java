@@ -20,6 +20,7 @@ import javax.inject.Named;
 import tech.seekback.exceptions.ConnectionExcep;
 import tech.seekback.models.BodegaProducto;
 import tech.seekback.models.EstadosFidelizacion;
+import tech.seekback.models.Producto;
 import tech.seekback.models.SoporteTecnico;
 import tech.seekback.models.Usuario;
 import tech.seekback.models.templates.Timestamps;
@@ -77,6 +78,10 @@ public class SolsoptecController extends CustomController implements Serializabl
   @PostConstruct
   public void init() {
     this.idUsuario = loginController.getUsuario().getId();
+  }
+
+  public SolsoptecController() {
+    soporteTecnico = new SoporteTecnico();
   }
 
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -282,6 +287,10 @@ public class SolsoptecController extends CustomController implements Serializabl
 
   public void createByEmpleado() throws ConnectionExcep, IOException {
 
+    System.out.println("producto " + this.idProducto);
+    System.out.println("setCliente " + this.idCliente);
+    System.out.println("setEmpleado " + loginController.getUsuario().getId());
+
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
     timestamps.setDeleted(false);
@@ -308,6 +317,8 @@ public class SolsoptecController extends CustomController implements Serializabl
   }
 
   public void createdByCliente() throws ConnectionExcep, IOException {
+
+    System.out.println("producto " + this.idProducto);
 
     Timestamps timestamps = new Timestamps();
     Date momentum = new Date();

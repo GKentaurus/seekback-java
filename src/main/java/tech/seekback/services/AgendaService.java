@@ -15,7 +15,6 @@ import java.util.List;
 public class AgendaService {
 
   @EJB
-
   private AgendaDAO agendaDAO;
 
   /**

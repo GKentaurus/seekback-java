@@ -39,7 +39,6 @@
         <div class="col s12">
           <p style="font-size:25px;" class="center-align"><i class="fas fa-headset"></i> Solicitar servicio <i class="far fa-calendar-alt"></i></p>
           <h:panelGroup rendered="#{usuarioController.confirmRole('Administrador')}">
-
             <h:form>
               <div class="row">
                 <div class="col s12 m6">
@@ -270,7 +269,7 @@
               </div>
               <div class="row">
                 <div class="col s12">
-                  <h:commandLink class="waves-effect waves-light btn" actionListener="#{solsoptecController.createByEmpleado()}">Solicitar</h:commandLink>
+                  <h:commandLink class="waves-effect waves-light btn" action="#{solsoptecController.createByEmpleado()}">Solicitar</h:commandLink>
                 </div>
               </div>
             </h:form>

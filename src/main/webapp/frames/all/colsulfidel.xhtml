@@ -129,7 +129,7 @@
                             </div>
                             <div class="col s12 m6">
                               <div class="input-field">
-                                <h:inputText id="datei" value="#{st.timestamps.created_at}">
+                                <h:inputText id="datei" value="#{st.timestamps.created_at}" readonly="true">
                                   <f:convertDateTime pattern="dd/MM/yyyy"/>
                                 </h:inputText>
                                 <h:outputLabel for="datei">Fecha</h:outputLabel>
@@ -186,7 +186,9 @@
                         <h4 class="center-align">Desea eliminar el PQRS de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
                       </div>
                       <div class="modal-footer">
-                        <h:commandButton action="#{colsulFidelController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                        <h:form>
+                          <h:commandButton action="#{colsulFidelController.delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                        </h:form>
                         <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>
@@ -195,7 +197,7 @@
               </h:dataTable>
             </div>
           </h:panelGroup>
-          <h:form  rendered="#{usuarioController.confirmRole('Cliente')}">
+          <h:panelGroup rendered="#{usuarioController.confirmRole('Cliente')}">
             <div class="row">
               <h:form>
                 <div class="input-field col m6 s12">
@@ -231,7 +233,7 @@
                 </div>
               </div>
               <h:dataTable pt:id="datatable"
-                           value="#{colsulFidelController.pqrses}"
+                           value="#{colsulFidelController.pqrsesByClient}"
                            var="st">
                 <h:column>
                   <f:facet name="header">Servicio</f:facet>
@@ -253,7 +255,7 @@
                 </h:column>
               </h:dataTable>
             </div>
-          </h:form>
+          </h:panelGroup>
         </div>
       </div>
       <h:outputScript library="" name="table.js" />

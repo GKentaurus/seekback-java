@@ -47,6 +47,10 @@ public class ProductosController extends CustomController implements Serializabl
   private Producto producto;
   private Integer idProd;
 
+  public ProductosController() {
+    producto = new Producto();
+  }
+
   // <editor-fold desc="Getters y Setters" defaultstate="collapsed">
   public Integer getIdProd() {
     return idProd;

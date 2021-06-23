@@ -66,6 +66,11 @@ public class ModRefnController extends CustomController implements Serializable 
   private Producto producto;
   private boolean estate;
 
+  public ModRefnController() {
+    bodegaProducto = new BodegaProducto();
+    producto = new Producto();
+  }
+
   public void genpdf() throws JRException, IOException, ConnectionExcep {
 
     List<String[]> columnas = new ArrayList<>();

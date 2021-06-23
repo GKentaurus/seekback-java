@@ -1,4 +1,3 @@
-
 package tech.seekback.dao.interfaces;
 
 import tech.seekback.dao.DAO;

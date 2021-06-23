@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.PaisDAO;
@@ -37,12 +36,13 @@ public class PaisService {
   }
 
   /**
-   * @return Una colección de objetos de tipo Pais (referente al Dao que lo implementa)
+   * @return Una colección de objetos de tipo Pais (referente al Dao que lo
+   * implementa)
    * @throws ConnectionExcep
    */
   public List<Pais> getAll() throws ConnectionExcep {
-    List<Pais> tipoDoc = paisDAO.getAll();
-    return tipoDoc;
+    List<Pais> paises = paisDAO.getAll();
+    return paises;
   }
 
   /**

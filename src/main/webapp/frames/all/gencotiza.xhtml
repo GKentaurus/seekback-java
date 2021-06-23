@@ -13,6 +13,11 @@
     <h:outputScript library="materialize" name="js/materialize.min.js" />
     <h:outputScript library="" name="fontawesome.js" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script>
+      $(document).ready(function () {
+        $('select').formSelect();
+      });
+    </script>
     <style>
       body {
         background-image: url("#{resource['images/logob.png']}");
@@ -32,23 +37,59 @@
         <div class="col s12">
           <p style="font-size:25px;" class="center-align"><i class="fas fa-folder-plus"></i> Solicitar cotizacion <i class="far fa-file-alt"></i></p>
           <h:panelGroup rendered="#{usuarioController.confirmRole('Empleado')}">
-            <h:form>
-              <div class="row">
-                <div class="col s12 m6">
-                  <div class="input-field">
-                    <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
-                    <h:selectOneMenu pt:placeholder=" " pt:id="cliente"  class="browser-default"
-                                     value="#{genCotizaController.idCliente}">
-                      <f:selectItem itemLabel="Seleccione una opcion"/>
-                      <f:selectItems value="#{genCotizaController.clientes}"
-                                     var="cl"
-                                     itemValue="#{cl.id}"
-                                     itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
-                    </h:selectOneMenu>
-                  </div>
-                </div>
+            <div class="row">
+              <h:form prependId="false">
                 <div class="input-field col s12 m6">
-                  <h:selectOneMenu id="divi"
+                  <h:outputLabel for="cliente" value="Cliente" style="margin-top: -30px;"/>
+                  <h:selectOneMenu id="cliente" class="browser-default"
+                                   value="#{genCotizaController.idCliente}">
+                    <f:selectItem itemLabel="Seleccione una opcion"/>
+                    <f:selectItems value="#{genCotizaController.clientes}"
+                                   var="cl"
+                                   itemValue="#{cl.id}"
+                                   itemLabel="#{cl.primerNombre} #{cl.otrosNombres} #{cl.primerApellido} #{cl.otrosApellidos}"/>
+                  </h:selectOneMenu>
+                </div>
+                <!-- <div class="input-field col s12 m6">
+                   <h:outputLabel for="divi" value="Divisa" />
+                   <h:selectOneMenu id="divi"
+                                    value="#{genCotizaController.idDivisaseleccionada}">
+                     <f:selectItem itemLabel="Seleccione una opcion"/>
+                     <f:selectItems value="#{genCotizaController.divisas}"
+                                    var="di"
+                                    itemValue="#{di.id}"
+                                    itemLabel="#{di.sigla} #{di.nombre}"/>
+                     <f:ajax execute="@this" render="trm"/>
+                   </h:selectOneMenu>
+                 </div>
+                 <div class="input-field col s12 m6">
+                   <h:outputLabel for="trm" value="TRM" style="margin-top: -30px;"/>
+                   <h:selectOneMenu id="trm"  class="browser-default">
+                     <f:selectItem itemLabel="Seleccione una opcion"
+                                   noSelectionOption="true" />
+                     <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
+                                    var="tr"
+                                    itemValue="#{tr.id}"
+                                    itemLabel="#{tr.tasaCambio}">
+                     </f:selectItems>
+                   </h:selectOneMenu>
+                 </div>-->
+                <div class="input-field col s12 m6">
+                  <h:outputLabel for="motivo">Motivo</h:outputLabel>
+                  <h:inputTextarea id="motivo" class="materialize-textarea" value="#{genCotizaController.motivo}" ></h:inputTextarea>
+                </div>
+                <div class="col s12">
+                  <h:commandButton class="waves-effect waves-light btn" actionListener="#{genCotizaController.createdByEmpleado()}" value="Solicitar"/>
+                </div>
+              </h:form>
+            </div>
+          </h:panelGroup>
+          <h:panelGroup rendered="#{usuarioController.confirmRole('Cliente')}" >
+            <div class="row">
+              <h:form>
+                <div class="input-field col s12 m6">
+                  <h:outputLabel for="divi" value="Divisa" style="margin-top: -30px;"/>
+                  <h:selectOneMenu id="divi" class="browser-default" pt:placeholder=" "
                                    value="#{genCotizaController.idDivisaseleccionada}">
                     <f:selectItem itemLabel="Seleccione una opcion"/>
                     <f:selectItems value="#{genCotizaController.divisas}"
@@ -57,84 +98,33 @@
                                    itemLabel="#{di.sigla} #{di.nombre}"/>
                     <f:ajax execute="@this" render="trm"/>
                   </h:selectOneMenu>
-                  <h:outputLabel for="divi" value="Divisa" />
                 </div>
                 <div class="input-field col s12 m6">
-                  <h:selectOneMenu pt:placeholder=" " id="trm"  class="browser-default">
-                    <f:selectItem itemLabel="Seleccione una opcion"
-                                  noSelectionOption="true" />
+                  <h:outputLabel for="trm" value="TRM" style="margin-top: -30px;"/>
+                  <h:selectOneMenu id="trm"  class="browser-default" pt:placeholder=" "
+                                   value="#{genCotizaController.trm}">
+                    <f:selectItem itemLabel="Seleccione una opcion"/>
                     <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
                                    var="tr"
                                    itemValue="#{tr.id}"
                                    itemLabel="#{tr.tasaCambio}">
                     </f:selectItems>
                   </h:selectOneMenu>
-                  <h:outputLabel for="trm" value="TRM" style="margin-top: -30px;"/>
                 </div>
-              </div>
-              <div class="col s12 m6">
-                <div class="input-field">
+                <div class="input-field col s12 m6">
                   <h:inputTextarea id="motivo" class="materialize-textarea" value="#{genCotizaController.motivo}" ></h:inputTextarea>
                   <h:outputLabel for="motivo">Motivo</h:outputLabel>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col s12">
-                  <h:commandButton class="waves-effect waves-light btn" action="#{genCotizaController.createe()}" value="Solicitar"/>
+                  <h:commandButton class="waves-effect waves-light btn" actionListener="#{genCotizaController.createdByCliente()}" value="Solicitar" />
                 </div>
-              </div>
-            </h:form>
-          </h:panelGroup>
-          <h:panelGroup rendered="#{usuarioController.confirmRole('Cliente')}">
-            <h:form>
-              <div class="row">
-                <div class="input-field col s12 m6">
-                  <h:selectOneMenu id="divi"
-                                   value="#{genCotizaController.idDivisaseleccionada}">
-                    <f:selectItem itemLabel="Seleccione una opcion"/>
-                    <f:selectItems value="#{genCotizaController.divisas}"
-                                   var="di"
-                                   itemValue="#{di.id}"
-                                   itemLabel="#{di.sigla} #{di.nombre}"/>
-                    <f:ajax execute="@this" render="trm"/>
-                  </h:selectOneMenu>
-                  <h:outputLabel for="divi" value="Divisa" />
-                </div>
-                <div class="input-field col s12 m6">
-                  <h:selectOneMenu pt:placeholder=" " id="trm"  class="browser-default"
-                                   value="#{genCotizaController.trm}">
-                    <f:selectItem itemLabel="Seleccione una opcion"
-                                  noSelectionOption="true" />
-                    <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
-                                   var="tr"
-                                   itemValue="#{tr.id}"
-                                   itemLabel="#{tr.tasaCambio}">
-                    </f:selectItems>
-                  </h:selectOneMenu>
-                  <h:outputLabel for="trm" value="TRM" style="margin-top: -30px;"/>
-                </div>
-                <div class="col s12 m6">
-                  <div class="input-field">
-                    <h:inputTextarea id="motivo" class="materialize-textarea" value="#{genCotizaController.motivo}" ></h:inputTextarea>
-                    <h:outputLabel for="motivo">Motivo</h:outputLabel>
-                  </div>
-                </div>
-                <h:commandButton class="waves-effect waves-light btn" action="#{genCotizaController.test()}" value="Solicitar"/>
-              </div>
-              <h:messages></h:messages>
-            </h:form>
+              </h:form>
+            </div>
           </h:panelGroup>
         </div>
       </div>
     </div>
 
-    <script>
-
-
-      $(document).ready(function () {
-        $('select').formSelect();
-      });
-    </script>
 
 
   </h:body>

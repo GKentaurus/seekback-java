@@ -1,4 +1,3 @@
-
 package tech.seekback.models;
 
 import tech.seekback.models.interfaces.EntityTimestamp;
@@ -17,6 +16,7 @@ import java.util.Objects;
 @Table(name = "pqrs")
 @NamedQueries(value = {
   @NamedQuery(name = "PQRS.getAll", query = "SELECT obj FROM PQRS obj WHERE obj.timestamps.deleted = false"),
+  @NamedQuery(name = "PQRS.getByCliente", query = "SELECT obj FROM PQRS obj WHERE obj.cliente.id = :idCliente AND obj.timestamps.deleted = false"),
   @NamedQuery(name = "PQRS.getAllCount", query = "SELECT COUNT(obj) FROM PQRS obj WHERE obj.estado.id <> 3 AND obj.timestamps.deleted = false")
 })
 public class PQRS implements EntityTimestamp {
@@ -44,7 +44,7 @@ public class PQRS implements EntityTimestamp {
   @Column(name = "comentario", nullable = false, length = 255)
   private String comentario;
 
-  @Column(name= "respuesta")
+  @Column(name = "respuesta")
   private String respuesta;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -98,6 +98,46 @@ public class PQRS implements EntityTimestamp {
   }
 
   /**
+   * Retorna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @return <code>cliente</code> del PQRS.
+   * @see Usuario
+   */
+  public Usuario getCliente() {
+    return cliente;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>cliente</code> del objeto.
+   *
+   * @param cliente del PQRS.
+   * @see Usuario
+   */
+  public void setCliente(Usuario cliente) {
+    this.cliente = cliente;
+  }
+
+  /**
+   * Retorna el valor del atributo <code>administrador</code> del objeto.
+   *
+   * @return <code>administrador</code> del PQRS.
+   * @see Usuario
+   */
+  public Usuario getAdministrador() {
+    return administrador;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>administrador</code> del objeto.
+   *
+   * @param administrador del PQRS.
+   * @see Usuario
+   */
+  public void setAdministrador(Usuario administrador) {
+    this.administrador = administrador;
+  }
+
+  /**
    * Retorna el valor del atributo <code>area</code> del objeto.
    *
    * @return <code>area</code> del PQRS.
@@ -113,6 +153,60 @@ public class PQRS implements EntityTimestamp {
    */
   public void setArea(String area) {
     this.area = area;
+  }
+
+  /**
+   * Retorna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @return <code>comentario</code> del PQRS.
+   */
+  public String getComentario() {
+    return comentario;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @param comentario del PQRS.
+   */
+  public void setComentario(String comentario) {
+    this.comentario = comentario;
+  }
+
+  /**
+   * Retorna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @return <code>respuesta</code> del PQRS.
+   */
+  public String getRespuesta() {
+    return respuesta;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>comentario</code> del objeto.
+   *
+   * @param respuesta del PQRS.
+   */
+  public void setRespuesta(String respuesta) {
+    this.respuesta = respuesta;
+  }
+
+  /**
+   * Retorna el valor del atributo <code>fechaRespuesta</code> del objeto.
+   *
+   * @return <code>fechaRespuesta</code> del PQRS.
+   */
+  public Date getFechaRespuesta() {
+    return fechaRespuesta;
+  }
+
+  /**
+   * Asigna el valor del atributo <code>fechaRespuesta</code> del objeto.
+   *
+   * @param fechaRespuesta del PQRS.
+   */
+  public void setFechaRespuesta(Date fechaRespuesta) {
+    this.fechaRespuesta = fechaRespuesta;
   }
 
   /**
@@ -154,99 +248,6 @@ public class PQRS implements EntityTimestamp {
   public void setTimestamps(Timestamps timestamps) {
     this.timestamps = timestamps;
   }
-
-  /**
-   * Retorna el valor del atributo <code>cliente</code> del objeto.
-   *
-   * @return <code>cliente</code> del PQRS.
-   * @see Usuario
-   */
-  public Usuario getCliente() {
-    return cliente;
-  }
-
-  /**
-   * Asigna el valor del atributo <code>cliente</code> del objeto.
-   *
-   * @param cliente del PQRS.
-   * @see Usuario
-   */
-  public void setCliente(Usuario cliente) {
-    this.cliente = cliente;
-  }
-
-  /**
-   * Retorna el valor del atributo <code>administrador</code> del objeto.
-   *
-   * @return <code>administrador</code> del PQRS.
-   * @see Usuario
-   */
-  public Usuario getAdministrador() {
-    return administrador;
-  }
-
-  /**
-   * Asigna el valor del atributo <code>administrador</code> del objeto.
-   *
-   * @param administrador del PQRS.
-   * @see Usuario
-   */
-  public void setAdministrador(Usuario administrador) {
-    this.administrador = administrador;
-  }
-
-  /**
-   * Retorna el valor del atributo <code>comentario</code> del objeto.
-   *
-   * @return <code>comentario</code> del PQRS.
-   */
-  public String getComentario() {
-    return comentario;
-  }
-
-  /**
-   * Asigna el valor del atributo <code>comentario</code> del objeto.
-   *
-   * @param comentario del PQRS.
-   */
-  public void setComentario(String comentario) {
-    this.comentario = comentario;
-  }
-
-  /**
-   * Retorna el valor del atributo <code>comentario</code> del objeto.
-   *
-   * @return <code>respuesta</code> del PQRS.
-   */
-  public String getRespuesta() {
-    return respuesta;
-  }
-
-  /**
-   * Asigna el valor del atributo <code>comentario</code> del objeto.
-   *
-   * @param respuesta del PQRS.
-   */
-  public void setRespuesta(String respuesta) {
-    this.respuesta = respuesta;
-  }
-  /**
-   * Retorna el valor del atributo <code>fechaRespuesta</code> del objeto.
-   *
-   * @return <code>fechaRespuesta</code> del PQRS.
-   */
-  public Date getFechaRespuesta() {
-    return fechaRespuesta;
-  }
-
-  /**
-   * Asigna el valor del atributo <code>fechaRespuesta</code> del objeto.
-   *
-   * @param fechaRespuesta del PQRS.
-   */
-  public void setFechaRespuesta(Date fechaRespuesta) {
-    this.fechaRespuesta = fechaRespuesta;
-  }
   //</editor-fold>
 
   //<editor-fold defaultstate="collapsed" desc="Hash && Equals">
@@ -276,16 +277,16 @@ public class PQRS implements EntityTimestamp {
   @Override
   public String toString() {
     return "PQRS{"
-      + "id = " + id + ", "
-      + "tipoSolicitud = " + tipoSolicitud + ", "
-      + "cliente = " + cliente + ", "
-      + "administrador = " + administrador + ", "
-      + "area = " + area + ", "
-      + "comentario = " + comentario + ", "
-      + "respuesta = " + respuesta + ", "
-      + "estado = " + estado
-      + "fechaRespuesta = " + fechaRespuesta
-      + timestamps.toString()
-      + '}';
+            + "id = " + id + ", "
+            + "tipoSolicitud = " + tipoSolicitud + ", "
+            + "cliente = " + cliente + ", "
+            + "administrador = " + administrador + ", "
+            + "area = " + area + ", "
+            + "comentario = " + comentario + ", "
+            + "respuesta = " + respuesta + ", "
+            + "estado = " + estado
+            + "fechaRespuesta = " + fechaRespuesta
+            + timestamps.toString()
+            + '}';
   }
 }

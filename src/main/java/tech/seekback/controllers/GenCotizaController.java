@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -68,75 +69,16 @@ public class GenCotizaController extends CustomController implements Serializabl
   private Cotizacion cotizacion;
   private Integer trm;
 
-  public List<Usuario> getClientes() {
-    try {
-      if (Objects.isNull(clientes)) {
-        clientes = clienteService.getAll();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los clientes.....");
-      ex.printStackTrace();
-    }
-    return clientes;
+  @PostConstruct
+  public void init() {
+    this.IdUsuario = loginController.getUsuario().getId();
   }
 
-  public void setIdDivisaseleccionada(Integer IdDivisaseleccionada) {
-    System.out.println("divi sele 2 " + IdDivisaseleccionada);
-    try {
-      if (Objects.nonNull(IdDivisaseleccionada)) {
-        trmsSeleccionada = trmService.getByidDivisa(IdDivisaseleccionada);
-      } else {
-        trmsSeleccionada = null;
-      }
-    } catch (ConnectionExcep ex) {
-      ex.printStackTrace();
-    }
-    this.IdDivisaseleccionada = IdDivisaseleccionada;
+  public GenCotizaController() {
+    cotizacion = new Cotizacion();
   }
 
-  public List<Divisa> getDivisas() {
-    try {
-      if (Objects.isNull(divisas)) {
-        divisas = divisaService.getAll();
-      }
-    } catch (Exception ex) {
-      System.out.println("Error al consultar los clientes.....");
-      ex.printStackTrace();
-    }
-    return divisas;
-  }
-
-  public void createe() throws ConnectionExcep, IOException {
-
-    this.cotizacion = new Cotizacion();
-
-    // Creación de Timestamp para todos los procesos
-    Timestamps timestamps = new Timestamps();
-    Date momentum = new Date();
-    timestamps.setCreated_at(momentum);
-    timestamps.setUpdated_at(momentum);
-
-    this.cotizacion.setRequerimiento(motivo);
-    this.cotizacion.setFecha(momentum);
-    this.cotizacion.setTrm(trmService.getOne(trm));
-    this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
-    this.cotizacion.setCliente(clienteService.getOne(this.IdCliente));
-    this.cotizacion.setEmpleado(empleadoService.getOne(this.IdUsuario));
-    this.cotizacion = cotizacionService.create(cotizacion);
-
-    System.out.println(
-            "\n\n\n\n\n######################################################################"
-            + "\n#\t  Registro creado "
-            + "\n######################################################################\n");
-
-    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-    ec.redirect(ec.getRequestContextPath() + "/frames/all/gencotiza.xhtml");
-  }
-
-  public void test() {
-    System.out.println("\n\n\nPROBANDO PROBANDO \n\n\n");
-  }
-
+  //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public List<TRM> getTrmsSeleccionada() {
     return trmsSeleccionada;
   }
@@ -183,5 +125,99 @@ public class GenCotizaController extends CustomController implements Serializabl
 
   public void setTrm(Integer trm) {
     this.trm = trm;
+  }
+
+  public List<Usuario> getClientes() {
+    try {
+      if (Objects.isNull(clientes)) {
+        clientes = clienteService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los clientes.....");
+      ex.printStackTrace();
+    }
+    return clientes;
+  }
+
+  public List<Divisa> getDivisas() {
+    try {
+      if (Objects.isNull(divisas)) {
+        divisas = divisaService.getAll();
+      }
+    } catch (Exception ex) {
+      System.out.println("Error al consultar los clientes.....");
+      ex.printStackTrace();
+    }
+    return divisas;
+  }
+
+  public void setIdDivisaseleccionada(Integer IdDivisaseleccionada) {
+    try {
+      if (Objects.nonNull(IdDivisaseleccionada)) {
+        trmsSeleccionada = trmService.getByidDivisa(IdDivisaseleccionada);
+      } else {
+        trmsSeleccionada = null;
+      }
+    } catch (ConnectionExcep ex) {
+      ex.printStackTrace();
+    }
+    this.IdDivisaseleccionada = IdDivisaseleccionada;
+  }
+  //</editor-fold>
+
+  public void createdByEmpleado() throws ConnectionExcep, IOException {
+
+    // Creación de Timestamp para todos los procesos
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.cotizacion.setRequerimiento(this.motivo);
+    this.cotizacion.setFecha(momentum);
+    //this.cotizacion.setTrm(trmService.getOne(this.trm));
+    this.cotizacion.setTrm(trmService.getOne(1));
+    this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
+    this.cotizacion.setCliente(clienteService.getOne(this.IdCliente));
+    this.cotizacion.setEmpleado(empleadoService.getOne(this.IdUsuario));
+    this.cotizacion = cotizacionService.create(cotizacion);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/gencotiza.xhtml");
+  }
+
+  public void createdByCliente() throws ConnectionExcep, IOException {
+
+    //this.cotizacion = new Cotizacion();
+    Timestamps timestamps = new Timestamps();
+    Date momentum = new Date();
+    timestamps.setDeleted(false);
+    timestamps.setCreated_at(momentum);
+    timestamps.setUpdated_at(momentum);
+
+    this.cotizacion.setRequerimiento(motivo);
+    this.cotizacion.setFecha(momentum);
+    this.cotizacion.setVencimiento(momentum);
+    this.cotizacion.setTrm(trmService.getOne(trm));
+    this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
+    this.cotizacion.setCliente(clienteService.getOne(this.IdUsuario));
+    this.cotizacion.setEmpleado(empleadoService.getOne(2));
+    this.cotizacion.setTimestamps(timestamps);
+
+    this.cotizacion = cotizacionService.create(cotizacion);
+
+    System.out.println(
+            "\n\n\n\n\n######################################################################"
+            + "\n#\t  Registro creado "
+            + "\n######################################################################\n");
+
+    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+    ec.redirect(ec.getRequestContextPath() + "/frames/all/gencotiza.xhtml");
   }
 }

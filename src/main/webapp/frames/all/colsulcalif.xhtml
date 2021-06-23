@@ -111,7 +111,7 @@
                   <a class="waves-effect waves-light btn modal-trigger"
                      href="#modal#{st.id}"
                      onclick="
-                           document.getElementById('esta#{st.id}').value = '#{st.esAprobado}';
+                         document.getElementById('esta#{st.id}').value = '#{st.esAprobado}';
                      ">Visualizar</a>
                   <div id="modal#{st.id}" class="modal">
                     <h:form>
@@ -265,7 +265,7 @@
               </div>
               <h:form>
                 <h:dataTable pt:id="datatable"
-                             value="#{colsulCalifController.calificaciones}"
+                             value="#{colsulCalifController.calificacionesByIdCliente}"
                              var="st">
                   <h:column>
                     <f:facet name="header">Fecha</f:facet>

@@ -34,25 +34,24 @@
         <p class="center-align" style="font-size:25px;"><i class="fas fa-folder-plus"></i> Registrar nuevas referencias <i
             class="fas fa-asterisk"></i></p>
         <br/>
-
-        <h:form>
+        <h:form prependId="false">
           <div class="row">
             <div class="col m6 s12">
               <div class="input-field">
-                <h:inputText id="model" value="#{regnRefController.modelProduct}" required="true"/>
+                <h:inputText id="model" value="#{regnrefController.modelProduct}" required="true"/>
                 <h:outputLabel for="model">Modelo del producto</h:outputLabel>
               </div>
             </div>
             <div class="col m6 s12">
               <div class="input-field">
-                <h:inputTextarea class="materialize-textarea" id="desc" value="#{regnRefController.descripcion}"
+                <h:inputTextarea class="materialize-textarea" id="desc" value="#{regnrefController.descripcion}"
                                  required="true"/>
                 <h:outputLabel for="desc">Descripción</h:outputLabel>
               </div>
             </div>
             <div class="col m6 s12">
               <div class="input-field">
-                <h:inputText id="cost" value="#{regnRefController.valor}" required="true">
+                <h:inputText id="cost" value="#{regnrefController.valor}" required="true">
                   <f:converter converterId="javax.faces.Double"/>
                 </h:inputText>
                 <h:outputLabel for="cost">Precio de venta</h:outputLabel>
@@ -60,7 +59,7 @@
             </div>
             <div class="col m6 s12">
               <div class="input-field">
-                <h:inputText id="cant" pt:type="number" value="#{regnRefController.cant}" required="true">
+                <h:inputText id="cant" pt:type="number" value="#{regnrefController.cant}" required="true">
                 </h:inputText>
                 <h:outputLabel for="cant">Cantidad</h:outputLabel>
               </div>
@@ -69,12 +68,11 @@
               <div class="input-field">
                 <h:outputLabel for="cat" value="Categoria" style="margin-top: -30px;"/>
                 <h:selectOneMenu pt:placeholder=" " pt:id="cat"
-                                 value="#{regnRefController.idCat}"
+                                 value="#{regnrefController.idCat}"
                                  class="browser-default" required="true">
-                  <f:selectItem itemValue="#{null}"
-                                itemLabel="Seleccione una opcion"
+                  <f:selectItem itemLabel="Seleccione una opción"
                                 noSelectionOption="true" />
-                  <f:selectItems value="#{regnRefController.categoriasProductos}"
+                  <f:selectItems value="#{regnrefController.categoriasProductos}"
                                  var="cl"
                                  itemValue="#{cl.id}"
                                  itemLabel="#{cl.nombreCategoria}"/>
@@ -85,27 +83,22 @@
               <div class="input-field">
                 <h:outputLabel for="bod" value="Bodega" style="margin-top: -30px;"/>
                 <h:selectOneMenu pt:placeholder=" " pt:id="bod"
-                                 value="#{regnRefController.idBod}"
+                                 value="#{regnrefController.idBod}"
                                  class="browser-default" required="true">
-                  <f:selectItem itemValue="#{null}"
-                                itemLabel="Seleccione una opcion"
+                  <f:selectItem itemLabel="Seleccione una opcion"
                                 noSelectionOption="true" />
-                  <f:selectItems value="#{regnRefController.bodegas}"
-                                 var="cl"
-                                 itemValue="#{cl.id}"
-                                 itemLabel="#{cl.nombreBodega}"/>
+                  <f:selectItems value="#{regnrefController.bodegas}"
+                                 var="bo"
+                                 itemValue="#{bo.id}"
+                                 itemLabel="#{bo.nombreBodega}"/>
                 </h:selectOneMenu>
               </div>
             </div>
-            <h:commandButton action="#{regnRefController.createp()}" class="waves-effect waves-light btn"
+            <h:commandButton action="#{regnrefController.createp()}" class="waves-effect waves-light btn"
                              value="Registrar"/>
           </div>
-          <h:messages></h:messages>
         </h:form>
-
       </div>
     </div>
-
-
   </h:body>
 </html>

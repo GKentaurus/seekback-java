@@ -1,6 +1,6 @@
-
 package tech.seekback.dao.jpa;
 
+import java.util.List;
 import tech.seekback.dao.GenericDAO;
 import tech.seekback.dao.interfaces.PQRSDAO;
 import tech.seekback.enums.ConnectionExcepEnum;
@@ -33,5 +33,17 @@ public class PQRSDAOJPA extends GenericDAO<PQRS, Integer> implements PQRSDAO {
       throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
     }
 
+  }
+
+  @Override
+  public List<PQRS> getByCliente(Integer idCliente) throws ConnectionExcep {
+    try {
+      return em
+              .createNamedQuery("PQRS.getByCliente", classType)
+              .setParameter("idCliente", idCliente)
+              .getResultList();
+    } catch (Exception e) {
+      throw new ConnectionExcep(ConnectionExcepEnum.ERROR_CONEXION, e);
+    }
   }
 }

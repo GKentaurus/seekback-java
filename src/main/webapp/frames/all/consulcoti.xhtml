@@ -58,43 +58,47 @@
           <h:panelGroup rendered="#{usuarioController.confirmRole('Empleado')}">
             <div class="card material-table">
               <div class="table-header">
-                <span class="table-title">Soportes Técnicos</span>
+                <span class="table-title">Cotizaciones</span>
                 <div class="actions">
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                 </div>
               </div>
-              <h:form>
-                <h:dataTable pt:id="datatable"
-                             value="#{consulCotiController.cotizaciones}"
-                             var="st">
-                  <h:column>
-                    <f:facet name="header">Cliente</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"
-                                  pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Fecha</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at}"
-                                  pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}">
-                      <f:convertDateTime pattern="dd/MM/yyyy"/>
-                    </h:outputText>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Motivo</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.requerimiento}"
-                                  pt:data-position="bottom" pt:data-tooltip="#{st.requerimiento}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Estado</f:facet>
-                    <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}"
-                                  pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Editar</f:facet>
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal#{st.id}" onclick="document.getElementById('estado#{st.id}').value = #{st.estado.id};">Visualizar</a>
-                    <div id="modal#{st.id}" class="modal">
+              <h:dataTable pt:id="datatable"
+                           value="#{consulCotiController.cotizaciones}"
+                           var="st">
+                <h:column>
+                  <f:facet name="header">Cliente</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Fecha</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.timestamps.created_at}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.timestamps.created_at}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:outputText>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Motivo</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.requerimiento}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.requerimiento}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Estado</f:facet>
+                  <h:outputText pt:class="tooltipped" value="#{st.estado.nombreEstado}"
+                                pt:data-position="bottom" pt:data-tooltip="#{st.estado.nombreEstado}"/>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Editar</f:facet>
+                  <a class="waves-effect waves-light btn modal-trigger"
+                     href="#modal#{st.id}"
+                     onclick="
+                         document.getElementById('estado#{st.id}').value = #{st.estado.id};
+                         document.getElementById('motivo#{st.id}').value = '#{st.requerimiento}';">Visualizar</a>
+                  <div id="modal#{st.id}" class="modal">
+                    <h:form>
                       <div class="modal-content">
-                        <h4 class="center-align">Soporte técnico</h4>
+                        <h4 class="center-align">Cotizaciòn</h4>
                         <div class="section" style="padding-bottom:0px;">
                           <div class="row">
                             <div class="col s12 m6">
@@ -106,15 +110,19 @@
                             <div class="col s12 m6">
                               <div class="input-field">
                                 <label for="datei">Fecha</label>
-                                <input id="datei" type="datetime" value="#{st.timestamps.created_at}"/>
+                                <h:inputText value="#{st.timestamps.created_at}" readonly="true">
+                                  <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:inputText>
                               </div>
                             </div>
                             <div class="col s12 m6">
                               <input type="hidden" value="#{st.estado.id}" />
                               <div class="input-field">
                                 <h:outputLabel for="estado#{st.id}" value="Estado" style="margin-top: -30px;"/>
-                                <h:selectOneMenu pt:placeholder=" " pt:id="estado#{st.id}"  class="browser-default"
-                                                 valueChangeListener="#{st.estado.id}">
+                                <h:selectOneMenu pt:placeholder=" "
+                                                 pt:id="estado#{st.id}"
+                                                 class="browser-default"
+                                                 value="#{consulCotiController.idEstado}">
                                   <f:selectItem itemValue="#{null}"
                                                 itemLabel="Seleccione una opcion"
                                                 noSelectionOption="true" />
@@ -127,42 +135,44 @@
                             </div>
                             <div class="col s12">
                               <div class="input-field">
-                                <textarea id="motivo" class="menssage">#{st.requerimiento}</textarea>
+                                <h:inputTextarea pt:placeholder=" " pt:id="motivo#{st.id}" class="materialize-textarea" value="#{consulCotiController.motivo}"></h:inputTextarea>
                                 <label for="motivo">Motivo</label>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <a href="" class="modal-close waves-effect waves-green btn-flat">Actualizar</a>
+                          <h:commandButton class="waves-effect waves-green btn-flat" action="#{consulCotiController.Update(st.id)}" value="Actualizar" />
                           <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                         </div>
                       </div>
-                    </div>
-                  </h:column>
-                  <h:column>
-                    <f:facet name="header">Eliminar</f:facet>
-                    <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
-                    <div id="modaldel#{st.id}" class="modal">
-                      <div class="modal-content">
-                        <div class="section" style="padding-bottom:0px;">
-                          <h4 class="center-align">Desea eliminar el soporte técnico de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
-                          <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                        </div>
+                    </h:form>
+                  </div>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Eliminar</f:facet>
+                  <a class="waves-effect waves-light btn red modal-trigger" href="#modaldel#{st.id}">Eliminar</a>
+                  <div id="modaldel#{st.id}" class="modal">
+                    <div class="modal-content">
+                      <div class="section" style="padding-bottom:0px;">
+                        <h4 class="center-align">Desea eliminar la cotizaciòn de #{st.cliente.primerNombre} #{st.cliente.otrosNombres} #{st.cliente.primerApellido} ?</h4>
+                      </div>
+                      <div class="modal-footer" style="display:inline-block;">
+                        <h:form>
+                          <h:commandButton action="#{consulCotiController.Delete(st.id)}" class="btn waves-effect waves-light red" value="Eliminar"/>
+                        </h:form>
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                       </div>
                     </div>
-                  </h:column>
-                </h:dataTable>
-              </h:form>
+                  </div>
+                </h:column>
+              </h:dataTable>
             </div>
           </h:panelGroup>
           <h:panelGroup rendered="#{usuarioController.confirmRole('Cliente')}">
             <div class="card material-table">
               <div class="table-header">
-                <span class="table-title">Soportes Técnicos</span>
+                <span class="table-title">Cotizaciones</span>
                 <div class="actions">
                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
                 </div>

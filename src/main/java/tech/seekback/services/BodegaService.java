@@ -1,4 +1,3 @@
-
 package tech.seekback.services;
 
 import tech.seekback.dao.interfaces.BodegaDAO;
@@ -56,11 +55,13 @@ public class BodegaService {
   }
 
   /**
-   * @return Una coleccion de objetos de tipo Bodega (referente al DAO que lo implemente)
+   * @return Una coleccion de objetos de tipo Bodega (referente al DAO que lo
+   * implemente)
    * @throws ConnectionExcep
    */
   public List<Bodega> getAll() throws ConnectionExcep {
-    return bodegaDAO.getAll();
+    List<Bodega> bodegas = bodegaDAO.getAll();
+    return bodegas;
   }
 
   /**
