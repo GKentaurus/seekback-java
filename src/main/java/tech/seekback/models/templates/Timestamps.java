@@ -1,14 +1,13 @@
-
 package tech.seekback.models.templates;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author gkentaurus
@@ -18,11 +17,11 @@ public class Timestamps implements Serializable {
 
   @Column(name = "created_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP")
   @Temporal(TemporalType.TIMESTAMP)
-  private Date created_at;
+  private Date created_at = new Date();
 
   @Column(name = "updated_at", nullable = true, columnDefinition = "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
   @Temporal(TemporalType.TIMESTAMP)
-  private Date updated_at;
+  private Date updated_at = new Date();
 
   @Column(name = "deleted", nullable = true, columnDefinition = "NULL")
   private boolean deleted;
@@ -110,8 +109,8 @@ public class Timestamps implements Serializable {
   //</editor-fold>
 
   /**
-   * Asigna el valor de los atributos <code>created_at</code>,
-   * <code>updated_at</code> y <code>deleted_at</code> del objeto respectivo.
+   * Asigna el valor de los atributos <code>created_at</code>, <code>updated_at</code> y <code>deleted_at</code> del
+   * objeto respectivo.
    *
    * @param rs de la petición para almacenar en la base de datos.
    */
@@ -124,16 +123,15 @@ public class Timestamps implements Serializable {
 
   @Override
   /**
-   * Retorna una cadena de caracteres de que resume toda la información
-   * relevante del objeto.
+   * Retorna una cadena de caracteres de que resume toda la información relevante del objeto.
    *
    * @return <code>String compilado</code> del objeto.
    */
   public String toString() {
     return "created_at = " + created_at + ", "
-      + "updated_at = " + updated_at + ", "
-      + "deleted = " + deleted + ", "
-      + "deleted at = " + deleted_at;
+            + "updated_at = " + updated_at + ", "
+            + "deleted = " + deleted + ", "
+            + "deleted at = " + deleted_at;
   }
 
 }

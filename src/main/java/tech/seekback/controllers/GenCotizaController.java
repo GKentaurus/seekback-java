@@ -168,19 +168,17 @@ public class GenCotizaController extends CustomController implements Serializabl
   public void createdByEmpleado() throws ConnectionExcep, IOException {
 
     // Creación de Timestamp para todos los procesos
-    Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
-    timestamps.setDeleted(false);
-    timestamps.setCreated_at(momentum);
-    timestamps.setUpdated_at(momentum);
+    momentum.setTime((new Date()).getTime() + 691200000);
 
     this.cotizacion.setRequerimiento(this.motivo);
-    this.cotizacion.setFecha(momentum);
-    //this.cotizacion.setTrm(trmService.getOne(this.trm));
+    this.cotizacion.setFecha(new Date());
     this.cotizacion.setTrm(trmService.getOne(1));
+    this.cotizacion.setVencimiento(momentum);
     this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
     this.cotizacion.setCliente(clienteService.getOne(this.IdCliente));
     this.cotizacion.setEmpleado(empleadoService.getOne(this.IdUsuario));
+    this.cotizacion.setTimestamps(new Timestamps());
     this.cotizacion = cotizacionService.create(cotizacion);
 
     System.out.println(
