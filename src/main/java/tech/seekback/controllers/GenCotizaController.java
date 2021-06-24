@@ -176,6 +176,7 @@ public class GenCotizaController extends CustomController implements Serializabl
     this.cotizacion.setTrm(trmService.getOne(1));
     this.cotizacion.setVencimiento(momentum);
     this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
+    this.cotizacion.setEmpleado(empleadoService.getOne(this.IdUsuario));
     this.cotizacion.setCliente(clienteService.getOne(this.IdCliente));
     this.cotizacion.setEmpleado(empleadoService.getOne(this.IdUsuario));
     this.cotizacion.setTimestamps(new Timestamps());
