@@ -138,8 +138,7 @@ public class PerfilController extends CustomController implements Serializable {
               + "\n#\t  Registro eliminado "
               + "\n######################################################################\n");
 
-      FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/login.xhtml");
-
+      //FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "/login.xhtml");
     } catch (ConnectionExcep ex) {
       System.out.println("Error al registrar usuario");
       ex.printStackTrace();

@@ -41,7 +41,7 @@
         <div class="col s12 center-align">
           <p style="font-size:25px;"><i class="far fa-user"></i> Perfil <i class="fas fa-cog"></i></p>
         </div>
-        <h:form>
+        <h:form prependId="false">
           <div class="col s6 col m6">
             <div class="input-field">
               <h:inputText id="fname" class="validate" value="#{perfilController.usuario.primerNombre}"
@@ -109,7 +109,9 @@
             <h:commandButton class="waves-effect waves-light btn modal-trigger"
                              actionListener="#{perfilController.update()}" value="Actualizar información"/>
             <h:commandButton class="waves-effect waves-light btn modal-trigger"
-                             actionListener="#{perfilController.delete()}" value="Eliminar cuenta"/>
+                             onclick="window.top.location.href = '#{facesContext.getCurrentInstance().getExternalContext().getRequestContextPath()}'"
+                             actionListener="#{perfilController.delete()}"
+                             value="Eliminar cuenta"/>
             <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cambiar contraseña</a>
           </div>
         </h:form>
