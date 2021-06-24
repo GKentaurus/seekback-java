@@ -67,7 +67,6 @@ public class GenCotizaController extends CustomController implements Serializabl
   private Integer IdDivisaseleccionada;
   private String motivo;
   private Cotizacion cotizacion;
-  private Integer trm;
 
   @PostConstruct
   public void init() {
@@ -119,14 +118,6 @@ public class GenCotizaController extends CustomController implements Serializabl
     this.cotizacion = cotizacion;
   }
 
-  public Integer getTrm() {
-    return trm;
-  }
-
-  public void setTrm(Integer trm) {
-    this.trm = trm;
-  }
-
   public List<Usuario> getClientes() {
     try {
       if (Objects.isNull(clientes)) {
@@ -170,10 +161,11 @@ public class GenCotizaController extends CustomController implements Serializabl
     // Creación de Timestamp para todos los procesos
     Date momentum = new Date();
     momentum.setTime((new Date()).getTime() + 691200000);
+    List<TRM> trmByDivisa = trmService.getByidDivisa(IdDivisaseleccionada);
 
     this.cotizacion.setRequerimiento(this.motivo);
     this.cotizacion.setFecha(new Date());
-    this.cotizacion.setTrm(trmService.getOne(1));
+    this.cotizacion.setTrm(trmByDivisa.get(trmByDivisa.size() - 1));
     this.cotizacion.setVencimiento(momentum);
     this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
     this.cotizacion.setEmpleado(empleadoService.getOne(this.IdUsuario));
@@ -193,21 +185,19 @@ public class GenCotizaController extends CustomController implements Serializabl
 
   public void createdByCliente() throws ConnectionExcep, IOException {
 
-    //this.cotizacion = new Cotizacion();
-    Timestamps timestamps = new Timestamps();
     Date momentum = new Date();
-    timestamps.setDeleted(false);
-    timestamps.setCreated_at(momentum);
-    timestamps.setUpdated_at(momentum);
+    momentum.setTime((new Date()).getTime() + 691200000);
+
+    List<TRM> trmByDivisa = trmService.getByidDivisa(IdDivisaseleccionada);
 
     this.cotizacion.setRequerimiento(motivo);
     this.cotizacion.setFecha(momentum);
     this.cotizacion.setVencimiento(momentum);
-    this.cotizacion.setTrm(trmService.getOne(trm));
+    this.cotizacion.setTrm(trmByDivisa.get(trmByDivisa.size() - 1));
     this.cotizacion.setEstado(estadosCotizacionService.getOne(1));
     this.cotizacion.setCliente(clienteService.getOne(this.IdUsuario));
     this.cotizacion.setEmpleado(empleadoService.getOne(2));
-    this.cotizacion.setTimestamps(timestamps);
+    this.cotizacion.setTimestamps(new Timestamps());
 
     this.cotizacion = cotizacionService.create(cotizacion);
 
