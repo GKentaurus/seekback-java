@@ -51,7 +51,7 @@
                   </h:selectOneMenu>
                 </div>
                 <div class="input-field col s12 m6">
-                  <h:outputLabel for="divi" value="Divisa" />
+                  <h:outputLabel for="divi" value="Divisa" style="margin-top: -30px;" />
                   <h:selectOneMenu id="divi"
                                    value="#{genCotizaController.idDivisaseleccionada}">
                     <f:selectItem itemLabel="Seleccione una opcion"/>
@@ -59,22 +59,9 @@
                                    var="di"
                                    itemValue="#{di.id}"
                                    itemLabel="#{di.sigla} #{di.nombre}"/>
-                    <f:ajax execute="@this" render="trm"/>
                   </h:selectOneMenu>
                 </div>
-                <div class="input-field col s12 m6">
-                  <h:outputLabel for="trm" value="TRM" style="margin-top: -30px;"/>
-                  <h:selectOneMenu id="trm"  class="browser-default">
-                    <f:selectItem itemLabel="Seleccione una opcion"
-                                  noSelectionOption="true" />
-                    <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
-                                   var="tr"
-                                   itemValue="#{tr.id}"
-                                   itemLabel="#{tr.tasaCambio}">
-                    </f:selectItems>
-                  </h:selectOneMenu>
-                </div>
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12">
                   <h:outputLabel for="motivo">Motivo</h:outputLabel>
                   <h:inputTextarea id="motivo" class="materialize-textarea" value="#{genCotizaController.motivo}" ></h:inputTextarea>
                 </div>
@@ -96,19 +83,6 @@
                                    var="di"
                                    itemValue="#{di.id}"
                                    itemLabel="#{di.sigla} #{di.nombre}"/>
-                    <f:ajax execute="@this" render="trm"/>
-                  </h:selectOneMenu>
-                </div>
-                <div class="input-field col s12 m6">
-                  <h:outputLabel for="trm" value="TRM" style="margin-top: -30px;"/>
-                  <h:selectOneMenu id="trm"  class="browser-default" pt:placeholder=" "
-                                   value="#{genCotizaController.trm}">
-                    <f:selectItem itemLabel="Seleccione una opcion"/>
-                    <f:selectItems value="#{genCotizaController.trmsSeleccionada}"
-                                   var="tr"
-                                   itemValue="#{tr.id}"
-                                   itemLabel="#{tr.tasaCambio}">
-                    </f:selectItems>
                   </h:selectOneMenu>
                 </div>
                 <div class="input-field col s12 m6">
