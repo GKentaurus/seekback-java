@@ -32,7 +32,7 @@ public class MainMenuController extends CustomController implements Serializable
   }
 
   public String link(Integer id) {
-    return "product?id=" + id + " faces-redirect=true";
+    return "product.xhtml?id=" + id;
   }
 
   // </editor-fold>
