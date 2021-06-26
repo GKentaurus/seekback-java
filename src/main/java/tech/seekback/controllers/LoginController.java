@@ -1,21 +1,5 @@
 package tech.seekback.controllers;
 
-import tech.seekback.dao.interfaces.CiudadDAO;
-import tech.seekback.dao.interfaces.DepartamentoDAO;
-import tech.seekback.exceptions.ConnectionExcep;
-import tech.seekback.models.*;
-import tech.seekback.models.templates.Timestamps;
-import tech.seekback.services.*;
-import tech.seekback.tools.MailService;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.inject.Named;
-import javax.mail.MessagingException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
@@ -24,6 +8,21 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
+import javax.mail.MessagingException;
+import tech.seekback.dao.interfaces.CiudadDAO;
+import tech.seekback.dao.interfaces.DepartamentoDAO;
+import tech.seekback.exceptions.ConnectionExcep;
+import tech.seekback.models.*;
+import tech.seekback.models.templates.Timestamps;
+import tech.seekback.services.*;
+import tech.seekback.tools.MailService;
 
 /**
  * @author danny
@@ -98,14 +97,13 @@ public class LoginController extends CustomController implements Serializable {
   private String password;
   private String email;
 
-  public LoginController() {
-    usuario = new Usuario();
-    direccion = new Direccion();
-    correo = new Correo();
-    telefono = new Telefono();
-    cliente = new Usuario();
-  }
-
+//  public LoginController() {
+//    usuario = new Usuario();
+//    direccion = new Direccion();
+//    correo = new Correo();
+//    telefono = new Telefono();
+//    cliente = new Usuario();
+//  }
   //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
   public Usuario getUsuario() {
     return usuario;
@@ -331,7 +329,7 @@ public class LoginController extends CustomController implements Serializable {
   }
 
   public boolean isLogged() throws IOException {
-    return Objects.nonNull(usuario);
+    return usuario != null;
   }
 
   public void validate() throws IOException {

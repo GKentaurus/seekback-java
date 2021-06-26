@@ -136,19 +136,6 @@ and open the template in the editor.
                        title="intercambiar modo">
                       <i class="far fa-moon" style="color:#fff"></i>
                     </a>
-                    <h:form prependId="true">
-                      <div class="input-field">
-                        <h:selectOneMenu
-                          id="lang"
-                          value="#{locationController.localefront}"
-                          class="" required="true"
-                          valueChangeListener="#{locationController.setLocale()}"
-                          onchange="submit()">
-                          <f:selectItem itemValue="en" itemLabel="Español"/>
-                          <f:selectItem itemValue="es" itemLabel="Ingles"/>
-                        </h:selectOneMenu>
-                      </div>
-                    </h:form>
                   </div>
                 </div>
               </div>
